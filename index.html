@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Gus Halwani - AI educator, neuroscientist, and enthusiast of precision machines and analog craft">
+  <title>Gus Halwani</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Main Graph Container -->
+  <div id="graph-container">
+    <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <!-- Glow filters for hemispheres -->
+        <filter id="glow-left" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="glow-right" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+        <filter id="glow-center" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Edges group (rendered behind nodes) -->
+      <g id="edges-group"></g>
+
+      <!-- Nodes group -->
+      <g id="nodes-group"></g>
+    </svg>
+  </div>
+
+  <!-- Expanded Content Overlay -->
+  <div id="content-overlay" class="hidden">
+    <div id="content-panel">
+      <button id="close-btn" aria-label="Close">&times;</button>
+      <h2 id="content-title"></h2>
+      <p id="content-body"></p>
+      <div id="content-connections">
+        <span class="connections-label">Explore:</span>
+        <div id="connections-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="social-links">
+        <a href="mailto:gushalwani@alum.mit.edu" target="_blank" rel="noopener">Email</a>
+        <a href="https://linkedin.com/in/gushalwani" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Gus-Halwani" target="_blank" rel="noopener">ResearchGate</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Hemisphere Labels -->
+  <div id="hemisphere-labels">
+    <span class="hemisphere-label left">Digital</span>
+    <span class="hemisphere-label right">Analog</span>
+  </div>
+
+  <script src="js/graph.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

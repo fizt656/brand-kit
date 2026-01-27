@@ -1,0 +1,15 @@
+# Editor files (keep local only)
+editor.html
+css/editor.css
+js/editor.js
+EDITOR.md
+
+# Raw materials
+raw materials/
+
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/

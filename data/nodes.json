@@ -1,0 +1,225 @@
+{
+  "nodes": [
+    {
+      "id": "center",
+      "label": "GUS",
+      "hemisphere": "center",
+      "x": 50,
+      "y": 50,
+      "connections": ["ai-education", "flow-state", "family"],
+      "content": {
+        "title": "Gus Halwani",
+        "body": "At the intersection of neuroscience, technology, and the things that demand your full attention. This is my mental landscape—click any node to explore.",
+        "image": null
+      }
+    },
+    {
+      "id": "ai-education",
+      "label": "AI Education",
+      "hemisphere": "left",
+      "x": 30,
+      "y": 35,
+      "connections": ["center", "neurace", "mit", "neuroscience"],
+      "content": {
+        "title": "AI Education",
+        "body": "I lead AI education at Dana-Farber Cancer Institute, where I'm building generative AI solutions and training programs for researchers and clinicians. The goal isn't to replace human expertise; it's to amplify it. These days I'm focused on making AI accessible—not just as a tool, but as something people can understand and shape.",
+        "image": null
+      }
+    },
+    {
+      "id": "neurace",
+      "label": "NeuRace",
+      "hemisphere": "left",
+      "x": 12,
+      "y": 50,
+      "connections": ["ai-education", "flow-state"],
+      "content": {
+        "title": "NeuRace",
+        "body": "My company brings neurophysiology to motorsport. We've worked with Formula 1 teams and Pirelli World Challenge drivers, using EEG and biometric data to optimize cognitive performance under competition conditions. It's a different kind of education problem: how do you help someone think more clearly at 180 mph?",
+        "image": null
+      }
+    },
+    {
+      "id": "neuroscience",
+      "label": "Neuroscience",
+      "hemisphere": "left",
+      "x": 22,
+      "y": 18,
+      "connections": ["ai-education", "mit"],
+      "content": {
+        "title": "Neuroscience",
+        "body": "My PhD research at MIT explored music and the brain—how rhythm, melody, and harmony engage our neural circuits in ways that words alone cannot. This foundation shapes how I think about learning, attention, and the design of experiences that stick.",
+        "image": null
+      }
+    },
+    {
+      "id": "mit",
+      "label": "MIT",
+      "hemisphere": "left",
+      "x": 10,
+      "y": 28,
+      "connections": ["neuroscience", "ai-education"],
+      "content": {
+        "title": "MIT",
+        "body": "Harvard-MIT Health Sciences & Technology program. IDEA Fellowship. Years spent at the intersection of neuroscience and education, helping schools adopt emerging technologies and thinking about how people learn.",
+        "image": null
+      }
+    },
+    {
+      "id": "flow-state",
+      "label": "Flow State",
+      "hemisphere": "center",
+      "x": 38,
+      "y": 62,
+      "connections": ["center", "neurace", "making", "machines"],
+      "content": {
+        "title": "Flow State",
+        "body": "That moment where technical thinking stops and something else takes over. Whether on the track, in the kitchen, or making music—the common thread is full presence. This is what connects everything I study and everything I do.",
+        "image": null
+      }
+    },
+    {
+      "id": "family",
+      "label": "Family",
+      "hemisphere": "center",
+      "x": 62,
+      "y": 62,
+      "connections": ["center", "heritage", "home"],
+      "content": {
+        "title": "Family",
+        "body": "Maria and I have made homes in London, Spain, and Madeira, and each place leaves its mark. Our daughter Cleo (aka Sparks) is growing up with that same sense of possibility. Family meals matter. So does showing up for the people you care about.",
+        "image": null
+      }
+    },
+    {
+      "id": "machines",
+      "label": "E46 M3",
+      "hemisphere": "right",
+      "x": 70,
+      "y": 35,
+      "connections": ["flow-state", "f1", "watch"],
+      "content": {
+        "title": "E46 M3",
+        "body": "A car that rewards precision and punishes sloppiness. Every apex, every shift, every brake point is a conversation. The last great naturally-aspirated M car—a study in how systems work when every component matters.",
+        "image": null
+      }
+    },
+    {
+      "id": "f1",
+      "label": "F1",
+      "hemisphere": "right",
+      "x": 88,
+      "y": 50,
+      "connections": ["machines"],
+      "content": {
+        "title": "Formula 1",
+        "body": "I follow F1 religiously and spend way too much time thinking about suspension geometry and tire compounds. The intersection of human performance and engineering precision—where milliseconds matter and margins are everything.",
+        "image": null
+      }
+    },
+    {
+      "id": "watch",
+      "label": "Explorer I",
+      "hemisphere": "right",
+      "x": 78,
+      "y": 18,
+      "connections": ["machines"],
+      "content": {
+        "title": "Rolex Explorer I",
+        "body": "Simple, mechanical, built to last. No smart features, no notifications. Just 31 jewels and centuries of accumulated watchmaking knowledge. On my wrist every day—a reminder that some things are worth doing slowly and well.",
+        "image": null
+      }
+    },
+    {
+      "id": "making",
+      "label": "Making",
+      "hemisphere": "left",
+      "x": 20,
+      "y": 72,
+      "connections": ["flow-state", "kitchen", "djing"],
+      "content": {
+        "title": "Making",
+        "body": "Music production taught me about flow states long before I studied them scientifically. Whether I'm on guitar or learning drums, there's that moment where technical thinking stops and muscle memory takes over. These are the spaces where I'm not optimizing anything.",
+        "image": null
+      }
+    },
+    {
+      "id": "djing",
+      "label": "DJing",
+      "hemisphere": "left",
+      "x": 8,
+      "y": 85,
+      "connections": ["making"],
+      "content": {
+        "title": "DJing",
+        "body": "House music. Reading the room, building energy, finding the groove. DJing is the same as any flow activity—it requires presence, responsiveness, and the willingness to let go of the plan when the moment calls for something else.",
+        "image": null
+      }
+    },
+    {
+      "id": "kitchen",
+      "label": "Kitchen",
+      "hemisphere": "left",
+      "x": 30,
+      "y": 88,
+      "connections": ["making"],
+      "content": {
+        "title": "Sunday Kitchen Club",
+        "body": "Our family ritual: slow cooking, Mediterranean and Japanese influences, and the kind of meal that takes all day to build. Good food, like good music, requires patience and attention to detail. One ingredient at a time.",
+        "image": null
+      }
+    },
+    {
+      "id": "heritage",
+      "label": "Heritage",
+      "hemisphere": "right",
+      "x": 75,
+      "y": 75,
+      "connections": ["family", "travel"],
+      "content": {
+        "title": "Heritage",
+        "body": "Lebanese roots, American upbringing, and a worldview shaped by travel. I grew up between cultures—each leaving its mark, each adding a layer to how I see the world.",
+        "image": null
+      }
+    },
+    {
+      "id": "home",
+      "label": "Home",
+      "hemisphere": "right",
+      "x": 90,
+      "y": 70,
+      "connections": ["family"],
+      "content": {
+        "title": "Home",
+        "body": "This is the part that grounds everything else. The work, the machines, the making—it all starts and ends here. The slow accumulation of shared experience with the people who matter.",
+        "image": null
+      }
+    },
+    {
+      "id": "travel",
+      "label": "Travel",
+      "hemisphere": "right",
+      "x": 68,
+      "y": 90,
+      "connections": ["heritage"],
+      "content": {
+        "title": "Travel",
+        "body": "London, Spain, Madeira, and everywhere in between. Each place leaves its mark—on how I cook, how I think, how I see home. Travel isn't escape; it's expansion.",
+        "image": null
+      }
+    },
+    {
+      "id": "sparks",
+      "label": "Sparks",
+      "hemisphere": "right",
+      "x": 88,
+      "y": 85,
+      "connections": ["home"],
+      "content": {
+        "title": "Sparks",
+        "body": "Our daughter Cleo—growing up with a sense of possibility, between cultures, with parents who believe in showing up. The best reason to do anything well.",
+        "image": null
+      }
+    }
+  ]
+}
