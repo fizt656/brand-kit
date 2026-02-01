@@ -1,0 +1,70 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Brain Topology is a personal portfolio site that visualizes professional and personal interests as an interactive knowledge graph. Nodes represent different aspects of life (AI, neuroscience, family, hobbies) organized into three hemispheres: Left (Digital/Blue), Right (Analog/Brass), and Center (White).
+
+## Development Commands
+
+Start local server:
+```bash
+python3 -m http.server 8000
+```
+
+Access the editor at http://localhost:8000/editor.html
+
+On macOS, the `start-editor.command` script launches the server and opens the editor automatically.
+
+## Architecture
+
+**No build system** - This is a static HTML/CSS/JS site with no bundler, package.json, or dependencies.
+
+### Key Files
+
+- `index.html` - Main public-facing website
+- `editor.html` - Admin tool for editing the graph
+- `data/nodes.json` - Graph data (nodes with positions, connections, content)
+- `js/graph.js` - Graph data structure and SVG rendering
+- `js/main.js` - Main site interaction and animations
+- `js/editor.js` - Editor UI and GitHub integration
+
+### Node Data Structure
+
+```json
+{
+  "id": "unique-id",
+  "label": "Display Name",
+  "hemisphere": "left|right|center",
+  "x": 0-100,
+  "y": 0-100,
+  "connections": ["node-id-1", "node-id-2"],
+  "content": {
+    "title": "Panel Title",
+    "body": "Description text",
+    "image": null
+  }
+}
+```
+
+Hemispheres: `left` (steel blue, digital topics), `right` (warm brass, analog topics), `center` (off-white, core topics). Position values are percentages (0-100) where 0,0 is top-left.
+
+### CSS Variables
+
+Colors are defined in `css/styles.css`:
+- Background: `#1a1a24`
+- Left hemisphere: `#5a7d9a` (glow: `#7ab8cc`)
+- Right hemisphere: `#a89060` (glow: `#cc9a5a`)
+- Center: `#e8e4e0` (glow: white)
+
+Fonts: Playfair Display (headings), Inter (body), JetBrains Mono (labels/UI)
+
+## Workflow
+
+1. Edit nodes using `editor.html`
+2. Export JSON from editor or use GitHub publish feature (requires token in settings)
+3. Replace `data/nodes.json` with exported file
+4. Deploy to GitHub Pages
+
+See `EDITOR.md` for detailed editor documentation.
