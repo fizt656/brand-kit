@@ -13,7 +13,7 @@
       ],
       "content": {
         "title": "Gus Halwani, PhD",
-        "body": "I work at the intersection of brains, machines, and the moments that demand full attention. This is my mental map—follow the nodes to see the research, the craft, and the people who anchor it.",
+        "body": "I've spent my career following one signal through different frequencies: audio signals, neural signals, data signals, and now the ones that power the machines we're building together. This is my mental map. Follow the nodes to find the research, the craft, and the people who keep me grounded.",
         "image": null
       }
     },
@@ -32,7 +32,7 @@
       ],
       "content": {
         "title": "AI Education",
-        "body": "I lead AI education at Dana-Farber Cancer Institute, where I'm building generative AI solutions and training programs for researchers and clinicians. The goal isn't to replace human expertise; it's to amplify it. These days I'm focused on making AI accessible—not just as a tool, but as something people can understand and shape.",
+        "body": "I lead AI education strategy at Dana-Farber Cancer Institute, focused on helping people across the organization fulfill our mission through AI and analytics. The work is about bridging: connecting awesome engineering teams building powerful tools with the people who use those tools to serve patients, researchers, and partners. Compasses over maps. The machine handles the \"how\"; we reclaim the \"should.\"",
         "image": null
       }
     },
@@ -50,7 +50,7 @@
       ],
       "content": {
         "title": "NeuRace",
-        "body": "My company brings neurophysiology to motorsport. We've worked with Formula 1 teams and Pirelli World Challenge drivers, using EEG and biometric data to optimize cognitive performance under competition conditions. It's a different kind of education problem: how do you help someone think more clearly at 180 mph?",
+        "body": "My company brought neurophysiology to motorsport. We worked with Pirelli World Challenge drivers and F1 development teams, using EEG and biometrics to optimize performance and decision-making under competition pressure. The questions that drove us: How do you help someone think more clearly at 180 mph? What does \"the zone\" actually look like in the data—and can you train for it? Turns out elite performance isn't magic; it's measurable, and it's teachable. Those lessons followed me out of the paddock. The same principles that keep a driver locked in on lap 47 apply to building teams, shaping culture, and designing organizations that stay sharp when the stakes are high.",
         "image": null
       }
     },
@@ -66,7 +66,7 @@
       ],
       "content": {
         "title": "Neuroscience",
-        "body": "My PhD research at MIT explored music and the brain—how rhythm, melody, and harmony engage our neural circuits in ways that words alone cannot. This foundation shapes how I think about learning, attention, and the design of experiences that stick.",
+        "body": "Computational neuroscience, neuroimaging, EEG-based performance analysis, brain-computer interfaces for ALS patients—a thread that runs from my earliest lab work through everything I build today. The brain taught me systems thinking: how networks learn, adapt, and achieve more than any single node could alone. Those principles apply everywhere now—architecting machine learning systems, building high-performance teams, designing organizations where the whole exceeds the sum.",
         "image": null
       }
     },
@@ -82,7 +82,7 @@
       ],
       "content": {
         "title": "MIT PhD Research",
-        "body": "My doctoral work in the Harvard–MIT HST program focused on music, brain connectivity, and neuroplasticity—how training shapes the arcuate fasciculus and the systems that make complex learning possible. It's the foundation for how I think about attention, memory, and human performance today.",
+        "body": "My doctoral work in the Harvard-MIT HST program studied how auditory-motor networks adapt—structurally and functionally—through long-term training and in states of disorder. I used diffusion-tensor imaging and fMRI to map the arcuate fasciculus and understand how singers optimize the pathways that connect hearing to action. The question that drove it: how do intense experiences rewire the brain? Still asking that today, just in different domains.",
         "image": null,
         "links": [
           {
@@ -105,12 +105,12 @@
         "machines",
         "code",
         "gym",
-        "family-time",
+        "family",
         "local-ai-lab"
       ],
       "content": {
         "title": "Flow State",
-        "body": "That moment where the inner narrator goes quiet and something else takes over. I find it in driving, coding, the gym, and unhurried family time—the same full-presence signal in different contexts. This is what connects everything I study and everything I do.",
+        "body": "The moment the inner narrator goes quiet and something else takes over. I find it at 7,500 RPM on a back road, deep in a codebase at 2 AM, under a barbell, and in unhurried mornings with my daughter. The same full-presence signal, different contexts. This is what connects everything I study and everything I do.",
         "image": null
       }
     },
@@ -123,19 +123,21 @@
       "connections": [
         "center",
         "heritage",
-        "home",
-        "family-time",
-        "sparks"
+        "sparks",
+        "flow-state",
+        "gym",
+        "morning-ritual",
+        "metal-guitar"
       ],
       "content": {
         "title": "Family",
-        "body": "Maria and I have made homes in London, Spain, and Madeira, and each place leaves its mark. Our daughter Cleo (aka Sparks) is growing up with that same sense of possibility. Family meals matter. So does showing up for the people you care about.",
+        "body": "Maria and I call each other Squiggy—named after a bike path we rode when we first started dating, still finding new trails together. Cleo Mayyada is growing into someone with strong opinions and zero patience for shortcuts. Sunday meals take all day on purpose. Walks have no destination. Small rituals compound over years into something you can't replicate or rush. The work, the machines, the making—it all exists because this part is solid first.",
         "image": null
       }
     },
     {
       "id": "machines",
-      "label": "E46 M3",
+      "label": "Driving",
       "hemisphere": "right",
       "x": 70,
       "y": 35,
@@ -146,8 +148,8 @@
         "neurace"
       ],
       "content": {
-        "title": "E46 M3",
-        "body": "A car that rewards precision and punishes sloppiness. Every apex, every shift, every brake point is a conversation. The last great naturally-aspirated M car—a study in how systems work when every component matters.",
+        "title": "Driving",
+        "body": "The E46 M3 is the tool, but the practice is bigger than the car. Spirited back roads, track days chasing the perfect line, the meditation of managing a machine at its limits. Every corner is a feedback loop: entry speed, brake point, apex, throttle out. You optimize the line the same way you optimize anything—small adjustments, constant attention, knowing when to push and when to let the system breathe. It's problem-solving at 7,500 RPM. And somewhere in lap three, the thinking stops and the doing takes over.",
         "image": null
       }
     },
@@ -163,13 +165,13 @@
       ],
       "content": {
         "title": "Formula 1",
-        "body": "I follow F1 religiously and spend way too much time thinking about suspension geometry and tire compounds. The intersection of human performance and engineering precision—where milliseconds matter and margins are everything.",
+        "body": "Baz raised us on this—every qualifying session, every race, even the ones that started at 5 AM. Waking up early to watch cars go in circles sounds ridiculous until you realize you're studying peak engineering, strategy under pressure, and what happens when milliseconds separate victory from disaster. I still think too much about suspension geometry and tire compounds. The intersection of human performance and precision engineering. Margins are everything. Lessons everywhere.",
         "image": null
       }
     },
     {
       "id": "watch",
-      "label": "Explorer I",
+      "label": "Horology",
       "hemisphere": "right",
       "x": 78,
       "y": 18,
@@ -177,8 +179,8 @@
         "machines"
       ],
       "content": {
-        "title": "Rolex Explorer I",
-        "body": "Simple, mechanical, built to last. No smart features, no notifications. Just 31 jewels and centuries of accumulated watchmaking knowledge. On my wrist every day—a reminder that some things are worth doing slowly and well.",
+        "title": "Horology",
+        "body": "Mechanical movements, case design, the obsessive craft of making something that keeps time without a battery. Yes, it sounds cheesy. Yes, I know a $20 quartz is more accurate. But there's something about centuries of accumulated knowledge sitting on your wrist, ticking away, that I can't explain rationally. Dream: own a watch repair shop someday. I *will* do it. Reach out if you want to partner on this. I'm serious.",
         "image": null
       }
     },
@@ -199,7 +201,7 @@
       ],
       "content": {
         "title": "Making",
-        "body": "Music production taught me about flow states long before I studied them scientifically. Whether I'm on guitar or learning drums, there's that moment where technical thinking stops and muscle memory takes over. These are the spaces where I'm not optimizing anything.",
+        "body": "Music production taught me about flow states long before I studied them scientifically—and signal processing taught me how systems transform inputs into outputs, which turned out to be useful everywhere. Guitar, drums, whatever's in front of me—there's a moment where the technical thinking stops and something older takes over. These are the spaces where I'm not optimizing anything. Just making.",
         "image": null
       }
     },
@@ -214,7 +216,7 @@
       ],
       "content": {
         "title": "DJing",
-        "body": "House music. Reading the room, building energy, finding the groove. DJing is the same as any flow activity—it requires presence, responsiveness, and the willingness to let go of the plan when the moment calls for something else.",
+        "body": "House music. Reading the room, building energy, finding the groove that makes people move without thinking about it. Same skills as any flow activity: presence, responsiveness, knowing when to let go of the plan. The best sets are conversations you didn't plan to have.",
         "image": null
       }
     },
@@ -229,7 +231,7 @@
       ],
       "content": {
         "title": "Sunday Kitchen Club",
-        "body": "Our family ritual: slow cooking, Mediterranean and Japanese influences, and the kind of meal that takes all day to build. Good food, like good music, requires patience and attention to detail. One ingredient at a time.",
+        "body": "Sunday Kitchen Club. Slow cooking, Lebanese and Spanish influences, the kind of meal that takes all day and nobody's in a rush. Good food works like good music—patience, attention, letting the ingredients do what they want to do. One layer at a time.",
         "image": null
       }
     },
@@ -240,43 +242,11 @@
       "x": 75,
       "y": 75,
       "connections": [
-        "family",
-        "travel"
+        "family"
       ],
       "content": {
         "title": "Heritage",
-        "body": "Lebanese roots, American upbringing, and a worldview shaped by travel. I grew up between cultures—each leaving its mark, each adding a layer to how I see the world.",
-        "image": null
-      }
-    },
-    {
-      "id": "home",
-      "label": "Home",
-      "hemisphere": "right",
-      "x": 90,
-      "y": 70,
-      "connections": [
-        "family",
-        "family-time"
-      ],
-      "content": {
-        "title": "Home",
-        "body": "This is the part that grounds everything else. The work, the machines, the making—it all starts and ends here. The slow accumulation of shared experience with the people who matter.",
-        "image": null
-      }
-    },
-    {
-      "id": "travel",
-      "label": "Travel",
-      "hemisphere": "right",
-      "x": 68,
-      "y": 90,
-      "connections": [
-        "heritage"
-      ],
-      "content": {
-        "title": "Travel",
-        "body": "London, Spain, Madeira, and everywhere in between. Each place leaves its mark—on how I cook, how I think, how I see home. Travel isn't escape; it's expansion.",
+        "body": "Grew up in Beirut, came to the US at 17. Learned early: read rooms fast, allocate scarce resources, stay calm when the stakes are real. Resourcefulness, pattern-matching, knowing when to push and when to disappear. Those instincts transferred—into how I build systems, navigate ambiguity, and stay effective when things get loud.",
         "image": null
       }
     },
@@ -287,13 +257,11 @@
       "x": 88,
       "y": 85,
       "connections": [
-        "home",
-        "family",
-        "family-time"
+        "family"
       ],
       "content": {
         "title": "Sparks",
-        "body": "Our daughter Cleo—growing up with a sense of possibility, between cultures, with parents who believe in showing up. The best reason to do anything well.",
+        "body": "Cleo Mayyada. Growing up between cultures, surrounded by music and machines and people who take things apart to understand them. She's already got opinions about all of it. The best reason to do anything well.",
         "image": null
       }
     },
@@ -313,7 +281,7 @@
       ],
       "content": {
         "title": "Code",
-        "body": "Where the abstract becomes real. I like building clean systems that feel inevitable once they click—tools that help people move faster, think clearer, and ship work that matters.",
+        "body": "Coding is changing fast. Agentic IDEs and CLIs now spawn entire software teams that actually ship pretty well. Once we solve the context problem, we're off to the races. The craft is shifting—we need to train engineers to think more like product designers, less like coders. The interesting work isn't syntax anymore; it's architecture, taste, and knowing what to build in the first place. I still love the act of building, but the leverage is different now.",
         "image": null
       }
     },
@@ -325,34 +293,12 @@
       "y": 82,
       "connections": [
         "flow-state",
-        "family-time",
+        "family",
         "center"
       ],
       "content": {
         "title": "Gym",
-        "body": "Training as a daily practice—strength, endurance, discipline. The simplest feedback loop: effort in, clarity out.",
-        "image": null
-      }
-    },
-    {
-      "id": "family-time",
-      "label": "Family Time",
-      "hemisphere": "center",
-      "x": 60,
-      "y": 76,
-      "connections": [
-        "flow-state",
-        "family",
-        "home",
-        "gym",
-        "sparks",
-        "center",
-        "metal-guitar",
-        "morning-ritual"
-      ],
-      "content": {
-        "title": "Family Time",
-        "body": "Unhurried hours that reset everything—meals, walks, small rituals, and the quiet continuity that makes all the work worth it.",
+        "body": "Training as daily practice. Strength, endurance, the discipline of showing up when you don't feel like it. The simplest feedback loop: effort in, clarity out. Everything else runs better when this part is consistent.",
         "image": null
       }
     },
@@ -371,7 +317,7 @@
       ],
       "content": {
         "title": "Local AI Lab",
-        "body": "From GPUs and storage to finetuning and deployment, I love building systems that run locally and feel fast, private, and hands-on. It’s my sandbox for testing what’s possible before it goes big.",
+        "body": "GPUs humming in the basement, models running locally, no cloud required. I like building AI systems I can touch—fast, private, hands-on. This is the sandbox where I test what's possible before it goes anywhere else. Half the fun is the infrastructure itself.",
         "image": null
       }
     },
@@ -390,29 +336,29 @@
       ],
       "content": {
         "title": "Multimodal Orchestration",
-        "body": "Chaining models into a single creative pipeline—text, image, audio, video—often starting from messy, conversational brainstorms. It’s the bridge between raw ideas and finished media.",
+        "body": "Chaining models into creative pipelines—text to image to audio to video, often starting from messy conversational brainstorms. The interesting part isn't any single model; it's the orchestration. How do you move from a half-baked idea to finished media without losing the spark? That's the design problem I keep coming back to.",
         "image": null
       }
     },
     {
       "id": "metal-guitar",
-      "label": "Metal Guitar",
+      "label": "Guitar",
       "hemisphere": "left",
       "x": 12,
       "y": 78,
       "connections": [
         "making",
-        "family-time"
+        "family"
       ],
       "content": {
-        "title": "Metal Guitar",
-        "body": "A neighborhood jam ritual—tight riffs, heavy tone, and a shared creative outlet with another dad on the block. Loud, cathartic, and surprisingly meditative.",
+        "title": "Guitar",
+        "body": "Funk, soul, blues, rock, Lebanese scales I grew up hearing—it all bleeds together when I pick up a guitar. Neighborhood jams with another dad on the block where the amps get loud and the riffs get heavy. But also quieter moments, finding where the traditions overlap. Playing is how I think when words don't work.",
         "image": null
       }
     },
     {
       "id": "ai-roleplay",
-      "label": "AI Roleplay",
+      "label": "Game Design",
       "hemisphere": "left",
       "x": 28,
       "y": 84,
@@ -422,8 +368,8 @@
         "multimodal-orchestration"
       ],
       "content": {
-        "title": "AI Roleplay Dev",
-        "body": "A sandbox for orchestrating multimodal tools through story-driven game loops—anime, sci‑fi, cyberpunk worlds where narrative and system design collide.",
+        "title": "Game Design",
+        "body": "Using emerging tech to build immersive experiences—persona-based roleplays, rich multimodal interaction, worlds that respond to you. Some of this is serious: enterprise training, simulations that teach through doing. Some of it is just for fun: anime aesthetics, cyberpunk vibes, seeing how far the tools can stretch. The line between play and impact keeps getting blurrier, and I like it there.",
         "image": null
       }
     },
@@ -434,13 +380,13 @@
       "x": 48,
       "y": 84,
       "connections": [
-        "family-time",
+        "family",
         "sparks",
         "making"
       ],
       "content": {
         "title": "Morning Ritual",
-        "body": "Coffee, music, and a few minutes with Cleo before the day starts. A small anchor that keeps the rest of the map aligned.",
+        "body": "Swim, weights, and steam room on gym days. Breakfast with Maria and Cleo Mayyada on the others—slow mornings, good coffee, connection before the noise starts. Either way, it's the anchor. The rest of the day runs differently when this part happens.",
         "image": null
       }
     }
