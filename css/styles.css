@@ -3,30 +3,30 @@
    ================================ */
 
 :root {
-  /* Background */
-  --color-bg: #1a1a24;
-  --color-bg-light: #22222e;
+  /* Background - warm charcoal */
+  --color-bg: #1f1d1a;
+  --color-bg-light: #2a2824;
 
-  /* Left hemisphere (Digital) - Cool steel blue */
-  --color-left: #5a7d9a;
-  --color-left-glow: #7ab8cc;
-  --color-left-dim: #3d5a70;
+  /* Left hemisphere (Digital) - brighter steel blue */
+  --color-left: #7a9db8;
+  --color-left-glow: #9dd0e8;
+  --color-left-dim: #5a7d9a;
 
-  /* Right hemisphere (Analog) - Warm brass */
-  --color-right: #a89060;
-  --color-right-glow: #cc9a5a;
-  --color-right-dim: #7a6844;
+  /* Right hemisphere (Analog) - brighter warm brass */
+  --color-right: #c9a962;
+  --color-right-glow: #e8c478;
+  --color-right-dim: #a89060;
 
-  /* Center nodes - Off-white */
-  --color-center: #e8e4e0;
+  /* Center nodes - cream */
+  --color-center: #f0ebe4;
   --color-center-glow: #ffffff;
 
   /* Edges and UI */
-  --color-edge: #3a3a4a;
-  --color-edge-active: #5a5a6a;
-  --color-text: #e8e4e0;
-  --color-text-dim: #7a7a8a;
-  --color-text-muted: #4a4a5a;
+  --color-edge: #3d3a35;
+  --color-edge-active: #5a564e;
+  --color-text: #f0ebe4;
+  --color-text-dim: #a8a498;
+  --color-text-muted: #6a665e;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -202,14 +202,15 @@ body {
 
 .node-label {
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  fill: var(--color-text-dim);
+  fill: var(--color-text);
   text-anchor: middle;
   pointer-events: none;
   opacity: 0;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.8));
   transition:
     opacity var(--transition-fast),
     fill var(--transition-fast);
@@ -219,7 +220,7 @@ body {
 .node:hover .node-label,
 .node.active .node-label,
 .node-label.visible {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .node:hover .node-label,
