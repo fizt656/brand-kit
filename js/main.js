@@ -9,6 +9,8 @@ const App = {
   contentTitle: null,
   contentBody: null,
   connectionsList: null,
+  linksSection: null,
+  linksList: null,
   closeBtn: null,
 
   // Initialize the application
@@ -19,6 +21,8 @@ const App = {
     this.contentTitle = document.getElementById('content-title');
     this.contentBody = document.getElementById('content-body');
     this.connectionsList = document.getElementById('connections-list');
+    this.linksSection = document.getElementById('content-links');
+    this.linksList = document.getElementById('links-list');
     this.closeBtn = document.getElementById('close-btn');
 
     // Initialize graph
@@ -107,6 +111,9 @@ const App = {
     // Build connections list
     this.renderConnections(node);
 
+    // Build external links list
+    this.renderLinks(node);
+
     // Update graph state
     Graph.setExpandedState(nodeId);
 
@@ -156,6 +163,29 @@ const App = {
 
       this.connectionsList.appendChild(btn);
     });
+  },
+
+  // Render external links
+  renderLinks(node) {
+    this.linksList.innerHTML = '';
+
+    const links = node.content?.links || [];
+    if (!links.length) {
+      this.linksSection.classList.add('hidden');
+      return;
+    }
+
+    links.forEach(link => {
+      const anchor = document.createElement('a');
+      anchor.className = 'external-link';
+      anchor.href = link.url;
+      anchor.target = '_blank';
+      anchor.rel = 'noopener';
+      anchor.textContent = link.label;
+      this.linksList.appendChild(anchor);
+    });
+
+    this.linksSection.classList.remove('hidden');
   },
 
   // Navigate to a connected node (traversal)

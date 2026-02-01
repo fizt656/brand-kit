@@ -355,6 +355,10 @@ body {
   padding-top: 20px;
 }
 
+#content-links.hidden {
+  display: none;
+}
+
 .connections-label {
   font-family: var(--font-mono);
   font-size: 0.65rem;
@@ -369,6 +373,34 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+}
+
+#links-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.external-link {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border: 1px solid var(--color-edge);
+  border-radius: 6px;
+  color: var(--color-text-dim);
+  text-decoration: none;
+  transition:
+    border-color var(--transition-fast),
+    background var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.external-link:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .connection-btn {

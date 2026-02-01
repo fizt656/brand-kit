@@ -62,9 +62,26 @@ Fonts: Playfair Display (headings), Inter (body), JetBrains Mono (labels/UI)
 
 ## Workflow
 
+### Quick Edit & Publish (Recommended)
+
+1. Run `start-editor.command` to launch the editor
+2. Make changes to nodes
+3. Click **Publish** (auto-commits to GitHub)
+4. Site updates at https://fizt656.github.io/brand-kit/ in ~30 seconds
+
+**Note:** Publish button requires a GitHub Personal Access Token configured in editor settings (one-time setup).
+
+### Manual Workflow (Alternative)
+
 1. Edit nodes using `editor.html`
-2. Export JSON from editor or use GitHub publish feature (requires token in settings)
-3. Replace `data/nodes.json` with exported file
-4. Deploy to GitHub Pages
+2. Click **Export** to download `nodes.json`
+3. Replace `data/nodes.json` with downloaded file
+4. Commit and push: `git add data/nodes.json && git commit -m "Update nodes" && git push`
+
+## Deployment
+
+- **Live site:** https://fizt656.github.io/brand-kit/
+- **Hosting:** GitHub Pages (auto-deploys from `main` branch)
+- **Repository:** https://github.com/fizt656/brand-kit
 
 See `EDITOR.md` for detailed editor documentation.

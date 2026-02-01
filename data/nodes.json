@@ -2,7 +2,7 @@
   "nodes": [
     {
       "id": "center",
-      "label": "GUS",
+      "label": "GUS HALWANI",
       "hemisphere": "center",
       "x": 50,
       "y": 50,
@@ -12,8 +12,8 @@
         "family"
       ],
       "content": {
-        "title": "Gus Halwani",
-        "body": "At the intersection of neuroscience, technology, and the things that demand your full attention. This is my mental landscape—click any node to explore.",
+        "title": "Gus Halwani, PhD",
+        "body": "I work at the intersection of brains, machines, and the moments that demand full attention. This is my mental map—follow the nodes to see the research, the craft, and the people who anchor it.",
         "image": null
       }
     },
@@ -27,7 +27,8 @@
         "center",
         "neurace",
         "mit",
-        "neuroscience"
+        "neuroscience",
+        "code"
       ],
       "content": {
         "title": "AI Education",
@@ -43,7 +44,9 @@
       "y": 50,
       "connections": [
         "ai-education",
-        "flow-state"
+        "flow-state",
+        "machines",
+        "f1"
       ],
       "content": {
         "title": "NeuRace",
@@ -78,9 +81,15 @@
         "ai-education"
       ],
       "content": {
-        "title": "MIT",
-        "body": "Harvard-MIT Health Sciences & Technology program. IDEA Fellowship. Years spent at the intersection of neuroscience and education, helping schools adopt emerging technologies and thinking about how people learn.",
-        "image": null
+        "title": "MIT PhD Research",
+        "body": "My doctoral work in the Harvard–MIT HST program focused on music, brain connectivity, and neuroplasticity—how training shapes the arcuate fasciculus and the systems that make complex learning possible. It's the foundation for how I think about attention, memory, and human performance today.",
+        "image": null,
+        "links": [
+          {
+            "label": "PhD Thesis",
+            "url": "https://dspace.mit.edu/handle/1721.1/78150"
+          }
+        ]
       }
     },
     {
@@ -93,11 +102,15 @@
         "center",
         "neurace",
         "making",
-        "machines"
+        "machines",
+        "code",
+        "gym",
+        "family-time",
+        "local-ai-lab"
       ],
       "content": {
         "title": "Flow State",
-        "body": "That moment where technical thinking stops and something else takes over. Whether on the track, in the kitchen, or making music—the common thread is full presence. This is what connects everything I study and everything I do.",
+        "body": "That moment where the inner narrator goes quiet and something else takes over. I find it in driving, coding, the gym, and unhurried family time—the same full-presence signal in different contexts. This is what connects everything I study and everything I do.",
         "image": null
       }
     },
@@ -110,7 +123,9 @@
       "connections": [
         "center",
         "heritage",
-        "home"
+        "home",
+        "family-time",
+        "sparks"
       ],
       "content": {
         "title": "Family",
@@ -127,7 +142,8 @@
       "connections": [
         "flow-state",
         "f1",
-        "watch"
+        "watch",
+        "neurace"
       ],
       "content": {
         "title": "E46 M3",
@@ -142,7 +158,8 @@
       "x": 88,
       "y": 50,
       "connections": [
-        "machines"
+        "machines",
+        "neurace"
       ],
       "content": {
         "title": "Formula 1",
@@ -174,7 +191,11 @@
       "connections": [
         "flow-state",
         "kitchen",
-        "djing"
+        "djing",
+        "metal-guitar",
+        "ai-roleplay",
+        "multimodal-orchestration",
+        "morning-ritual"
       ],
       "content": {
         "title": "Making",
@@ -235,7 +256,8 @@
       "x": 90,
       "y": 70,
       "connections": [
-        "family"
+        "family",
+        "family-time"
       ],
       "content": {
         "title": "Home",
@@ -265,7 +287,9 @@
       "x": 88,
       "y": 85,
       "connections": [
-        "home"
+        "home",
+        "family",
+        "family-time"
       ],
       "content": {
         "title": "Sparks",
@@ -274,15 +298,149 @@
       }
     },
     {
-      "id": "new-node",
-      "label": "TEST",
-      "hemisphere": "center",
-      "x": 50,
-      "y": 68,
-      "connections": [],
+      "id": "code",
+      "label": "Code",
+      "hemisphere": "left",
+      "x": 32,
+      "y": 76,
+      "connections": [
+        "flow-state",
+        "ai-education",
+        "center",
+        "local-ai-lab",
+        "multimodal-orchestration",
+        "ai-roleplay"
+      ],
       "content": {
-        "title": "New Node",
-        "body": "",
+        "title": "Code",
+        "body": "Where the abstract becomes real. I like building clean systems that feel inevitable once they click—tools that help people move faster, think clearer, and ship work that matters.",
+        "image": null
+      }
+    },
+    {
+      "id": "gym",
+      "label": "Gym",
+      "hemisphere": "right",
+      "x": 58,
+      "y": 82,
+      "connections": [
+        "flow-state",
+        "family-time",
+        "center"
+      ],
+      "content": {
+        "title": "Gym",
+        "body": "Training as a daily practice—strength, endurance, discipline. The simplest feedback loop: effort in, clarity out.",
+        "image": null
+      }
+    },
+    {
+      "id": "family-time",
+      "label": "Family Time",
+      "hemisphere": "center",
+      "x": 60,
+      "y": 76,
+      "connections": [
+        "flow-state",
+        "family",
+        "home",
+        "gym",
+        "sparks",
+        "center",
+        "metal-guitar",
+        "morning-ritual"
+      ],
+      "content": {
+        "title": "Family Time",
+        "body": "Unhurried hours that reset everything—meals, walks, small rituals, and the quiet continuity that makes all the work worth it.",
+        "image": null
+      }
+    },
+    {
+      "id": "local-ai-lab",
+      "label": "Local AI Lab",
+      "hemisphere": "left",
+      "x": 24,
+      "y": 58,
+      "connections": [
+        "ai-education",
+        "code",
+        "flow-state",
+        "center",
+        "multimodal-orchestration"
+      ],
+      "content": {
+        "title": "Local AI Lab",
+        "body": "From GPUs and storage to finetuning and deployment, I love building systems that run locally and feel fast, private, and hands-on. It’s my sandbox for testing what’s possible before it goes big.",
+        "image": null
+      }
+    },
+    {
+      "id": "multimodal-orchestration",
+      "label": "Multimodal",
+      "hemisphere": "left",
+      "x": 18,
+      "y": 64,
+      "connections": [
+        "local-ai-lab",
+        "making",
+        "code",
+        "ai-education",
+        "ai-roleplay"
+      ],
+      "content": {
+        "title": "Multimodal Orchestration",
+        "body": "Chaining models into a single creative pipeline—text, image, audio, video—often starting from messy, conversational brainstorms. It’s the bridge between raw ideas and finished media.",
+        "image": null
+      }
+    },
+    {
+      "id": "metal-guitar",
+      "label": "Metal Guitar",
+      "hemisphere": "left",
+      "x": 12,
+      "y": 78,
+      "connections": [
+        "making",
+        "family-time"
+      ],
+      "content": {
+        "title": "Metal Guitar",
+        "body": "A neighborhood jam ritual—tight riffs, heavy tone, and a shared creative outlet with another dad on the block. Loud, cathartic, and surprisingly meditative.",
+        "image": null
+      }
+    },
+    {
+      "id": "ai-roleplay",
+      "label": "AI Roleplay",
+      "hemisphere": "left",
+      "x": 28,
+      "y": 84,
+      "connections": [
+        "making",
+        "code",
+        "multimodal-orchestration"
+      ],
+      "content": {
+        "title": "AI Roleplay Dev",
+        "body": "A sandbox for orchestrating multimodal tools through story-driven game loops—anime, sci‑fi, cyberpunk worlds where narrative and system design collide.",
+        "image": null
+      }
+    },
+    {
+      "id": "morning-ritual",
+      "label": "Morning Ritual",
+      "hemisphere": "center",
+      "x": 48,
+      "y": 84,
+      "connections": [
+        "family-time",
+        "sparks",
+        "making"
+      ],
+      "content": {
+        "title": "Morning Ritual",
+        "body": "Coffee, music, and a few minutes with Cleo before the day starts. A small anchor that keeps the rest of the map aligned.",
         "image": null
       }
     }
