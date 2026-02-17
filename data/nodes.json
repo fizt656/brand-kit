@@ -34,8 +34,7 @@
       "connections": [
         "neurace",
         "mit",
-        "neuroscience",
-        "code"
+        "neuroscience"
       ],
       "content": {
         "title": "AI Education",
@@ -54,7 +53,8 @@
         "machines",
         "f1",
         "center",
-        "gym"
+        "gym",
+        "code"
       ],
       "content": {
         "title": "NeuRace",
@@ -89,7 +89,8 @@
       "connections": [
         "neuroscience",
         "ai-education",
-        "f1"
+        "f1",
+        "code"
       ],
       "content": {
         "title": "MIT PhD Research",
@@ -223,7 +224,8 @@
         "watch",
         "sparks",
         "heritage",
-        "center"
+        "center",
+        "code"
       ],
       "content": {
         "title": "Making",
@@ -316,12 +318,14 @@
       "y": 76,
       "connections": [
         "flow-state",
-        "ai-education",
         "center",
         "local-ai-lab",
         "multimodal-orchestration",
         "ai-roleplay",
-        "f1"
+        "f1",
+        "mit",
+        "neurace",
+        "making"
       ],
       "content": {
         "title": "Code",
