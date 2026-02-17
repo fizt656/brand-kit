@@ -10,7 +10,8 @@
         "ai-education",
         "flow-state",
         "family",
-        "new-node"
+        "new-node",
+        "sparks"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -106,7 +107,8 @@
         "local-ai-lab",
         "new-node",
         "watch",
-        "f1"
+        "f1",
+        "sparks"
       ],
       "content": {
         "title": "Flow State",
@@ -193,7 +195,8 @@
         "flow-state",
         "making",
         "heritage",
-        "ai-roleplay"
+        "ai-roleplay",
+        "sparks"
       ],
       "content": {
         "title": "Horology",
@@ -215,7 +218,8 @@
         "ai-roleplay",
         "multimodal-orchestration",
         "morning-ritual",
-        "watch"
+        "watch",
+        "sparks"
       ],
       "content": {
         "title": "Making",
@@ -230,7 +234,8 @@
       "x": 8,
       "y": 85,
       "connections": [
-        "making"
+        "making",
+        "sparks"
       ],
       "content": {
         "title": "DJing",
@@ -245,7 +250,8 @@
       "x": 30,
       "y": 88,
       "connections": [
-        "making"
+        "making",
+        "sparks"
       ],
       "content": {
         "title": "Sunday Kitchen Club",
@@ -264,7 +270,8 @@
         "new-node",
         "machines",
         "watch",
-        "f1"
+        "f1",
+        "sparks"
       ],
       "content": {
         "title": "Heritage",
@@ -279,7 +286,16 @@
       "x": 88,
       "y": 85,
       "connections": [
-        "family"
+        "family",
+        "center",
+        "flow-state",
+        "making",
+        "kitchen",
+        "djing",
+        "new-node",
+        "morning-ritual",
+        "heritage",
+        "watch"
       ],
       "content": {
         "title": "Sparks",
@@ -432,7 +448,8 @@
         "flow-state",
         "heritage",
         "gym",
-        "morning-ritual"
+        "morning-ritual",
+        "sparks"
       ],
       "content": {
         "title": "New Node",
