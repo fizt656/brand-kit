@@ -5,6 +5,10 @@ js/editor.js
 EDITOR.md
 start-editor.command
 
+# Agent instruction files (keep local unless intentionally shared)
+AGENTS.md
+CLAUDE.md
+
 # Raw materials
 raw materials/
 
