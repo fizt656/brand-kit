@@ -9,7 +9,8 @@
       "connections": [
         "ai-education",
         "flow-state",
-        "family"
+        "family",
+        "new-node"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -83,13 +84,7 @@
       "content": {
         "title": "MIT PhD Research",
         "body": "My doctoral work in the Harvard-MIT HST program studied how auditory-motor networks adapt—structurally and functionally—through long-term training and in states of disorder. I used diffusion-tensor imaging and fMRI to map the arcuate fasciculus and understand how singers optimize the pathways that connect hearing to action. The question that drove it: how do intense experiences rewire the brain? Still asking that today, just in different domains.",
-        "image": null,
-        "links": [
-          {
-            "label": "PhD Thesis",
-            "url": "https://dspace.mit.edu/handle/1721.1/78150"
-          }
-        ]
+        "image": null
       }
     },
     {
@@ -106,7 +101,8 @@
         "code",
         "gym",
         "family",
-        "local-ai-lab"
+        "local-ai-lab",
+        "new-node"
       ],
       "content": {
         "title": "Flow State",
@@ -127,7 +123,8 @@
         "flow-state",
         "gym",
         "morning-ritual",
-        "metal-guitar"
+        "metal-guitar",
+        "new-node"
       ],
       "content": {
         "title": "Family",
@@ -242,7 +239,8 @@
       "x": 75,
       "y": 75,
       "connections": [
-        "family"
+        "family",
+        "new-node"
       ],
       "content": {
         "title": "Heritage",
@@ -294,7 +292,8 @@
       "connections": [
         "flow-state",
         "family",
-        "center"
+        "center",
+        "new-node"
       ],
       "content": {
         "title": "Gym",
@@ -382,11 +381,32 @@
       "connections": [
         "family",
         "sparks",
-        "making"
+        "making",
+        "new-node"
       ],
       "content": {
         "title": "Morning Ritual",
         "body": "Swim, weights, and steam room on gym days. Breakfast with Maria and Cleo Mayyada on the others—slow mornings, good coffee, connection before the noise starts. Either way, it's the anchor. The rest of the day runs differently when this part happens.",
+        "image": null
+      }
+    },
+    {
+      "id": "new-node",
+      "label": "Swimming",
+      "hemisphere": "right",
+      "x": 80,
+      "y": 59,
+      "connections": [
+        "center",
+        "family",
+        "flow-state",
+        "heritage",
+        "gym",
+        "morning-ritual"
+      ],
+      "content": {
+        "title": "New Node",
+        "body": "",
         "image": null
       }
     }
