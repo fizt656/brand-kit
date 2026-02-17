@@ -142,7 +142,10 @@
         "flow-state",
         "f1",
         "watch",
-        "neurace"
+        "neurace",
+        "heritage",
+        "local-ai-lab",
+        "ai-roleplay"
       ],
       "content": {
         "title": "Driving",
@@ -240,7 +243,8 @@
       "y": 75,
       "connections": [
         "family",
-        "new-node"
+        "new-node",
+        "machines"
       ],
       "content": {
         "title": "Heritage",
@@ -312,7 +316,8 @@
         "code",
         "flow-state",
         "center",
-        "multimodal-orchestration"
+        "multimodal-orchestration",
+        "machines"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -364,7 +369,8 @@
       "connections": [
         "making",
         "code",
-        "multimodal-orchestration"
+        "multimodal-orchestration",
+        "machines"
       ],
       "content": {
         "title": "Game Design",
