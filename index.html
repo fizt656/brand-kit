@@ -24,8 +24,18 @@
     </nav>
   </header>
 
+  <!-- Landing / Hero -->
+  <section id="landing">
+    <div class="landing-inner">
+      <h1 class="landing-name">Gus Halwani<span class="landing-phd">, PhD</span></h1>
+      <p class="landing-statement">I've spent my career chasing one signal through different frequencies — audio, neural, data, and now the ones that power the machines we're building together.</p>
+      <p class="landing-invite">This site is a map of those connections. Tap a node. Follow a thread. Welcome to the topology.</p>
+      <button id="enter-btn" class="enter-btn" type="button">Explore the map</button>
+    </div>
+  </section>
+
   <!-- Main Graph Container -->
-  <div id="graph-container">
+  <div id="graph-container" class="graph-hidden">
     <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
       <defs>
         <filter id="glow-left" x="-50%" y="-50%" width="200%" height="200%">
@@ -89,7 +99,7 @@
   </div>
 
   <!-- Footer -->
-  <footer id="footer">
+  <footer id="footer" class="graph-hidden">
     <div class="footer-content">
       <div class="social-links">
         <a href="mailto:gushalwani@alum.mit.edu" target="_blank" rel="noopener">Email</a>
@@ -100,7 +110,7 @@
   </footer>
 
   <!-- Hemisphere Labels -->
-  <div id="hemisphere-labels">
+  <div id="hemisphere-labels" class="graph-hidden">
     <span class="hemisphere-label left">Digital</span>
     <span class="hemisphere-label right">Analog</span>
   </div>

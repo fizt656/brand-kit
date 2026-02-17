@@ -44,6 +44,13 @@ const App = {
   articlesCloseBtn: null,
   articlesGrid: null,
 
+  // Landing page elements
+  landing: null,
+  enterBtn: null,
+  graphContainer: null,
+  footer: null,
+  hemisphereLabels: null,
+
   // Initialize the application
   init() {
     // Cache DOM elements
@@ -60,11 +67,33 @@ const App = {
     this.articlesCloseBtn = document.getElementById('articles-close-btn');
     this.articlesGrid = document.getElementById('articles-grid');
 
-    this.renderArticles();
+    // Landing
+    this.landing = document.getElementById('landing');
+    this.enterBtn = document.getElementById('enter-btn');
+    this.graphContainer = document.getElementById('graph-container');
+    this.footer = document.getElementById('footer');
+    this.hemisphereLabels = document.getElementById('hemisphere-labels');
 
-    // Initialize graph
-    Graph.init().then(() => {
-      this.bindEvents();
+    this.renderArticles();
+    this.bindLanding();
+  },
+
+  // Landing → Graph transition
+  bindLanding() {
+    this.enterBtn.addEventListener('click', () => {
+      this.landing.classList.add('hidden');
+
+      // Show graph after landing fades
+      setTimeout(() => {
+        this.graphContainer.classList.remove('graph-hidden');
+        this.footer.classList.remove('graph-hidden');
+        this.hemisphereLabels.classList.remove('graph-hidden');
+
+        // Initialize graph now
+        Graph.init().then(() => {
+          this.bindEvents();
+        });
+      }, 400);
     });
   },
 
