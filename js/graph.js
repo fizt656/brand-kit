@@ -109,11 +109,12 @@ const Graph = {
       group.setAttribute('aria-label', node.label);
 
       // Determine node size - much smaller now
-      let radius = 6;
+      // Larger nodes for better touch targets
+      let radius = 8;
       if (node.id === 'center') {
-        radius = 12;
+        radius = 16;
       } else if (node.hemisphere === 'center') {
-        radius = 8;
+        radius = 10;
       }
 
       // Circle element

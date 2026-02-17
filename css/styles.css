@@ -165,14 +165,14 @@ body {
 }
 
 .landing-statement {
-  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
   line-height: 1.75;
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
+  color: var(--color-text);
+  margin-bottom: var(--space-lg);
 }
 
 .landing-invite {
-  font-size: 0.95rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.7;
   color: var(--color-text-muted);
   margin-bottom: var(--space-xl);
@@ -212,7 +212,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 80px var(--space-lg) 100px;
+  padding: 64px 12px 60px;
   min-height: 100vh;
   min-height: 100dvh;
 }
@@ -787,15 +787,20 @@ body {
   }
 
   #site-header {
-    padding: 12px var(--space-md);
+    padding: 10px var(--space-md);
   }
 
   .site-title {
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .nav-btn {
+    font-size: 0.6rem;
+    padding: 7px 12px;
   }
 
   #graph-container {
-    padding: 68px var(--space-md) 80px;
+    padding: 52px 4px 48px;
     min-height: auto;
     height: 100vh;
     height: 100dvh;
@@ -803,6 +808,7 @@ body {
 
   #graph-svg {
     aspect-ratio: auto;
+    width: 100%;
     height: 100%;
     max-height: none;
   }
@@ -812,30 +818,40 @@ body {
     opacity: 0.85;
   }
 
+  .node-label {
+    font-size: 8px;
+  }
+
+  .node#node-center .node-label {
+    font-size: 12px;
+  }
+
   #hemisphere-labels {
     display: none;
   }
 
+  /* Content overlay — bottom sheet on mobile */
+  #content-overlay {
+    align-items: flex-end;
+    padding: 0;
+  }
+
   #content-panel {
-    padding: var(--space-lg);
+    padding: var(--space-lg) var(--space-md);
     max-width: 100%;
-    border-radius: 14px;
+    border-radius: 18px 18px 0 0;
+    max-height: 70vh;
+    max-height: 70dvh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   #content-title {
-    font-size: 1.3rem;
+    font-size: 1.25rem;
   }
 
   #content-body {
     font-size: 0.9rem;
-  }
-
-  .node-label {
-    font-size: 7.5px;
-  }
-
-  .node#node-center .node-label {
-    font-size: 11px;
   }
 
   .social-links {
@@ -848,7 +864,7 @@ body {
 
   #articles-overlay {
     padding: var(--space-sm);
-    padding-top: 64px;
+    padding-top: 56px;
   }
 
   #articles-panel {
@@ -863,6 +879,13 @@ body {
   .articles-head h2 {
     font-size: 1.3rem;
   }
+
+  /* Footer — not fixed on mobile, let it sit below graph */
+  #footer {
+    position: relative;
+    background: none;
+    padding: var(--space-md) var(--space-md) var(--space-lg);
+  }
 }
 
 /* ================================
@@ -871,37 +894,23 @@ body {
 
 @media (max-width: 480px) {
   #graph-container {
-    padding: 60px 8px 70px;
-  }
-
-  #content-overlay {
-    padding: var(--space-sm);
-    align-items: flex-end;
-  }
-
-  #content-panel {
-    padding: var(--space-lg) var(--space-md);
-    border-radius: 18px 18px 0 0;
-    max-height: 80vh;
-    max-height: 80dvh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    padding: 48px 2px 44px;
   }
 
   #content-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
     padding-right: 28px;
   }
 
   #content-body {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     line-height: 1.7;
   }
 
   .connection-btn,
   .external-link {
-    font-size: 0.62rem;
-    padding: 7px 11px;
+    font-size: 0.6rem;
+    padding: 7px 10px;
   }
 
   #close-btn {
@@ -913,15 +922,11 @@ body {
   }
 
   .social-links {
-    gap: 14px;
+    gap: 12px;
   }
 
   .social-links a {
     font-size: 0.55rem;
-  }
-
-  #footer {
-    padding: 12px;
   }
 
   .article-card h3 {
@@ -930,16 +935,6 @@ body {
 
   .article-card p {
     font-size: 0.85rem;
-  }
-}
-
-/* ================================
-   TALL PHONES (e.g. iPhone Pro Max)
-   ================================ */
-
-@media (max-width: 480px) and (min-height: 700px) {
-  #graph-container {
-    padding-bottom: 90px;
   }
 }
 
