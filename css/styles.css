@@ -736,9 +736,18 @@ body {
   color: var(--color-text);
 }
 
+.cv-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-right);
+  margin-bottom: 10px;
+}
+
 .cv-hero h1 {
-  font-size: 1.8rem;
-  margin-bottom: 8px;
+  font-size: 1.9rem;
+  margin-bottom: 10px;
 }
 
 .cv-hero p {
@@ -767,6 +776,22 @@ body {
   border-top: 1px solid var(--color-rule);
 }
 
+.cv-item-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.cv-date {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
 .cv-meta {
   color: var(--color-text-muted);
   font-size: 0.84rem;
@@ -779,8 +804,38 @@ body {
   color: var(--color-text-secondary);
 }
 
+.cv-item li,
+.cv-section li {
+  margin-bottom: 6px;
+}
+
+.cv-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
 .cv-inline {
   color: var(--color-text-secondary);
+  margin-bottom: 10px;
+}
+
+.cv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cv-tags span {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--color-edge);
+  border-radius: 999px;
+  padding: 7px 10px;
+  color: var(--color-text-secondary);
+  background: var(--color-bg);
 }
 
 /* ================================
@@ -966,6 +1021,20 @@ body {
 
   .articles-head h2 {
     font-size: 1.3rem;
+  }
+
+  .cv-wrap {
+    padding-top: 74px;
+  }
+
+  .cv-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cv-item-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
   }
 
   /* Footer — not fixed on mobile, let it sit below graph */
