@@ -11,7 +11,8 @@
         "flow-state",
         "family",
         "new-node",
-        "sparks"
+        "sparks",
+        "heritage"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -108,7 +109,8 @@
         "new-node",
         "watch",
         "f1",
-        "sparks"
+        "sparks",
+        "heritage"
       ],
       "content": {
         "title": "Flow State",
@@ -150,7 +152,6 @@
         "f1",
         "watch",
         "neurace",
-        "heritage",
         "local-ai-lab",
         "ai-roleplay"
       ],
@@ -172,7 +173,6 @@
         "local-ai-lab",
         "code",
         "ai-roleplay",
-        "heritage",
         "family",
         "mit",
         "neuroscience",
@@ -194,7 +194,6 @@
         "machines",
         "flow-state",
         "making",
-        "heritage",
         "ai-roleplay",
         "sparks"
       ],
@@ -219,7 +218,8 @@
         "multimodal-orchestration",
         "morning-ritual",
         "watch",
-        "sparks"
+        "sparks",
+        "heritage"
       ],
       "content": {
         "title": "Making",
@@ -268,10 +268,11 @@
       "connections": [
         "family",
         "new-node",
-        "machines",
-        "watch",
-        "f1",
-        "sparks"
+        "sparks",
+        "making",
+        "morning-ritual",
+        "center",
+        "flow-state"
       ],
       "content": {
         "title": "Heritage",
@@ -428,7 +429,8 @@
         "family",
         "sparks",
         "making",
-        "new-node"
+        "new-node",
+        "heritage"
       ],
       "content": {
         "title": "Morning Ritual",
