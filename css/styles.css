@@ -863,10 +863,9 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: var(--space-md);
+  padding: 12px var(--space-md);
   z-index: 50;
   pointer-events: none;
-  background: linear-gradient(transparent, rgba(250, 248, 243, 0.9));
 }
 
 .footer-content {
@@ -876,22 +875,32 @@ body {
 
 .social-links {
   display: flex;
-  gap: var(--space-lg);
+  gap: 10px;
   pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--color-edge);
+  border-radius: 999px;
+  padding: 8px 10px;
+  box-shadow: 0 8px 24px rgba(43, 38, 29, 0.12);
 }
 
 .social-links a {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 7px 10px;
+  transition: all var(--transition-fast);
 }
 
 .social-links a:hover {
-  color: var(--color-right);
+  color: var(--color-right-hover);
+  border-color: var(--color-edge-active);
+  background: var(--color-bg);
 }
 
 /* ================================
@@ -1053,11 +1062,19 @@ body {
     gap: 4px;
   }
 
-  /* Footer — not fixed on mobile, let it sit below graph */
   #footer {
-    position: relative;
-    background: none;
-    padding: var(--space-md) var(--space-md) var(--space-lg);
+    padding-bottom: 10px;
+  }
+
+  .social-links {
+    gap: 6px;
+    padding: 7px 8px;
+  }
+
+  .social-links a {
+    font-size: 0.56rem;
+    letter-spacing: 0.1em;
+    padding: 6px 8px;
   }
 }
 
