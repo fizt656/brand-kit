@@ -63,7 +63,8 @@
       "y": 18,
       "connections": [
         "ai-education",
-        "mit"
+        "mit",
+        "f1"
       ],
       "content": {
         "title": "Neuroscience",
@@ -79,7 +80,8 @@
       "y": 28,
       "connections": [
         "neuroscience",
-        "ai-education"
+        "ai-education",
+        "f1"
       ],
       "content": {
         "title": "MIT PhD Research",
@@ -102,7 +104,9 @@
         "gym",
         "family",
         "local-ai-lab",
-        "new-node"
+        "new-node",
+        "watch",
+        "f1"
       ],
       "content": {
         "title": "Flow State",
@@ -124,7 +128,8 @@
         "gym",
         "morning-ritual",
         "metal-guitar",
-        "new-node"
+        "new-node",
+        "f1"
       ],
       "content": {
         "title": "Family",
@@ -161,7 +166,15 @@
       "y": 50,
       "connections": [
         "machines",
-        "neurace"
+        "neurace",
+        "local-ai-lab",
+        "code",
+        "ai-roleplay",
+        "heritage",
+        "family",
+        "mit",
+        "neuroscience",
+        "flow-state"
       ],
       "content": {
         "title": "Formula 1",
@@ -176,7 +189,11 @@
       "x": 78,
       "y": 18,
       "connections": [
-        "machines"
+        "machines",
+        "flow-state",
+        "making",
+        "heritage",
+        "ai-roleplay"
       ],
       "content": {
         "title": "Horology",
@@ -197,7 +214,8 @@
         "metal-guitar",
         "ai-roleplay",
         "multimodal-orchestration",
-        "morning-ritual"
+        "morning-ritual",
+        "watch"
       ],
       "content": {
         "title": "Making",
@@ -244,7 +262,9 @@
       "connections": [
         "family",
         "new-node",
-        "machines"
+        "machines",
+        "watch",
+        "f1"
       ],
       "content": {
         "title": "Heritage",
@@ -279,7 +299,8 @@
         "center",
         "local-ai-lab",
         "multimodal-orchestration",
-        "ai-roleplay"
+        "ai-roleplay",
+        "f1"
       ],
       "content": {
         "title": "Code",
@@ -317,7 +338,8 @@
         "flow-state",
         "center",
         "multimodal-orchestration",
-        "machines"
+        "machines",
+        "f1"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -370,7 +392,9 @@
         "making",
         "code",
         "multimodal-orchestration",
-        "machines"
+        "machines",
+        "watch",
+        "f1"
       ],
       "content": {
         "title": "Game Design",
