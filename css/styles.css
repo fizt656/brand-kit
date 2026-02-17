@@ -655,11 +655,18 @@ body {
   transition: all var(--transition-fast);
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+}
+
+.article-card-link {
+  text-decoration: none;
+  color: inherit;
 }
 
 .article-card:hover {
   border-color: var(--color-edge-active);
   box-shadow: 0 2px 12px rgba(184, 149, 46, 0.08);
+  transform: translateY(-1px);
 }
 
 .article-card .kicker {
@@ -700,6 +707,11 @@ body {
 
 .article-link:hover {
   color: var(--color-right-hover);
+}
+
+.article-card-link:focus-visible {
+  outline: 2px solid var(--color-right);
+  outline-offset: 2px;
 }
 
 /* ================================

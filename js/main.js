@@ -75,6 +75,7 @@ const App = {
     this.hemisphereLabels = document.getElementById('hemisphere-labels');
 
     this.renderArticles();
+    this.bindGlobalEvents();
     this.bindLanding();
   },
 
@@ -94,6 +95,30 @@ const App = {
           this.bindEvents();
         });
       }, 400);
+    });
+  },
+
+  bindGlobalEvents() {
+    // Articles panel controls (available on landing + map)
+    this.articlesBtn.addEventListener('click', () => this.openArticles());
+    this.articlesCloseBtn.addEventListener('click', () => this.closeArticles());
+    this.articlesOverlay.addEventListener('click', (e) => {
+      if (e.target === this.articlesOverlay) {
+        this.closeArticles();
+      }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!this.articlesOverlay.classList.contains('hidden')) {
+          this.closeArticles();
+          return;
+        }
+        if (this.expandedNodeId) {
+          this.collapseNode();
+        }
+      }
     });
   },
 
@@ -140,27 +165,7 @@ const App = {
       }
     });
 
-    // Articles panel controls
-    this.articlesBtn.addEventListener('click', () => this.openArticles());
-    this.articlesCloseBtn.addEventListener('click', () => this.closeArticles());
-    this.articlesOverlay.addEventListener('click', (e) => {
-      if (e.target === this.articlesOverlay) {
-        this.closeArticles();
-      }
-    });
-
-    // Keyboard navigation
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!this.articlesOverlay.classList.contains('hidden')) {
-          this.closeArticles();
-          return;
-        }
-        if (this.expandedNodeId) {
-          this.collapseNode();
-        }
-      }
-    });
+    // Articles + keyboard handlers are bound globally in bindGlobalEvents().
   },
 
   openArticles() {
@@ -179,14 +184,17 @@ const App = {
     this.articlesGrid.innerHTML = '';
 
     ARTICLES.forEach(article => {
-      const card = document.createElement('article');
-      card.className = 'article-card';
+      const card = document.createElement('a');
+      card.className = 'article-card article-card-link';
+      card.href = article.href;
+      card.target = '_blank';
+      card.rel = 'noopener';
+      card.setAttribute('aria-label', `Open article: ${article.title}`);
 
       card.innerHTML = `
         <div class="kicker">${article.kicker}</div>
         <h3>${article.title}</h3>
         <p>${article.summary}</p>
-        <a class="article-link" href="${article.href}" target="_blank" rel="noopener">Read Article →</a>
       `;
 
       this.articlesGrid.appendChild(card);
