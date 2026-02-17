@@ -53,7 +53,8 @@
         "ai-education",
         "machines",
         "f1",
-        "center"
+        "center",
+        "gym"
       ],
       "content": {
         "title": "NeuRace",
@@ -298,7 +299,8 @@
         "new-node",
         "morning-ritual",
         "heritage",
-        "watch"
+        "watch",
+        "gym"
       ],
       "content": {
         "title": "Sparks",
@@ -337,7 +339,10 @@
         "flow-state",
         "family",
         "center",
-        "new-node"
+        "new-node",
+        "neurace",
+        "morning-ritual",
+        "sparks"
       ],
       "content": {
         "title": "Gym",
@@ -435,7 +440,8 @@
         "new-node",
         "heritage",
         "center",
-        "flow-state"
+        "flow-state",
+        "gym"
       ],
       "content": {
         "title": "Morning Ritual",
