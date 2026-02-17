@@ -1,46 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Part 1 - The Strategic Unit Is the Harness</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@400;600;700&display=swap');
-    @page { margin: 0.75in 0.85in; }
-    body { font-family: 'Open Sans', sans-serif; color:#2f2f2f; font-size: 11pt; line-height:1.65; margin:0; }
-    .wrap { max-width: 8.3in; margin:0 auto; }
-    .kicker { letter-spacing:2px; text-transform:uppercase; color:#b8956c; font-weight:600; font-size:9pt; margin-bottom:8px; }
-    h1 { font-family:'Cormorant Garamond', serif; font-size:34pt; line-height:1.15; margin:0 0 10px 0; color:#222; }
-    h2 { font-family:'Open Sans', sans-serif; font-size:10pt; letter-spacing:1.8px; text-transform:uppercase; color:#b8956c; margin:30px 0 10px; padding-bottom:8px; border-bottom:1px solid #e0d5c7; }
-    p { margin: 11px 0; text-align: justify; }
-    ul { margin: 10px 0 12px 22px; }
-    li { margin: 6px 0; }
-    strong { font-weight:700; color:#1f1f1f; }
-    .divider { border:none; border-top:1.5px solid #b8956c; margin: 14px 0 20px; }
-    .subtle { color:#666; font-size:10pt; margin-bottom:20px; }
-    .callout { margin-top:20px; font-style:italic; color:#444; }
-    .divider-thin { border:none; border-top:1px solid #ddd; margin:20px 0; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+  <title>The Harness Is the Strategy — Part I</title>
+</head></head>
+<body class="article-page">
+  <header id="site-header" class="cv-header">
+    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
+      <a href="../index.html?view=map" class="nav-btn nav-link">Map</a>
+      <a href="../index.html" class="nav-btn nav-link">Main</a>
+    </nav>
+  </header>
 
-<style id="site-nav-patch">
-  .site-top-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(250,248,243,.95);border-bottom:1px solid #e8e0d0;backdrop-filter: blur(6px);} 
-  .site-top-nav .left{display:flex;gap:8px;flex-wrap:wrap}
-  .site-top-nav a{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#6b604d;border:1px solid #ddd6c6;border-radius:999px;padding:7px 10px;background:#fff;}
-  .site-top-nav a:hover{border-color:#b8952e;color:#8a6d1d}
-  @media (max-width:640px){ body{padding:0 10px;} .wrap{max-width:100%;} p{text-align:left;} .site-top-nav{padding:10px 8px;} }
-</style>
-</head>
-<body>
-<div class="site-top-nav">
-  <div class="left">
-    <a href="../index.html?view=articles">← Back to Articles</a>
-    <a href="../index.html?view=map">Back to Map</a>
-  </div>
-</div>
-  <div class="wrap">
-    <div class="kicker">The Signal Thread</div>
-    <h1>Stop Asking “What’s the Best Model?”</h1>
-    <h2>Part 1, The strategic unit is the harness</h2>
-    <p>A question we get a lot is: <strong>“What’s the best model?”</strong></p>
+  <main class="article-wrap">
+    <article class="article-card">
+      <div class="article-top">
+        <div class="article-kicker">AI Harness</div>
+        <h1 class="article-title">The Harness Is the Strategy — Part I</h1>
+        <p class="article-subtitle">Part I · The strategic unit is the harness</p>
+        <div class="article-meta"><a href="../index.html?view=articles">gushalwani.com</a></div>
+      </div>
+      <div class="article-body">
+<p>A question we get a lot is: <strong>“What’s the best model?”</strong></p>
     <p>At this point, most SOTA models are already more than capable for a wide range of real-world work. So the harder question is no longer raw model capability. It’s whether we’re measuring value in context, with clear task-level outcomes, instead of broad usage metrics that feel good but don’t say much.</p>
     <p>That’s where we think the conversation needs to shift, from the model itself to the <strong>harness</strong> around it.</p>
     <p>By harness, we mean the practical system around a model, tools, environment, workflows, guardrails, human checkpoints, and feedback loops, that determines whether AI produces repeatable value in the setting it actually operates in.</p>
@@ -80,8 +69,14 @@
     <p>Too much improvisation, no coherence.</p>
     <p>If we’ve ever played in a jazz combo, we know this instinctively: we need a chart, a key center, and shared timing, but we also need room for emergence. Enterprise AI is not that different. Constraints and creativity are co-requirements.</p>
     <p>In neuro terms, we should think less in terms of a single reflex loop and more in terms of a coordinated network: inhibitory control when stakes are high, fast pathways when opportunity is time-sensitive, and plasticity so the system improves from feedback instead of repeating mistakes with better branding.</p>
-    <hr class="divider-thin">
+    <hr class="article-hr">
     <p><strong>Next in Part 2:</strong> If harness is the strategic unit, how do we evaluate whether a harness is actually good under uncertainty?</p>
-  </div>
+      </div>
+      <div class="article-cta">
+        <a href="../index.html?view=articles">← Back to Articles</a>
+        <a href="../index.html?view=map">Back to Map</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>

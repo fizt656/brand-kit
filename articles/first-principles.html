@@ -1,157 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>The Signal Thread: Why I Think in First Principles</title>
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Open+Sans:wght@400;600&display=swap');
-    
-    @page {
-      margin: 50px 60px;
-    }
-    
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 11pt;
-      line-height: 1.7;
-      color: #333;
-      max-width: 8.5in;
-      margin: 0 auto;
-    }
-    
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-      padding-bottom: 30px;
-      border-bottom: 2px solid #b8956c;
-    }
-    
-    .title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 36pt;
-      font-weight: 500;
-      color: #333;
-      margin-bottom: 15px;
-      line-height: 1.2;
-    }
-    
-    .subtitle {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 16pt;
-      font-style: italic;
-      color: #b8956c;
-      margin-bottom: 20px;
-    }
-    
-    .author {
-      font-size: 10pt;
-      color: #666;
-    }
-    
-    .author a {
-      color: #b8956c;
-      text-decoration: none;
-    }
-    
-    .section {
-      margin-bottom: 30px;
-    }
-    
-    .section-title {
-      font-family: 'Open Sans', sans-serif;
-      font-size: 9pt;
-      font-weight: 600;
-      letter-spacing: 2px;
-      color: #b8956c;
-      text-transform: uppercase;
-      margin-bottom: 15px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid #e0d5c7;
-    }
-    
-    p {
-      margin-bottom: 18px;
-      text-align: justify;
-    }
-    
-    .lead {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14pt;
-      font-style: italic;
-      line-height: 1.6;
-      color: #444;
-      margin-bottom: 30px;
-      text-align: center;
-      padding: 0 40px;
-    }
-    
-    .highlight {
-      background: linear-gradient(180deg, transparent 60%, rgba(184, 149, 108, 0.2) 60%);
-    }
-    
-    .pullquote {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18pt;
-      font-style: italic;
-      color: #b8956c;
-      text-align: center;
-      padding: 30px 50px;
-      margin: 30px 0;
-      border-left: 3px solid #b8956c;
-      border-right: 3px solid #b8956c;
-    }
-    
-    .signature {
-      margin-top: 40px;
-      padding-top: 20px;
-      border-top: 1px solid #e0d5c7;
-    }
-    
-    .signature-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 14pt;
-      font-weight: 600;
-    }
-    
-    .signature-title {
-      font-size: 10pt;
-      color: #666;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+  <title>Why I Think in First Principles</title>
+</head></head>
+<body class="article-page">
+  <header id="site-header" class="cv-header">
+    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
+      <a href="../index.html?view=map" class="nav-btn nav-link">Map</a>
+      <a href="../index.html" class="nav-btn nav-link">Main</a>
+    </nav>
+  </header>
 
-<style id="site-nav-patch">
-  .site-top-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(250,248,243,.95);border-bottom:1px solid #e8e0d0;backdrop-filter: blur(6px);} 
-  .site-top-nav .left{display:flex;gap:8px;flex-wrap:wrap}
-  .site-top-nav a{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#6b604d;border:1px solid #ddd6c6;border-radius:999px;padding:7px 10px;background:#fff;}
-  .site-top-nav a:hover{border-color:#b8952e;color:#8a6d1d}
-  @media (max-width:640px){ body{padding:0 10px;} .wrap{max-width:100%;} p{text-align:left;} .site-top-nav{padding:10px 8px;} }
-</style>
-</head>
-<body>
-<div class="site-top-nav">
-  <div class="left">
-    <a href="../index.html?view=articles">← Back to Articles</a>
-    <a href="../index.html?view=map">Back to Map</a>
-  </div>
-</div>
-  <div class="header">
-    <div class="title">The Signal Thread</div>
-    <div class="subtitle">Why I Think in First Principles</div>
-    <div class="author">By <a href="https://linkedin.com/in/gushalwani">Gus Halwani, PhD</a></div>
-  </div>
+  <main class="article-wrap">
+    <article class="article-card">
+      <div class="article-top">
+        <div class="article-kicker">The Signal Thread</div>
+        <h1 class="article-title">Why I Think in First Principles</h1>
+        <p class="article-subtitle">Compasses over maps: judgment under uncertainty, and building learning systems that hold up in the real world.</p>
+        <div class="article-meta"><a href="https://linkedin.com/in/gushalwani" target="_blank" rel="noopener">LinkedIn</a></div>
+      </div>
+      <div class="article-body">
+<div class="subtitle">Why I Think in First Principles
+    <div class="author">By <a href="https://linkedin.com/in/gushalwani">Gus Halwani, PhD</a>
   
-  <p class="lead">
+  
+  <p >
     I've spent my career chasing signals: sound waves, brain waves, neural networks. The common thread isn't any one field; it's the question "what if?" followed by "let's find out."
   </p>
   
-  <div class="section">
-    <div class="section-title">The Thread</div>
+  
+    <h2>The Thread</h2>
     <p>
       If you trace my professional timeline, you won't find a standard ladder. You'll find a continuous thread: analyzing complex signals to understand human potential.
     </p>
@@ -161,14 +48,14 @@
     <p>
       That foundation matters. To work at the intersection of humanity and AI, I believe you need to understand the fundamental architecture of humanity itself.
     </p>
-  </div>
+  
   
   <div class="pullquote">
     "I translate between humans and emerging technology. Not because the tech is interesting (though it is), but because the humans are."
-  </div>
   
-  <div class="section">
-    <div class="section-title">High Stakes, High Impact</div>
+  
+  
+    <h2>High Stakes, High Impact</h2>
     <p>
       At a major academic medical center, I'm navigating some of the highest stakes in AI deployment: integrating generative AI into clinical oncology workflows. I've also built ambient assessment systems for K-12 education. In both cases, the goal isn't replacement; it's augmentation.
     </p>
@@ -178,10 +65,10 @@
     <p>
       Along the way, I've learned to build alignment across skeptical stakeholders: clinicians, administrators, IT teams, patients, students, teachers. Each with different risk tolerances and vocabularies. That's coalition work. It's also the core skill of anyone trying to bring emerging technology into complex human systems.
     </p>
-  </div>
   
-  <div class="section">
-    <div class="section-title">The Creative Root</div>
+  
+  
+    <h2>The Creative Root</h2>
     <p>
       Before I was a scientist, I was a sound engineer and musician. That's not just background; it's foundational. I understand that technology must ultimately serve human expression. This ensures I approach AI not as a mechanistic tool, but as a medium that must resonate with lived experience.
     </p>
@@ -191,14 +78,14 @@
     <p>
       I learned from him that the best technology, like the best communication, meets people where they are.
     </p>
-  </div>
+  
   
   <div class="pullquote">
     "First principles over best practices. Compasses over maps."
-  </div>
   
-  <div class="section">
-    <div class="section-title">What I Believe</div>
+  
+  
+    <h2>What I Believe</h2>
     <p>
       The playbook for leading AI-driven organizations is being written right now. We're moving from a world of deterministic rules to one of irreducible ambiguity. This demands a first principles mindset.
     </p>
@@ -211,10 +98,12 @@
     <p>
       And I believe the skills that make you good at collaborating with people are the same ones that will make you good at orchestrating AI. The durable skills aren't about any one interface; they're about first principles applied repeatedly until something clicks.
     </p>
-  </div>
-  
-  <div class="signature">
-    <div class="signature-name">Gus Halwani, PhD</div>
-  </div>
+      </div>
+      <div class="article-cta">
+        <a href="../index.html?view=articles">← Back to Articles</a>
+        <a href="../index.html?view=map">Back to Map</a>
+      </div>
+    </article>
+  </main>
 </body>
 </html>
