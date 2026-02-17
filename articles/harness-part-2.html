@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8" />
-<title>harness-article-part-2-branded.pdf</title>
+<title>The Harness Is the Strategy — Part II</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@400;600;700&display=swap');
 @page { margin: 0.75in 0.85in; }
@@ -14,8 +14,22 @@ ul { margin: 10px 0 12px 22px; }
 li { margin: 6px 0; }
 strong { font-weight:700; color:#1f1f1f; }
 .divider-thin { border:none; border-top:1px solid #ddd; margin:20px 0; }
-</style></head>
-<body><div class="wrap"><div class="kicker">The Signal Thread · Draft for flow review</div><h1>The Harness Is the Strategy</h1>
+</style>
+<style id="site-nav-patch">
+  .site-top-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(250,248,243,.95);border-bottom:1px solid #e8e0d0;backdrop-filter: blur(6px);} 
+  .site-top-nav .left{display:flex;gap:8px;flex-wrap:wrap}
+  .site-top-nav a{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#6b604d;border:1px solid #ddd6c6;border-radius:999px;padding:7px 10px;background:#fff;}
+  .site-top-nav a:hover{border-color:#b8952e;color:#8a6d1d}
+  @media (max-width:640px){ body{padding:0 10px;} .wrap{max-width:100%;} p{text-align:left;} .site-top-nav{padding:10px 8px;} }
+</style>
+</head>
+<body>
+<div class="site-top-nav">
+  <div class="left">
+    <a href="../index.html?view=articles">← Back to Articles</a>
+    <a href="../index.html?view=map">Back to Map</a>
+  </div>
+</div><div class="wrap"><div class="kicker">The Signal Thread</div><h1>The Harness Is the Strategy</h1>
     <h2>Part 2, A Taleb lens for testing whether your AI system actually holds up</h2>
     <p>In Part 1, we argued that model selection is not the strategy.</p>
     <p>The strategy is the harness: the operational system that turns model capability into outcomes in your real environment.</p>
@@ -27,7 +41,7 @@ strong { font-weight:700; color:#1f1f1f; }
     <p><strong>Skin in the game</strong></p>
     <p>If a harness is weak on any one of these, performance and trust erode fast in production.</p>
     <h2>1) Black Swan awareness</h2>
-    <p>### Can we reduce catastrophic downside without killing beneficial surprise?</p>
+    <p><strong>Can we reduce catastrophic downside without killing beneficial surprise?</strong></p>
     <p>Most AI governance conversations over-index on one side:</p>
     <ul>
     <li>either “lock it all down,”</li>
@@ -46,7 +60,7 @@ strong { font-weight:700; color:#1f1f1f; }
     </ul>
     <p>The test is simple: when something unusual happens, do we learn and route it, or panic and freeze?</p>
     <h2>2) Antifragility</h2>
-    <p>### Does the system improve under stress, or just survive it?</p>
+    <p><strong>Does the system improve under stress, or just survive it?</strong></p>
     <p>Many systems are robust at best. They tolerate some turbulence.</p>
     <p>That is fine for static environments, but AI workflows are not static.</p>
     <p>Prompts drift. Data shifts. Teams change. Vendors update silently. New failure modes appear in combinations nobody predicted in planning docs.</p>
@@ -63,7 +77,7 @@ strong { font-weight:700; color:#1f1f1f; }
     <p>In other words: volatility becomes learning fuel.</p>
     <p>If every incident leads to blanket restrictions, your harness is getting more fragile, not safer.</p>
     <h2>3) Skin in the game</h2>
-    <p>### Are authority and accountability aligned across the people building and running this?</p>
+    <p><strong>Are authority and accountability aligned across the people building and running this?</strong></p>
     <p>This one is less technical, more structural, and usually where things break first.</p>
     <p>When one team ships, another team absorbs operational risk, and a third team reports success metrics, even strong technical architecture becomes politically unstable.</p>
     <p>Signs of weak skin in the game:</p>

@@ -124,8 +124,22 @@
       color: #666;
     }
   </style>
+
+<style id="site-nav-patch">
+  .site-top-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(250,248,243,.95);border-bottom:1px solid #e8e0d0;backdrop-filter: blur(6px);} 
+  .site-top-nav .left{display:flex;gap:8px;flex-wrap:wrap}
+  .site-top-nav a{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#6b604d;border:1px solid #ddd6c6;border-radius:999px;padding:7px 10px;background:#fff;}
+  .site-top-nav a:hover{border-color:#b8952e;color:#8a6d1d}
+  @media (max-width:640px){ body{padding:0 10px;} .wrap{max-width:100%;} p{text-align:left;} .site-top-nav{padding:10px 8px;} }
+</style>
 </head>
 <body>
+<div class="site-top-nav">
+  <div class="left">
+    <a href="../index.html?view=articles">← Back to Articles</a>
+    <a href="../index.html?view=map">Back to Map</a>
+  </div>
+</div>
   <div class="header">
     <div class="title">The Signal Thread</div>
     <div class="subtitle">Why I Think in First Principles</div>

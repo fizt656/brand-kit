@@ -50,6 +50,7 @@ const App = {
   graphContainer: null,
   footer: null,
   hemisphereLabels: null,
+  graphInitialized: false,
 
   // Initialize the application
   init() {
@@ -82,20 +83,39 @@ const App = {
   // Landing → Graph transition
   bindLanding() {
     this.enterBtn.addEventListener('click', () => {
-      this.landing.classList.add('hidden');
+      this.enterMap();
+    });
 
-      // Show graph after landing fades
-      setTimeout(() => {
-        this.graphContainer.classList.remove('graph-hidden');
-        this.footer.classList.remove('graph-hidden');
-        this.hemisphereLabels.classList.remove('graph-hidden');
+    const view = new URLSearchParams(window.location.search).get('view');
+    if (view === 'map') {
+      this.enterMap({ instant: true });
+    }
+    if (view === 'articles') {
+      this.openArticles();
+    }
+  },
 
-        // Initialize graph now
+  enterMap({ instant = false } = {}) {
+    this.landing.classList.add('hidden');
+
+    const show = () => {
+      this.graphContainer.classList.remove('graph-hidden');
+      this.footer.classList.remove('graph-hidden');
+      this.hemisphereLabels.classList.remove('graph-hidden');
+
+      if (!this.graphInitialized) {
+        this.graphInitialized = true;
         Graph.init().then(() => {
           this.bindEvents();
         });
-      }, 400);
-    });
+      }
+    };
+
+    if (instant) {
+      show();
+    } else {
+      setTimeout(show, 400);
+    }
   },
 
   bindGlobalEvents() {
@@ -187,8 +207,6 @@ const App = {
       const card = document.createElement('a');
       card.className = 'article-card article-card-link';
       card.href = article.href;
-      card.target = '_blank';
-      card.rel = 'noopener';
       card.setAttribute('aria-label', `Open article: ${article.title}`);
 
       card.innerHTML = `

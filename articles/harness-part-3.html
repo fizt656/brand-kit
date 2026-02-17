@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8" />
-<title>harness-article-part-3-branded.pdf</title>
+<title>The Harness Is the Strategy — Part III</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@400;600;700&display=swap');
 @page { margin: 0.75in 0.85in; }
@@ -14,8 +14,22 @@ ul { margin: 10px 0 12px 22px; }
 li { margin: 6px 0; }
 strong { font-weight:700; color:#1f1f1f; }
 .divider-thin { border:none; border-top:1px solid #ddd; margin:20px 0; }
-</style></head>
-<body><div class="wrap"><div class="kicker">The Signal Thread · Draft for flow review</div><h1>The Harness Is the Strategy</h1>
+</style>
+<style id="site-nav-patch">
+  .site-top-nav{position:sticky;top:0;z-index:20;display:flex;gap:10px;align-items:center;justify-content:space-between;padding:12px 14px;background:rgba(250,248,243,.95);border-bottom:1px solid #e8e0d0;backdrop-filter: blur(6px);} 
+  .site-top-nav .left{display:flex;gap:8px;flex-wrap:wrap}
+  .site-top-nav a{font-family:'Open Sans',sans-serif;font-size:10px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#6b604d;border:1px solid #ddd6c6;border-radius:999px;padding:7px 10px;background:#fff;}
+  .site-top-nav a:hover{border-color:#b8952e;color:#8a6d1d}
+  @media (max-width:640px){ body{padding:0 10px;} .wrap{max-width:100%;} p{text-align:left;} .site-top-nav{padding:10px 8px;} }
+</style>
+</head>
+<body>
+<div class="site-top-nav">
+  <div class="left">
+    <a href="../index.html?view=articles">← Back to Articles</a>
+    <a href="../index.html?view=map">Back to Map</a>
+  </div>
+</div><div class="wrap"><div class="kicker">The Signal Thread</div><h1>The Harness Is the Strategy</h1>
     <h2>Part 3, From adoption theater to value engineering</h2>
     <p>Part 1 reframed the question: the strategic unit is the harness, not the model.</p>
     <p>Part 2 gave us an evaluation lens: Black Swan awareness, antifragility, and skin in the game.</p>
@@ -38,17 +52,17 @@ strong { font-weight:700; color:#1f1f1f; }
     <p>If the dashboard cannot answer those questions, we don’t have a performance harness yet, we have a tooling footprint.</p>
     <h2>A practical starting sequence</h2>
     <p>If we lead technical teams, product, operations, or strategy, here is a practical path that does not require a giant transformation program:</p>
-    <p><strong><strong>Pick three high-value task categories</strong></strong></p>
+    <p><strong>Pick three high-value task categories</strong></p>
     <p>   Not broad functions. Specific repeatable tasks: claims triage, protocol drafting, incident summarization, vendor risk memos.</p>
-    <p><strong><strong>Define value and risk per task</strong></strong></p>
+    <p><strong>Define value and risk per task</strong></p>
     <p>   What does better mean here: speed, quality, variance reduction, escalation accuracy? What can fail, and how bad is bad?</p>
-    <p><strong><strong>Place humans intentionally</strong></strong></p>
+    <p><strong>Place humans intentionally</strong></p>
     <p>   Decide where humans initiate, review, approve, or audit only. Do this by risk tier, not by habit.</p>
-    <p><strong><strong>Build a sandboxed pilot harness</strong></strong></p>
+    <p><strong>Build a sandboxed pilot harness</strong></p>
     <p>   Give models tools, context boundaries, and observation hooks. Keep rollback easy. Instrument what actually matters.</p>
-    <p><strong><strong>Iterate quickly, with evidence</strong></strong></p>
+    <p><strong>Iterate quickly, with evidence</strong></p>
     <p>   Weekly cadence, small scope changes, explicit hypotheses. Don’t wait for perfect certainty from outside. Learn in your own environment.</p>
-    <p><strong><strong>Recruit harness builders, not just model enthusiasts</strong></strong></p>
+    <p><strong>Recruit harness builders, not just model enthusiasts</strong></p>
     <p>   We need people who can connect model behavior to workflow design, controls, and measurement. That blend is still rare, and it is where leverage is.</p>
     <h2>A quick litmus test</h2>
     <p>Ask this once per workflow:</p>
