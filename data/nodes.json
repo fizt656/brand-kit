@@ -7,12 +7,17 @@
       "x": 50,
       "y": 50,
       "connections": [
-        "ai-education",
         "flow-state",
         "family",
         "new-node",
         "sparks",
-        "heritage"
+        "heritage",
+        "neuroscience",
+        "neurace",
+        "making",
+        "code",
+        "metal-guitar",
+        "morning-ritual"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -27,7 +32,6 @@
       "x": 30,
       "y": 35,
       "connections": [
-        "center",
         "neurace",
         "mit",
         "neuroscience",
@@ -47,9 +51,9 @@
       "y": 50,
       "connections": [
         "ai-education",
-        "flow-state",
         "machines",
-        "f1"
+        "f1",
+        "center"
       ],
       "content": {
         "title": "NeuRace",
@@ -66,7 +70,8 @@
       "connections": [
         "ai-education",
         "mit",
-        "f1"
+        "f1",
+        "center"
       ],
       "content": {
         "title": "Neuroscience",
@@ -99,18 +104,16 @@
       "y": 62,
       "connections": [
         "center",
-        "neurace",
         "making",
         "machines",
         "code",
         "gym",
         "family",
-        "local-ai-lab",
         "new-node",
         "watch",
-        "f1",
         "sparks",
-        "heritage"
+        "metal-guitar",
+        "morning-ritual"
       ],
       "content": {
         "title": "Flow State",
@@ -175,8 +178,7 @@
         "ai-roleplay",
         "family",
         "mit",
-        "neuroscience",
-        "flow-state"
+        "neuroscience"
       ],
       "content": {
         "title": "Formula 1",
@@ -219,7 +221,8 @@
         "morning-ritual",
         "watch",
         "sparks",
-        "heritage"
+        "heritage",
+        "center"
       ],
       "content": {
         "title": "Making",
@@ -271,8 +274,7 @@
         "sparks",
         "making",
         "morning-ritual",
-        "center",
-        "flow-state"
+        "center"
       ],
       "content": {
         "title": "Heritage",
@@ -352,7 +354,6 @@
       "connections": [
         "ai-education",
         "code",
-        "flow-state",
         "center",
         "multimodal-orchestration",
         "machines",
@@ -391,7 +392,9 @@
       "y": 78,
       "connections": [
         "making",
-        "family"
+        "family",
+        "center",
+        "flow-state"
       ],
       "content": {
         "title": "Guitar",
@@ -430,7 +433,9 @@
         "sparks",
         "making",
         "new-node",
-        "heritage"
+        "heritage",
+        "center",
+        "flow-state"
       ],
       "content": {
         "title": "Morning Ritual",
