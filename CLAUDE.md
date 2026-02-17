@@ -53,10 +53,10 @@ Hemispheres: `left` (steel blue, digital topics), `right` (warm brass, analog to
 ### CSS Variables
 
 Colors are defined in `css/styles.css`:
-- Background: `#1a1a24`
-- Left hemisphere: `#5a7d9a` (glow: `#7ab8cc`)
-- Right hemisphere: `#a89060` (glow: `#cc9a5a`)
-- Center: `#e8e4e0` (glow: white)
+- Background: `#faf8f3` (warm ivory)
+- Left hemisphere: `#5e8a9e` (muted teal-slate)
+- Right hemisphere: `#b8952e` (warm gold/copper)
+- Center: `#4a4238` (warm charcoal)
 
 Fonts: Playfair Display (headings), Inter (body), JetBrains Mono (labels/UI)
 
