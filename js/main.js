@@ -39,6 +39,7 @@ const App = {
   linksSection: null,
   linksList: null,
   closeBtn: null,
+  homeBtn: null,
   articlesBtn: null,
   articlesOverlay: null,
   articlesCloseBtn: null,
@@ -63,6 +64,7 @@ const App = {
     this.linksSection = document.getElementById('content-links');
     this.linksList = document.getElementById('links-list');
     this.closeBtn = document.getElementById('close-btn');
+    this.homeBtn = document.getElementById('home-btn');
     this.articlesBtn = document.getElementById('articles-btn');
     this.articlesOverlay = document.getElementById('articles-overlay');
     this.articlesCloseBtn = document.getElementById('articles-close-btn');
@@ -97,6 +99,7 @@ const App = {
 
   enterMap({ instant = false } = {}) {
     this.landing.classList.add('hidden');
+    this.homeBtn.classList.remove('is-hidden');
 
     const show = () => {
       this.graphContainer.classList.remove('graph-hidden');
@@ -119,6 +122,8 @@ const App = {
   },
 
   bindGlobalEvents() {
+    this.homeBtn.addEventListener('click', () => this.goHome());
+
     // Articles panel controls (available on landing + map)
     this.articlesBtn.addEventListener('click', () => this.openArticles());
     this.articlesCloseBtn.addEventListener('click', () => this.closeArticles());
@@ -198,6 +203,17 @@ const App = {
     this.articlesOverlay.classList.add('hidden');
     this.articlesOverlay.setAttribute('aria-hidden', 'true');
     this.articlesBtn.focus();
+  },
+
+  goHome() {
+    this.closeArticles();
+    this.collapseNode();
+    this.graphContainer.classList.add('graph-hidden');
+    this.footer.classList.add('graph-hidden');
+    this.hemisphereLabels.classList.add('graph-hidden');
+    this.homeBtn.classList.add('is-hidden');
+    this.landing.classList.remove('hidden');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
   renderArticles() {

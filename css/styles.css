@@ -138,6 +138,10 @@ body {
   justify-content: center;
 }
 
+.is-hidden {
+  display: none !important;
+}
+
 .nav-btn:hover,
 .nav-btn:active {
   color: var(--color-text);
