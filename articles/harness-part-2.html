@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8" />
+<title>harness-article-part-2-branded.pdf</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@400;600;700&display=swap');
+@page { margin: 0.75in 0.85in; }
+body { font-family: 'Open Sans', sans-serif; color:#2f2f2f; font-size: 11pt; line-height:1.65; margin:0; }
+.wrap { max-width: 8.3in; margin:0 auto; }
+.kicker { letter-spacing:2px; text-transform:uppercase; color:#b8956c; font-weight:600; font-size:9pt; margin-bottom:8px; }
+h1 { font-family:'Cormorant Garamond', serif; font-size:34pt; line-height:1.15; margin:0 0 10px 0; color:#222; }
+h2 { font-family:'Open Sans', sans-serif; font-size:10pt; letter-spacing:1.8px; text-transform:uppercase; color:#b8956c; margin:30px 0 10px; padding-bottom:8px; border-bottom:1px solid #e0d5c7; }
+p { margin: 11px 0; text-align: justify; }
+ul { margin: 10px 0 12px 22px; }
+li { margin: 6px 0; }
+strong { font-weight:700; color:#1f1f1f; }
+.divider-thin { border:none; border-top:1px solid #ddd; margin:20px 0; }
+</style></head>
+<body><div class="wrap"><div class="kicker">The Signal Thread · Draft for flow review</div><h1>The Harness Is the Strategy</h1>
+    <h2>Part 2, A Taleb lens for testing whether your AI system actually holds up</h2>
+    <p>In Part 1, we argued that model selection is not the strategy.</p>
+    <p>The strategy is the harness: the operational system that turns model capability into outcomes in your real environment.</p>
+    <p>So the obvious follow-up is: <strong>how do we evaluate a harness without fooling ourselves?</strong></p>
+    <p>One useful lens comes from Nassim Taleb’s work. Not as doctrine, and definitely not as intellectual cosplay, just as a practical stress test for real systems under uncertainty.</p>
+    <p>The three lenses we keep coming back to are:</p>
+    <p><strong>Black Swan awareness</strong></p>
+    <p><strong>Antifragility</strong></p>
+    <p><strong>Skin in the game</strong></p>
+    <p>If a harness is weak on any one of these, performance and trust erode fast in production.</p>
+    <h2>1) Black Swan awareness</h2>
+    <p>### Can we reduce catastrophic downside without killing beneficial surprise?</p>
+    <p>Most AI governance conversations over-index on one side:</p>
+    <ul>
+    <li>either “lock it all down,”</li>
+    <li>or “move fast and let the team experiment.”</li>
+    </ul>
+    <p>Both instincts are understandable. Neither is enough.</p>
+    <p>If we optimize only for predictability, we often suppress exactly the rare upside events that make AI worth deploying in the first place: unexpected synthesis, non-obvious retrieval paths, better-than-baseline first drafts, earlier signal detection.</p>
+    <p>If we optimize only for novelty, we invite preventable failures, especially where decision stakes are high.</p>
+    <p>A strong harness separates <strong>good surprise</strong> from <strong>bad surprise</strong> in practice.</p>
+    <p>That means:</p>
+    <ul>
+    <li>setting clear boundaries for where exploration is allowed</li>
+    <li>tightening controls where failure costs are asymmetric</li>
+    <li>instrumenting edge cases instead of treating them as embarrassing exceptions</li>
+    <li>creating escalation paths that are fast, not bureaucratic</li>
+    </ul>
+    <p>The test is simple: when something unusual happens, do we learn and route it, or panic and freeze?</p>
+    <h2>2) Antifragility</h2>
+    <p>### Does the system improve under stress, or just survive it?</p>
+    <p>Many systems are robust at best. They tolerate some turbulence.</p>
+    <p>That is fine for static environments, but AI workflows are not static.</p>
+    <p>Prompts drift. Data shifts. Teams change. Vendors update silently. New failure modes appear in combinations nobody predicted in planning docs.</p>
+    <p>So the question is not “Can this harness avoid failure forever?”</p>
+    <p>It is “When failure happens, does the harness get better?”</p>
+    <p>Antifragile patterns look like this:</p>
+    <ul>
+    <li>incidents are logged with enough context to diagnose root causes</li>
+    <li>fixes are encoded into system behavior, not just tribal memory</li>
+    <li>approval thresholds evolve based on observed risk, not meeting-room anxiety</li>
+    <li>human review effort gets redistributed to high-risk zones over time</li>
+    <li>prompts, tool routing, and exception handling are versioned and auditable</li>
+    </ul>
+    <p>In other words: volatility becomes learning fuel.</p>
+    <p>If every incident leads to blanket restrictions, your harness is getting more fragile, not safer.</p>
+    <h2>3) Skin in the game</h2>
+    <p>### Are authority and accountability aligned across the people building and running this?</p>
+    <p>This one is less technical, more structural, and usually where things break first.</p>
+    <p>When one team ships, another team absorbs operational risk, and a third team reports success metrics, even strong technical architecture becomes politically unstable.</p>
+    <p>Signs of weak skin in the game:</p>
+    <ul>
+    <li>adoption KPIs disconnected from quality outcomes</li>
+    <li>“pilot success” claims with no downstream ownership</li>
+    <li>risk teams brought in late and blamed early</li>
+    <li>frontline operators carrying exception burden without design authority</li>
+    <li>executive visibility focused on activity volume, not value quality</li>
+    </ul>
+    <p>Strong harnesses align incentives and decision rights:</p>
+    <ul>
+    <li>the people closest to operational failure modes influence design decisions</li>
+    <li>success metrics include error costs, rework, and escalation burden</li>
+    <li>governance owns tradeoffs, not just approvals</li>
+    <li>leaders are accountable for both speed and safety, not one each</li>
+    </ul>
+    <p>If accountability floats upward while consequences flow downward, the system will look good on slides and crack in production.</p>
+    <hr class="divider-thin">
+    <p><strong>Next in Part 3:</strong> How to operationalize this without launching a giant transformation program, what to measure, what to change first, and how to iterate week by week.</p></div></body></html>

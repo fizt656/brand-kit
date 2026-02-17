@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Part 1 - The Strategic Unit Is the Harness</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Open+Sans:wght@400;600;700&display=swap');
+    @page { margin: 0.75in 0.85in; }
+    body { font-family: 'Open Sans', sans-serif; color:#2f2f2f; font-size: 11pt; line-height:1.65; margin:0; }
+    .wrap { max-width: 8.3in; margin:0 auto; }
+    .kicker { letter-spacing:2px; text-transform:uppercase; color:#b8956c; font-weight:600; font-size:9pt; margin-bottom:8px; }
+    h1 { font-family:'Cormorant Garamond', serif; font-size:34pt; line-height:1.15; margin:0 0 10px 0; color:#222; }
+    h2 { font-family:'Open Sans', sans-serif; font-size:10pt; letter-spacing:1.8px; text-transform:uppercase; color:#b8956c; margin:30px 0 10px; padding-bottom:8px; border-bottom:1px solid #e0d5c7; }
+    p { margin: 11px 0; text-align: justify; }
+    ul { margin: 10px 0 12px 22px; }
+    li { margin: 6px 0; }
+    strong { font-weight:700; color:#1f1f1f; }
+    .divider { border:none; border-top:1.5px solid #b8956c; margin: 14px 0 20px; }
+    .subtle { color:#666; font-size:10pt; margin-bottom:20px; }
+    .callout { margin-top:20px; font-style:italic; color:#444; }
+    .divider-thin { border:none; border-top:1px solid #ddd; margin:20px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="kicker">The Signal Thread · Draft for flow review</div>
+    <h1>Stop Asking “What’s the Best Model?”</h1>
+    <h2>Part 1, The strategic unit is the harness</h2>
+    <p>A question we get a lot is: <strong>“What’s the best model?”</strong></p>
+    <p>At this point, most SOTA models are already more than capable for a wide range of real-world work. So the harder question is no longer raw model capability. It’s whether we’re measuring value in context, with clear task-level outcomes, instead of broad usage metrics that feel good but don’t say much.</p>
+    <p>That’s where we think the conversation needs to shift, from the model itself to the <strong>harness</strong> around it.</p>
+    <p>By harness, we mean the practical system around a model, tools, environment, workflows, guardrails, human checkpoints, and feedback loops, that determines whether AI produces repeatable value in the setting it actually operates in.</p>
+    <p>In recent conversations with peers, we kept seeing the same pattern. Under pressure, everyone naturally compares model benchmarks: latency, evals, context windows, price per token. All useful, but not enough on their own.</p>
+    <p>Then someone asked a better question:</p>
+    <p><strong>“If we swapped the model tomorrow, what in your workflow would still create the same value? What might improve, and what might drop?”</strong></p>
+    <p>That question shifted the conversation fast. Not dramatic, just honest. We are all learning this in real time.</p>
+    <p>The takeaway was pretty consistent: many teams still treat model selection as strategy, when it is really one component choice inside a much larger system. The teams seeing durable value are usually not the ones that “picked a winner.” They are the ones building a harness that fits their environment, tasks, and constraints.</p>
+    <p>So yes, model quality matters.</p>
+    <p>But strategy starts one layer up.</p>
+    <h2>What We Mean by “Harness”</h2>
+    <p>We use <strong>harness</strong> in a specific way.</p>
+    <p>A harness is not just a safety wrapper or a policy document. It is the operational architecture around a model that determines whether capability turns into outcomes.</p>
+    <p>At minimum, that includes:</p>
+    <ul>
+    <li><strong>Tooling layer:</strong> retrieval, APIs, internal systems, execution boundaries</li>
+    <li><strong>Environment layer:</strong> permissions, sandboxing, observability, rollback paths</li>
+    <li><strong>Human positioning layer:</strong> where people review, intervene, escalate, or delegate</li>
+    <li><strong>Measurement layer:</strong> what “good” looks like by task category, and how we track it over time</li>
+    </ul>
+    <p>When people say “human in the loop,” the conversation often stops at governance language. The more useful question is more precise:</p>
+    <p><strong>Where is the human in the loop, for which tasks, at which risk thresholds, with what decision rights?</strong></p>
+    <p>That is not semantics. It is performance engineering.</p>
+    <h2>Why “Human in the Loop” and “Guardrails” Are Necessary, and Still Incomplete</h2>
+    <p>To be fair, this framing emerged for good reasons. Teams needed practical language for safety, compliance, accountability, and risk controls. “Human in the loop” and “guardrails” gave us a starting point.</p>
+    <p>But when that framing becomes the whole operating model, we usually see two predictable failure modes:</p>
+    <p>1. <strong>Control-heavy stagnation</strong></p>
+    <p>   Everything routes through bottlenecks, pilots drag, and teams conclude “AI is overhyped” when the underlying issue is architecture.</p>
+    <p>2. <strong>Capability-heavy chaos</strong></p>
+    <p>   Teams skip structure, ship brittle systems, then overcorrect with blanket restrictions after the first incident.</p>
+    <p>A good harness has to do both jobs at once:</p>
+    <ul>
+    <li>reduce downside</li>
+    <li>preserve and amplify upside</li>
+    </ul>
+    <p>Too much inhibition, no learning.</p>
+    <p>Too much improvisation, no coherence.</p>
+    <p>If we’ve ever played in a jazz combo, we know this instinctively: we need a chart, a key center, and shared timing, but we also need room for emergence. Enterprise AI is not that different. Constraints and creativity are co-requirements.</p>
+    <p>In neuro terms, we should think less in terms of a single reflex loop and more in terms of a coordinated network: inhibitory control when stakes are high, fast pathways when opportunity is time-sensitive, and plasticity so the system improves from feedback instead of repeating mistakes with better branding.</p>
+    <hr class="divider-thin">
+    <p><strong>Next in Part 2:</strong> If harness is the strategic unit, how do we evaluate whether a harness is actually good under uncertainty?</p>
+  </div>
+</body>
+</html>

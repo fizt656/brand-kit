@@ -15,6 +15,14 @@
 </head>
 <body>
 
+  <!-- Site Header -->
+  <header id="site-header">
+    <div class="site-title">Gus Halwani</div>
+    <nav class="site-nav" aria-label="Primary">
+      <button id="articles-btn" class="nav-btn" type="button">Articles</button>
+    </nav>
+  </header>
+
   <!-- Main Graph Container -->
   <div id="graph-container">
     <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
@@ -65,6 +73,18 @@
         <span class="connections-label">Links:</span>
         <div id="links-list"></div>
       </div>
+    </div>
+  </div>
+
+  <!-- Articles Overlay -->
+  <div id="articles-overlay" class="hidden" aria-hidden="true">
+    <div id="articles-panel">
+      <div class="articles-head">
+        <h2>Articles</h2>
+        <button id="articles-close-btn" class="panel-close-btn" aria-label="Close articles">&times;</button>
+      </div>
+      <p class="articles-subhead">Long-form writing from The Signal Thread. Master copies live here first.</p>
+      <div id="articles-grid"></div>
     </div>
   </div>
 

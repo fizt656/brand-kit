@@ -3,9 +3,9 @@
    ================================ */
 
 :root {
-  /* Background - warm charcoal */
-  --color-bg: #1f1d1a;
-  --color-bg-light: #2a2824;
+  /* Background - warm ivory */
+  --color-bg: #f6f3ec;
+  --color-bg-light: #fffcf6;
 
   /* Left hemisphere (Digital) - brighter steel blue */
   --color-left: #7a9db8;
@@ -22,11 +22,11 @@
   --color-center-glow: #ffffff;
 
   /* Edges and UI */
-  --color-edge: #3d3a35;
-  --color-edge-active: #5a564e;
-  --color-text: #f0ebe4;
-  --color-text-dim: #a8a498;
-  --color-text-muted: #6a665e;
+  --color-edge: #d7cdb8;
+  --color-edge-active: #c9a962;
+  --color-text: #2b261d;
+  --color-text-dim: #5f5543;
+  --color-text-muted: #857764;
 
   /* Typography */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -266,7 +266,7 @@ body {
 #content-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(26, 26, 36, 0.9);
+  background: rgba(246, 243, 236, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   display: flex;
@@ -441,6 +441,158 @@ body {
 }
 
 /* ================================
+   SITE HEADER
+   ================================ */
+
+#site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 60;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  pointer-events: none;
+}
+
+.site-title {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  letter-spacing: 0.02em;
+  pointer-events: auto;
+}
+
+.site-nav {
+  pointer-events: auto;
+}
+
+.nav-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--color-edge);
+  background: rgba(255, 252, 246, 0.85);
+  color: var(--color-text-dim);
+  cursor: pointer;
+}
+
+.nav-btn:hover {
+  color: var(--color-text);
+  border-color: var(--color-right);
+}
+
+/* ================================
+   ARTICLES OVERLAY
+   ================================ */
+
+#articles-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(246, 243, 236, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+}
+
+#articles-overlay.hidden {
+  display: none;
+}
+
+#articles-panel {
+  width: min(980px, 94vw);
+  max-height: 86vh;
+  overflow: auto;
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-edge);
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(45, 34, 20, 0.12);
+}
+
+.articles-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.articles-head h2 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: var(--color-text);
+}
+
+.panel-close-btn {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-text-dim);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.panel-close-btn:hover { background: rgba(0,0,0,0.04); }
+
+.articles-subhead {
+  margin: 8px 0 18px;
+  color: var(--color-text-muted);
+}
+
+#articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.article-card {
+  border: 1px solid var(--color-edge);
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+}
+
+.article-card .kicker {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-right-dim);
+  margin-bottom: 8px;
+}
+
+.article-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.article-card p {
+  color: var(--color-text-dim);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+}
+
+.article-link {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #8f6b2f;
+}
+
+/* ================================
    FOOTER
    ================================ */
 
@@ -520,8 +672,16 @@ body {
    ================================ */
 
 @media (max-width: 768px) {
+  #site-header {
+    padding: 14px 14px 8px;
+  }
+
+  .site-title {
+    font-size: 0.95rem;
+  }
+
   #graph-container {
-    padding: 40px 20px 70px;
+    padding: 46px 20px 70px;
   }
 
   #hemisphere-labels {

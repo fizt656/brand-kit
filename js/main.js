@@ -2,6 +2,33 @@
 // MAIN APPLICATION LOGIC
 // ================================
 
+const ARTICLES = [
+  {
+    title: 'Why I Think in First Principles',
+    kicker: 'The Signal Thread',
+    summary: 'A grounding piece on compasses over maps, judgment under uncertainty, and building learning systems that hold up in the real world.',
+    href: 'articles/first-principles.html'
+  },
+  {
+    title: 'The Harness Is the Strategy — Part I',
+    kicker: 'AI Harness',
+    summary: 'Why the differentiator is not raw model horsepower, but the social and technical harness around it.',
+    href: 'articles/harness-part-1.html'
+  },
+  {
+    title: 'The Harness Is the Strategy — Part II',
+    kicker: 'AI Harness',
+    summary: 'How orchestration, trust, and adoption patterns decide outcomes faster than model upgrades do.',
+    href: 'articles/harness-part-2.html'
+  },
+  {
+    title: 'The Harness Is the Strategy — Part III',
+    kicker: 'AI Harness',
+    summary: 'Execution playbook: practical design choices for teams that want durable leverage, not demo theater.',
+    href: 'articles/harness-part-3.html'
+  }
+];
+
 const App = {
   expandedNodeId: null,
   overlay: null,
@@ -12,6 +39,10 @@ const App = {
   linksSection: null,
   linksList: null,
   closeBtn: null,
+  articlesBtn: null,
+  articlesOverlay: null,
+  articlesCloseBtn: null,
+  articlesGrid: null,
 
   // Initialize the application
   init() {
@@ -24,6 +55,12 @@ const App = {
     this.linksSection = document.getElementById('content-links');
     this.linksList = document.getElementById('links-list');
     this.closeBtn = document.getElementById('close-btn');
+    this.articlesBtn = document.getElementById('articles-btn');
+    this.articlesOverlay = document.getElementById('articles-overlay');
+    this.articlesCloseBtn = document.getElementById('articles-close-btn');
+    this.articlesGrid = document.getElementById('articles-grid');
+
+    this.renderArticles();
 
     // Initialize graph
     Graph.init().then(() => {
@@ -74,11 +111,56 @@ const App = {
       }
     });
 
+    // Articles panel controls
+    this.articlesBtn.addEventListener('click', () => this.openArticles());
+    this.articlesCloseBtn.addEventListener('click', () => this.closeArticles());
+    this.articlesOverlay.addEventListener('click', (e) => {
+      if (e.target === this.articlesOverlay) {
+        this.closeArticles();
+      }
+    });
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && this.expandedNodeId) {
-        this.collapseNode();
+      if (e.key === 'Escape') {
+        if (!this.articlesOverlay.classList.contains('hidden')) {
+          this.closeArticles();
+          return;
+        }
+        if (this.expandedNodeId) {
+          this.collapseNode();
+        }
       }
+    });
+  },
+
+  openArticles() {
+    this.articlesOverlay.classList.remove('hidden');
+    this.articlesOverlay.setAttribute('aria-hidden', 'false');
+    this.articlesCloseBtn.focus();
+  },
+
+  closeArticles() {
+    this.articlesOverlay.classList.add('hidden');
+    this.articlesOverlay.setAttribute('aria-hidden', 'true');
+    this.articlesBtn.focus();
+  },
+
+  renderArticles() {
+    this.articlesGrid.innerHTML = '';
+
+    ARTICLES.forEach(article => {
+      const card = document.createElement('article');
+      card.className = 'article-card';
+
+      card.innerHTML = `
+        <div class="kicker">${article.kicker}</div>
+        <h3>${article.title}</h3>
+        <p>${article.summary}</p>
+        <a class="article-link" href="${article.href}" target="_blank" rel="noopener">Read Article →</a>
+      `;
+
+      this.articlesGrid.appendChild(card);
     });
   },
 
@@ -214,7 +296,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // CONSOLE EASTER EGG
 // ================================
 
-console.log('%c\u{1F9E0} gushalwani.com', 'font-size: 16px; font-weight: bold; color: #7ab8cc;');
+console.log('%c🧠 gushalwani.com', 'font-size: 16px; font-weight: bold; color: #7a9db8;');
 console.log('%cExplore the nodes. Follow the connections.', 'font-size: 12px; color: #8a8a94;');
 console.log('%cgushalwani@alum.mit.edu', 'font-size: 11px; color: #cc9a5a; font-family: monospace;');
 
