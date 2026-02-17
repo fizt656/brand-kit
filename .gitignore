@@ -8,9 +8,26 @@ start-editor.command
 # Raw materials
 raw materials/
 
-# macOS
+# macOS / OS junk
 .DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
 
-# IDE
+# IDE / editor
 .idea/
 .vscode/
+*.swp
+*.swo
+*~
+
+# Local env / logs / temp
+.env
+.env.*
+*.log
+*.tmp
+*.bak
+
+# Python cache (if local scripts get added)
+__pycache__/
+*.py[cod]
