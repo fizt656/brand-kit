@@ -73,7 +73,13 @@
         "ai-education",
         "mit",
         "f1",
-        "center"
+        "center",
+        "making",
+        "code",
+        "local-ai-lab",
+        "multimodal-orchestration",
+        "ai-roleplay",
+        "flow-state"
       ],
       "content": {
         "title": "Neuroscience",
@@ -119,7 +125,8 @@
         "watch",
         "sparks",
         "metal-guitar",
-        "morning-ritual"
+        "morning-ritual",
+        "neuroscience"
       ],
       "content": {
         "title": "Flow State",
@@ -228,7 +235,8 @@
         "sparks",
         "heritage",
         "center",
-        "code"
+        "code",
+        "neuroscience"
       ],
       "content": {
         "title": "Making",
@@ -328,7 +336,8 @@
         "f1",
         "mit",
         "neurace",
-        "making"
+        "making",
+        "neuroscience"
       ],
       "content": {
         "title": "Code",
@@ -370,7 +379,8 @@
         "multimodal-orchestration",
         "machines",
         "f1",
-        "mit"
+        "mit",
+        "neuroscience"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -390,7 +400,8 @@
         "code",
         "ai-education",
         "ai-roleplay",
-        "mit"
+        "mit",
+        "neuroscience"
       ],
       "content": {
         "title": "Multimodal Orchestration",
@@ -429,7 +440,8 @@
         "machines",
         "watch",
         "f1",
-        "mit"
+        "mit",
+        "neuroscience"
       ],
       "content": {
         "title": "Game Design",
