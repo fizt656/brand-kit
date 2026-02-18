@@ -1,9 +1,9 @@
 # Editor files (keep local only)
-editor.html
-css/editor.css
-js/editor.js
-EDITOR.md
-start-editor.command
+# editor.html
+# css/editor.css
+# js/editor.js
+# EDITOR.md
+# start-editor.command
 
 # Agent instruction files (keep local unless intentionally shared)
 AGENTS.md

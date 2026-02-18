@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brain Topology Editor</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/editor.css">
+</head>
+<body class="editor-body">
+
+  <!-- Header -->
+  <header id="editor-header">
+    <h1>Brain Topology Editor</h1>
+    <div class="header-actions">
+      <button id="add-node-btn" class="btn btn-primary">+ Add Node</button>
+      <button id="export-btn" class="btn btn-secondary">Export</button>
+      <button id="publish-btn" class="btn btn-publish">Publish</button>
+      <button id="settings-btn" class="btn btn-icon" title="GitHub Settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main id="editor-main">
+    <!-- Graph Preview Panel -->
+    <div id="graph-panel">
+      <div id="graph-container">
+        <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
+          <defs>
+            <!-- Glow filters for hemispheres -->
+            <filter id="glow-left" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="glow-right" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <filter id="glow-center" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            <!-- Selection ring filter -->
+            <filter id="selection-glow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          <!-- Edges group (rendered behind nodes) -->
+          <g id="edges-group"></g>
+
+          <!-- Nodes group -->
+          <g id="nodes-group"></g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Edit Panel -->
+    <div id="edit-panel">
+      <div id="edit-panel-content">
+        <!-- Empty state -->
+        <div id="empty-state">
+          <p>Click a node to edit it</p>
+          <p class="hint">or click "+ Add Node" to create a new one</p>
+        </div>
+
+        <!-- Edit form (hidden until node selected) -->
+        <form id="edit-form" class="hidden">
+          <h2>Edit Node</h2>
+
+          <!-- Node ID -->
+          <div class="form-group">
+            <label for="node-id">ID</label>
+            <input type="text" id="node-id" readonly>
+          </div>
+
+          <!-- Label -->
+          <div class="form-group">
+            <label for="node-label">Label</label>
+            <input type="text" id="node-label" placeholder="Node label">
+          </div>
+
+          <!-- Hemisphere -->
+          <div class="form-group">
+            <label>Hemisphere</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="hemisphere" value="left">
+                <span class="radio-custom hemisphere-left"></span>
+                Left
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="hemisphere" value="right">
+                <span class="radio-custom hemisphere-right"></span>
+                Right
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="hemisphere" value="center">
+                <span class="radio-custom hemisphere-center"></span>
+                Center
+              </label>
+            </div>
+          </div>
+
+          <!-- Position -->
+          <div class="form-group">
+            <label>Position</label>
+            <div class="position-inputs">
+              <div class="position-field">
+                <label for="node-x">X</label>
+                <input type="number" id="node-x" min="0" max="100" step="1">
+              </div>
+              <div class="position-field">
+                <label for="node-y">Y</label>
+                <input type="number" id="node-y" min="0" max="100" step="1">
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div class="form-section">
+            <h3>Content</h3>
+
+            <!-- Title -->
+            <div class="form-group">
+              <label for="content-title">Title</label>
+              <input type="text" id="content-title" placeholder="Content title">
+            </div>
+
+            <!-- Body -->
+            <div class="form-group">
+              <label for="content-body">Body</label>
+              <textarea id="content-body" rows="5" placeholder="Content body text..."></textarea>
+            </div>
+          </div>
+
+          <!-- Connections Section -->
+          <div class="form-section">
+            <h3>Connections</h3>
+            <div id="connections-grid" class="connections-grid">
+              <!-- Populated dynamically -->
+            </div>
+          </div>
+
+          <!-- Delete Button -->
+          <div class="form-actions">
+            <button type="button" id="delete-node-btn" class="btn btn-danger">Delete Node</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <!-- Settings Modal -->
+  <div id="settings-modal" class="modal hidden">
+    <div class="modal-content">
+      <h2>GitHub Settings</h2>
+      <p class="modal-description">Connect to GitHub to publish changes directly.</p>
+
+      <div class="form-group">
+        <label for="github-token">Personal Access Token</label>
+        <input type="password" id="github-token" placeholder="ghp_xxxxxxxxxxxx">
+        <p class="field-hint">
+          <a href="https://github.com/settings/tokens/new?scopes=repo&description=Brain%20Topology%20Editor" target="_blank">Generate a token</a> with "repo" scope
+        </p>
+      </div>
+
+      <div class="form-group">
+        <label for="github-repo">Repository</label>
+        <input type="text" id="github-repo" value="fizt656/brand-kit" placeholder="username/repo">
+      </div>
+
+      <div class="modal-actions">
+        <button id="settings-cancel" class="btn btn-secondary">Cancel</button>
+        <button id="settings-save" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Status Toast -->
+  <div id="status-toast" class="toast hidden"></div>
+
+  <script src="js/editor.js"></script>
+</body>
+</html>

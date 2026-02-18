@@ -1,0 +1,683 @@
+/* ================================
+   EDITOR-SPECIFIC STYLES
+   ================================ */
+
+/* Body adjustments for editor */
+.editor-body {
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ================================
+   HEADER
+   ================================ */
+
+#editor-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-bg-light);
+  border-bottom: 1px solid var(--color-edge);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  z-index: 100;
+}
+
+#editor-header h1 {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* ================================
+   BUTTONS
+   ================================ */
+
+.btn {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 10px 18px;
+  border: 1px solid var(--color-edge);
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--color-left);
+  border-color: var(--color-left);
+  color: var(--color-bg);
+}
+
+.btn-primary:hover {
+  background: var(--color-left-glow);
+  border-color: var(--color-left-glow);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--color-edge);
+  color: var(--color-text-dim);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--color-text-dim);
+  color: var(--color-text);
+}
+
+.btn-danger {
+  background: transparent;
+  border-color: #8b4040;
+  color: #cc6666;
+}
+
+.btn-danger:hover {
+  background: rgba(139, 64, 64, 0.2);
+  border-color: #cc6666;
+}
+
+/* ================================
+   MAIN LAYOUT
+   ================================ */
+
+#editor-main {
+  display: flex;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* ================================
+   GRAPH PANEL
+   ================================ */
+
+#graph-panel {
+  flex: 1;
+  min-width: 0;
+  background: var(--color-bg);
+  position: relative;
+}
+
+#graph-panel #graph-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#graph-panel #graph-svg {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+}
+
+/* Node selection state in editor */
+.node.selected .node-circle {
+  stroke: var(--color-center-glow);
+  stroke-width: 3;
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
+}
+
+/* Make all nodes visible immediately in editor */
+#graph-panel .node {
+  opacity: 1;
+}
+
+#graph-panel .edge {
+  opacity: 0.4;
+}
+
+#graph-panel .node-label {
+  opacity: 0.9;
+}
+
+/* ================================
+   EDIT PANEL
+   ================================ */
+
+#edit-panel {
+  width: 380px;
+  min-width: 380px;
+  background: var(--color-bg-light);
+  border-left: 1px solid var(--color-edge);
+  overflow-y: auto;
+}
+
+#edit-panel-content {
+  padding: 24px;
+}
+
+/* Empty state */
+#empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-dim);
+}
+
+#empty-state p {
+  margin-bottom: 8px;
+}
+
+#empty-state .hint {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ================================
+   FORM STYLES
+   ================================ */
+
+#edit-form h2 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-edge);
+}
+
+#edit-form.hidden {
+  display: none;
+}
+
+.form-section {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-edge);
+}
+
+.form-section h3 {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group > label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+  margin-bottom: 8px;
+}
+
+/* Text inputs */
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: var(--color-bg);
+  border: 1px solid var(--color-edge);
+  border-radius: 6px;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-left);
+  box-shadow: 0 0 0 2px rgba(90, 125, 154, 0.2);
+}
+
+input[readonly] {
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  line-height: 1.6;
+}
+
+/* Position inputs */
+.position-inputs {
+  display: flex;
+  gap: 16px;
+}
+
+.position-field {
+  flex: 1;
+}
+
+.position-field label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.position-field input {
+  text-align: center;
+}
+
+/* Radio buttons */
+.radio-group {
+  display: flex;
+  gap: 16px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text-dim);
+}
+
+.radio-label input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--color-edge);
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.radio-custom.hemisphere-left {
+  border-color: var(--color-left-dim);
+}
+
+.radio-custom.hemisphere-right {
+  border-color: var(--color-right-dim);
+}
+
+.radio-custom.hemisphere-center {
+  border-color: var(--color-text-dim);
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom.hemisphere-left {
+  background: var(--color-left);
+  border-color: var(--color-left);
+  box-shadow: 0 0 8px var(--color-left-glow);
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom.hemisphere-right {
+  background: var(--color-right);
+  border-color: var(--color-right);
+  box-shadow: 0 0 8px var(--color-right-glow);
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom.hemisphere-center {
+  background: var(--color-center);
+  border-color: var(--color-center);
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
+}
+
+/* Connections grid */
+.connections-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.connection-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-edge);
+  border-radius: 4px;
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+.connection-checkbox:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.connection-checkbox.checked {
+  border-color: var(--color-left);
+  background: rgba(90, 125, 154, 0.1);
+}
+
+.connection-checkbox input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: var(--color-left);
+}
+
+.connection-checkbox .connection-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: var(--color-text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.connection-checkbox.checked .connection-label {
+  color: var(--color-text);
+}
+
+/* Hemisphere indicator on connections */
+.connection-checkbox .hemisphere-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.connection-checkbox .hemisphere-dot.left {
+  background: var(--color-left);
+}
+
+.connection-checkbox .hemisphere-dot.right {
+  background: var(--color-right);
+}
+
+.connection-checkbox .hemisphere-dot.center {
+  background: var(--color-center);
+}
+
+/* Form actions */
+.form-actions {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-edge);
+}
+
+/* ================================
+   SCROLLBAR STYLING
+   ================================ */
+
+#edit-panel::-webkit-scrollbar {
+  width: 8px;
+}
+
+#edit-panel::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+#edit-panel::-webkit-scrollbar-thumb {
+  background: var(--color-edge);
+  border-radius: 4px;
+}
+
+#edit-panel::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+/* ================================
+   RESPONSIVE
+   ================================ */
+
+@media (max-width: 900px) {
+  #editor-main {
+    flex-direction: column;
+  }
+
+  #graph-panel {
+    flex: 1;
+    min-height: 300px;
+  }
+
+  #edit-panel {
+    width: 100%;
+    min-width: 0;
+    max-height: 50vh;
+    border-left: none;
+    border-top: 1px solid var(--color-edge);
+  }
+}
+
+@media (max-width: 600px) {
+  #editor-header {
+    padding: 0 16px;
+  }
+
+  #editor-header h1 {
+    font-size: 0.75rem;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 0.65rem;
+  }
+
+  #edit-panel-content {
+    padding: 16px;
+  }
+
+  .connections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ================================
+   FOCUS STATES
+   ================================ */
+
+.btn:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 2px;
+}
+
+input:focus-visible,
+textarea:focus-visible {
+  outline: none;
+}
+
+.connection-checkbox:focus-within {
+  border-color: var(--color-left);
+}
+
+/* ================================
+   PUBLISH BUTTON
+   ================================ */
+
+.btn-publish {
+  background: #2ea44f;
+  border-color: #2ea44f;
+  color: white;
+}
+
+.btn-publish:hover {
+  background: #3fb950;
+  border-color: #3fb950;
+}
+
+.btn-publish:disabled {
+  background: var(--color-edge);
+  border-color: var(--color-edge);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.btn-publish.publishing {
+  background: var(--color-edge);
+  border-color: var(--color-edge);
+  pointer-events: none;
+}
+
+/* Icon button */
+.btn-icon {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-color: var(--color-edge);
+  color: var(--color-text-dim);
+}
+
+.btn-icon:hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--color-text);
+}
+
+/* ================================
+   MODAL
+   ================================ */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 36, 0.9);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  opacity: 1;
+  transition: opacity var(--transition-medium);
+}
+
+.modal.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-content {
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-edge);
+  border-radius: 12px;
+  padding: 32px;
+  width: 400px;
+  max-width: 90%;
+}
+
+.modal-content h2 {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.modal-description {
+  font-size: 0.9rem;
+  color: var(--color-text-dim);
+  margin-bottom: 24px;
+}
+
+.modal-content .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-content input[type="password"],
+.modal-content input[type="text"] {
+  width: 100%;
+}
+
+.field-hint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 6px;
+}
+
+.field-hint a {
+  color: var(--color-left-glow);
+  text-decoration: none;
+}
+
+.field-hint a:hover {
+  text-decoration: underline;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+/* ================================
+   TOAST NOTIFICATIONS
+   ================================ */
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+  background: var(--color-bg-light);
+  border: 1px solid var(--color-edge);
+  border-radius: 8px;
+  padding: 12px 20px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  z-index: 300;
+  opacity: 1;
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.toast.hidden {
+  opacity: 0;
+  transform: translateX(-50%) translateY(10px);
+  pointer-events: none;
+}
+
+.toast.success {
+  border-color: #2ea44f;
+  color: #3fb950;
+}
+
+.toast.error {
+  border-color: #8b4040;
+  color: #cc6666;
+}
