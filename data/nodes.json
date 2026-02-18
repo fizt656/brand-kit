@@ -54,7 +54,8 @@
         "f1",
         "center",
         "gym",
-        "code"
+        "code",
+        "mit"
       ],
       "content": {
         "title": "NeuRace",
@@ -89,8 +90,11 @@
       "connections": [
         "neuroscience",
         "ai-education",
-        "f1",
-        "code"
+        "code",
+        "ai-roleplay",
+        "local-ai-lab",
+        "neurace",
+        "multimodal-orchestration"
       ],
       "content": {
         "title": "MIT PhD Research",
@@ -179,7 +183,6 @@
         "code",
         "ai-roleplay",
         "family",
-        "mit",
         "neuroscience"
       ],
       "content": {
@@ -366,7 +369,8 @@
         "center",
         "multimodal-orchestration",
         "machines",
-        "f1"
+        "f1",
+        "mit"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -385,7 +389,8 @@
         "making",
         "code",
         "ai-education",
-        "ai-roleplay"
+        "ai-roleplay",
+        "mit"
       ],
       "content": {
         "title": "Multimodal Orchestration",
@@ -423,7 +428,8 @@
         "multimodal-orchestration",
         "machines",
         "watch",
-        "f1"
+        "f1",
+        "mit"
       ],
       "content": {
         "title": "Game Design",
