@@ -17,7 +17,8 @@
         "making",
         "code",
         "metal-guitar",
-        "morning-ritual"
+        "morning-ritual",
+        "ai-education"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -32,8 +33,11 @@
       "x": 30,
       "y": 35,
       "connections": [
-        "neurace",
-        "neuroscience"
+        "center",
+        "code",
+        "local-ai-lab",
+        "multimodal-orchestration",
+        "ai-roleplay"
       ],
       "content": {
         "title": "AI Education",
@@ -48,7 +52,6 @@
       "x": 12,
       "y": 50,
       "connections": [
-        "ai-education",
         "machines",
         "f1",
         "center",
@@ -69,7 +72,6 @@
       "x": 22,
       "y": 18,
       "connections": [
-        "ai-education",
         "mit",
         "f1",
         "center",
@@ -334,7 +336,8 @@
         "mit",
         "neurace",
         "making",
-        "neuroscience"
+        "neuroscience",
+        "ai-education"
       ],
       "content": {
         "title": "Code",
@@ -439,7 +442,8 @@
         "watch",
         "f1",
         "neuroscience",
-        "mit"
+        "mit",
+        "ai-education"
       ],
       "content": {
         "title": "Game Design",
