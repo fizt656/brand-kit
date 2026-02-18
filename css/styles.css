@@ -253,7 +253,7 @@ body {
 }
 
 .edge.visible {
-  opacity: 0.35;
+  opacity: 0.5;
 }
 
 .edge.connected {
@@ -301,8 +301,7 @@ body {
     r var(--transition-fast),
     fill var(--transition-fast),
     filter var(--transition-fast);
-  stroke: var(--color-bg);
-  stroke-width: 2;
+  stroke: none;
 }
 
 .node:hover .node-circle,
