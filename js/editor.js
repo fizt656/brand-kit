@@ -791,11 +791,12 @@ const Editor = {
     const response = await fetch(
       url,
       {
+        // Note: can't set Cache-Control/Pragma headers due to browser CORS restrictions.
+        // Cache-busting is handled by the query param + fetch cache mode.
+        cache: 'no-store',
         headers: {
           'Authorization': `Bearer ${this.github.token}`,
-          'Accept': 'application/vnd.github.v3+json',
-          'Cache-Control': 'no-cache',
-          'Pragma': 'no-cache'
+          'Accept': 'application/vnd.github.v3+json'
         }
       }
     );
