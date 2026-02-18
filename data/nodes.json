@@ -33,7 +33,6 @@
       "y": 35,
       "connections": [
         "neurace",
-        "mit",
         "neuroscience"
       ],
       "content": {
@@ -95,9 +94,11 @@
       "y": 28,
       "connections": [
         "neuroscience",
-        "ai-education",
-        "f1",
-        "code"
+        "code",
+        "metal-guitar",
+        "local-ai-lab",
+        "ai-roleplay",
+        "multimodal-orchestration"
       ],
       "content": {
         "title": "MIT PhD Research",
@@ -186,7 +187,6 @@
         "code",
         "ai-roleplay",
         "family",
-        "mit",
         "neuroscience"
       ],
       "content": {
@@ -376,7 +376,8 @@
         "multimodal-orchestration",
         "machines",
         "f1",
-        "neuroscience"
+        "neuroscience",
+        "mit"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -396,7 +397,8 @@
         "code",
         "ai-education",
         "ai-roleplay",
-        "neuroscience"
+        "neuroscience",
+        "mit"
       ],
       "content": {
         "title": "Multimodal Orchestration",
@@ -414,7 +416,8 @@
         "making",
         "family",
         "center",
-        "flow-state"
+        "flow-state",
+        "mit"
       ],
       "content": {
         "title": "Guitar",
@@ -435,7 +438,8 @@
         "machines",
         "watch",
         "f1",
-        "neuroscience"
+        "neuroscience",
+        "mit"
       ],
       "content": {
         "title": "Game Design",
