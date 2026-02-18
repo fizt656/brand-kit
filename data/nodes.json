@@ -125,7 +125,8 @@
         "watch",
         "sparks",
         "metal-guitar",
-        "morning-ritual"
+        "morning-ritual",
+        "djing"
       ],
       "content": {
         "title": "Flow State",
@@ -208,7 +209,8 @@
         "flow-state",
         "making",
         "ai-roleplay",
-        "sparks"
+        "sparks",
+        "djing"
       ],
       "content": {
         "title": "Horology",
@@ -251,7 +253,12 @@
       "y": 85,
       "connections": [
         "making",
-        "sparks"
+        "sparks",
+        "flow-state",
+        "watch",
+        "code",
+        "metal-guitar",
+        "morning-ritual"
       ],
       "content": {
         "title": "DJing",
@@ -337,7 +344,8 @@
         "neurace",
         "making",
         "neuroscience",
-        "ai-education"
+        "ai-education",
+        "djing"
       ],
       "content": {
         "title": "Code",
@@ -420,7 +428,8 @@
         "family",
         "center",
         "flow-state",
-        "mit"
+        "mit",
+        "djing"
       ],
       "content": {
         "title": "Guitar",
@@ -465,7 +474,8 @@
         "heritage",
         "center",
         "flow-state",
-        "gym"
+        "gym",
+        "djing"
       ],
       "content": {
         "title": "Morning Ritual",
