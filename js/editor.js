@@ -695,17 +695,8 @@ const Editor = {
       const jsonString = JSON.stringify(exportData, null, 2);
       const content = btoa(unescape(encodeURIComponent(jsonString))); // Base64 encode
 
-      // Get current file SHA (required for updates)
-      let sha = await this.getFileSHA();
-
-      // First publish attempt
-      let publishResult = await this.updateGitHubFile(content, sha);
-
-      // Handle optimistic-lock SHA mismatch with one transparent retry
-      if (!publishResult.ok && this.isShaMismatchError(publishResult.errorMessage)) {
-        sha = await this.getFileSHA();
-        publishResult = await this.updateGitHubFile(content, sha);
-      }
+      // Publish with optimistic-lock retries (helps when repo moves between edits)
+      const publishResult = await this.publishWithRetries(content, 3);
 
       if (!publishResult.ok) {
         throw new Error(publishResult.errorMessage || 'Failed to publish');
@@ -722,6 +713,33 @@ const Editor = {
       btn.disabled = false;
       this.isPublishing = false;
     }
+  },
+
+  async publishWithRetries(content, maxAttempts = 3) {
+    let attempt = 0;
+    let lastResult = { ok: false, errorMessage: 'Unknown publish error' };
+
+    while (attempt < maxAttempts) {
+      attempt += 1;
+      const sha = await this.getFileSHA();
+      const result = await this.updateGitHubFile(content, sha);
+
+      if (result.ok) {
+        return result;
+      }
+
+      lastResult = result;
+
+      // Retry only on optimistic-lock style conflicts.
+      if (!this.isShaMismatchError(result.errorMessage) && result.status !== 409 && result.status !== 422) {
+        break;
+      }
+
+      // Tiny backoff before next SHA refresh/retry.
+      await new Promise(resolve => setTimeout(resolve, 250 * attempt));
+    }
+
+    return lastResult;
   },
 
   async updateGitHubFile(content, sha) {
