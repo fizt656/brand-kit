@@ -257,8 +257,7 @@
         "flow-state",
         "watch",
         "code",
-        "metal-guitar",
-        "morning-ritual"
+        "metal-guitar"
       ],
       "content": {
         "title": "DJing",
@@ -429,7 +428,8 @@
         "center",
         "flow-state",
         "mit",
-        "djing"
+        "djing",
+        "morning-ritual"
       ],
       "content": {
         "title": "Guitar",
@@ -475,7 +475,7 @@
         "center",
         "flow-state",
         "gym",
-        "djing"
+        "metal-guitar"
       ],
       "content": {
         "title": "Morning Ritual",
