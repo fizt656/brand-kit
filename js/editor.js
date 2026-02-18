@@ -735,8 +735,8 @@ const Editor = {
         break;
       }
 
-      // Tiny backoff before next SHA refresh/retry.
-      await new Promise(resolve => setTimeout(resolve, 250 * attempt));
+      // Backoff before next SHA refresh/retry (helps with GitHub edge caching).
+      await new Promise(resolve => setTimeout(resolve, 400 * attempt));
     }
 
     return lastResult;
@@ -784,12 +784,18 @@ const Editor = {
   },
 
   async getFileSHA() {
+    // Cache-bust the GitHub contents endpoint. After a successful PUT, the
+    // GET can briefly return a stale SHA via intermediary caching.
+    const url = `https://api.github.com/repos/${this.github.repo}/contents/${this.github.filePath}?ref=${this.github.branch}&_=${Date.now()}`;
+
     const response = await fetch(
-      `https://api.github.com/repos/${this.github.repo}/contents/${this.github.filePath}?ref=${this.github.branch}`,
+      url,
       {
         headers: {
           'Authorization': `Bearer ${this.github.token}`,
-          'Accept': 'application/vnd.github.v3+json'
+          'Accept': 'application/vnd.github.v3+json',
+          'Cache-Control': 'no-cache',
+          'Pragma': 'no-cache'
         }
       }
     );
