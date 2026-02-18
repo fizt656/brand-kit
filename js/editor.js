@@ -675,43 +675,40 @@ const Editor = {
       return;
     }
 
+    // Guard against accidental double-click / double-submit.
+    if (this.isPublishing) {
+      return;
+    }
+
     const btn = document.getElementById('publish-btn');
     const originalText = btn.textContent;
+
+    this.isPublishing = true;
 
     try {
       btn.textContent = 'Publishing...';
       btn.classList.add('publishing');
+      btn.disabled = true;
 
-      // Get current file SHA (required for updates)
-      const sha = await this.getFileSHA();
-
-      // Prepare content
+      // Prepare content once
       const exportData = this.getExportData();
       const jsonString = JSON.stringify(exportData, null, 2);
       const content = btoa(unescape(encodeURIComponent(jsonString))); // Base64 encode
 
-      // Update file via GitHub API
-      const response = await fetch(
-        `https://api.github.com/repos/${this.github.repo}/contents/${this.github.filePath}`,
-        {
-          method: 'PUT',
-          headers: {
-            'Authorization': `Bearer ${this.github.token}`,
-            'Content-Type': 'application/json',
-            'Accept': 'application/vnd.github.v3+json'
-          },
-          body: JSON.stringify({
-            message: 'Update nodes.json via editor',
-            content: content,
-            sha: sha,
-            branch: this.github.branch
-          })
-        }
-      );
+      // Get current file SHA (required for updates)
+      let sha = await this.getFileSHA();
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Failed to publish');
+      // First publish attempt
+      let publishResult = await this.updateGitHubFile(content, sha);
+
+      // Handle optimistic-lock SHA mismatch with one transparent retry
+      if (!publishResult.ok && this.isShaMismatchError(publishResult.errorMessage)) {
+        sha = await this.getFileSHA();
+        publishResult = await this.updateGitHubFile(content, sha);
+      }
+
+      if (!publishResult.ok) {
+        throw new Error(publishResult.errorMessage || 'Failed to publish');
       }
 
       this.showToast('Published to GitHub!', 'success');
@@ -722,7 +719,50 @@ const Editor = {
     } finally {
       btn.textContent = originalText;
       btn.classList.remove('publishing');
+      btn.disabled = false;
+      this.isPublishing = false;
     }
+  },
+
+  async updateGitHubFile(content, sha) {
+    const response = await fetch(
+      `https://api.github.com/repos/${this.github.repo}/contents/${this.github.filePath}`,
+      {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${this.github.token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify({
+          message: 'Update nodes.json via editor',
+          content,
+          sha,
+          branch: this.github.branch
+        })
+      }
+    );
+
+    if (response.ok) {
+      return { ok: true };
+    }
+
+    let errorMessage = `HTTP ${response.status}`;
+    try {
+      const error = await response.json();
+      errorMessage = error?.message || errorMessage;
+    } catch (_) {
+      // Keep fallback message
+    }
+
+    return { ok: false, status: response.status, errorMessage };
+  },
+
+  isShaMismatchError(message = '') {
+    const text = String(message).toLowerCase();
+    return text.includes('does not match') ||
+      (text.includes('sha') && text.includes('match')) ||
+      text.includes('stale');
   },
 
   async getFileSHA() {
