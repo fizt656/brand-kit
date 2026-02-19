@@ -17,8 +17,7 @@
         "making",
         "code",
         "metal-guitar",
-        "morning-ritual",
-        "ai-education"
+        "morning-ritual"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -33,11 +32,9 @@
       "x": 30,
       "y": 35,
       "connections": [
-        "center",
-        "code",
-        "local-ai-lab",
-        "multimodal-orchestration",
-        "ai-roleplay"
+        "neurace",
+        "mit",
+        "neuroscience"
       ],
       "content": {
         "title": "AI Education",
@@ -52,6 +49,7 @@
       "x": 12,
       "y": 50,
       "connections": [
+        "ai-education",
         "machines",
         "f1",
         "center",
@@ -72,6 +70,7 @@
       "x": 22,
       "y": 18,
       "connections": [
+        "ai-education",
         "mit",
         "f1",
         "center",
@@ -84,7 +83,7 @@
       ],
       "content": {
         "title": "Neuroscience",
-        "body": "Computational neuroscience, neuroimaging, EEG-based performance analysis, brain-computer interfaces for ALS patients—a thread that runs from my earliest lab work through everything I build today. The brain taught me systems thinking: how networks learn, adapt, and achieve more than any single node could alone. Those principles apply everywhere now—architecting machine learning systems, building high-performance teams, designing organizations where the whole exceeds the sum.",
+        "body": "Computational neuroscience, neuroimaging, EEG-based performance analysis, brain-computer interfaces for ALS patients—a thread that runs from my earliest lab work through everything I build today. In a way, the brain taught me systems thinking: how networks (whether cells, people, organizations, or countries) learn, adapt, and achieve more than any single node could alone. Those principles apply everywhere now, from architecting AI learning systems to building high-performance teams, to designing organizations where the whole exceeds the sum.",
         "image": null
       }
     },
@@ -96,11 +95,9 @@
       "y": 28,
       "connections": [
         "neuroscience",
-        "code",
-        "metal-guitar",
-        "local-ai-lab",
-        "ai-roleplay",
-        "multimodal-orchestration"
+        "ai-education",
+        "f1",
+        "code"
       ],
       "content": {
         "title": "MIT PhD Research",
@@ -125,8 +122,7 @@
         "watch",
         "sparks",
         "metal-guitar",
-        "morning-ritual",
-        "djing"
+        "morning-ritual"
       ],
       "content": {
         "title": "Flow State",
@@ -190,6 +186,7 @@
         "code",
         "ai-roleplay",
         "family",
+        "mit",
         "neuroscience"
       ],
       "content": {
@@ -209,8 +206,7 @@
         "flow-state",
         "making",
         "ai-roleplay",
-        "sparks",
-        "djing"
+        "sparks"
       ],
       "content": {
         "title": "Horology",
@@ -253,11 +249,7 @@
       "y": 85,
       "connections": [
         "making",
-        "sparks",
-        "flow-state",
-        "watch",
-        "code",
-        "metal-guitar"
+        "sparks"
       ],
       "content": {
         "title": "DJing",
@@ -342,9 +334,7 @@
         "mit",
         "neurace",
         "making",
-        "neuroscience",
-        "ai-education",
-        "djing"
+        "neuroscience"
       ],
       "content": {
         "title": "Code",
@@ -386,8 +376,7 @@
         "multimodal-orchestration",
         "machines",
         "f1",
-        "neuroscience",
-        "mit"
+        "neuroscience"
       ],
       "content": {
         "title": "Local AI Lab",
@@ -407,8 +396,7 @@
         "code",
         "ai-education",
         "ai-roleplay",
-        "neuroscience",
-        "mit"
+        "neuroscience"
       ],
       "content": {
         "title": "Multimodal Orchestration",
@@ -426,10 +414,7 @@
         "making",
         "family",
         "center",
-        "flow-state",
-        "mit",
-        "djing",
-        "morning-ritual"
+        "flow-state"
       ],
       "content": {
         "title": "Guitar",
@@ -450,9 +435,7 @@
         "machines",
         "watch",
         "f1",
-        "neuroscience",
-        "mit",
-        "ai-education"
+        "neuroscience"
       ],
       "content": {
         "title": "Game Design",
@@ -474,8 +457,7 @@
         "heritage",
         "center",
         "flow-state",
-        "gym",
-        "metal-guitar"
+        "gym"
       ],
       "content": {
         "title": "Morning Ritual",
