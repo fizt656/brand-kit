@@ -157,7 +157,7 @@
       "id": "machines",
       "label": "Driving",
       "hemisphere": "right",
-      "x": 70,
+      "x": 71,
       "y": 35,
       "connections": [
         "flow-state",
@@ -400,7 +400,7 @@
       ],
       "content": {
         "title": "Multimodal Orchestration",
-        "body": "Chaining models into creative pipelines—text to image to audio to video, often starting from messy conversational brainstorms. The interesting part isn't any single model; it's the orchestration. How do you move from a half-baked idea to finished media without losing the spark? That's the design problem I keep coming back to.",
+        "body": "How many different flavors of tokens can we smash together meaningfully?  For fun?  For impact?  Chaining models into creative pipelines—text to image to audio to video, often starting from messy conversational brainstorms. THIS is where we can turn messy—but meaningful—organic, multimodal interactions into structured metrics we can interrogate more intentionally.  This is where creative projects like immersive multi sensory role-play incubate the next generation of human measurement tools.",
         "image": null
       }
     },
