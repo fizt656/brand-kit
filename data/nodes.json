@@ -38,7 +38,7 @@
       ],
       "content": {
         "title": "AI Education",
-        "body": "I lead AI education strategy at a research and clinical medical center in Boston, focused on helping people across the organization fulfill our mission of care through AI and analytics. The work is about bridging: connecting awesome engineering teams building powerful tools with the people who use those tools to serve patients, researchers, and partners. Keeping the feedback loop between build-team and users healthy during unpredictable times. Compasses over maps. The machine handles the \"how\"; we reclaim the \"why.\"",
+        "body": "I lead AI education strategy at a major academic medical center, focused on helping people across the organization fulfill our mission through AI and analytics. The work is about bridging: connecting awesome engineering teams building powerful tools with the people who use those tools to serve patients, researchers, and partners. Compasses over maps. The machine handles the \"how\"; we reclaim the \"should.\"",
         "image": null
       }
     },
@@ -59,7 +59,7 @@
       ],
       "content": {
         "title": "NeuRace",
-        "body": "My company brought neurophysiology to motorsport. We worked with Pirelli World Challenge drivers and F1 development teams, using EEG and biometrics, along with a ton of vehicle-data, to optimize performance and decision-making under competition pressure. The questions that drove us:  What does \"the zone\" actually look like in the data—and can you train for it? Turns out elite performance isn't magic; it's measurable, and it's teachable. Those lessons followed me out of the paddock. The same principles that keep a driver locked in on lap 47 apply to building teams, shaping culture, and designing organizations that stay sharp when the stakes are high.",
+        "body": "My company brought neurophysiology to motorsport. We worked with Pirelli World Challenge drivers and F1 development teams, using EEG and biometrics to optimize performance and decision-making under competition pressure. The questions that drove us: How do you help someone think more clearly at 180 mph? What does \"the zone\" actually look like in the data—and can you train for it? Turns out elite performance isn't magic; it's measurable, and it's teachable. Those lessons followed me out of the paddock. The same principles that keep a driver locked in on lap 47 apply to building teams, shaping culture, and designing organizations that stay sharp when the stakes are high.",
         "image": null
       }
     },
@@ -83,7 +83,7 @@
       ],
       "content": {
         "title": "Neuroscience",
-        "body": "Computational neuroscience, neuroimaging, EEG-based performance analysis, brain-computer interfaces for ALS patients—a thread that runs from my earliest lab work through everything I build today. In a way, the brain taught me systems thinking: how networks (whether cells, people, organizations, or countries) learn, adapt, and achieve more than any single node could alone. Those principles apply everywhere now, from architecting AI learning systems to building high-performance teams, to designing organizations where the whole exceeds the sum.",
+        "body": "Computational neuroscience, neuroimaging, EEG-based performance analysis, brain-computer interfaces for ALS patients—a thread that runs from my earliest lab work through everything I build today. The brain taught me systems thinking: how networks learn, adapt, and achieve more than any single node could alone. Those principles apply everywhere now—architecting machine learning systems, building high-performance teams, designing organizations where the whole exceeds the sum.",
         "image": null
       }
     },
@@ -101,7 +101,7 @@
       ],
       "content": {
         "title": "MIT PhD Research",
-        "body": "My doctoral work in the Harvard-MIT HST program studied how auditory-motor networks adapt—structurally and functionally—through long-term training and in states of disrupted function. I used diffusion-tensor imaging and fMRI to map the arcuate fasciculus and the regions it connects, and understand how singers optimize the pathways that connect hearing to action. The question that drove it: how do intense experiences rewire the brain? Still asking that today, just in different domains, and not always about carbon-based intelligence.",
+        "body": "My doctoral work in the Harvard-MIT HST program studied how auditory-motor networks adapt—structurally and functionally—through long-term training and in states of disorder. I used diffusion-tensor imaging and fMRI to map the arcuate fasciculus and understand how singers optimize the pathways that connect hearing to action. The question that drove it: how do intense experiences rewire the brain? Still asking that today, just in different domains.",
         "image": null
       }
     },
@@ -126,7 +126,7 @@
       ],
       "content": {
         "title": "Flow State",
-        "body": "The moment the inner narrator goes quiet and something else takes over. I find it at 7,500 RPM on a back road, deep in a codebase at 2 AM, in the lap pool, and in unhurried mornings with my daughter. The same full-presence signal, different contexts. This is what connects everything I study, work on, play with, and everything I do.",
+        "body": "The moment the inner narrator goes quiet and something else takes over. I find it at 7,500 RPM on a back road, deep in a codebase at 2 AM, under a barbell, and in unhurried mornings with my daughter. The same full-presence signal, different contexts. This is what connects everything I study and everything I do.",
         "image": null
       }
     },
@@ -157,7 +157,7 @@
       "id": "machines",
       "label": "Driving",
       "hemisphere": "right",
-      "x": 71,
+      "x": 70,
       "y": 35,
       "connections": [
         "flow-state",
@@ -169,7 +169,7 @@
       ],
       "content": {
         "title": "Driving",
-        "body": "Spirited back roads, track days chasing the perfect line, the meditation of managing a machine at its limits. Every corner is a feedback loop: entry speed, brake point, apex, throttle out. You optimize the line the same way you optimize anything—small adjustments, constant attention, knowing when to push and when to let the system breathe. It's problem-solving and systems optimization at 7,500 RPM. And somewhere in lap three, the thinking stops and the doing takes over.  That's what we're all chasing, isn't it?",
+        "body": "Spirited back roads, track days chasing the perfect line, the meditation of managing a machine at its limits. Every corner is a feedback loop: entry speed, brake point, apex, throttle out. You optimize the line the same way you optimize anything—small adjustments, constant attention, knowing when to push and when to let the system breathe. It's problem-solving at 7,500 RPM. And somewhere in lap three, the thinking stops and the doing takes over.",
         "image": null
       }
     },
@@ -191,7 +191,7 @@
       ],
       "content": {
         "title": "Formula 1",
-        "body": "Baz raised us on formula 1 races early in the morning—every practice, every qualifying session, every race, live, no matter what time it started. Waking up to watch cars go in circles sounds ridiculous until you realize you're studying peak engineering, strategy under pressure, and what happens when milliseconds separate victory from disaster. You're also making timeless family memories, my dad talking about how 'when it looks like he's driving the car slowly with no drama... THAT'S when the car is fastest'.  Calm precision, and resolve.  I still think too much about suspension geometry and tire compounds early in the morning. The intersection of human performance and precision engineering. Margins are everything. Lessons everywhere.",
+        "body": "Baz raised us on this—every qualifying session, every race, even the ones that started at 5 AM. Waking up early to watch cars go in circles sounds ridiculous until you realize you're studying peak engineering, strategy under pressure, and what happens when milliseconds separate victory from disaster. I still think too much about suspension geometry and tire compounds. The intersection of human performance and precision engineering. Margins are everything. Lessons everywhere.",
         "image": null
       }
     },
@@ -210,7 +210,7 @@
       ],
       "content": {
         "title": "Horology",
-        "body": "Mechanical movements, case design, the obsessive craft of making something that keeps time without a battery. Yes, it sounds cheesy. Yes, I know a $20 quartz is more accurate. But there's something about centuries of accumulated knowledge sitting on your wrist, ticking away, that I can't explain rationally. Dream: own a watch repair shop someday. I *will* do it. Reach out if you want to partner on this. I'm serious.",
+        "body": "Mechanical movements, case design, the obsessive craft of making something that keeps time without a battery. Yes, it sounds cheesy. Yes, I know a $20 quartz is more accurate. But there's something about centuries of accumulated knowledge sitting on your wrist, ticking away, that I can't explain rationally. Dream: own a watch repair shop someday. Reach out if you want to partner on this. I'm serious.",
         "image": null
       }
     },
@@ -237,7 +237,7 @@
       ],
       "content": {
         "title": "Making",
-        "body": "Music production, as well as everything I learned from working with builders way more build-y than myself in fabrication and design shops taught me about flow states long before I studied them scientifically—and signal processing taught me how systems transform inputs into outputs (and everything that can happen in between), which turned out to be useful everywhere. Guitar, drums, whatever's in front of me—there's a moment where the technical thinking stops and something older takes over, maybe something more limbic. \n\nThese are the spaces where I'm not optimizing anything. Just making.",
+        "body": "Music production taught me about flow states long before I studied them scientifically—and signal processing taught me how systems transform inputs into outputs, which turned out to be useful everywhere. Guitar, drums, whatever's in front of me—there's a moment where the technical thinking stops and something older takes over. These are the spaces where I'm not optimizing anything. Just making.",
         "image": null
       }
     },
@@ -253,7 +253,7 @@
       ],
       "content": {
         "title": "DJing",
-        "body": "House music. Reading the room, building energy, finding the groove that makes people move without thinking about it.  Same skills as any flow activity: presence, responsiveness, knowing when to hold to the set list, and when to let go of the plan. The best sets are conversations you didn't plan to have.",
+        "body": "House music. Reading the room, building energy, finding the groove that makes people move without thinking about it. Same skills as any flow activity: presence, responsiveness, knowing when to let go of the plan. The best sets are conversations you didn't plan to have.",
         "image": null
       }
     },
@@ -269,7 +269,7 @@
       ],
       "content": {
         "title": "Sunday Kitchen Club",
-        "body": "Sunday Kitchen Club. Slow cooking with the fam on Sundays, Lebanese and Spanish influences, the kind of meal that takes all day and nobody's in a rush. Good food works like good music—patience, attention, letting the ingredients do what they want to do. One layer at a time.",
+        "body": "Sunday Kitchen Club. Slow cooking, Lebanese and Spanish influences, the kind of meal that takes all day and nobody's in a rush. Good food works like good music—patience, attention, letting the ingredients do what they want to do. One layer at a time.",
         "image": null
       }
     },
@@ -289,7 +289,7 @@
       ],
       "content": {
         "title": "Heritage",
-        "body": "Grew up in Beirut, came to the US at 17. Learned early: read rooms fast, allocate scarce resources, stay calm when the stakes are real. Resourcefulness, pattern-matching, knowing when to push and when to disappear. Those instincts transferred into how I build systems, navigate ambiguity, and stay effective when things get loud.",
+        "body": "Grew up in Beirut, came to the US at 17. Learned early: read rooms fast, allocate scarce resources, stay calm when the stakes are real. Resourcefulness, pattern-matching, knowing when to push and when to disappear. Those instincts transferred—into how I build systems, navigate ambiguity, and stay effective when things get loud.",
         "image": null
       }
     },
@@ -359,7 +359,7 @@
       ],
       "content": {
         "title": "Gym",
-        "body": "Training as daily practice (mostly daily anyway). Strength, endurance, the discipline of showing up when you don't feel like it. The simplest feedback loop: effort in, clarity out. Everything else runs better when this part is consistent.",
+        "body": "Training as daily practice. Strength, endurance, the discipline of showing up when you don't feel like it. The simplest feedback loop: effort in, clarity out. Everything else runs better when this part is consistent.",
         "image": null
       }
     },
@@ -380,7 +380,7 @@
       ],
       "content": {
         "title": "Local AI Lab",
-        "body": "GPUs humming in the study at home, models running locally, no cloud required. I like building AI systems I can touch—fast, private, hands-on, and integrating the latest cutting edge open-source toys (almost a daily refresh since 2016). This is the sandbox where I make fun projects that help me make mistakes as fast I can, so I can learn and test what's possible before it goes anywhere else. For me, more than half the fun is here.",
+        "body": "GPUs humming in the basement, models running locally, no cloud required. I like building AI systems I can touch—fast, private, hands-on. This is the sandbox where I test what's possible before it goes anywhere else. Half the fun is the infrastructure itself.",
         "image": null
       }
     },
@@ -400,7 +400,7 @@
       ],
       "content": {
         "title": "Multimodal Orchestration",
-        "body": "How many different flavors of tokens can we smash together meaningfully?  For fun?  For impact?  Chaining models into creative pipelines—text to image to audio to video, often starting from messy conversational brainstorms. THIS is where we can turn messy—but meaningful—organic, multimodal interactions into structured metrics we can interrogate more intentionally.  This is where creative projects like immersive multi sensory role-play incubate the next generation of human measurement tools.",
+        "body": "Chaining models into creative pipelines—text to image to audio to video, often starting from messy conversational brainstorms. The interesting part isn't any single model; it's the orchestration. How do you move from a half-baked idea to finished media without losing the spark? That's the design problem I keep coming back to.",
         "image": null
       }
     },
@@ -439,7 +439,7 @@
       ],
       "content": {
         "title": "Game Design",
-        "body": "Using emerging tech to build immersive experiences—persona-based roleplays, rich multimodal interaction, worlds that respond to you. Some of this is serious: enterprise training, simulations that teach through doing. Some of it is just for fun: anime aesthetics, cyberpunk vibes, seeing how far the tools can stretch. Other times, it's thinking through persona-based training for a technical skill or new set of competencies. The line between play and impact keeps getting blurrier, and I like it there.",
+        "body": "Using emerging tech to build immersive experiences—persona-based roleplays, rich multimodal interaction, worlds that respond to you. Some of this is serious: enterprise training, simulations that teach through doing. Some of it is just for fun: anime aesthetics, cyberpunk vibes, seeing how far the tools can stretch. The line between play and impact keeps getting blurrier, and I like it there.",
         "image": null
       }
     },
@@ -461,7 +461,7 @@
       ],
       "content": {
         "title": "Morning Ritual",
-        "body": "Swim, weights, and steam room on gym days. Breakfast with the family on the others—slow early mornings, coffee, and connection before the hustle starts. Either way, it's the anchor. The rest of the day runs differently when this part happens.",
+        "body": "Swim, weights, and steam room on gym days. Breakfast with Maria and Cleo Mayyada on the others—slow mornings, good coffee, connection before the noise starts. Either way, it's the anchor. The rest of the day runs differently when this part happens.",
         "image": null
       }
     },
@@ -481,8 +481,8 @@
         "sparks"
       ],
       "content": {
-        "title": "Swimming",
-        "body": "When I was barely 10, my parents (RIP) take us out wayyy past the buoys into deep water, then we’d free-dive for sand off the bottom (5-7m… the water much colder out there). We’d compete for who could go all the way down, get the sand and come back up quickest… it was our little afternoon game as a family. \n\nAfter that, we’d swim the whole way back. No breaks, no floaty things. They never panicked. Never said “stay safe in the shallows.” Just: go for it. If you need my shoulder, you can have it. ",
+        "title": "New Node",
+        "body": "",
         "image": null
       }
     }
