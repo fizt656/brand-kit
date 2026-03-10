@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Dashboard Live v1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <style>
+    :root {
+      --bg:#faf8f3;
+      --card:#fffdf9;
+      --ink:#1f1f1f;
+      --muted:#665f54;
+      --gold:#c9a962;
+      --line:#eadfc4;
+      --soft:#fff7e8;
+      --track:#efe4cb;
+      --on:#2e6b4f;
+      --watch:#8b641f;
+      --risk:#8f3c2f;
+    }
+    * { box-sizing:border-box; }
+    body { background: var(--bg); color: var(--ink); }
+    .dash-wrap { max-width: 1220px; margin: 22px auto 48px; padding: 0 18px; }
+    .kicker { font: 500 11px/1.4 "JetBrains Mono",monospace; color:#927233; letter-spacing:.05em; text-transform:uppercase; }
+    h1 { font-family:"Playfair Display",serif; margin:6px 0 10px; font-size: 36px; }
+    .sub { color: var(--muted); margin-bottom: 14px; max-width: 840px; }
+    .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin: 10px 0 14px; }
+    .btn { border:1px solid var(--gold); background:var(--soft); color:#6d5623; border-radius:999px; padding:8px 13px; font-size:12px; cursor:pointer; text-decoration:none; }
+    .btn:hover { filter: brightness(0.98); }
+    .meta-strip { display:grid; grid-template-columns: 1.35fr .95fr; gap:12px; margin-bottom:12px; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow: 0 1px 0 rgba(31,31,31,.02); }
+    .card h2 { margin:0 0 8px; font-size:18px; font-family:"Playfair Display",serif; }
+    .editable { min-height: 96px; outline:none; border:1px dashed transparent; padding:6px; border-radius:8px; }
+    .editable:focus { border-color: var(--gold); background:#fffdfa; }
+    .mini-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:10px; margin:12px 0 14px; }
+    .stat { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px; }
+    .stat .label { font: 500 11px/1.4 "JetBrains Mono",monospace; text-transform:uppercase; color:#8a7550; letter-spacing:.04em; }
+    .stat .value { margin-top:6px; font-size:22px; font-weight:600; font-family:"Playfair Display",serif; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:14px; background:var(--card); }
+    table { width:100%; border-collapse: collapse; }
+    th, td { border-bottom:1px solid #efe6d2; padding:10px 10px; font-size:13px; text-align:left; vertical-align:top; }
+    th { background:#f8f2e5; font-weight:600; position:sticky; top:0; z-index:2; white-space:nowrap; }
+    tr:last-child td { border-bottom:none; }
+    td[contenteditable="true"] { outline:none; border:1px dashed transparent; border-radius:6px; }
+    td[contenteditable="true"]:focus { border-color: var(--gold); background:#fffdfa; }
+    .lane-col { font-weight:600; min-width:160px; }
+    .priority-pill, .status-pill {
+      display:inline-flex; align-items:center; gap:6px; border-radius:999px; padding:4px 9px; font-size:11px; font-weight:600; white-space:nowrap;
+    }
+    .priority-pill { background:#f6eddc; color:#6f5521; }
+    .priority-H { background:#efe1cb; color:#71461b; }
+    .priority-M { background:#f4edd8; color:#7a6221; }
+    .priority-L { background:#f3f0e7; color:#5f5b51; }
+    .status-on-track { background:#eaf4ef; color:var(--on); }
+    .status-watch { background:#fbf2de; color:var(--watch); }
+    .status-at-risk { background:#f8e5e0; color:var(--risk); }
+    .lanes { margin-top:14px; display:grid; grid-template-columns:repeat(2,minmax(280px,1fr)); gap:12px; }
+    .lane h3 { margin:0 0 8px; font-size:15px; font-family:"Playfair Display",serif; }
+    .lane ul { margin:0; padding-left:18px; }
+    .lane li { margin:6px 0; }
+    .mono { font-family:"JetBrains Mono",monospace; font-size:11px; color:#86755d; }
+    .foot { margin-top:14px; color:#7a6f5e; font-size:12px; }
+    @media (max-width: 1000px){ .meta-strip, .lanes, .mini-grid { grid-template-columns:1fr; } h1{font-size:30px;} }
+  </style>
+</head>
+<body>
+  <header id="site-header" class="cv-header">
+    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html" class="nav-btn nav-link">Main</a>
+      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
+    </nav>
+  </header>
+
+  <main class="dash-wrap">
+    <div class="kicker">Unlisted · Live Tool · v1</div>
+    <h1>Dashboard Live v1</h1>
+    <div class="sub">A single weekly control surface across six lanes. Edit directly in the page. Changes auto-save in this browser, so this works well as a personal live dashboard prototype.</div>
+
+    <div class="toolbar">
+      <button class="btn" id="saveBtn">Save now</button>
+      <button class="btn" id="resetBtn">Reset to defaults</button>
+      <button class="btn" id="copyBtn">Copy snapshot</button>
+      <span class="mono" id="saveState">Not saved yet</span>
+    </div>
+
+    <div class="mini-grid">
+      <section class="stat">
+        <div class="label">Week of</div>
+        <div class="value" id="weekLabel">March 10, 2026</div>
+      </section>
+      <section class="stat">
+        <div class="label">High-priority lanes</div>
+        <div class="value" id="highCount">0</div>
+      </section>
+      <section class="stat">
+        <div class="label">Lanes on watch / risk</div>
+        <div class="value" id="watchCount">0</div>
+      </section>
+    </div>
+
+    <div class="meta-strip">
+      <section class="card">
+        <h2>Top 3 Outcomes This Week</h2>
+        <div id="top3" class="editable" contenteditable="true"></div>
+      </section>
+      <section class="card">
+        <h2>Critical Meetings / Deadlines</h2>
+        <div id="critical" class="editable" contenteditable="true"></div>
+      </section>
+    </div>
+
+    <div class="table-wrap">
+      <table id="controlTable">
+        <thead>
+          <tr>
+            <th>Lane</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Next Action</th>
+            <th>Due</th>
+            <th>Owner / Partner</th>
+            <th>Risks / Blockers</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <div class="lanes" id="laneNotes"></div>
+
+    <div class="foot">Seeded from the March dashboard proposal and weekly control draft. This is intentionally lightweight for fast daily use.</div>
+  </main>
+
+  <script>
+    const STORAGE_KEY = 'dashboard_live_v1_state';
+    const defaults = {
+      weekLabel: 'March 10, 2026',
+      top3: `<ol><li>Launch and run dashboard control system v1</li><li>Send Ceravasc follow-up after final check</li><li>Prepare Choueiri intro package handoff readiness</li></ol>`,
+      critical: `<ul><li>Ceravasc follow-up send window</li><li>Dashboard setup and first live use this week</li><li>DFCI innovation-intro package stabilization</li></ul>`,
+      lanes: [
+        ['In-Flight Work','H','On Track','Start daily dashboard routine and log the first 3 days','Wed','Gus','New habit risk if not time-boxed'],
+        ['To-Dos','H','On Track','Prioritize active tasks into Do this week, Next, and Backlog buckets','Mon','Gus','Overloaded list without ruthless filtering'],
+        ['Workshops','M','Watch','Pull upcoming workshop dates and prep needs from calendar/source notes','Tue','Gus','Calendar still needs lane-specific extraction'],
+        ['Outreach','H','On Track','Run final send check and send Ceravasc follow-up email','Mon','Gus / Dan','Delay risk if over-edited'],
+        ['Projects','H','On Track','Keep Choueiri and Ceravasc files current; continue dashboard project execution notes','This week','Gus','Context spread across folders if not maintained'],
+        ['Meeting Prep','M','Watch','Seed brief template for likely Ceravasc follow-up call and DFCI intro conversations','Tue','Gus','No confirmed times yet']
+      ],
+      notes: {
+        'In-Flight Work':['Dashboard control rhythm','Ceravasc final send','Choueiri handoff package'],
+        'To-Dos':['Do this week / Next / Backlog buckets','Hard cuts over accumulation','Keep actions dated'],
+        'Workshops':['Upcoming sessions','Prep requirements','Role-specific extraction'],
+        'Outreach':['Ceravasc follow-up','Partner timing','Need crisp send/no-send decisions'],
+        'Projects':['Choueiri','Ceravasc','Dashboard live v1'],
+        'Meeting Prep':['Ceravasc follow-up call brief','DFCI intro conversation prep']
+      }
+    };
+
+    const el = id => document.getElementById(id);
+
+    function stateNow(){
+      const rows = [...document.querySelectorAll('#controlTable tbody tr')].map(tr => [...tr.querySelectorAll('td')].map(td=>td.dataset.raw || td.innerText));
+      const notes = {};
+      document.querySelectorAll('.lane').forEach(box=>{
+        const lane = box.dataset.lane;
+        notes[lane] = [...box.querySelectorAll('li')].map(li=>li.innerText);
+      });
+      return {
+        weekLabel: el('weekLabel').innerText,
+        top3: el('top3').innerHTML,
+        critical: el('critical').innerHTML,
+        lanes: rows,
+        notes
+      };
+    }
+
+    function statusClass(value){
+      const v = value.trim().toLowerCase();
+      if (v.includes('risk')) return 'status-at-risk';
+      if (v.includes('watch')) return 'status-watch';
+      return 'status-on-track';
+    }
+
+    function priorityClass(value){
+      const v = value.trim().toUpperCase();
+      if (v === 'H') return 'priority-H';
+      if (v === 'M') return 'priority-M';
+      return 'priority-L';
+    }
+
+    function pill(text, cls, kind){
+      return `<span class="${kind} ${cls}">${text}</span>`;
+    }
+
+    function recalcStats(state){
+      const high = state.lanes.filter(r => (r[1] || '').trim().toUpperCase() === 'H').length;
+      const watch = state.lanes.filter(r => {
+        const s = (r[2] || '').trim().toLowerCase();
+        return s.includes('watch') || s.includes('risk');
+      }).length;
+      el('highCount').textContent = high;
+      el('watchCount').textContent = watch;
+    }
+
+    function save(){
+      const snapshot = stateNow();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
+      recalcStats(snapshot);
+      el('saveState').textContent = `Saved ${new Date().toLocaleTimeString()}`;
+    }
+
+    function render(state){
+      el('weekLabel').textContent = state.weekLabel || defaults.weekLabel;
+      el('top3').innerHTML = state.top3;
+      el('critical').innerHTML = state.critical;
+
+      const tbody = document.querySelector('#controlTable tbody');
+      tbody.innerHTML = '';
+      state.lanes.forEach(row => {
+        const tr = document.createElement('tr');
+        row.forEach((cell, i) => {
+          const td = document.createElement('td');
+          const raw = cell || '';
+          td.dataset.raw = raw;
+          if (i === 0) {
+            td.className = 'lane-col';
+            td.textContent = raw;
+          } else if (i === 1) {
+            td.contentEditable = 'true';
+            td.innerHTML = pill(raw, priorityClass(raw), 'priority-pill');
+          } else if (i === 2) {
+            td.contentEditable = 'true';
+            td.innerHTML = pill(raw, statusClass(raw), 'status-pill');
+          } else {
+            td.contentEditable = 'true';
+            td.textContent = raw;
+          }
+          tr.appendChild(td);
+        });
+        tbody.appendChild(tr);
+      });
+
+      const wrap = el('laneNotes');
+      wrap.innerHTML = '';
+      Object.entries(state.notes).forEach(([lane, items]) => {
+        const section = document.createElement('section');
+        section.className = 'card lane';
+        section.dataset.lane = lane;
+        section.innerHTML = `<h3>${lane} Notes</h3><ul>${items.map(i=>`<li contenteditable="true">${i}</li>`).join('')}</ul>`;
+        wrap.appendChild(section);
+      });
+
+      bindAutoSave();
+      recalcStats(state);
+    }
+
+    function normalizeEditableCell(td, index){
+      const text = td.innerText.trim();
+      td.dataset.raw = text;
+      if (index === 1) td.innerHTML = pill(text || 'M', priorityClass(text || 'M'), 'priority-pill');
+      if (index === 2) td.innerHTML = pill(text || 'Watch', statusClass(text || 'Watch'), 'status-pill');
+    }
+
+    function bindAutoSave(){
+      document.querySelectorAll('#controlTable tbody tr').forEach(tr => {
+        [...tr.querySelectorAll('td')].forEach((td, index) => {
+          if (td.contentEditable === 'true') {
+            td.addEventListener('focus', () => {
+              td.textContent = td.dataset.raw || td.innerText;
+            });
+            td.addEventListener('blur', () => {
+              normalizeEditableCell(td, index);
+              save();
+            });
+          }
+        });
+      });
+      document.querySelectorAll('.editable, .lane li[contenteditable="true"]').forEach(elm => {
+        elm.addEventListener('blur', save);
+      });
+    }
+
+    function init(){
+      const saved = localStorage.getItem(STORAGE_KEY);
+      const state = saved ? JSON.parse(saved) : defaults;
+      render(state);
+      el('saveState').textContent = saved ? 'Loaded saved state' : 'Loaded defaults';
+    }
+
+    el('saveBtn').onclick = save;
+    el('resetBtn').onclick = () => {
+      if (!confirm('Reset dashboard to default seed data?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      render(defaults);
+      save();
+    };
+    el('copyBtn').onclick = async () => {
+      const s = stateNow();
+      const text = [
+        `Dashboard Live v1 — ${s.weekLabel}`,
+        '',
+        'Top 3 Outcomes',
+        el('top3').innerText.trim(),
+        '',
+        'Critical Meetings / Deadlines',
+        el('critical').innerText.trim(),
+        '',
+        'Control Board',
+        ...s.lanes.map(r => `- ${r[0]} | ${r[1]} | ${r[2]} | ${r[3]} | Due: ${r[4]} | ${r[5]} | Blockers: ${r[6]}`)
+      ].join('\n');
+      try {
+        await navigator.clipboard.writeText(text);
+        el('saveState').textContent = 'Snapshot copied';
+      } catch {
+        el('saveState').textContent = 'Copy failed on this browser';
+      }
+    };
+
+    init();
+  </script>
+</body>
+</html>
