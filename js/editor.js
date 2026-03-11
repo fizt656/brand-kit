@@ -18,6 +18,16 @@ const Editor = {
   editForm: null,
   emptyState: null,
 
+  // Drag state
+  drag: {
+    active: false,
+    nodeId: null,
+    startX: 0,
+    startY: 0,
+    moved: false,       // true once pointer travels past threshold
+    threshold: 4        // px in screen space before we commit to a drag
+  },
+
   // GitHub config
   github: {
     token: null,
@@ -52,6 +62,7 @@ const Editor = {
 
     // Bind events
     this.bindEvents();
+    this.bindDragEvents();
 
     // Update publish button state
     this.updatePublishButton();
@@ -181,12 +192,14 @@ const Editor = {
         group.classList.add('selected');
       }
 
-      // Determine node size
-      let radius = 6;
+      // Determine node size — scales with connection count
+      const connCount = node.connections.length;
+      let radius;
       if (node.id === 'center') {
         radius = 12;
-      } else if (node.hemisphere === 'center') {
-        radius = 8;
+      } else {
+        // Base 4, +0.6 per connection, capped at 11
+        radius = Math.min(4 + connCount * 0.6, 11);
       }
 
       // Circle element
@@ -338,10 +351,19 @@ const Editor = {
 
   bindNodeEvents() {
     document.querySelectorAll('.node').forEach(nodeEl => {
-      nodeEl.addEventListener('click', (e) => {
+      // Use mousedown to start potential drag (click is handled on mouseup)
+      nodeEl.addEventListener('mousedown', (e) => {
+        e.preventDefault();
         e.stopPropagation();
-        this.selectNode(nodeEl.dataset.id);
+        this.onDragStart(nodeEl.dataset.id, e.clientX, e.clientY);
       });
+
+      // Touch support
+      nodeEl.addEventListener('touchstart', (e) => {
+        e.stopPropagation();
+        const touch = e.touches[0];
+        this.onDragStart(nodeEl.dataset.id, touch.clientX, touch.clientY);
+      }, { passive: true });
 
       nodeEl.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -349,6 +371,110 @@ const Editor = {
           this.selectNode(nodeEl.dataset.id);
         }
       });
+    });
+  },
+
+  // ================================
+  // DRAG & DROP
+  // ================================
+
+  // Convert screen (client) coordinates to SVG viewBox coordinates
+  screenToSVG(clientX, clientY) {
+    const pt = this.svg.createSVGPoint();
+    pt.x = clientX;
+    pt.y = clientY;
+    const ctm = this.svg.getScreenCTM().inverse();
+    const svgPt = pt.matrixTransform(ctm);
+    return svgPt;
+  },
+
+  onDragStart(nodeId, clientX, clientY) {
+    this.drag.active = true;
+    this.drag.nodeId = nodeId;
+    this.drag.startX = clientX;
+    this.drag.startY = clientY;
+    this.drag.moved = false;
+  },
+
+  onDragMove(clientX, clientY) {
+    if (!this.drag.active) return;
+
+    // Check threshold before committing to drag
+    if (!this.drag.moved) {
+      const dx = clientX - this.drag.startX;
+      const dy = clientY - this.drag.startY;
+      if (Math.abs(dx) < this.drag.threshold && Math.abs(dy) < this.drag.threshold) return;
+      this.drag.moved = true;
+
+      // Select the node when drag starts (so the form shows)
+      if (this.selectedNodeId !== this.drag.nodeId) {
+        this.selectNode(this.drag.nodeId);
+      }
+    }
+
+    const node = this.nodesMap[this.drag.nodeId];
+    if (!node) return;
+
+    // Convert screen position to viewBox coordinates, then to percentage
+    const svgPt = this.screenToSVG(clientX, clientY);
+    const newX = Math.max(0, Math.min(100, (svgPt.x / this.viewBox.width) * 100));
+    const newY = Math.max(0, Math.min(100, (svgPt.y / this.viewBox.height) * 100));
+
+    // Round to 1 decimal for clean values
+    node.x = Math.round(newX);
+    node.y = Math.round(newY);
+
+    // Update visual position (node + edges)
+    this.updateNodePosition(node);
+
+    // Update form fields if this is the selected node
+    if (this.selectedNodeId === this.drag.nodeId) {
+      document.getElementById('node-x').value = node.x;
+      document.getElementById('node-y').value = node.y;
+    }
+  },
+
+  onDragEnd() {
+    if (!this.drag.active) return;
+
+    const wasDragged = this.drag.moved;
+    const nodeId = this.drag.nodeId;
+
+    // Reset drag state
+    this.drag.active = false;
+    this.drag.nodeId = null;
+    this.drag.moved = false;
+
+    // If we didn't drag, treat as a click → select node
+    if (!wasDragged) {
+      this.selectNode(nodeId);
+    }
+  },
+
+  bindDragEvents() {
+    // Mouse move/up on document so drag works even when pointer leaves SVG
+    document.addEventListener('mousemove', (e) => {
+      this.onDragMove(e.clientX, e.clientY);
+    });
+
+    document.addEventListener('mouseup', () => {
+      this.onDragEnd();
+    });
+
+    // Touch move/end
+    this.svg.addEventListener('touchmove', (e) => {
+      if (!this.drag.active) return;
+      e.preventDefault(); // prevent scroll while dragging
+      const touch = e.touches[0];
+      this.onDragMove(touch.clientX, touch.clientY);
+    }, { passive: false });
+
+    document.addEventListener('touchend', () => {
+      this.onDragEnd();
+    });
+
+    document.addEventListener('touchcancel', () => {
+      this.onDragEnd();
     });
   },
 
@@ -460,8 +586,8 @@ const Editor = {
         break;
 
       case 'hemisphere':
-        // Update node class
-        nodeEl.className = `node hemisphere-${value} visible selected`;
+        // Update node class (must use setAttribute for SVG elements)
+        nodeEl.setAttribute('class', `node hemisphere-${value} visible selected`);
         break;
 
       case 'x':

@@ -108,13 +108,14 @@ const Graph = {
       group.setAttribute('role', 'button');
       group.setAttribute('aria-label', node.label);
 
-      // Determine node size - much smaller now
-      // Larger nodes for better touch targets
-      let radius = 8;
+      // Determine node size — scales with connection count
+      const connCount = node.connections.length;
+      let radius;
       if (node.id === 'center') {
         radius = 16;
-      } else if (node.hemisphere === 'center') {
-        radius = 10;
+      } else {
+        // Base 5, +0.8 per connection, capped at 14
+        radius = Math.min(5 + connCount * 0.8, 14);
       }
 
       // Circle element

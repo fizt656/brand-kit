@@ -145,6 +145,11 @@
 /* Make all nodes visible immediately in editor */
 #graph-panel .node {
   opacity: 1;
+  cursor: grab;
+}
+
+#graph-panel .node:active {
+  cursor: grabbing;
 }
 
 #graph-panel .edge {
