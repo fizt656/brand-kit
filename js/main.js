@@ -26,6 +26,12 @@ const ARTICLES = [
     kicker: 'AI Harness',
     summary: 'Execution playbook: practical design choices for teams that want durable leverage, not demo theater.',
     href: 'articles/harness-part-3.html'
+  },
+  {
+    title: 'Agents Are the New Attack Surface',
+    kicker: 'AI Security',
+    summary: 'Why the real risk is usually not the model itself, but the permissions, tools, habits, and setup around it.',
+    href: 'articles/agents-attack-surface.html'
   }
 ];
 

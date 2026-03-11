@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Agents Are the New Attack Surface</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/article.css" />
+</head>
+<body class="article-page">
+  <header id="site-header" class="cv-header">
+    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="../index.html" class="nav-btn nav-link">Main</a>
+      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
+    </nav>
+  </header>
+
+  <main class="article-wrap">
+    <article class="article-card">
+      <div class="article-top">
+        <div class="article-kicker">AI Security</div>
+        <h1 class="article-title">Agents Are the New Attack Surface</h1>
+        <p class="article-subtitle">Not because the model is magic. Because the whole setup around it matters more than most people think.</p>
+        <div class="article-meta">March 2026</div>
+      </div>
+      <div class="article-body">
+        <p>The easy version of this story is panic.</p>
+        <p>I do not think panic is useful.</p>
+        <p>But I do think we are kidding ourselves if we act like the risk is just “the model.” More often, the risk is the setup around it: what the agent can access, what it is allowed to do, what instructions it is taking in, and whether the person using it understands the blast radius.</p>
+        <p>That is really just a security version of a point I have made before: the strategic unit is the harness, not the model. <a href="./harness-part-1.html">I wrote about that here</a>.</p>
+        <p>Think about music for a second.</p>
+        <p>A great guitarist through a bad amp, noisy cable, and cheap pedal chain is not going to sound great for very long. The raw talent matters, sure. But the rig matters too. Sometimes, to some audiences, maybe most, it matters more.</p>
+        <p>Agents are like that.</p>
+        <p>The model is one piece. The real-world behavior comes from the whole rig: permissions, files, tools, browser access, shell access, memory, credentials, and the habits of the person wiring it all together.</p>
+        <p>Yes, a serious enterprise can secure this stuff better than most individuals can. It can isolate runtimes, use low-privilege accounts, separate sensitive data, require approvals, and monitor what the system is doing.</p>
+        <p>But that is not the whole story anymore.</p>
+        <p>What has changed is who is experimenting.</p>
+        <p>Cloning a repo and trying an open-source agent used to be more niche developer behavior. Now it is getting democratized. Curious professionals, hobbyists, tinkerers, and small teams are all starting to play with this layer.</p>
+        <p>That is exciting.</p>
+        <p>It is also where people can get in over their skis.</p>
+        <p>Not because they are careless. Because the interface feels simple while the runtime is not.</p>
+        <p>It feels like trying a new app.</p>
+        <p>It is actually closer to giving a very eager intern your badge, your browser, a ring of keys, and a vague instruction.</p>
+        <p>That mismatch is the problem.</p>
+        <p>The security writing that has started to emerge around self-hosted agents all points in roughly the same direction. Different researchers emphasize different failure modes, but the themes are consistent:</p>
+        <ul>
+          <li>if an agent has broad local access, a mistake can become a real system problem</li>
+          <li>if it can ingest untrusted text and use tools, bad inputs matter a lot more</li>
+          <li>if users paste in secrets, over-grant permissions, or run things without isolation, they can expose themselves fast</li>
+        </ul>
+        <p>That is not a reason to stop experimenting.</p>
+        <p>It is a reason to grow up a little in how we talk about AI literacy.</p>
+        <p>AI literacy is not just “how do I use tool X?”</p>
+        <p>It is: what kind of thing is this, really?</p>
+        <p>What can it touch?</p>
+        <p>What does it know?</p>
+        <p>What is it allowed to do?</p>
+        <p>What habits do I need if I want to use it well without being reckless?</p>
+        <p>You do not need everyone to become a security engineer.</p>
+        <p>But if people want to play near the edge, they probably do need a few first-principles reflexes:</p>
+        <ul>
+          <li>isolate what matters</li>
+          <li>minimize permissions</li>
+          <li>keep secrets out of easy reach</li>
+          <li>assume outside inputs can be hostile</li>
+          <li>treat a local agent like a real runtime, not a toy</li>
+        </ul>
+        <p>That is the part I keep geeking out on.</p>
+        <p>What AI first principles does an ordinary smart person need right now?</p>
+        <p>How nerdy do we really need people to be if we want them to experiment safely with the latest tools?</p>
+        <p>Because the problem is not only whether enterprises can secure agents.</p>
+        <p>It is that agents are spreading faster than the safety habits required to use them well.</p>
+      </div>
+      <div class="article-cta">
+        <a class="link-btn" href="../index.html?view=articles">Back to articles</a>
+      </div>
+    </article>
+  </main>
+</body>
+</html>
