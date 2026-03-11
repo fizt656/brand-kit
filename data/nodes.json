@@ -17,7 +17,8 @@
         "making",
         "code",
         "metal-guitar",
-        "morning-ritual"
+        "morning-ritual",
+        "new-node-1"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -122,7 +123,8 @@
         "watch",
         "sparks",
         "metal-guitar",
-        "morning-ritual"
+        "morning-ritual",
+        "new-node-1"
       ],
       "content": {
         "title": "Flow State",
@@ -145,7 +147,8 @@
         "morning-ritual",
         "metal-guitar",
         "new-node",
-        "f1"
+        "f1",
+        "new-node-1"
       ],
       "content": {
         "title": "Family",
@@ -210,7 +213,7 @@
       ],
       "content": {
         "title": "Horology",
-        "body": "Mechanical movements, case design, the obsessive craft of making something that keeps time without a battery. Yes, it sounds cheesy. Yes, I know a $20 quartz is more accurate. But there's something about centuries of accumulated knowledge sitting on your wrist, ticking away, that I can't explain rationally. Dream: own a watch repair shop someday. Reach out if you want to partner on this. I'm serious.",
+        "body": "Mechanical movements, case design, the obsessive craft of making something that keeps time without a battery. Yes, it sounds cheesy. Yes, I know a $20 quartz is more accurate. But there's something about centuries of accumulated knowledge sitting on your wrist, ticking away, that I can't explain rationally. Dream: own a watch repair shop someday. I *will* do it. Reach out if you want to partner on this. I'm serious.",
         "image": null
       }
     },
@@ -233,7 +236,8 @@
         "heritage",
         "center",
         "code",
-        "neuroscience"
+        "neuroscience",
+        "new-node-1"
       ],
       "content": {
         "title": "Making",
@@ -265,7 +269,8 @@
       "y": 88,
       "connections": [
         "making",
-        "sparks"
+        "sparks",
+        "new-node-1"
       ],
       "content": {
         "title": "Sunday Kitchen Club",
@@ -285,7 +290,8 @@
         "sparks",
         "making",
         "morning-ritual",
-        "center"
+        "center",
+        "new-node-1"
       ],
       "content": {
         "title": "Heritage",
@@ -310,7 +316,8 @@
         "morning-ritual",
         "heritage",
         "watch",
-        "gym"
+        "gym",
+        "new-node-1"
       ],
       "content": {
         "title": "Sparks",
@@ -457,7 +464,8 @@
         "heritage",
         "center",
         "flow-state",
-        "gym"
+        "gym",
+        "new-node-1"
       ],
       "content": {
         "title": "Morning Ritual",
@@ -478,11 +486,35 @@
         "heritage",
         "gym",
         "morning-ritual",
-        "sparks"
+        "sparks",
+        "new-node-1"
       ],
       "content": {
         "title": "New Node",
         "body": "",
+        "image": null
+      }
+    },
+    {
+      "id": "new-node-1",
+      "label": "Squiggy",
+      "hemisphere": "right",
+      "x": 85,
+      "y": 35,
+      "connections": [
+        "center",
+        "flow-state",
+        "family",
+        "making",
+        "kitchen",
+        "heritage",
+        "sparks",
+        "new-node",
+        "morning-ritual"
+      ],
+      "content": {
+        "title": "Squiggy",
+        "body": "we started finding new paths together in 2006.  We found the \"Squiggy\" bike path.  We named each other after it.  Now, we're still finding new paths together... Squiggy ;)",
         "image": null
       }
     }
