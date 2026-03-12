@@ -73,6 +73,13 @@
     .mile-row { grid-template-columns: 92px 1fr 92px; }
     .mile-status { min-width: 86px; }
     .support-card { min-height: 180px; }
+    .retreat-section { margin-top:18px; }
+    .retreat-section .card { background:var(--card); border:1px solid var(--gold); border-radius:14px; padding:18px; box-shadow: 0 1px 4px rgba(201,169,98,.08); }
+    .retreat-section h2 { font-family:"Playfair Display",serif; font-size:22px; margin:0 0 4px; }
+    .retreat-section .sub-note { color:var(--muted); font-size:13px; margin-bottom:12px; }
+    .retreat-steps { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+    .retreat-step { display:grid; grid-template-columns: 36px 100px 1fr; gap:8px; align-items:start; }
+    .step-num { font-family:"JetBrains Mono",monospace; font-size:12px; color:#86755d; padding-top:7px; }
     .foot { margin-top:14px; color:#7a6f5e; font-size:12px; }
     @media (max-width: 1100px) {
       .layout { grid-template-columns:1fr; }
@@ -203,6 +210,20 @@
       </aside>
     </div>
 
+    <section class="retreat-section">
+      <div class="card">
+        <div class="quad-header">
+          <div>
+            <div class="quad-label">High-Visibility Project</div>
+            <h2>I&A Summer Retreat / Learning Day</h2>
+          </div>
+        </div>
+        <div class="sub-note">Shape a practical, meaningful AI learning day for I&A. Owner: Gus / Melanie Essien.</div>
+        <ul class="retreat-steps" id="retreatSteps"></ul>
+        <div class="section-meta"><button class="btn" id="addRetreatStep">Add step</button></div>
+      </div>
+    </section>
+
     <div class="foot">Seeded from the local dashboard source. Local files are the source of truth, then this page gets refreshed and republished.</div>
   </main>
 
@@ -223,8 +244,7 @@
         ],
         strategy: [
           { status:'open', text:'Use local dashboard files as source of truth, then refresh and republish the live page' },
-          { status:'open', text:'SmartRX pharmacy product · prompt v2: more Socratic, faster back-and-forth, no wall of text, caution users about math limitations' },
-          { status:'open', text:'I&A Summer Retreat / Learning Day · draft survey, listening tour targets, invite working group to name additional planners and champions' }
+          { status:'open', text:'SmartRX pharmacy product · prompt v2: more Socratic, faster back-and-forth, no wall of text, caution users about math limitations' }
         ],
         persona: [
           { status:'open', text:'Capture department-specific audience notes only when they change delivery choices or materials' }
@@ -253,6 +273,16 @@
         { name:'HR Professional Development Day Breakout', date:'2026-04-08', status:'waiting' },
         { name:'GenAI Champions Meeting', date:'2026-04-17', status:'waiting' },
         { name:'ACO Lunch and Learn', date:'2026-06-09', status:'waiting' }
+      ],
+      retreatSteps: [
+        { step:'1', status:'done', text:'Ideation with Brent and Jordan' },
+        { step:'2', status:'done', text:'Kick-off meeting with working group' },
+        { step:'3', status:'open', text:'Collect survey responses (going out next week)' },
+        { step:'4', status:'open', text:'Get logistical bottlenecks from Melanie' },
+        { step:'5', status:'open', text:'Build first-pass run-of-show based on Melanie\'s constraints' },
+        { step:'6', status:'open', text:'Meet with Melanie to review (or review async)' },
+        { step:'7', status:'open', text:'Bring back to working group for review' },
+        { step:'8', status:'open', text:'Notes from group review determine next steps' }
       ],
       milestones: [
         { date:'Mar 18', text:'CoP Kick-Off', status:'waiting' },
@@ -307,6 +337,17 @@
       return row;
     }
 
+    function retreatStepRow(item, idx){
+      const li = document.createElement('li');
+      li.className = 'retreat-step';
+      li.innerHTML = `
+        <div class="step-num">${item.step || idx+1}.</div>
+        <div class="pill ${pillClass(item.status)} pill-edit" contenteditable="true" data-role="retreat-status" data-idx="${idx}">${item.status || 'open'}</div>
+        <div class="text-edit" contenteditable="true" data-role="retreat-text" data-idx="${idx}">${item.text || ''}</div>
+      `;
+      return li;
+    }
+
     function milestoneRow(item, idx){
       const row = document.createElement('div');
       row.className = 'mile-row';
@@ -346,6 +387,12 @@
       milestoneList.innerHTML = '';
       state.milestones.forEach((m, idx) => milestoneList.appendChild(milestoneRow(m, idx)));
 
+      const retreatSteps = document.getElementById('retreatSteps');
+      if (retreatSteps) {
+        retreatSteps.innerHTML = '';
+        (state.retreatSteps || []).forEach((item, idx) => retreatSteps.appendChild(retreatStepRow(item, idx)));
+      }
+
       bind(state);
     }
 
@@ -376,6 +423,11 @@
             state.milestones[idx].status = normalizeStatus(txt);
             render(state); save(state); return;
           }
+          if (role === 'retreat-status') {
+            state.retreatSteps[idx].status = normalizeStatus(txt);
+            render(state); save(state); return;
+          }
+          if (role === 'retreat-text') state.retreatSteps[idx].text = txt;
           save(state);
         });
       });
@@ -398,6 +450,12 @@
       };
       document.getElementById('addMilestone').onclick = () => {
         state.milestones.push({ date:'', text:'', status:'open' });
+        render(state); save(state);
+      };
+      document.getElementById('addRetreatStep').onclick = () => {
+        const n = (state.retreatSteps || []).length + 1;
+        state.retreatSteps = state.retreatSteps || [];
+        state.retreatSteps.push({ step: String(n), status:'open', text:'' });
         render(state); save(state);
       };
     }
@@ -432,6 +490,9 @@
       lines.push('');
       lines.push('Important Dates & Milestones');
       state.milestones.forEach(m => lines.push(`- ${m.date} | ${m.text} | ${m.status}`));
+      lines.push('');
+      lines.push('I&A Summer Retreat / Learning Day');
+      (state.retreatSteps || []).forEach(s => lines.push(`- ${s.step}. [${s.status}] ${s.text}`));
       try {
         await navigator.clipboard.writeText(lines.join('\n'));
         document.getElementById('saveState').textContent = 'Snapshot copied';
