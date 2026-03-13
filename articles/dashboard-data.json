@@ -138,22 +138,12 @@
       "status": "done"
     },
     {
-      "name": "SAE Seminar",
-      "date": "2026-03-17",
-      "status": "waiting"
-    },
-    {
       "name": "Gen-AI Community of Practice Kick-Off",
       "date": "2026-03-18",
       "status": "waiting"
     },
     {
       "name": "GenAI Champions Meeting",
-      "date": "2026-03-20",
-      "status": "waiting"
-    },
-    {
-      "name": "GenAI for Business Applications Team planning",
       "date": "2026-03-20",
       "status": "waiting"
     },
@@ -228,7 +218,7 @@
     },
     {
       "date": "Mar 20",
-      "text": "Champions meeting + Business Applications planning",
+      "text": "Champions meeting",
       "status": "waiting"
     },
     {
