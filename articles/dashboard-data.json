@@ -242,5 +242,63 @@
       "status": "waiting"
     }
   ],
-  "lastUpdated": "2026-03-13T17:58:00-04:00"
+  "lastUpdated": "2026-03-13T18:10:00-04:00",
+  "todos": [
+    {
+      "text": "Watch for reply from Dan/Ceravasc",
+      "area": "Outreach",
+      "dueLabel": "Mar 12",
+      "sortKey": "2026-03-12",
+      "done": false
+    },
+    {
+      "text": "Produce first draft of first-principles learning progression",
+      "area": "Persona",
+      "dueLabel": "Mar 16",
+      "sortKey": "2026-03-16",
+      "done": false
+    },
+    {
+      "text": "Do 15 minutes of prep for HCC + Gabe",
+      "area": "Meeting Prep",
+      "dueLabel": "Mar 19",
+      "sortKey": "2026-03-19",
+      "done": false
+    },
+    {
+      "text": "Put together an illustrative run-of-show for Summer Retreat",
+      "area": "Summer Retreat",
+      "dueLabel": "Mar 19",
+      "sortKey": "2026-03-19",
+      "done": false
+    },
+    {
+      "text": "Put together mini-deck and demo for Bravely / JFC",
+      "area": "Strategy",
+      "dueLabel": "Mar 20",
+      "sortKey": "2026-03-20",
+      "done": false
+    },
+    {
+      "text": "Start shell deck for HR workshop",
+      "area": "Workshops",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-20",
+      "done": false
+    },
+    {
+      "text": "Watch email for intros from Choueiri",
+      "area": "Outreach",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-21",
+      "done": false
+    },
+    {
+      "text": "Wait for M and R testing feedback on SmartRX prompt",
+      "area": "Projects",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-21",
+      "done": false
+    }
+  ]
 }
