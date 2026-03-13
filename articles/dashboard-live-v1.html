@@ -273,6 +273,7 @@
             <div>
               <div class="quad-label">Side Rail</div>
               <h2>Day's Schedule</h2>
+              <div class="small-note" id="scheduleDate">Date loading...</div>
             </div>
           </div>
           <div class="schedule-list" id="scheduleList"></div>
@@ -513,6 +514,8 @@
       const scheduleList = document.getElementById('scheduleList');
       scheduleList.innerHTML = '';
       (data.schedule || []).forEach((item, idx) => scheduleList.appendChild(scheduleRow(item, idx)));
+      const scheduleDateEl = document.getElementById('scheduleDate');
+      if (scheduleDateEl) scheduleDateEl.textContent = data.scheduleDate || 'Date not set';
 
       const tbody = document.querySelector('#workshopTable tbody');
       tbody.innerHTML = '';
