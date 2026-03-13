@@ -2,10 +2,6 @@
   "lists": {
     "workshops": [
       {
-        "status": "done",
-        "text": "HR AI training slides regroup · Mar 13 · align experienced-user slide pass"
-      },
-      {
         "status": "waiting",
         "text": "send Dan a note on 3/16 since I can’t attend SAE seminar"
       },
@@ -283,5 +279,5 @@
       "done": false
     }
   ],
-  "lastUpdated": "2026-03-13T19:52:00-04:00"
+  "lastUpdated": "2026-03-13T19:54:00-04:00"
 }
