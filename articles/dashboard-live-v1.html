@@ -174,6 +174,22 @@
     .retreat-step { display:grid; grid-template-columns: 36px 100px 1fr; gap:8px; align-items:start; }
     .step-num { font-family:"JetBrains Mono",monospace; font-size:12px; color:#86755d; padding-top:7px; }
     .foot { margin-top:14px; color:#7a6f5e; font-size:12px; }
+    .view-toggle { display:inline-flex; gap:6px; padding:4px; border:1px solid var(--line); border-radius:999px; background:#fffdf9; }
+    .view-btn { border:none; background:transparent; padding:7px 12px; border-radius:999px; font-size:12px; cursor:pointer; color:#6d5623; }
+    .view-btn.active { background:var(--soft); border:1px solid var(--gold); }
+    .command-view { display:none; margin-bottom:16px; }
+    .command-view.active { display:grid; gap:14px; }
+    .command-grid { display:grid; grid-template-columns: 1.1fr 1.1fr .9fr; gap:14px; }
+    .command-card h2 { margin-bottom:8px; }
+    .command-list { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
+    .command-item { padding:10px 12px; border:1px solid #efe6d2; border-radius:12px; background:#fffdfa; }
+    .command-item strong { display:block; font-size:13px; }
+    .command-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:5px; }
+    .mini-pill { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; border:1px solid var(--line); color:#7a6a53; }
+    .focus-big { font-family:"Playfair Display",serif; font-size:26px; line-height:1.05; margin:0 0 10px; }
+    .command-schedule { display:grid; gap:8px; }
+    .command-schedule .sched-row { grid-template-columns:72px 1fr; }
+    .board-shell.hidden, .retreat-section.hidden { display:none; }
     @media (max-width: 1100px) {
       .layout { grid-template-columns:1fr; }
     }
@@ -227,10 +243,53 @@
       <button class="btn" id="copyBtn">Copy snapshot</button>
       <button class="btn btn-primary" id="exportBtn">Export changes</button>
       <button class="btn" id="openTodos">To-Dos</button>
+      <div class="view-toggle">
+        <button class="view-btn active" id="boardViewBtn">Board View</button>
+        <button class="view-btn" id="commandViewBtn">Command View</button>
+      </div>
       <span class="sync-status" id="syncStatus">Loading...</span>
     </div>
 
-    <div class="layout">
+    <section class="command-view" id="commandView">
+      <div class="command-grid">
+        <section class="card command-card">
+          <div class="quad-label">Now / Soon</div>
+          <h2>Focus</h2>
+          <div class="focus-big" id="focusHeadline">This week at a glance</div>
+          <ul class="command-list" id="focusList"></ul>
+        </section>
+        <section class="card command-card">
+          <div class="quad-label">Upcoming</div>
+          <h2>Coming Up</h2>
+          <ul class="command-list" id="upcomingList"></ul>
+        </section>
+        <section class="card command-card">
+          <div class="quad-label">Calendar</div>
+          <h2 id="commandScheduleTitle">Day Schedule</h2>
+          <div class="small-note" id="commandScheduleDate">Date loading...</div>
+          <div class="command-schedule" id="commandSchedule"></div>
+        </section>
+      </div>
+      <div class="command-grid">
+        <section class="card command-card">
+          <div class="quad-label">Strategic Lanes</div>
+          <h2>Signals</h2>
+          <ul class="command-list" id="signalList"></ul>
+        </section>
+        <section class="card command-card">
+          <div class="quad-label">Project</div>
+          <h2>Summer Retreat</h2>
+          <ul class="command-list" id="retreatCommandList"></ul>
+        </section>
+        <section class="card command-card">
+          <div class="quad-label">Milestones</div>
+          <h2>Key Dates</h2>
+          <ul class="command-list" id="milestoneCommandList"></ul>
+        </section>
+      </div>
+    </section>
+
+    <div class="layout board-shell" id="boardShell">
       <section class="board">
         <section class="card quad" data-quad="workshops">
           <div class="quad-header">
@@ -329,7 +388,7 @@
       </aside>
     </div>
 
-    <section class="retreat-section">
+    <section class="retreat-section" id="retreatSection">
       <div class="card">
         <div class="quad-header">
           <div>
@@ -696,6 +755,77 @@
       });
     }
 
+    function collectCommandTodos(data){
+      return [...(data.todos || []), ...extractDerivedTodos(data)]
+        .filter(t => !t.done)
+        .sort((a,b) => String(a.sortKey||dueSortKey(a.dueLabel)||'').localeCompare(String(b.sortKey||dueSortKey(b.dueLabel)||'')));
+    }
+
+    function renderCommandView(data){
+      const focus = collectCommandTodos(data).slice(0,6);
+      const focusHeadline = document.getElementById('focusHeadline');
+      if (focusHeadline) focusHeadline.textContent = focus.length ? `${focus.length} active items in motion` : 'Clear runway';
+      const focusList = document.getElementById('focusList');
+      if (focusList) {
+        focusList.innerHTML = '';
+        focus.forEach(t => {
+          const li = document.createElement('li');
+          li.className = 'command-item';
+          li.innerHTML = `<strong>${t.text}</strong><div class="command-meta"><span class="mini-pill">${t.dueLabel || 'Next'}</span><span class="mini-pill">${t.area || 'General'}</span></div>`;
+          focusList.appendChild(li);
+        });
+      }
+      const upcomingList = document.getElementById('upcomingList');
+      if (upcomingList) {
+        upcomingList.innerHTML = '';
+        (data.workshopTracker || []).slice(0,6).forEach(u => {
+          const li = document.createElement('li');
+          li.className = 'command-item';
+          li.innerHTML = `<strong>${u.name}</strong><div class="command-meta"><span class="mini-pill">${u.date || ''}</span><span class="mini-pill">${u.status || ''}</span></div>`;
+          upcomingList.appendChild(li);
+        });
+      }
+      document.getElementById('commandScheduleDate').textContent = data.scheduleDate || 'Date not set';
+      const cs = document.getElementById('commandSchedule');
+      if (cs) {
+        cs.innerHTML = '';
+        (data.schedule || []).forEach(s => cs.appendChild(scheduleRow(s, 0)));
+      }
+      const signalList = document.getElementById('signalList');
+      if (signalList) {
+        signalList.innerHTML = '';
+        [['strategy','Strategy'],['persona','Persona'],['cop','CoP'],['workshops','Workshops']].forEach(([key,label]) => {
+          const arr = (data.lists && data.lists[key]) || [];
+          const top = arr.find(x => normalizeStatus(x.status) !== 'done') || arr[0];
+          if (!top) return;
+          const li = document.createElement('li');
+          li.className = 'command-item';
+          li.innerHTML = `<strong>${label}</strong><div>${top.text}</div><div class="command-meta"><span class="mini-pill">${top.status}</span></div>`;
+          signalList.appendChild(li);
+        });
+      }
+      const rc = document.getElementById('retreatCommandList');
+      if (rc) {
+        rc.innerHTML = '';
+        (data.retreatSteps || []).filter(x => normalizeStatus(x.status) !== 'done').slice(0,5).forEach(r => {
+          const li = document.createElement('li');
+          li.className = 'command-item';
+          li.innerHTML = `<strong>Step ${r.step}</strong><div>${r.text}</div>`;
+          rc.appendChild(li);
+        });
+      }
+      const mc = document.getElementById('milestoneCommandList');
+      if (mc) {
+        mc.innerHTML = '';
+        (data.milestones || []).slice(0,6).forEach(m => {
+          const li = document.createElement('li');
+          li.className = 'command-item';
+          li.innerHTML = `<strong>${m.text}</strong><div class="command-meta"><span class="mini-pill">${m.date}</span><span class="mini-pill">${m.status}</span></div>`;
+          mc.appendChild(li);
+        });
+      }
+    }
+
     function render(data){
       document.querySelectorAll('.editable-list').forEach(ul => {
         const listName = ul.dataset.list;
@@ -734,6 +864,7 @@
       }
 
       renderTodos(data);
+      renderCommandView(data);
       bind(data);
     }
 
@@ -933,6 +1064,18 @@
     document.getElementById('closeTodos').onclick = closeTodos;
     document.getElementById('drawerOverlay').onclick = closeTodos;
 
+    const VIEW_KEY = 'dashboard_view_mode_v1';
+    function setView(mode){
+      localStorage.setItem(VIEW_KEY, mode);
+      document.getElementById('boardViewBtn').classList.toggle('active', mode === 'board');
+      document.getElementById('commandViewBtn').classList.toggle('active', mode === 'command');
+      document.getElementById('commandView').classList.toggle('active', mode === 'command');
+      document.getElementById('boardShell').classList.toggle('hidden', mode === 'command');
+      document.getElementById('retreatSection').classList.toggle('hidden', mode === 'command');
+    }
+    document.getElementById('boardViewBtn').onclick = () => setView('board');
+    document.getElementById('commandViewBtn').onclick = () => setView('command');
+
     // Initialize dashboard (called after auth)
     async function initDashboard() {
       sourceData = await fetchSource();
@@ -950,6 +1093,7 @@
       }
       
       render(state);
+      setView(localStorage.getItem(VIEW_KEY) || 'board');
       updateSyncStatus();
     }
   </script>
