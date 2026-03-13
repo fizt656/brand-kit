@@ -572,6 +572,13 @@
       return derived;
     }
 
+    function normalizeDueLabel(v){
+      return String(v || 'Unscheduled')
+        .replace(/[–—]/g, '-')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
     function renderTodos(data){
       const body = document.getElementById('todoDrawerBody');
       if (!body) return;
@@ -580,7 +587,7 @@
       const todos = combined.sort((a,b) => String(a.sortKey||a.dueLabel||'').localeCompare(String(b.sortKey||b.dueLabel||'')));
       const groups = {};
       for (const t of todos) {
-        const key = t.dueLabel || 'Unscheduled';
+        const key = normalizeDueLabel(t.dueLabel || 'Unscheduled');
         groups[key] = groups[key] || [];
         groups[key].push(t);
       }
