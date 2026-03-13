@@ -724,7 +724,7 @@
       const body = document.getElementById('todoDrawerBody');
       if (!body) return;
       body.innerHTML = '';
-      const combined = [...(data.todos || []), ...extractDerivedTodos(data)];
+      const combined = [...(data.todos || []).filter(t => !boardTaskDoneForTodo(t, data)), ...extractDerivedTodos(data)];
       const todos = combined.sort((a,b) => String(a.sortKey||dueSortKey(a.dueLabel)||'').localeCompare(String(b.sortKey||dueSortKey(b.dueLabel)||'')));
       const groups = {};
       for (const t of todos) {
@@ -755,9 +755,44 @@
       });
     }
 
+
+    function eachBoardStatusItem(data, fn){
+      Object.entries(data.lists || {}).forEach(([list, arr]) => (arr || []).forEach((item, idx) => fn({kind:'list', list, idx, item})));
+      (data.retreatSteps || []).forEach((item, idx) => fn({kind:'retreat', idx, item}));
+      (data.milestones || []).forEach((item, idx) => fn({kind:'milestone', idx, item}));
+      (data.workshopTracker || []).forEach((item, idx) => fn({kind:'workshop', idx, item}));
+    }
+
+    function matchesBoardTask(todoText, boardText){
+      const a = canonicalTodoText(todoText);
+      const b = canonicalTodoText(boardText);
+      return a === b || tokenOverlap(todoText, boardText) >= 0.82;
+    }
+
+    function boardTaskDoneForTodo(todo, data){
+      let matchedDone = false;
+      eachBoardStatusItem(data, ({item}) => {
+        const boardText = item.text || item.name || '';
+        if (!boardText) return;
+        if (matchesBoardTask(todo.text, boardText) && normalizeStatus(item.status) === 'done') matchedDone = true;
+      });
+      return matchedDone;
+    }
+
+    function setMatchingBoardTasksDone(todo, data, done=true){
+      eachBoardStatusItem(data, (ref) => {
+        const item = ref.item;
+        const boardText = item.text || item.name || '';
+        if (!boardText) return;
+        if (matchesBoardTask(todo.text, boardText)) {
+          item.status = done ? 'done' : item.status;
+        }
+      });
+    }
+
     function collectCommandTodos(data){
       return [...(data.todos || []), ...extractDerivedTodos(data)]
-        .filter(t => !t.done)
+        .filter(t => !t.done && !(t.sourceText === undefined && boardTaskDoneForTodo(t, data)))
         .sort((a,b) => String(a.sortKey||dueSortKey(a.dueLabel)||'').localeCompare(String(b.sortKey||dueSortKey(b.dueLabel)||'')));
     }
 
@@ -939,7 +974,10 @@
         el.onchange = () => {
           const idx = Number(el.dataset.todoId);
           data.todos = data.todos || [];
-          if (data.todos[idx]) data.todos[idx].done = !!el.checked;
+          if (data.todos[idx]) {
+            data.todos[idx].done = !!el.checked;
+            if (el.checked) setMatchingBoardTasksDone(data.todos[idx], data, true);
+          }
           saveLocal(data);
           render(data);
         };
