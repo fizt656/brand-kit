@@ -3,27 +3,23 @@
     "workshops": [
       {
         "status": "done",
-        "text": "Compliance AI Training Session \u00b7 Mar 11 \u00b7 delivered clean; follow-up only if needed"
-      },
-      {
-        "status": "done",
-        "text": "HR AI training slides regroup \u00b7 Mar 13 \u00b7 align experienced-user slide pass"
+        "text": "HR AI training slides regroup · Mar 13 · align experienced-user slide pass"
       },
       {
         "status": "waiting",
-        "text": "SAE Seminar \u00b7 Mar 17 \u00b7 not my workshop; send Dan a note on 3/16 since I can\u2019t attend."
+        "text": "send Dan a note on 3/16 since I can’t attend SAE seminar"
       },
       {
         "status": "waiting",
-        "text": "GenAI for Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; Brandon driving, Gus taking notes/supporting"
+        "text": "GenAI for Business Applications Team planning · Mar 20 · planning meeting; Brandon driving, Gus taking notes/supporting"
       },
       {
         "status": "waiting",
-        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)"
+        "text": "HR Professional Development Day breakout · Apr 8 · in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)"
       },
       {
         "status": "waiting",
-        "text": "Informatics & Analytics Summit \u00b7 Jun 9\u201311 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Informatics & Analytics Summit · Jun 9–11 · tracked as milestone only; active work lives in Summer Retreat section"
       }
     ],
     "admin": [
@@ -39,17 +35,17 @@
       },
       {
         "status": "open",
-        "text": "SmartRX pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "SmartRX pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "open",
-        "text": "Bravely app for JFC \u00b7 build mini-deck and demo to support discussion"
+        "text": "Bravely app for JFC · build mini-deck and demo to support discussion"
       }
     ],
     "persona": [
       {
         "status": "open",
-        "text": "1st draft of first principles learning progression \u00b7 Due end of Mar 16"
+        "text": "1st draft of first principles learning progression · Due end of Mar 16"
       },
       {
         "status": "open",
@@ -63,19 +59,19 @@
     "cop": [
       {
         "status": "waiting",
-        "text": "Gen-AI Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
+        "text": "Gen-AI Community of Practice Kick-Off · Mar 18 · anchor event"
       },
       {
         "status": "waiting",
-        "text": "GenAI Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
+        "text": "GenAI Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
+        "text": "Biweekly GenAI Champions Meeting · Apr 3 · keep cadence current"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
+        "text": "Biweekly GenAI Champions Meeting · Apr 17 · keep cadence current"
       },
       {
         "status": "waiting",
@@ -83,35 +79,35 @@
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 line up a few friendly attendees to chime in during key sections"
+        "text": "CoP prep before Mar 16–17 · line up a few friendly attendees to chime in during key sections"
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 finalize deck"
+        "text": "CoP prep before Mar 16–17 · finalize deck"
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 finalize time-blocking"
+        "text": "CoP prep before Mar 16–17 · finalize time-blocking"
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 get Slack channel in order"
+        "text": "CoP prep before Mar 16–17 · get Slack channel in order"
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 check in on team"
+        "text": "CoP prep before Mar 16–17 · check in on team"
       },
       {
         "status": "open",
-        "text": "CoP prep before Mar 16\u201317 \u00b7 make the survey"
+        "text": "CoP prep before Mar 16–17 · make the survey"
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
+        "text": "CoP operations · make the main CoP meeting monthly recurring"
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
+        "text": "CoP operations · make biweekly office hours recurring (rename later)"
       }
     ]
   },
@@ -127,16 +123,6 @@
     }
   ],
   "workshopTracker": [
-    {
-      "name": "Compliance AI Training Session",
-      "date": "2026-03-11",
-      "status": "done"
-    },
-    {
-      "name": "HR AI training slides regroup",
-      "date": "2026-03-13",
-      "status": "done"
-    },
     {
       "name": "Gen-AI Community of Practice Kick-Off",
       "date": "2026-03-18",
@@ -192,7 +178,7 @@
     {
       "step": "5",
       "status": "open",
-      "text": "Put together an illustrative run-of-show \u00b7 Due Mar 19"
+      "text": "Put together an illustrative run-of-show · Due Mar 19"
     },
     {
       "step": "6",
@@ -227,12 +213,11 @@
       "status": "waiting"
     },
     {
-      "date": "Jun 9\u201311",
+      "date": "Jun 9–11",
       "text": "Informatics & Analytics Summit",
       "status": "waiting"
     }
   ],
-  "lastUpdated": "2026-03-13T18:36:00-04:00",
   "todos": [
     {
       "text": "Watch for reply from Dan/Ceravasc",
@@ -291,11 +276,12 @@
       "done": false
     },
     {
-      "text": "Send Dan a note re SAE Seminar since I can\u2019t attend",
+      "text": "Send Dan a note re SAE Seminar since I can’t attend",
       "area": "Workshops",
       "dueLabel": "Mar 16",
       "sortKey": "2026-03-16",
       "done": false
     }
-  ]
+  ],
+  "lastUpdated": "2026-03-13T19:52:00-04:00"
 }
