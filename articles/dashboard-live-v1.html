@@ -790,6 +790,10 @@
       });
     }
 
+    function removeMatchingTodosForBoardText(boardText, data){
+      data.todos = (data.todos || []).filter(t => !matchesBoardTask(t.text, boardText));
+    }
+
     function collectCommandTodos(data){
       return [...(data.todos || []), ...extractDerivedTodos(data)]
         .filter(t => !t.done && !(t.sourceText === undefined && boardTaskDoneForTodo(t, data)))
@@ -999,28 +1003,28 @@
         el.onclick = (e) => {
           e.preventDefault();
           const list = el.dataset.list; const idx = Number(el.dataset.idx);
-          if (data.lists?.[list] && idx >= 0) { data.lists[list].splice(idx, 1); saveLocal(data); render(data); }
+          if (data.lists?.[list] && idx >= 0) { const boardText = data.lists[list][idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.lists[list].splice(idx, 1); saveLocal(data); render(data); }
         };
       });
       document.querySelectorAll('[data-role="archive-retreat"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.retreatSteps && idx >= 0) { data.retreatSteps.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.retreatSteps && idx >= 0) { const boardText = data.retreatSteps[idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.retreatSteps.splice(idx, 1); saveLocal(data); render(data); }
         };
       });
       document.querySelectorAll('[data-role="archive-mile"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.milestones && idx >= 0) { data.milestones.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.milestones && idx >= 0) { const boardText = data.milestones[idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.milestones.splice(idx, 1); saveLocal(data); render(data); }
         };
       });
       document.querySelectorAll('[data-role="archive-workshop"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.workshopTracker && idx >= 0) { data.workshopTracker.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.workshopTracker && idx >= 0) { const boardText = data.workshopTracker[idx]?.name || ''; removeMatchingTodosForBoardText(boardText, data); data.workshopTracker.splice(idx, 1); saveLocal(data); render(data); }
         };
       });
     }
