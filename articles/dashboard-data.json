@@ -242,7 +242,7 @@
       "status": "waiting"
     }
   ],
-  "lastUpdated": "2026-03-13T18:15:00-04:00",
+  "lastUpdated": "2026-03-13T18:36:00-04:00",
   "todos": [
     {
       "text": "Watch for reply from Dan/Ceravasc",
@@ -298,6 +298,13 @@
       "area": "Projects",
       "dueLabel": "Next",
       "sortKey": "2026-03-21",
+      "done": false
+    },
+    {
+      "text": "Send Dan a note re SAE Seminar since I can\u2019t attend",
+      "area": "Workshops",
+      "dueLabel": "Mar 16",
+      "sortKey": "2026-03-16",
       "done": false
     }
   ]
