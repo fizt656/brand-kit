@@ -608,14 +608,34 @@
         }
         if (!raw) return;
         const dueLabel = normalizeDueLabel(raw);
+
+        // Try to extract a standalone action phrase from the board item.
+        let taskText = text;
+        const actionPatterns = [
+          /(?:;|·)\s*(send [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(watch [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(make [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(start [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(finalize [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(get [^.;·]+? in order)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(put together [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(line up [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(check in on [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+          /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
+        ];
+        for (const ap of actionPatterns) {
+          const m = text.match(ap);
+          if (m) { taskText = m[1].trim(); break; }
+        }
+
         const duplicate = explicit.some(t => {
           if (normalizeDueLabel(t.dueLabel) !== dueLabel) return false;
           const a = canonicalTodoText(t.text);
-          const b = canonicalTodoText(text);
-          return a === b || tokenOverlap(t.text, text) >= 0.82;
+          const b = canonicalTodoText(taskText);
+          return a === b || tokenOverlap(t.text, taskText) >= 0.82;
         });
         if (duplicate) return;
-        derived.push({ text, area, dueLabel, sortKey: dueSortKey(dueLabel), done: false, derived: true });
+        derived.push({ text: taskText, area, dueLabel, sortKey: dueSortKey(dueLabel), done: false, derived: true, sourceText: text });
       }
       for (const [key, arr] of Object.entries(data.lists || {})) {
         (arr || []).forEach(item => maybePush(item.text || '', sectionMap[key] || key));
