@@ -794,6 +794,10 @@
       data.todos = (data.todos || []).filter(t => !matchesBoardTask(t.text, boardText));
     }
 
+    function removeMatchingWorkshopTrackerForBoardText(boardText, data){
+      data.workshopTracker = (data.workshopTracker || []).filter(w => !matchesBoardTask(boardText, w.name || ''));
+    }
+
     function collectCommandTodos(data){
       return [...(data.todos || []), ...extractDerivedTodos(data)]
         .filter(t => !t.done && !(t.sourceText === undefined && boardTaskDoneForTodo(t, data)))
@@ -1003,7 +1007,7 @@
         el.onclick = (e) => {
           e.preventDefault();
           const list = el.dataset.list; const idx = Number(el.dataset.idx);
-          if (data.lists?.[list] && idx >= 0) { const boardText = data.lists[list][idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.lists[list].splice(idx, 1); saveLocal(data); render(data); }
+          if (data.lists?.[list] && idx >= 0) { const boardText = data.lists[list][idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); if (list === 'workshops') removeMatchingWorkshopTrackerForBoardText(boardText, data); data.lists[list].splice(idx, 1); saveLocal(data); render(data); }
         };
       });
       document.querySelectorAll('[data-role="archive-retreat"]').forEach(el => {
