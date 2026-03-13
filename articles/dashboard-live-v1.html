@@ -403,28 +403,44 @@
       document.body.style.overflow = '';
     }
     
-    // Handle auth form
-    document.getElementById('authForm').addEventListener('submit', (e) => {
-      e.preventDefault();
+    function attemptUnlock() {
       const input = document.getElementById('authPassword');
       const error = document.getElementById('authError');
-      
-      if (AUTH_PASSWORDS.includes(input.value.trim())) {
+      const val = String(input.value || '').trim().toLowerCase();
+      const ok = AUTH_PASSWORDS.map(p => p.toLowerCase()).includes(val);
+      if (ok) {
         createSession();
         hideAuth();
-        initDashboard();
         error.classList.remove('show');
+        try { initDashboard(); } catch (e) { console.error('initDashboard failed', e); }
       } else {
+        error.textContent = 'Incorrect password. Try again.';
         error.classList.add('show');
         input.value = '';
         input.focus();
       }
+    }
+
+    // Handle auth form + direct key/click fallback
+    document.getElementById('authForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      attemptUnlock();
+    });
+    document.getElementById('authPassword').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        attemptUnlock();
+      }
+    });
+    document.querySelector('#authForm button[type="submit"]').addEventListener('click', (e) => {
+      e.preventDefault();
+      attemptUnlock();
     });
     
     // Check auth on load
     if (checkAuth()) {
       hideAuth();
-      initDashboard();
+      try { initDashboard(); } catch (e) { console.error('initDashboard failed', e); }
     } else {
       showAuth();
     }
