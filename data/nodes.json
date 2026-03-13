@@ -18,7 +18,8 @@
         "morning-ritual",
         "new-node-1",
         "ai-roleplay",
-        "gym"
+        "gym",
+        "watch"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
@@ -125,13 +126,13 @@
         "gym",
         "family",
         "new-node",
-        "watch",
         "sparks",
         "metal-guitar",
         "morning-ritual",
         "new-node-1",
         "f1",
-        "ai-education"
+        "ai-education",
+        "watch"
       ],
       "content": {
         "title": "Flow State",
@@ -155,7 +156,8 @@
         "metal-guitar",
         "new-node",
         "f1",
-        "new-node-1"
+        "new-node-1",
+        "watch"
       ],
       "content": {
         "title": "Family",
@@ -172,10 +174,10 @@
       "connections": [
         "flow-state",
         "f1",
-        "watch",
         "neurace",
         "local-ai-lab",
-        "ai-roleplay"
+        "ai-roleplay",
+        "watch"
       ],
       "content": {
         "title": "Driving",
@@ -215,11 +217,13 @@
       "x": 78,
       "y": 18,
       "connections": [
-        "machines",
-        "flow-state",
         "making",
-        "ai-roleplay",
-        "sparks"
+        "sparks",
+        "flow-state",
+        "family",
+        "machines",
+        "center",
+        "heritage"
       ],
       "content": {
         "title": "Horology",
@@ -241,14 +245,14 @@
         "ai-roleplay",
         "multimodal-orchestration",
         "morning-ritual",
-        "watch",
         "sparks",
         "heritage",
         "code",
         "neuroscience",
         "new-node-1",
         "f1",
-        "ai-education"
+        "ai-education",
+        "watch"
       ],
       "content": {
         "title": "Making",
@@ -303,7 +307,8 @@
         "making",
         "morning-ritual",
         "center",
-        "new-node-1"
+        "new-node-1",
+        "watch"
       ],
       "content": {
         "title": "Heritage",
@@ -327,9 +332,9 @@
         "new-node",
         "morning-ritual",
         "heritage",
-        "watch",
         "gym",
-        "new-node-1"
+        "new-node-1",
+        "watch"
       ],
       "content": {
         "title": "Sparks",
@@ -452,7 +457,6 @@
         "code",
         "multimodal-orchestration",
         "machines",
-        "watch",
         "f1",
         "neuroscience",
         "center"
