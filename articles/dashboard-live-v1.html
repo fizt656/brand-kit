@@ -515,7 +515,7 @@
       scheduleList.innerHTML = '';
       (data.schedule || []).forEach((item, idx) => scheduleList.appendChild(scheduleRow(item, idx)));
       const scheduleDateEl = document.getElementById('scheduleDate');
-      if (scheduleDateEl) scheduleDateEl.textContent = data.scheduleDate || 'Date not set';
+      if (scheduleDateEl) scheduleDateEl.textContent = data.scheduleDate || (sourceData && sourceData.scheduleDate) || 'Date not set';
 
       const tbody = document.querySelector('#workshopTable tbody');
       tbody.innerHTML = '';
@@ -682,6 +682,7 @@
       
       if (localData) {
         state = localData;
+        if (sourceData && !state.scheduleDate) state.scheduleDate = sourceData.scheduleDate;
         hasLocalChanges = true;
       } else if (sourceData) {
         state = clone(sourceData);
