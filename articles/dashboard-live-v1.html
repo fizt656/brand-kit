@@ -533,11 +533,49 @@
       return row;
     }
 
+    function extractDerivedTodos(data){
+      const derived = [];
+      const seen = new Set((data.todos || []).map(t => `${t.area}::${t.text}`));
+      const sectionMap = {
+        workshops: 'Workshops',
+        admin: 'Admin',
+        strategy: 'Strategy',
+        persona: 'Persona',
+        cop: 'CoP'
+      };
+      const patterns = [
+        { re: /\b[Dd]ue\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/, kind: 'due' },
+        { re: /\bbefore\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i, kind: 'before' },
+        { re: /\bon\s+(\d{1,2}\/\d{1,2})\b/i, kind: 'on' },
+        { re: /\b(\d{1,2}\/\d{1,2})\b/, kind: 'date' }
+      ];
+      function maybePush(text, area){
+        for (const p of patterns) {
+          const m = text.match(p.re);
+          if (m) {
+            const dueLabel = m[1].replace(/\s+/g,' ').trim();
+            const key = `${area}::${text}`;
+            if (!seen.has(key)) {
+              derived.push({ text, area, dueLabel, sortKey: dueLabel, done: false, derived: true });
+              seen.add(key);
+            }
+            return;
+          }
+        }
+      }
+      for (const [key, arr] of Object.entries(data.lists || {})) {
+        (arr || []).forEach(item => maybePush(item.text || '', sectionMap[key] || key));
+      }
+      (data.retreatSteps || []).forEach(item => maybePush(item.text || '', 'Summer Retreat'));
+      return derived;
+    }
+
     function renderTodos(data){
       const body = document.getElementById('todoDrawerBody');
       if (!body) return;
       body.innerHTML = '';
-      const todos = [...(data.todos || [])].sort((a,b) => String(a.sortKey||'').localeCompare(String(b.sortKey||'')));
+      const combined = [...(data.todos || []), ...extractDerivedTodos(data)];
+      const todos = combined.sort((a,b) => String(a.sortKey||a.dueLabel||'').localeCompare(String(b.sortKey||b.dueLabel||'')));
       const groups = {};
       for (const t of todos) {
         const key = t.dueLabel || 'Unscheduled';
@@ -551,13 +589,14 @@
         h.textContent = due;
         group.appendChild(h);
         items.forEach((t, idx) => {
+          const explicitIdx = (data.todos || []).indexOf(t);
           const item = document.createElement('label');
           item.className = 'todo-check' + (t.done ? ' done' : '');
           item.innerHTML = `
-            <input type="checkbox" data-role="todo-done" data-todo-id="${data.todos.indexOf(t)}" ${t.done ? 'checked' : ''} />
+            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} ${explicitIdx < 0 ? 'disabled' : ''} />
             <div>
               <div>${t.text}</div>
-              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span></div>
+              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}</div>
             </div>
           `;
           group.appendChild(item);
