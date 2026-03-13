@@ -31,7 +31,12 @@
     .toolbar { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin: 10px 0 16px; }
     .btn { border:1px solid var(--gold); background:var(--soft); color:#6d5623; border-radius:999px; padding:8px 13px; font-size:12px; cursor:pointer; text-decoration:none; }
     .btn:hover { filter: brightness(0.98); }
+    .btn-warning { background:#fff3cd; border-color:#ffc107; color:#856404; }
+    .btn-primary { background:#d4edda; border-color:#28a745; color:#155724; }
     .mono { font-family:"JetBrains Mono",monospace; font-size:11px; color:#86755d; }
+    .sync-status { font-family:"JetBrains Mono",monospace; font-size:11px; padding:4px 8px; border-radius:4px; background:#f8f2e5; }
+    .sync-status.has-pending { background:#fff3cd; color:#856404; }
+    .sync-status.has-update { background:#f8d7da; color:#721c24; }
     .layout { display:grid; grid-template-columns: minmax(680px, 1.35fr) minmax(320px, .8fr); gap:16px; align-items:start; }
     .board { display:grid; grid-template-columns: 1fr 1fr; gap:14px; }
     .stack { display:grid; gap:14px; }
@@ -101,15 +106,16 @@
   </header>
 
   <main class="dash-wrap">
-    <div class="kicker">Unlisted · Live Tool · v1</div>
+    <div class="kicker">Unlisted · Live Tool · v2 (Sync Enabled)</div>
     <h1>Dashboard Live v1</h1>
-    <div class="sub">Quadrant-based work surface built around your notebook logic. Keep the main board clean. Use the side rail for the day’s schedule, workshop tracking, and important dates.</div>
+    <div class="sub">Quadrant-based work surface. Source of truth: <code>dashboard-data.json</code>. Local edits sync automatically.</div>
 
     <div class="toolbar">
       <button class="btn" id="saveBtn">Save now</button>
-      <button class="btn" id="resetBtn">Reset to clean template</button>
+      <button class="btn btn-warning" id="resetBtn">Reset to source</button>
       <button class="btn" id="copyBtn">Copy snapshot</button>
-      <span class="mono" id="saveState">Not saved yet</span>
+      <button class="btn btn-primary" id="exportBtn">Export changes</button>
+      <span class="sync-status" id="syncStatus">Loading...</span>
     </div>
 
     <div class="layout">
@@ -174,7 +180,7 @@
           <div class="quad-header">
             <div>
               <div class="quad-label">Side Rail</div>
-              <h2>Day’s Schedule</h2>
+              <h2>Day's Schedule</h2>
             </div>
           </div>
           <div class="schedule-list" id="scheduleList"></div>
@@ -224,90 +230,57 @@
       </div>
     </section>
 
-    <div class="foot">Seeded from the local dashboard source. Local files are the source of truth, then this page gets refreshed and republished.</div>
+    <div class="foot">Source of truth: <code>dashboard-data.json</code>. Mr. White updates this file. Your browser edits sync when you export.</div>
   </main>
 
   <script>
-    const STORAGE_KEY = 'dashboard_live_v1_quadrant_state_v2';
-    const CLEAN = {
-      lists: {
-        workshops: [
-          { status:'done', text:'Compliance AI Training Session · Mar 11 · delivered clean; follow-up only if needed' },
-          { status:'waiting', text:'HR AI training slides regroup · Mar 13 · align experienced-user slide pass' },
-          { status:'waiting', text:'SAE Seminar · Mar 17 · confirm prep needs, deck status, and follow-up' },
-          { status:'waiting', text:'GenAI for Business Applications Team planning · Mar 20 · calendar date takes priority when tracker disagrees' },
-          { status:'waiting', text:'HR Professional Development Day breakout · Apr 8 · confirm scope and materials' },
-          { status:'waiting', text:'ACO Lunch and Learn · Jun 9 · shape roadmap, updates, and breakout flow' }
-        ],
-        admin: [
-          { status:'open', text:'Keep upcoming workshop/planning items current when Gus drops quick updates in chat' }
-        ],
-        strategy: [
-          { status:'open', text:'Use local dashboard files as source of truth, then refresh and republish the live page' },
-          { status:'open', text:'SmartRX pharmacy product · prompt v2: more Socratic, faster back-and-forth, no wall of text, caution users about math limitations' }
-        ],
-        persona: [
-          { status:'open', text:'1st draft of first principles learning progression · Due Wed Mar 19' },
-          { status:'open', text:'Pass on persona-tailored model: integrate first principles + show one possible persona' },
-          { status:'open', text:'Poll champions for one persona from previous workshops' }
-        ],
-        cop: [
-          { status:'waiting', text:'Gen-AI Community of Practice Kick-Off · Mar 18 · capture outcomes and next cadence items' },
-          { status:'waiting', text:'Biweekly GenAI Champions Meeting · Mar 20 · review agenda and carryover actions' },
-          { status:'waiting', text:'Biweekly GenAI Champions Meeting · Apr 3 · keep cadence current' },
-          { status:'waiting', text:'Biweekly GenAI Champions Meeting · Apr 17 · keep cadence current' },
-          { status:'waiting', text:'Keep upcoming Champions cadence visible on the dashboard as workshop-adjacent planning' }
-        ]
-      },
-      schedule: [
-        { time: '8:00 AM', text: 'Timesheet' },
-        { time: '10:00 AM', text: 'HealthStream/CloudCME Demo' },
-        { time: '12:30 PM', text: 'Eye Exam' },
-        { time: '1:00 PM', text: 'Jordan<>Gus tb' },
-        { time: '1:30 PM', text: 'Regroup on experienced AI user slides (for HR AI training)' },
-        { time: '2:00 PM', text: "(if needed) Jordan<>Gus cont'd" },
-        { time: '4:00 PM', text: 'documentation, next week table' }
-      ],
-      workshopTracker: [
-        { name:'Compliance AI Training Session', date:'2026-03-11', status:'done' },
-        { name:'HR AI training slides regroup', date:'2026-03-13', status:'waiting' },
-        { name:'SAE Seminar', date:'2026-03-17', status:'waiting' },
-        { name:'Gen-AI Community of Practice Kick-Off', date:'2026-03-18', status:'waiting' },
-        { name:'GenAI Champions Meeting', date:'2026-03-20', status:'waiting' },
-        { name:'GenAI for Business Applications Team planning', date:'2026-03-20', status:'waiting' },
-        { name:'GenAI Champions Meeting', date:'2026-04-03', status:'waiting' },
-        { name:'HR Professional Development Day Breakout', date:'2026-04-08', status:'waiting' },
-        { name:'GenAI Champions Meeting', date:'2026-04-17', status:'waiting' },
-        { name:'ACO Lunch and Learn', date:'2026-06-09', status:'waiting' }
-      ],
-      retreatSteps: [
-        { step:'1', status:'done', text:'Ideation with Brent and Jordan' },
-        { step:'2', status:'done', text:'Kick-off meeting with working group' },
-        { step:'3', status:'open', text:'Collect survey responses (going out next week)' },
-        { step:'4', status:'open', text:'Get logistical bottlenecks from Melanie' },
-        { step:'5', status:'open', text:'Build first-pass run-of-show based on Melanie\'s constraints' },
-        { step:'6', status:'open', text:'Meet with Melanie to review (or review async)' },
-        { step:'7', status:'open', text:'Bring back to working group for review' },
-        { step:'8', status:'open', text:'Notes from group review determine next steps' }
-      ],
-      milestones: [
-        { date:'Mar 18', text:'CoP Kick-Off', status:'waiting' },
-        { date:'Mar 20', text:'Champions meeting + Business Applications planning', status:'waiting' },
-        { date:'Apr 8', text:'HR Professional Development Day breakout', status:'waiting' }
-      ]
-    };
-
+    const STORAGE_KEY = 'dashboard_live_v1_local_v3';
+    const DATA_URL = 'dashboard-data.json';
     const STATUS_OPTIONS = ['open','in progress','waiting','done'];
 
+    let state = null;
+    let sourceData = null;
+    let hasLocalChanges = false;
+
     function clone(obj){ return JSON.parse(JSON.stringify(obj)); }
-    function load(){
+
+    async function fetchSource() {
+      try {
+        const res = await fetch(DATA_URL + '?t=' + Date.now());
+        if (!res.ok) throw new Error('Failed');
+        return await res.json();
+      } catch (e) {
+        console.error('Could not fetch source:', e);
+        return null;
+      }
+    }
+
+    function loadLocal() {
       const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : clone(CLEAN);
+      return raw ? JSON.parse(raw) : null;
     }
-    function save(state){
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-      document.getElementById('saveState').textContent = `Saved ${new Date().toLocaleTimeString()}`;
+
+    function saveLocal(data) {
+      data.localUpdatedAt = new Date().toISOString();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      hasLocalChanges = true;
+      updateSyncStatus();
     }
+
+    function updateSyncStatus() {
+      const el = document.getElementById('syncStatus');
+      if (hasLocalChanges) {
+        el.textContent = '⚠️ Local changes pending sync';
+        el.className = 'sync-status has-pending';
+      } else if (sourceData) {
+        el.textContent = '✓ Synced with source';
+        el.className = 'sync-status';
+      } else {
+        el.textContent = 'Offline mode';
+        el.className = 'sync-status';
+      }
+    }
+
     function pillClass(v){
       const val = (v || 'open').toLowerCase();
       if (val.includes('progress')) return 'status-in-progress';
@@ -365,21 +338,21 @@
       return row;
     }
 
-    function render(state){
+    function render(data){
       document.querySelectorAll('.editable-list').forEach(ul => {
         const listName = ul.dataset.list;
         ul.innerHTML = '';
-        const items = state.lists[listName] || [];
+        const items = (data.lists && data.lists[listName]) || [];
         items.forEach((item, idx) => ul.appendChild(todoRow(item, listName, idx)));
       });
 
       const scheduleList = document.getElementById('scheduleList');
       scheduleList.innerHTML = '';
-      state.schedule.forEach((item, idx) => scheduleList.appendChild(scheduleRow(item, idx)));
+      (data.schedule || []).forEach((item, idx) => scheduleList.appendChild(scheduleRow(item, idx)));
 
       const tbody = document.querySelector('#workshopTable tbody');
       tbody.innerHTML = '';
-      state.workshopTracker.forEach((w, idx) => {
+      (data.workshopTracker || []).forEach((w, idx) => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
           <td contenteditable="true" data-role="workshop-name" data-idx="${idx}">${w.name || ''}</td>
@@ -391,18 +364,18 @@
 
       const milestoneList = document.getElementById('milestoneList');
       milestoneList.innerHTML = '';
-      state.milestones.forEach((m, idx) => milestoneList.appendChild(milestoneRow(m, idx)));
+      (data.milestones || []).forEach((m, idx) => milestoneList.appendChild(milestoneRow(m, idx)));
 
       const retreatSteps = document.getElementById('retreatSteps');
       if (retreatSteps) {
         retreatSteps.innerHTML = '';
-        (state.retreatSteps || []).forEach((item, idx) => retreatSteps.appendChild(retreatStepRow(item, idx)));
+        (data.retreatSteps || []).forEach((item, idx) => retreatSteps.appendChild(retreatStepRow(item, idx)));
       }
 
-      bind(state);
+      bind(data);
     }
 
-    function bind(state){
+    function bind(data){
       document.querySelectorAll('[contenteditable="true"]').forEach(el => {
         el.addEventListener('blur', () => {
           const role = el.dataset.role;
@@ -411,70 +384,84 @@
           const txt = el.innerText.trim();
 
           if (role === 'status') {
-            state.lists[list][idx].status = normalizeStatus(txt);
-            render(state); save(state); return;
+            data.lists[list][idx].status = normalizeStatus(txt);
+            render(data); saveLocal(data); return;
           }
-          if (role === 'text') state.lists[list][idx].text = txt;
-          if (role === 'sched-time') state.schedule[idx].time = txt;
-          if (role === 'sched-text') state.schedule[idx].text = txt;
-          if (role === 'workshop-name') state.workshopTracker[idx].name = txt;
-          if (role === 'workshop-date') state.workshopTracker[idx].date = txt;
+          if (role === 'text') data.lists[list][idx].text = txt;
+          if (role === 'sched-time') data.schedule[idx].time = txt;
+          if (role === 'sched-text') data.schedule[idx].text = txt;
+          if (role === 'workshop-name') data.workshopTracker[idx].name = txt;
+          if (role === 'workshop-date') data.workshopTracker[idx].date = txt;
           if (role === 'workshop-status') {
-            state.workshopTracker[idx].status = normalizeStatus(txt);
-            render(state); save(state); return;
+            data.workshopTracker[idx].status = normalizeStatus(txt);
+            render(data); saveLocal(data); return;
           }
-          if (role === 'mile-date') state.milestones[idx].date = txt;
-          if (role === 'mile-text') state.milestones[idx].text = txt;
+          if (role === 'mile-date') data.milestones[idx].date = txt;
+          if (role === 'mile-text') data.milestones[idx].text = txt;
           if (role === 'mile-status') {
-            state.milestones[idx].status = normalizeStatus(txt);
-            render(state); save(state); return;
+            data.milestones[idx].status = normalizeStatus(txt);
+            render(data); saveLocal(data); return;
           }
           if (role === 'retreat-status') {
-            state.retreatSteps[idx].status = normalizeStatus(txt);
-            render(state); save(state); return;
+            data.retreatSteps[idx].status = normalizeStatus(txt);
+            render(data); saveLocal(data); return;
           }
-          if (role === 'retreat-text') state.retreatSteps[idx].text = txt;
-          save(state);
+          if (role === 'retreat-text') data.retreatSteps[idx].text = txt;
+          saveLocal(data);
         });
       });
 
       document.querySelectorAll('.add-item').forEach(btn => {
         btn.onclick = () => {
           const list = btn.dataset.list;
-          state.lists[list].push({ status:'open', text:'' });
-          render(state); save(state);
+          data.lists[list] = data.lists[list] || [];
+          data.lists[list].push({ status:'open', text:'' });
+          render(data); saveLocal(data);
         };
       });
 
       document.getElementById('addSchedule').onclick = () => {
-        state.schedule.push({ time:'', text:'' });
-        render(state); save(state);
+        data.schedule = data.schedule || [];
+        data.schedule.push({ time:'', text:'' });
+        render(data); saveLocal(data);
       };
       document.getElementById('addWorkshop').onclick = () => {
-        state.workshopTracker.push({ name:'', date:'', status:'open' });
-        render(state); save(state);
+        data.workshopTracker = data.workshopTracker || [];
+        data.workshopTracker.push({ name:'', date:'', status:'open' });
+        render(data); saveLocal(data);
       };
       document.getElementById('addMilestone').onclick = () => {
-        state.milestones.push({ date:'', text:'', status:'open' });
-        render(state); save(state);
+        data.milestones = data.milestones || [];
+        data.milestones.push({ date:'', text:'', status:'open' });
+        render(data); saveLocal(data);
       };
       document.getElementById('addRetreatStep').onclick = () => {
-        const n = (state.retreatSteps || []).length + 1;
-        state.retreatSteps = state.retreatSteps || [];
-        state.retreatSteps.push({ step: String(n), status:'open', text:'' });
-        render(state); save(state);
+        data.retreatSteps = data.retreatSteps || [];
+        const n = data.retreatSteps.length + 1;
+        data.retreatSteps.push({ step: String(n), status:'open', text:'' });
+        render(data); saveLocal(data);
       };
     }
 
-    document.getElementById('saveBtn').onclick = () => save(load());
-    document.getElementById('resetBtn').onclick = () => {
-      if (!confirm('Reset dashboard to the clean template?')) return;
-      localStorage.removeItem(STORAGE_KEY);
-      const state = clone(CLEAN);
-      render(state); save(state);
+    document.getElementById('saveBtn').onclick = () => {
+      if (state) saveLocal(state);
     };
+    
+    document.getElementById('resetBtn').onclick = () => {
+      if (!confirm('Reset to source data? Your local changes will be lost.')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      hasLocalChanges = false;
+      if (sourceData) {
+        state = clone(sourceData);
+        render(state);
+        updateSyncStatus();
+      } else {
+        location.reload();
+      }
+    };
+    
     document.getElementById('copyBtn').onclick = async () => {
-      const state = load();
+      if (!state) return;
       const lines = [];
       const names = [
         ['workshops','Workshops'],
@@ -489,27 +476,55 @@
         lines.push('');
       });
       lines.push('Day\'s Schedule');
-      state.schedule.forEach(s => lines.push(`- ${s.time} ${s.text}`.trim()));
+      (state.schedule || []).forEach(s => lines.push(`- ${s.time} ${s.text}`.trim()));
       lines.push('');
       lines.push('Workshop Tracker');
-      state.workshopTracker.forEach(w => lines.push(`- ${w.name} | ${w.date} | ${w.status}`));
+      (state.workshopTracker || []).forEach(w => lines.push(`- ${w.name} | ${w.date} | ${w.status}`));
       lines.push('');
       lines.push('Important Dates & Milestones');
-      state.milestones.forEach(m => lines.push(`- ${m.date} | ${m.text} | ${m.status}`));
+      (state.milestones || []).forEach(m => lines.push(`- ${m.date} | ${m.text} | ${m.status}`));
       lines.push('');
       lines.push('I&A Summer Retreat / Learning Day');
       (state.retreatSteps || []).forEach(s => lines.push(`- ${s.step}. [${s.status}] ${s.text}`));
       try {
         await navigator.clipboard.writeText(lines.join('\n'));
-        document.getElementById('saveState').textContent = 'Snapshot copied';
+        document.getElementById('syncStatus').textContent = '✓ Snapshot copied';
       } catch {
-        document.getElementById('saveState').textContent = 'Copy failed on this browser';
+        document.getElementById('syncStatus').textContent = 'Copy failed';
+      }
+    };
+    
+    document.getElementById('exportBtn').onclick = async () => {
+      if (!state) return;
+      const exportData = clone(state);
+      delete exportData.lastUpdated;
+      delete exportData.localUpdatedAt;
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(exportData, null, 2));
+        alert('Changes copied to clipboard.\n\nPaste in Telegram to sync with Mr. White, or save to a file.');
+      } catch {
+        console.log(JSON.stringify(exportData, null, 2));
+        alert('Check console for exported data.');
       }
     };
 
-    const initial = load();
-    render(initial);
-    document.getElementById('saveState').textContent = localStorage.getItem(STORAGE_KEY) ? 'Loaded saved state' : 'Loaded clean template';
+    // Initialize
+    (async () => {
+      sourceData = await fetchSource();
+      const localData = loadLocal();
+      
+      if (localData) {
+        state = localData;
+        hasLocalChanges = true;
+      } else if (sourceData) {
+        state = clone(sourceData);
+      } else {
+        state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: {} };
+      }
+      
+      render(state);
+      updateSyncStatus();
+    })();
   </script>
 </body>
 </html>
