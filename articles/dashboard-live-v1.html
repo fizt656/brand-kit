@@ -508,7 +508,7 @@
     // DASHBOARD CORE
     // ============================================
     const STORAGE_KEY = 'dashboard_live_v1_local_v3';
-    const DATA_URL = 'dashboard-data.json';
+    const DATA_URL = 'https://gushalwani.com/articles/dashboard-data.json';
     const STATUS_OPTIONS = ['open','in progress','waiting','done'];
 
     let state = null;
@@ -518,14 +518,17 @@
     function clone(obj){ return JSON.parse(JSON.stringify(obj)); }
 
     async function fetchSource() {
-      try {
-        const res = await fetch(DATA_URL + '?t=' + Date.now());
-        if (!res.ok) throw new Error('Failed');
-        return await res.json();
-      } catch (e) {
-        console.error('Could not fetch source:', e);
-        return null;
+      for (let attempt = 1; attempt <= 3; attempt++) {
+        try {
+          const res = await fetch(DATA_URL + '?t=' + Date.now(), { cache: 'no-store' });
+          if (!res.ok) throw new Error('Failed: ' + res.status);
+          return await res.json();
+        } catch (e) {
+          console.error(`Could not fetch source (attempt ${attempt})`, e);
+          if (attempt < 3) await new Promise(r => setTimeout(r, 400 * attempt));
+        }
       }
+      return null;
     }
 
     function loadLocal() {
