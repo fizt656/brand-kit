@@ -1124,23 +1124,35 @@
 
     // Initialize dashboard (called after auth)
     async function initDashboard() {
-      sourceData = await fetchSource();
-      const localData = loadLocal();
-      
-      if (localData) {
-        state = localData;
-        if (sourceData && !state.scheduleDate) state.scheduleDate = sourceData.scheduleDate;
-        if (sourceData && !state.todos) state.todos = sourceData.todos || [];
-        hasLocalChanges = true;
-      } else if (sourceData) {
-        state = clone(sourceData);
-      } else {
-        state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: {} };
+      try {
+        sourceData = await fetchSource();
+        const localData = loadLocal();
+        
+        if (localData) {
+          state = localData;
+          if (sourceData && !state.scheduleDate) state.scheduleDate = sourceData.scheduleDate;
+          if (sourceData && !state.todos) state.todos = sourceData.todos || [];
+          hasLocalChanges = true;
+        } else if (sourceData) {
+          state = clone(sourceData);
+        } else {
+          state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [] };
+        }
+        
+        render(state);
+        setView(localStorage.getItem(VIEW_KEY) || 'board');
+        updateSyncStatus();
+      } catch (e) {
+        console.error('Dashboard init failed; clearing local state and retrying', e);
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(SYNC_KEY);
+        hasLocalChanges = false;
+        sourceData = await fetchSource();
+        state = sourceData ? clone(sourceData) : { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [] };
+        render(state);
+        setView('board');
+        updateSyncStatus();
       }
-      
-      render(state);
-      setView(localStorage.getItem(VIEW_KEY) || 'board');
-      updateSyncStatus();
     }
   </script>
 </body>
