@@ -106,8 +106,10 @@
     .todo-group h3 { margin:0; font-size:15px; font-family:"JetBrains Mono",monospace; color:#7a6a53; }
     .todo-check { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
     .todo-check.done { opacity:.62; }
-    .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
+    .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
     .tag { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; color:#7a6a53; border:1px solid var(--line); }
+    .archive-btn { font-size:10px; padding:4px 8px; border-radius:999px; border:1px solid #d8d0c4; background:#fff; color:#6d5623; cursor:pointer; }
+    .archive-btn:hover { background:#f8f2e5; }
     
     .dash-wrap { max-width: 1320px; margin: 22px auto 48px; padding: 58px 18px 0; }
     .kicker { font: 500 11px/1.4 "JetBrains Mono",monospace; color:#927233; letter-spacing:.05em; text-transform:uppercase; }
@@ -596,7 +598,7 @@
             <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} ${explicitIdx < 0 ? 'disabled' : ''} />
             <div>
               <div>${t.text}</div>
-              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}</div>
+              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}${explicitIdx >= 0 && t.done ? `<button class="archive-btn" data-role="todo-archive" data-todo-id="${explicitIdx}">Archive</button>` : ''}</div>
             </div>
           `;
           group.appendChild(item);
@@ -719,6 +721,18 @@
           if (data.todos[idx]) data.todos[idx].done = !!el.checked;
           saveLocal(data);
           render(data);
+        };
+      });
+      document.querySelectorAll('[data-role="todo-archive"]').forEach(el => {
+        el.onclick = (e) => {
+          e.preventDefault();
+          const idx = Number(el.dataset.todoId);
+          data.todos = data.todos || [];
+          if (idx >= 0 && idx < data.todos.length) {
+            data.todos.splice(idx, 1);
+            saveLocal(data);
+            render(data);
+          }
         };
       });
     }
