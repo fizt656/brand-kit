@@ -35,7 +35,12 @@
       "connections": [
         "neurace",
         "mit",
-        "neuroscience"
+        "neuroscience",
+        "code",
+        "local-ai-lab",
+        "multimodal-orchestration",
+        "making",
+        "flow-state"
       ],
       "content": {
         "title": "AI Education",
@@ -124,7 +129,9 @@
         "sparks",
         "metal-guitar",
         "morning-ritual",
-        "new-node-1"
+        "new-node-1",
+        "f1",
+        "ai-education"
       ],
       "content": {
         "title": "Flow State",
@@ -190,7 +197,10 @@
         "ai-roleplay",
         "family",
         "mit",
-        "neuroscience"
+        "neuroscience",
+        "making",
+        "flow-state",
+        "morning-ritual"
       ],
       "content": {
         "title": "Formula 1",
@@ -237,7 +247,9 @@
         "center",
         "code",
         "neuroscience",
-        "new-node-1"
+        "new-node-1",
+        "f1",
+        "ai-education"
       ],
       "content": {
         "title": "Making",
@@ -253,7 +265,8 @@
       "y": 85,
       "connections": [
         "making",
-        "sparks"
+        "sparks",
+        "new-node-1"
       ],
       "content": {
         "title": "DJing",
@@ -341,7 +354,8 @@
         "mit",
         "neurace",
         "making",
-        "neuroscience"
+        "neuroscience",
+        "ai-education"
       ],
       "content": {
         "title": "Code",
@@ -362,7 +376,8 @@
         "new-node",
         "neurace",
         "morning-ritual",
-        "sparks"
+        "sparks",
+        "new-node-1"
       ],
       "content": {
         "title": "Gym",
@@ -465,7 +480,8 @@
         "center",
         "flow-state",
         "gym",
-        "new-node-1"
+        "new-node-1",
+        "f1"
       ],
       "content": {
         "title": "Morning Ritual",
@@ -510,7 +526,9 @@
         "heritage",
         "sparks",
         "new-node",
-        "morning-ritual"
+        "morning-ritual",
+        "djing",
+        "gym"
       ],
       "content": {
         "title": "Squiggy",
