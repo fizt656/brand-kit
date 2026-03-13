@@ -608,7 +608,12 @@
         }
         if (!raw) return;
         const dueLabel = normalizeDueLabel(raw);
-        const duplicate = explicit.some(t => normalizeDueLabel(t.dueLabel) === dueLabel && tokenOverlap(t.text, text) >= 0.45);
+        const duplicate = explicit.some(t => {
+          if (normalizeDueLabel(t.dueLabel) !== dueLabel) return false;
+          const a = canonicalTodoText(t.text);
+          const b = canonicalTodoText(text);
+          return a === b || tokenOverlap(t.text, text) >= 0.82;
+        });
         if (duplicate) return;
         derived.push({ text, area, dueLabel, sortKey: dueSortKey(dueLabel), done: false, derived: true });
       }
