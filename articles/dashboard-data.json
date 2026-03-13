@@ -11,7 +11,7 @@
       },
       {
         "status": "waiting",
-        "text": "SAE Seminar \u00b7 Mar 17 \u00b7 not my workshop; send Dan a note since I can\u2019t attend"
+        "text": "SAE Seminar \u00b7 Mar 17 \u00b7 not my workshop; send Dan a note on 3/16 since I can\u2019t attend."
       },
       {
         "status": "waiting",
@@ -19,7 +19,7 @@
       },
       {
         "status": "waiting",
-        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck"
+        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)"
       },
       {
         "status": "waiting",
@@ -242,7 +242,7 @@
       "status": "waiting"
     }
   ],
-  "lastUpdated": "2026-03-13T18:10:00-04:00",
+  "lastUpdated": "2026-03-13T18:15:00-04:00",
   "todos": [
     {
       "text": "Watch for reply from Dan/Ceravasc",
@@ -282,8 +282,8 @@
     {
       "text": "Start shell deck for HR workshop",
       "area": "Workshops",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-20",
+      "dueLabel": "Mar 18",
+      "sortKey": "2026-03-18",
       "done": false
     },
     {
