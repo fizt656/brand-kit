@@ -117,32 +117,12 @@
   },
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Timesheet"
+      "time": "9:00 AM",
+      "text": "week pre-reads, priority chart"
     },
     {
-      "time": "10:00 AM",
-      "text": "HealthStream/CloudCME Demo"
-    },
-    {
-      "time": "12:30 PM",
-      "text": "Eye Exam"
-    },
-    {
-      "time": "1:00 PM",
-      "text": "Jordan<>Gus tb"
-    },
-    {
-      "time": "1:30 PM",
-      "text": "Regroup on experienced AI user slides (for HR AI training)"
-    },
-    {
-      "time": "2:00 PM",
-      "text": "(if needed) Jordan<>Gus cont'd"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "documentation, next week table"
+      "time": "10:30 AM",
+      "text": "Cadmium / EthosCE Demo"
     }
   ],
   "workshopTracker": [
@@ -261,5 +241,5 @@
       "status": "waiting"
     }
   ],
-  "lastUpdated": "2026-03-13T15:12:00-04:00"
+  "lastUpdated": "2026-03-13T17:58:00-04:00"
 }
