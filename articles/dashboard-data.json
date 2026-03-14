@@ -79,23 +79,15 @@
       },
       {
         "status": "open",
-        "text": "CoP prep before 3/17 · finalize deck"
+        "text": "CoP prep before 3/17 · finalize CoP deck and survey"
       },
       {
         "status": "open",
-        "text": "CoP prep before 3/17· finalize time-blocking"
+        "text": "CoP prep before 3/17· finalize CoP time-blocking"
       },
       {
         "status": "open",
-        "text": "CoP prep before 3/17 · get Slack channel in order"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17 · check in on team"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17 · make the survey"
+        "text": "CoP prep before 3/17 · get CoP Teams channels in order"
       },
       {
         "status": "open",
@@ -279,5 +271,5 @@
       "done": false
     }
   ],
-  "lastUpdated": "2026-03-13T21:19:00-04:00"
+  "lastUpdated": "2026-03-13T22:25:00-04:00"
 }
