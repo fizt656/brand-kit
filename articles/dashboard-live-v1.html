@@ -671,54 +671,49 @@
         cop: 'CoP'
       };
       const patterns = [
-        { re: /due\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i },
-        { re: /due\s+(\d{1,2}\/\d{1,2})/i },
-        { re: /before\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i },
-        { re: /before\s+(\d{1,2}\/\d{1,2})/i },
-        { re: /on\s+(\d{1,2}\/\d{1,2})/i },
-        { re: /([A-Za-z]{3,9}\s+\d{1,2})/ },
-        { re: /(\d{1,2}\/\d{1,2})/ }
+        /\bdue\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i,
+        /\bdue\s+(\d{1,2}\/\d{1,2})/i,
+        /\bbefore\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i,
+        /\bbefore\s+(\d{1,2}\/\d{1,2})/i,
+        /\bon\s+(\d{1,2}\/\d{1,2})\b/i,
+        /\b([A-Za-z]{3,9}\s+\d{1,2})\b/,
+        /\b(\d{1,2}\/\d{1,2})\b/
+      ];
+      const actionPatterns = [
+        /(?:;|·)\s*(send [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(watch [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(make [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(start [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(finalize [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(get [^.;·]+? in order)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(put together [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(line up [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(check in on [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
       ];
       function maybePush(text, area){
         let raw = null;
-        for (const p of patterns) {
-          const m = text.match(p.re);
+        for (const re of patterns) {
+          const m = text.match(re);
           if (m) { raw = m[1]; break; }
         }
         if (!raw) return;
         const dueLabel = normalizeDueLabel(raw);
-
-        // Try to extract a standalone action phrase from the board item.
         let taskText = text;
-        const actionPatterns = [
-          /(?:;|·)\s*(send [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(watch [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(make [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(start [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(finalize [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(get [^.;·]+? in order)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(put together [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(line up [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(check in on [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
-          /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
-        ];
-        for (const ap of actionPatterns) {
-          const m = text.match(ap);
+        for (const re of actionPatterns) {
+          const m = text.match(re);
           if (m) { taskText = m[1].trim(); break; }
         }
-
         const duplicate = explicit.some(t => {
           if (normalizeDueLabel(t.dueLabel) !== dueLabel) return false;
-          const a = canonicalTodoText(t.text);
-          const b = canonicalTodoText(taskText);
-          return a === b || tokenOverlap(t.text, taskText) >= 0.82;
+          return canonicalTodoText(t.text) === canonicalTodoText(taskText) || tokenOverlap(t.text, taskText) >= 0.82;
         });
         if (duplicate) return;
         derived.push({ text: taskText, area, dueLabel, sortKey: dueSortKey(dueLabel), done: false, derived: true, sourceText: text });
       }
-      for (const [key, arr] of Object.entries(data.lists || {})) {
+      Object.entries(data.lists || {}).forEach(([key, arr]) => {
         (arr || []).forEach(item => maybePush(item.text || '', sectionMap[key] || key));
-      }
+      });
       (data.retreatSteps || []).forEach(item => maybePush(item.text || '', 'Summer Retreat'));
       return derived;
     }
