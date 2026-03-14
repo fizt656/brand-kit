@@ -801,25 +801,25 @@
       const out = [];
       const sectionMap = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP' };
       const patterns = [
-        new RegExp('\\bbefore\\s+(\\d{1,2}\\/\\d{1,2})', 'i'),
-        new RegExp('\\bdue\\s+(\\d{1,2}\\/\\d{1,2})', 'i'),
-        new RegExp('\\bon\\s+(\\d{1,2}\\/\\d{1,2})\\b', 'i'),
-        new RegExp('\\bbefore\\s+([A-Za-z]{3,9}\\s*\\d{1,2}(?:[–-]\\d{1,2})?)', 'i'),
-        new RegExp('\\bdue\\s+([A-Za-z]{3,9}\\s*\\d{1,2}(?:[–-]\\d{1,2})?)', 'i'),
-        new RegExp('\\b([A-Za-z]{3,9}\\s+\\d{1,2})\\b'),
-        new RegExp('\\b(\\d{1,2}\\/\\d{1,2})\\b')
+        /\bbefore\s+(\d{1,2}\/\d{1,2})/i,
+        /\bdue\s+(\d{1,2}\/\d{1,2})/i,
+        /\bon\s+(\d{1,2}\/\d{1,2})\b/i,
+        /\bbefore\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i,
+        /\bdue\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)/i,
+        /\b([A-Za-z]{3,9}\s+\d{1,2})\b/,
+        /\b(\d{1,2}\/\d{1,2})\b/
       ];
       const actionPatterns = [
-        new RegExp('(?:;|·)\\s*(send [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(watch [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(make [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(start [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(finalize [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(get [^.;·]+? in order)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(put together [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(line up [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(check in on [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i'),
-        new RegExp('(?:;|·)\\s*(do \\d+ minutes? of [^.;·]+?)(?:\\s+(?:on|by|before|due)\\s+[^.;·]+)?[.;]?$', 'i')
+        /(?:;|·)\s*(send [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(watch [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(make [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(start [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(finalize [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(get [^.;·]+? in order)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(put together [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(line up [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(check in on [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
+        /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
       ];
       function pushFromText(text, area){
         let raw = null;
