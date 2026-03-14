@@ -99,15 +99,11 @@
       }
     ]
   },
-  "scheduleDate": "Monday, March 16, 2026",
+  "scheduleDate": "Saturday, March 14, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "week pre-reads, priority chart"
-    },
-    {
-      "time": "10:30 AM",
-      "text": "Cadmium / EthosCE Demo"
+      "time": "—",
+      "text": "No DFCI work calendar events today"
     }
   ],
   "workshopTracker": [
@@ -271,5 +267,5 @@
       "done": false
     }
   ],
-  "lastUpdated": "2026-03-13T22:25:00-04:00"
+  "lastUpdated": "2026-03-14T07:01:00-04:00"
 }
