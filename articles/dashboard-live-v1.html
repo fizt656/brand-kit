@@ -801,13 +801,13 @@
       const out = [];
       const sectionMap = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP' };
       const patterns = [
-        new RegExp('\bdue\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)', 'i'),
-        new RegExp('\bdue\s+(\d{1,2}\/\d{1,2})', 'i'),
-        new RegExp('\bbefore\s+([A-Za-z]{3,9}\s*\d{1,2}(?:[–-]\d{1,2})?)', 'i'),
-        new RegExp('\bbefore\s+(\d{1,2}\/\d{1,2})', 'i'),
-        new RegExp('\bon\s+(\d{1,2}\/\d{1,2})\b', 'i'),
-        new RegExp('\b([A-Za-z]{3,9}\s+\d{1,2})\b'),
-        new RegExp('\b(\d{1,2}\/\d{1,2})\b')
+        new RegExp('\\bdue\\s+([A-Za-z]{3,9}\\s*\\d{1,2}(?:[–-]\\d{1,2})?)', 'i'),
+        new RegExp('\\bdue\\s+(\\d{1,2}\\/\\d{1,2})', 'i'),
+        new RegExp('\\bbefore\\s+([A-Za-z]{3,9}\\s*\\d{1,2}(?:[–-]\\d{1,2})?)', 'i'),
+        new RegExp('\\bbefore\\s+(\\d{1,2}\\/\\d{1,2})', 'i'),
+        new RegExp('\\bon\\s+(\\d{1,2}\\/\\d{1,2})\\b', 'i'),
+        new RegExp('\\b([A-Za-z]{3,9}\\s+\\d{1,2})\\b'),
+        new RegExp('\\b(\\d{1,2}\\/\\d{1,2})\\b')
       ];
       const actionPatterns = [
         new RegExp('(?:;|·)\s*(send [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$', 'i'),
