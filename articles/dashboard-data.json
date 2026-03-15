@@ -99,7 +99,7 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, March 14, 2026",
+  "scheduleDate": "Sunday, March 15, 2026",
   "schedule": [
     {
       "time": "—",
@@ -267,5 +267,5 @@
       "done": false
     }
   ],
-  "lastUpdated": "2026-03-14T07:01:00-04:00"
+  "lastUpdated": "2026-03-15T07:00:00-04:00"
 }
