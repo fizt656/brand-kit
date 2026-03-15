@@ -3,7 +3,7 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "send Dan a note on 3/16 since I can’t attend SAE seminar"
+        "text": "send Dan a note on 3/16 since I can't attend SAE seminar"
       },
       {
         "status": "waiting",
@@ -15,7 +15,7 @@
       },
       {
         "status": "waiting",
-        "text": "Informatics & Analytics Summit · Jun 9–11 · tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Informatics & Analytics Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
       }
     ],
     "admin": [
@@ -107,7 +107,7 @@
     },
     {
       "time": "10:30 AM",
-      "text": "Cadmium / EthosCE Demo (Zoom) — ends 12:30 PM"
+      "text": "Cadmium / EthosCE Demo (Zoom) - ends 12:30 PM"
     }
   ],
   "workshopTracker": [
@@ -201,7 +201,7 @@
       "status": "waiting"
     },
     {
-      "date": "Jun 9–11",
+      "date": "Jun 9-11",
       "text": "Informatics & Analytics Summit",
       "status": "waiting"
     }
@@ -264,12 +264,19 @@
       "done": false
     },
     {
-      "text": "Send Dan a note re SAE Seminar since I can’t attend",
+      "text": "Send Dan a note re SAE Seminar since I can't attend",
       "area": "Workshops",
       "dueLabel": "Mar 16",
       "sortKey": "2026-03-16",
       "done": false
+    },
+    {
+      "text": "Send Mike and Kevin (HR) charter draft idea + suggest 30-min meeting to discuss platform, content flow, and content types",
+      "area": "HR",
+      "dueLabel": "Mar 16",
+      "sortKey": "2026-03-16a",
+      "done": false
     }
   ],
-  "lastUpdated": "2026-03-15T18:01:00-04:00"
+  "lastUpdated": "2026-03-15T18:25:00-04:00"
 }
