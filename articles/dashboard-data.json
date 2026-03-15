@@ -107,7 +107,27 @@
     },
     {
       "time": "10:30 AM",
-      "text": "Cadmium / EthosCE Demo (Zoom) - ends 12:30 PM"
+      "text": "Cadmium / EthosCE Demo (Zoom) — ends 12:30 PM"
+    },
+    {
+      "time": "12:30 PM",
+      "text": "Dan note re: SAE (quick)"
+    },
+    {
+      "time": "12:50 PM",
+      "text": "Mike/Kevin HR email (quick)"
+    },
+    {
+      "time": "1:10 PM",
+      "text": "Deep Work: First-Principles Learning Progression (60 min)"
+    },
+    {
+      "time": "2:10 PM",
+      "text": "CoP deck: outline + structure (20 min)"
+    },
+    {
+      "time": "2:30 PM",
+      "text": "CoP: attendee lineup + survey (30 min)"
     }
   ],
   "workshopTracker": [
