@@ -99,35 +99,31 @@
       }
     ]
   },
-  "scheduleDate": "Monday, March 16, 2026",
+  "scheduleDate": "Tuesday, March 17, 2026",
   "schedule": [
     {
       "time": "9:00 AM",
-      "text": "Week pre-reads, priority chart"
+      "text": "CoP Prep Blocking"
+    },
+    {
+      "time": "10:00 AM",
+      "text": "Shell Deck for HR"
     },
     {
       "time": "10:30 AM",
-      "text": "Cadmium / EthosCE Demo (Zoom) — ends 12:30 PM"
+      "text": "HR charter email to Mike and Kevin"
     },
     {
-      "time": "12:30 PM",
-      "text": "Dan note re: SAE (quick)"
+      "time": "11:30 AM",
+      "text": "Foundational Learning Progression"
     },
     {
-      "time": "12:50 PM",
-      "text": "Mike/Kevin HR email (quick)"
+      "time": "1:00 PM",
+      "text": "CABEM Demo — RFP Accreditation (ends 3 PM)"
     },
     {
-      "time": "1:10 PM",
-      "text": "Deep Work: First-Principles Learning Progression (60 min)"
-    },
-    {
-      "time": "2:10 PM",
-      "text": "CoP deck: outline + structure (20 min)"
-    },
-    {
-      "time": "2:30 PM",
-      "text": "CoP: attendee lineup + survey (30 min)"
+      "time": "3:00 PM",
+      "text": "SAE Seminar: AI assistants for software dev (Red Sox or Teams)"
     }
   ],
   "workshopTracker": [
