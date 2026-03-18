@@ -233,8 +233,8 @@
     {
       "text": "Produce first draft of first-principles learning progression",
       "area": "Persona",
-      "dueLabel": "Mar 16",
-      "sortKey": "2026-03-16",
+      "dueLabel": "Fri",
+      "sortKey": "2026-03-20",
       "done": false
     },
     {
@@ -263,7 +263,7 @@
       "area": "Workshops",
       "dueLabel": "Mar 18",
       "sortKey": "2026-03-18",
-      "done": false
+      "done": true
     },
     {
       "text": "Watch email for intros from Choueiri",
@@ -284,15 +284,15 @@
       "area": "Workshops",
       "dueLabel": "Mar 16",
       "sortKey": "2026-03-16",
-      "done": false
+      "done": true
     },
     {
       "text": "Send Mike and Kevin (HR) charter draft idea + suggest 30-min meeting to discuss platform, content flow, and content types",
       "area": "HR",
       "dueLabel": "Mar 16",
       "sortKey": "2026-03-16a",
-      "done": false
+      "done": true
     }
   ],
-  "lastUpdated": "2026-03-15T18:25:00-04:00"
+  "lastUpdated": "2026-03-17T18:25:00-04:00"
 }
