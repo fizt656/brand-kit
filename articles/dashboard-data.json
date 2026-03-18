@@ -1,310 +1,286 @@
 {
-  "lists": {
-    "workshops": [
-      {
-        "status": "done",
-        "text": "send Dan a note on 3/16 since I can't attend SAE seminar"
-      },
-      {
-        "status": "waiting",
-        "text": "GenAI for Business Applications Team planning · Mar 20 · planning meeting; Brandon driving, Gus taking notes/supporting"
-      },
-      {
-        "status": "waiting",
-        "text": "HR Professional Development Day breakout · Apr 8 · in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)"
-      },
-      {
-        "status": "waiting",
-        "text": "Informatics & Analytics Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
-      }
-    ],
-    "admin": [
-      {
-        "status": "open",
-        "text": "Keep upcoming workshop/planning items current when Gus drops quick updates in chat"
-      }
-    ],
-    "strategy": [
-      {
-        "status": "open",
-        "text": "Use local dashboard files as source of truth, then refresh and republish the live page"
-      },
-      {
-        "status": "open",
-        "text": "SmartRX pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
-      },
-      {
-        "status": "open",
-        "text": "Bravely app for JFC · build mini-deck and demo to support discussion"
-      }
-    ],
-    "persona": [
-      {
-        "status": "open",
-        "text": "1st draft of first principles learning progression · Due Mar 20"
-      },
-      {
-        "status": "open",
-        "text": "Pass on persona-tailored model: integrate first principles + show one possible persona"
-      },
-      {
-        "status": "open",
-        "text": "Poll champions for one persona from previous workshops"
-      }
-    ],
-    "cop": [
-      {
-        "status": "waiting",
-        "text": "Gen-AI Community of Practice Kick-Off · Mar 18 · anchor event"
-      },
-      {
-        "status": "waiting",
-        "text": "GenAI Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
-      },
-      {
-        "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting · Apr 3 · keep cadence current"
-      },
-      {
-        "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting · Apr 17 · keep cadence current"
-      },
-      {
-        "status": "waiting",
-        "text": "Keep upcoming Champions cadence visible on the dashboard as workshop-adjacent planning"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17 · line up a few friendly attendees to chime in during key sections"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17 · finalize CoP deck and survey"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17· finalize CoP time-blocking"
-      },
-      {
-        "status": "open",
-        "text": "CoP prep before 3/17 · get CoP Teams channels in order"
-      },
-      {
-        "status": "open",
-        "text": "CoP operations · make the main CoP meeting monthly recurring"
-      },
-      {
-        "status": "open",
-        "text": "CoP operations · make biweekly office hours recurring (rename later)"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: set up GenAI Open Studio office hours on calendar (confirm frequency preference)"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: remind attendees of the 'Ask' channel"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just Gus"
-      }
-    ]
-  },
-  "scheduleDate": "Wednesday, March 18, 2026",
-  "schedule": [
-    {
-      "time": "8:00 AM",
-      "text": "Arrive From Commute"
-    },
-    {
-      "time": "9:00 AM",
-      "text": "Settle In"
-    },
-    {
-      "time": "11:00 AM",
-      "text": "Post-Conf Debrief / Gus <> Jordan"
-    },
-    {
-      "time": "12:00 PM",
-      "text": "Lunch & Learn: Dana-Farber Proton Therapy Project"
-    },
-    {
-      "time": "1:00 PM",
-      "text": "Gen-AI CoP Kick-Off"
-    },
-    {
-      "time": "2:30 PM",
-      "text": "HCC Prep"
-    }
-  ],
-  "workshopTracker": [
-    {
-      "name": "Gen-AI Community of Practice Kick-Off",
-      "date": "2026-03-18",
-      "status": "in-progress"
-    },
-    {
-      "name": "GenAI Champions Meeting",
-      "date": "2026-03-20",
-      "status": "waiting"
-    },
-    {
-      "name": "GenAI Champions Meeting",
-      "date": "2026-04-03",
-      "status": "waiting"
-    },
-    {
-      "name": "HR Professional Development Day Breakout",
-      "date": "2026-04-08",
-      "status": "waiting"
-    },
-    {
-      "name": "GenAI Champions Meeting",
-      "date": "2026-04-17",
-      "status": "waiting"
-    },
-    {
-      "name": "Informatics & Analytics Summit",
-      "date": "2026-06-09 to 2026-06-11",
-      "status": "waiting"
-    }
-  ],
-  "retreatSteps": [
-    {
-      "step": "1",
-      "status": "done",
-      "text": "Ideation with Brent and Jordan"
-    },
-    {
-      "step": "2",
-      "status": "done",
-      "text": "Kick-off meeting with working group"
-    },
-    {
-      "step": "3",
-      "status": "open",
-      "text": "Get the survey out"
-    },
-    {
-      "step": "4",
-      "status": "open",
-      "text": "Get logistical bottlenecks from Melanie"
-    },
-    {
-      "step": "5",
-      "status": "open",
-      "text": "Put together an illustrative run-of-show · Due Mar 19"
-    },
-    {
-      "step": "6",
-      "status": "open",
-      "text": "Meet with Melanie to review (or review async)"
-    },
-    {
-      "step": "7",
-      "status": "open",
-      "text": "Bring back to working group for review"
-    },
-    {
-      "step": "8",
-      "status": "open",
-      "text": "Notes from group review determine next steps"
-    }
-  ],
-  "milestones": [
-    {
-      "date": "Mar 18",
-      "text": "CoP Kick-Off",
-      "status": "waiting"
-    },
-    {
-      "date": "Mar 20",
-      "text": "Champions meeting",
-      "status": "waiting"
-    },
-    {
-      "date": "Apr 8",
-      "text": "HR Professional Development Day breakout",
-      "status": "waiting"
-    },
-    {
-      "date": "Jun 9-11",
-      "text": "Informatics & Analytics Summit",
-      "status": "waiting"
-    }
-  ],
-  "todos": [
-    {
-      "text": "Watch for reply from Dan/Ceravasc",
-      "area": "Outreach",
-      "dueLabel": "Mar 12",
-      "sortKey": "2026-03-12",
-      "done": false
-    },
-    {
-      "text": "Produce first draft of first-principles learning progression",
-      "area": "Persona",
-      "dueLabel": "Mar 20",
-      "sortKey": "2026-03-20",
-      "done": false
-    },
-    {
-      "text": "Do 15 minutes of prep for HCC + Gabe",
-      "area": "Meeting Prep",
-      "dueLabel": "Mar 19",
-      "sortKey": "2026-03-19",
-      "done": false
-    },
-    {
-      "text": "Put together an illustrative run-of-show for Summer Retreat",
-      "area": "Summer Retreat",
-      "dueLabel": "Mar 19",
-      "sortKey": "2026-03-19",
-      "done": false
-    },
-    {
-      "text": "Put together mini-deck and demo for Bravely / JFC",
-      "area": "Strategy",
-      "dueLabel": "Mar 20",
-      "sortKey": "2026-03-20",
-      "done": false
-    },
-    {
-      "text": "Start shell deck for HR workshop",
-      "area": "Workshops",
-      "dueLabel": "Mar 18",
-      "sortKey": "2026-03-18",
-      "done": true
-    },
-    {
-      "text": "Watch email for intros from Choueiri",
-      "area": "Outreach",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-21",
-      "done": false
-    },
-    {
-      "text": "Wait for M and R testing feedback on SmartRX prompt",
-      "area": "Projects",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-21",
-      "done": false
-    },
-    {
-      "text": "Send Dan a note re SAE Seminar since I can't attend",
-      "area": "Workshops",
-      "dueLabel": "Mar 16",
-      "sortKey": "2026-03-16",
-      "done": true
-    },
-    {
-      "text": "Set up 30-min meeting with Mike and Kevin (HR)",
-      "area": "HR",
-      "dueLabel": "Mar 18",
-      "sortKey": "2026-03-18",
-      "done": false
-    }
-  ],
-  "lastUpdated": "2026-03-18T09:30:00-04:00"
+ "lists": {
+ "workshops": [
+ {
+ "status": "waiting",
+ "text": "GenAI for Business Applications Team planning · Mar 20 · planning meeting; Brandon driving, Gus taking notes/supporting"
+ },
+ {
+ "status": "waiting",
+ "text": "Informatics & Analytics Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+ }
+ ],
+ "admin": [
+ {
+ "status": "open",
+ "text": "Keep upcoming workshop/planning items current when Gus drops quick updates in chat"
+ }
+ ],
+ "strategy": [
+ {
+ "status": "open",
+ "text": "Use local dashboard files as source of truth, then refresh and republish the live page"
+ },
+ {
+ "status": "open",
+ "text": "SmartRX pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
+ },
+ {
+ "status": "open",
+ "text": "Bravely app for JFC · build mini-deck and demo to support discussion"
+ }
+ ],
+ "persona": [
+ {
+ "status": "open",
+ "text": "1st draft of first principles learning progression · Due Mar 20"
+ },
+ {
+ "status": "open",
+ "text": "Pass on persona-tailored model: integrate first principles + show one possible persona"
+ },
+ {
+ "status": "open",
+ "text": "Poll champions for one persona from previous workshops"
+ }
+ ],
+ "cop": [
+ {
+ "status": "waiting",
+ "text": "Gen-AI Community of Practice Kick-Off · Mar 18 · anchor event"
+ },
+ {
+ "status": "waiting",
+ "text": "GenAI Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+ },
+ {
+ "status": "waiting",
+ "text": "Biweekly GenAI Champions Meeting · Apr 3 · keep cadence current"
+ },
+ {
+ "status": "waiting",
+ "text": "Biweekly GenAI Champions Meeting · Apr 17 · keep cadence current"
+ },
+ {
+ "status": "waiting",
+ "text": "Keep upcoming Champions cadence visible on the dashboard as workshop-adjacent planning"
+ },
+ {
+ "status": "done",
+ "text": "CoP prep before 3/17 · line up a few friendly attendees to chime in during key sections"
+ },
+ {
+ "status": "open",
+ "text": "CoP prep before 3/17 · finalize CoP deck and survey"
+ },
+ {
+ "status": "open",
+ "text": "CoP prep before 3/17· finalize CoP time-blocking"
+ },
+ {
+ "status": "open",
+ "text": "CoP prep before 3/17 · get CoP Teams channels in order"
+ },
+ {
+ "status": "open",
+ "text": "CoP operations · make the main CoP meeting monthly recurring"
+ },
+ {
+ "status": "open",
+ "text": "CoP operations · make biweekly office hours recurring (rename later)"
+ },
+ {
+ "status": "open",
+ "text": "CoP post-kickoff: set up GenAI Open Studio office hours on calendar (confirm frequency preference)"
+ },
+ {
+ "status": "open",
+ "text": "CoP post-kickoff: remind attendees of the 'Ask' channel"
+ },
+ {
+ "status": "open",
+ "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just Gus"
+ }
+ ]
+ },
+ "scheduleDate": "Wednesday, March 18, 2026",
+ "schedule": [
+ {
+ "time": "8:00 AM",
+ "text": "Arrive From Commute"
+ },
+ {
+ "time": "9:00 AM",
+ "text": "Settle In"
+ },
+ {
+ "time": "11:00 AM",
+ "text": "Post-Conf Debrief / Gus <> Jordan"
+ },
+ {
+ "time": "12:00 PM",
+ "text": "Lunch & Learn: Dana-Farber Proton Therapy Project"
+ },
+ {
+ "time": "1:00 PM",
+ "text": "Gen-AI CoP Kick-Off"
+ },
+ {
+ "time": "2:30 PM",
+ "text": "HCC Prep"
+ }
+ ],
+ "workshopTracker": [
+ {
+ "name": "Gen-AI Community of Practice Kick-Off",
+ "date": "2026-03-18",
+ "status": "in-progress"
+ },
+ {"name": "GenAI Champions Meeting",
+ "date": "2026-03-20",
+ "status": "waiting"
+ },
+ {
+ "name": "GenAI Champions Meeting",
+ "date": "2026-04-03",
+ "status": "waiting"
+ },
+ {
+ "name": "GenAI Champions Meeting",
+ "date": "2026-04-17",
+ "status": "waiting"
+ },
+ {
+ "name": "Informatics & Analytics Summit",
+ "date": "2026-06-09 to 2026-06-11",
+ "status": "waiting"
+ }
+ ],
+ "retreatSteps": [
+ {
+ "step": "1",
+ "status": "done",
+ "text": "Ideation with Brent and Jordan"
+ },
+ {
+ "step": "2",
+ "status": "done",
+ "text": "Kick-off meeting with working group"
+ },
+ {
+ "step": "3",
+ "status": "open",
+ "text": "Get the survey out"
+ },
+ {
+ "step": "4",
+ "status": "open",
+ "text": "Get logistical bottlenecks from Melanie"
+ },
+ {
+ "step": "5",
+ "status": "open",
+ "text": "Put together an illustrative run-of-show · Due Mar 19"
+ },
+ {
+ "step": "6",
+ "status": "open",
+ "text": "Meet with Melanie to review (or review async)"
+ },
+ {
+ "step": "7",
+ "status": "open",
+ "text": "Bring back to working group for review"
+ },
+ {
+ "step": "8",
+ "status": "open",
+ "text": "Notes from group review determine next steps"
+ }
+ ],
+ "milestones": [
+ {
+ "date": "Mar 18",
+ "text": "CoP Kick-Off",
+ "status": "waiting"
+ },
+ {
+ "date": "Mar 20",
+ "text": "Champions meeting",
+ "status": "waiting"
+ },
+ {
+ "date": "Apr 8",
+ "text": "HR Professional Development Day breakout",
+ "status": "done"
+ },
+ {
+ "date": "Jun 9-11",
+ "text": "Informatics & Analytics Summit",
+ "status": "waiting"
+ }
+ ],
+ "todos": [
+ {
+ "text": "Watch for reply from Dan/Ceravasc",
+ "area": "Outreach",
+ "dueLabel": "Mar 12",
+ "sortKey": "2026-03-12",
+ "done": false
+ },
+ {
+ "text": "Produce first draft of first-principles learning progression",
+ "area": "Persona",
+ "dueLabel": "Mar 20",
+ "sortKey": "2026-03-20",
+ "done": false
+ },
+ {
+ "text": "Do 15 minutes of prep for HCC + Gabe",
+ "area": "Meeting Prep",
+ "dueLabel": "Mar 19",
+ "sortKey": "2026-03-19",
+ "done": false
+ },
+ {
+ "text": "Put together an illustrative run-of-show for Summer Retreat",
+ "area": "Summer Retreat",
+ "dueLabel": "Mar 19",
+ "sortKey": "2026-03-19",
+ "done": false
+ },
+ {
+ "text": "Put together mini-deck and demo for Bravely / JFC",
+ "area": "Strategy",
+ "dueLabel": "Mar 20",
+ "sortKey": "2026-03-20",
+ "done": false
+ },
+ {
+ "text": "Watch email for intros from Choueiri",
+ "area": "Outreach",
+ "dueLabel": "Next",
+ "sortKey": "2026-03-21",
+ "done": false
+ },
+ {
+ "text": "Wait for M and R testing feedback on SmartRX prompt",
+ "area": "Projects",
+ "dueLabel": "Next",
+ "sortKey": "2026-03-21",
+ "done": false
+ },
+ {
+ "text": "Set up 30-min meeting with Mike and Kevin (HR)",
+ "area": "HR",
+ "dueLabel": "Mar 18",
+ "sortKey": "2026-03-18",
+ "done": false
+ }
+ ],
+ "derivedDones": {
+ "CoP prep before 3/17 · line up a few friendly attendees to chime in during key sections": true,
+ "HR Professional Development Day breakout · Apr 8 · in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)": true
+ },
+ "lastUpdated": "2026-03-18T10:00:00-04:00"
 }
