@@ -738,10 +738,12 @@
         group.appendChild(h);
         items.forEach((t, idx) => {
           const explicitIdx = (data.todos || []).indexOf(t);
+          const derivedId = t.derived ? `derived-${idx}` : null;
+          const isDerivedDone = t.derived && data.derivedDones && data.derivedDones[t.sourceText];
           const item = document.createElement('label');
-          item.className = 'todo-check' + (t.done ? ' done' : '');
+          item.className = 'todo-check' + ((t.done || isDerivedDone) ? ' done' : '');
           item.innerHTML = `
-            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} ${explicitIdx < 0 ? 'disabled' : ''} />
+            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${(explicitIdx >= 0 && t.done) || isDerivedDone ? 'checked' : ''} />
             <div>
               <div>${t.text}</div>
               <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}${explicitIdx >= 0 && t.done ? `<button class="archive-btn" data-role="todo-archive" data-todo-id="${explicitIdx}">Archive</button>` : ''}</div>
@@ -1030,8 +1032,17 @@
       document.querySelectorAll('[data-role="todo-done"]').forEach(el => {
         el.onchange = () => {
           const idx = Number(el.dataset.todoId);
-          data.todos = data.todos || [];
-          if (data.todos[idx]) {
+          const sourceText = el.dataset.sourceText;
+          if (sourceText) {
+            // Derived task — persist done state
+            data.derivedDones = data.derivedDones || {};
+            if (el.checked) {
+              data.derivedDones[sourceText] = true;
+            } else {
+              delete data.derivedDones[sourceText];
+            }
+          } else if (data.todos && data.todos[idx]) {
+            // Explicit todo
             data.todos[idx].done = !!el.checked;
             if (el.checked) setMatchingBoardTasksDone(data.todos[idx], data, true);
           }
@@ -1185,7 +1196,7 @@
         } else if (sourceData) {
           state = clone(sourceData);
         } else {
-          state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [] };
+          state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {} };
         }
         
         render(state);
@@ -1197,7 +1208,7 @@
         localStorage.removeItem(SYNC_KEY);
         hasLocalChanges = false;
         sourceData = await fetchSource();
-        state = sourceData ? clone(sourceData) : { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [] };
+        state = sourceData ? clone(sourceData) : { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {} };
         render(state);
         setView('board');
         updateSyncStatus();
