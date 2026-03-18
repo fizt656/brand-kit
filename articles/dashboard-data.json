@@ -207,13 +207,6 @@
   ],
   "todos": [
     {
-      "text": "Watch for reply from Dan/Ceravasc",
-      "area": "Outreach",
-      "dueLabel": "Mar 12",
-      "sortKey": "2026-03-12",
-      "done": false
-    },
-    {
       "text": "Produce first draft of first-principles learning progression",
       "area": "Persona",
       "dueLabel": "Mar 20",
@@ -301,5 +294,5 @@
   "derivedDones": {
     "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)": true
   },
-  "lastUpdated": "2026-03-18T19:04:00-04:00"
+  "lastUpdated": "2026-03-18T19:06:30-04:00"
 }
