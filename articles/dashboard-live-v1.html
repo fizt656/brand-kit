@@ -823,7 +823,8 @@
         /(?:;|·)\s*(check in on [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i,
         /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
       ];
-      function pushFromText(text, area){
+      function pushFromText(text, area, boardStatus){
+        if (normalizeStatus(boardStatus) === 'done') return;
         let raw = null;
         for (const re of patterns) {
           const m = text.match(re);
@@ -843,9 +844,9 @@
         if (!duplicate) out.push({ text: taskText, area, dueLabel, sortKey: dueSortKey(dueLabel), done:false, derived:true, sourceText:text });
       }
       for (const [key, arr] of Object.entries(data.lists || {})) {
-        for (const item of (arr || [])) pushFromText(item.text || '', sectionMap[key] || key);
+        for (const item of (arr || [])) pushFromText(item.text || '', sectionMap[key] || key, item.status);
       }
-      for (const item of (data.retreatSteps || [])) pushFromText(item.text || '', 'Summer Retreat');
+      for (const item of (data.retreatSteps || [])) pushFromText(item.text || '', 'Summer Retreat', item.status);
       return out;
     }
 
@@ -1034,10 +1035,12 @@
           const idx = Number(el.dataset.todoId);
           const sourceText = el.dataset.sourceText;
           if (sourceText) {
-            // Derived task — persist done state
+            // Derived task — sync to board item status
             data.derivedDones = data.derivedDones || {};
             if (el.checked) {
               data.derivedDones[sourceText] = true;
+              // Update matching board item(s) to done
+              setMatchingBoardTasksDone({ text: sourceText }, data, true);
             } else {
               delete data.derivedDones[sourceText];
             }
