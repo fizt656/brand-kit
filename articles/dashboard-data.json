@@ -287,11 +287,11 @@
       "done": true
     },
     {
-      "text": "Send Mike and Kevin (HR) charter draft idea + suggest 30-min meeting to discuss platform, content flow, and content types",
+      "text": "Set up 30-min meeting with Mike and Kevin (HR)",
       "area": "HR",
-      "dueLabel": "Mar 16",
-      "sortKey": "2026-03-16a",
-      "done": true
+      "dueLabel": "Mar 18",
+      "sortKey": "2026-03-18",
+      "done": false
     }
   ],
   "lastUpdated": "2026-03-17T18:25:00-04:00"
