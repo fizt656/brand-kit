@@ -46,7 +46,7 @@
     ],
     "cop": [
       {
-        "status": "waiting",
+        "status": "done",
         "text": "Gen-AI Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
       },
       {
@@ -134,7 +134,7 @@
     {
       "name": "Gen-AI Community of Practice Kick-Off",
       "date": "2026-03-18",
-      "status": "in-progress"
+      "status": "done"
     },
     {
       "name": "GenAI Champions Meeting",
@@ -203,7 +203,7 @@
     {
       "date": "Mar 18",
       "text": "CoP Kick-Off",
-      "status": "waiting"
+      "status": "done"
     },
     {
       "date": "Mar 20",
@@ -298,11 +298,18 @@
       "dueLabel": "Mar 30",
       "sortKey": "2026-03-30",
       "done": false
+    },
+    {
+      "text": "Article: draft/polish and get \"What Is an Expert?\" out \u2014 touch base and finish",
+      "area": "Writing",
+      "dueLabel": "Mar 24",
+      "sortKey": "2026-03-24",
+      "done": false
     }
   ],
   "derivedDones": {
     "CoP prep before 3/17 \u00b7 line up a few friendly attendees to chime in during key sections": true,
     "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)": true
   },
-  "lastUpdated": "2026-03-18T10:00:00-04:00"
+  "lastUpdated": "2026-03-18T18:55:00-04:00"
 }
