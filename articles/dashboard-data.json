@@ -41,7 +41,7 @@
     "persona": [
       {
         "status": "open",
-        "text": "1st draft of first principles learning progression · Due end of Mar 16"
+        "text": "1st draft of first principles learning progression · Due Mar 20"
       },
       {
         "status": "open",
@@ -233,7 +233,7 @@
     {
       "text": "Produce first draft of first-principles learning progression",
       "area": "Persona",
-      "dueLabel": "Fri",
+      "dueLabel": "Mar 20",
       "sortKey": "2026-03-20",
       "done": false
     },
