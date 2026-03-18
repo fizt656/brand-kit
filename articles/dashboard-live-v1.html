@@ -207,6 +207,7 @@
       <h2>Dashboard Access</h2>
       <div class="subtitle">Enter password to continue</div>
       <form id="authForm" autocomplete="on">
+        <input type="text" id="authUser" class="auth-input" value="dashboard" autocomplete="username" style="position:absolute;left:-9999px;opacity:0" />
         <input 
           type="password" 
           id="authPassword" 
@@ -219,7 +220,7 @@
       </form>
       <div class="auth-error" id="authError">Incorrect password. Try again.</div>
       <div class="biometric-hint">
-        💡 Save the password in your browser for FaceID/TouchID unlock
+        💡 Your browser can save this password for FaceID/TouchID unlock
       </div>
     </div>
   </div>
@@ -426,23 +427,22 @@
     const AUTH_PASSWORDS = ['q3w3e3r3_G-Dash']; // accepted passwords
     const SESSION_DURATION_MS = 24 * 60 * 60 * 1000; // 24 hours
     
+    function isValidPassword(val) {
+      return AUTH_PASSWORDS.map(p => p.toLowerCase()).includes(String(val || '').trim().toLowerCase());
+    }
+    
     function checkAuth() {
       const session = localStorage.getItem(AUTH_KEY);
       if (!session) return false;
-      
       try {
         const { timestamp, token } = JSON.parse(session);
-        // Check if session expired
         if (Date.now() - timestamp > SESSION_DURATION_MS) {
           localStorage.removeItem(AUTH_KEY);
           return false;
         }
-        // Validate token (simple hash check)
         if (!AUTH_PASSWORDS.some(p => token === btoa(p))) return false;
         return true;
-      } catch {
-        return false;
-      }
+      } catch { return false; }
     }
     
     function createSession() {
@@ -462,47 +462,53 @@
       document.body.style.overflow = '';
     }
     
-    function attemptUnlock() {
+    function onUnlockSuccess() {
+      createSession();
+      hideAuth();
+      document.getElementById('authError').classList.remove('show');
+      try { initDashboard(); } catch (e) { console.error('initDashboard failed', e); }
+    }
+    
+    async function attemptUnlock(password) {
+      if (isValidPassword(password)) {
+        if (window.PasswordCredential) {
+          try {
+            const cred = new PasswordCredential({ id: 'dashboard', name: 'dashboard', password });
+            await navigator.credentials.store(cred);
+          } catch (e) { /* non-fatal */ }
+        }
+        onUnlockSuccess();
+        return true;
+      }
+      return false;
+    }
+    
+    // Form submit handler
+    document.getElementById('authForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
       const input = document.getElementById('authPassword');
       const error = document.getElementById('authError');
-      const val = String(input.value || '').trim().toLowerCase();
-      const ok = AUTH_PASSWORDS.map(p => p.toLowerCase()).includes(val);
-      if (ok) {
-        createSession();
-        hideAuth();
-        error.classList.remove('show');
-        try { initDashboard(); } catch (e) { console.error('initDashboard failed', e); }
-      } else {
+      const ok = await attemptUnlock(input.value);
+      if (!ok) {
         error.textContent = 'Incorrect password. Try again.';
         error.classList.add('show');
         input.value = '';
         input.focus();
       }
-    }
-
-    // Handle auth form + direct key/click fallback
-    document.getElementById('authForm').addEventListener('submit', (e) => {
-      e.preventDefault();
-      attemptUnlock();
-    });
-    document.getElementById('authPassword').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        attemptUnlock();
-      }
-    });
-    document.querySelector('#authForm button[type="submit"]').addEventListener('click', (e) => {
-      e.preventDefault();
-      attemptUnlock();
     });
     
-    // Check auth on load
-    if (checkAuth()) {
-      hideAuth();
-      try { initDashboard(); } catch (e) { console.error('initDashboard failed', e); }
-    } else {
+    // On page load: try session, then browser credential, then show auth
+    async function tryAutoAuth() {
+      if (checkAuth()) { hideAuth(); try { initDashboard(); } catch (e) { console.error(e); } return; }
+      if (window.PasswordCredential) {
+        try {
+          const cred = await navigator.credentials.get({ password: true });
+          if (cred?.password && isValidPassword(cred.password)) { onUnlockSuccess(); return; }
+        } catch (e) { /* non-fatal */ }
+      }
       showAuth();
     }
+    tryAutoAuth();
     
     // ============================================
     // DASHBOARD CORE
