@@ -94,12 +94,16 @@
       "text": "HCC Prep"
     },
     {
-      "time": "9:30 AM",
-      "text": "Jordan <> Gus quick debrief"
+      "time": "10:00 AM",
+      "text": "CoP Follow-Ups"
     },
     {
       "time": "11:00 AM",
       "text": "Pharmacy Prototype Iteration"
+    },
+    {
+      "time": "12:50 PM",
+      "text": "Jordan <> Gus quick debrief"
     },
     {
       "time": "1:30 PM",
@@ -218,13 +222,13 @@
       "area": "Meeting Prep",
       "dueLabel": "Mar 19",
       "sortKey": "2026-03-19",
-      "done": false
+      "done": true
     },
     {
       "text": "Put together an illustrative run-of-show for Summer Retreat",
       "area": "Summer Retreat",
-      "dueLabel": "Mar 19",
-      "sortKey": "2026-03-19",
+      "dueLabel": "Mar 27",
+      "sortKey": "2026-03-27",
       "done": false
     },
     {
@@ -294,5 +298,5 @@
   "derivedDones": {
     "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)": true
   },
-  "lastUpdated": "2026-03-19T07:02:37-04:00"
+  "lastUpdated": "2026-03-19T18:38:30-04:00"
 }
