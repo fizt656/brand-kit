@@ -3,6 +3,10 @@
     "workshops": [
       {
         "status": "waiting",
+        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
+      },
+      {
+        "status": "waiting",
         "text": "GenAI for Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; Brandon driving, Gus taking notes/supporting"
       },
       {
@@ -87,35 +91,39 @@
       }
     ]
   },
-  "scheduleDate": "Thursday, March 19, 2026",
+  "scheduleDate": "Friday, March 20, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "HCC Prep"
+      "time": "8:00 AM",
+      "text": "Timesheet"
     },
     {
-      "time": "10:00 AM",
-      "text": "CoP Follow-Ups"
+      "time": "9:30 AM",
+      "text": "Check in leading up to HR PDD 4/8"
     },
     {
-      "time": "11:00 AM",
-      "text": "Pharmacy Prototype Iteration"
+      "time": "10:30 AM",
+      "text": "Biweekly GenAI Champions Meeting"
     },
     {
-      "time": "12:50 PM",
-      "text": "Jordan <> Gus quick debrief"
+      "time": "11:30 AM",
+      "text": "Deck introducing Bravely"
+    },
+    {
+      "time": "1:00 PM",
+      "text": "Dana Farber Training and June Hackathon"
     },
     {
       "time": "1:30 PM",
-      "text": "Gus/Gabe AI Workshops Discuss"
+      "text": "Planning Meeting: GenAI for Business Applications Team"
     },
     {
-      "time": "2:00 PM",
-      "text": "Gus<>Dan meet"
+      "time": "3:30 PM",
+      "text": "Snowflake Cortex Analyst Demo"
     },
     {
-      "time": "2:30 PM",
-      "text": "Jimmy Fund Use-Case Prototyping"
+      "time": "4:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -201,7 +209,7 @@
     {
       "date": "Apr 8",
       "text": "HR Professional Development Day breakout",
-      "status": "done"
+      "status": "waiting"
     },
     {
       "date": "Jun 9-11",
@@ -295,8 +303,6 @@
       "done": false
     }
   ],
-  "derivedDones": {
-    "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 in planning; 3/20 HR planning meeting; start shell deck from JA's prior deck (due 3/18)": true
-  },
-  "lastUpdated": "2026-03-19T18:38:30-04:00"
+  "derivedDones": {},
+  "lastUpdated": "2026-03-20T07:03:05-04:00"
 }
