@@ -91,39 +91,19 @@
       }
     ]
   },
-  "scheduleDate": "Friday, March 20, 2026",
+  "scheduleDate": "Saturday, March 21, 2026",
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Timesheet"
-    },
-    {
-      "time": "9:30 AM",
-      "text": "Check in leading up to HR PDD 4/8"
-    },
-    {
-      "time": "10:30 AM",
-      "text": "Biweekly GenAI Champions Meeting"
-    },
-    {
-      "time": "11:30 AM",
-      "text": "Deck introducing Bravely"
-    },
-    {
       "time": "1:00 PM",
-      "text": "Dana Farber Training and June Hackathon"
+      "text": "Family outing / drive / music"
     },
     {
-      "time": "1:30 PM",
-      "text": "Planning Meeting: GenAI for Business Applications Team"
+      "time": "5:30 PM",
+      "text": "Reservation at Black Lamb"
     },
     {
-      "time": "3:30 PM",
-      "text": "Snowflake Cortex Analyst Demo"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "Documentation, next week table"
+      "time": "7:30 PM",
+      "text": "The Antiquities at Calderwood Pavilion"
     }
   ],
   "workshopTracker": [
@@ -304,5 +284,5 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-20T07:03:05-04:00"
+  "lastUpdated": "2026-03-21T07:05:00-04:00"
 }
