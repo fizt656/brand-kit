@@ -254,9 +254,9 @@
     <section class="command-view" id="commandView">
       <div class="command-grid">
         <section class="card command-card">
-          <div class="quad-label">Now / Soon</div>
-          <h2>Focus</h2>
-          <div class="focus-big" id="focusHeadline">This week at a glance</div>
+          <div class="quad-label">Today</div>
+          <h2>Today</h2>
+          <div class="focus-big" id="focusHeadline">Date loading...</div>
           <ul class="command-list" id="focusList"></ul>
         </section>
         <section class="card command-card">
@@ -265,21 +265,21 @@
           <ul class="command-list" id="upcomingList"></ul>
         </section>
         <section class="card command-card">
-          <div class="quad-label">Calendar</div>
-          <h2 id="commandScheduleTitle">Day Schedule</h2>
-          <div class="small-note" id="commandScheduleDate">Date loading...</div>
+          <div class="quad-label">Needs Attention</div>
+          <h2 id="commandScheduleTitle">Overdue</h2>
+          <div class="small-note" id="commandScheduleDate">Open dated items that need attention</div>
           <div class="command-schedule" id="commandSchedule"></div>
         </section>
       </div>
       <div class="command-grid">
         <section class="card command-card">
-          <div class="quad-label">Strategic Lanes</div>
-          <h2>Signals</h2>
+          <div class="quad-label">Pending</div>
+          <h2>Waiting / Watchlist</h2>
           <ul class="command-list" id="signalList"></ul>
         </section>
         <section class="card command-card">
-          <div class="quad-label">Project</div>
-          <h2>Summer Retreat</h2>
+          <div class="quad-label">Strategic Lanes</div>
+          <h2>Signals</h2>
           <ul class="command-list" id="retreatCommandList"></ul>
         </section>
         <section class="card command-card">
@@ -862,40 +862,245 @@
         .sort((a,b) => String(a.sortKey||dueSortKey(a.dueLabel)||'').localeCompare(String(b.sortKey||dueSortKey(b.dueLabel)||'')));
     }
 
+    function parseCommandDate(value, fallbackYear){
+      const s = String(value || '').trim();
+      if (!s) return null;
+      let m = s.match(/(\d{4})-(\d{2})-(\d{2})/);
+      if (m) return new Date(Number(m[1]), Number(m[2]) - 1, Number(m[3]));
+      m = s.match(/\b([A-Za-z]{3,9})\s+(\d{1,2})(?:\s*,?\s*(\d{4}))?(?:\s*(?:to|-|–)\s*\d{1,2})?\b/);
+      if (m) {
+        const month = new Date(`${m[1]} 1, ${m[3] || fallbackYear || new Date().getFullYear()}`).getMonth();
+        if (!Number.isNaN(month)) return new Date(Number(m[3] || fallbackYear || new Date().getFullYear()), month, Number(m[2]));
+      }
+      m = s.match(/\b(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/);
+      if (m) {
+        let year = Number(m[3] || fallbackYear || new Date().getFullYear());
+        if (year < 100) year += 2000;
+        return new Date(year, Number(m[1]) - 1, Number(m[2]));
+      }
+      return null;
+    }
+
+    function commandDateKey(dt){
+      if (!(dt instanceof Date) || Number.isNaN(dt.getTime())) return '';
+      return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
+    }
+
+    function commandPrettyDate(dt){
+      if (!(dt instanceof Date) || Number.isNaN(dt.getTime())) return '';
+      return dt.toLocaleDateString(undefined, { month:'short', day:'numeric' });
+    }
+
+    function commandTimeSortKey(label){
+      const s = String(label || '').trim().toLowerCase();
+      const m = s.match(/^(\d{1,2})(?::(\d{2}))?\s*(am|pm)$/);
+      if (!m) return '99:99';
+      let hour = Number(m[1]) % 12;
+      if (m[3] === 'pm') hour += 12;
+      return `${String(hour).padStart(2,'0')}:${m[2] || '00'}`;
+    }
+
+    function sameDay(a, b){
+      return commandDateKey(a) && commandDateKey(a) === commandDateKey(b);
+    }
+
+    function commandSourceLabel(raw){
+      const map = {
+        workshops: 'Workshops',
+        admin: 'Admin',
+        strategy: 'Strategy',
+        persona: 'Persona',
+        cop: 'CoP',
+        schedule: 'Schedule',
+        milestone: 'Milestone',
+        'workshop tracker': 'Workshop Tracker',
+        todo: 'To-Do',
+        retreat: 'Summer Retreat'
+      };
+      return map[String(raw || '').toLowerCase()] || raw || 'General';
+    }
+
+    function buildCommandEntries(data){
+      const today = parseCommandDate(data.scheduleDate, new Date().getFullYear()) || new Date();
+      const sourceYear = today.getFullYear();
+      const entries = [];
+      const combinedTodos = collectCommandTodos(data);
+      const listLabelMap = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP' };
+
+      function addEntry(entry){
+        if (!entry || !entry.text) return;
+        const status = normalizeStatus(entry.status);
+        const text = String(entry.text).trim();
+        if (!text) return;
+        const date = entry.date || null;
+        const dateKey = date ? commandDateKey(date) : '';
+        const candidate = {
+          text,
+          status,
+          date,
+          dateKey,
+          dateLabel: entry.dateLabel || (date ? commandPrettyDate(date) : ''),
+          sourceLabels: [commandSourceLabel(entry.sourceLabel)],
+          timeLabel: entry.timeLabel || '',
+          bucket: entry.bucket || null
+        };
+        const existing = entries.find(e => {
+          if ((e.dateKey || '') !== (candidate.dateKey || '')) return false;
+          return canonicalTodoText(e.text) === canonicalTodoText(candidate.text) || tokenOverlap(e.text, candidate.text) >= 0.82;
+        });
+        if (existing) {
+          existing.sourceLabels = [...new Set([...existing.sourceLabels, ...candidate.sourceLabels])];
+          if (!existing.timeLabel && candidate.timeLabel) existing.timeLabel = candidate.timeLabel;
+          if (!existing.dateLabel && candidate.dateLabel) existing.dateLabel = candidate.dateLabel;
+          if (existing.status !== 'done' && candidate.status === 'done') existing.status = candidate.status;
+          const pickExisting = existing.text.length >= candidate.text.length;
+          if (!pickExisting) existing.text = candidate.text;
+          return;
+        }
+        entries.push(candidate);
+      }
+
+      (data.schedule || []).forEach(item => addEntry({
+        text: item.text,
+        status: 'open',
+        date: today,
+        dateLabel: 'Today',
+        timeLabel: item.time || '',
+        sourceLabel: 'Schedule',
+        bucket: 'today'
+      }));
+
+      (data.workshopTracker || []).forEach(item => addEntry({
+        text: item.name,
+        status: item.status,
+        date: parseCommandDate(item.date, sourceYear),
+        dateLabel: item.date || '',
+        sourceLabel: 'Workshop Tracker'
+      }));
+
+      (data.milestones || []).forEach(item => addEntry({
+        text: item.text,
+        status: item.status,
+        date: parseCommandDate(item.date, sourceYear),
+        dateLabel: item.date || '',
+        sourceLabel: 'Milestone'
+      }));
+
+      combinedTodos.forEach(item => addEntry({
+        text: item.text,
+        status: item.done ? 'done' : 'open',
+        date: parseCommandDate(item.sortKey || item.dueLabel, sourceYear),
+        dateLabel: item.dueLabel || '',
+        sourceLabel: item.area || 'To-Do'
+      }));
+
+      Object.entries(data.lists || {}).forEach(([key, arr]) => {
+        (arr || []).forEach(item => addEntry({
+          text: item.text,
+          status: item.status,
+          date: parseCommandDate(item.text, sourceYear),
+          sourceLabel: listLabelMap[key] || key
+        }));
+      });
+
+      (data.retreatSteps || []).forEach(item => addEntry({
+        text: item.text,
+        status: item.status,
+        date: parseCommandDate(item.text, sourceYear),
+        sourceLabel: 'Summer Retreat'
+      }));
+
+      const buckets = { today: [], overdue: [], upcoming: [], waiting: [], future: [] };
+      entries.forEach(entry => {
+        const hasDate = !!entry.dateKey;
+        const isDone = entry.status === 'done';
+        if (!hasDate) {
+          if (!isDone) buckets.waiting.push(entry);
+          return;
+        }
+        if (sameDay(entry.date, today)) {
+          buckets.today.push(entry);
+          return;
+        }
+        if (isDone) return;
+        if (entry.date < today) {
+          buckets.overdue.push(entry);
+          return;
+        }
+        if (entry.date.getFullYear() === today.getFullYear() && entry.date.getMonth() === today.getMonth()) {
+          buckets.upcoming.push(entry);
+          return;
+        }
+        buckets.future.push(entry);
+      });
+
+      buckets.today.sort((a,b) => commandTimeSortKey(a.timeLabel).localeCompare(commandTimeSortKey(b.timeLabel)) || a.text.localeCompare(b.text));
+      buckets.overdue.sort((a,b) => (a.dateKey || '').localeCompare(b.dateKey || '') || a.text.localeCompare(b.text));
+      buckets.upcoming.sort((a,b) => (a.dateKey || '').localeCompare(b.dateKey || '') || a.text.localeCompare(b.text));
+      buckets.waiting.sort((a,b) => a.text.localeCompare(b.text));
+      buckets.future.sort((a,b) => (a.dateKey || '').localeCompare(b.dateKey || '') || a.text.localeCompare(b.text));
+      return { today, buckets };
+    }
+
+    function commandItemHTML(item, options = {}){
+      const pills = [];
+      if (options.showTime && item.timeLabel) pills.push(`<span class="mini-pill">${item.timeLabel}</span>`);
+      if (options.showDate && item.dateLabel) pills.push(`<span class="mini-pill">${item.dateLabel}</span>`);
+      if (item.sourceLabels && item.sourceLabels.length) pills.push(`<span class="mini-pill">${item.sourceLabels.join(' · ')}</span>`);
+      if (options.showStatus && item.status && item.status !== 'open') pills.push(`<span class="mini-pill">${item.status}</span>`);
+      return `<strong>${item.text}</strong>${pills.length ? `<div class="command-meta">${pills.join('')}</div>` : ''}`;
+    }
+
+    function renderCommandItems(container, items, options = {}, emptyText = 'Nothing here right now'){
+      if (!container) return;
+      container.innerHTML = '';
+      if (!items.length) {
+        const li = document.createElement('li');
+        li.className = 'command-item';
+        li.innerHTML = `<div>${emptyText}</div>`;
+        container.appendChild(li);
+        return;
+      }
+      items.forEach(item => {
+        const li = document.createElement('li');
+        li.className = 'command-item';
+        li.innerHTML = commandItemHTML(item, options);
+        container.appendChild(li);
+      });
+    }
+
     function renderCommandView(data){
-      const focus = collectCommandTodos(data).slice(0,6);
+      const { today, buckets } = buildCommandEntries(data);
       const focusHeadline = document.getElementById('focusHeadline');
-      if (focusHeadline) focusHeadline.textContent = focus.length ? `${focus.length} active items in motion` : 'Clear runway';
-      const focusList = document.getElementById('focusList');
-      if (focusList) {
-        focusList.innerHTML = '';
-        focus.forEach(t => {
-          const li = document.createElement('li');
-          li.className = 'command-item';
-          li.innerHTML = `<strong>${t.text}</strong><div class="command-meta"><span class="mini-pill">${t.dueLabel || 'Next'}</span><span class="mini-pill">${t.area || 'General'}</span></div>`;
-          focusList.appendChild(li);
-        });
+      if (focusHeadline) focusHeadline.textContent = data.scheduleDate || today.toLocaleDateString(undefined, { weekday:'long', month:'long', day:'numeric' });
+
+      renderCommandItems(document.getElementById('focusList'), buckets.today, { showTime:true, showDate:false, showStatus:true }, 'Nothing scheduled or due today');
+      renderCommandItems(document.getElementById('upcomingList'), buckets.upcoming, { showDate:true, showStatus:true }, 'No more dated items this month');
+
+      const overdueWrap = document.getElementById('commandSchedule');
+      if (overdueWrap) {
+        overdueWrap.innerHTML = '';
+        if (!buckets.overdue.length) {
+          const div = document.createElement('div');
+          div.className = 'command-item';
+          div.innerHTML = '<div>No overdue dated items</div>';
+          overdueWrap.appendChild(div);
+        } else {
+          buckets.overdue.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'command-item';
+            div.innerHTML = commandItemHTML(item, { showDate:true, showStatus:true });
+            overdueWrap.appendChild(div);
+          });
+        }
       }
-      const upcomingList = document.getElementById('upcomingList');
-      if (upcomingList) {
-        upcomingList.innerHTML = '';
-        (data.workshopTracker || []).slice(0,6).forEach(u => {
-          const li = document.createElement('li');
-          li.className = 'command-item';
-          li.innerHTML = `<strong>${u.name}</strong><div class="command-meta"><span class="mini-pill">${u.date || ''}</span><span class="mini-pill">${u.status || ''}</span></div>`;
-          upcomingList.appendChild(li);
-        });
-      }
-      document.getElementById('commandScheduleDate').textContent = data.scheduleDate || 'Date not set';
-      const cs = document.getElementById('commandSchedule');
-      if (cs) {
-        cs.innerHTML = '';
-        (data.schedule || []).forEach(s => cs.appendChild(scheduleRow(s, 0)));
-      }
-      const signalList = document.getElementById('signalList');
+
+      renderCommandItems(document.getElementById('signalList'), buckets.waiting, { showStatus:true }, 'No undated waiting items');
+
+      const signalList = document.getElementById('retreatCommandList');
       if (signalList) {
         signalList.innerHTML = '';
-        [['strategy','Strategy'],['persona','Persona'],['cop','CoP'],['workshops','Workshops']].forEach(([key,label]) => {
+        [['strategy','Strategy'],['persona','Persona'],['cop','CoP'],['workshops','Workshops'],['admin','Admin']].forEach(([key,label]) => {
           const arr = (data.lists && data.lists[key]) || [];
           const top = arr.find(x => normalizeStatus(x.status) !== 'done') || arr[0];
           if (!top) return;
@@ -904,26 +1109,19 @@
           li.innerHTML = `<strong>${label}</strong><div>${top.text}</div><div class="command-meta"><span class="mini-pill">${top.status}</span></div>`;
           signalList.appendChild(li);
         });
-      }
-      const rc = document.getElementById('retreatCommandList');
-      if (rc) {
-        rc.innerHTML = '';
-        (data.retreatSteps || []).filter(x => normalizeStatus(x.status) !== 'done').slice(0,5).forEach(r => {
+        const retreatTop = (data.retreatSteps || []).find(x => normalizeStatus(x.status) !== 'done');
+        if (retreatTop) {
           const li = document.createElement('li');
           li.className = 'command-item';
-          li.innerHTML = `<strong>Step ${r.step}</strong><div>${r.text}</div>`;
-          rc.appendChild(li);
-        });
+          li.innerHTML = `<strong>Summer Retreat</strong><div>${retreatTop.text}</div><div class="command-meta"><span class="mini-pill">${retreatTop.status}</span></div>`;
+          signalList.appendChild(li);
+        }
       }
+
       const mc = document.getElementById('milestoneCommandList');
       if (mc) {
-        mc.innerHTML = '';
-        (data.milestones || []).slice(0,6).forEach(m => {
-          const li = document.createElement('li');
-          li.className = 'command-item';
-          li.innerHTML = `<strong>${m.text}</strong><div class="command-meta"><span class="mini-pill">${m.date}</span><span class="mini-pill">${m.status}</span></div>`;
-          mc.appendChild(li);
-        });
+        const keyDates = [...buckets.upcoming, ...buckets.future].filter((item, idx, arr) => idx === arr.findIndex(other => other.text === item.text && other.dateKey === item.dateKey)).slice(0,8);
+        renderCommandItems(mc, keyDates, { showDate:true, showStatus:true }, 'No upcoming key dates');
       }
     }
 
