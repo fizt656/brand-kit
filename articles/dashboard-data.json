@@ -91,19 +91,19 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, March 21, 2026",
+  "scheduleDate": "Sunday, March 22, 2026",
   "schedule": [
     {
+      "time": "12:30 PM",
+      "text": "prep light lunch"
+    },
+    {
       "time": "1:00 PM",
-      "text": "Family outing / drive / music"
+      "text": "Light Family Lunch"
     },
     {
-      "time": "5:30 PM",
-      "text": "Reservation at Black Lamb"
-    },
-    {
-      "time": "7:30 PM",
-      "text": "The Antiquities at Calderwood Pavilion"
+      "time": "3:00 PM",
+      "text": "Sunday Kitchen Club"
     }
   ],
   "workshopTracker": [
@@ -284,5 +284,5 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-21T07:05:00-04:00"
+  "lastUpdated": "2026-03-22T20:28:00-04:00"
 }
