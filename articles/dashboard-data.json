@@ -236,6 +236,13 @@
       "area": "Strategy",
       "dueLabel": "Mar 20",
       "sortKey": "2026-03-20",
+      "done": true
+    },
+    {
+      "text": "Socialize JFC social-stories prototype + broader patient education portal concept with leadership",
+      "area": "Strategy",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-24",
       "done": false
     },
     {
@@ -292,7 +299,7 @@
       "area": "CoP",
       "dueLabel": "Mar 23",
       "sortKey": "2026-03-23",
-      "done": false
+      "done": true
     }
   ],
   "derivedDones": {},
