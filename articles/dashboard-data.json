@@ -51,7 +51,7 @@
       },
       {
         "status": "open",
-        "text": "Bravely app for JFC \u00b7 build mini-deck and demo to support discussion"
+        "text": "JFC charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with JFC input"
       }
     ],
     "persona": [
@@ -108,6 +108,10 @@
       {
         "status": "open",
         "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just Gus"
+      },
+      {
+        "status": "open",
+        "text": "Make deck and notecatchers for champions in prep for next CoP monthly \u00b7 due Mar 31"
       }
     ]
   },
@@ -166,7 +170,7 @@
     },
     {
       "step": "3",
-      "status": "open",
+      "status": "done",
       "text": "Get the survey out"
     },
     {
@@ -204,7 +208,7 @@
     {
       "date": "Mar 20",
       "text": "Champions meeting",
-      "status": "waiting"
+      "status": "done"
     },
     {
       "date": "Apr 8",
@@ -219,10 +223,10 @@
   ],
   "todos": [
     {
-      "text": "Produce first draft of first-principles learning progression",
-      "area": "Persona",
-      "dueLabel": "Mar 20",
-      "sortKey": "2026-03-20",
+      "text": "Set up 30-min meeting with Mike and Kevin (HR)",
+      "area": "HR",
+      "dueLabel": "Mar 18",
+      "sortKey": "2026-03-18",
       "done": false
     },
     {
@@ -233,10 +237,10 @@
       "done": true
     },
     {
-      "text": "Put together an illustrative run-of-show for Summer Retreat",
-      "area": "Summer Retreat",
-      "dueLabel": "Mar 27",
-      "sortKey": "2026-03-27",
+      "text": "Produce first draft of first-principles learning progression",
+      "area": "Persona",
+      "dueLabel": "Mar 20",
+      "sortKey": "2026-03-20",
       "done": false
     },
     {
@@ -247,10 +251,10 @@
       "done": true
     },
     {
-      "text": "Socialize JFC social-stories prototype + broader patient education portal concept with leadership",
-      "area": "Strategy",
+      "text": "Wait for M and R testing feedback on SmartRX prompt",
+      "area": "Projects",
       "dueLabel": "Next",
-      "sortKey": "2026-03-24",
+      "sortKey": "2026-03-21",
       "done": false
     },
     {
@@ -261,38 +265,17 @@
       "done": false
     },
     {
-      "text": "Wait for M and R testing feedback on SmartRX prompt",
-      "area": "Projects",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-21",
-      "done": false
-    },
-    {
-      "text": "Set up 30-min meeting with Mike and Kevin (HR)",
-      "area": "HR",
-      "dueLabel": "Mar 18",
-      "sortKey": "2026-03-18",
-      "done": false
+      "text": "CoP follow up (check calendar 3/19)",
+      "area": "CoP",
+      "dueLabel": "Mar 23",
+      "sortKey": "2026-03-23",
+      "done": true
     },
     {
       "text": "Prep for Rival meeting \u2014 review context, remember to ask about quote",
       "area": "Consulting",
       "dueLabel": "Mar 23",
       "sortKey": "2026-03-23",
-      "done": false
-    },
-    {
-      "text": "Update Smartsheet for mid-year review",
-      "area": "Admin",
-      "dueLabel": "Mar 30",
-      "sortKey": "2026-03-30",
-      "done": false
-    },
-    {
-      "text": "Check in with Dan at Ceravasc if no reply yet \u2014 short nudge",
-      "area": "Outreach",
-      "dueLabel": "Mar 30",
-      "sortKey": "2026-03-30",
       "done": false
     },
     {
@@ -303,13 +286,62 @@
       "done": false
     },
     {
-      "text": "CoP follow up (check calendar 3/19)",
-      "area": "CoP",
-      "dueLabel": "Mar 23",
-      "sortKey": "2026-03-23",
+      "text": "Socialize JFC social-stories prototype + broader patient education portal concept with leadership",
+      "area": "Strategy",
+      "dueLabel": "Mar 25",
+      "sortKey": "2026-03-25",
       "done": true
+    },
+    {
+      "text": "Persona-tailored learning model pass",
+      "area": "Persona",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-26",
+      "done": false
+    },
+    {
+      "text": "Poll champions for one persona from previous workshops",
+      "area": "Persona",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-26",
+      "done": false
+    },
+    {
+      "text": "Put together an illustrative run-of-show for Summer Retreat",
+      "area": "Summer Retreat",
+      "dueLabel": "Mar 27",
+      "sortKey": "2026-03-27",
+      "done": false
+    },
+    {
+      "text": "Check in with Dan at Ceravasc if no reply yet \u2014 short nudge",
+      "area": "Outreach",
+      "dueLabel": "Mar 30",
+      "sortKey": "2026-03-30",
+      "done": false
+    },
+    {
+      "text": "JFC charter / proposal deck",
+      "area": "Strategy",
+      "dueLabel": "Mar 30",
+      "sortKey": "2026-03-30",
+      "done": false
+    },
+    {
+      "text": "Update Smartsheet for mid-year review",
+      "area": "Admin",
+      "dueLabel": "Mar 30",
+      "sortKey": "2026-03-30",
+      "done": false
+    },
+    {
+      "text": "Champions deck + notecatchers",
+      "area": "Workshops",
+      "dueLabel": "Mar 31",
+      "sortKey": "2026-03-31",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-25T07:00:00-04:00"
+  "lastUpdated": "2026-03-25T18:20:00-04:00"
 }
