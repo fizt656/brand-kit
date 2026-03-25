@@ -3,35 +3,35 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "HR Professional Development Day breakout · Apr 8 · 3/20 check-in; confirm scope, shell deck, and facilitation plan"
+        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
       },
       {
         "status": "waiting",
-        "text": "GenAI for Business Applications Team planning · Mar 20 · planning meeting; Brandon driving, Gus taking notes/supporting"
+        "text": "GenAI for Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; Brandon driving, Gus taking notes/supporting"
       },
       {
         "status": "waiting",
-        "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Informatics & Analytics Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Informatics & Analytics Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
       }
     ],
     "admin": [
@@ -47,17 +47,17 @@
       },
       {
         "status": "open",
-        "text": "SmartRX pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "SmartRX pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "open",
-        "text": "Bravely app for JFC · build mini-deck and demo to support discussion"
+        "text": "Bravely app for JFC \u00b7 build mini-deck and demo to support discussion"
       }
     ],
     "persona": [
       {
         "status": "open",
-        "text": "1st draft of first principles learning progression · Due Mar 20"
+        "text": "1st draft of first principles learning progression \u00b7 Due Mar 20"
       },
       {
         "status": "open",
@@ -71,19 +71,19 @@
     "cop": [
       {
         "status": "done",
-        "text": "Gen-AI Community of Practice Kick-Off · Mar 18 · anchor event"
+        "text": "Gen-AI Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
       },
       {
         "status": "waiting",
-        "text": "GenAI Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+        "text": "GenAI Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting · Apr 3 · keep cadence current"
+        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting · Apr 17 · keep cadence current"
+        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
       },
       {
         "status": "waiting",
@@ -91,11 +91,11 @@
       },
       {
         "status": "open",
-        "text": "CoP operations · make the main CoP meeting monthly recurring"
+        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
       },
       {
         "status": "open",
-        "text": "CoP operations · make biweekly office hours recurring (rename later)"
+        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
       },
       {
         "status": "open",
@@ -107,27 +107,23 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just Gus"
+        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just Gus"
       }
     ]
   },
-  "scheduleDate": "Tuesday, March 24, 2026",
+  "scheduleDate": "Wednesday, March 25, 2026",
   "schedule": [
     {
-      "time": "9:30 AM",
-      "text": "I&A and HCC - Automation and AI solution"
+      "time": "12:30 PM",
+      "text": "Mimi<>Gus lunch+"
     },
     {
-      "time": "10:30 AM",
+      "time": "1:00 PM",
+      "text": "Virtual Event: How Gene Therapy Is Transforming the Future of Pediatric Health"
+    },
+    {
+      "time": "1:30 PM",
       "text": "Brent<>Gus tb"
-    },
-    {
-      "time": "11:30 AM",
-      "text": "SM <> GPT4DFCI"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "Canceled: Data Platform & Analytics Enablement Team - Weekly Leadership Meeting"
     }
   ],
   "workshopTracker": [
@@ -181,7 +177,7 @@
     {
       "step": "5",
       "status": "open",
-      "text": "Put together an illustrative run-of-show · Due Mar 19"
+      "text": "Put together an illustrative run-of-show \u00b7 Due Mar 19"
     },
     {
       "step": "6",
@@ -279,7 +275,7 @@
       "done": false
     },
     {
-      "text": "Prep for Rival meeting — review context, remember to ask about quote",
+      "text": "Prep for Rival meeting \u2014 review context, remember to ask about quote",
       "area": "Consulting",
       "dueLabel": "Mar 23",
       "sortKey": "2026-03-23",
@@ -293,14 +289,14 @@
       "done": false
     },
     {
-      "text": "Check in with Dan at Ceravasc if no reply yet — short nudge",
+      "text": "Check in with Dan at Ceravasc if no reply yet \u2014 short nudge",
       "area": "Outreach",
       "dueLabel": "Mar 30",
       "sortKey": "2026-03-30",
       "done": false
     },
     {
-      "text": "Article: draft/polish and get \"What Is an Expert?\" out — touch base and finish",
+      "text": "Article: draft/polish and get \"What Is an Expert?\" out \u2014 touch base and finish",
       "area": "Writing",
       "dueLabel": "Mar 24",
       "sortKey": "2026-03-24",
@@ -315,5 +311,5 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-24T07:00:00-04:00"
+  "lastUpdated": "2026-03-25T07:00:00-04:00"
 }
