@@ -226,7 +226,7 @@
   </div>
   
   <header id="site-header" class="cv-header">
-    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
+    <div class="site-title">Dashboard<span class="site-title-accent">, Live</span></div>
     <nav class="site-nav" aria-label="Primary">
       <a href="../index.html" class="nav-btn nav-link">Main</a>
       <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
@@ -394,16 +394,16 @@
         <div class="quad-header">
           <div>
             <div class="quad-label">High-Visibility Project</div>
-            <h2>I&A Summer Retreat / Learning Day</h2>
+            <h2>Summer Retreat / Learning Day</h2>
           </div>
         </div>
-        <div class="sub-note">Shape a practical, meaningful AI learning day for I&A. Owner: Gus / Melanie Essien.</div>
+        <div class="sub-note">Shape a practical, meaningful AI learning day for the org. Owner: G. / M. E.</div>
         <ul class="retreat-steps" id="retreatSteps"></ul>
         <div class="section-meta"><button class="btn" id="addRetreatStep">Add step</button></div>
       </div>
     </section>
 
-    <div class="foot">Source of truth: <code>dashboard-data.json</code>. Mr. White updates this file. Your browser edits sync when you export.</div>
+    <div class="foot">Source of truth: <code>dashboard-data.json</code>. The owner updates this file. Your browser edits sync when you export.</div>
   </main>
 
   <div class="drawer-overlay" id="drawerOverlay"></div>
@@ -1350,7 +1350,7 @@
       lines.push('Important Dates & Milestones');
       (state.milestones || []).forEach(m => lines.push(`- ${m.date} | ${m.text} | ${m.status}`));
       lines.push('');
-      lines.push('I&A Summer Retreat / Learning Day');
+      lines.push('Summer Retreat / Learning Day');
       (state.retreatSteps || []).forEach(s => lines.push(`- ${s.step}. [${s.status}] ${s.text}`));
       try {
         await navigator.clipboard.writeText(lines.join('\n'));
@@ -1367,7 +1367,7 @@
       delete exportData.localUpdatedAt;
       try {
         await navigator.clipboard.writeText(JSON.stringify(exportData, null, 2));
-        alert('Changes copied to clipboard.\n\nPaste in Telegram to sync with Mr. White, or save to a file.');
+        alert('Changes copied to clipboard.\n\nPaste in chat to sync, or save to a file.');
       } catch {
         console.log(JSON.stringify(exportData, null, 2));
         alert('Check console for exported data.');

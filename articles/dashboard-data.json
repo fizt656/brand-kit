@@ -3,11 +3,11 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "HR Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
+        "text": "Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
       },
       {
         "status": "waiting",
-        "text": "GenAI for Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; Brandon driving, Gus taking notes/supporting"
+        "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
       },
       {
         "status": "waiting",
@@ -31,13 +31,13 @@
       },
       {
         "status": "waiting",
-        "text": "Informatics & Analytics Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
       }
     ],
     "admin": [
       {
         "status": "open",
-        "text": "Keep upcoming workshop/planning items current when Gus drops quick updates in chat"
+        "text": "Keep upcoming workshop/planning items current when G. drops quick updates in chat"
       }
     ],
     "strategy": [
@@ -47,11 +47,11 @@
       },
       {
         "status": "open",
-        "text": "SmartRX pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "pharmacy product pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "open",
-        "text": "JFC charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with JFC input"
+        "text": "partner group charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
       }
     ],
     "persona": [
@@ -71,19 +71,19 @@
     "cop": [
       {
         "status": "done",
-        "text": "Gen-AI Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
+        "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
       },
       {
         "status": "waiting",
-        "text": "GenAI Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
+        "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
+        "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
       },
       {
         "status": "waiting",
-        "text": "Biweekly GenAI Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
+        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
       },
       {
         "status": "waiting",
@@ -99,7 +99,7 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: set up GenAI Open Studio office hours on calendar (confirm frequency preference)"
+        "text": "CoP post-kickoff: set up Open Studio office hours on calendar (confirm frequency preference)"
       },
       {
         "status": "open",
@@ -107,7 +107,7 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just Gus"
+        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
       },
       {
         "status": "open",
@@ -119,7 +119,7 @@
   "schedule": [
     {
       "time": "12:30 PM",
-      "text": "Mimi<>Gus lunch+"
+      "text": "M.<>G. lunch+"
     },
     {
       "time": "1:00 PM",
@@ -127,32 +127,32 @@
     },
     {
       "time": "1:30 PM",
-      "text": "Brent<>Gus tb"
+      "text": "B.<>G. tb"
     }
   ],
   "workshopTracker": [
     {
-      "name": "Gen-AI Community of Practice Kick-Off",
+      "name": "Community of Practice Kick-Off",
       "date": "2026-03-18",
       "status": "done"
     },
     {
-      "name": "GenAI Champions Meeting",
+      "name": "Champions Meeting",
       "date": "2026-03-20",
       "status": "waiting"
     },
     {
-      "name": "GenAI Champions Meeting",
+      "name": "Champions Meeting",
       "date": "2026-04-03",
       "status": "waiting"
     },
     {
-      "name": "GenAI Champions Meeting",
+      "name": "Champions Meeting",
       "date": "2026-04-17",
       "status": "waiting"
     },
     {
-      "name": "Informatics & Analytics Summit",
+      "name": "Org Summit",
       "date": "2026-06-09 to 2026-06-11",
       "status": "waiting"
     }
@@ -161,7 +161,7 @@
     {
       "step": "1",
       "status": "done",
-      "text": "Ideation with Brent and Jordan"
+      "text": "Ideation with B. and J."
     },
     {
       "step": "2",
@@ -176,7 +176,7 @@
     {
       "step": "4",
       "status": "open",
-      "text": "Get logistical bottlenecks from Melanie"
+      "text": "Get logistical bottlenecks from M."
     },
     {
       "step": "5",
@@ -186,7 +186,7 @@
     {
       "step": "6",
       "status": "open",
-      "text": "Meet with Melanie to review (or review async)"
+      "text": "Meet with M. to review (or review async)"
     },
     {
       "step": "7",
@@ -212,25 +212,25 @@
     },
     {
       "date": "Apr 8",
-      "text": "HR Professional Development Day breakout",
+      "text": "Professional Development Day breakout",
       "status": "waiting"
     },
     {
       "date": "Jun 9-11",
-      "text": "Informatics & Analytics Summit",
+      "text": "Org Summit",
       "status": "waiting"
     }
   ],
   "todos": [
     {
-      "text": "Set up 30-min meeting with Mike and Kevin (HR)",
+      "text": "Set up 30-min meeting with M. and K. (HR)",
       "area": "HR",
       "dueLabel": "Mar 18",
       "sortKey": "2026-03-18",
       "done": false
     },
     {
-      "text": "Do 15 minutes of prep for HCC + Gabe",
+      "text": "Do 15 minutes of prep for H. C. C. + G.",
       "area": "Meeting Prep",
       "dueLabel": "Mar 19",
       "sortKey": "2026-03-19",
@@ -244,21 +244,21 @@
       "done": false
     },
     {
-      "text": "Put together mini-deck and demo for Bravely / JFC",
+      "text": "Put together mini-deck and demo for storytelling concept / partner group",
       "area": "Strategy",
       "dueLabel": "Mar 20",
       "sortKey": "2026-03-20",
       "done": true
     },
     {
-      "text": "Wait for M and R testing feedback on SmartRX prompt",
+      "text": "Wait for M and R testing feedback on pharmacy product prompt",
       "area": "Projects",
       "dueLabel": "Next",
       "sortKey": "2026-03-21",
       "done": false
     },
     {
-      "text": "Watch email for intros from Choueiri",
+      "text": "Watch email for intros from C.",
       "area": "Outreach",
       "dueLabel": "Next",
       "sortKey": "2026-03-21",
@@ -272,7 +272,7 @@
       "done": true
     },
     {
-      "text": "Prep for Rival meeting \u2014 review context, remember to ask about quote",
+      "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
       "area": "Consulting",
       "dueLabel": "Mar 23",
       "sortKey": "2026-03-23",
@@ -286,7 +286,7 @@
       "done": false
     },
     {
-      "text": "Socialize JFC social-stories prototype + broader patient education portal concept with leadership",
+      "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
       "area": "Strategy",
       "dueLabel": "Mar 25",
       "sortKey": "2026-03-25",
@@ -314,14 +314,14 @@
       "done": false
     },
     {
-      "text": "Check in with Dan at Ceravasc if no reply yet \u2014 short nudge",
+      "text": "Check in with D. at C. if no reply yet \u2014 short nudge",
       "area": "Outreach",
       "dueLabel": "Mar 30",
       "sortKey": "2026-03-30",
       "done": false
     },
     {
-      "text": "JFC charter / proposal deck",
+      "text": "partner group charter / proposal deck",
       "area": "Strategy",
       "dueLabel": "Mar 30",
       "sortKey": "2026-03-30",
@@ -343,5 +343,5 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-25T18:20:00-04:00"
+  "lastUpdated": "2026-03-26T01:30:00-04:00"
 }
