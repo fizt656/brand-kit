@@ -3,35 +3,35 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
+        "text": "Professional Development Day breakout · Apr 8 · 3/20 check-in; confirm scope, shell deck, and facilitation plan"
       },
       {
         "status": "waiting",
-        "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
+        "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
       },
       {
         "status": "waiting",
-        "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
       }
     ],
     "admin": [
@@ -47,17 +47,17 @@
       },
       {
         "status": "open",
-        "text": "pharmacy product pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "pharmacy product pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "open",
-        "text": "partner group charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
+        "text": "partner group charter / proposal deck · due Mar 30 EOD · frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
       }
     ],
     "persona": [
       {
         "status": "open",
-        "text": "1st draft of first principles learning progression \u00b7 Due Mar 20"
+        "text": "1st draft of first principles learning progression · Due Mar 20"
       },
       {
         "status": "open",
@@ -71,19 +71,19 @@
     "cop": [
       {
         "status": "done",
-        "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
+        "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
       },
       {
         "status": "waiting",
-        "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
+        "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
       },
       {
         "status": "waiting",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
+        "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
       },
       {
         "status": "waiting",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
+        "text": "Biweekly Champions Meeting · Apr 17 · keep cadence current"
       },
       {
         "status": "waiting",
@@ -91,11 +91,11 @@
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
+        "text": "CoP operations · make the main CoP meeting monthly recurring"
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
+        "text": "CoP operations · make biweekly office hours recurring (rename later)"
       },
       {
         "status": "open",
@@ -107,27 +107,39 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
+        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just G."
       },
       {
         "status": "open",
-        "text": "Make deck and notecatchers for champions in prep for next CoP monthly \u00b7 due Mar 31"
+        "text": "Make deck and notecatchers for champions in prep for next CoP monthly · due Mar 31"
       }
     ]
   },
-  "scheduleDate": "Wednesday, March 25, 2026",
+  "scheduleDate": "Thursday, March 26, 2026",
   "schedule": [
     {
-      "time": "12:30 PM",
-      "text": "M.<>G. lunch+"
+      "time": "10:00 AM",
+      "text": "I&A Seminar - Clinical Informatics"
+    },
+    {
+      "time": "12:00 PM",
+      "text": "SmartRx | Content Creation"
     },
     {
       "time": "1:00 PM",
-      "text": "Virtual Event: How Gene Therapy Is Transforming the Future of Pediatric Health"
+      "text": "mid-year review - smartsheet update and prep"
     },
     {
-      "time": "1:30 PM",
-      "text": "B.<>G. tb"
+      "time": "2:15 PM",
+      "text": "persona-tailored certification model & collateral"
+    },
+    {
+      "time": "3:30 PM",
+      "text": "Canonical Deck"
+    },
+    {
+      "time": "4:00 PM",
+      "text": "Gus<>Lori"
     }
   ],
   "workshopTracker": [
@@ -181,7 +193,7 @@
     {
       "step": "5",
       "status": "open",
-      "text": "Put together an illustrative run-of-show \u00b7 Due Mar 19"
+      "text": "Put together an illustrative run-of-show · Due Mar 19"
     },
     {
       "step": "6",
@@ -272,14 +284,14 @@
       "done": true
     },
     {
-      "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
+      "text": "Prep for external meeting meeting — review context, remember to ask about quote",
       "area": "Consulting",
       "dueLabel": "Mar 23",
       "sortKey": "2026-03-23",
       "done": false
     },
     {
-      "text": "Article: draft/polish and get \"What Is an Expert?\" out \u2014 touch base and finish",
+      "text": "Article: draft/polish and get \"What Is an Expert?\" out — touch base and finish",
       "area": "Writing",
       "dueLabel": "Mar 24",
       "sortKey": "2026-03-24",
@@ -314,7 +326,7 @@
       "done": false
     },
     {
-      "text": "Check in with D. at C. if no reply yet \u2014 short nudge",
+      "text": "Check in with D. at C. if no reply yet — short nudge",
       "area": "Outreach",
       "dueLabel": "Mar 30",
       "sortKey": "2026-03-30",
@@ -343,5 +355,5 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-26T01:30:00-04:00"
+  "lastUpdated": "2026-03-26T07:00:00-04:00"
 }
