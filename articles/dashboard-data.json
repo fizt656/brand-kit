@@ -70,10 +70,6 @@
     ],
     "cop": [
       {
-        "status": "done",
-        "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
-      },
-      {
         "status": "waiting",
         "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
       },
@@ -144,11 +140,6 @@
   ],
   "workshopTracker": [
     {
-      "name": "Community of Practice Kick-Off",
-      "date": "2026-03-18",
-      "status": "done"
-    },
-    {
       "name": "Champions Meeting",
       "date": "2026-03-20",
       "status": "waiting"
@@ -172,56 +163,31 @@
   "retreatSteps": [
     {
       "step": "1",
-      "status": "done",
-      "text": "Ideation with B. and J."
-    },
-    {
-      "step": "2",
-      "status": "done",
-      "text": "Kick-off meeting with working group"
-    },
-    {
-      "step": "3",
-      "status": "done",
-      "text": "Get the survey out"
-    },
-    {
-      "step": "4",
       "status": "open",
       "text": "Get logistical bottlenecks from M."
     },
     {
-      "step": "5",
+      "step": "2",
       "status": "open",
       "text": "Put together an illustrative run-of-show · Due Mar 19"
     },
     {
-      "step": "6",
+      "step": "3",
       "status": "open",
       "text": "Meet with M. to review (or review async)"
     },
     {
-      "step": "7",
+      "step": "4",
       "status": "open",
       "text": "Bring back to working group for review"
     },
     {
-      "step": "8",
+      "step": "5",
       "status": "open",
       "text": "Notes from group review determine next steps"
     }
   ],
   "milestones": [
-    {
-      "date": "Mar 18",
-      "text": "CoP Kick-Off",
-      "status": "done"
-    },
-    {
-      "date": "Mar 20",
-      "text": "Champions meeting",
-      "status": "done"
-    },
     {
       "date": "Apr 8",
       "text": "Professional Development Day breakout",
@@ -242,25 +208,11 @@
       "done": false
     },
     {
-      "text": "Do 15 minutes of prep for H. C. C. + G.",
-      "area": "Meeting Prep",
-      "dueLabel": "Mar 19",
-      "sortKey": "2026-03-19",
-      "done": true
-    },
-    {
       "text": "Produce first draft of first-principles learning progression",
       "area": "Persona",
       "dueLabel": "Mar 20",
       "sortKey": "2026-03-20",
       "done": false
-    },
-    {
-      "text": "Put together mini-deck and demo for storytelling concept / partner group",
-      "area": "Strategy",
-      "dueLabel": "Mar 20",
-      "sortKey": "2026-03-20",
-      "done": true
     },
     {
       "text": "Wait for M and R testing feedback on pharmacy product prompt",
@@ -277,13 +229,6 @@
       "done": false
     },
     {
-      "text": "CoP follow up (check calendar 3/19)",
-      "area": "CoP",
-      "dueLabel": "Mar 23",
-      "sortKey": "2026-03-23",
-      "done": true
-    },
-    {
       "text": "Prep for external meeting meeting — review context, remember to ask about quote",
       "area": "Consulting",
       "dueLabel": "Mar 23",
@@ -296,13 +241,6 @@
       "dueLabel": "Mar 24",
       "sortKey": "2026-03-24",
       "done": false
-    },
-    {
-      "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
-      "area": "Strategy",
-      "dueLabel": "Mar 25",
-      "sortKey": "2026-03-25",
-      "done": true
     },
     {
       "text": "Persona-tailored learning model pass",
@@ -355,5 +293,168 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-26T07:00:00-04:00"
+  "lastUpdated": "2026-03-26T15:35:00-04:00",
+  "archivedItems": [
+    {
+      "id": "seed-1774551657643-zuka73",
+      "kind": "retreat",
+      "list": null,
+      "label": "Summer Retreat",
+      "text": "Get the survey out",
+      "item": {
+        "step": "3",
+        "status": "done",
+        "text": "Get the survey out"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-afr8fl",
+      "kind": "retreat",
+      "list": null,
+      "label": "Summer Retreat",
+      "text": "Kick-off meeting with working group",
+      "item": {
+        "step": "2",
+        "status": "done",
+        "text": "Kick-off meeting with working group"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-0fvazm",
+      "kind": "retreat",
+      "list": null,
+      "label": "Summer Retreat",
+      "text": "Ideation with B. and J.",
+      "item": {
+        "step": "1",
+        "status": "done",
+        "text": "Ideation with B. and J."
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-oax6tw",
+      "kind": "workshop",
+      "list": null,
+      "label": "Workshop Tracker",
+      "text": "Community of Practice Kick-Off",
+      "item": {
+        "name": "Community of Practice Kick-Off",
+        "date": "2026-03-18",
+        "status": "done"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-clgnsl",
+      "kind": "milestone",
+      "list": null,
+      "label": "Milestones",
+      "text": "Champions meeting",
+      "item": {
+        "date": "Mar 20",
+        "text": "Champions meeting",
+        "status": "done"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-czdiht",
+      "kind": "milestone",
+      "list": null,
+      "label": "Milestones",
+      "text": "CoP Kick-Off",
+      "item": {
+        "date": "Mar 18",
+        "text": "CoP Kick-Off",
+        "status": "done"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-rhpt4y",
+      "kind": "todo",
+      "list": null,
+      "label": "Strategy",
+      "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
+      "item": {
+        "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
+        "area": "Strategy",
+        "dueLabel": "Mar 25",
+        "sortKey": "2026-03-25",
+        "done": true
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-105oqs",
+      "kind": "todo",
+      "list": null,
+      "label": "CoP",
+      "text": "CoP follow up (check calendar 3/19)",
+      "item": {
+        "text": "CoP follow up (check calendar 3/19)",
+        "area": "CoP",
+        "dueLabel": "Mar 23",
+        "sortKey": "2026-03-23",
+        "done": true
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-xshbq0",
+      "kind": "todo",
+      "list": null,
+      "label": "Strategy",
+      "text": "Put together mini-deck and demo for storytelling concept / partner group",
+      "item": {
+        "text": "Put together mini-deck and demo for storytelling concept / partner group",
+        "area": "Strategy",
+        "dueLabel": "Mar 20",
+        "sortKey": "2026-03-20",
+        "done": true
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-igjfxn",
+      "kind": "todo",
+      "list": null,
+      "label": "Meeting Prep",
+      "text": "Do 15 minutes of prep for H. C. C. + G.",
+      "item": {
+        "text": "Do 15 minutes of prep for H. C. C. + G.",
+        "area": "Meeting Prep",
+        "dueLabel": "Mar 19",
+        "sortKey": "2026-03-19",
+        "done": true
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "seed-1774551657643-q771us",
+      "kind": "list",
+      "list": "cop",
+      "label": "CoP",
+      "text": "Community of Practice Kick-Off · Mar 18 · anchor event",
+      "item": {
+        "status": "done",
+        "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
+      },
+      "archivedAt": "2026-03-26T07:00:00-04:00",
+      "restoreStatus": "open"
+    }
+  ]
 }

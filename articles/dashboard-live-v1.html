@@ -100,10 +100,15 @@
       transform: translateX(100%); transition: transform .22s ease; display:flex; flex-direction:column;
     }
     .todo-drawer.open { transform: translateX(0); }
+    .archive-drawer { width: min(460px, 94vw); }
     .drawer-head { padding: 18px 18px 12px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
     .drawer-body { padding: 14px 18px 24px; overflow:auto; display:grid; gap:16px; }
     .todo-group { display:grid; gap:8px; }
     .todo-group h3 { margin:0; font-size:15px; font-family:"JetBrains Mono",monospace; color:#7a6a53; }
+    .archive-entry { display:grid; gap:6px; padding:10px 12px; border:1px solid #efe6d2; border-radius:12px; background:#fffdfa; }
+    .archive-entry-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
+    .archive-entry-title { font-weight:600; font-size:13px; }
+    .archive-entry-actions { display:flex; gap:8px; align-items:center; }
     .todo-check { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
     .todo-check.done { opacity:.62; }
     .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
@@ -244,6 +249,7 @@
       <button class="btn" id="copyBtn">Copy snapshot</button>
       <button class="btn btn-primary" id="exportBtn">Export changes</button>
       <button class="btn" id="openTodos">To-Dos</button>
+      <button class="btn" id="openArchive">Archive</button>
       <div class="view-toggle">
         <button class="view-btn active" id="boardViewBtn">Board View</button>
         <button class="view-btn" id="commandViewBtn">Command View</button>
@@ -412,11 +418,23 @@
       <div>
         <div class="quad-label">Execution View</div>
         <h2 style="margin:2px 0 4px;">To-Dos</h2>
-        <div class="small-note">Consolidated by due date. Check things off as you go.</div>
+        <div class="small-note">Consolidated by due date. Checking something off archives it and syncs related items.</div>
       </div>
       <button class="btn" id="closeTodos">Close</button>
     </div>
     <div class="drawer-body" id="todoDrawerBody"></div>
+  </aside>
+
+  <aside class="todo-drawer archive-drawer" id="archiveDrawer" aria-label="Archived items">
+    <div class="drawer-head">
+      <div>
+        <div class="quad-label">History</div>
+        <h2 style="margin:2px 0 4px;">Archive</h2>
+        <div class="small-note">Completed items live here. Unarchive anything that needs to come back into the active board.</div>
+      </div>
+      <button class="btn" id="closeArchive">Close</button>
+    </div>
+    <div class="drawer-body" id="archiveDrawerBody"></div>
   </aside>
 
   <script>
@@ -508,20 +526,107 @@
       }
       showAuth();
     }
-    tryAutoAuth();
     
     // ============================================
     // DASHBOARD CORE
     // ============================================
-    const STORAGE_KEY = 'dashboard_live_v1_local_v3';
-    const DATA_URL = 'https://gushalwani.com/articles/dashboard-data.json';
+    const STORAGE_KEY = 'dashboard_live_v1_local_v4';
+    const SYNC_KEY = 'dashboard_live_v1_sync_v1';
+    const DATA_URL = './dashboard-data.json';
     const STATUS_OPTIONS = ['open','in progress','waiting','done'];
+    const CORE_LISTS = ['workshops','admin','strategy','persona','cop'];
+    const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP' };
 
     let state = null;
     let sourceData = null;
     let hasLocalChanges = false;
 
     function clone(obj){ return JSON.parse(JSON.stringify(obj)); }
+    function makeArchiveId(){ return `arc-${Date.now()}-${Math.random().toString(36).slice(2,8)}`; }
+    function entryText(item){ return item?.text || item?.name || ''; }
+    function ensureDataShape(data){
+      const out = data || {};
+      out.lists = out.lists || {};
+      CORE_LISTS.forEach(key => { out.lists[key] = out.lists[key] || []; });
+      out.schedule = out.schedule || [];
+      out.workshopTracker = out.workshopTracker || [];
+      out.retreatSteps = out.retreatSteps || [];
+      out.milestones = out.milestones || [];
+      out.todos = out.todos || [];
+      out.derivedDones = out.derivedDones || {};
+      out.archivedItems = out.archivedItems || [];
+      return out;
+    }
+    function renumberRetreatSteps(data){
+      (data.retreatSteps || []).forEach((item, idx) => { item.step = String(idx + 1); });
+    }
+    function mergeByKey(sourceArr, localArr, getKey){
+      const out = clone(sourceArr || []);
+      const seen = new Set((out || []).map(item => getKey(item)).filter(Boolean));
+      (localArr || []).forEach(localItem => {
+        const localKey = getKey(localItem);
+        if (!localKey) { out.push(clone(localItem)); return; }
+        const existingIdx = out.findIndex(sourceItem => getKey(sourceItem) === localKey);
+        if (existingIdx >= 0) out[existingIdx] = clone(localItem);
+        else if (!seen.has(localKey)) {
+          out.push(clone(localItem));
+          seen.add(localKey);
+        }
+      });
+      return out;
+    }
+    function exactKey(v){
+      return String(v || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    }
+    function todoKey(item){
+      return `${exactKey(item?.text)}|${exactKey(item?.dueLabel || item?.sortKey)}`;
+    }
+    function workshopKey(item){
+      return `${exactKey(item?.name)}|${exactKey(item?.date)}`;
+    }
+    function milestoneKey(item){
+      return `${exactKey(item?.text)}|${exactKey(item?.date)}`;
+    }
+    function mergeArchived(sourceArr, localArr){
+      const out = [...(sourceArr || []).map(clone)];
+      (localArr || []).forEach(item => {
+        const duplicate = out.some(existing => (existing.id && item.id && existing.id === item.id) || ((existing.text || '') === (item.text || '') && (existing.kind || '') === (item.kind || '') && (existing.archivedAt || '') === (item.archivedAt || '')));
+        if (!duplicate) out.push(clone(item));
+      });
+      out.sort((a,b) => String(b.archivedAt || '').localeCompare(String(a.archivedAt || '')));
+      return out;
+    }
+    function mergeLocalWithSource(localData, source){
+      const local = ensureDataShape(clone(localData || {}));
+      const remote = ensureDataShape(clone(source || {}));
+      if (remote.syncedFromLocalAt && local.localUpdatedAt) {
+        const remoteSync = new Date(remote.syncedFromLocalAt).getTime();
+        const localUpdated = new Date(local.localUpdatedAt).getTime();
+        if (!Number.isNaN(remoteSync) && !Number.isNaN(localUpdated) && remoteSync >= localUpdated) {
+          localStorage.removeItem(STORAGE_KEY);
+          hasLocalChanges = false;
+          return remote;
+        }
+      }
+      const merged = ensureDataShape(clone(remote));
+      CORE_LISTS.forEach(key => {
+        merged.lists[key] = mergeByKey(remote.lists[key], local.lists[key], item => exactKey(item?.text));
+      });
+      merged.todos = mergeByKey(remote.todos, local.todos, todoKey);
+      merged.workshopTracker = mergeByKey(remote.workshopTracker, local.workshopTracker, workshopKey);
+      merged.milestones = mergeByKey(remote.milestones, local.milestones, milestoneKey);
+      merged.retreatSteps = mergeByKey(remote.retreatSteps, local.retreatSteps, item => exactKey(item?.text));
+      renumberRetreatSteps(merged);
+      merged.archivedItems = mergeArchived(remote.archivedItems, local.archivedItems);
+      merged.derivedDones = { ...(remote.derivedDones || {}), ...(local.derivedDones || {}) };
+      if ((local.schedule || []).length && (!remote.scheduleDate || local.scheduleDate === remote.scheduleDate)) {
+        merged.schedule = clone(local.schedule);
+        merged.scheduleDate = local.scheduleDate || remote.scheduleDate;
+      }
+      merged.localUpdatedAt = local.localUpdatedAt || null;
+      merged.baseSourceUpdatedAt = remote.lastUpdated || null;
+      return merged;
+    }
 
     async function fetchSource() {
       for (let attempt = 1; attempt <= 3; attempt++) {
@@ -539,11 +644,13 @@
 
     function loadLocal() {
       const raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : null;
+      return raw ? ensureDataShape(JSON.parse(raw)) : null;
     }
 
     function saveLocal(data) {
+      ensureDataShape(data);
       data.localUpdatedAt = new Date().toISOString();
+      data.baseSourceUpdatedAt = sourceData?.lastUpdated || data.baseSourceUpdatedAt || null;
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       hasLocalChanges = true;
       updateSyncStatus();
@@ -576,6 +683,127 @@
       if (val === 'waiting') return 'waiting';
       if (val === 'done') return 'done';
       return 'open';
+    }
+    function archiveLabelFor(ref){
+      if (ref.kind === 'list') return LIST_LABELS[ref.list] || ref.list || 'Board';
+      if (ref.kind === 'todo') return ref.item?.area || 'To-Do';
+      if (ref.kind === 'workshop') return 'Workshop Tracker';
+      if (ref.kind === 'milestone') return 'Milestones';
+      if (ref.kind === 'retreat') return 'Summer Retreat';
+      return 'Archive';
+    }
+    function archiveItem(data, payload){
+      ensureDataShape(data);
+      const archived = {
+        id: payload.id || makeArchiveId(),
+        kind: payload.kind,
+        list: payload.list || null,
+        label: payload.label || 'Archive',
+        text: payload.text || '',
+        item: clone(payload.item || {}),
+        archivedAt: payload.archivedAt || new Date().toISOString(),
+        restoreStatus: payload.restoreStatus || 'open'
+      };
+      const duplicate = (data.archivedItems || []).some(existing => (existing.id && archived.id && existing.id === archived.id) || ((existing.text || '') === archived.text && (existing.kind || '') === archived.kind && (existing.list || '') === (archived.list || '')));
+      if (!duplicate) data.archivedItems.unshift(archived);
+    }
+    function archiveTodoAt(idx, data){
+      ensureDataShape(data);
+      if (!data.todos || idx < 0 || idx >= data.todos.length) return null;
+      const item = clone(data.todos[idx]);
+      data.todos.splice(idx, 1);
+      archiveItem(data, {
+        kind: 'todo',
+        label: item.area || 'To-Do',
+        text: item.text || '',
+        item,
+        restoreStatus: 'open'
+      });
+      return item;
+    }
+    function archiveBoardRef(ref, data, options = {}){
+      ensureDataShape(data);
+      const { cascade = true } = options;
+      const text = entryText(ref.item);
+      if (text && data.derivedDones) delete data.derivedDones[text];
+      const restoreStatus = normalizeStatus(ref.item?.status) === 'done' ? 'open' : normalizeStatus(ref.item?.status || 'open');
+      archiveItem(data, {
+        kind: ref.kind,
+        list: ref.list || null,
+        label: archiveLabelFor(ref),
+        text,
+        item: ref.item,
+        restoreStatus
+      });
+      if (ref.kind === 'list') data.lists?.[ref.list]?.splice(ref.idx, 1);
+      if (ref.kind === 'retreat') data.retreatSteps?.splice(ref.idx, 1);
+      if (ref.kind === 'milestone') data.milestones?.splice(ref.idx, 1);
+      if (ref.kind === 'workshop') data.workshopTracker?.splice(ref.idx, 1);
+      if (ref.kind === 'todo') archiveTodoAt(ref.idx, data);
+      if (cascade && text) archiveLinkedByText(text, data, { skipKind: ref.kind, skipList: ref.list });
+      renumberRetreatSteps(data);
+    }
+    function archiveLinkedByText(text, data, options = {}){
+      if (!text) return;
+      const { skipKind = null, skipList = null } = options;
+      if (data.todos) {
+        for (let i = data.todos.length - 1; i >= 0; i--) {
+          if (matchesBoardTask(data.todos[i]?.text || '', text)) archiveTodoAt(i, data);
+        }
+      }
+      for (let i = (data.workshopTracker || []).length - 1; i >= 0; i--) {
+        if (skipKind === 'workshop') continue;
+        const item = data.workshopTracker[i];
+        if (matchesBoardTask(item?.name || '', text)) archiveBoardRef({ kind:'workshop', idx:i, item }, data, { cascade:false });
+      }
+      for (let i = (data.milestones || []).length - 1; i >= 0; i--) {
+        if (skipKind === 'milestone') continue;
+        const item = data.milestones[i];
+        if (matchesBoardTask(item?.text || '', text)) archiveBoardRef({ kind:'milestone', idx:i, item }, data, { cascade:false });
+      }
+      for (let i = (data.retreatSteps || []).length - 1; i >= 0; i--) {
+        if (skipKind === 'retreat') continue;
+        const item = data.retreatSteps[i];
+        if (matchesBoardTask(item?.text || '', text)) archiveBoardRef({ kind:'retreat', idx:i, item }, data, { cascade:false });
+      }
+      CORE_LISTS.forEach(list => {
+        if (skipKind === 'list' && skipList === list) return;
+        for (let i = (data.lists?.[list] || []).length - 1; i >= 0; i--) {
+          const item = data.lists[list][i];
+          if (matchesBoardTask(item?.text || '', text)) archiveBoardRef({ kind:'list', list, idx:i, item }, data, { cascade:false });
+        }
+      });
+    }
+    function unarchiveItem(id, data){
+      ensureDataShape(data);
+      const idx = (data.archivedItems || []).findIndex(item => item.id === id);
+      if (idx < 0) return;
+      const archived = data.archivedItems[idx];
+      if (archived.text && data.derivedDones) delete data.derivedDones[archived.text];
+      const item = clone(archived.item || {});
+      if (archived.kind === 'todo') {
+        item.done = false;
+        data.todos.push(item);
+      }
+      if (archived.kind === 'list') {
+        item.status = archived.restoreStatus || 'open';
+        data.lists[archived.list] = data.lists[archived.list] || [];
+        data.lists[archived.list].push(item);
+      }
+      if (archived.kind === 'workshop') {
+        item.status = archived.restoreStatus || 'open';
+        data.workshopTracker.push(item);
+      }
+      if (archived.kind === 'milestone') {
+        item.status = archived.restoreStatus || 'open';
+        data.milestones.push(item);
+      }
+      if (archived.kind === 'retreat') {
+        item.status = archived.restoreStatus || 'open';
+        data.retreatSteps.push(item);
+        renumberRetreatSteps(data);
+      }
+      data.archivedItems.splice(idx, 1);
     }
 
     function todoRow(item, listName, idx){
@@ -736,6 +964,13 @@
         groups[key] = groups[key] || [];
         groups[key].push(t);
       }
+      if (!Object.keys(groups).length) {
+        const empty = document.createElement('div');
+        empty.className = 'command-item';
+        empty.textContent = 'Nothing active here right now.';
+        body.appendChild(empty);
+        return;
+      }
       Object.entries(groups).forEach(([due, items]) => {
         const group = document.createElement('div');
         group.className = 'todo-group';
@@ -745,17 +980,59 @@
         items.forEach((t, idx) => {
           const explicitIdx = (data.todos || []).indexOf(t);
           const derivedId = t.derived ? `derived-${idx}` : null;
-          const isDerivedDone = t.derived && data.derivedDones && data.derivedDones[t.sourceText];
           const item = document.createElement('label');
-          item.className = 'todo-check' + ((t.done || isDerivedDone) ? ' done' : '');
+          item.className = 'todo-check' + (t.done ? ' done' : '');
           item.innerHTML = `
-            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${(explicitIdx >= 0 && t.done) || isDerivedDone ? 'checked' : ''} />
+            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} />
             <div>
               <div>${t.text}</div>
-              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}${explicitIdx >= 0 && t.done ? `<button class="archive-btn" data-role="todo-archive" data-todo-id="${explicitIdx}">Archive</button>` : ''}</div>
+              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}</div>
             </div>
           `;
           group.appendChild(item);
+        });
+        body.appendChild(group);
+      });
+    }
+
+    function renderArchive(data){
+      const body = document.getElementById('archiveDrawerBody');
+      if (!body) return;
+      body.innerHTML = '';
+      const items = [...(data.archivedItems || [])].sort((a,b) => String(b.archivedAt || '').localeCompare(String(a.archivedAt || '')));
+      if (!items.length) {
+        const empty = document.createElement('div');
+        empty.className = 'command-item';
+        empty.textContent = 'Archive is empty.';
+        body.appendChild(empty);
+        return;
+      }
+      const groups = {};
+      items.forEach(item => {
+        const key = item.label || 'Archive';
+        groups[key] = groups[key] || [];
+        groups[key].push(item);
+      });
+      Object.entries(groups).forEach(([label, entries]) => {
+        const group = document.createElement('div');
+        group.className = 'todo-group';
+        const h = document.createElement('h3');
+        h.textContent = label;
+        group.appendChild(h);
+        entries.forEach(entry => {
+          const row = document.createElement('div');
+          row.className = 'archive-entry';
+          const archivedAt = entry.archivedAt ? new Date(entry.archivedAt).toLocaleString([], { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' }) : '';
+          row.innerHTML = `
+            <div class="archive-entry-head">
+              <div>
+                <div class="archive-entry-title">${entry.text || '(untitled item)'}</div>
+                <div class="todo-meta"><span class="tag">${entry.kind}</span>${archivedAt ? `<span class="tag">archived ${archivedAt}</span>` : ''}</div>
+              </div>
+              <div class="archive-entry-actions"><button class="btn" data-role="archive-restore" data-archive-id="${entry.id}">Unarchive</button></div>
+            </div>
+          `;
+          group.appendChild(row);
         });
         body.appendChild(group);
       });
@@ -1163,6 +1440,7 @@
       }
 
       renderTodos(data);
+      renderArchive(data);
       renderCommandView(data);
       bind(data);
     }
@@ -1177,6 +1455,9 @@
 
           if (role === 'status') {
             data.lists[list][idx].status = normalizeStatus(txt);
+            if (data.lists[list][idx].status === 'done') {
+              archiveBoardRef({ kind:'list', list, idx, item: data.lists[list][idx] }, data);
+            }
             render(data); saveLocal(data); return;
           }
           if (role === 'text') data.lists[list][idx].text = txt;
@@ -1186,16 +1467,25 @@
           if (role === 'workshop-date') data.workshopTracker[idx].date = txt;
           if (role === 'workshop-status') {
             data.workshopTracker[idx].status = normalizeStatus(txt);
+            if (data.workshopTracker[idx].status === 'done') {
+              archiveBoardRef({ kind:'workshop', idx, item: data.workshopTracker[idx] }, data);
+            }
             render(data); saveLocal(data); return;
           }
           if (role === 'mile-date') data.milestones[idx].date = txt;
           if (role === 'mile-text') data.milestones[idx].text = txt;
           if (role === 'mile-status') {
             data.milestones[idx].status = normalizeStatus(txt);
+            if (data.milestones[idx].status === 'done') {
+              archiveBoardRef({ kind:'milestone', idx, item: data.milestones[idx] }, data);
+            }
             render(data); saveLocal(data); return;
           }
           if (role === 'retreat-status') {
             data.retreatSteps[idx].status = normalizeStatus(txt);
+            if (data.retreatSteps[idx].status === 'done') {
+              archiveBoardRef({ kind:'retreat', idx, item: data.retreatSteps[idx] }, data);
+            }
             render(data); saveLocal(data); return;
           }
           if (role === 'retreat-text') data.retreatSteps[idx].text = txt;
@@ -1238,35 +1528,18 @@
         el.onchange = () => {
           const idx = Number(el.dataset.todoId);
           const sourceText = el.dataset.sourceText;
+          if (!el.checked) return;
           if (sourceText) {
-            // Derived task — sync to board item status
-            data.derivedDones = data.derivedDones || {};
-            if (el.checked) {
-              data.derivedDones[sourceText] = true;
-              // Update matching board item(s) to done
-              setMatchingBoardTasksDone({ text: sourceText }, data, true);
-            } else {
-              delete data.derivedDones[sourceText];
-            }
+            archiveLinkedByText(sourceText, data);
           } else if (data.todos && data.todos[idx]) {
-            // Explicit todo
-            data.todos[idx].done = !!el.checked;
-            if (el.checked) setMatchingBoardTasksDone(data.todos[idx], data, true);
+            const todo = clone(data.todos[idx]);
+            archiveLinkedByText(todo.text || '', data);
+            if ((data.archivedItems || []).every(item => !matchesBoardTask(item.text || '', todo.text || ''))) {
+              archiveTodoAt(idx, data);
+            }
           }
           saveLocal(data);
           render(data);
-        };
-      });
-      document.querySelectorAll('[data-role="todo-archive"]').forEach(el => {
-        el.onclick = (e) => {
-          e.preventDefault();
-          const idx = Number(el.dataset.todoId);
-          data.todos = data.todos || [];
-          if (idx >= 0 && idx < data.todos.length) {
-            data.todos.splice(idx, 1);
-            saveLocal(data);
-            render(data);
-          }
         };
       });
 
@@ -1274,39 +1547,69 @@
         el.onclick = (e) => {
           e.preventDefault();
           const list = el.dataset.list; const idx = Number(el.dataset.idx);
-          if (data.lists?.[list] && idx >= 0) { const boardText = data.lists[list][idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); if (list === 'workshops') removeMatchingWorkshopTrackerForBoardText(boardText, data); data.lists[list].splice(idx, 1); saveLocal(data); render(data); }
+          if (data.lists?.[list] && idx >= 0) {
+            archiveBoardRef({ kind:'list', list, idx, item: data.lists[list][idx] }, data);
+            saveLocal(data); render(data);
+          }
         };
       });
       document.querySelectorAll('[data-role="archive-retreat"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.retreatSteps && idx >= 0) { const boardText = data.retreatSteps[idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.retreatSteps.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.retreatSteps && idx >= 0) {
+            archiveBoardRef({ kind:'retreat', idx, item: data.retreatSteps[idx] }, data);
+            saveLocal(data); render(data);
+          }
         };
       });
       document.querySelectorAll('[data-role="archive-mile"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.milestones && idx >= 0) { const boardText = data.milestones[idx]?.text || ''; removeMatchingTodosForBoardText(boardText, data); data.milestones.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.milestones && idx >= 0) {
+            archiveBoardRef({ kind:'milestone', idx, item: data.milestones[idx] }, data);
+            saveLocal(data); render(data);
+          }
         };
       });
       document.querySelectorAll('[data-role="archive-workshop"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
           const idx = Number(el.dataset.idx);
-          if (data.workshopTracker && idx >= 0) { const boardText = data.workshopTracker[idx]?.name || ''; removeMatchingTodosForBoardText(boardText, data); data.workshopTracker.splice(idx, 1); saveLocal(data); render(data); }
+          if (data.workshopTracker && idx >= 0) {
+            archiveBoardRef({ kind:'workshop', idx, item: data.workshopTracker[idx] }, data);
+            saveLocal(data); render(data);
+          }
+        };
+      });
+      document.querySelectorAll('[data-role="archive-restore"]').forEach(el => {
+        el.onclick = (e) => {
+          e.preventDefault();
+          unarchiveItem(el.dataset.archiveId, data);
+          saveLocal(data);
+          render(data);
         };
       });
     }
 
     function openTodos(){
+      closeArchive();
       document.getElementById('todoDrawer').classList.add('open');
       document.getElementById('drawerOverlay').classList.add('open');
     }
     function closeTodos(){
       document.getElementById('todoDrawer').classList.remove('open');
-      document.getElementById('drawerOverlay').classList.remove('open');
+      if (!document.getElementById('archiveDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
+    }
+    function openArchive(){
+      closeTodos();
+      document.getElementById('archiveDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    }
+    function closeArchive(){
+      document.getElementById('archiveDrawer').classList.remove('open');
+      if (!document.getElementById('todoDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
     }
 
     document.getElementById('saveBtn').onclick = () => {
@@ -1363,11 +1666,14 @@
     document.getElementById('exportBtn').onclick = async () => {
       if (!state) return;
       const exportData = clone(state);
-      delete exportData.lastUpdated;
-      delete exportData.localUpdatedAt;
+      const syncStamp = exportData.localUpdatedAt || new Date().toISOString();
+      exportData.syncedFromLocalAt = syncStamp;
+      exportData.lastUpdated = syncStamp;
+      delete exportData.baseSourceUpdatedAt;
       try {
         await navigator.clipboard.writeText(JSON.stringify(exportData, null, 2));
-        alert('Changes copied to clipboard.\n\nPaste in chat to sync, or save to a file.');
+        localStorage.setItem(SYNC_KEY, JSON.stringify({ exportedAt: syncStamp }));
+        alert('Changes copied to clipboard.\n\nPaste in chat to sync. When the source JSON is updated with this export, local overrides will clear automatically.');
       } catch {
         console.log(JSON.stringify(exportData, null, 2));
         alert('Check console for exported data.');
@@ -1375,7 +1681,9 @@
     };
     document.getElementById('openTodos').onclick = openTodos;
     document.getElementById('closeTodos').onclick = closeTodos;
-    document.getElementById('drawerOverlay').onclick = closeTodos;
+    document.getElementById('openArchive').onclick = openArchive;
+    document.getElementById('closeArchive').onclick = closeArchive;
+    document.getElementById('drawerOverlay').onclick = () => { closeTodos(); closeArchive(); };
 
     const VIEW_KEY = 'dashboard_view_mode_v1';
     function setView(mode){
@@ -1392,20 +1700,24 @@
     // Initialize dashboard (called after auth)
     async function initDashboard() {
       try {
-        sourceData = await fetchSource();
+        const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
         const localData = loadLocal();
-        
-        if (localData) {
-          state = localData;
-          if (sourceData && !state.scheduleDate) state.scheduleDate = sourceData.scheduleDate;
-          if (sourceData && !state.todos) state.todos = sourceData.todos || [];
+
+        if (localData && sourceData) {
+          state = mergeLocalWithSource(localData, sourceData);
+          hasLocalChanges = !!localStorage.getItem(STORAGE_KEY);
+        } else if (localData) {
+          state = ensureDataShape(localData);
           hasLocalChanges = true;
         } else if (sourceData) {
-          state = clone(sourceData);
+          state = ensureDataShape(clone(sourceData));
+          hasLocalChanges = false;
         } else {
-          state = { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {} };
+          state = ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
+          hasLocalChanges = false;
         }
-        
+
         render(state);
         setView(localStorage.getItem(VIEW_KEY) || 'board');
         updateSyncStatus();
@@ -1414,13 +1726,16 @@
         localStorage.removeItem(STORAGE_KEY);
         localStorage.removeItem(SYNC_KEY);
         hasLocalChanges = false;
-        sourceData = await fetchSource();
-        state = sourceData ? clone(sourceData) : { lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {} };
+        const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
+        state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
         render(state);
         setView('board');
         updateSyncStatus();
       }
     }
+
+    tryAutoAuth();
   </script>
 </body>
 </html>
