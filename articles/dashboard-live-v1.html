@@ -109,6 +109,7 @@
     .archive-entry-head { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; }
     .archive-entry-title { font-weight:600; font-size:13px; }
     .archive-entry-actions { display:flex; gap:8px; align-items:center; }
+    .stage-status { font-size:11px; color:#7a6a53; text-transform:uppercase; letter-spacing:.08em; }
     .todo-check { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
     .todo-check.done { opacity:.62; }
     .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
@@ -250,6 +251,7 @@
       <button class="btn btn-primary" id="exportBtn">Export changes</button>
       <button class="btn" id="openTodos">To-Dos</button>
       <button class="btn" id="openArchive">Archive</button>
+      <button class="btn" id="openStaged">Staged</button>
       <div class="view-toggle">
         <button class="view-btn active" id="boardViewBtn">Board View</button>
         <button class="view-btn" id="commandViewBtn">Command View</button>
@@ -437,6 +439,18 @@
     <div class="drawer-body" id="archiveDrawerBody"></div>
   </aside>
 
+  <aside class="todo-drawer archive-drawer" id="stagedDrawer" aria-label="Staged dashboard updates">
+    <div class="drawer-head">
+      <div>
+        <div class="quad-label">Review</div>
+        <h2 style="margin:2px 0 4px;">Staged Updates</h2>
+        <div class="small-note">Conversation-derived changes can wait here for review before they touch the live board.</div>
+      </div>
+      <button class="btn" id="closeStaged">Close</button>
+    </div>
+    <div class="drawer-body" id="stagedDrawerBody"></div>
+  </aside>
+
   <script>
     // ============================================
     // AUTHENTICATION
@@ -555,6 +569,7 @@
       out.todos = out.todos || [];
       out.derivedDones = out.derivedDones || {};
       out.archivedItems = out.archivedItems || [];
+      out.stagedChanges = out.stagedChanges || [];
       return out;
     }
     function renumberRetreatSteps(data){
@@ -596,6 +611,15 @@
       out.sort((a,b) => String(b.archivedAt || '').localeCompare(String(a.archivedAt || '')));
       return out;
     }
+    function mergeStaged(sourceArr, localArr){
+      const out = [...(sourceArr || []).map(clone)];
+      (localArr || []).forEach(item => {
+        const duplicate = out.some(existing => (existing.id && item.id && existing.id === item.id) || ((existing.summary || '') === (item.summary || '') && (existing.where || '') === (item.where || '') && (existing.why || '') === (item.why || '')));
+        if (!duplicate) out.push(clone(item));
+      });
+      out.sort((a,b) => String(b.stagedAt || '').localeCompare(String(a.stagedAt || '')));
+      return out;
+    }
     function mergeLocalWithSource(localData, source){
       const local = ensureDataShape(clone(localData || {}));
       const remote = ensureDataShape(clone(source || {}));
@@ -618,6 +642,7 @@
       merged.retreatSteps = mergeByKey(remote.retreatSteps, local.retreatSteps, item => exactKey(item?.text));
       renumberRetreatSteps(merged);
       merged.archivedItems = mergeArchived(remote.archivedItems, local.archivedItems);
+      merged.stagedChanges = mergeStaged(remote.stagedChanges, local.stagedChanges);
       merged.derivedDones = { ...(remote.derivedDones || {}), ...(local.derivedDones || {}) };
       if ((local.schedule || []).length && (!remote.scheduleDate || local.scheduleDate === remote.scheduleDate)) {
         merged.schedule = clone(local.schedule);
@@ -1037,6 +1062,37 @@
         body.appendChild(group);
       });
     }
+    function renderStaged(data){
+      const body = document.getElementById('stagedDrawerBody');
+      if (!body) return;
+      body.innerHTML = '';
+      const items = [...(data.stagedChanges || [])].sort((a,b) => String(b.stagedAt || '').localeCompare(String(a.stagedAt || '')));
+      if (!items.length) {
+        const empty = document.createElement('div');
+        empty.className = 'command-item';
+        empty.textContent = 'No staged updates right now.';
+        body.appendChild(empty);
+        return;
+      }
+      items.forEach(entry => {
+        const row = document.createElement('div');
+        row.className = 'archive-entry';
+        const stagedAt = entry.stagedAt ? new Date(entry.stagedAt).toLocaleString([], { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' }) : '';
+        row.innerHTML = `
+          <div class="archive-entry-head">
+            <div>
+              <div class="stage-status">${entry.status || 'staged'}</div>
+              <div class="archive-entry-title">${entry.summary || '(untitled staged update)'}</div>
+              <div class="todo-meta">${entry.where ? `<span class="tag">${entry.where}</span>` : ''}${stagedAt ? `<span class="tag">staged ${stagedAt}</span>` : ''}</div>
+              ${entry.why ? `<div class="small-note">Why: ${entry.why}</div>` : ''}
+              ${entry.note ? `<div class="small-note">Note: ${entry.note}</div>` : ''}
+            </div>
+            <div class="archive-entry-actions"><button class="btn" data-role="stage-remove" data-stage-id="${entry.id}">Clear</button></div>
+          </div>
+        `;
+        body.appendChild(row);
+      });
+    }
 
 
     function eachBoardStatusItem(data, fn){
@@ -1441,6 +1497,7 @@
 
       renderTodos(data);
       renderArchive(data);
+      renderStaged(data);
       renderCommandView(data);
       bind(data);
     }
@@ -1591,25 +1648,45 @@
           render(data);
         };
       });
+      document.querySelectorAll('[data-role="stage-remove"]').forEach(el => {
+        el.onclick = (e) => {
+          e.preventDefault();
+          data.stagedChanges = (data.stagedChanges || []).filter(item => item.id !== el.dataset.stageId);
+          saveLocal(data);
+          render(data);
+        };
+      });
     }
 
     function openTodos(){
       closeArchive();
+      closeStaged();
       document.getElementById('todoDrawer').classList.add('open');
       document.getElementById('drawerOverlay').classList.add('open');
     }
     function closeTodos(){
       document.getElementById('todoDrawer').classList.remove('open');
-      if (!document.getElementById('archiveDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
+      if (!document.getElementById('archiveDrawer').classList.contains('open') && !document.getElementById('stagedDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
     }
     function openArchive(){
       closeTodos();
+      closeStaged();
       document.getElementById('archiveDrawer').classList.add('open');
       document.getElementById('drawerOverlay').classList.add('open');
     }
     function closeArchive(){
       document.getElementById('archiveDrawer').classList.remove('open');
-      if (!document.getElementById('todoDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
+      if (!document.getElementById('todoDrawer').classList.contains('open') && !document.getElementById('stagedDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
+    }
+    function openStaged(){
+      closeTodos();
+      closeArchive();
+      document.getElementById('stagedDrawer').classList.add('open');
+      document.getElementById('drawerOverlay').classList.add('open');
+    }
+    function closeStaged(){
+      document.getElementById('stagedDrawer').classList.remove('open');
+      if (!document.getElementById('todoDrawer').classList.contains('open') && !document.getElementById('archiveDrawer').classList.contains('open')) document.getElementById('drawerOverlay').classList.remove('open');
     }
 
     document.getElementById('saveBtn').onclick = () => {
@@ -1683,7 +1760,9 @@
     document.getElementById('closeTodos').onclick = closeTodos;
     document.getElementById('openArchive').onclick = openArchive;
     document.getElementById('closeArchive').onclick = closeArchive;
-    document.getElementById('drawerOverlay').onclick = () => { closeTodos(); closeArchive(); };
+    document.getElementById('openStaged').onclick = openStaged;
+    document.getElementById('closeStaged').onclick = closeStaged;
+    document.getElementById('drawerOverlay').onclick = () => { closeTodos(); closeArchive(); closeStaged(); };
 
     const VIEW_KEY = 'dashboard_view_mode_v1';
     function setView(mode){
