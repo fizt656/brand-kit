@@ -101,6 +101,12 @@
         "status": "open",
         "text": "Make deck and notecatchers for champions in prep for next CoP monthly \u00b7 due Mar 31"
       }
+    ],
+    "articleIdeas": [
+      {
+        "status": "in progress",
+        "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
+      }
     ]
   },
   "scheduleDate": "Friday, March 27, 2026",
@@ -228,7 +234,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-27T11:03:05Z",
+  "lastUpdated": "2026-03-27T15:22:00Z",
   "archivedItems": [
     {
       "id": "arc-1774571870103-zicjlh",

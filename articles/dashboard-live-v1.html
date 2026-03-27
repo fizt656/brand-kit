@@ -548,8 +548,8 @@
     const SYNC_KEY = 'dashboard_live_v1_sync_v1';
     const DATA_URL = './dashboard-data.json';
     const STATUS_OPTIONS = ['open','in progress','waiting','done'];
-    const CORE_LISTS = ['workshops','admin','strategy','persona','cop'];
-    const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP' };
+    const CORE_LISTS = ['workshops','admin','strategy','persona','cop','articleIdeas'];
+    const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP', articleIdeas:'Article Ideas' };
 
     let state = null;
     let sourceData = null;
@@ -1806,6 +1806,19 @@
         localStorage.removeItem(SYNC_KEY);
         hasLocalChanges = false;
         const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
+        state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
+        render(state);
+        setView('board');
+        updateSyncStatus();
+      }
+    }
+
+    tryAutoAuth();
+  </script>
+</body>
+</html>
+ const fetchedSource = await fetchSource();
         sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
         state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
         render(state);
