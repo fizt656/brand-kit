@@ -1,582 +1,582 @@
 {
-  "lists": {
-    "workshops": [
-      {
-        "status": "waiting",
-        "text": "refresh deck for HR, due 4/3"
-      },
-      {
-        "status": "waiting",
-        "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
-      },
-      {
-        "status": "waiting",
-        "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
-      },
-      {
-        "status": "waiting",
-        "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
-      },
-      {
-        "status": "waiting",
-        "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
-      },
-      {
-        "status": "waiting",
-        "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
-      },
-      {
-        "status": "waiting",
-        "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
-      },
-      {
-        "status": "open",
-        "text": "Pharmacy -- 4-6 workshops in May / June"
-      },
-      {
-        "status": "open",
-        "text": "Business Strategy - 6/4 lunch n learn and 8/6 workshop"
-      }
-    ],
-    "admin": [
-      {
-        "status": "open",
-        "text": "Keep upcoming workshop/planning items current when G. drops quick updates in chat"
-      }
-    ],
-    "strategy": [
-      {
-        "status": "open",
-        "text": "Use local dashboard files as source of truth, then refresh and republish the live page"
-      },
-      {
-        "status": "open",
-        "text": "pharmacy product pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
-      },
-      {
-        "status": "open",
-        "text": "partner group charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
-      }
-    ],
-    "persona": [
-      {
-        "status": "open",
-        "text": "canonical decks due March 31"
-      },
-      {
-        "status": "open",
-        "text": "Pass on persona-tailored model: integrate first principles + show one possible persona, due March 31"
-      },
-      {
-        "status": "open",
-        "text": "Poll champions for one persona from previous workshops, due mar 30"
-      }
-    ],
-    "cop": [
-      {
-        "status": "waiting",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
-      },
-      {
-        "status": "waiting",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
-      },
-      {
-        "status": "waiting",
-        "text": "Keep upcoming Champions cadence visible on the dashboard as workshop-adjacent planning"
-      },
-      {
-        "status": "open",
-        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
-      },
-      {
-        "status": "open",
-        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: set up Open Studio office hours on calendar (confirm frequency preference)"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: remind attendees of the 'Ask' channel"
-      },
-      {
-        "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
-      },
-      {
-        "status": "open",
-        "text": "Make deck and notecatchers for champions in prep for next CoP monthly \u00b7 due Mar 31"
-      }
-    ],
-    "articleIdeas": [
-      {
-        "status": "waiting",
-        "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
-      },
-      {
-        "status": "in progress",
-        "text": "Can AI be used to Scale Up our Humanity?"
-      }
-    ]
+ "lists": {
+  "workshops": [
+   {
+    "status": "waiting",
+    "text": "refresh deck for HR, due 4/3"
+   },
+   {
+    "status": "waiting",
+    "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+   },
+   {
+    "status": "waiting",
+    "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+   },
+   {
+    "status": "waiting",
+    "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+   },
+   {
+    "status": "waiting",
+    "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+   },
+   {
+    "status": "waiting",
+    "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+   },
+   {
+    "status": "waiting",
+    "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+   },
+   {
+    "status": "open",
+    "text": "Pharmacy -- 4-6 workshops in May / June"
+   },
+   {
+    "status": "open",
+    "text": "Business Strategy - 6/4 lunch n learn and 8/6 workshop"
+   }
+  ],
+  "admin": [
+   {
+    "status": "open",
+    "text": "Keep upcoming workshop/planning items current when G. drops quick updates in chat"
+   }
+  ],
+  "strategy": [
+   {
+    "status": "open",
+    "text": "Use local dashboard files as source of truth, then refresh and republish the live page"
+   },
+   {
+    "status": "open",
+    "text": "pharmacy product pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
+   },
+   {
+    "status": "open",
+    "text": "partner group charter / proposal deck · due Mar 30 EOD · frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
+   }
+  ],
+  "persona": [
+   {
+    "status": "open",
+    "text": "canonical decks due March 31"
+   },
+   {
+    "status": "open",
+    "text": "Pass on persona-tailored model: integrate first principles + show one possible persona, due March 31"
+   },
+   {
+    "status": "open",
+    "text": "Poll champions for one persona from previous workshops, due mar 30"
+   }
+  ],
+  "cop": [
+   {
+    "status": "waiting",
+    "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
+   },
+   {
+    "status": "waiting",
+    "text": "Biweekly Champions Meeting · Apr 17 · keep cadence current"
+   },
+   {
+    "status": "waiting",
+    "text": "Keep upcoming Champions cadence visible on the dashboard as workshop-adjacent planning"
+   },
+   {
+    "status": "open",
+    "text": "CoP operations · make the main CoP meeting monthly recurring"
+   },
+   {
+    "status": "open",
+    "text": "CoP operations · make biweekly office hours recurring (rename later)"
+   },
+   {
+    "status": "open",
+    "text": "CoP post-kickoff: set up Open Studio office hours on calendar (confirm frequency preference)"
+   },
+   {
+    "status": "open",
+    "text": "CoP post-kickoff: remind attendees of the 'Ask' channel"
+   },
+   {
+    "status": "open",
+    "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just G."
+   },
+   {
+    "status": "open",
+    "text": "Make deck and notecatchers for champions in prep for next CoP monthly · due Mar 31"
+   }
+  ],
+  "articleIdeas": [
+   {
+    "status": "waiting",
+    "text": "What is an expert? · staged article on expertise, AI, judgment, and what remains deeply human"
+   },
+   {
+    "status": "in progress",
+    "text": "Can AI be used to Scale Up our Humanity?"
+   }
+  ]
+ },
+ "scheduleDate": "Friday, March 27, 2026",
+ "schedule": [
+  {
+   "time": "10:30 AM",
+   "text": "[DISCOVERY MTG] AI Solutions for PDF to Progeny TSV"
   },
-  "scheduleDate": "Friday, March 27, 2026",
-  "schedule": [
-    {
-      "time": "10:30 AM",
-      "text": "[DISCOVERY MTG] AI Solutions for PDF to Progeny TSV"
-    },
-    {
-      "time": "11:00 AM",
-      "text": "Monthly ED&A Skills"
-    },
-    {
-      "time": "1:00 PM",
-      "text": "SMARTsheet_Charters"
-    },
-    {
-      "time": "2:30 PM",
-      "text": "project charters, smartsheet"
-    },
-    {
-      "time": "3:00 PM",
-      "text": "AI Agents for SE: Security briefing for Mark Tomilson"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "documentation, next week table"
-    }
-  ],
-  "workshopTracker": [
-    {
-      "name": "Org Summit",
-      "date": "2026-06-09 to 2026-06-11",
-      "status": "waiting"
-    },
-    {
-      "name": "HR",
-      "date": "2026-04-08",
-      "status": "in progress"
-    },
-    {
-      "name": "Business Strat LnL",
-      "date": "2026-06-04",
-      "status": "waiting"
-    },
-    {
-      "name": "Business Strat Workshop",
-      "date": "2026-08-06",
-      "status": "waiting"
-    },
-    {
-      "name": "Pharmacy",
-      "date": "May/June",
-      "status": "open"
-    },
-    {
-      "name": "MCO",
-      "date": "?",
-      "status": "waiting"
-    },
-    {
-      "name": "GEP",
-      "date": "May?",
-      "status": "waiting"
-    }
-  ],
-  "retreatSteps": [
-    {
-      "step": "1",
-      "status": "open",
-      "text": "analyze survey, due 3/31"
-    },
-    {
-      "step": "2",
-      "status": "open",
-      "text": "Meet with M. to review (or review async), and get constraints"
-    },
-    {
-      "step": "3",
-      "status": "open",
-      "text": "Bring back to working group for review, with rough run-of show"
-    },
-    {
-      "step": "4",
-      "status": "open",
-      "text": "Notes from group review determine next steps"
-    }
-  ],
-  "milestones": [
-    {
-      "date": "Apr 8",
-      "text": "HR Professional Development Day breakout",
-      "status": "in progress"
-    },
-    {
-      "date": "Jun 9-11",
-      "text": "Org Summit",
-      "status": "waiting"
-    },
-    {
-      "date": "Apr 8",
-      "text": "ED&A Mid-Year Review",
-      "status": "in progress"
-    }
-  ],
-  "todos": [
-    {
-      "text": "Article: draft/polish and get \"What Is an Expert?\" out \u2014 touch base and finish",
-      "area": "Writing",
-      "dueLabel": "Mar 24",
-      "sortKey": "2026-03-24",
-      "done": false
-    },
-    {
-      "text": "Poll champions for one persona from previous workshops",
-      "area": "Persona",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-26",
-      "done": false
-    },
-    {
-      "text": "Check in with D. at C. if no reply yet \u2014 short nudge",
-      "area": "Outreach",
-      "dueLabel": "Mar 30",
-      "sortKey": "2026-03-30",
-      "done": false
-    },
-    {
-      "text": "partner group charter / proposal deck",
-      "area": "Strategy",
-      "dueLabel": "Mar 30",
-      "sortKey": "2026-03-30",
-      "done": false
-    },
-    {
-      "text": "Update Smartsheet for mid-year review",
-      "area": "Admin",
-      "dueLabel": "Mar 30",
-      "sortKey": "2026-03-30",
-      "done": false
-    },
-    {
-      "text": "Champions deck + notecatchers",
-      "area": "Workshops",
-      "dueLabel": "Mar 31",
-      "sortKey": "2026-03-31",
-      "done": false
-    },
-    {
-      "text": "Persona-tailored learning model pass",
-      "area": "Persona",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-26",
-      "done": false
-    }
-  ],
-  "derivedDones": {},
-  "lastUpdated": "2026-03-27T19:55:59Z",
-  "archivedItems": [
-    {
-      "id": "arc-1774571870103-zicjlh",
-      "kind": "todo",
-      "list": null,
-      "label": "Consulting",
-      "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
-      "item": {
-        "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
-        "area": "Consulting",
-        "dueLabel": "Mar 23",
-        "sortKey": "2026-03-23",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:37:50.103Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571864053-39jn8q",
-      "kind": "list",
-      "list": "workshops",
-      "label": "Workshops",
-      "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting",
-      "item": {
-        "status": "waiting",
-        "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
-      },
-      "archivedAt": "2026-03-27T00:37:44.053Z",
-      "restoreStatus": "waiting"
-    },
-    {
-      "id": "arc-1774571863172-uwqmde",
-      "kind": "todo",
-      "list": null,
-      "label": "Persona",
-      "text": "Produce first draft of first-principles learning progression",
-      "item": {
-        "text": "Produce first draft of first-principles learning progression",
-        "area": "Persona",
-        "dueLabel": "Mar 20",
-        "sortKey": "2026-03-20",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:37:43.172Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571853864-ikfgm1",
-      "kind": "todo",
-      "list": null,
-      "label": "Outreach",
-      "text": "Watch email for intros from C.",
-      "item": {
-        "text": "Watch email for intros from C.",
-        "area": "Outreach",
-        "dueLabel": "Next",
-        "sortKey": "2026-03-21",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:37:33.864Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571849505-8j6o0o",
-      "kind": "todo",
-      "list": null,
-      "label": "Projects",
-      "text": "Wait for M and R testing feedback on pharmacy product prompt",
-      "item": {
-        "text": "Wait for M and R testing feedback on pharmacy product prompt",
-        "area": "Projects",
-        "dueLabel": "Next",
-        "sortKey": "2026-03-21",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:37:29.505Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571821016-d9o2o7",
-      "kind": "todo",
-      "list": null,
-      "label": "Summer Retreat",
-      "text": "Put together an illustrative run-of-show for Summer Retreat",
-      "item": {
-        "text": "Put together an illustrative run-of-show for Summer Retreat",
-        "area": "Summer Retreat",
-        "dueLabel": "Mar 27",
-        "sortKey": "2026-03-27",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:37:01.016Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571788078-4u9gg7",
-      "kind": "todo",
-      "list": null,
-      "label": "HR",
-      "text": "Set up 30-min meeting with M. and K. (HR)",
-      "item": {
-        "text": "Set up 30-min meeting with M. and K. (HR)",
-        "area": "HR",
-        "dueLabel": "Mar 18",
-        "sortKey": "2026-03-18",
-        "done": false
-      },
-      "archivedAt": "2026-03-27T00:36:28.078Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1774571666749-xde1eq",
-      "kind": "workshop",
-      "list": null,
-      "label": "Workshop Tracker",
-      "text": "Champions Meeting",
-      "item": {
-        "name": "Champions Meeting",
-        "date": "2026-04-17",
-        "status": "waiting"
-      },
-      "archivedAt": "2026-03-27T00:34:26.749Z",
-      "restoreStatus": "waiting"
-    },
-    {
-      "id": "arc-1774571666749-xishx2",
-      "kind": "list",
-      "list": "cop",
-      "label": "CoP",
-      "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP",
-      "item": {
-        "status": "done",
-        "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
-      },
-      "archivedAt": "2026-03-27T00:34:26.749Z",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-zuka73",
-      "kind": "retreat",
-      "list": null,
-      "label": "Summer Retreat",
-      "text": "Get the survey out",
-      "item": {
-        "step": "3",
-        "status": "done",
-        "text": "Get the survey out"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-afr8fl",
-      "kind": "retreat",
-      "list": null,
-      "label": "Summer Retreat",
-      "text": "Kick-off meeting with working group",
-      "item": {
-        "step": "2",
-        "status": "done",
-        "text": "Kick-off meeting with working group"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-0fvazm",
-      "kind": "retreat",
-      "list": null,
-      "label": "Summer Retreat",
-      "text": "Ideation with B. and J.",
-      "item": {
-        "step": "1",
-        "status": "done",
-        "text": "Ideation with B. and J."
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-oax6tw",
-      "kind": "workshop",
-      "list": null,
-      "label": "Workshop Tracker",
-      "text": "Community of Practice Kick-Off",
-      "item": {
-        "name": "Community of Practice Kick-Off",
-        "date": "2026-03-18",
-        "status": "done"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-clgnsl",
-      "kind": "milestone",
-      "list": null,
-      "label": "Milestones",
-      "text": "Champions meeting",
-      "item": {
-        "date": "Mar 20",
-        "text": "Champions meeting",
-        "status": "done"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-czdiht",
-      "kind": "milestone",
-      "list": null,
-      "label": "Milestones",
-      "text": "CoP Kick-Off",
-      "item": {
-        "date": "Mar 18",
-        "text": "CoP Kick-Off",
-        "status": "done"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-rhpt4y",
-      "kind": "todo",
-      "list": null,
-      "label": "Strategy",
-      "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
-      "item": {
-        "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
-        "area": "Strategy",
-        "dueLabel": "Mar 25",
-        "sortKey": "2026-03-25",
-        "done": true
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-105oqs",
-      "kind": "todo",
-      "list": null,
-      "label": "CoP",
-      "text": "CoP follow up (check calendar 3/19)",
-      "item": {
-        "text": "CoP follow up (check calendar 3/19)",
-        "area": "CoP",
-        "dueLabel": "Mar 23",
-        "sortKey": "2026-03-23",
-        "done": true
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-xshbq0",
-      "kind": "todo",
-      "list": null,
-      "label": "Strategy",
-      "text": "Put together mini-deck and demo for storytelling concept / partner group",
-      "item": {
-        "text": "Put together mini-deck and demo for storytelling concept / partner group",
-        "area": "Strategy",
-        "dueLabel": "Mar 20",
-        "sortKey": "2026-03-20",
-        "done": true
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-igjfxn",
-      "kind": "todo",
-      "list": null,
-      "label": "Meeting Prep",
-      "text": "Do 15 minutes of prep for H. C. C. + G.",
-      "item": {
-        "text": "Do 15 minutes of prep for H. C. C. + G.",
-        "area": "Meeting Prep",
-        "dueLabel": "Mar 19",
-        "sortKey": "2026-03-19",
-        "done": true
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    },
-    {
-      "id": "seed-1774551657643-q771us",
-      "kind": "list",
-      "list": "cop",
-      "label": "CoP",
-      "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event",
-      "item": {
-        "status": "done",
-        "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
-      },
-      "archivedAt": "2026-03-26T07:00:00-04:00",
-      "restoreStatus": "open"
-    }
-  ],
-  "localUpdatedAt": "2026-03-27T19:47:09.230Z",
-  "syncedFromLocalAt": "2026-03-27T19:47:09.230Z",
-  "stagedChanges": []
+  {
+   "time": "11:00 AM",
+   "text": "Monthly ED&A Skills"
+  },
+  {
+   "time": "1:00 PM",
+   "text": "SMARTsheet_Charters"
+  },
+  {
+   "time": "2:30 PM",
+   "text": "project charters, smartsheet"
+  },
+  {
+   "time": "3:00 PM",
+   "text": "AI Agents for SE: Security briefing for Mark Tomilson"
+  },
+  {
+   "time": "4:00 PM",
+   "text": "documentation, next week table"
+  }
+ ],
+ "workshopTracker": [
+  {
+   "name": "HR",
+   "date": "2026-04-08",
+   "status": "in progress"
+  },
+  {
+   "name": "GEP",
+   "date": "May?",
+   "status": "waiting"
+  },
+  {
+   "name": "MCO",
+   "date": "?",
+   "status": "waiting"
+  },
+  {
+   "name": "Pharmacy",
+   "date": "May/June",
+   "status": "open"
+  },
+  {
+   "name": "Business Strat LnL",
+   "date": "2026-06-04",
+   "status": "waiting"
+  },
+  {
+   "name": "Org Summit",
+   "date": "2026-06-09 to 2026-06-11",
+   "status": "waiting"
+  },
+  {
+   "name": "Business Strat Workshop",
+   "date": "2026-08-06",
+   "status": "waiting"
+  }
+ ],
+ "retreatSteps": [
+  {
+   "step": "1",
+   "status": "open",
+   "text": "analyze survey, due 3/31"
+  },
+  {
+   "step": "2",
+   "status": "open",
+   "text": "Meet with M. to review (or review async), and get constraints"
+  },
+  {
+   "step": "3",
+   "status": "open",
+   "text": "Bring back to working group for review, with rough run-of show"
+  },
+  {
+   "step": "4",
+   "status": "open",
+   "text": "Notes from group review determine next steps"
+  }
+ ],
+ "milestones": [
+  {
+   "date": "Apr 8",
+   "text": "HR Professional Development Day breakout",
+   "status": "in progress"
+  },
+  {
+   "date": "Jun 9-11",
+   "text": "Org Summit",
+   "status": "waiting"
+  },
+  {
+   "date": "Apr 8",
+   "text": "ED&A Mid-Year Review",
+   "status": "in progress"
+  }
+ ],
+ "todos": [
+  {
+   "text": "Article: draft/polish and get \"What Is an Expert?\" out — touch base and finish",
+   "area": "Writing",
+   "dueLabel": "Mar 24",
+   "sortKey": "2026-03-24",
+   "done": false
+  },
+  {
+   "text": "Poll champions for one persona from previous workshops",
+   "area": "Persona",
+   "dueLabel": "Next",
+   "sortKey": "2026-03-26",
+   "done": false
+  },
+  {
+   "text": "Check in with D. at C. if no reply yet — short nudge",
+   "area": "Outreach",
+   "dueLabel": "Mar 30",
+   "sortKey": "2026-03-30",
+   "done": false
+  },
+  {
+   "text": "partner group charter / proposal deck",
+   "area": "Strategy",
+   "dueLabel": "Mar 30",
+   "sortKey": "2026-03-30",
+   "done": false
+  },
+  {
+   "text": "Update Smartsheet for mid-year review",
+   "area": "Admin",
+   "dueLabel": "Mar 30",
+   "sortKey": "2026-03-30",
+   "done": false
+  },
+  {
+   "text": "Champions deck + notecatchers",
+   "area": "Workshops",
+   "dueLabel": "Mar 31",
+   "sortKey": "2026-03-31",
+   "done": false
+  },
+  {
+   "text": "Persona-tailored learning model pass",
+   "area": "Persona",
+   "dueLabel": "Next",
+   "sortKey": "2026-03-26",
+   "done": false
+  }
+ ],
+ "derivedDones": {},
+ "lastUpdated": "2026-03-27T20:57:18.406Z",
+ "archivedItems": [
+  {
+   "id": "arc-1774571870103-zicjlh",
+   "kind": "todo",
+   "list": null,
+   "label": "Consulting",
+   "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+   "item": {
+    "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+    "area": "Consulting",
+    "dueLabel": "Mar 23",
+    "sortKey": "2026-03-23",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:37:50.103Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571864053-39jn8q",
+   "kind": "list",
+   "list": "workshops",
+   "label": "Workshops",
+   "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting",
+   "item": {
+    "status": "waiting",
+    "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
+   },
+   "archivedAt": "2026-03-27T00:37:44.053Z",
+   "restoreStatus": "waiting"
+  },
+  {
+   "id": "arc-1774571863172-uwqmde",
+   "kind": "todo",
+   "list": null,
+   "label": "Persona",
+   "text": "Produce first draft of first-principles learning progression",
+   "item": {
+    "text": "Produce first draft of first-principles learning progression",
+    "area": "Persona",
+    "dueLabel": "Mar 20",
+    "sortKey": "2026-03-20",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:37:43.172Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571853864-ikfgm1",
+   "kind": "todo",
+   "list": null,
+   "label": "Outreach",
+   "text": "Watch email for intros from C.",
+   "item": {
+    "text": "Watch email for intros from C.",
+    "area": "Outreach",
+    "dueLabel": "Next",
+    "sortKey": "2026-03-21",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:37:33.864Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571849505-8j6o0o",
+   "kind": "todo",
+   "list": null,
+   "label": "Projects",
+   "text": "Wait for M and R testing feedback on pharmacy product prompt",
+   "item": {
+    "text": "Wait for M and R testing feedback on pharmacy product prompt",
+    "area": "Projects",
+    "dueLabel": "Next",
+    "sortKey": "2026-03-21",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:37:29.505Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571821016-d9o2o7",
+   "kind": "todo",
+   "list": null,
+   "label": "Summer Retreat",
+   "text": "Put together an illustrative run-of-show for Summer Retreat",
+   "item": {
+    "text": "Put together an illustrative run-of-show for Summer Retreat",
+    "area": "Summer Retreat",
+    "dueLabel": "Mar 27",
+    "sortKey": "2026-03-27",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:37:01.016Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571788078-4u9gg7",
+   "kind": "todo",
+   "list": null,
+   "label": "HR",
+   "text": "Set up 30-min meeting with M. and K. (HR)",
+   "item": {
+    "text": "Set up 30-min meeting with M. and K. (HR)",
+    "area": "HR",
+    "dueLabel": "Mar 18",
+    "sortKey": "2026-03-18",
+    "done": false
+   },
+   "archivedAt": "2026-03-27T00:36:28.078Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "arc-1774571666749-xde1eq",
+   "kind": "workshop",
+   "list": null,
+   "label": "Workshop Tracker",
+   "text": "Champions Meeting",
+   "item": {
+    "name": "Champions Meeting",
+    "date": "2026-04-17",
+    "status": "waiting"
+   },
+   "archivedAt": "2026-03-27T00:34:26.749Z",
+   "restoreStatus": "waiting"
+  },
+  {
+   "id": "arc-1774571666749-xishx2",
+   "kind": "list",
+   "list": "cop",
+   "label": "CoP",
+   "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP",
+   "item": {
+    "status": "done",
+    "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+   },
+   "archivedAt": "2026-03-27T00:34:26.749Z",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-zuka73",
+   "kind": "retreat",
+   "list": null,
+   "label": "Summer Retreat",
+   "text": "Get the survey out",
+   "item": {
+    "step": "3",
+    "status": "done",
+    "text": "Get the survey out"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-afr8fl",
+   "kind": "retreat",
+   "list": null,
+   "label": "Summer Retreat",
+   "text": "Kick-off meeting with working group",
+   "item": {
+    "step": "2",
+    "status": "done",
+    "text": "Kick-off meeting with working group"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-0fvazm",
+   "kind": "retreat",
+   "list": null,
+   "label": "Summer Retreat",
+   "text": "Ideation with B. and J.",
+   "item": {
+    "step": "1",
+    "status": "done",
+    "text": "Ideation with B. and J."
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-oax6tw",
+   "kind": "workshop",
+   "list": null,
+   "label": "Workshop Tracker",
+   "text": "Community of Practice Kick-Off",
+   "item": {
+    "name": "Community of Practice Kick-Off",
+    "date": "2026-03-18",
+    "status": "done"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-clgnsl",
+   "kind": "milestone",
+   "list": null,
+   "label": "Milestones",
+   "text": "Champions meeting",
+   "item": {
+    "date": "Mar 20",
+    "text": "Champions meeting",
+    "status": "done"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-czdiht",
+   "kind": "milestone",
+   "list": null,
+   "label": "Milestones",
+   "text": "CoP Kick-Off",
+   "item": {
+    "date": "Mar 18",
+    "text": "CoP Kick-Off",
+    "status": "done"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-rhpt4y",
+   "kind": "todo",
+   "list": null,
+   "label": "Strategy",
+   "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
+   "item": {
+    "text": "Socialize partner group social-stories prototype + broader patient education portal concept with leadership",
+    "area": "Strategy",
+    "dueLabel": "Mar 25",
+    "sortKey": "2026-03-25",
+    "done": true
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-105oqs",
+   "kind": "todo",
+   "list": null,
+   "label": "CoP",
+   "text": "CoP follow up (check calendar 3/19)",
+   "item": {
+    "text": "CoP follow up (check calendar 3/19)",
+    "area": "CoP",
+    "dueLabel": "Mar 23",
+    "sortKey": "2026-03-23",
+    "done": true
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-xshbq0",
+   "kind": "todo",
+   "list": null,
+   "label": "Strategy",
+   "text": "Put together mini-deck and demo for storytelling concept / partner group",
+   "item": {
+    "text": "Put together mini-deck and demo for storytelling concept / partner group",
+    "area": "Strategy",
+    "dueLabel": "Mar 20",
+    "sortKey": "2026-03-20",
+    "done": true
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-igjfxn",
+   "kind": "todo",
+   "list": null,
+   "label": "Meeting Prep",
+   "text": "Do 15 minutes of prep for H. C. C. + G.",
+   "item": {
+    "text": "Do 15 minutes of prep for H. C. C. + G.",
+    "area": "Meeting Prep",
+    "dueLabel": "Mar 19",
+    "sortKey": "2026-03-19",
+    "done": true
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  },
+  {
+   "id": "seed-1774551657643-q771us",
+   "kind": "list",
+   "list": "cop",
+   "label": "CoP",
+   "text": "Community of Practice Kick-Off · Mar 18 · anchor event",
+   "item": {
+    "status": "done",
+    "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
+   },
+   "archivedAt": "2026-03-26T07:00:00-04:00",
+   "restoreStatus": "open"
+  }
+ ],
+ "localUpdatedAt": "2026-03-27T20:57:18.406Z",
+ "syncedFromLocalAt": "2026-03-27T20:57:18.406Z",
+ "stagedChanges": []
 }
