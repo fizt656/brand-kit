@@ -382,7 +382,7 @@
           </div>
           <table id="workshopTable">
             <thead>
-              <tr><th>Name</th><th>Date</th><th>Ready Status</th><th></th></tr>
+              <tr><th>Name</th><th>Date</th><th>Ready Status</th><th>Order</th><th></th></tr>
             </thead>
             <tbody></tbody>
           </table>
@@ -1571,6 +1571,7 @@
           <td contenteditable="true" data-role="workshop-name" data-idx="${idx}">${w.name || ''}</td>
           <td contenteditable="true" data-role="workshop-date" data-idx="${idx}">${w.date || ''}</td>
           <td contenteditable="true" data-role="workshop-status" data-idx="${idx}" class="${pillClass(w.status)}">${w.status || 'open'}</td>
+          <td><div class="list-actions"><button class="reorder-btn" title="Move up" data-role="workshop-move-up" data-idx="${idx}">↑</button><button class="reorder-btn" title="Move down" data-role="workshop-move-down" data-idx="${idx}">↓</button></div></td>
           <td>${normalizeStatus(w.status)==='done' ? `<button class="archive-inline" data-role="archive-workshop" data-idx="${idx}">Archive</button>` : ''}</td>
         `;
         tbody.appendChild(tr);
