@@ -188,17 +188,12 @@
     .view-toggle { display:inline-flex; gap:6px; padding:4px; border:1px solid var(--line); border-radius:999px; background:#fffdf9; }
     .view-btn { border:none; background:transparent; padding:7px 12px; border-radius:999px; font-size:12px; cursor:pointer; color:#6d5623; }
     .view-btn.active { background:var(--soft); border:1px solid var(--gold); }
-    .command-view { display:none; margin-bottom:16px; }
-    .command-view.active { display:grid; gap:14px; }
     .command-grid { display:grid; grid-template-columns: 1.1fr 1.1fr .9fr; gap:14px; }
-    .command-card h2 { margin-bottom:8px; }
-    .command-list { list-style:none; margin:0; padding:0; display:grid; gap:8px; }
     .command-item { padding:10px 12px; border:1px solid #efe6d2; border-radius:12px; background:#fffdfa; }
     .command-item strong { display:block; font-size:13px; }
     .command-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:5px; }
     .mini-pill { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; border:1px solid var(--line); color:#7a6a53; }
     .focus-big { font-family:"Playfair Display",serif; font-size:26px; line-height:1.05; margin:0 0 10px; }
-    .command-schedule { display:grid; gap:8px; }
     .command-schedule .sched-row { grid-template-columns:72px 1fr; }
     .board-shell.hidden, .retreat-section.hidden { display:none; }
     @media (max-width: 1100px) {
@@ -257,51 +252,8 @@
       <button class="btn" id="openTodos">To-Dos</button>
       <button class="btn" id="openArchive">Archive</button>
       <button class="btn" id="openStaged">Staged</button>
-      <div class="view-toggle">
-        <button class="view-btn active" id="boardViewBtn">Board View</button>
-        <button class="view-btn" id="commandViewBtn">Command View</button>
-      </div>
       <span class="sync-status" id="syncStatus">Loading...</span>
     </div>
-
-    <section class="command-view" id="commandView">
-      <div class="command-grid">
-        <section class="card command-card">
-          <div class="quad-label">Today</div>
-          <h2>Today</h2>
-          <div class="focus-big" id="focusHeadline">Date loading...</div>
-          <ul class="command-list" id="focusList"></ul>
-        </section>
-        <section class="card command-card">
-          <div class="quad-label">Upcoming</div>
-          <h2>Coming Up</h2>
-          <ul class="command-list" id="upcomingList"></ul>
-        </section>
-        <section class="card command-card">
-          <div class="quad-label">Needs Attention</div>
-          <h2 id="commandScheduleTitle">Overdue</h2>
-          <div class="small-note" id="commandScheduleDate">Open dated items that need attention</div>
-          <div class="command-schedule" id="commandSchedule"></div>
-        </section>
-      </div>
-      <div class="command-grid">
-        <section class="card command-card">
-          <div class="quad-label">Pending</div>
-          <h2>Waiting / Watchlist</h2>
-          <ul class="command-list" id="signalList"></ul>
-        </section>
-        <section class="card command-card">
-          <div class="quad-label">Strategic Lanes</div>
-          <h2>Signals</h2>
-          <ul class="command-list" id="retreatCommandList"></ul>
-        </section>
-        <section class="card command-card">
-          <div class="quad-label">Milestones</div>
-          <h2>Key Dates</h2>
-          <ul class="command-list" id="milestoneCommandList"></ul>
-        </section>
-      </div>
-    </section>
 
     <div class="layout board-shell" id="boardShell">
       <section class="board">
@@ -1877,18 +1829,6 @@
     document.getElementById('closeStaged').onclick = closeStaged;
     document.getElementById('drawerOverlay').onclick = () => { closeTodos(); closeArchive(); closeStaged(); };
 
-    const VIEW_KEY = 'dashboard_view_mode_v1';
-    function setView(mode){
-      localStorage.setItem(VIEW_KEY, mode);
-      document.getElementById('boardViewBtn').classList.toggle('active', mode === 'board');
-      document.getElementById('commandViewBtn').classList.toggle('active', mode === 'command');
-      document.getElementById('commandView').classList.toggle('active', mode === 'command');
-      document.getElementById('boardShell').classList.toggle('hidden', mode === 'command');
-      document.getElementById('retreatSection').classList.toggle('hidden', mode === 'command');
-    }
-    document.getElementById('boardViewBtn').onclick = () => setView('board');
-    document.getElementById('commandViewBtn').onclick = () => setView('command');
-
     // Initialize dashboard (called after auth)
     async function initDashboard() {
       try {
@@ -1911,7 +1851,6 @@
         }
 
         render(state);
-        setView(localStorage.getItem(VIEW_KEY) || 'board');
         updateSyncStatus();
       } catch (e) {
         console.error('Dashboard init failed; clearing local state and retrying', e);
@@ -1922,7 +1861,6 @@
         sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
         state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
         render(state);
-        setView('board');
         updateSyncStatus();
       }
     }
