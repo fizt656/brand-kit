@@ -7,10 +7,6 @@
       },
       {
         "status": "waiting",
-        "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
-      },
-      {
-        "status": "waiting",
         "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
@@ -57,22 +53,18 @@
     "persona": [
       {
         "status": "open",
-        "text": "1st draft of first principles learning progression · Due Mar 20"
+        "text": "canonical decks due March 31"
       },
       {
         "status": "open",
-        "text": "Pass on persona-tailored model: integrate first principles + show one possible persona"
+        "text": "Pass on persona-tailored model: integrate first principles + show one possible persona, due March 31"
       },
       {
         "status": "open",
-        "text": "Poll champions for one persona from previous workshops"
+        "text": "Poll champions for one persona from previous workshops, due mar 30"
       }
     ],
     "cop": [
-      {
-        "status": "waiting",
-        "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
-      },
       {
         "status": "waiting",
         "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
@@ -140,21 +132,6 @@
   ],
   "workshopTracker": [
     {
-      "name": "Champions Meeting",
-      "date": "2026-03-20",
-      "status": "waiting"
-    },
-    {
-      "name": "Champions Meeting",
-      "date": "2026-04-03",
-      "status": "waiting"
-    },
-    {
-      "name": "Champions Meeting",
-      "date": "2026-04-17",
-      "status": "waiting"
-    },
-    {
       "name": "Org Summit",
       "date": "2026-06-09 to 2026-06-11",
       "status": "waiting"
@@ -169,22 +146,22 @@
     {
       "step": "2",
       "status": "open",
-      "text": "Put together an illustrative run-of-show · Due Mar 19"
+      "text": "Meet with M. to review (or review async)"
     },
     {
       "step": "3",
       "status": "open",
-      "text": "Meet with M. to review (or review async)"
+      "text": "Bring back to working group for review"
     },
     {
       "step": "4",
       "status": "open",
-      "text": "Bring back to working group for review"
+      "text": "Notes from group review determine next steps"
     },
     {
       "step": "5",
       "status": "open",
-      "text": "Notes from group review determine next steps"
+      "text": "Put together an illustrative run-of-show · Due Mar 27"
     }
   ],
   "milestones": [
@@ -201,41 +178,6 @@
   ],
   "todos": [
     {
-      "text": "Set up 30-min meeting with M. and K. (HR)",
-      "area": "HR",
-      "dueLabel": "Mar 18",
-      "sortKey": "2026-03-18",
-      "done": false
-    },
-    {
-      "text": "Produce first draft of first-principles learning progression",
-      "area": "Persona",
-      "dueLabel": "Mar 20",
-      "sortKey": "2026-03-20",
-      "done": false
-    },
-    {
-      "text": "Wait for M and R testing feedback on pharmacy product prompt",
-      "area": "Projects",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-21",
-      "done": false
-    },
-    {
-      "text": "Watch email for intros from C.",
-      "area": "Outreach",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-21",
-      "done": false
-    },
-    {
-      "text": "Prep for external meeting meeting — review context, remember to ask about quote",
-      "area": "Consulting",
-      "dueLabel": "Mar 23",
-      "sortKey": "2026-03-23",
-      "done": false
-    },
-    {
       "text": "Article: draft/polish and get \"What Is an Expert?\" out — touch base and finish",
       "area": "Writing",
       "dueLabel": "Mar 24",
@@ -243,24 +185,10 @@
       "done": false
     },
     {
-      "text": "Persona-tailored learning model pass",
-      "area": "Persona",
-      "dueLabel": "Next",
-      "sortKey": "2026-03-26",
-      "done": false
-    },
-    {
       "text": "Poll champions for one persona from previous workshops",
       "area": "Persona",
       "dueLabel": "Next",
       "sortKey": "2026-03-26",
-      "done": false
-    },
-    {
-      "text": "Put together an illustrative run-of-show for Summer Retreat",
-      "area": "Summer Retreat",
-      "dueLabel": "Mar 27",
-      "sortKey": "2026-03-27",
       "done": false
     },
     {
@@ -290,11 +218,154 @@
       "dueLabel": "Mar 31",
       "sortKey": "2026-03-31",
       "done": false
+    },
+    {
+      "text": "Persona-tailored learning model pass",
+      "area": "Persona",
+      "dueLabel": "Next",
+      "sortKey": "2026-03-26",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-26T15:35:00-04:00",
+  "lastUpdated": "2026-03-27T00:39:57.851Z",
   "archivedItems": [
+    {
+      "id": "arc-1774571870103-zicjlh",
+      "kind": "todo",
+      "list": null,
+      "label": "Consulting",
+      "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+      "item": {
+        "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+        "area": "Consulting",
+        "dueLabel": "Mar 23",
+        "sortKey": "2026-03-23",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:37:50.103Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571864053-39jn8q",
+      "kind": "list",
+      "list": "workshops",
+      "label": "Workshops",
+      "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting",
+      "item": {
+        "status": "waiting",
+        "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
+      },
+      "archivedAt": "2026-03-27T00:37:44.053Z",
+      "restoreStatus": "waiting"
+    },
+    {
+      "id": "arc-1774571863172-uwqmde",
+      "kind": "todo",
+      "list": null,
+      "label": "Persona",
+      "text": "Produce first draft of first-principles learning progression",
+      "item": {
+        "text": "Produce first draft of first-principles learning progression",
+        "area": "Persona",
+        "dueLabel": "Mar 20",
+        "sortKey": "2026-03-20",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:37:43.172Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571853864-ikfgm1",
+      "kind": "todo",
+      "list": null,
+      "label": "Outreach",
+      "text": "Watch email for intros from C.",
+      "item": {
+        "text": "Watch email for intros from C.",
+        "area": "Outreach",
+        "dueLabel": "Next",
+        "sortKey": "2026-03-21",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:37:33.864Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571849505-8j6o0o",
+      "kind": "todo",
+      "list": null,
+      "label": "Projects",
+      "text": "Wait for M and R testing feedback on pharmacy product prompt",
+      "item": {
+        "text": "Wait for M and R testing feedback on pharmacy product prompt",
+        "area": "Projects",
+        "dueLabel": "Next",
+        "sortKey": "2026-03-21",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:37:29.505Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571821016-d9o2o7",
+      "kind": "todo",
+      "list": null,
+      "label": "Summer Retreat",
+      "text": "Put together an illustrative run-of-show for Summer Retreat",
+      "item": {
+        "text": "Put together an illustrative run-of-show for Summer Retreat",
+        "area": "Summer Retreat",
+        "dueLabel": "Mar 27",
+        "sortKey": "2026-03-27",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:37:01.016Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571788078-4u9gg7",
+      "kind": "todo",
+      "list": null,
+      "label": "HR",
+      "text": "Set up 30-min meeting with M. and K. (HR)",
+      "item": {
+        "text": "Set up 30-min meeting with M. and K. (HR)",
+        "area": "HR",
+        "dueLabel": "Mar 18",
+        "sortKey": "2026-03-18",
+        "done": false
+      },
+      "archivedAt": "2026-03-27T00:36:28.078Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1774571666749-xde1eq",
+      "kind": "workshop",
+      "list": null,
+      "label": "Workshop Tracker",
+      "text": "Champions Meeting",
+      "item": {
+        "name": "Champions Meeting",
+        "date": "2026-04-17",
+        "status": "waiting"
+      },
+      "archivedAt": "2026-03-27T00:34:26.749Z",
+      "restoreStatus": "waiting"
+    },
+    {
+      "id": "arc-1774571666749-xishx2",
+      "kind": "list",
+      "list": "cop",
+      "label": "CoP",
+      "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP",
+      "item": {
+        "status": "done",
+        "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+      },
+      "archivedAt": "2026-03-27T00:34:26.749Z",
+      "restoreStatus": "open"
+    },
     {
       "id": "seed-1774551657643-zuka73",
       "kind": "retreat",
@@ -456,5 +527,7 @@
       "archivedAt": "2026-03-26T07:00:00-04:00",
       "restoreStatus": "open"
     }
-  ]
+  ],
+  "localUpdatedAt": "2026-03-27T00:39:57.851Z",
+  "syncedFromLocalAt": "2026-03-27T00:39:57.851Z"
 }
