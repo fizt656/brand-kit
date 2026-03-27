@@ -305,21 +305,66 @@
 
     <div class="layout board-shell" id="boardShell">
       <section class="board">
-        <section class="card quad" data-quad="workshops">
+        <section class="card support-card">
           <div class="quad-header">
             <div>
-              <div class="quad-label">Top Left</div>
-              <h2>Workshops</h2>
+              <h2>Day's Schedule</h2>
+              <div class="small-note" id="scheduleDate">Date loading...</div>
             </div>
           </div>
-          <ul class="editable-list" data-list="workshops"></ul>
-          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="workshops">Add item</button><button class="btn" data-role="sort-list-date" data-list="workshops">Sort by date</button></div><span class="small-note">Use light status markers only.</span></div>
+          <div class="schedule-list" id="scheduleList"></div>
+          <div class="section-meta"><button class="btn" id="addSchedule">Add row</button><span class="small-note">Keep it light. Just what matters today.</span></div>
+        </section>
+
+        <section class="card support-card">
+          <div class="quad-header">
+            <div>
+              <h2>Workshop Tracker</h2>
+            </div>
+          </div>
+          <table id="workshopTable">
+            <thead>
+              <tr><th>Name</th><th>Date</th><th>Ready Status</th><th>Order</th><th></th></tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="section-meta"><button class="btn" id="addWorkshop">Add workshop</button></div>
+        </section>
+
+        <section class="card quad" data-quad="cop">
+          <div class="quad-header">
+            <div>
+              <h2>CoP</h2>
+            </div>
+          </div>
+          <ul class="editable-list" data-list="cop"></ul>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="cop">Add item</button><button class="btn" data-role="sort-list-date" data-list="cop">Sort by date</button></div></div>
+        </section>
+
+        <section class="card quad" data-quad="persona">
+          <div class="quad-header">
+            <div>
+              <h2>Persona-Tailored Education Service Model</h2>
+            </div>
+          </div>
+          <ul class="editable-list" data-list="persona"></ul>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="persona">Add item</button><button class="btn" data-role="sort-list-date" data-list="persona">Sort by date</button></div></div>
+        </section>
+
+        <section class="card">
+          <div class="quad-header">
+            <div>
+              <h2>Summer Retreat / Learning Day</h2>
+            </div>
+          </div>
+          <div class="sub-note">Shape a practical, meaningful AI learning day for the org. Owner: G. / M. E.</div>
+          <ul class="retreat-steps" id="retreatSteps"></ul>
+          <div class="section-meta"><button class="btn" id="addRetreatStep">Add step</button></div>
         </section>
 
         <section class="card quad">
           <div class="quad-header">
             <div>
-              <div class="quad-label">Top Right</div>
               <h2>Admin + Strategy</h2>
             </div>
           </div>
@@ -337,26 +382,14 @@
           </div>
         </section>
 
-        <section class="card quad" data-quad="persona">
+        <section class="card support-card">
           <div class="quad-header">
             <div>
-              <div class="quad-label">Bottom Left</div>
-              <h2>Persona-Tailored Education Service Model</h2>
+              <h2>Article Ideas</h2>
             </div>
           </div>
-          <ul class="editable-list" data-list="persona"></ul>
-          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="persona">Add item</button><button class="btn" data-role="sort-list-date" data-list="persona">Sort by date</button></div></div>
-        </section>
-
-        <section class="card quad" data-quad="cop">
-          <div class="quad-header">
-            <div>
-              <div class="quad-label">Bottom Right</div>
-              <h2>CoP</h2>
-            </div>
-          </div>
-          <ul class="editable-list" data-list="cop"></ul>
-          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="cop">Add item</button><button class="btn" data-role="sort-list-date" data-list="cop">Sort by date</button></div></div>
+          <ul class="editable-list" data-list="articleIdeas"></ul>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="articleIdeas">Add idea</button><button class="btn" data-role="sort-list-date" data-list="articleIdeas">Sort by date</button></div><span class="small-note">Quick capture for sparks, staged pieces, and drafts.</span></div>
         </section>
       </section>
 
@@ -364,68 +397,14 @@
         <section class="card support-card">
           <div class="quad-header">
             <div>
-              <div class="quad-label">Side Rail</div>
-              <h2>Day's Schedule</h2>
-              <div class="small-note" id="scheduleDate">Date loading...</div>
-            </div>
-          </div>
-          <div class="schedule-list" id="scheduleList"></div>
-          <div class="section-meta"><button class="btn" id="addSchedule">Add row</button><span class="small-note">Keep it light. Just what matters today.</span></div>
-        </section>
-
-        <section class="card support-card">
-          <div class="quad-header">
-            <div>
-              <div class="quad-label">Tracker</div>
-              <h2>Workshop Tracker</h2>
-            </div>
-          </div>
-          <table id="workshopTable">
-            <thead>
-              <tr><th>Name</th><th>Date</th><th>Ready Status</th><th>Order</th><th></th></tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-          <div class="section-meta"><button class="btn" id="addWorkshop">Add workshop</button></div>
-        </section>
-
-        <section class="card support-card">
-          <div class="quad-header">
-            <div>
-              <div class="quad-label">Milestones</div>
               <h2>Important Dates & Milestones</h2>
             </div>
           </div>
           <div class="milestone-list" id="milestoneList"></div>
           <div class="section-meta"><button class="btn" id="addMilestone">Add milestone</button></div>
         </section>
-
-        <section class="card support-card">
-          <div class="quad-header">
-            <div>
-              <div class="quad-label">Writing</div>
-              <h2>Article Ideas</h2>
-            </div>
-          </div>
-          <ul class="editable-list" data-list="articleIdeas"></ul>
-          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="articleIdeas">Add idea</button><button class="btn" data-role="sort-list-date" data-list="articleIdeas">Sort by date</button></div><span class="small-note">Quick capture for sparks, staged pieces, and drafts.</span></div>
-        </section>
       </aside>
     </div>
-
-    <section class="retreat-section" id="retreatSection">
-      <div class="card">
-        <div class="quad-header">
-          <div>
-            <div class="quad-label">High-Visibility Project</div>
-            <h2>Summer Retreat / Learning Day</h2>
-          </div>
-        </div>
-        <div class="sub-note">Shape a practical, meaningful AI learning day for the org. Owner: G. / M. E.</div>
-        <ul class="retreat-steps" id="retreatSteps"></ul>
-        <div class="section-meta"><button class="btn" id="addRetreatStep">Add step</button></div>
-      </div>
-    </section>
 
     <div class="foot">Source of truth: <code>dashboard-data.json</code>. The owner updates this file. Your browser edits sync when you export.</div>
   </main>
