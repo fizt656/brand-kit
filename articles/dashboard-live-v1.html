@@ -308,7 +308,7 @@
             </div>
           </div>
           <ul class="editable-list" data-list="workshops"></ul>
-          <div class="section-meta"><button class="btn add-item" data-list="workshops">Add item</button><span class="small-note">Use light status markers only.</span></div>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="workshops">Add item</button><button class="btn" data-role="sort-list-date" data-list="workshops">Sort by date</button></div><span class="small-note">Use light status markers only.</span></div>
         </section>
 
         <section class="card quad">
@@ -322,12 +322,12 @@
             <div>
               <h3>Admin</h3>
               <ul class="editable-list" data-list="admin"></ul>
-              <div class="section-meta"><button class="btn add-item" data-list="admin">Add item</button></div>
+              <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="admin">Add item</button><button class="btn" data-role="sort-list-date" data-list="admin">Sort by date</button></div></div>
             </div>
             <div>
               <h3>Strategy</h3>
               <ul class="editable-list" data-list="strategy"></ul>
-              <div class="section-meta"><button class="btn add-item" data-list="strategy">Add item</button></div>
+              <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="strategy">Add item</button><button class="btn" data-role="sort-list-date" data-list="strategy">Sort by date</button></div></div>
             </div>
           </div>
         </section>
@@ -340,7 +340,7 @@
             </div>
           </div>
           <ul class="editable-list" data-list="persona"></ul>
-          <div class="section-meta"><button class="btn add-item" data-list="persona">Add item</button></div>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="persona">Add item</button><button class="btn" data-role="sort-list-date" data-list="persona">Sort by date</button></div></div>
         </section>
 
         <section class="card quad" data-quad="cop">
@@ -351,7 +351,7 @@
             </div>
           </div>
           <ul class="editable-list" data-list="cop"></ul>
-          <div class="section-meta"><button class="btn add-item" data-list="cop">Add item</button></div>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="cop">Add item</button><button class="btn" data-role="sort-list-date" data-list="cop">Sort by date</button></div></div>
         </section>
       </section>
 
@@ -403,7 +403,7 @@
             </div>
           </div>
           <ul class="editable-list" data-list="articleIdeas"></ul>
-          <div class="section-meta"><button class="btn add-item" data-list="articleIdeas">Add idea</button><span class="small-note">Quick capture for sparks, staged pieces, and drafts.</span></div>
+          <div class="section-meta"><div class="list-actions"><button class="btn add-item" data-list="articleIdeas">Add idea</button><button class="btn" data-role="sort-list-date" data-list="articleIdeas">Sort by date</button></div><span class="small-note">Quick capture for sparks, staged pieces, and drafts.</span></div>
         </section>
       </aside>
     </div>
@@ -1200,6 +1200,76 @@
       return out;
     }
 
+    function listDateKeyFromText(text){
+      const str = String(text || '');
+      const year = new Date().getFullYear();
+      const m1 = str.match(/\b(?:due|before|on)\s+(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?/i) || str.match(/\b(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\b/);
+      if (m1) {
+        const mm = String(Number(m1[1])).padStart(2,'0');
+        const dd = String(Number(m1[2])).padStart(2,'0');
+        const yy = m1[3] ? String(Number(m1[3].length === 2 ? '20'+m1[3] : m1[3])) : String(year);
+        return `${yy}-${mm}-${dd}`;
+      }
+      const months = {jan:1,feb:2,mar:3,apr:4,may:5,jun:6,jul:7,aug:8,sep:9,sept:9,oct:10,nov:11,dec:12};
+      const m2 = str.match(/\b(?:due|before|on)?\s*(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+(\d{1,2})\b/i);
+      if (m2) {
+        const mm = String(months[m2[1].slice(0,3).toLowerCase()]).padStart(2,'0');
+        const dd = String(Number(m2[2])).padStart(2,'0');
+        return `${year}-${mm}-${dd}`;
+      }
+      return '';
+    }
+
+    function getListEntriesForRender(listName, data){
+      const arr = (data.lists && data.lists[listName]) || [];
+      const entries = arr.map((item, idx) => ({ item, idx }));
+      const hasManualOrder = entries.some(entry => entry.item && entry.item.manualOrder != null);
+      entries.sort((a, b) => {
+        if (hasManualOrder) {
+          const ao = a.item?.manualOrder ?? Number.MAX_SAFE_INTEGER;
+          const bo = b.item?.manualOrder ?? Number.MAX_SAFE_INTEGER;
+          if (ao !== bo) return ao - bo;
+        }
+        const ad = listDateKeyFromText(a.item?.text || '');
+        const bd = listDateKeyFromText(b.item?.text || '');
+        if (ad && bd && ad !== bd) return ad.localeCompare(bd);
+        if (ad && !bd) return -1;
+        if (!ad && bd) return 1;
+        return a.idx - b.idx;
+      });
+      return entries;
+    }
+
+    function moveListItem(listName, idx, delta, data){
+      const ordered = getListEntriesForRender(listName, data);
+      const pos = ordered.findIndex(entry => entry.idx === idx);
+      if (pos < 0) return;
+      const newPos = pos + delta;
+      if (newPos < 0 || newPos >= ordered.length) return;
+      const temp = ordered[pos];
+      ordered[pos] = ordered[newPos];
+      ordered[newPos] = temp;
+      ordered.forEach((entry, orderIdx) => {
+        if (data.lists?.[listName]?.[entry.idx]) data.lists[listName][entry.idx].manualOrder = orderIdx;
+      });
+      saveLocal(data);
+      render(data);
+    }
+
+    function sortListByDate(listName, data){
+      (data.lists?.[listName] || []).forEach(item => { delete item.manualOrder; });
+      saveLocal(data);
+      render(data);
+    }
+
+    function clearManualOrderIfEmpty(listName, data){
+      const arr = (data.lists && data.lists[listName]) || [];
+      if (!arr.some(item => item && item.manualOrder != null)) return;
+      if (arr.every(item => !(item?.text || '').trim())) {
+        arr.forEach(item => { delete item.manualOrder; });
+      }
+    }
+
     function collectCommandTodos(data){
       return [...(data.todos || []), ...deriveBoardTasksV2(data)]
         .filter(t => !t.done && !(t.sourceText === undefined && boardTaskDoneForTodo(t, data)))
@@ -1566,7 +1636,27 @@
           const list = btn.dataset.list;
           data.lists[list] = data.lists[list] || [];
           data.lists[list].push({ status:'open', text:'' });
+          clearManualOrderIfEmpty(list, data);
           render(data); saveLocal(data);
+        };
+      });
+
+      document.querySelectorAll('[data-role="move-up"]').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          moveListItem(btn.dataset.list, Number(btn.dataset.idx), -1, data);
+        };
+      });
+      document.querySelectorAll('[data-role="move-down"]').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          moveListItem(btn.dataset.list, Number(btn.dataset.idx), 1, data);
+        };
+      });
+      document.querySelectorAll('[data-role="sort-list-date"]').forEach(btn => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          sortListByDate(btn.dataset.list, data);
         };
       });
 
@@ -1781,6 +1871,68 @@
       document.getElementById('boardViewBtn').classList.toggle('active', mode === 'board');
       document.getElementById('commandViewBtn').classList.toggle('active', mode === 'command');
       document.getElementById('commandView').classList.toggle('active', mode === 'command');
+      document.getElementById('boardShell').classList.toggle('hidden', mode === 'command');
+      document.getElementById('retreatSection').classList.toggle('hidden', mode === 'command');
+    }
+    document.getElementById('boardViewBtn').onclick = () => setView('board');
+    document.getElementById('commandViewBtn').onclick = () => setView('command');
+
+    // Initialize dashboard (called after auth)
+    async function initDashboard() {
+      try {
+        const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
+        const localData = loadLocal();
+
+        if (localData && sourceData) {
+          state = mergeLocalWithSource(localData, sourceData);
+          hasLocalChanges = !!localStorage.getItem(STORAGE_KEY);
+        } else if (localData) {
+          state = ensureDataShape(localData);
+          hasLocalChanges = true;
+        } else if (sourceData) {
+          state = ensureDataShape(clone(sourceData));
+          hasLocalChanges = false;
+        } else {
+          state = ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
+          hasLocalChanges = false;
+        }
+
+        render(state);
+        setView(localStorage.getItem(VIEW_KEY) || 'board');
+        updateSyncStatus();
+      } catch (e) {
+        console.error('Dashboard init failed; clearing local state and retrying', e);
+        localStorage.removeItem(STORAGE_KEY);
+        localStorage.removeItem(SYNC_KEY);
+        hasLocalChanges = false;
+        const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
+        state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
+        render(state);
+        setView('board');
+        updateSyncStatus();
+      }
+    }
+
+    tryAutoAuth();
+  </script>
+</body>
+</html>
+ const fetchedSource = await fetchSource();
+        sourceData = fetchedSource ? ensureDataShape(fetchedSource) : null;
+        state = sourceData ? ensureDataShape(clone(sourceData)) : ensureDataShape({ lists: {}, schedule: [], workshopTracker: [], retreatSteps: [], milestones: [], derivedDones: {}, archivedItems: [] });
+        render(state);
+        setView('board');
+        updateSyncStatus();
+      }
+    }
+
+    tryAutoAuth();
+  </script>
+</body>
+</html>
+ode === 'command');
       document.getElementById('boardShell').classList.toggle('hidden', mode === 'command');
       document.getElementById('retreatSection').classList.toggle('hidden', mode === 'command');
     }

@@ -3,7 +3,7 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "Professional Development Day breakout \u00b7 Apr 8 \u00b7 3/20 check-in; confirm scope, shell deck, and facilitation plan"
+        "text": "refresh deck for HR, due 4/3"
       },
       {
         "status": "waiting",
@@ -28,6 +28,14 @@
       {
         "status": "waiting",
         "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
+      },
+      {
+        "status": "open",
+        "text": "Pharmacy -- 4-6 workshops in May / June"
+      },
+      {
+        "status": "open",
+        "text": "Business Strategy - 6/4 lunch n learn and 8/6 workshop"
       }
     ],
     "admin": [
@@ -104,8 +112,12 @@
     ],
     "articleIdeas": [
       {
-        "status": "in progress",
+        "status": "waiting",
         "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
+      },
+      {
+        "status": "in progress",
+        "text": "Can AI be used to Scale Up our Humanity?"
       }
     ]
   },
@@ -141,45 +153,75 @@
       "name": "Org Summit",
       "date": "2026-06-09 to 2026-06-11",
       "status": "waiting"
+    },
+    {
+      "name": "HR",
+      "date": "2026-04-08",
+      "status": "in progress"
+    },
+    {
+      "name": "Business Strat LnL",
+      "date": "2026-06-04",
+      "status": "waiting"
+    },
+    {
+      "name": "Business Strat Workshop",
+      "date": "2026-08-06",
+      "status": "waiting"
+    },
+    {
+      "name": "Pharmacy",
+      "date": "May/June",
+      "status": "open"
+    },
+    {
+      "name": "MCO",
+      "date": "?",
+      "status": "waiting"
+    },
+    {
+      "name": "GEP",
+      "date": "May?",
+      "status": "waiting"
     }
   ],
   "retreatSteps": [
     {
       "step": "1",
       "status": "open",
-      "text": "Get logistical bottlenecks from M."
+      "text": "analyze survey, due 3/31"
     },
     {
       "step": "2",
       "status": "open",
-      "text": "Meet with M. to review (or review async)"
+      "text": "Meet with M. to review (or review async), and get constraints"
     },
     {
       "step": "3",
       "status": "open",
-      "text": "Bring back to working group for review"
+      "text": "Bring back to working group for review, with rough run-of show"
     },
     {
       "step": "4",
       "status": "open",
       "text": "Notes from group review determine next steps"
-    },
-    {
-      "step": "5",
-      "status": "open",
-      "text": "Put together an illustrative run-of-show \u00b7 Due Mar 27"
     }
   ],
   "milestones": [
     {
       "date": "Apr 8",
-      "text": "Professional Development Day breakout",
-      "status": "waiting"
+      "text": "HR Professional Development Day breakout",
+      "status": "in progress"
     },
     {
       "date": "Jun 9-11",
       "text": "Org Summit",
       "status": "waiting"
+    },
+    {
+      "date": "Apr 8",
+      "text": "ED&A Mid-Year Review",
+      "status": "in progress"
     }
   ],
   "todos": [
@@ -234,7 +276,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-03-27T15:22:00Z",
+  "lastUpdated": "2026-03-27T19:55:59Z",
   "archivedItems": [
     {
       "id": "arc-1774571870103-zicjlh",
@@ -534,7 +576,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-03-27T11:03:05Z",
-  "syncedFromLocalAt": "2026-03-27T11:03:05Z",
+  "localUpdatedAt": "2026-03-27T19:47:09.230Z",
+  "syncedFromLocalAt": "2026-03-27T19:47:09.230Z",
   "stagedChanges": []
 }
