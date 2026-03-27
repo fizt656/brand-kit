@@ -1751,6 +1751,28 @@
           }
         };
       });
+      document.querySelectorAll('[data-role="workshop-move-up"]').forEach(el => {
+        el.onclick = (e) => {
+          e.preventDefault();
+          const idx = Number(el.dataset.idx);
+          if (!data.workshopTracker || idx <= 0) return;
+          const tmp = data.workshopTracker[idx - 1];
+          data.workshopTracker[idx - 1] = data.workshopTracker[idx];
+          data.workshopTracker[idx] = tmp;
+          saveLocal(data); render(data);
+        };
+      });
+      document.querySelectorAll('[data-role="workshop-move-down"]').forEach(el => {
+        el.onclick = (e) => {
+          e.preventDefault();
+          const idx = Number(el.dataset.idx);
+          if (!data.workshopTracker || idx < 0 || idx >= data.workshopTracker.length - 1) return;
+          const tmp = data.workshopTracker[idx + 1];
+          data.workshopTracker[idx + 1] = data.workshopTracker[idx];
+          data.workshopTracker[idx] = tmp;
+          saveLocal(data); render(data);
+        };
+      });
       document.querySelectorAll('[data-role="archive-restore"]').forEach(el => {
         el.onclick = (e) => {
           e.preventDefault();
