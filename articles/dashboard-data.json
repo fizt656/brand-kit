@@ -121,33 +121,8 @@
    }
   ]
  },
- "scheduleDate": "Friday, March 27, 2026",
- "schedule": [
-  {
-   "time": "10:30 AM",
-   "text": "[DISCOVERY MTG] AI Solutions for PDF to Progeny TSV"
-  },
-  {
-   "time": "11:00 AM",
-   "text": "Monthly ED&A Skills"
-  },
-  {
-   "time": "1:00 PM",
-   "text": "SMARTsheet_Charters"
-  },
-  {
-   "time": "2:30 PM",
-   "text": "project charters, smartsheet"
-  },
-  {
-   "time": "3:00 PM",
-   "text": "AI Agents for SE: Security briefing for Mark Tomilson"
-  },
-  {
-   "time": "4:00 PM",
-   "text": "documentation, next week table"
-  }
- ],
+ "scheduleDate": "Saturday, March 28, 2026",
+ "schedule": [],
  "workshopTracker": [
   {
    "name": "HR",
