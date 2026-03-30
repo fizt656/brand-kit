@@ -121,8 +121,33 @@
    }
   ]
  },
- "scheduleDate": "Sunday, March 29, 2026",
- "schedule": [],
+ "scheduleDate": "Monday, March 30, 2026",
+ "schedule": [
+  {
+   "time": "9:00\u20139:30 AM",
+   "text": "week pre-reads, priority chart"
+  },
+  {
+   "time": "9:30\u201310:30 AM",
+   "text": "Bravely Prototype and Materials"
+  },
+  {
+   "time": "10:30\u201311:00 AM",
+   "text": "Discuss DFCI GPT presentation for regional campus research nurses on 5/11/26"
+  },
+  {
+   "time": "11:00 AM\u201312:00 PM",
+   "text": "Canonical materials"
+  },
+  {
+   "time": "1:00\u20132:30 PM",
+   "text": "Informatics & Analytics Town Hall"
+  },
+  {
+   "time": "3:00\u20134:00 PM",
+   "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
+  }
+ ],
  "workshopTracker": [
   {
    "name": "HR",
@@ -251,7 +276,7 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-03-29T11:05:00Z",
+ "lastUpdated": "2026-03-30T11:02:00Z",
  "archivedItems": [
   {
    "id": "arc-1774571870103-zicjlh",
@@ -551,7 +576,22 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-03-29T11:05:00Z",
- "syncedFromLocalAt": "2026-03-29T11:05:00Z",
- "stagedChanges": []
+ "localUpdatedAt": "2026-03-30T11:02:00Z",
+ "syncedFromLocalAt": "2026-03-30T11:02:00Z",
+ "stagedChanges": [
+  {
+   "kind": "proposed",
+   "where": "To-Dos / Writing",
+   "change": "Review whether 'What Is an Expert?' should remain active, be re-dated, or be archived out of the immediate week.",
+   "why": "It is still open in live To-Dos with a Mar 24 due label, which now looks stale relative to the current week.",
+   "apply": "needs approval"
+  },
+  {
+   "kind": "proposed",
+   "where": "Projects / Summer Retreat",
+   "change": "Tighten the next step wording so Apr 1 is the forcing point: analyze survey + get Melanie constraints + shape rough run-of-show for working-group review.",
+   "why": "The retreat lane is active but split across retreat steps, milestones, and project notes; this week likely needs one cleaner next step.",
+   "apply": "needs approval"
+  }
+ ]
 }
