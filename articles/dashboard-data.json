@@ -592,6 +592,27 @@
    "change": "Tighten the next step wording so Apr 1 is the forcing point: analyze survey + get Melanie constraints + shape rough run-of-show for working-group review.",
    "why": "The retreat lane is active but split across retreat steps, milestones, and project notes; this week likely needs one cleaner next step.",
    "apply": "needs approval"
+  },
+  {
+   "kind": "proposed",
+   "where": "Strategy / To-Dos",
+   "change": "Review the JFC charter / proposal deck item and either mark it completed, re-date it, or rewrite the next step around scheduling and partner-group follow-up.",
+   "why": "It is still open with a Mar 30 due date in live To-Dos, but recent memory only confirms Brent support and a handoff to charter/proposal work, not final completion.",
+   "apply": "needs approval"
+  },
+  {
+   "kind": "proposed",
+   "where": "Persona / Workshops",
+   "change": "Review the Mar 31 canonical deck / persona-model items and decide whether they should stay active for this week, be re-dated, or be collapsed into the HR Apr 8 workshop prep line.",
+   "why": "Recent memory on Mar 30 shows that persona-tailored learning model work resumed, but the live dashboard still carries several late-March persona deadlines that now read stale.",
+   "apply": "needs approval"
+  },
+  {
+   "kind": "proposed",
+   "where": "Workshops",
+   "change": "Consider mirroring the live 'refresh deck for HR, due 4/3' note into the source workshop lane if that is now the operative prep milestone before the Apr 8 session.",
+   "why": "The live dashboard shows a specific HR deck refresh target that is not clearly reflected in the local source docs, which still emphasize earlier check-ins and foundation deck work.",
+   "apply": "needs approval"
   }
  ]
 }
