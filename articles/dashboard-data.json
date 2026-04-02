@@ -220,34 +220,6 @@
    "done": false
   },
   {
-   "text": "Check in with D. at C. if no reply yet \u2014 short nudge",
-   "area": "Outreach",
-   "dueLabel": "Mar 30",
-   "sortKey": "2026-03-30",
-   "done": false
-  },
-  {
-   "text": "partner group charter / proposal deck",
-   "area": "Strategy",
-   "dueLabel": "Mar 30",
-   "sortKey": "2026-03-30",
-   "done": false
-  },
-  {
-   "text": "Update Smartsheet for mid-year review",
-   "area": "Admin",
-   "dueLabel": "Mar 30",
-   "sortKey": "2026-03-30",
-   "done": false
-  },
-  {
-   "text": "Draft CoP monthly deck + notecatchers after the Apr 3 Champions meeting",
-   "area": "Workshops",
-   "dueLabel": "Week of 4/6",
-   "sortKey": "2026-04-06",
-   "done": false
-  },
-  {
    "text": "Persona-tailored learning model pass",
    "area": "Persona",
    "dueLabel": "Next",
@@ -263,7 +235,7 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-04-02T22:34:00Z",
+ "lastUpdated": "2026-04-02T22:40:00Z",
  "archivedItems": [
   {
    "id": "arc-1774571870103-zicjlh",
@@ -563,8 +535,8 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-04-02T22:34:00Z",
- "syncedFromLocalAt": "2026-04-02T22:34:00Z",
+ "localUpdatedAt": "2026-04-02T22:40:00Z",
+ "syncedFromLocalAt": "2026-04-02T22:40:00Z",
  "stagedChanges": [
   {
    "kind": "proposed",
