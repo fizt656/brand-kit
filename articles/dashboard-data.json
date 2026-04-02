@@ -7,27 +7,27 @@
    },
    {
     "status": "waiting",
-    "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
    },
    {
     "status": "waiting",
-    "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
    },
    {
     "status": "waiting",
-    "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
    },
    {
     "status": "waiting",
-    "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
    },
    {
     "status": "waiting",
-    "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
    },
    {
     "status": "waiting",
-    "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+    "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
    },
    {
     "status": "open",
@@ -51,11 +51,11 @@
    },
    {
     "status": "open",
-    "text": "pharmacy product pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
+    "text": "pharmacy product pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
    },
    {
     "status": "open",
-    "text": "partner group charter / proposal deck · due Mar 30 EOD · frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
+    "text": "partner group charter / proposal deck \u00b7 due Mar 30 EOD \u00b7 frame the why, what/how, human-centered AI value, pilot shape, and KPI questions with partner group input"
    }
   ],
   "persona": [
@@ -75,11 +75,11 @@
   "cop": [
    {
     "status": "waiting",
-    "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
+    "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
    },
    {
     "status": "waiting",
-    "text": "Biweekly Champions Meeting · Apr 17 · keep cadence current"
+    "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 keep cadence current"
    },
    {
     "status": "waiting",
@@ -87,11 +87,11 @@
    },
    {
     "status": "open",
-    "text": "CoP operations · make the main CoP meeting monthly recurring"
+    "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
    },
    {
     "status": "open",
-    "text": "CoP operations · make biweekly office hours recurring (rename later)"
+    "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
    },
    {
     "status": "open",
@@ -103,17 +103,17 @@
    },
    {
     "status": "open",
-    "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just G."
+    "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
    },
    {
     "status": "open",
-    "text": "Draft CoP monthly deck + notecatchers after the Apr 3 Champions meeting · week of 4/6 deliverable for Apr 15 CoP"
+    "text": "Draft CoP monthly deck + notecatchers after the Apr 3 Champions meeting \u00b7 week of 4/6 deliverable for Apr 15 CoP"
    }
   ],
   "articleIdeas": [
    {
     "status": "waiting",
-    "text": "What is an expert? · staged article on expertise, AI, judgment, and what remains deeply human"
+    "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
    },
    {
     "status": "in progress",
@@ -121,31 +121,11 @@
    }
   ]
  },
- "scheduleDate": "Wednesday, April 1, 2026",
+ "scheduleDate": "Thursday, April 2, 2026",
  "schedule": [
   {
-   "time": "9:30–10:00 AM",
-   "text": "Planning Meeting: GenAI for Business Applications Team"
-  },
-  {
-   "time": "10:00–11:00 AM",
-   "text": "Bravely"
-  },
-  {
-   "time": "11:00–11:50 AM",
-   "text": "DPAE<>Rival [review AI Ed. proposal]"
-  },
-  {
-   "time": "12:00–1:00 PM",
-   "text": "Manny <> Gus lunch (location TBD)"
-  },
-  {
-   "time": "1:00–1:50 PM",
-   "text": "Post-Conf Debrief"
-  },
-  {
-   "time": "2:30–3:00 PM",
-   "text": "Gus<>Greg Databricks LLM options"
+   "time": "2:00\u20133:00 PM",
+   "text": "I&A Managers Meeting FY26 Series"
   }
  ],
  "workshopTracker": [
@@ -226,7 +206,7 @@
  ],
  "todos": [
   {
-   "text": "Article: draft/polish and get \"What Is an Expert?\" out — touch base and finish",
+   "text": "Article: draft/polish and get \"What Is an Expert?\" out \u2014 touch base and finish",
    "area": "Writing",
    "dueLabel": "Mar 24",
    "sortKey": "2026-03-24",
@@ -240,7 +220,7 @@
    "done": false
   },
   {
-   "text": "Check in with D. at C. if no reply yet — short nudge",
+   "text": "Check in with D. at C. if no reply yet \u2014 short nudge",
    "area": "Outreach",
    "dueLabel": "Mar 30",
    "sortKey": "2026-03-30",
@@ -276,16 +256,16 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-04-01T11:00:00Z",
+ "lastUpdated": "2026-04-02T11:00:00Z",
  "archivedItems": [
   {
    "id": "arc-1774571870103-zicjlh",
    "kind": "todo",
    "list": null,
    "label": "Consulting",
-   "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+   "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
    "item": {
-    "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+    "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
     "area": "Consulting",
     "dueLabel": "Mar 23",
     "sortKey": "2026-03-23",
@@ -299,10 +279,10 @@
    "kind": "list",
    "list": "workshops",
    "label": "Workshops",
-   "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting",
+   "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting",
    "item": {
     "status": "waiting",
-    "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
+    "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
    },
    "archivedAt": "2026-03-27T00:37:44.053Z",
    "restoreStatus": "waiting"
@@ -406,10 +386,10 @@
    "kind": "list",
    "list": "cop",
    "label": "CoP",
-   "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP",
+   "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP",
    "item": {
     "status": "done",
-    "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+    "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
    },
    "archivedAt": "2026-03-27T00:34:26.749Z",
    "restoreStatus": "open"
@@ -567,17 +547,17 @@
    "kind": "list",
    "list": "cop",
    "label": "CoP",
-   "text": "Community of Practice Kick-Off · Mar 18 · anchor event",
+   "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event",
    "item": {
     "status": "done",
-    "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
+    "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
    },
    "archivedAt": "2026-03-26T07:00:00-04:00",
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-04-01T11:00:00Z",
- "syncedFromLocalAt": "2026-04-01T11:00:00Z",
+ "localUpdatedAt": "2026-04-02T11:00:00Z",
+ "syncedFromLocalAt": "2026-04-02T11:00:00Z",
  "stagedChanges": [
   {
    "kind": "proposed",
