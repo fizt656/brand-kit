@@ -253,10 +253,17 @@
    "dueLabel": "Next",
    "sortKey": "2026-03-26",
    "done": false
+  },
+  {
+   "text": "send M.Y. JFC materials and charter template",
+   "area": "Strategy",
+   "dueLabel": "Monday",
+   "sortKey": "2026-04-06",
+   "done": false
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-04-02T11:00:00Z",
+ "lastUpdated": "2026-04-02T22:34:00Z",
  "archivedItems": [
   {
    "id": "arc-1774571870103-zicjlh",
@@ -556,8 +563,8 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-04-02T11:00:00Z",
- "syncedFromLocalAt": "2026-04-02T11:00:00Z",
+ "localUpdatedAt": "2026-04-02T22:34:00Z",
+ "syncedFromLocalAt": "2026-04-02T22:34:00Z",
  "stagedChanges": [
   {
    "kind": "proposed",
