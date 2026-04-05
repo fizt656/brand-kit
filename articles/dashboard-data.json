@@ -121,23 +121,11 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, April 4, 2026",
+  "scheduleDate": "Sunday, April 5, 2026",
   "schedule": [
     {
-      "time": "All day",
-      "text": "Cleo Mayyada's Birthday"
-    },
-    {
-      "time": "9:00 AM–12:00 PM",
-      "text": "Home Depot kids craft · Home Depot Norwood"
-    },
-    {
-      "time": "1:00–5:00 PM",
-      "text": "Family outing / drive / music"
-    },
-    {
-      "time": "7:00–11:00 PM",
-      "text": "Baba's Dinner Club"
+      "time": "Morning",
+      "text": "Lazy Sunday · birthday recovery mode"
     }
   ],
   "workshopTracker": [
