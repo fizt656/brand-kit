@@ -252,6 +252,13 @@
       "dueLabel": "Monday",
       "sortKey": "2026-04-06",
       "done": false
+    },
+    {
+      "text": "Charter drafts linked in Smartsheet",
+      "area": "Strategy",
+      "dueLabel": "Fri Apr 10",
+      "sortKey": "2026-04-10",
+      "done": false
     }
   ],
   "derivedDones": {},
