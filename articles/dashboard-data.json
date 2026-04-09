@@ -211,7 +211,7 @@
     {
       "date": "Apr 8",
       "text": "HR Professional Development Day breakout",
-      "status": "in progress"
+      "status": "done"
     },
     {
       "date": "Jun 9-11",
@@ -258,6 +258,13 @@
       "area": "Strategy",
       "dueLabel": "Fri Apr 10",
       "sortKey": "2026-04-10",
+      "done": false
+    },
+    {
+      "text": "Send HR follow-up: survey + CoP info + follow-up materials",
+      "area": "Workshops",
+      "dueLabel": "Tomorrow",
+      "sortKey": "2026-04-09",
       "done": false
     }
   ],
