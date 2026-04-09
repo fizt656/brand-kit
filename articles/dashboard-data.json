@@ -121,31 +121,31 @@
       }
     ]
   },
-  "scheduleDate": "Wednesday, April 8, 2026",
+  "scheduleDate": "Thursday, April 9, 2026",
   "schedule": [
     {
-      "time": "7:00 AM",
-      "text": "Gus<>Toni Sob7iyyeh @ Longwood Grille"
-    },
-    {
       "time": "9:00 AM",
-      "text": "HR Professional Development Day breakout"
+      "text": "Canonical Materials Gathering"
     },
     {
       "time": "11:00 AM",
-      "text": "Gus<>Tina catch up"
+      "text": "GEP Workshops Use Cases"
+    },
+    {
+      "time": "11:30 AM",
+      "text": "Gus <> Dave Connect"
     },
     {
       "time": "12:00 PM",
-      "text": "Lunch & Learn: Facility Dogs in Action"
+      "text": "Learning Repo"
     },
     {
       "time": "1:00 PM",
-      "text": "ED&A Monthly Leads Meeting"
+      "text": "Monthly ED&A Labs"
     },
     {
-      "time": "3:00 PM",
-      "text": "ED&A Mid Year Review"
+      "time": "2:30 PM",
+      "text": "Fundamentals Material"
     }
   ],
   "workshopTracker": [
@@ -269,7 +269,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-08T11:00:00Z",
+  "lastUpdated": "2026-04-09T11:00:00Z",
   "archivedItems": [
     {
       "id": "arc-1774571870103-zicjlh",
@@ -570,7 +570,7 @@
     }
   ],
   "localUpdatedAt": "2026-04-03T11:00:00Z",
-  "syncedFromLocalAt": "2026-04-08T11:00:00Z",
+  "syncedFromLocalAt": "2026-04-09T11:00:00Z",
   "stagedChanges": [
     {
       "kind": "proposed",
