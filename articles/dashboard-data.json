@@ -121,23 +121,19 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, April 11, 2026",
+  "scheduleDate": "Sunday, April 12, 2026",
   "schedule": [
     {
-      "time": "All day",
-      "text": "Rayan Koteiche's birthday"
+      "time": "12:30 PM",
+      "text": "prep light lunch"
     },
     {
       "time": "1:00 PM",
-      "text": "Family Outing / Drive / Music"
+      "text": "Light Family Lunch"
     },
     {
-      "time": "4:00 PM",
-      "text": "Addams Family at CHS"
-    },
-    {
-      "time": "7:00 PM",
-      "text": "Squig Night"
+      "time": "3:00 PM",
+      "text": "Sunday Kitchen Club"
     }
   ],
   "workshopTracker": [
@@ -218,7 +214,7 @@
   ],
   "todos": [],
   "derivedDones": {},
-  "lastUpdated": "2026-04-11T11:10:00Z",
+  "lastUpdated": "2026-04-12T14:11:00Z",
   "archivedItems": [
     {
       "id": "arc-1774571870103-zicjlh",
@@ -519,7 +515,7 @@
     }
   ],
   "localUpdatedAt": "2026-04-03T11:00:00Z",
-  "syncedFromLocalAt": "2026-04-11T11:10:00Z",
+  "syncedFromLocalAt": "2026-04-12T14:11:00Z",
   "stagedChanges": [
     {
       "kind": "proposed",
