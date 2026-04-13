@@ -110,7 +110,24 @@
     ]
   },
   "scheduleDate": "Monday, April 13, 2026",
-  "schedule": [],
+  "schedule": [
+    {
+      "time": "9:00 AM",
+      "event": "Week Pre-reads, Priority Chart"
+    },
+    {
+      "time": "11:30 AM",
+      "event": "CoPilot Impact Assessment Working Group (Zoom)"
+    },
+    {
+      "time": "1:00 PM",
+      "event": "Summit Working Group Session (Teams)"
+    },
+    {
+      "time": "2:30 PM",
+      "event": "CoP Gameplanning"
+    }
+  ],
   "workshopTracker": [
     {
       "name": "HR",
@@ -184,7 +201,7 @@
   ],
   "todos": [],
   "derivedDones": {},
-  "lastUpdated": "2026-04-12T23:05:00Z",
+  "lastUpdated": "2026-04-13T11:02:00Z",
   "archivedItems": [
     {
       "id": "arc-20260412-hrdeck",
