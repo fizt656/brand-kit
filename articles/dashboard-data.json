@@ -68,6 +68,20 @@
         "text": "partner group charter / proposal deck · drafted Apr 10; next step is linking in Smartsheet"
       }
     ],
+    "persona": [
+      {
+        "status": "open",
+        "text": "Canonical decks: finalize at least one example of each media type"
+      },
+      {
+        "status": "open",
+        "text": "Persona-tailored model: integrate first principles + show one possible persona"
+      },
+      {
+        "status": "open",
+        "text": "Poll champions for one persona from previous workshops"
+      }
+    ],
     "cop": [
       {
         "status": "waiting",
@@ -113,19 +127,19 @@
   "schedule": [
     {
       "time": "9:00 AM",
-      "event": "Cop Materials & Agenda"
+      "text": "Cop Materials & Agenda"
     },
     {
       "time": "10:00 AM",
-      "event": "CoP Gameplanning"
+      "text": "CoP Gameplanning"
     },
     {
       "time": "11:00 AM",
-      "event": "Planning Meeting #1 for AI education for MCO Faculty"
+      "text": "Planning Meeting #1: AI Education for MCO Faculty"
     },
     {
       "time": "1:00 PM",
-      "event": "OpenEvidence / Dana-Farber"
+      "text": "OpenEvidence / Dana-Farber"
     }
   ],
   "workshopTracker": [
@@ -199,7 +213,15 @@
       "status": "waiting"
     }
   ],
-  "todos": [],
+  "todos": [
+    {
+      "text": "First draft of persona-tailored repo: outlines + at least one example of each media type",
+      "area": "Persona",
+      "dueLabel": "Fri Apr 25",
+      "sortKey": "2026-04-25",
+      "done": false
+    }
+  ],
   "derivedDones": {},
   "lastUpdated": "2026-04-14T11:00:00Z",
   "archivedItems": [
