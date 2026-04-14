@@ -44,7 +44,7 @@
         "text": "Choueiri Intro Package · hold until intro timing calls for it"
       },
       {
-        "status": "open",
+        "status": "done",
         "text": "Charter drafts · link in Smartsheet"
       }
     ],
@@ -109,23 +109,23 @@
       }
     ]
   },
-  "scheduleDate": "Monday, April 13, 2026",
+  "scheduleDate": "Tuesday, April 14, 2026",
   "schedule": [
     {
       "time": "9:00 AM",
-      "event": "Week Pre-reads, Priority Chart"
+      "event": "Cop Materials & Agenda"
     },
     {
-      "time": "11:30 AM",
-      "event": "CoPilot Impact Assessment Working Group (Zoom)"
+      "time": "10:00 AM",
+      "event": "CoP Gameplanning"
+    },
+    {
+      "time": "11:00 AM",
+      "event": "Planning Meeting #1 for AI education for MCO Faculty"
     },
     {
       "time": "1:00 PM",
-      "event": "Summit Working Group Session (Teams)"
-    },
-    {
-      "time": "2:30 PM",
-      "event": "CoP Gameplanning"
+      "event": "OpenEvidence / Dana-Farber"
     }
   ],
   "workshopTracker": [
@@ -201,7 +201,7 @@
   ],
   "todos": [],
   "derivedDones": {},
-  "lastUpdated": "2026-04-13T11:02:00Z",
+  "lastUpdated": "2026-04-14T11:00:00Z",
   "archivedItems": [
     {
       "id": "arc-20260412-hrdeck",
