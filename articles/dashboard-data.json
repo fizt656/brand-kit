@@ -245,6 +245,20 @@
       "dueLabel": "Next week",
       "sortKey": "2026-04-21",
       "done": false
+    },
+    {
+      "text": "Bravely 2-3 min presentation for ED&A All Team",
+      "area": "Workshops",
+      "dueLabel": "Wed Apr 29",
+      "sortKey": "2026-04-29",
+      "done": false
+    },
+    {
+      "text": "Bravely presentation: draft for ED&A All Team review",
+      "area": "Workshops",
+      "dueLabel": "Wed Apr 22",
+      "sortKey": "2026-04-22",
+      "done": false
     }
   ],
   "derivedDones": {},
