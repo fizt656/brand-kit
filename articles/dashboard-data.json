@@ -177,6 +177,17 @@
       "name": "Business Strat Workshop",
       "date": "2026-08-06",
       "status": "waiting"
+    },
+    {
+      "name": "Research Nursing",
+      "date": "2026-05-11",
+      "time": "9-10am",
+      "status": "waiting"
+    },
+    {
+      "name": "Inpatient/Ancillary Services",
+      "date": "2026-05-27",
+      "status": "waiting"
     }
   ],
   "retreatSteps": [
@@ -219,6 +230,20 @@
       "area": "Persona",
       "dueLabel": "Fri Apr 25",
       "sortKey": "2026-04-25",
+      "done": false
+    },
+    {
+      "text": "Ping McGuire: any info on audience for MCO Faculty workshop?",
+      "area": "Workshops",
+      "dueLabel": "Fri Apr 17",
+      "sortKey": "2026-04-17",
+      "done": false
+    },
+    {
+      "text": "Find meeting with Greg: possibility of helping institute with imaging automation (computer vision + other)",
+      "area": "Strategy",
+      "dueLabel": "Next week",
+      "sortKey": "2026-04-21",
       "done": false
     }
   ],
