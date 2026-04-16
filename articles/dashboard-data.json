@@ -123,31 +123,23 @@
       }
     ]
   },
-  "scheduleDate": "Wednesday, April 15, 2026",
+  "scheduleDate": "Thursday, April 16, 2026",
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Arrive From Commute"
-    },
-    {
-      "time": "9:00 AM",
-      "text": "Settle In"
-    },
-    {
-      "time": "11:00 AM",
-      "text": "Gus<>Lei: Meet/Greet, AI, MRI"
-    },
-    {
-      "time": "12:00 PM",
-      "text": "SmartRx | Content Generator and Coach Refinement | Working Session 2"
+      "time": "10:00 AM",
+      "text": "BFG huddle"
     },
     {
       "time": "1:00 PM",
-      "text": "GenAI Community of Practice"
+      "text": "CANCELED: Pharmacy-ED&A | AI Program | Monthly Meeting"
     },
     {
-      "time": "3:30 PM",
-      "text": "Bus/Commute Window"
+      "time": "1:30 PM",
+      "text": "Ambulatory Care Lunch & Learn: ED&A Generative AI Prep Meeting"
+    },
+    {
+      "time": "4:30 PM",
+      "text": "LinkedIn clarity block"
     }
   ],
   "workshopTracker": [
@@ -231,7 +223,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-14T11:00:00Z",
+  "lastUpdated": "2026-04-16T11:02:00Z",
   "archivedItems": [
     {
       "id": "arc-20260412-hrdeck",
