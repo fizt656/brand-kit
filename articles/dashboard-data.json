@@ -123,39 +123,26 @@
       }
     ]
   },
-  "scheduleDate": "Friday, April 17, 2026",
+  "scheduleDate": "Saturday, April 18, 2026",
   "schedule": [
     {
-      "time": "10:00 AM",
-      "text": "Gus/Jenna biweekly"
+      "time": "All day",
+      "text": "Frank Guenther's birthday"
     },
     {
-      "time": "10:30 AM",
-      "text": "Biweekly GenAI Champions Meeting"
+      "time": "1:00 PM",
+      "text": "Family Outing / Drive / Music"
     },
     {
-      "time": "11:00 AM",
-      "text": "GenAI Open Studio & Office Hours"
+      "time": "7:00 PM",
+      "text": "Baba's Dinner Club"
     },
     {
-      "time": "12:00 PM",
-      "text": "LinkedIn clarity block"
-    },
-    {
-      "time": "2:00 PM",
-      "text": "SM <> GPT4DFCI"
-    },
-    {
-      "time": "3:00 PM",
-      "text": "BFG Huddle"
+      "time": "10:30 PM",
+      "text": "Cleo’s flight to Spain"
     }
   ],
   "workshopTracker": [
-    {
-      "name": "HR",
-      "date": "2026-04-08",
-      "status": "done"
-    },
     {
       "name": "GEP",
       "date": "May?",
@@ -222,17 +209,19 @@
   ],
   "milestones": [
     {
-      "date": "Apr 8",
-      "text": "HR Professional Development Day breakout",
-      "status": "done"
-    },
-    {
       "date": "Jun 9-11",
       "text": "Org Summit",
       "status": "waiting"
     }
   ],
   "todos": [
+    {
+      "text": "Socially: update orchestration LLM to infer NPC characters from the main prompt and generate anchor images for consistent page generation",
+      "area": "Startup",
+      "dueLabel": "Fri May 1",
+      "sortKey": "2026-05-01",
+      "done": false
+    },
     {
       "text": "First draft of persona-tailored repo: outlines + at least one example of each media type",
       "area": "Persona",
@@ -255,22 +244,50 @@
       "done": false
     },
     {
-      "text": "Bravely 2-3 min presentation for ED&A All Team",
+      "text": "Bravely 10-15 min presentation for ED&A All Team",
       "area": "Workshops",
       "dueLabel": "Wed Apr 29",
       "sortKey": "2026-04-29",
       "done": false
     },
     {
-      "text": "Bravely presentation: draft for ED&A All Team review",
+      "text": "Bravely 10-15 min presentation: draft for ED&A All Team review",
       "area": "Workshops",
       "dueLabel": "Wed Apr 22",
       "sortKey": "2026-04-22",
       "done": false
+    },
+    {
+      "text": "Quick follow-up with Talya on the Responsible Use and Ethics channel for CoP",
+      "area": "CoP",
+      "dueLabel": "Sun Apr 19",
+      "sortKey": "2026-04-19",
+      "done": false
+    },
+    {
+      "text": "Template deck for Champions use cases: frames for problem, solution, iterations, prototype/product/demo",
+      "area": "CoP",
+      "dueLabel": "Thu Apr 23",
+      "sortKey": "2026-04-23",
+      "done": false
+    },
+    {
+      "text": "Example video and framework for quick-hit social media style tips videos",
+      "area": "Content",
+      "dueLabel": "Fri Apr 24",
+      "sortKey": "2026-04-24",
+      "done": false
+    },
+    {
+      "text": "MCO Faculty workshop: draft ready",
+      "area": "Workshops",
+      "dueLabel": "Next week",
+      "sortKey": "2026-04-24",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-17T11:00:00Z",
+  "lastUpdated": "2026-04-18T11:05:00Z",
   "archivedItems": [
     {
       "id": "arc-20260412-hrdeck",
@@ -284,6 +301,34 @@
       },
       "archivedAt": "2026-04-12T23:05:00Z",
       "restoreStatus": "open"
+    },
+    {
+      "id": "arc-20260417-hrbreakout",
+      "kind": "milestone",
+      "list": "workshops",
+      "label": "Workshops",
+      "text": "HR Professional Development Day breakout",
+      "item": {
+        "date": "Apr 8",
+        "status": "done",
+        "text": "HR Professional Development Day breakout"
+      },
+      "archivedAt": "2026-04-17T18:01:00Z",
+      "restoreStatus": "done"
+    },
+    {
+      "id": "arc-20260417-hrtracker",
+      "kind": "tracker",
+      "list": "workshops",
+      "label": "Workshops",
+      "text": "HR",
+      "item": {
+        "name": "HR",
+        "date": "2026-04-08",
+        "status": "done"
+      },
+      "archivedAt": "2026-04-17T18:01:00Z",
+      "restoreStatus": "done"
     },
     {
       "id": "arc-20260412-champapr3",
@@ -635,7 +680,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-17T11:00:00Z",
-  "syncedFromLocalAt": "2026-04-17T11:00:00Z",
+  "localUpdatedAt": "2026-04-18T11:05:00Z",
+  "syncedFromLocalAt": "2026-04-18T11:05:00Z",
   "stagedChanges": []
 }
