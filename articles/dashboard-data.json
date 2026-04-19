@@ -123,23 +123,23 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, April 18, 2026",
+  "scheduleDate": "Sunday, April 19, 2026",
   "schedule": [
     {
       "time": "All day",
-      "text": "Frank Guenther's birthday"
+      "text": "Rebecca Baars's birthday"
+    },
+    {
+      "time": "12:30 PM",
+      "text": "prep light lunch"
     },
     {
       "time": "1:00 PM",
-      "text": "Family Outing / Drive / Music"
+      "text": "Light Family Lunch"
     },
     {
-      "time": "7:00 PM",
-      "text": "Baba's Dinner Club"
-    },
-    {
-      "time": "10:30 PM",
-      "text": "Cleo’s flight to Spain"
+      "time": "3:00 PM",
+      "text": "Sunday Kitchen Club"
     }
   ],
   "workshopTracker": [
