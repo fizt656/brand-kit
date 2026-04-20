@@ -220,6 +220,20 @@
   ],
   "todos": [
     {
+      "text": "Make Jumpstart canonical templates: check Jumpstart outline against design principles, produce updated outline, then redraft new decks with ProDeck",
+      "area": "Workshops",
+      "dueLabel": "Tue Apr 21",
+      "sortKey": "2026-04-21",
+      "done": false
+    },
+    {
+      "text": "Make v1 must-have live delivery assets for Jumpstart, plus nice-to-haves if possible",
+      "area": "Workshops",
+      "dueLabel": "Tue Apr 21",
+      "sortKey": "2026-04-21",
+      "done": false
+    },
+    {
       "text": "Socially: update orchestration LLM to infer NPC characters from the main prompt and generate anchor images for consistent page generation",
       "area": "Startup",
       "dueLabel": "Fri May 1",
@@ -291,7 +305,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-20T11:00:00Z",
+  "lastUpdated": "2026-04-20T20:04:00Z",
   "archivedItems": [
     {
       "id": "arc-20260412-hrdeck",
