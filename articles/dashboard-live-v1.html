@@ -1812,13 +1812,30 @@
       exportData.syncedFromLocalAt = syncStamp;
       exportData.lastUpdated = syncStamp;
       delete exportData.baseSourceUpdatedAt;
+      const payload = JSON.stringify(exportData, null, 2);
+      const stampForFile = syncStamp.replace(/[:.]/g, '-');
+      const fileName = `dashboard-export-${stampForFile}.json`;
       try {
-        await navigator.clipboard.writeText(JSON.stringify(exportData, null, 2));
+        const blob = new Blob([payload], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
         localStorage.setItem(SYNC_KEY, JSON.stringify({ exportedAt: syncStamp }));
-        alert('Changes copied to clipboard.\n\nPaste in chat to sync. When the source JSON is updated with this export, local overrides will clear automatically.');
+        alert(`Export downloaded as ${fileName}.\n\nSend that JSON file here to sync dashboard changes.`);
       } catch {
-        console.log(JSON.stringify(exportData, null, 2));
-        alert('Check console for exported data.');
+        try {
+          await navigator.clipboard.writeText(payload);
+          localStorage.setItem(SYNC_KEY, JSON.stringify({ exportedAt: syncStamp }));
+          alert('Download failed, so I copied the export to clipboard instead.\n\nPaste in chat to sync.');
+        } catch {
+          console.log(payload);
+          alert('Export failed. Check console for exported data.');
+        }
       }
     };
     document.getElementById('openTodos').onclick = openTodos;
