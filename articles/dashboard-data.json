@@ -123,19 +123,15 @@
       }
     ]
   },
-  "scheduleDate": "Tuesday, April 21, 2026",
+  "scheduleDate": "Wednesday, April 22, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "Persona-Tailored Model Prototype"
+      "time": "All day",
+      "text": "PTO"
     },
     {
-      "time": "1:00 PM",
-      "text": "HOLD"
-    },
-    {
-      "time": "2:30 PM",
-      "text": "HOLD"
+      "time": "6:00 PM",
+      "text": "Dinner: Gus Halwani/Toni Choueiri with Mark Levin (Sorellina, Boston)"
     }
   ],
   "workshopTracker": [
@@ -269,7 +265,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-21T17:38:22.213Z",
+  "lastUpdated": "2026-04-22T11:01:41.228964Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -742,7 +738,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-21T17:38:22.213Z",
-  "syncedFromLocalAt": "2026-04-21T17:38:22.213Z",
+  "localUpdatedAt": "2026-04-22T11:01:41.228964Z",
+  "syncedFromLocalAt": "2026-04-22T11:01:41.228964Z",
   "stagedChanges": []
 }
