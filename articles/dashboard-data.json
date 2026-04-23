@@ -123,15 +123,23 @@
       }
     ]
   },
-  "scheduleDate": "Wednesday, April 22, 2026",
+  "scheduleDate": "Thursday, April 23, 2026",
   "schedule": [
     {
-      "time": "All day",
-      "text": "PTO"
+      "time": "9:00 AM",
+      "text": "Hold"
     },
     {
-      "time": "6:00 PM",
-      "text": "Dinner: Gus Halwani/Toni Choueiri with Mark Levin (Sorellina, Boston)"
+      "time": "10:00 AM",
+      "text": "Hold"
+    },
+    {
+      "time": "11:30 AM",
+      "text": "Shannon<>Gus AI Education for MCO faculty, Grants, and NIH"
+    },
+    {
+      "time": "1:00 PM",
+      "text": "[FOLLOW-UP MTG] AI Solutions for PDF to Progeny TSV"
     }
   ],
   "workshopTracker": [
@@ -265,7 +273,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-22T11:01:41.228964Z",
+  "lastUpdated": "2026-04-23T11:00:00Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -738,7 +746,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-22T11:01:41.228964Z",
-  "syncedFromLocalAt": "2026-04-22T11:01:41.228964Z",
+  "localUpdatedAt": "2026-04-23T11:00:00Z",
+  "syncedFromLocalAt": "2026-04-23T11:00:00Z",
   "stagedChanges": []
 }
