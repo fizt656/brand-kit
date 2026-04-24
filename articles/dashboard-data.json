@@ -123,23 +123,31 @@
       }
     ]
   },
-  "scheduleDate": "Thursday, April 23, 2026",
+  "scheduleDate": "Friday, April 24, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "Hold"
+      "time": "8:00 AM",
+      "text": "Timesheet"
     },
     {
-      "time": "10:00 AM",
-      "text": "Hold"
+      "time": "9:15 AM",
+      "text": "MCO pre-design and Options"
     },
     {
-      "time": "11:30 AM",
-      "text": "Shannon<>Gus AI Education for MCO faculty, Grants, and NIH"
+      "time": "11:00 AM",
+      "text": "Monthly ED&A Skills"
     },
     {
       "time": "1:00 PM",
-      "text": "[FOLLOW-UP MTG] AI Solutions for PDF to Progeny TSV"
+      "text": "MCO draft options"
+    },
+    {
+      "time": "3:15 PM",
+      "text": "New Event"
+    },
+    {
+      "time": "4:00 PM",
+      "text": "documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -259,7 +267,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-24T01:25:00Z",
+  "lastUpdated": "2026-04-24T11:02:46Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -764,7 +772,7 @@
       "restoreStatus": "done"
     }
   ],
-  "localUpdatedAt": "2026-04-24T01:25:00Z",
-  "syncedFromLocalAt": "2026-04-24T01:25:00Z",
+  "localUpdatedAt": "2026-04-24T11:02:46Z",
+  "syncedFromLocalAt": "2026-04-24T11:02:46Z",
   "stagedChanges": []
 }
