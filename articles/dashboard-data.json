@@ -123,31 +123,19 @@
       }
     ]
   },
-  "scheduleDate": "Friday, April 24, 2026",
+  "scheduleDate": "Saturday, April 25, 2026",
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Timesheet"
-    },
-    {
-      "time": "9:15 AM",
-      "text": "MCO pre-design and Options"
-    },
-    {
       "time": "11:00 AM",
-      "text": "Monthly ED&A Skills"
+      "text": "Japan festival"
     },
     {
       "time": "1:00 PM",
-      "text": "MCO draft options"
+      "text": "Family Outing / Drive / Music"
     },
     {
-      "time": "3:15 PM",
-      "text": "New Event"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "documentation, next week table"
+      "time": "7:00 PM",
+      "text": "Squig Night"
     }
   ],
   "workshopTracker": [
@@ -267,7 +255,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-24T11:02:46Z",
+  "lastUpdated": "2026-04-25T11:04:00Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -772,7 +760,7 @@
       "restoreStatus": "done"
     }
   ],
-  "localUpdatedAt": "2026-04-24T11:02:46Z",
-  "syncedFromLocalAt": "2026-04-24T11:02:46Z",
+  "localUpdatedAt": "2026-04-25T11:04:00Z",
+  "syncedFromLocalAt": "2026-04-25T11:04:00Z",
   "stagedChanges": []
 }
