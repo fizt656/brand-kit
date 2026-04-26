@@ -259,7 +259,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-26T11:00:00Z",
+  "lastUpdated": "2026-04-26T22:05:52.673813Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -766,5 +766,42 @@
   ],
   "localUpdatedAt": "2026-04-26T11:00:00Z",
   "syncedFromLocalAt": "2026-04-26T11:00:00Z",
-  "stagedChanges": []
+  "stagedChanges": [
+    {
+      "id": "stage-561d436043",
+      "status": "needs approval",
+      "summary": "Re-date or resolve stale Apr 23\u201324 to-dos: Bravely ED&A deck, MCO Faculty draft/plan, Champions template deck, quick-hit tips framework.",
+      "where": "To-Dos / weekly cleanup",
+      "why": "Dashboard still shows these as open and overdue; Week Ahead Jam also surfaced them as cleanup candidates.",
+      "note": "Needs Gus confirmation before archiving, marking done, or assigning new dates.",
+      "stagedAt": "2026-04-26T22:05:52.673813Z"
+    },
+    {
+      "id": "stage-9872276de8",
+      "status": "needs approval",
+      "summary": "Update MCO Faculty workshop next step to align with Fri May 1 Planning Meeting #2.",
+      "where": "Workshops / MCO Faculty",
+      "why": "Work calendar has \u201cPlanning Meeting #2 for AI education for MCO Faculty\u201d on Fri May 1; dashboard still has an overdue Fri Apr 24 draft/plan item.",
+      "note": "Likely change: replace stale draft/plan due date with \u201cprep for Planning Meeting #2 \u00b7 Fri May 1\u201d.",
+      "stagedAt": "2026-04-26T22:05:52.673813Z"
+    },
+    {
+      "id": "stage-4f2d433feb",
+      "status": "needs approval",
+      "summary": "Add this week\u2019s Pharmacy anchors: Thu monthly meeting and Fri workshop hold / planning follow-up.",
+      "where": "Workshop tracker / Pharmacy",
+      "why": "Dashboard says Pharmacy has 4\u20136 May/June workshops; calendar now shows Pharmacy-ED&A monthly meeting Thu and Pharmacy Workshop HOLD Fri.",
+      "note": "Needs approval to add dated next-step language rather than just broad May/June tracking.",
+      "stagedAt": "2026-04-26T22:05:52.673813Z"
+    },
+    {
+      "id": "stage-2ebcdba4ed",
+      "status": "needs approval",
+      "summary": "Review CoP cadence items: Apr 17 Champions Meeting is stale; recurring CoP meeting/open studio/office-hours items may need current dates.",
+      "where": "CoP lane",
+      "why": "Dashboard still references Apr 17 and several post-kickoff operations without current dated next steps.",
+      "note": "Needs Gus confirmation on what is complete vs still pending.",
+      "stagedAt": "2026-04-26T22:05:52.673813Z"
+    }
+  ]
 }
