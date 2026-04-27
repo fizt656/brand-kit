@@ -110,9 +110,20 @@
     .archive-entry-title { font-weight:600; font-size:13px; }
     .archive-entry-actions { display:flex; gap:8px; align-items:center; }
     .stage-status { font-size:11px; color:#7a6a53; text-transform:uppercase; letter-spacing:.08em; }
-    .todo-row { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
-    .todo-row.done { opacity:.62; }
-    .todo-check-toggle { cursor:pointer; display:flex; align-items:flex-start; }
+    .todo-row { display:grid; grid-template-columns: 24px 1fr auto auto; gap:8px; align-items:center; padding:10px 12px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; transition: opacity .2s; }
+    .todo-row.done .todo-text { text-decoration:line-through; opacity:.5; }
+    .todo-row.done { opacity:.7; }
+    .todo-check { width:16px; height:16px; accent-color:var(--gold); cursor:pointer; }
+    .todo-text { font-size:13px; min-height:20px; outline:none; border:none; background:transparent; padding:2px 0; }
+    .todo-text:empty::before { content:attr(data-placeholder); color:#b8a88a; }
+    .todo-text:focus { border-bottom:1px solid var(--gold); }
+    .todo-date { font-size:11px; padding:4px 8px; border-radius:999px; background:#f8f2e5; color:#7a6a53; border:1px solid var(--line); min-width:70px; text-align:center; cursor:text; outline:none; white-space:nowrap; }
+    .todo-date:empty::before { content:'No date'; color:#c4b596; }
+    .todo-date:focus { background:#fff7e8; border-color:var(--gold); box-shadow:0 0 0 2px rgba(201,169,98,0.2); }
+    .todo-delete { width:24px; height:24px; border:none; background:transparent; color:#c4b596; font-size:16px; cursor:pointer; border-radius:50%; display:flex; align-items:center; justify-content:center; transition: all .15s; }
+    .todo-delete:hover { background:#fde8e8; color:#c0392b; }
+    .todo-add { display:flex; align-items:center; gap:6px; padding:10px 12px; border:1px dashed #ddd3c0; border-radius:10px; background:transparent; color:#7a6a53; font-size:13px; cursor:pointer; transition: all .15s; width:100%; }
+    .todo-add:hover { background:#f8f2e5; border-color:var(--gold); }
     .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
     .tag { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; color:#7a6a53; border:1px solid var(--line); }
     .date-edit { cursor:text; outline:none; border-color:var(--gold); }
@@ -365,12 +376,11 @@
   </main>
 
   <div class="drawer-overlay" id="drawerOverlay"></div>
-  <aside class="todo-drawer" id="todoDrawer" aria-label="Consolidated to-dos">
+  <aside class="todo-drawer" id="todoDrawer" aria-label="To-do list">
     <div class="drawer-head">
       <div>
-        <div class="quad-label">Execution View</div>
         <h2 style="margin:2px 0 4px;">To-Dos</h2>
-        <div class="small-note">Consolidated by due date. Checking something off archives it and syncs related items.</div>
+        <div class="small-note">Sorted by date. Click to edit, × to remove.</div>
       </div>
       <button class="btn" id="closeTodos">Close</button>
     </div>
@@ -940,45 +950,98 @@
       const body = document.getElementById('todoDrawerBody');
       if (!body) return;
       body.innerHTML = '';
-      const combined = [...(data.todos || []).filter(t => !boardTaskDoneForTodo(t, data)), ...deriveBoardTasksV2(data)];
-      const todos = combined.sort((a,b) => String(a.sortKey||dueSortKey(a.dueLabel)||'').localeCompare(String(b.sortKey||dueSortKey(b.dueLabel)||'')));
-      const groups = {};
-      for (const t of todos) {
-        const key = normalizeDueLabel(t.dueLabel || 'Unscheduled');
-        groups[key] = groups[key] || [];
-        groups[key].push(t);
-      }
-      if (!Object.keys(groups).length) {
-        const empty = document.createElement('div');
-        empty.className = 'command-item';
-        empty.textContent = 'Nothing active here right now.';
-        body.appendChild(empty);
-        return;
-      }
-      Object.entries(groups).forEach(([due, items]) => {
-        const group = document.createElement('div');
-        group.className = 'todo-group';
-        const h = document.createElement('h3');
-        h.textContent = due;
-        group.appendChild(h);
-        items.forEach((t, idx) => {
-          const explicitIdx = (data.todos || []).indexOf(t);
-          const derivedId = t.derived ? `derived-${idx}` : null;
-          const item = document.createElement('div');
-          item.className = 'todo-row' + (t.done ? ' done' : '');
-          const dateField = (explicitIdx >= 0 && !t.derived)
-            ? `<span class="tag date-edit" contenteditable="true" data-role="todo-duedate" data-idx="${explicitIdx}" title="Click to edit due date">${t.dueLabel || 'Unscheduled'}</span>`
-            : `<span class="tag">${t.dueLabel || 'Unscheduled'}</span>`;
-          item.innerHTML = `
-            <div class="todo-check-toggle"><input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} /></div>
-            <div>
-              <div>${t.text}</div>
-              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${dateField}${t.derived ? '<span class="tag">from board</span>' : ''}</div>
-            </div>
-          `;
-          group.appendChild(item);
+      data.todos = data.todos || [];
+      // Sort: undone first sorted by date, done at bottom sorted by date
+      const sorted = [...data.todos].map((t,i) => ({...t, _idx:i}))
+        .sort((a,b) => {
+          if (a.done !== b.done) return a.done ? 1 : -1;
+          return String(a.sortKey||'9999').localeCompare(String(b.sortKey||'9999'));
         });
-        body.appendChild(group);
+
+      if (!sorted.length) {
+        body.innerHTML = '<div style="text-align:center;padding:40px 20px;color:#b8a88a;">No to-dos yet.<br>Tap + to add one.</div>';
+      }
+
+      sorted.forEach(t => {
+        const row = document.createElement('div');
+        row.className = 'todo-row' + (t.done ? ' done' : '');
+        row.innerHTML = `
+          <input type="checkbox" class="todo-check" data-role="todo-toggle" data-idx="${t._idx}" ${t.done ? 'checked' : ''} />
+          <div class="todo-text" contenteditable="true" data-role="todo-text" data-idx="${t._idx}" data-placeholder="What needs doing?">${t.text || ''}</div>
+          <div class="todo-date" contenteditable="true" data-role="todo-date" data-idx="${t._idx}">${t.dueLabel || ''}</div>
+          <button class="todo-delete" data-role="todo-remove" data-idx="${t._idx}" title="Remove">&times;</button>
+        `;
+        body.appendChild(row);
+      });
+
+      // Add button
+      const addBtn = document.createElement('button');
+      addBtn.className = 'todo-add';
+      addBtn.innerHTML = '<span style="font-size:18px;line-height:1;">+</span> Add to-do';
+      addBtn.onclick = () => {
+        data.todos.push({ text:'', dueLabel:'', sortKey:'9999', done:false });
+        saveLocal(data);
+        renderTodos(data);
+        // Focus the new item's text field
+        setTimeout(() => {
+          const texts = body.querySelectorAll('[data-role="todo-text"]');
+          const last = texts[texts.length - 1];
+          if (last) last.focus();
+        }, 50);
+      };
+      body.appendChild(addBtn);
+
+      // Bind events
+      body.querySelectorAll('[data-role="todo-toggle"]').forEach(el => {
+        el.onchange = () => {
+          const idx = Number(el.dataset.idx);
+          if (data.todos[idx]) {
+            data.todos[idx].done = el.checked;
+            saveLocal(data);
+            renderTodos(data);
+          }
+        };
+      });
+
+      body.querySelectorAll('[data-role="todo-text"]').forEach(el => {
+        el.onblur = () => {
+          const idx = Number(el.dataset.idx);
+          if (data.todos[idx]) {
+            data.todos[idx].text = el.innerText.trim();
+            saveLocal(data);
+          }
+        };
+        el.onkeydown = (e) => {
+          if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+        };
+      });
+
+      body.querySelectorAll('[data-role="todo-date"]').forEach(el => {
+        el.onblur = () => {
+          const idx = Number(el.dataset.idx);
+          if (data.todos[idx]) {
+            const raw = el.innerText.trim();
+            const norm = raw ? normalizeDueLabel(raw) : '';
+            data.todos[idx].dueLabel = norm;
+            data.todos[idx].sortKey = norm ? dueSortKey(norm) : '9999';
+            saveLocal(data);
+            renderTodos(data);
+          }
+        };
+        el.onkeydown = (e) => {
+          if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+        };
+      });
+
+      body.querySelectorAll('[data-role="todo-remove"]').forEach(el => {
+        el.onclick = () => {
+          const idx = Number(el.dataset.idx);
+          if (idx >= 0 && idx < data.todos.length) {
+            data.todos.splice(idx, 1);
+            saveLocal(data);
+            renderTodos(data);
+          }
+        };
       });
     }
 
@@ -1579,12 +1642,6 @@
             render(data); saveLocal(data); return;
           }
           if (role === 'retreat-text') data.retreatSteps[idx].text = txt;
-          if (role === 'todo-duedate' && data.todos[idx]) {
-            const norm = normalizeDueLabel(txt);
-            data.todos[idx].dueLabel = norm;
-            data.todos[idx].sortKey = dueSortKey(norm);
-            render(data); saveLocal(data); return;
-          }
           saveLocal(data);
         });
       });
@@ -1639,33 +1696,6 @@
         data.retreatSteps.push({ step: String(n), status:'open', text:'' });
         render(data); saveLocal(data);
       };
-
-      document.querySelectorAll('.todo-row .todo-check-toggle').forEach(el => {
-        el.onclick = () => {
-          const checkbox = el.querySelector('input[type="checkbox"]');
-          if (!checkbox) return;
-          checkbox.checked = !checkbox.checked;
-          checkbox.dispatchEvent(new Event('change'));
-        };
-      });
-
-      document.querySelectorAll('[data-role="todo-done"]').forEach(el => {
-        el.onchange = () => {
-          const idx = Number(el.dataset.todoId);
-          const sourceText = el.dataset.sourceText;
-          if (!el.checked) return;
-          if (sourceText) {
-            // Derived todo: archive the source board task it came from
-            archiveLinkedByText(sourceText, data);
-          }
-          // Explicit todo: archive it silently, no cascade to workshop tracker
-          if (data.todos && data.todos[idx]) {
-            archiveTodoAt(idx, data);
-          }
-          saveLocal(data);
-          render(data);
-        };
-      });
 
       document.querySelectorAll('[data-role="archive-list"]').forEach(el => {
         el.onclick = (e) => {
