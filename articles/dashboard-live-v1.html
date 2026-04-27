@@ -114,6 +114,8 @@
     .todo-check.done { opacity:.62; }
     .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
     .tag { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; color:#7a6a53; border:1px solid var(--line); }
+    .date-edit { cursor:text; outline:none; border-color:var(--gold); }
+    .date-edit:focus { background:#fff7e8; border-color:var(--gold); box-shadow:0 0 0 2px rgba(201,169,98,0.2); }
     .archive-btn, .archive-inline { font-size:10px; padding:4px 8px; border-radius:999px; border:1px solid #d8d0c4; background:#fff; color:#6d5623; cursor:pointer; }
     .archive-inline { margin-left:8px; }
     .archive-btn:hover, .archive-inline:hover { background:#f8f2e5; }
@@ -863,7 +865,11 @@
     }
 
     function dueSortKey(label){
-      const norm = normalizeDueLabel(label);
+      let norm = normalizeDueLabel(label);
+      // Strip day-of-week prefix if present (e.g. "Tue May 12" → "May 12")
+      const dowRe = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\s+(.+)/;
+      const dow = norm.match(dowRe);
+      if (dow) norm = dow[2];
       const monthIdx = {Jan:'01',Feb:'02',Mar:'03',Apr:'04',May:'05',Jun:'06',Jul:'07',Aug:'08',Sep:'09',Oct:'10',Nov:'11',Dec:'12'};
       let m = norm.match(/^([A-Za-z]{3})\s+(\d{1,2})(?:-(\d{1,2}))?$/);
       if (m) return `2026-${monthIdx[m[1]] || '12'}-${String(parseInt(m[2],10)).padStart(2,'0')}`;
@@ -959,11 +965,14 @@
           const derivedId = t.derived ? `derived-${idx}` : null;
           const item = document.createElement('label');
           item.className = 'todo-check' + (t.done ? ' done' : '');
+          const dateField = (explicitIdx >= 0 && !t.derived)
+            ? `<span class="tag date-edit" contenteditable="true" data-role="todo-duedate" data-idx="${explicitIdx}" title="Click to edit due date">${t.dueLabel || 'Unscheduled'}</span>`
+            : `<span class="tag">${t.dueLabel || 'Unscheduled'}</span>`;
           item.innerHTML = `
             <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} />
             <div>
               <div>${t.text}</div>
-              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${t.derived ? '<span class="tag">from board</span>' : ''}</div>
+              <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${dateField}${t.derived ? '<span class="tag">from board</span>' : ''}</div>
             </div>
           `;
           group.appendChild(item);
@@ -1569,6 +1578,12 @@
             render(data); saveLocal(data); return;
           }
           if (role === 'retreat-text') data.retreatSteps[idx].text = txt;
+          if (role === 'todo-duedate' && data.todos[idx]) {
+            const norm = normalizeDueLabel(txt);
+            data.todos[idx].dueLabel = norm;
+            data.todos[idx].sortKey = dueSortKey(norm);
+            render(data); saveLocal(data); return;
+          }
           saveLocal(data);
         });
       });
