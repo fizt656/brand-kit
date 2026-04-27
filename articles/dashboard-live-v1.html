@@ -1630,13 +1630,12 @@
           const sourceText = el.dataset.sourceText;
           if (!el.checked) return;
           if (sourceText) {
+            // Derived todo: archive the source board task it came from
             archiveLinkedByText(sourceText, data);
-          } else if (data.todos && data.todos[idx]) {
-            const todo = clone(data.todos[idx]);
-            archiveLinkedByText(todo.text || '', data);
-            if ((data.archivedItems || []).every(item => !matchesBoardTask(item.text || '', todo.text || ''))) {
-              archiveTodoAt(idx, data);
-            }
+          }
+          // Explicit todo: archive it silently, no cascade to workshop tracker
+          if (data.todos && data.todos[idx]) {
+            archiveTodoAt(idx, data);
           }
           saveLocal(data);
           render(data);
