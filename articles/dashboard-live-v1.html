@@ -1535,6 +1535,11 @@
     }
 
     function bind(data){
+      document.querySelectorAll('.date-edit').forEach(el => {
+        el.addEventListener('click', (e) => { e.stopPropagation(); });
+        el.addEventListener('mousedown', (e) => { e.stopPropagation(); });
+      });
+
       document.querySelectorAll('[contenteditable="true"]').forEach(el => {
         el.addEventListener('blur', () => {
           const role = el.dataset.role;
