@@ -123,65 +123,78 @@
       }
     ]
   },
-  "scheduleDate": "Sunday, April 26, 2026",
+  "scheduleDate": "Monday, April 27, 2026",
   "schedule": [
     {
-      "time": "11:00 AM",
-      "text": "Japan Festival Boston"
+      "time": "9:00 AM",
+      "text": "week pre-reads, priority chart"
     },
     {
-      "time": "12:30 PM",
-      "text": "Prep light lunch"
+      "time": "10:00 AM",
+      "text": "Jordan<>Gus post PTO catch-up"
+    },
+    {
+      "time": "11:00 AM",
+      "text": "Rival Strategy Discussion"
     },
     {
       "time": "1:00 PM",
-      "text": "Light Family Lunch"
+      "text": "Bravely"
+    },
+    {
+      "time": "1:30 PM",
+      "text": "I&A Summit framework, materials, documentation"
     },
     {
       "time": "3:00 PM",
-      "text": "Sunday Kitchen Club \u2014 meal prep / Monday leftovers"
+      "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
     }
   ],
   "workshopTracker": [
     {
-      "name": "GEP",
-      "date": "May?",
+      "name": "Research Nursing",
+      "date": "5/11",
+      "time": "9-10am",
       "status": "waiting"
     },
     {
       "name": "MCO",
-      "date": "?",
+      "date": "5/18",
+      "status": "open"
+    },
+    {
+      "name": "Inpatient/Ancillary Services",
+      "date": "5/27",
       "status": "waiting"
     },
     {
       "name": "Pharmacy",
       "date": "May/June",
-      "status": "open"
+      "status": "waiting"
     },
     {
       "name": "Business Strat LnL",
-      "date": "2026-06-04",
+      "date": "6/4",
+      "status": "waiting"
+    },
+    {
+      "name": "ACO and PediOps",
+      "date": "6/9",
       "status": "waiting"
     },
     {
       "name": "Org Summit",
-      "date": "2026-06-09 to 2026-06-11",
+      "date": "6/10",
+      "status": "waiting"
+    },
+    {
+      "name": "GEP Admins",
+      "date": "7/9",
       "status": "waiting"
     },
     {
       "name": "Business Strat Workshop",
-      "date": "2026-08-06",
-      "status": "waiting"
-    },
-    {
-      "name": "Research Nursing",
-      "date": "2026-05-11",
-      "time": "9-10am",
-      "status": "waiting"
-    },
-    {
-      "name": "Inpatient/Ancillary Services",
-      "date": "2026-05-27",
+      "date": "8/6",
       "status": "waiting"
     }
   ],
@@ -216,7 +229,7 @@
   ],
   "todos": [
     {
-      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
+      "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
       "dueLabel": "Wed Apr 29",
       "sortKey": "2026-04-29",
@@ -241,13 +254,13 @@
       "area": "Workshops",
       "dueLabel": "Fri Apr 24",
       "sortKey": "2026-04-24",
-      "done": false
+      "done": true
     },
     {
       "text": "Template deck for Champions use cases: frames for problem, solution, iterations, prototype/product/demo",
       "area": "CoP",
-      "dueLabel": "Thu Apr 23",
-      "sortKey": "2026-04-23",
+      "dueLabel": "Tue May 12",
+      "sortKey": "2026-05-12",
       "done": false
     },
     {
@@ -262,11 +275,18 @@
       "area": "Workshops",
       "dueLabel": "Fri Apr 24",
       "sortKey": "2026-04-24",
+      "done": true
+    },
+    {
+      "text": "MCO Faculty workshop: prep for Planning Meeting #2",
+      "area": "Workshops",
+      "dueLabel": "Fri May 1",
+      "sortKey": "2026-05-01",
       "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-26T22:05:52.673813Z",
+  "lastUpdated": "2026-04-27T19:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1776793102212-17ivr7",
@@ -771,44 +791,7 @@
       "restoreStatus": "done"
     }
   ],
-  "localUpdatedAt": "2026-04-26T11:00:00Z",
-  "syncedFromLocalAt": "2026-04-26T11:00:00Z",
-  "stagedChanges": [
-    {
-      "id": "stage-561d436043",
-      "status": "needs approval",
-      "summary": "Re-date or resolve stale Apr 23\u201324 to-dos: Bravely ED&A deck, MCO Faculty draft/plan, Champions template deck, quick-hit tips framework.",
-      "where": "To-Dos / weekly cleanup",
-      "why": "Dashboard still shows these as open and overdue; Week Ahead Jam also surfaced them as cleanup candidates.",
-      "note": "Needs Gus confirmation before archiving, marking done, or assigning new dates.",
-      "stagedAt": "2026-04-26T22:05:52.673813Z"
-    },
-    {
-      "id": "stage-9872276de8",
-      "status": "needs approval",
-      "summary": "Update MCO Faculty workshop next step to align with Fri May 1 Planning Meeting #2.",
-      "where": "Workshops / MCO Faculty",
-      "why": "Work calendar has \u201cPlanning Meeting #2 for AI education for MCO Faculty\u201d on Fri May 1; dashboard still has an overdue Fri Apr 24 draft/plan item.",
-      "note": "Likely change: replace stale draft/plan due date with \u201cprep for Planning Meeting #2 \u00b7 Fri May 1\u201d.",
-      "stagedAt": "2026-04-26T22:05:52.673813Z"
-    },
-    {
-      "id": "stage-4f2d433feb",
-      "status": "needs approval",
-      "summary": "Add this week\u2019s Pharmacy anchors: Thu monthly meeting and Fri workshop hold / planning follow-up.",
-      "where": "Workshop tracker / Pharmacy",
-      "why": "Dashboard says Pharmacy has 4\u20136 May/June workshops; calendar now shows Pharmacy-ED&A monthly meeting Thu and Pharmacy Workshop HOLD Fri.",
-      "note": "Needs approval to add dated next-step language rather than just broad May/June tracking.",
-      "stagedAt": "2026-04-26T22:05:52.673813Z"
-    },
-    {
-      "id": "stage-2ebcdba4ed",
-      "status": "needs approval",
-      "summary": "Review CoP cadence items: Apr 17 Champions Meeting is stale; recurring CoP meeting/open studio/office-hours items may need current dates.",
-      "where": "CoP lane",
-      "why": "Dashboard still references Apr 17 and several post-kickoff operations without current dated next steps.",
-      "note": "Needs Gus confirmation on what is complete vs still pending.",
-      "stagedAt": "2026-04-26T22:05:52.673813Z"
-    }
-  ]
+  "localUpdatedAt": "2026-04-27T18:42:40.464Z",
+  "syncedFromLocalAt": "2026-04-27T19:00:00.000Z",
+  "stagedChanges": []
 }
