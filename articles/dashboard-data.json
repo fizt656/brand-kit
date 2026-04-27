@@ -216,6 +216,13 @@
   ],
   "todos": [
     {
+      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
+      "area": "In-Flight Work",
+      "dueLabel": "Wed Apr 29",
+      "sortKey": "2026-04-29",
+      "done": false
+    },
+    {
       "text": "Socially: update orchestration LLM to infer NPC characters from the main prompt and generate anchor images for consistent page generation",
       "area": "Startup",
       "dueLabel": "Fri May 1",
