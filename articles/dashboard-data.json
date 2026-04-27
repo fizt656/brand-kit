@@ -3,27 +3,27 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
+        "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
       },
       {
         "status": "open",
@@ -37,15 +37,15 @@
     "inflight": [
       {
         "status": "open",
-        "text": "Ceravasc follow-up \u00b7 Mon final review + send"
+        "text": "Ceravasc follow-up · Mon final review + send"
       },
       {
         "status": "open",
-        "text": "Choueiri Intro Package \u00b7 hold until intro timing calls for it"
+        "text": "Choueiri Intro Package · hold until intro timing calls for it"
       },
       {
         "status": "done",
-        "text": "Charter drafts \u00b7 link in Smartsheet"
+        "text": "Charter drafts · link in Smartsheet"
       }
     ],
     "admin": [
@@ -61,11 +61,11 @@
       },
       {
         "status": "open",
-        "text": "pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "done",
-        "text": "partner group charter / proposal deck \u00b7 drafted Apr 10; next step is linking in Smartsheet"
+        "text": "partner group charter / proposal deck · drafted Apr 10; next step is linking in Smartsheet"
       }
     ],
     "persona": [
@@ -85,7 +85,7 @@
     "cop": [
       {
         "status": "open",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 prep + run cadence check"
+        "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check"
       },
       {
         "status": "waiting",
@@ -93,11 +93,11 @@
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
+        "text": "CoP operations · make the main CoP meeting monthly recurring"
       },
       {
         "status": "open",
-        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
+        "text": "CoP operations · make biweekly office hours recurring (rename later)"
       },
       {
         "status": "open",
@@ -109,13 +109,13 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
+        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just G."
       }
     ],
     "articleIdeas": [
       {
         "status": "waiting",
-        "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
+        "text": "What is an expert? · staged article on expertise, AI, judgment, and what remains deeply human"
       },
       {
         "status": "in progress",
@@ -229,9 +229,9 @@
   ],
   "todos": [
     {
-      "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
+      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
-      "dueLabel": "Wed Apr 29",
+      "dueLabel": "Apr 29",
       "sortKey": "2026-04-29",
       "done": false
     },
@@ -247,7 +247,7 @@
       "area": "Workshops",
       "dueLabel": "Fri Apr 17",
       "sortKey": "2026-04-17",
-      "done": false
+      "done": true
     },
     {
       "text": "Bravely 10-15 min presentation for ED&A All Team, including AI Education Update (short deck on new persona-tailored model and design principles)",
@@ -266,8 +266,8 @@
     {
       "text": "Example video and framework for quick-hit social media style tips videos",
       "area": "Content",
-      "dueLabel": "Fri Apr 24",
-      "sortKey": "2026-04-24",
+      "dueLabel": "May 1",
+      "sortKey": "2026-05-01",
       "done": false
     },
     {
@@ -280,14 +280,148 @@
     {
       "text": "MCO Faculty workshop: prep for Planning Meeting #2",
       "area": "Workshops",
-      "dueLabel": "Fri May 1",
+      "dueLabel": "Apr 30",
+      "sortKey": "2026-04-30",
+      "done": false
+    },
+    {
+      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
+      "area": "In-Flight Work",
+      "dueLabel": "Apr 29",
+      "sortKey": "2026-04-29",
+      "done": true
+    },
+    {
+      "text": "Babson Panel",
+      "area": "Content",
+      "dueLabel": "May 1",
       "sortKey": "2026-05-01",
+      "done": false
+    },
+    {
+      "text": "MCO Faculty workshop: prep for Planning Meeting #2",
+      "area": "Workshops",
+      "dueLabel": "May 2",
+      "sortKey": "2026-05-02",
+      "done": false
+    },
+    {
+      "text": "Summit Facilitation Guide (learning design principles, facilitation template deck, suggested framework from now till workshop)",
+      "dueLabel": "Apr 28",
+      "sortKey": "2026-04-28",
       "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-27T19:00:00.000Z",
+  "lastUpdated": "2026-04-27T20:15:49.419Z",
   "archivedItems": [
+    {
+      "id": "arc-1777317652398-0etrc5",
+      "kind": "todo",
+      "list": null,
+      "label": "Workshops",
+      "text": "MCO Faculty workshop: draft deck and plan",
+      "item": {
+        "text": "MCO Faculty workshop: draft deck and plan",
+        "area": "Workshops",
+        "dueLabel": "Fri Apr 24",
+        "sortKey": "2026-04-24",
+        "done": true
+      },
+      "archivedAt": "2026-04-27T19:20:52.398Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1777317640373-fsa00q",
+      "kind": "todo",
+      "list": null,
+      "label": "Workshops",
+      "text": "Bravely 10-15 min presentation for ED&A All Team, including AI Education Update (short deck on new persona-tailored model and design principles)",
+      "item": {
+        "text": "Bravely 10-15 min presentation for ED&A All Team, including AI Education Update (short deck on new persona-tailored model and design principles)",
+        "area": "Workshops",
+        "dueLabel": "Fri Apr 24",
+        "sortKey": "2026-04-24",
+        "done": true
+      },
+      "archivedAt": "2026-04-27T19:20:40.373Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1777317627620-nvlkit",
+      "kind": "list",
+      "list": "cop",
+      "label": "CoP",
+      "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check",
+      "item": {
+        "status": "open",
+        "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check"
+      },
+      "archivedAt": "2026-04-27T19:20:27.620Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1777317277949-irphog",
+      "kind": "workshop",
+      "list": null,
+      "label": "Workshop Tracker",
+      "text": "MCO",
+      "item": {
+        "name": "MCO",
+        "date": "5/18",
+        "status": "open"
+      },
+      "archivedAt": "2026-04-27T19:14:37.949Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1777317277948-8lf50k",
+      "kind": "todo",
+      "list": null,
+      "label": "Workshops",
+      "text": "Ping McGuire: any info on audience for MCO Faculty workshop?",
+      "item": {
+        "text": "Ping McGuire: any info on audience for MCO Faculty workshop?",
+        "area": "Workshops",
+        "dueLabel": "Fri Apr 17",
+        "sortKey": "2026-04-17",
+        "done": false
+      },
+      "archivedAt": "2026-04-27T19:14:37.948Z",
+      "restoreStatus": "open"
+    },
+    {
+      "id": "arc-1776993874358-64qj8f",
+      "kind": "todo",
+      "list": null,
+      "label": "Workshops",
+      "text": "Make Jumpstart canonical templates: check Jumpstart outline against design principles, produce updated outline, then redraft new decks with ProDeck",
+      "item": {
+        "text": "Make Jumpstart canonical templates: check Jumpstart outline against design principles, produce updated outline, then redraft new decks with ProDeck",
+        "area": "Workshops",
+        "dueLabel": "Tue Apr 21",
+        "sortKey": "2026-04-21",
+        "done": false
+      },
+      "archivedAt": "2026-04-24T01:25:00Z",
+      "restoreStatus": "done"
+    },
+    {
+      "id": "arc-1776993874358-bvy245",
+      "kind": "todo",
+      "list": null,
+      "label": "Workshops",
+      "text": "Make v1 must-have live delivery assets for Jumpstart, plus nice-to-haves if possible",
+      "item": {
+        "text": "Make v1 must-have live delivery assets for Jumpstart, plus nice-to-haves if possible",
+        "area": "Workshops",
+        "dueLabel": "Tue Apr 21",
+        "sortKey": "2026-04-21",
+        "done": false
+      },
+      "archivedAt": "2026-04-24T01:25:00Z",
+      "restoreStatus": "done"
+    },
     {
       "id": "arc-1776793102212-17ivr7",
       "kind": "todo",
@@ -414,10 +548,10 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current",
+      "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current",
       "item": {
         "status": "waiting",
-        "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
+        "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
       },
       "archivedAt": "2026-04-12T23:05:00Z",
       "restoreStatus": "open"
@@ -466,9 +600,9 @@
       "kind": "todo",
       "list": null,
       "label": "Consulting",
-      "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
+      "text": "Prep for external meeting meeting — review context, remember to ask about quote",
       "item": {
-        "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
+        "text": "Prep for external meeting meeting — review context, remember to ask about quote",
         "area": "Consulting",
         "dueLabel": "Mar 23",
         "sortKey": "2026-03-23",
@@ -482,10 +616,10 @@
       "kind": "list",
       "list": "workshops",
       "label": "Workshops",
-      "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting",
+      "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting",
       "item": {
         "status": "waiting",
-        "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
+        "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
       },
       "archivedAt": "2026-03-27T00:37:44.053Z",
       "restoreStatus": "waiting"
@@ -589,10 +723,10 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP",
+      "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP",
       "item": {
         "status": "done",
-        "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
+        "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
       },
       "archivedAt": "2026-03-27T00:34:26.749Z",
       "restoreStatus": "open"
@@ -750,48 +884,16 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event",
+      "text": "Community of Practice Kick-Off · Mar 18 · anchor event",
       "item": {
         "status": "done",
-        "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
+        "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
       },
       "archivedAt": "2026-03-26T07:00:00-04:00",
       "restoreStatus": "open"
-    },
-    {
-      "id": "arc-1776993874358-64qj8f",
-      "kind": "todo",
-      "list": null,
-      "label": "Workshops",
-      "text": "Make Jumpstart canonical templates: check Jumpstart outline against design principles, produce updated outline, then redraft new decks with ProDeck",
-      "item": {
-        "text": "Make Jumpstart canonical templates: check Jumpstart outline against design principles, produce updated outline, then redraft new decks with ProDeck",
-        "area": "Workshops",
-        "dueLabel": "Tue Apr 21",
-        "sortKey": "2026-04-21",
-        "done": false
-      },
-      "archivedAt": "2026-04-24T01:25:00Z",
-      "restoreStatus": "done"
-    },
-    {
-      "id": "arc-1776993874358-bvy245",
-      "kind": "todo",
-      "list": null,
-      "label": "Workshops",
-      "text": "Make v1 must-have live delivery assets for Jumpstart, plus nice-to-haves if possible",
-      "item": {
-        "text": "Make v1 must-have live delivery assets for Jumpstart, plus nice-to-haves if possible",
-        "area": "Workshops",
-        "dueLabel": "Tue Apr 21",
-        "sortKey": "2026-04-21",
-        "done": false
-      },
-      "archivedAt": "2026-04-24T01:25:00Z",
-      "restoreStatus": "done"
     }
   ],
-  "localUpdatedAt": "2026-04-27T18:42:40.464Z",
-  "syncedFromLocalAt": "2026-04-27T19:00:00.000Z",
+  "localUpdatedAt": "2026-04-27T20:15:49.419Z",
+  "syncedFromLocalAt": "2026-04-27T20:15:49.419Z",
   "stagedChanges": []
 }
