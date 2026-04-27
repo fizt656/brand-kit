@@ -110,8 +110,9 @@
     .archive-entry-title { font-weight:600; font-size:13px; }
     .archive-entry-actions { display:flex; gap:8px; align-items:center; }
     .stage-status { font-size:11px; color:#7a6a53; text-transform:uppercase; letter-spacing:.08em; }
-    .todo-check { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
-    .todo-check.done { opacity:.62; }
+    .todo-row { display:grid; grid-template-columns: 18px 1fr; gap:10px; align-items:start; padding:8px 10px; border:1px solid #efe6d2; border-radius:10px; background:#fffdfa; }
+    .todo-row.done { opacity:.62; }
+    .todo-check-toggle { cursor:pointer; display:flex; align-items:flex-start; }
     .todo-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; align-items:center; }
     .tag { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; color:#7a6a53; border:1px solid var(--line); }
     .date-edit { cursor:text; outline:none; border-color:var(--gold); }
@@ -963,13 +964,13 @@
         items.forEach((t, idx) => {
           const explicitIdx = (data.todos || []).indexOf(t);
           const derivedId = t.derived ? `derived-${idx}` : null;
-          const item = document.createElement('label');
-          item.className = 'todo-check' + (t.done ? ' done' : '');
+          const item = document.createElement('div');
+          item.className = 'todo-row' + (t.done ? ' done' : '');
           const dateField = (explicitIdx >= 0 && !t.derived)
             ? `<span class="tag date-edit" contenteditable="true" data-role="todo-duedate" data-idx="${explicitIdx}" title="Click to edit due date">${t.dueLabel || 'Unscheduled'}</span>`
             : `<span class="tag">${t.dueLabel || 'Unscheduled'}</span>`;
           item.innerHTML = `
-            <input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} />
+            <div class="todo-check-toggle"><input type="checkbox" data-role="todo-done" data-todo-id="${explicitIdx}" data-derived-id="${derivedId || ''}" data-source-text="${t.derived ? (t.sourceText || '').replace(/"/g, '&quot;') : ''}" ${explicitIdx >= 0 && t.done ? 'checked' : ''} /></div>
             <div>
               <div>${t.text}</div>
               <div class="todo-meta"><span class="tag">${t.area || 'General'}</span>${dateField}${t.derived ? '<span class="tag">from board</span>' : ''}</div>
@@ -1535,11 +1536,6 @@
     }
 
     function bind(data){
-      document.querySelectorAll('.date-edit').forEach(el => {
-        el.addEventListener('click', (e) => { e.stopPropagation(); });
-        el.addEventListener('mousedown', (e) => { e.stopPropagation(); });
-      });
-
       document.querySelectorAll('[contenteditable="true"]').forEach(el => {
         el.addEventListener('blur', () => {
           const role = el.dataset.role;
@@ -1643,6 +1639,15 @@
         data.retreatSteps.push({ step: String(n), status:'open', text:'' });
         render(data); saveLocal(data);
       };
+
+      document.querySelectorAll('.todo-row .todo-check-toggle').forEach(el => {
+        el.onclick = () => {
+          const checkbox = el.querySelector('input[type="checkbox"]');
+          if (!checkbox) return;
+          checkbox.checked = !checkbox.checked;
+          checkbox.dispatchEvent(new Event('change'));
+        };
+      });
 
       document.querySelectorAll('[data-role="todo-done"]').forEach(el => {
         el.onchange = () => {
