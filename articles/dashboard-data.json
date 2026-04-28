@@ -3,27 +3,27 @@
     "workshops": [
       {
         "status": "waiting",
-        "text": "GEP workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "GEP workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "NO MM workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Office of the COO workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Pediatric Operations workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+        "text": "Research Admin workshop candidate \u00b7 Apr-Jul window \u00b7 deck in progress; add sponsor/date when planning firms up"
       },
       {
         "status": "waiting",
-        "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+        "text": "Org Summit \u00b7 Jun 9-11 \u00b7 tracked as milestone only; active work lives in Summer Retreat section"
       },
       {
         "status": "open",
@@ -37,15 +37,15 @@
     "inflight": [
       {
         "status": "open",
-        "text": "Ceravasc follow-up · Mon final review + send"
+        "text": "Ceravasc follow-up \u00b7 Mon final review + send"
       },
       {
         "status": "open",
-        "text": "Choueiri Intro Package · hold until intro timing calls for it"
+        "text": "Choueiri Intro Package \u00b7 hold until intro timing calls for it"
       },
       {
         "status": "done",
-        "text": "Charter drafts · link in Smartsheet"
+        "text": "Charter drafts \u00b7 link in Smartsheet"
       }
     ],
     "admin": [
@@ -61,11 +61,11 @@
       },
       {
         "status": "open",
-        "text": "pharmacy product · prompt v2 shipped; M and R testing latest prototype prompt"
+        "text": "pharmacy product \u00b7 prompt v2 shipped; M and R testing latest prototype prompt"
       },
       {
         "status": "done",
-        "text": "partner group charter / proposal deck · drafted Apr 10; next step is linking in Smartsheet"
+        "text": "partner group charter / proposal deck \u00b7 drafted Apr 10; next step is linking in Smartsheet"
       }
     ],
     "persona": [
@@ -85,7 +85,7 @@
     "cop": [
       {
         "status": "open",
-        "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check"
+        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 prep + run cadence check"
       },
       {
         "status": "waiting",
@@ -93,11 +93,11 @@
       },
       {
         "status": "open",
-        "text": "CoP operations · make the main CoP meeting monthly recurring"
+        "text": "CoP operations \u00b7 make the main CoP meeting monthly recurring"
       },
       {
         "status": "open",
-        "text": "CoP operations · make biweekly office hours recurring (rename later)"
+        "text": "CoP operations \u00b7 make biweekly office hours recurring (rename later)"
       },
       {
         "status": "open",
@@ -109,13 +109,13 @@
       },
       {
         "status": "open",
-        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) — community-owned, not just G."
+        "text": "CoP post-kickoff: invite members to create and post in other channels (AI news feed, AI/healthcare, AI memes, etc) \u2014 community-owned, not just G."
       }
     ],
     "articleIdeas": [
       {
         "status": "waiting",
-        "text": "What is an expert? · staged article on expertise, AI, judgment, and what remains deeply human"
+        "text": "What is an expert? \u00b7 staged article on expertise, AI, judgment, and what remains deeply human"
       },
       {
         "status": "in progress",
@@ -229,7 +229,7 @@
   ],
   "todos": [
     {
-      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
+      "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
       "dueLabel": "Apr 29",
       "sortKey": "2026-04-29",
@@ -285,7 +285,7 @@
       "done": false
     },
     {
-      "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
+      "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
       "dueLabel": "Apr 29",
       "sortKey": "2026-04-29",
@@ -309,11 +309,12 @@
       "text": "Summit Facilitation Guide (learning design principles, facilitation template deck, suggested framework from now till workshop)",
       "dueLabel": "Apr 28",
       "sortKey": "2026-04-28",
-      "done": false
+      "done": true,
+      "completedAt": "2026-04-28T22:01:07.943707+00:00"
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-28T11:00:00.000Z",
+  "lastUpdated": "2026-04-28T22:01:07.943728+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -352,10 +353,10 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check",
+      "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 prep + run cadence check",
       "item": {
         "status": "open",
-        "text": "Biweekly Champions Meeting · Apr 17 · prep + run cadence check"
+        "text": "Biweekly Champions Meeting \u00b7 Apr 17 \u00b7 prep + run cadence check"
       },
       "archivedAt": "2026-04-27T19:20:27.620Z",
       "restoreStatus": "open"
@@ -548,10 +549,10 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current",
+      "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current",
       "item": {
         "status": "waiting",
-        "text": "Biweekly Champions Meeting · Apr 3 · keep cadence current"
+        "text": "Biweekly Champions Meeting \u00b7 Apr 3 \u00b7 keep cadence current"
       },
       "archivedAt": "2026-04-12T23:05:00Z",
       "restoreStatus": "open"
@@ -600,9 +601,9 @@
       "kind": "todo",
       "list": null,
       "label": "Consulting",
-      "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+      "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
       "item": {
-        "text": "Prep for external meeting meeting — review context, remember to ask about quote",
+        "text": "Prep for external meeting meeting \u2014 review context, remember to ask about quote",
         "area": "Consulting",
         "dueLabel": "Mar 23",
         "sortKey": "2026-03-23",
@@ -616,10 +617,10 @@
       "kind": "list",
       "list": "workshops",
       "label": "Workshops",
-      "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting",
+      "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting",
       "item": {
         "status": "waiting",
-        "text": "Business Applications Team planning · Mar 20 · planning meeting; B. driving, G. taking notes/supporting"
+        "text": "Business Applications Team planning \u00b7 Mar 20 \u00b7 planning meeting; B. driving, G. taking notes/supporting"
       },
       "archivedAt": "2026-03-27T00:37:44.053Z",
       "restoreStatus": "waiting"
@@ -723,10 +724,10 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP",
+      "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP",
       "item": {
         "status": "done",
-        "text": "Champions Meeting · Mar 20 · story deck on how we can build community together for the CoP"
+        "text": "Champions Meeting \u00b7 Mar 20 \u00b7 story deck on how we can build community together for the CoP"
       },
       "archivedAt": "2026-03-27T00:34:26.749Z",
       "restoreStatus": "open"
@@ -884,16 +885,35 @@
       "kind": "list",
       "list": "cop",
       "label": "CoP",
-      "text": "Community of Practice Kick-Off · Mar 18 · anchor event",
+      "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event",
       "item": {
         "status": "done",
-        "text": "Community of Practice Kick-Off · Mar 18 · anchor event"
+        "text": "Community of Practice Kick-Off \u00b7 Mar 18 \u00b7 anchor event"
       },
       "archivedAt": "2026-03-26T07:00:00-04:00",
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-27T20:15:49.419Z",
+  "localUpdatedAt": "2026-04-28T22:01:07.943728+00:00",
   "syncedFromLocalAt": "2026-04-28T11:00:00.000Z",
-  "stagedChanges": []
+  "stagedChanges": [
+    {
+      "id": "stage-5999e6cbe6",
+      "status": "needs approval",
+      "summary": "Add Summit resource packet as completed / ready for SharePoint review",
+      "where": "Workshops \u2192 Org Summit / I&A Summit planning",
+      "why": "Today\u2019s Summit packet was built and finalized: track leads charter, learning design one-pager, session recipe, hackathon brief, tracker, editable deck template, and visual example deck.",
+      "note": "Would update the Summit/Workshops lane from generic \u201cwaiting/milestone\u201d to reflect that the track-lead resource packet is ready for tomorrow\u2019s planning group.",
+      "stagedAt": "2026-04-28T22:01:07.943728+00:00"
+    },
+    {
+      "id": "stage-ea3cce468b",
+      "status": "needs approval",
+      "summary": "Add next step for tomorrow\u2019s Summit planning meeting",
+      "where": "Meeting Prep / Workshops",
+      "why": "Tomorrow\u2019s working group needs to confirm track groups/sub-tracks, identify track leads, and set design touchpoints before the June 3 final-ready deadline.",
+      "note": "Suggested next action: lead meeting from resource packet; confirm track groups, leads, SharePoint folder, and at least two touchpoints before June 3.",
+      "stagedAt": "2026-04-28T22:01:07.943728+00:00"
+    }
+  ]
 }
