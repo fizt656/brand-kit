@@ -123,31 +123,31 @@
       }
     ]
   },
-  "scheduleDate": "Monday, April 27, 2026",
+  "scheduleDate": "Tuesday, April 28, 2026",
   "schedule": [
     {
       "time": "9:00 AM",
-      "text": "week pre-reads, priority chart"
+      "text": "Summit Facilitation - Learning Design Principles"
     },
     {
-      "time": "10:00 AM",
-      "text": "Jordan<>Gus post PTO catch-up"
+      "time": "9:30 AM",
+      "text": "Summit Facilitation - Template Decks"
     },
     {
-      "time": "11:00 AM",
-      "text": "Rival Strategy Discussion"
+      "time": "10:30 AM",
+      "text": "Dana-Farber AI Hub <> DataCamp discussion"
     },
     {
       "time": "1:00 PM",
-      "text": "Bravely"
+      "text": "Learning Design Principles"
     },
     {
       "time": "1:30 PM",
-      "text": "I&A Summit framework, materials, documentation"
+      "text": "MCO Faculty Session Slides and Materials"
     },
     {
       "time": "3:00 PM",
-      "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
+      "text": "Summit Materials"
     }
   ],
   "workshopTracker": [
@@ -313,7 +313,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-27T20:15:49.419Z",
+  "lastUpdated": "2026-04-28T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,6 +894,6 @@
     }
   ],
   "localUpdatedAt": "2026-04-27T20:15:49.419Z",
-  "syncedFromLocalAt": "2026-04-27T20:15:49.419Z",
+  "syncedFromLocalAt": "2026-04-28T11:00:00.000Z",
   "stagedChanges": []
 }
