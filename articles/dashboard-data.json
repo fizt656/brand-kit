@@ -314,7 +314,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-28T22:01:07.943728+00:00",
+  "lastUpdated": "2026-04-28T22:13:52.508808+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,26 +894,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-28T22:01:07.943728+00:00",
+  "localUpdatedAt": "2026-04-28T22:13:52.508808+00:00",
   "syncedFromLocalAt": "2026-04-28T11:00:00.000Z",
-  "stagedChanges": [
-    {
-      "id": "stage-5999e6cbe6",
-      "status": "needs approval",
-      "summary": "Add Summit resource packet as completed / ready for SharePoint review",
-      "where": "Workshops \u2192 Org Summit / I&A Summit planning",
-      "why": "Today\u2019s Summit packet was built and finalized: track leads charter, learning design one-pager, session recipe, hackathon brief, tracker, editable deck template, and visual example deck.",
-      "note": "Would update the Summit/Workshops lane from generic \u201cwaiting/milestone\u201d to reflect that the track-lead resource packet is ready for tomorrow\u2019s planning group.",
-      "stagedAt": "2026-04-28T22:01:07.943728+00:00"
-    },
-    {
-      "id": "stage-ea3cce468b",
-      "status": "needs approval",
-      "summary": "Add next step for tomorrow\u2019s Summit planning meeting",
-      "where": "Meeting Prep / Workshops",
-      "why": "Tomorrow\u2019s working group needs to confirm track groups/sub-tracks, identify track leads, and set design touchpoints before the June 3 final-ready deadline.",
-      "note": "Suggested next action: lead meeting from resource packet; confirm track groups, leads, SharePoint folder, and at least two touchpoints before June 3.",
-      "stagedAt": "2026-04-28T22:01:07.943728+00:00"
-    }
-  ]
+  "stagedChanges": []
 }
