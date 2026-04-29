@@ -314,7 +314,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-29T11:00:00.000000+00:00",
+  "lastUpdated": "2026-04-29T22:00:45.004148+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,7 +894,26 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-29T07:00:00-04:00",
+  "localUpdatedAt": "2026-04-29T22:00:45.004148+00:00",
   "syncedFromLocalAt": "2026-04-29T07:00:00-04:00",
-  "stagedChanges": []
+  "stagedChanges": [
+    {
+      "id": "stage-8c2e475b67",
+      "status": "needs approval",
+      "summary": "Clean up duplicate Bravely resources to-do",
+      "where": "To-Dos / In-Flight Work",
+      "why": "The same Bravely resources item appears twice, once open and once done. Today\u2019s brief still treats Bravely resources / Databricks endpoints as at-risk, so the open item should likely remain and the duplicate done copy should be removed or archived.",
+      "note": "Needs approval because Bravely status was not explicitly confirmed in chat today.",
+      "stagedAt": "2026-04-29T22:00:45.004148+00:00"
+    },
+    {
+      "id": "stage-1b3ea6b507",
+      "status": "needs approval",
+      "summary": "Resolve duplicate MCO Faculty Planning #2 prep dates",
+      "where": "To-Dos / Workshops",
+      "why": "MCO Faculty Planning #2 prep appears twice with different due dates (Apr 30 and May 2). Morning brief points to Fri May 1 prep, so this likely needs a single corrected entry.",
+      "note": "Needs approval/clarification on the correct due date before changing.",
+      "stagedAt": "2026-04-29T22:00:45.004148+00:00"
+    }
+  ]
 }
