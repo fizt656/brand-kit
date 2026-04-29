@@ -123,31 +123,31 @@
       }
     ]
   },
-  "scheduleDate": "Tuesday, April 28, 2026",
+  "scheduleDate": "Wednesday, April 29, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "Summit Facilitation - Learning Design Principles"
-    },
-    {
-      "time": "9:30 AM",
-      "text": "Summit Facilitation - Template Decks"
+      "time": "10:00 AM",
+      "text": "Review / update agenda"
     },
     {
       "time": "10:30 AM",
-      "text": "Dana-Farber AI Hub <> DataCamp discussion"
+      "text": "Introductions - Datadog + Dana-Farber (Caff\u00e8 Nero)"
+    },
+    {
+      "time": "11:30 AM",
+      "text": "Gus x Jess hello and intro (Caff\u00e8 Nero 360 Longwood)"
     },
     {
       "time": "1:00 PM",
-      "text": "Learning Design Principles"
+      "text": "Gus <> Steven"
     },
     {
-      "time": "1:30 PM",
-      "text": "MCO Faculty Session Slides and Materials"
+      "time": "2:00 PM",
+      "text": "Summit working group session"
     },
     {
-      "time": "3:00 PM",
-      "text": "Summit Materials"
+      "time": "3:30 PM",
+      "text": "Hold: ED&A All Team"
     }
   ],
   "workshopTracker": [
@@ -314,7 +314,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-28T22:13:52.508808+00:00",
+  "lastUpdated": "2026-04-29T11:00:00.000000+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,7 +894,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-28T22:13:52.508808+00:00",
-  "syncedFromLocalAt": "2026-04-28T11:00:00.000Z",
+  "localUpdatedAt": "2026-04-29T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-04-29T07:00:00-04:00",
   "stagedChanges": []
 }
