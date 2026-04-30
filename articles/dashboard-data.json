@@ -314,7 +314,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-29T22:00:45.004148+00:00",
+  "lastUpdated": "2026-04-30T22:00:24.617789+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,7 +894,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-29T22:00:45.004148+00:00",
+  "localUpdatedAt": "2026-04-30T22:00:24.617789+00:00",
   "syncedFromLocalAt": "2026-04-29T07:00:00-04:00",
   "stagedChanges": [
     {
@@ -914,6 +914,15 @@
       "why": "MCO Faculty Planning #2 prep appears twice with different due dates (Apr 30 and May 2). Morning brief points to Fri May 1 prep, so this likely needs a single corrected entry.",
       "note": "Needs approval/clarification on the correct due date before changing.",
       "stagedAt": "2026-04-29T22:00:45.004148+00:00"
+    },
+    {
+      "id": "stage-9d973d91e8",
+      "status": "needs approval",
+      "summary": "Add MCO Faculty dinner AI/facilitation materials as in-progress/reviewable",
+      "where": "Workshops / MCO Faculty workshop prep",
+      "why": "Today\u2019s work produced the MCO faculty dinner AI run-of-show, table worksheets, report-out synthesis sheet, and editable AI segment deck on the work laptop.",
+      "note": "Suggested dashboard language: MCO Faculty dinner materials are in progress/reviewable; next step is review deck/worksheets and package final artifacts for the May 18 session. Needs approval because these are meaningful content/status changes.",
+      "stagedAt": "2026-04-30T22:00:24.617789+00:00"
     }
   ]
 }
