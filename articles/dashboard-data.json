@@ -123,31 +123,31 @@
       }
     ]
   },
-  "scheduleDate": "Wednesday, April 29, 2026",
+  "scheduleDate": "Thursday, April 30, 2026",
   "schedule": [
     {
+      "time": "9:30 AM",
+      "text": "Persona Tailored Model"
+    },
+    {
       "time": "10:00 AM",
-      "text": "Review / update agenda"
+      "text": "Hold for Summit Planning Support"
     },
     {
       "time": "10:30 AM",
-      "text": "Introductions - Datadog + Dana-Farber (Caff\u00e8 Nero)"
+      "text": "MCO Deck & Facilitation"
     },
     {
-      "time": "11:30 AM",
-      "text": "Gus x Jess hello and intro (Caff\u00e8 Nero 360 Longwood)"
-    },
-    {
-      "time": "1:00 PM",
-      "text": "Gus <> Steven"
+      "time": "12:00 PM",
+      "text": "Discuss AI Workshop for BOPS"
     },
     {
       "time": "2:00 PM",
-      "text": "Summit working group session"
+      "text": "HOLD for Summit hours"
     },
     {
-      "time": "3:30 PM",
-      "text": "Hold: ED&A All Team"
+      "time": "3:00 PM",
+      "text": "AI Solutions for PDF to Progeny TSV follow-up"
     }
   ],
   "workshopTracker": [
