@@ -123,31 +123,31 @@
       }
     ]
   },
-  "scheduleDate": "Thursday, April 30, 2026",
+  "scheduleDate": "Friday, May 1, 2026",
   "schedule": [
     {
-      "time": "9:30 AM",
-      "text": "Persona Tailored Model"
+      "time": "8:00 AM",
+      "text": "Timesheet"
     },
     {
-      "time": "10:00 AM",
-      "text": "Hold for Summit Planning Support"
+      "time": "9:00 AM",
+      "text": "HOLD Babson Panel"
     },
     {
-      "time": "10:30 AM",
-      "text": "MCO Deck & Facilitation"
-    },
-    {
-      "time": "12:00 PM",
-      "text": "Discuss AI Workshop for BOPS"
+      "time": "1:00 PM",
+      "text": "GenAI Open Studio & Office Hours"
     },
     {
       "time": "2:00 PM",
-      "text": "HOLD for Summit hours"
+      "text": "Pharmacy Workshop HOLD / MCO Faculty Planning #2"
     },
     {
       "time": "3:00 PM",
-      "text": "AI Solutions for PDF to Progeny TSV follow-up"
+      "text": "Gus <> Brent"
+    },
+    {
+      "time": "4:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -314,7 +314,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-04-30T22:00:24.617789+00:00",
+  "lastUpdated": "2026-05-01T11:00:00+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -894,8 +894,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-04-30T22:00:24.617789+00:00",
-  "syncedFromLocalAt": "2026-04-29T07:00:00-04:00",
+  "localUpdatedAt": "2026-05-01T11:00:00+00:00",
+  "syncedFromLocalAt": "2026-05-01T11:00:00+00:00",
   "stagedChanges": [
     {
       "id": "stage-8c2e475b67",
