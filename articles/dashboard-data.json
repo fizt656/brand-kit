@@ -32,6 +32,10 @@
       {
         "status": "open",
         "text": "Business Strategy - 6/4 lunch n learn and 8/6 workshop"
+      },
+      {
+        "status": "waiting",
+        "text": "MCO Faculty dinner \u00b7 goal reset/reclarification after Andy review; Brent to set up meeting with Jordan, Andy, and right I&A research-side people"
       }
     ],
     "inflight": [
@@ -160,7 +164,7 @@
     {
       "name": "MCO",
       "date": "5/18",
-      "status": "open"
+      "status": "Resetting"
     },
     {
       "name": "Inpatient/Ancillary Services",
@@ -231,16 +235,17 @@
     {
       "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
-      "dueLabel": "Apr 29",
-      "sortKey": "2026-04-29",
-      "done": false
+      "dueLabel": "Resolved May 1",
+      "sortKey": "2026-05-01",
+      "done": true
     },
     {
       "text": "Socially: update orchestration LLM to infer NPC characters from the main prompt and generate anchor images for consistent page generation",
       "area": "Startup",
       "dueLabel": "Fri May 1",
       "sortKey": "2026-05-01",
-      "done": false
+      "done": true,
+      "completedAt": "2026-05-02T02:48:19.149605+00:00"
     },
     {
       "text": "Ping McGuire: any info on audience for MCO Faculty workshop?",
@@ -280,16 +285,10 @@
     {
       "text": "MCO Faculty workshop: prep for Planning Meeting #2",
       "area": "Workshops",
-      "dueLabel": "Apr 30",
-      "sortKey": "2026-04-30",
-      "done": false
-    },
-    {
-      "text": "Discuss w Jordan: Bravely resources need to be secured \u2014 dev resource and databricks endpoints, ASAP",
-      "area": "In-Flight Work",
-      "dueLabel": "Apr 29",
-      "sortKey": "2026-04-29",
-      "done": true
+      "dueLabel": "Resolved May 1",
+      "sortKey": "2026-05-01",
+      "done": true,
+      "completedAt": "2026-05-02T02:48:19.149605+00:00"
     },
     {
       "text": "Babson Panel",
@@ -299,22 +298,22 @@
       "done": false
     },
     {
-      "text": "MCO Faculty workshop: prep for Planning Meeting #2",
-      "area": "Workshops",
-      "dueLabel": "May 2",
-      "sortKey": "2026-05-02",
-      "done": false
-    },
-    {
       "text": "Summit Facilitation Guide (learning design principles, facilitation template deck, suggested framework from now till workshop)",
       "dueLabel": "Apr 28",
       "sortKey": "2026-04-28",
       "done": true,
       "completedAt": "2026-04-28T22:01:07.943707+00:00"
+    },
+    {
+      "text": "MCO Faculty dinner: Brent to set up goal-clarification meeting with Jordan, Andy, and the right I&A research-side people",
+      "area": "Workshops",
+      "dueLabel": "Next",
+      "sortKey": "2026-05-06",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-01T11:00:00+00:00",
+  "lastUpdated": "2026-05-02T02:48:19.149605+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -896,33 +895,5 @@
   ],
   "localUpdatedAt": "2026-05-01T11:00:00+00:00",
   "syncedFromLocalAt": "2026-05-01T11:00:00+00:00",
-  "stagedChanges": [
-    {
-      "id": "stage-8c2e475b67",
-      "status": "needs approval",
-      "summary": "Clean up duplicate Bravely resources to-do",
-      "where": "To-Dos / In-Flight Work",
-      "why": "The same Bravely resources item appears twice, once open and once done. Today\u2019s brief still treats Bravely resources / Databricks endpoints as at-risk, so the open item should likely remain and the duplicate done copy should be removed or archived.",
-      "note": "Needs approval because Bravely status was not explicitly confirmed in chat today.",
-      "stagedAt": "2026-04-29T22:00:45.004148+00:00"
-    },
-    {
-      "id": "stage-1b3ea6b507",
-      "status": "needs approval",
-      "summary": "Resolve duplicate MCO Faculty Planning #2 prep dates",
-      "where": "To-Dos / Workshops",
-      "why": "MCO Faculty Planning #2 prep appears twice with different due dates (Apr 30 and May 2). Morning brief points to Fri May 1 prep, so this likely needs a single corrected entry.",
-      "note": "Needs approval/clarification on the correct due date before changing.",
-      "stagedAt": "2026-04-29T22:00:45.004148+00:00"
-    },
-    {
-      "id": "stage-9d973d91e8",
-      "status": "needs approval",
-      "summary": "Add MCO Faculty dinner AI/facilitation materials as in-progress/reviewable",
-      "where": "Workshops / MCO Faculty workshop prep",
-      "why": "Today\u2019s work produced the MCO faculty dinner AI run-of-show, table worksheets, report-out synthesis sheet, and editable AI segment deck on the work laptop.",
-      "note": "Suggested dashboard language: MCO Faculty dinner materials are in progress/reviewable; next step is review deck/worksheets and package final artifacts for the May 18 session. Needs approval because these are meaningful content/status changes.",
-      "stagedAt": "2026-04-30T22:00:24.617789+00:00"
-    }
-  ]
+  "stagedChanges": []
 }
