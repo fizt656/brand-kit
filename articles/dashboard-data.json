@@ -127,31 +127,27 @@
       }
     ]
   },
-  "scheduleDate": "Friday, May 1, 2026",
+  "scheduleDate": "Saturday, May 2, 2026",
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Timesheet"
-    },
-    {
       "time": "9:00 AM",
-      "text": "HOLD Babson Panel"
+      "text": "Home Depot kids craft \u00b7 Norwood"
     },
     {
       "time": "1:00 PM",
-      "text": "GenAI Open Studio & Office Hours"
+      "text": "Family outing / drive / music"
     },
     {
-      "time": "2:00 PM",
-      "text": "Pharmacy Workshop HOLD / MCO Faculty Planning #2"
+      "time": "7:00 PM",
+      "text": "Baba's Dinner Club"
     },
     {
-      "time": "3:00 PM",
-      "text": "Gus <> Brent"
+      "time": "12:00 PM",
+      "text": "F1 Miami GP Sprint Race"
     },
     {
       "time": "4:00 PM",
-      "text": "Documentation, next week table"
+      "text": "F1 Miami GP Qualifying"
     }
   ],
   "workshopTracker": [
@@ -313,7 +309,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-02T02:48:19.149605+00:00",
+  "lastUpdated": "2026-05-02T11:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
