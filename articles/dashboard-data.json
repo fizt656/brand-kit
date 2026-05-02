@@ -891,5 +891,33 @@
   ],
   "localUpdatedAt": "2026-05-01T11:00:00+00:00",
   "syncedFromLocalAt": "2026-05-01T11:00:00+00:00",
-  "stagedChanges": []
+  "stagedChanges": [
+    {
+      "id": "stage-20260502-1800-bravely-source-sync",
+      "status": "needs approval",
+      "summary": "Sync Bravely Resources source status to resolved/done",
+      "where": "01_in-flight-work-log.md / In-Flight Work",
+      "why": "Friday review/live dashboard now shows Bravely resources resolved, but local source still says Needs Action and still frames Jordan discussion as the blocker.",
+      "note": "Safe to apply if Friday review is the source of truth; would update status/next action language only.",
+      "stagedAt": "2026-05-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260502-1800-mcguire-source-sync",
+      "status": "needs approval",
+      "summary": "Resolve Ping McGuire audience-info item in local source",
+      "where": "02_todos-execution.md / Workshops",
+      "why": "Live dashboard marks the McGuire item done, while local source still lists it Open. This looks like source/live drift from recent cleanup.",
+      "note": "Mechanical cleanup, but approval preferred because the source file currently disagrees with live state.",
+      "stagedAt": "2026-05-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260502-1800-weekly-rollover",
+      "status": "needs approval",
+      "summary": "Prep Monday weekly-control rollover after weekend",
+      "where": "00_master-dashboard-weekly-control.md / weekly outcomes + critical dates",
+      "why": "Master dashboard still reflects week of Apr 27 and May 1 workday schedule, while live schedule has already been refreshed for Saturday. Better handled as a Monday refresh rather than a Saturday content rewrite.",
+      "note": "Not urgent today; stage for next workday review.",
+      "stagedAt": "2026-05-02T18:00:00-04:00"
+    }
+  ]
 }
