@@ -885,7 +885,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-03T07:00:00-04:00",
+  "localUpdatedAt": "2026-05-03T18:03:31-04:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
@@ -914,6 +914,24 @@
       "why": "Master dashboard still reflects week of Apr 27 and May 1 workday schedule, while live schedule has already been refreshed for Saturday. Better handled as a Monday refresh rather than a Saturday content rewrite.",
       "note": "Not urgent today; stage for next workday review.",
       "stagedAt": "2026-05-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260503-1803-week-ahead-priorities",
+      "status": "needs approval",
+      "summary": "Roll master dashboard to week of May 4 with Week Ahead Jam priorities",
+      "where": "00_master-dashboard-weekly-control.md / Top 3 Outcomes + Critical Meetings + control board",
+      "why": "Week Ahead Jam identified the likely weekly shape: Ceravasc final review/send Monday; prep Research Nursing 5/11 and Champions template 5/12; keep MCO reset clear without overbuilding before goal reclarification.",
+      "note": "Needs approval because this changes the weekly operating frame, not just a mechanical status field.",
+      "stagedAt": "2026-05-03T18:03:31-04:00"
+    },
+    {
+      "id": "stage-20260503-1803-calendar-anchors-sync",
+      "status": "needs approval",
+      "summary": "Use Mon-Fri work calendar anchors to update this week schedule / meeting-prep lanes",
+      "where": "00_master-dashboard-weekly-control.md + 06_meeting-prep-briefs.md",
+      "why": "Calendar pull found concrete anchors for May 4-8: Jordan, Copilot assessment WG, Katz/Brent/Jordan monthly, GPT4DFCI use-case/workshop items, Business Strategy LnL planning, AI Committee planning, Christiana/Tracy intros, Rams monthly, Genetics Jumpstart planning, and Pharmacy HOLD.",
+      "note": "Safe to stage only; applying should wait for Gus to confirm the week plan and whether these should become dashboard-facing anchors.",
+      "stagedAt": "2026-05-03T18:03:31-04:00"
     }
   ]
 }
