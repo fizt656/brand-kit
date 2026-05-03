@@ -127,27 +127,23 @@
       }
     ]
   },
-  "scheduleDate": "Saturday, May 2, 2026",
+  "scheduleDate": "Sunday, May 3, 2026",
   "schedule": [
     {
-      "time": "9:00 AM",
-      "text": "Home Depot kids craft \u00b7 Norwood"
+      "time": "12:30 PM",
+      "text": "Prep light lunch"
     },
     {
       "time": "1:00 PM",
-      "text": "Family outing / drive / music"
+      "text": "Light Family Lunch"
     },
     {
-      "time": "7:00 PM",
-      "text": "Baba's Dinner Club"
+      "time": "1:00 PM",
+      "text": "F1 Miami Grand Prix \u2014 Race"
     },
     {
-      "time": "12:00 PM",
-      "text": "F1 Miami GP Sprint Race"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "F1 Miami GP Qualifying"
+      "time": "3:00 PM",
+      "text": "Sunday Kitchen Club \u00b7 meal prep for the week"
     }
   ],
   "workshopTracker": [
@@ -309,7 +305,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-02T11:00:00-04:00",
+  "lastUpdated": "2026-05-03T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -889,8 +885,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-01T11:00:00+00:00",
-  "syncedFromLocalAt": "2026-05-01T11:00:00+00:00",
+  "localUpdatedAt": "2026-05-03T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260502-1800-bravely-source-sync",
