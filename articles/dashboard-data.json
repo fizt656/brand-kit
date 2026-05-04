@@ -313,7 +313,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-04T07:00:00-04:00",
+  "lastUpdated": "2026-05-04T18:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -893,7 +893,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-03T18:03:31-04:00",
+  "localUpdatedAt": "2026-05-04T18:00:00-04:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
@@ -940,6 +940,15 @@
       "why": "Calendar pull found concrete anchors for May 4-8: Jordan, Copilot assessment WG, Katz/Brent/Jordan monthly, GPT4DFCI use-case/workshop items, Business Strategy LnL planning, AI Committee planning, Christiana/Tracy intros, Rams monthly, Genetics Jumpstart planning, and Pharmacy HOLD.",
       "note": "Safe to stage only; applying should wait for Gus to confirm the week plan and whether these should become dashboard-facing anchors.",
       "stagedAt": "2026-05-03T18:03:31-04:00"
+    },
+    {
+      "id": "stage-20260504-1800-persona-tailored-strategy-deck",
+      "status": "needs approval",
+      "summary": "Add Persona-Tailored AI Education strategic architecture deck/workstream update",
+      "where": "Persona lane + 06_meeting-prep-briefs.md / Katz-Jordan strategy thread",
+      "why": "Today the persona_tailored repo was reviewed for Jordan/Katz, and a reusable 8-slide ProDeck prompt was drafted on the work laptop. The work now explicitly frames Phase 2 AI education, O3 alignment, DataCamp build-vs-borrow, AI Hub backend/repo strategy, and possible commercialization of DFCI-specific healthcare GenAI onboarding.",
+      "note": "Needs approval because this is a meaningful strategy/workstream update, not a mechanical status cleanup.",
+      "stagedAt": "2026-05-04T18:00:00-04:00"
     }
   ]
 }
