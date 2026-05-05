@@ -127,35 +127,39 @@
       }
     ]
   },
-  "scheduleDate": "Tuesday, May 5, 2026",
+  "scheduleDate": "Wednesday, May 6, 2026",
   "schedule": [
     {
-      "time": "11:00 AM",
-      "text": "Continued: GPT4DFCI Use-case discussion"
+      "time": "8:00 AM",
+      "text": "Arrive From Commute"
     },
     {
-      "time": "12:00 PM",
-      "text": "Matt<>Gus AI Workshop"
+      "time": "9:00 AM",
+      "text": "Manny/Travis Intro"
+    },
+    {
+      "time": "10:00 AM",
+      "text": "review / update agenda"
+    },
+    {
+      "time": "10:30 AM",
+      "text": "AI Committee Planning for IP&A Team Mtg"
+    },
+    {
+      "time": "11:30 AM",
+      "text": "Gus<>Christiana meet"
     },
     {
       "time": "1:00 PM",
-      "text": "HOLD"
+      "text": "Tracy <> Gus intro"
     },
     {
-      "time": "1:30 PM",
-      "text": "[HOLD] AI education presentation to MCO faculty 5/18"
-    },
-    {
-      "time": "1:30 PM",
-      "text": "GPT4DFCI <> SM"
-    },
-    {
-      "time": "2:30 PM",
-      "text": "HOLD"
+      "time": "2:00 PM",
+      "text": "AI Hub Learn Page V0"
     },
     {
       "time": "3:30 PM",
-      "text": "Planning Meeting: GenAI Lunch and Learn for Bus Strategy"
+      "text": "Bus/Commute Window"
     }
   ],
   "workshopTracker": [
@@ -317,7 +321,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-04T18:00:00-04:00",
+  "lastUpdated": "2026-05-05T18:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -897,7 +901,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-04T18:00:00-04:00",
+  "localUpdatedAt": "2026-05-05T18:00:00-04:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
