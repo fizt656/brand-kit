@@ -127,39 +127,35 @@
       }
     ]
   },
-  "scheduleDate": "Wednesday, May 6, 2026",
+  "scheduleDate": "Thursday, May 7, 2026",
   "schedule": [
     {
-      "time": "8:00 AM",
-      "text": "Arrive From Commute"
+      "time": "10:15 AM",
+      "text": "Gus X Mariam Ketchup"
     },
     {
-      "time": "9:00 AM",
-      "text": "Manny/Travis Intro"
-    },
-    {
-      "time": "10:00 AM",
-      "text": "review / update agenda"
-    },
-    {
-      "time": "10:30 AM",
-      "text": "AI Committee Planning for IP&A Team Mtg"
+      "time": "11:00 AM",
+      "text": "Continued: GPT4DFCI Use-case discussion"
     },
     {
       "time": "11:30 AM",
-      "text": "Gus<>Christiana meet"
+      "text": "Persona-Tailored Model"
+    },
+    {
+      "time": "11:30 AM",
+      "text": "AI Committee Planning for IP&A Team Mtg"
     },
     {
       "time": "1:00 PM",
-      "text": "Tracy <> Gus intro"
+      "text": "Bravely Prototyping"
     },
     {
       "time": "2:00 PM",
-      "text": "AI Hub Learn Page V0"
+      "text": "Summer Summit Messaging"
     },
     {
-      "time": "3:30 PM",
-      "text": "Bus/Commute Window"
+      "time": "3:00 PM",
+      "text": "Learning Repo Work (seed artifacts)"
     }
   ],
   "workshopTracker": [
@@ -321,7 +317,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-06T07:00:00-04:00",
+  "lastUpdated": "2026-05-06T18:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -901,7 +897,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-05T18:00:00-04:00",
+  "localUpdatedAt": "2026-05-06T18:00:00-04:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
@@ -957,6 +953,15 @@
       "why": "Today the persona_tailored repo was reviewed for Jordan/Katz, and a reusable 8-slide ProDeck prompt was drafted on the work laptop. The work now explicitly frames Phase 2 AI education, O3 alignment, DataCamp build-vs-borrow, AI Hub backend/repo strategy, and possible commercialization of DFCI-specific healthcare GenAI onboarding.",
       "note": "Needs approval because this is a meaningful strategy/workstream update, not a mechanical status cleanup.",
       "stagedAt": "2026-05-04T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260506-1800-expert-learner-linkedin-post",
+      "status": "needs approval",
+      "summary": "Advance “What is an expert?” into a LinkedIn post draft: expert-as-learner + adaptive governance cliffhanger",
+      "where": "Article Ideas lane / LinkedIn content backlog",
+      "why": "Today Gus returned to the “expert is dead, long live the learner” idea, shaped the argument around contextual intelligence, ambiguity, first-principles/tinkering skills, and governance processes that can keep up with rapid iteration. A post-length draft now exists in chat.",
+      "note": "Needs approval before changing the dashboard article lane or treating it as ready-to-post; likely update would move “What is an expert?” from waiting to in progress / draft ready.",
+      "stagedAt": "2026-05-06T18:00:00-04:00"
     }
   ]
 }
