@@ -336,7 +336,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-06T18:43:00-04:00",
+  "lastUpdated": "2026-05-07T18:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -918,5 +918,33 @@
   ],
   "localUpdatedAt": "2026-05-06T18:43:00-04:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
-  "stagedChanges": []
+  "stagedChanges": [
+    {
+      "id": "stage-20260507-daily-persona-jumpstart-suite",
+      "status": "needs approval",
+      "summary": "Mark Jumpstart support suite v1 as completed for the persona-tailored AI education repo; add May 8 review as next step.",
+      "where": "Persona / AI Education lane + May 8 DPAE prep todo",
+      "why": "Today’s work produced facilitator guide placement cleanup, learner materials, intake/planning templates, feedback/assessment tools, DFCI scenario library, recording guidelines, and a May 8 review map in the repo work log.",
+      "note": "Meaningful content/status update; staged for approval rather than auto-applied.",
+      "stagedAt": "2026-05-07T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260507-daily-reinforcement-next",
+      "status": "needs approval",
+      "summary": "Update remaining Jumpstart next step to short-form reinforcement media guidelines/templates.",
+      "where": "Persona / AI Education lane or Content todo",
+      "why": "Recording guidelines are now drafted; the repo’s next remaining scale-out item is reinforcement_media/ quick-hit tips, recap clips, Teams/AI Hub posts, and feature spotlights.",
+      "note": "Could replace/refresh the existing Content todo about quick-hit social media style tips videos.",
+      "stagedAt": "2026-05-07T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260507-daily-repo-hygiene",
+      "status": "needs approval",
+      "summary": "Add repo hygiene note: consider initializing persona_tailored as git or otherwise preserving review diffs before larger polish pass.",
+      "where": "Admin or Persona / AI Education note",
+      "why": "Several assets were created/updated today, but the folder does not appear to be a git repo; review history relies on work log and Copilot transcripts.",
+      "note": "Optional, but useful before more work accumulates.",
+      "stagedAt": "2026-05-07T18:00:00-04:00"
+    }
+  ]
 }
