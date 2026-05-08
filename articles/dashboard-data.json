@@ -131,35 +131,31 @@
       }
     ]
   },
-  "scheduleDate": "Thursday, May 7, 2026",
+  "scheduleDate": "Friday, May 8, 2026",
   "schedule": [
     {
-      "time": "10:15 AM",
-      "text": "Gus X Mariam Ketchup"
+      "time": "10:30 AM",
+      "text": "Planning Meeting: GenAI Lunch and Learn for Bus Strategy"
     },
     {
       "time": "11:00 AM",
-      "text": "Continued: GPT4DFCI Use-case discussion"
+      "text": "GPT4DFCI Jumpstart Training for Genetics MDs, APPs, and GCs — Content Planning 1"
     },
     {
       "time": "11:30 AM",
-      "text": "Persona-Tailored Model"
-    },
-    {
-      "time": "11:30 AM",
-      "text": "AI Committee Planning for IP&A Team Mtg"
+      "text": "Gus <> Christiana meet"
     },
     {
       "time": "1:00 PM",
-      "text": "Bravely Prototyping"
+      "text": "Jordan <> Gus Mid Year Sync"
     },
     {
       "time": "2:00 PM",
-      "text": "Summer Summit Messaging"
+      "text": "Pharmacy Workshop HOLD"
     },
     {
-      "time": "3:00 PM",
-      "text": "Learning Repo Work (seed artifacts)"
+      "time": "4:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -336,7 +332,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-07T18:00:00-04:00",
+  "lastUpdated": "2026-05-08T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
