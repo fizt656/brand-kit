@@ -55,6 +55,10 @@
     "admin": [
       {
         "status": "open",
+        "text": "May 8 quick to-dos captured: Tracy resume circulation, CoP involvement email, stakeholder commitment slide revision"
+      },
+      {
+        "status": "open",
         "text": "Keep upcoming workshop/planning items current when G. drops quick updates in chat"
       }
     ],
@@ -237,6 +241,27 @@
   ],
   "todos": [
     {
+      "text": "Circulate Tracy's resume in I&A",
+      "area": "I&A",
+      "dueLabel": "Mon May 11",
+      "sortKey": "2026-05-11",
+      "done": false
+    },
+    {
+      "text": "Send out CoP involvement email (draft exists)",
+      "area": "CoP",
+      "dueLabel": "Mon May 11",
+      "sortKey": "2026-05-11",
+      "done": false
+    },
+    {
+      "text": "Revise stakeholder commitment slide based on Jordan's feedback",
+      "area": "Jumpstart",
+      "dueLabel": "Today",
+      "sortKey": "2026-05-08",
+      "done": false
+    },
+    {
       "text": "Discuss w Jordan: Bravely resources need to be secured — dev resource and databricks endpoints, ASAP",
       "area": "In-Flight Work",
       "dueLabel": "Resolved May 1",
@@ -332,7 +357,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-08T07:00:00-04:00",
+  "lastUpdated": "2026-05-08T13:45:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
