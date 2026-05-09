@@ -135,31 +135,23 @@
       }
     ]
   },
-  "scheduleDate": "Friday, May 8, 2026",
+  "scheduleDate": "2026-05-09",
   "schedule": [
     {
-      "time": "10:30 AM",
-      "text": "Planning Meeting: GenAI Lunch and Learn for Bus Strategy"
+      "time": "9:00 AM",
+      "text": "HVAC maintenance"
     },
     {
-      "time": "11:00 AM",
-      "text": "GPT4DFCI Jumpstart Training for Genetics MDs, APPs, and GCs — Content Planning 1"
-    },
-    {
-      "time": "11:30 AM",
-      "text": "Gus <> Christiana meet"
+      "time": "12:00 PM",
+      "text": "Xiaohu lunch?"
     },
     {
       "time": "1:00 PM",
-      "text": "Jordan <> Gus Mid Year Sync"
+      "text": "Family Outing / Drive / Music"
     },
     {
-      "time": "2:00 PM",
-      "text": "Pharmacy Workshop HOLD"
-    },
-    {
-      "time": "4:00 PM",
-      "text": "Documentation, next week table"
+      "time": "7:00 PM",
+      "text": "Squig Night"
     }
   ],
   "workshopTracker": [
@@ -357,7 +349,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-08T13:45:00-04:00",
+  "lastUpdated": "2026-05-09T11:01:19.796301+00:00",
   "archivedItems": [
     {
       "id": "arc-1777317652398-0etrc5",
@@ -937,7 +929,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-06T18:43:00-04:00",
+  "localUpdatedAt": "2026-05-09T11:01:19.796301+00:00",
   "syncedFromLocalAt": "2026-05-03T07:00:00-04:00",
   "stagedChanges": [
     {
