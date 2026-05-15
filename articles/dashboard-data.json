@@ -206,7 +206,7 @@
     },
     {
       "name": "Pharmacy",
-      "date": "May/June",
+      "date": "two 2-hr workshops -- week of June 15 / week of June 22",
       "status": "waiting"
     }
   ],
@@ -317,7 +317,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-15T20:11:55.818Z",
+  "lastUpdated": "2026-05-15T20:28:35.492Z",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1001,8 +1001,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-15T20:11:55.818Z",
-  "syncedFromLocalAt": "2026-05-15T20:11:55.818Z",
+  "localUpdatedAt": "2026-05-15T20:28:35.492Z",
+  "syncedFromLocalAt": "2026-05-15T20:28:35.492Z",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
