@@ -160,6 +160,11 @@
   ],
   "workshopTracker": [
     {
+      "name": "Inpatient/Ancillary Services",
+      "date": "5/27",
+      "status": "waiting"
+    },
+    {
       "name": "GEP MDs and APP",
       "date": "6/3",
       "status": "waiting"
@@ -198,11 +203,6 @@
       "name": "Alex OP",
       "date": "TBD",
       "status": "open · triage by 5/18"
-    },
-    {
-      "name": "Inpatient/Ancillary Services",
-      "date": "5/27",
-      "status": "waiting"
     },
     {
       "name": "Pharmacy",
@@ -311,13 +311,13 @@
     {
       "text": "Bravely resources: meeting with Jordan and Imran to discuss dev resource + Databricks endpoints",
       "area": "In-Flight Work",
-      "dueLabel": "TBD",
-      "sortKey": "2026-05-19",
+      "dueLabel": "May 20",
+      "sortKey": "2026-05-20",
       "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-15T14:20:00-04:00",
+  "lastUpdated": "2026-05-15T20:11:55.818Z",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1001,8 +1001,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-14T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-05-14T07:00:00-04:00",
+  "localUpdatedAt": "2026-05-15T20:11:55.818Z",
+  "syncedFromLocalAt": "2026-05-15T20:11:55.818Z",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
