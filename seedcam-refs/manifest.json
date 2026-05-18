@@ -1,0 +1,77 @@
+{
+  "note": "Unlisted Seedcam reference staging for SeeGen asset review. Do not index or link publicly.",
+  "items": [
+    {
+      "id": "deck_sunny_day_wide",
+      "label": "Deck Sunny Day Wide",
+      "category": "backdrops",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/deck_sunny_day_wide.jpg",
+      "sha256": "7978b8ea586cabf30c0487c64d87458af5f5e1ef9bcf260a8e9e9aa298b350e2",
+      "sensitive": false,
+      "requiresExplicitUse": false
+    },
+    {
+      "id": "karim",
+      "label": "Karim",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/karim.jpg",
+      "sha256": "47a49353f781078f97a88ad4af1eeca3300fab634df48a630e598b83b53a3ba2",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "ben",
+      "label": "Ben",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/ben.jpg",
+      "sha256": "da7387a45eefa802a9dc5a5a60a47aa221cef3f2039776ecfbbdd68979052a87",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "victor",
+      "label": "Victor",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/victor.jpg",
+      "sha256": "eaae5d3d0a7b1978a0d5473894a2828f1063023cf007ac272896f793889d8fc5",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "shawn",
+      "label": "Shawn",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/shawn.jpg",
+      "sha256": "afc8a721133c91f27c19768d59a435e1fb27b94848b7e2c54f851cb8a1960d91",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "andy",
+      "label": "Andy",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/andy.jpg",
+      "sha256": "ccc65b675665b30231ffa935d2b6b27185601dec1ad32e0021b6803ca8ea02c5",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "sam",
+      "label": "Sam",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/sam.jpg",
+      "sha256": "3a8cebf595f99163495b5af1bb8893165b389b59ddbe7c797e3eca8516f4df1d",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    },
+    {
+      "id": "mario",
+      "label": "Mario",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/mario.jpg",
+      "sha256": "5a36f1e56c65971da5cb11177b007e5460faa1487c433c71d1c9a76deac14321",
+      "sensitive": true,
+      "requiresExplicitUse": true
+    }
+  ]
+}
