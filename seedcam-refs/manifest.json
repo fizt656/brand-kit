@@ -90,6 +90,15 @@
       "sha256": "7d5107e80d861b41de169729da4d84adea8972a6244582cd627838200ca3d488",
       "sensitive": true,
       "requiresExplicitUse": true
+    },
+    {
+      "id": "beirut-corniche-sunset",
+      "label": "Beirut Corniche Sunset",
+      "category": "backdrop",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/beirut-corniche-sunset.jpg",
+      "sha256": "d605840964557cf486694d8d74a67442aa42d70ef5ddc814c606c537c23c82b4",
+      "sensitive": false,
+      "requiresExplicitUse": false
     }
   ]
 }
