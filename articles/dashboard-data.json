@@ -163,7 +163,7 @@
     {
       "name": "GEP MDs and APP",
       "date": "6/3",
-      "status": "waiting"
+      "status": "open"
     },
     {
       "name": "Business Strat LnL",
@@ -203,6 +203,11 @@
     {
       "name": "Pharmacy",
       "date": "two 2-hr workshops -- week of June 15 / week of June 22",
+      "status": "waiting"
+    },
+    {
+      "name": "Inpatient/Ancillary Services",
+      "date": "7/22",
       "status": "waiting"
     }
   ],
@@ -272,8 +277,8 @@
     {
       "text": "Bravely: refactor current materials/approach",
       "area": "Bravely",
-      "dueLabel": "Tue May 19",
-      "sortKey": "2026-05-19",
+      "dueLabel": "May 22",
+      "sortKey": "2026-05-22",
       "done": false
     },
     {
@@ -310,10 +315,16 @@
       "dueLabel": "May 20",
       "sortKey": "2026-05-20",
       "done": false
+    },
+    {
+      "text": "prepare list of things to procure/buy/hire re: Brent's request (September is cutoff)",
+      "dueLabel": "May 19",
+      "sortKey": "2026-05-19",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-19",
+  "lastUpdated": "2026-05-19T20:56:01.044Z",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -997,8 +1008,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-19T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-05-15T20:28:35.492Z",
+  "localUpdatedAt": "2026-05-19T20:56:01.044Z",
+  "syncedFromLocalAt": "2026-05-19T20:56:01.044Z",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
