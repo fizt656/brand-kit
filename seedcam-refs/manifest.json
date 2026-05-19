@@ -72,6 +72,15 @@
       "sha256": "5a36f1e56c65971da5cb11177b007e5460faa1487c433c71d1c9a76deac14321",
       "sensitive": true,
       "requiresExplicitUse": true
+    },
+    {
+      "id": "mario_variant_arms_up",
+      "label": "Mario variant - arms up",
+      "category": "character",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/mario_variant_arms_up.jpg",
+      "sha256": "d626e4184e4326a42176251d6b167ff9b19d6734d035978d2f4c8d6357bb8a1a",
+      "sensitive": true,
+      "requiresExplicitUse": true
     }
   ]
 }
