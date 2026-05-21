@@ -168,11 +168,6 @@
   ],
   "workshopTracker": [
     {
-      "name": "Inpatient/Ancillary Services",
-      "date": "5/27",
-      "status": "waiting"
-    },
-    {
       "name": "GEP MDs and APP",
       "date": "6/3",
       "status": "open"
@@ -270,20 +265,20 @@
       "area": "Projects",
       "dueLabel": "Mon May 18",
       "sortKey": "2026-05-18",
-      "done": false
+      "done": true
     },
     {
       "text": "Add/triage Rams and Alex OP workshop needs",
       "area": "Workshops",
       "dueLabel": "Mon May 18",
       "sortKey": "2026-05-18",
-      "done": false
+      "done": true
     },
     {
       "text": "Summer Retreat: meet with each track lead and review progress",
       "area": "Summer Retreat",
-      "dueLabel": "Tue May 19",
-      "sortKey": "2026-05-19",
+      "dueLabel": "May 29",
+      "sortKey": "2026-05-29",
       "done": false
     },
     {
@@ -298,13 +293,13 @@
       "area": "AI Hub / Curriculum",
       "dueLabel": "Wed May 20",
       "sortKey": "2026-05-20",
-      "done": false
+      "done": true
     },
     {
       "text": "Update Smartsheet with project progress and impact mapping",
       "area": "Admin / Strategy",
-      "dueLabel": "Sun May 24",
-      "sortKey": "2026-05-24",
+      "dueLabel": "May 25",
+      "sortKey": "2026-05-25",
       "done": false
     },
     {
@@ -336,7 +331,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-20T07:00:00-04:00",
+  "lastUpdated": "2026-05-21T18:39:53.618970Z",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1020,8 +1015,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-19T20:56:01.044Z",
-  "syncedFromLocalAt": "2026-05-19T20:56:01.044Z",
+  "localUpdatedAt": "2026-05-21T18:39:53.618970Z",
+  "syncedFromLocalAt": "2026-05-21T18:39:53.618970Z",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
