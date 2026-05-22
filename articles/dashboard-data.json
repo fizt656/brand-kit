@@ -131,39 +131,31 @@
       }
     ]
   },
-  "scheduleDate": "2026-05-21",
+  "scheduleDate": "2026-05-22",
   "schedule": [
     {
       "time": "9:00-9:30 AM",
-      "text": "AI Education Program Planning — Business Strategy"
+      "text": "Workshop prep"
     },
     {
-      "time": "9:30-11:00 AM",
-      "text": "Refactor Bravely + SmartRX evo"
+      "time": "10:30-11:00 AM",
+      "text": "Biweekly GenAI Champions Meeting"
     },
     {
-      "time": "11:00 AM-12:00 PM",
-      "text": "HR prototype prompt"
+      "time": "11:00-11:30 AM",
+      "text": "education<>product huddle"
     },
     {
-      "time": "12:00-12:30 PM",
-      "text": "GenAI for OHRS: Reconnect"
+      "time": "1:00-1:30 PM",
+      "text": "Imaging QC and automation opportunities with I&A"
     },
     {
-      "time": "12:30-1:30 PM",
-      "text": "Yvette Desmarais — Candidate Presentation: Principal Data Governance Analyst"
+      "time": "2:00-4:00 PM",
+      "text": "Pharmacy Workshop HOLD"
     },
     {
-      "time": "1:30-2:00 PM",
-      "text": "Debrief: MCO dinner & AI education next steps"
-    },
-    {
-      "time": "1:30-2:30 PM",
-      "text": "SmartSheet Update"
-    },
-    {
-      "time": "3:00-4:00 PM",
-      "text": "Joe Allard — Candidate Presentation: Principal Data Governance Analyst"
+      "time": "4:00-5:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
