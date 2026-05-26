@@ -131,11 +131,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-05-25",
+  "scheduleDate": "2026-05-26",
   "schedule": [
     {
-      "time": "Today",
-      "text": "No DFCI work-calendar events found — Memorial Day / quiet workday"
+      "time": "9:00-9:50 AM",
+      "text": "Bravely Impact Map"
+    },
+    {
+      "time": "10:00-11:00 AM",
+      "text": "Bravely Refactor"
+    },
+    {
+      "time": "12:00-1:00 PM",
+      "text": "Gus<>Mariam HOLD"
+    },
+    {
+      "time": "12:30-1:00 PM",
+      "text": "Pharmacy AI survey - f/u"
+    },
+    {
+      "time": "1:00-1:30 PM",
+      "text": "HOLD"
+    },
+    {
+      "time": "1:30-2:30 PM",
+      "text": "JFC Prototyp Iteration"
+    },
+    {
+      "time": "2:30-3:00 PM",
+      "text": "HOLD"
     }
   ],
   "workshopTracker": [
