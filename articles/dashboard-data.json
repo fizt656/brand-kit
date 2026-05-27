@@ -56,8 +56,8 @@
         "text": "Bravely resources · meeting with Jordan and Imran to discuss dev resource + Databricks endpoints"
       },
       {
-        "status": "open",
-        "text": "Bravely refactor · due May 19"
+        "status": "active",
+        "text": "Bravely next monthly · clinician design feedback, Normal Routines flow, fake-data family context prototype; connect with Charlotta by May 28 re tech people + MDs"
       },
       {
         "status": "open",
@@ -92,8 +92,8 @@
         "text": "AI Hub rollout V1 curriculum materials · AI basics, GPT4DFCI tutorials, roleplay prompt coach, DFCI scenarios, deck + talk track, 2-min governance video script"
       },
       {
-        "status": "open",
-        "text": "Bravely · refactor current materials/approach by May 19 and align resources with Jordan + Imran"
+        "status": "active",
+        "text": "Bravely · Jun 24 design-feedback prep; Normal Routines + fake-data family context + feedback tracker; connect with Charlotta by May 28 re tech people/MDs"
       },
       {
         "status": "open",
@@ -246,6 +246,11 @@
       "date": "Jun 9-11",
       "text": "Org Summit",
       "status": "waiting"
+    },
+    {
+      "date": "Jun 24",
+      "text": "Bravely Monthly Meeting · design feedback on prototype iteration",
+      "status": "open"
     }
   ],
   "todos": [
@@ -331,10 +336,17 @@
       "dueLabel": "Wed May 27, noon",
       "sortKey": "2026-05-27T12:00:00",
       "done": false
+    },
+    {
+      "text": "Bravely: connect with Charlotta about bringing in tech people and MDs for next design-feedback phase",
+      "area": "Bravely",
+      "dueLabel": "Thu May 28",
+      "sortKey": "2026-05-28",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-27T07:00:00-04:00",
+  "lastUpdated": "2026-05-27T15:35:00-04:00",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1018,7 +1030,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-26T12:29:00-04:00",
+  "localUpdatedAt": "2026-05-27T15:35:00-04:00",
   "syncedFromLocalAt": "2026-05-21T18:39:53.618970Z",
   "stagedChanges": [
     {
