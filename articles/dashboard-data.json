@@ -131,35 +131,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-05-26",
+  "scheduleDate": "2026-05-27",
   "schedule": [
     {
-      "time": "9:00-9:50 AM",
-      "text": "Bravely Impact Map"
+      "time": "8:00 AM-8:30 AM",
+      "text": "Arrive From Commute"
     },
     {
-      "time": "10:00-11:00 AM",
-      "text": "Bravely Refactor"
+      "time": "9:00 AM-9:30 AM",
+      "text": "settle in"
     },
     {
-      "time": "12:00-1:00 PM",
-      "text": "Gus<>Mariam HOLD"
+      "time": "10:00 AM-10:30 AM",
+      "text": "review / update agenda"
     },
     {
-      "time": "12:30-1:00 PM",
-      "text": "Pharmacy AI survey - f/u"
+      "time": "1:00 PM-2:00 PM",
+      "text": "Virtual Event: How Hospitals Are Boosting Worker and Patient Safety"
     },
     {
-      "time": "1:00-1:30 PM",
-      "text": "HOLD"
+      "time": "1:30 PM-2:30 PM",
+      "text": "Bravely Monthly Meeting"
     },
     {
-      "time": "1:30-2:30 PM",
-      "text": "JFC Prototyp Iteration"
+      "time": "2:00 PM-3:00 PM",
+      "text": "I&A Managers Meeting FY26 Series"
     },
     {
-      "time": "2:30-3:00 PM",
-      "text": "HOLD"
+      "time": "3:30 PM-4:30 PM",
+      "text": "Bus/Commute Window"
     }
   ],
   "workshopTracker": [
@@ -334,7 +334,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-26T12:29:00-04:00",
+  "lastUpdated": "2026-05-27T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
