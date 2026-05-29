@@ -131,31 +131,31 @@
       }
     ]
   },
-  "scheduleDate": "2026-05-28",
+  "scheduleDate": "2026-05-29",
   "schedule": [
     {
-      "time": "9:30 AM-11:00 AM",
-      "text": "Learning Repo Iteration"
+      "time": "9:00 AM-10:00 AM",
+      "text": "Workshop Prep"
     },
     {
-      "time": "11:00 AM-11:30 AM",
-      "text": "BS + ED&A Planning Sessions for GenAI Training"
+      "time": "10:30 AM-11:00 AM",
+      "text": "Biweekly GenAI Champions Meeting"
+    },
+    {
+      "time": "11:00 AM-11:50 AM",
+      "text": "GenAI Open Studio & Office Hours"
     },
     {
       "time": "1:30 PM-2:00 PM",
-      "text": "Ambulatory Care Lunch & Learn: ED&A Generative AI Prep Meeting"
+      "text": "MCO AI education pathways"
     },
     {
-      "time": "2:00 PM-3:00 PM",
-      "text": "CoP / Champions Materials"
+      "time": "2:00 PM-4:00 PM",
+      "text": "Pharmacy Workshop HOLD"
     },
     {
-      "time": "4:00 PM-4:30 PM",
-      "text": "SmartRx | Internal Discussion / Planning"
-    },
-    {
-      "time": "4:30 PM-5:00 PM",
-      "text": "GPT4DFCI Jumpstart Training for Genetics MDs, APPs, and GCs — Content Planning 2"
+      "time": "4:00 PM-5:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -342,7 +342,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-27T15:35:00-04:00",
+  "lastUpdated": "2026-05-29T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1026,7 +1026,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-27T15:35:00-04:00",
+  "localUpdatedAt": "2026-05-29T07:00:00-04:00",
   "syncedFromLocalAt": "2026-05-21T18:39:53.618970Z",
   "stagedChanges": [
     {
