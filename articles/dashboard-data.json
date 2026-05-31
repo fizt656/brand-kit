@@ -46,6 +46,10 @@
         "text": "Business Strategy · Jun 4 lunch and learn and Aug 6 workshop"
       },
       {
+        "status": "open",
+        "text": "MCO workshop · schedule next meeting with Andy"
+      },
+      {
         "status": "waiting",
         "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
       }
@@ -208,6 +212,11 @@
       "name": "Inpatient/Ancillary Services",
       "date": "7/22",
       "status": "waiting"
+    },
+    {
+      "name": "MCO workshop",
+      "date": "TBD",
+      "status": "open · schedule next meeting with Andy"
     }
   ],
   "retreatSteps": [
@@ -339,10 +348,17 @@
       "dueLabel": "Jun 4",
       "sortKey": "2026-06-04",
       "done": false
+    },
+    {
+      "text": "Schedule next meeting with Andy for MCO workshop",
+      "area": "Workshops / MCO",
+      "dueLabel": "TBD",
+      "sortKey": "9999-12-31",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-05-29T18:46:38.512Z",
+  "lastUpdated": "2026-05-31T14:27:00-04:00",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1026,8 +1042,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-05-29T18:46:38.512Z",
-  "syncedFromLocalAt": "2026-05-29T18:46:38.512Z",
+  "localUpdatedAt": "2026-05-31T14:27:00-04:00",
+  "syncedFromLocalAt": "2026-05-31T14:27:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
