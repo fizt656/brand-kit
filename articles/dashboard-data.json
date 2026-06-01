@@ -347,10 +347,54 @@
       "dueLabel": "Jun 1",
       "sortKey": "2026-06-01",
       "done": false
+    },
+    {
+      "text": "Schedule next meeting with Andy for MCO workshop, post alignment w Jordan",
+      "area": "Workshops / MCO",
+      "dueLabel": "Jun 2",
+      "sortKey": "2026-06-02",
+      "done": false
+    },
+    {
+      "text": "blurb describing our clinical AI education kick-off, for Joel",
+      "dueLabel": "Jun 2",
+      "sortKey": "2026-06-02",
+      "done": false
+    },
+    {
+      "text": "schedule next 1-1 with Manny to update him on latest w Joel et al, and to align together for OpenEvidence rollout.",
+      "dueLabel": "Jun 2",
+      "sortKey": "2026-06-02",
+      "done": false
+    },
+    {
+      "text": "Bravely: features and integrate feedback from last session (Z has context), look at possibly refactor (if needed)",
+      "dueLabel": "Jun 18",
+      "sortKey": "2026-06-18",
+      "done": false
+    },
+    {
+      "text": "SHOWTIME! (GEP for MDs on 6/3)",
+      "dueLabel": "Jun 3",
+      "sortKey": "2026-06-03",
+      "done": false
+    },
+    {
+      "text": "SHOWTIME! (Biz-Strat LnL 6/4)",
+      "dueLabel": "Jun 4",
+      "sortKey": "2026-06-04",
+      "done": false
+    },
+    {
+      "text": "Review Jordan's squad framework and map organic roles for SmartRX and Bravely; consider implications for JIRA migration from Smartsheet",
+      "area": "Strategy / Project Management",
+      "dueLabel": "Jun 18",
+      "sortKey": "2026-06-18",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-01T07:00:00-04:00",
+  "lastUpdated": "2026-06-01T16:47:40-04:00",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1034,8 +1078,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-01T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-06-01T07:00:00-04:00",
+  "localUpdatedAt": "2026-06-01T16:47:40-04:00",
+  "syncedFromLocalAt": "2026-06-01T16:47:40-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
