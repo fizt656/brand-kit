@@ -344,8 +344,8 @@
     {
       "text": "Schedule next meeting with Andy for MCO workshop",
       "area": "Workshops / MCO",
-      "dueLabel": "TBD",
-      "sortKey": "9999-12-31",
+      "dueLabel": "Jun 1",
+      "sortKey": "2026-06-01",
       "done": false
     }
   ],
