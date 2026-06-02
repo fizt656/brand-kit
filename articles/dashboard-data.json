@@ -135,23 +135,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-01",
+  "scheduleDate": "2026-06-02",
   "schedule": [
     {
-      "time": "9:00 AM-9:30 AM",
-      "text": "week pre-reads, priority chart"
+      "time": "9:00 AM-9:50 AM",
+      "text": "GEP workshop timeblocking and run-thru"
     },
     {
-      "time": "9:30 AM-11:30 AM",
-      "text": "Bravely Scope and Clarify, prioritize features etc."
+      "time": "10:00 AM-11:00 AM",
+      "text": "Clinical AI / Joel follow-through"
+    },
+    {
+      "time": "11:00 AM-11:45 AM",
+      "text": "Rival ↔ AI Education Kick-Off"
     },
     {
       "time": "1:00 PM-1:30 PM",
-      "text": "Zoom: Dr. Katz, Dr. Halwani, Brent Mahan & Jordan Alcott - Monthly Meeting"
+      "text": "Gus ↔ Jordan MCO next steps"
+    },
+    {
+      "time": "1:30 PM-2:30 PM",
+      "text": "Clinical AI / MCO follow-through"
+    },
+    {
+      "time": "2:30 PM-3:00 PM",
+      "text": "HOLD"
     },
     {
       "time": "3:00 PM-4:00 PM",
-      "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
+      "text": "SmartRx | Checkin"
     }
   ],
   "workshopTracker": [
@@ -394,7 +406,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-01T16:47:40-04:00",
+  "lastUpdated": "2026-06-02 morning briefing sync",
   "archivedItems": [
     {
       "id": "arc-20260515-f490c923",
@@ -1078,8 +1090,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-01T16:47:40-04:00",
-  "syncedFromLocalAt": "2026-06-01T16:47:40-04:00",
+  "localUpdatedAt": "2026-06-02T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-06-02T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260507-daily-persona-jumpstart-suite",
