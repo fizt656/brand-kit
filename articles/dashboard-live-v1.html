@@ -187,6 +187,10 @@
     .pill-edit, .text-edit, .mini-edit {
       outline:none; border:1px dashed transparent; border-radius:8px; padding:6px 8px; min-height: 28px;
     }
+    .status-select {
+      appearance:none; -webkit-appearance:none; cursor:pointer; font:inherit; min-width:104px; text-align:center; text-align-last:center;
+    }
+    .status-select:focus { outline:none; border-color: var(--gold); box-shadow:0 0 0 2px rgba(199,162,74,.18); }
     .pill-edit:focus, .text-edit:focus, .mini-edit:focus { border-color: var(--gold); background:#fffdfa; }
     .text-edit { min-height: 30px; }
     .small-note { color:var(--muted); font-size:12px; }
@@ -522,6 +526,7 @@
     const SYNC_KEY = 'dashboard_live_v1_sync_v1';
     const DATA_URL = './dashboard-data.json';
     const STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed','open','in progress','waiting','done'];
+    const WORKSHOP_STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed'];
     const CORE_LISTS = ['workshops','admin','strategy','persona','cop','articleIdeas'];
     const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP', articleIdeas:'Article Ideas' };
 
@@ -1341,6 +1346,27 @@
       return `${dt.getFullYear()}-${String(dt.getMonth()+1).padStart(2,'0')}-${String(dt.getDate()).padStart(2,'0')}`;
     }
 
+    function workshopDateKey(item){
+      const dt = parseCommandDate(item?.date, 2026);
+      return dt ? commandDateKey(dt) : '9999-99-99';
+    }
+
+    function sortWorkshopTracker(data){
+      data.workshopTracker = data.workshopTracker || [];
+      data.workshopTracker.sort((a,b) => {
+        const ad = workshopDateKey(a);
+        const bd = workshopDateKey(b);
+        if (ad !== bd) return ad.localeCompare(bd);
+        return String(a.name || '').localeCompare(String(b.name || ''));
+      });
+    }
+
+    function workshopStatusSelect(status, idx){
+      const current = normalizeStatus(status || 'scoping');
+      const options = WORKSHOP_STATUS_OPTIONS.map(opt => `<option value="${opt}"${opt === current ? ' selected' : ''}>${opt}</option>`).join('');
+      return `<select data-role="workshop-status-select" data-idx="${idx}" class="pill status-select ${pillClass(current)}" title="Workshop stage">${options}</select>`;
+    }
+
     function commandPrettyDate(dt){
       if (!(dt instanceof Date) || Number.isNaN(dt.getTime())) return '';
       return dt.toLocaleDateString(undefined, { month:'short', day:'numeric' });
@@ -1594,6 +1620,7 @@
       const scheduleDateEl = document.getElementById('scheduleDate');
       if (scheduleDateEl) scheduleDateEl.textContent = data.scheduleDate || (sourceData && sourceData.scheduleDate) || 'Date not set';
 
+      sortWorkshopTracker(data);
       const tbody = document.querySelector('#workshopTable tbody');
       tbody.innerHTML = '';
       (data.workshopTracker || []).forEach((w, idx) => {
@@ -1601,7 +1628,7 @@
         tr.innerHTML = `
           <td contenteditable="true" data-role="workshop-name" data-idx="${idx}">${w.name || ''}</td>
           <td contenteditable="true" data-role="workshop-date" data-idx="${idx}">${w.date || ''}</td>
-          <td contenteditable="true" data-role="workshop-status" data-idx="${idx}" class="${pillClass(w.status)}">${w.status || 'open'}</td>
+          <td>${workshopStatusSelect(w.status, idx)}</td>
           <td><div class="list-actions"><button class="reorder-btn" title="Move up" data-role="workshop-move-up" data-idx="${idx}">↑</button><button class="reorder-btn" title="Move down" data-role="workshop-move-down" data-idx="${idx}">↓</button></div></td>
           <td>${isArchivableStatus(w.status) ? `<button class="archive-inline" data-role="archive-workshop" data-idx="${idx}">Archive</button>` : ''}</td>
         `;
@@ -1644,7 +1671,11 @@
           if (role === 'sched-time') data.schedule[idx].time = txt;
           if (role === 'sched-text') data.schedule[idx].text = txt;
           if (role === 'workshop-name') data.workshopTracker[idx].name = txt;
-          if (role === 'workshop-date') data.workshopTracker[idx].date = txt;
+          if (role === 'workshop-date') {
+            data.workshopTracker[idx].date = txt;
+            sortWorkshopTracker(data);
+            render(data); saveLocal(data); return;
+          }
           if (role === 'workshop-status') {
             data.workshopTracker[idx].status = normalizeStatus(txt);
             if (data.workshopTracker[idx].status === 'done') {
@@ -1671,6 +1702,14 @@
           if (role === 'retreat-text') data.retreatSteps[idx].text = txt;
           saveLocal(data);
         });
+      });
+
+      document.querySelectorAll('[data-role="workshop-status-select"]').forEach(sel => {
+        sel.onchange = () => {
+          const idx = Number(sel.dataset.idx);
+          if (data.workshopTracker?.[idx]) data.workshopTracker[idx].status = normalizeStatus(sel.value);
+          render(data); saveLocal(data);
+        };
       });
 
       document.querySelectorAll('.add-item').forEach(btn => {
@@ -1709,7 +1748,8 @@
       };
       document.getElementById('addWorkshop').onclick = () => {
         data.workshopTracker = data.workshopTracker || [];
-        data.workshopTracker.push({ name:'', date:'', status:'open' });
+        data.workshopTracker.push({ name:'', date:'', status:'scoping' });
+        sortWorkshopTracker(data);
         render(data); saveLocal(data);
       };
       document.getElementById('addMilestone').onclick = () => {

@@ -2,10 +2,6 @@
  "lists": {
   "workshops": [
    {
-    "status": "open",
-    "text": "Triage workshop needs · due May 18 · clarify prep load across active requests/candidates"
-   },
-   {
     "status": "follow-up",
     "text": "Rams · follow-up on team-learning workflow; next session/date TBD"
    },
@@ -170,12 +166,12 @@
   {
    "name": "Alex OP",
    "date": "5/20",
-   "status": "closed"
+   "status": "follow-up"
   },
   {
    "name": "GEP MDs and APP",
    "date": "6/3",
-   "status": "delivered"
+   "status": "closed"
   },
   {
    "name": "Rams",
@@ -185,21 +181,21 @@
   {
    "name": "Business Strat LnL",
    "date": "6/4",
-   "status": "delivered"
-  },
-  {
-   "name": "ACO and PediOps",
-   "date": "6/9",
-   "status": "scheduled"
+   "status": "closed"
   },
   {
    "name": "Org Summit",
    "date": "6/10",
-   "status": "scheduled"
+   "status": "designing"
   },
   {
    "name": "Pharmacy Cohort 2hr(a)",
    "date": "6/16",
+   "status": "designing"
+  },
+  {
+   "name": "ACO and PediOps",
+   "date": "6/24",
    "status": "designing"
   },
   {
@@ -268,13 +264,6 @@
   }
  ],
  "todos": [
-  {
-   "text": "Triage workshop needs",
-   "area": "Workshops",
-   "dueLabel": "ongoing",
-   "sortKey": "ongoing",
-   "done": false
-  },
   {
    "text": "SmartRX: check on next design iteration meeting",
    "area": "Projects",
@@ -404,8 +393,22 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-06-04T20:40:00Z",
+ "lastUpdated": "2026-06-04T22:12:00Z",
  "archivedItems": [
+  {
+   "id": "arc-1780610692291-d2ior2",
+   "kind": "workshop",
+   "list": null,
+   "label": "Workshop Tracker",
+   "text": "ACO and PediOps",
+   "item": {
+    "name": "ACO and PediOps",
+    "date": "6/9",
+    "status": "closed"
+   },
+   "archivedAt": "2026-06-04T22:04:52.291Z",
+   "restoreStatus": "closed"
+  },
   {
    "id": "arc-20260515-f490c923",
    "kind": "todo",
@@ -1088,36 +1091,8 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-06-04T20:40:00Z",
- "syncedFromLocalAt": "2026-06-04T20:40:00Z",
- "stagedChanges": [
-  {
-   "id": "stage-20260507-daily-persona-jumpstart-suite",
-   "status": "needs approval",
-   "summary": "Mark Jumpstart support suite v1 as completed for the persona-tailored AI education repo; add May 8 review as next step.",
-   "where": "Persona / AI Education lane + May 8 DPAE prep todo",
-   "why": "Today’s work produced facilitator guide placement cleanup, learner materials, intake/planning templates, feedback/assessment tools, DFCI scenario library, recording guidelines, and a May 8 review map in the repo work log.",
-   "note": "Meaningful content/status update; staged for approval rather than auto-applied.",
-   "stagedAt": "2026-05-07T18:00:00-04:00"
-  },
-  {
-   "id": "stage-20260507-daily-reinforcement-next",
-   "status": "needs approval",
-   "summary": "Update remaining Jumpstart next step to short-form reinforcement media guidelines/templates.",
-   "where": "Persona / AI Education lane or Content todo",
-   "why": "Recording guidelines are now drafted; the repo’s next remaining scale-out item is reinforcement_media/ quick-hit tips, recap clips, Teams/AI Hub posts, and feature spotlights.",
-   "note": "Could replace/refresh the existing Content todo about quick-hit social media style tips videos.",
-   "stagedAt": "2026-05-07T18:00:00-04:00"
-  },
-  {
-   "id": "stage-20260507-daily-repo-hygiene",
-   "status": "needs approval",
-   "summary": "Add repo hygiene note: consider initializing persona_tailored as git or otherwise preserving review diffs before larger polish pass.",
-   "where": "Admin or Persona / AI Education note",
-   "why": "Several assets were created/updated today, but the folder does not appear to be a git repo; review history relies on work log and Copilot transcripts.",
-   "note": "Optional, but useful before more work accumulates.",
-   "stagedAt": "2026-05-07T18:00:00-04:00"
-  }
- ],
- "zSyncNote": "Implemented workshop lifecycle stages: scoping, scheduled, designing, ready, delivered, follow-up, closed; updated tracker/list statuses and stage color support."
+ "localUpdatedAt": "2026-06-04T22:12:00Z",
+ "syncedFromLocalAt": "2026-06-04T22:12:00Z",
+ "stagedChanges": [],
+ "zSyncNote": "Synced Gus latest June 4 dashboard export; removed approved stale staged changes/triage cleanup; sorted workshop tracker; UI supports workshop stage dropdowns and date auto-sort."
 }
