@@ -135,47 +135,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-03",
+  "scheduleDate": "2026-06-04",
   "schedule": [
     {
       "time": "9:00 AM-9:30 AM",
-      "text": "GEP workshop preflight / AI User track sync (overlap)"
+      "text": "I&A <> Genetics: AI Solutions for PDF to Progeny TSV"
     },
     {
-      "time": "9:30 AM-10:00 AM",
-      "text": "Jordan <> Gus cont’d"
+      "time": "9:30 AM-11:00 AM",
+      "text": "Biz Strategy + Summit prep"
     },
     {
-      "time": "10:00 AM-10:30 AM",
-      "text": "Jess monthly coffee / GEP preflight (overlap)"
+      "time": "11:00 AM-11:30 AM",
+      "text": "Workshop Review: GitHub Copilot Session #1"
     },
     {
-      "time": "10:30 AM-11:00 AM",
-      "text": "Gus-Mimi re: AI Summit Workshop"
-    },
-    {
-      "time": "11:00 AM-12:00 PM",
-      "text": "Workshop preflight"
+      "time": "11:30 AM-12:00 PM",
+      "text": "Manny <> Gus OE Sync"
     },
     {
       "time": "12:00 PM-1:00 PM",
-      "text": "GPT4DFCI AI Training for GEP Clinicians"
+      "text": "Business Strategy Lunch and Learn:  Gen AI Refresher & Updates"
     },
     {
-      "time": "1:00 PM-2:00 PM",
-      "text": "Team Meeting - 2026"
+      "time": "2:00 PM-3:00 PM",
+      "text": "Impact map + admin cleanup"
     },
     {
-      "time": "2:00 PM-2:30 PM",
-      "text": "Continued: AI-Enabled Workflows for PE"
-    },
-    {
-      "time": "2:30 PM-3:00 PM",
-      "text": "HCC AI - regroup"
-    },
-    {
-      "time": "3:30 PM-4:30 PM",
-      "text": "Learning Repo Pass / bus-commute window"
+      "time": "3:00 PM-4:30 PM",
+      "text": "Bravely next steps"
     }
   ],
   "workshopTracker": [
