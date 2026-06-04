@@ -168,9 +168,19 @@
  ],
  "workshopTracker": [
   {
+   "name": "Alex OP",
+   "date": "5/20",
+   "status": "done · triaged"
+  },
+  {
    "name": "GEP MDs and APP",
    "date": "6/3",
    "status": "done"
+  },
+  {
+   "name": "Rams",
+   "date": "6/3",
+   "status": "done · triaged"
   },
   {
    "name": "Business Strat LnL",
@@ -180,47 +190,42 @@
   {
    "name": "ACO and PediOps",
    "date": "6/9",
-   "status": "waiting"
+   "status": "open"
   },
   {
    "name": "Org Summit",
    "date": "6/10",
-   "status": "waiting"
+   "status": "open"
+  },
+  {
+   "name": "Pharmacy Cohort 2hr(a)",
+   "date": "6/16",
+   "status": "open"
+  },
+  {
+   "name": "Pharmacy Cohort 2hr(b)",
+   "date": "6/25",
+   "status": "open"
   },
   {
    "name": "GEP Admins",
    "date": "7/9",
-   "status": "waiting"
+   "status": "open"
   },
   {
-   "name": "Business Strat Workshop",
-   "date": "8/6",
-   "status": "waiting"
-  },
-  {
-   "name": "Rams",
-   "date": "TBD",
-   "status": "done · triaged"
-  },
-  {
-   "name": "Alex OP",
-   "date": "TBD",
-   "status": "done · triaged"
-  },
-  {
-   "name": "Pharmacy",
-   "date": "two 2-hr workshops -- week of June 15 / week of June 22",
-   "status": "waiting"
+   "name": "MCO workshop",
+   "date": "7/15",
+   "status": "open"
   },
   {
    "name": "Inpatient/Ancillary Services",
    "date": "7/22",
-   "status": "waiting"
+   "status": "open"
   },
   {
-   "name": "MCO workshop",
-   "date": "TBD",
-   "status": "open · schedule by Jun 12"
+   "name": "Business Strat Full Day",
+   "date": "8/6",
+   "status": "in progress"
   }
  ],
  "retreatSteps": [
@@ -399,7 +404,7 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-06-04T20:17:00Z",
+ "lastUpdated": "2026-06-04T20:29:30.163Z",
  "archivedItems": [
   {
    "id": "arc-20260515-f490c923",
@@ -1083,8 +1088,8 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-06-04T20:17:00Z",
- "syncedFromLocalAt": "2026-06-04T20:17:00Z",
+ "localUpdatedAt": "2026-06-04T20:29:30.163Z",
+ "syncedFromLocalAt": "2026-06-04T20:29:30.163Z",
  "stagedChanges": [
   {
    "id": "stage-20260507-daily-persona-jumpstart-suite",
@@ -1114,5 +1119,5 @@
    "stagedAt": "2026-05-07T18:00:00-04:00"
   }
  ],
- "zSyncNote": "Updated by Z from Gus request: completed GEP/Biz Strat/Rams/Alex workshop statuses; bumped MCO scheduling to Jun 12 and Jordan/Imran Bravely resources to Jun 15; prepared for live publish."
+ "zSyncNote": "Synced from Gus latest local export at 2026-06-04T20:29:30.163Z; includes refined workshop tracker dates/statuses."
 }
