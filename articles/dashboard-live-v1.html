@@ -21,6 +21,13 @@
       --progress:#e7f1ec;
       --waiting:#f8eed8;
       --done:#ece9e2;
+      --scoping:#fff0d6;
+      --scheduled:#f4eddc;
+      --designing:#eee6ff;
+      --ready:#e1efff;
+      --delivered:#e3f4e8;
+      --follow-up:#dff5f2;
+      --closed:#ece9e2;
     }
     * { box-sizing:border-box; }
     body { background: var(--bg); color: var(--ink); }
@@ -169,6 +176,13 @@
     .status-open { background:var(--open); color:#73551f; border-color:#e4d4b0; }
     .status-in-progress { background:var(--progress); color:#2e6b4f; border-color:#cfe1d8; }
     .status-waiting { background:var(--waiting); color:#8b641f; border-color:#ead8b0; }
+    .status-scoping { background:var(--scoping); color:#875b16; border-color:#f0cf91; }
+    .status-scheduled { background:var(--scheduled); color:#73551f; border-color:#e4d4b0; }
+    .status-designing { background:var(--designing); color:#553c8b; border-color:#d5c4f3; }
+    .status-ready { background:var(--ready); color:#245b8f; border-color:#b9d8f4; }
+    .status-delivered { background:var(--delivered); color:#1f6b3a; border-color:#b9ddc5; }
+    .status-follow-up { background:var(--follow-up); color:#17685f; border-color:#aee0d8; }
+    .status-closed { background:var(--closed); color:#665f54; border-color:#d8d0c4; }
     .status-done { background:#e3f4e8; color:#1f6b3a; border-color:#b9ddc5; }
     .pill-edit, .text-edit, .mini-edit {
       outline:none; border:1px dashed transparent; border-radius:8px; padding:6px 8px; min-height: 28px;
@@ -507,7 +521,7 @@
     const STORAGE_KEY = 'dashboard_live_v1_local_v4';
     const SYNC_KEY = 'dashboard_live_v1_sync_v1';
     const DATA_URL = './dashboard-data.json';
-    const STATUS_OPTIONS = ['open','in progress','waiting','done'];
+    const STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed','open','in progress','waiting','done'];
     const CORE_LISTS = ['workshops','admin','strategy','persona','cop','articleIdeas'];
     const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP', articleIdeas:'Article Ideas' };
 
@@ -657,17 +671,30 @@
 
     function pillClass(v){
       const val = (v || 'open').toLowerCase();
+      if (val.includes('follow')) return 'status-follow-up';
+      if (val.includes('scoping')) return 'status-scoping';
+      if (val.includes('scheduled')) return 'status-scheduled';
+      if (val.includes('designing')) return 'status-designing';
+      if (val.includes('ready')) return 'status-ready';
+      if (val.includes('delivered')) return 'status-delivered';
+      if (val.includes('closed')) return 'status-closed';
       if (val.includes('progress')) return 'status-in-progress';
       if (val.includes('waiting')) return 'status-waiting';
       if (val.includes('done')) return 'status-done';
       return 'status-open';
     }
     function normalizeStatus(v){
-      const val = (v || '').trim().toLowerCase();
+      const val = (v || '').trim().toLowerCase().replace(/\s+/g, ' ');
+      if (val === 'follow up' || val === 'follow-up' || val === 'followup') return 'follow-up';
+      if (['scoping','scheduled','designing','ready','delivered','closed'].includes(val)) return val;
       if (val === 'in progress' || val === 'progress' || val === 'in-progress') return 'in progress';
       if (val === 'waiting') return 'waiting';
       if (val === 'done') return 'done';
       return 'open';
+    }
+    function isArchivableStatus(v){
+      const val = normalizeStatus(v);
+      return val === 'done' || val === 'closed';
     }
     function archiveLabelFor(ref){
       if (ref.kind === 'list') return LIST_LABELS[ref.list] || ref.list || 'Board';
@@ -800,7 +827,7 @@
         <div class="reorder-controls">
           <button class="reorder-btn" title="Move up" data-role="move-up" data-list="${listName}" data-idx="${idx}">↑</button>
           <button class="reorder-btn" title="Move down" data-role="move-down" data-list="${listName}" data-idx="${idx}">↓</button>
-          ${normalizeStatus(item.status)==='done' ? `<button class="archive-inline" data-role="archive-list" data-list="${listName}" data-idx="${idx}">Archive</button>` : ''}
+          ${isArchivableStatus(item.status) ? `<button class="archive-inline" data-role="archive-list" data-list="${listName}" data-idx="${idx}">Archive</button>` : ''}
         </div>
       `;
       return li;
@@ -822,7 +849,7 @@
       li.innerHTML = `
         <div class="step-num">${item.step || idx+1}.</div>
         <div class="pill ${pillClass(item.status)} pill-edit" contenteditable="true" data-role="retreat-status" data-idx="${idx}">${item.status || 'open'}</div>
-        <div class="text-edit" contenteditable="true" data-role="retreat-text" data-idx="${idx}">${item.text || ''}</div>${normalizeStatus(item.status)==='done' ? `<button class="archive-inline" data-role="archive-retreat" data-idx="${idx}">Archive</button>` : ''}
+        <div class="text-edit" contenteditable="true" data-role="retreat-text" data-idx="${idx}">${item.text || ''}</div>${isArchivableStatus(item.status) ? `<button class="archive-inline" data-role="archive-retreat" data-idx="${idx}">Archive</button>` : ''}
       `;
       return li;
     }
@@ -833,7 +860,7 @@
       row.innerHTML = `
         <div class="mile-date mini-edit" contenteditable="true" data-role="mile-date" data-idx="${idx}">${item.date || ''}</div>
         <div class="text-edit" contenteditable="true" data-role="mile-text" data-idx="${idx}">${item.text || ''}</div>
-        <div class="pill ${pillClass(item.status)} pill-edit mile-status" contenteditable="true" data-role="mile-status" data-idx="${idx}">${item.status || 'open'}</div>${normalizeStatus(item.status)==='done' ? `<button class="archive-inline" data-role="archive-mile" data-idx="${idx}">Archive</button>` : ''}
+        <div class="pill ${pillClass(item.status)} pill-edit mile-status" contenteditable="true" data-role="mile-status" data-idx="${idx}">${item.status || 'open'}</div>${isArchivableStatus(item.status) ? `<button class="archive-inline" data-role="archive-mile" data-idx="${idx}">Archive</button>` : ''}
       `;
       return row;
     }
@@ -1138,7 +1165,7 @@
       eachBoardStatusItem(data, ({item}) => {
         const boardText = item.text || item.name || '';
         if (!boardText) return;
-        if (matchesBoardTask(todo.text, boardText) && normalizeStatus(item.status) === 'done') matchedDone = true;
+        if (matchesBoardTask(todo.text, boardText) && isArchivableStatus(item.status)) matchedDone = true;
       });
       return matchedDone;
     }
@@ -1188,7 +1215,7 @@
         /(?:;|·)\s*(do \d+ minutes? of [^.;·]+?)(?:\s+(?:on|by|before|due)\s+[^.;·]+)?[.;]?$/i
       ];
       function pushFromText(text, area, boardStatus){
-        if (normalizeStatus(boardStatus) === 'done') return;
+        if (isArchivableStatus(boardStatus)) return;
         let raw = null;
         for (const re of patterns) {
           const m = text.match(re);
@@ -1441,7 +1468,7 @@
       const buckets = { today: [], overdue: [], upcoming: [], waiting: [], future: [] };
       entries.forEach(entry => {
         const hasDate = !!entry.dateKey;
-        const isDone = entry.status === 'done';
+        const isDone = isArchivableStatus(entry.status);
         if (!hasDate) {
           if (!isDone) buckets.waiting.push(entry);
           return;
@@ -1530,14 +1557,14 @@
         signalList.innerHTML = '';
         [['strategy','Strategy'],['persona','Persona'],['cop','CoP'],['workshops','Workshops'],['admin','Admin']].forEach(([key,label]) => {
           const arr = (data.lists && data.lists[key]) || [];
-          const top = arr.find(x => normalizeStatus(x.status) !== 'done') || arr[0];
+          const top = arr.find(x => !isArchivableStatus(x.status)) || arr[0];
           if (!top) return;
           const li = document.createElement('li');
           li.className = 'command-item';
           li.innerHTML = `<strong>${label}</strong><div>${top.text}</div><div class="command-meta"><span class="mini-pill">${top.status}</span></div>`;
           signalList.appendChild(li);
         });
-        const retreatTop = (data.retreatSteps || []).find(x => normalizeStatus(x.status) !== 'done');
+        const retreatTop = (data.retreatSteps || []).find(x => !isArchivableStatus(x.status));
         if (retreatTop) {
           const li = document.createElement('li');
           li.className = 'command-item';
@@ -1576,7 +1603,7 @@
           <td contenteditable="true" data-role="workshop-date" data-idx="${idx}">${w.date || ''}</td>
           <td contenteditable="true" data-role="workshop-status" data-idx="${idx}" class="${pillClass(w.status)}">${w.status || 'open'}</td>
           <td><div class="list-actions"><button class="reorder-btn" title="Move up" data-role="workshop-move-up" data-idx="${idx}">↑</button><button class="reorder-btn" title="Move down" data-role="workshop-move-down" data-idx="${idx}">↓</button></div></td>
-          <td>${normalizeStatus(w.status)==='done' ? `<button class="archive-inline" data-role="archive-workshop" data-idx="${idx}">Archive</button>` : ''}</td>
+          <td>${isArchivableStatus(w.status) ? `<button class="archive-inline" data-role="archive-workshop" data-idx="${idx}">Archive</button>` : ''}</td>
         `;
         tbody.appendChild(tr);
       });

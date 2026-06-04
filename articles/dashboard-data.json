@@ -6,52 +6,52 @@
     "text": "Triage workshop needs · due May 18 · clarify prep load across active requests/candidates"
    },
    {
-    "status": "done",
-    "text": "Rams · workshop candidate triaged; team-learning workflow started; next session/date TBD"
+    "status": "follow-up",
+    "text": "Rams · follow-up on team-learning workflow; next session/date TBD"
    },
    {
-    "status": "done",
-    "text": "Alex OP · workshop candidate triaged; next session/date TBD"
+    "status": "closed",
+    "text": "Alex OP · candidate triage closed; no active next action"
    },
    {
-    "status": "done",
-    "text": "GEP MDs and APP · Jun 3 workshop · completed"
+    "status": "delivered",
+    "text": "GEP MDs and APP · Jun 3 workshop delivered"
    },
    {
-    "status": "waiting",
-    "text": "GEP Admins · Jul 9 · deck/prep in progress; add sponsor/details as planning firms up"
+    "status": "scheduled",
+    "text": "GEP Admins · Jul 9 scheduled; deck/prep details to firm up"
    },
    {
-    "status": "waiting",
-    "text": "NO MM workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "status": "scoping",
+    "text": "NO MM workshop candidate · scoping; add sponsor/date when planning firms up"
    },
    {
-    "status": "waiting",
-    "text": "Office of the COO workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "status": "scoping",
+    "text": "Office of the COO workshop candidate · scoping; add sponsor/date when planning firms up"
    },
    {
-    "status": "waiting",
-    "text": "Pediatric Operations workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "status": "scoping",
+    "text": "Pediatric Operations workshop candidate · scoping; add sponsor/date when planning firms up"
    },
    {
-    "status": "waiting",
-    "text": "Research Admin workshop candidate · Apr-Jul window · deck in progress; add sponsor/date when planning firms up"
+    "status": "scoping",
+    "text": "Research Admin workshop candidate · scoping; add sponsor/date when planning firms up"
    },
    {
-    "status": "open",
-    "text": "Pharmacy · 4-6 workshops in May / June"
+    "status": "designing",
+    "text": "Pharmacy · designing two 2-hour cohorts for Jun 16 and Jun 25"
    },
    {
-    "status": "waiting",
-    "text": "Business Strategy · Jun 4 lunch and learn completed; Aug 6 workshop waiting"
+    "status": "designing",
+    "text": "Business Strategy · Jun 4 lunch and learn delivered; Aug 6 full-day workshop designing"
    },
    {
-    "status": "open",
-    "text": "MCO workshop · schedule next meeting with Andy by Jun 12"
+    "status": "scoping",
+    "text": "MCO workshop · scoping; next meeting with Andy by Jun 12; workshop dated Jul 15"
    },
    {
-    "status": "waiting",
-    "text": "Org Summit · Jun 9-11 · tracked as milestone only; active work lives in Summer Retreat section"
+    "status": "scheduled",
+    "text": "Org Summit · Jun 9-11 scheduled; active work lives in Summer Retreat section"
    }
   ],
   "inflight": [
@@ -170,62 +170,62 @@
   {
    "name": "Alex OP",
    "date": "5/20",
-   "status": "done · triaged"
+   "status": "closed"
   },
   {
    "name": "GEP MDs and APP",
    "date": "6/3",
-   "status": "done"
+   "status": "delivered"
   },
   {
    "name": "Rams",
    "date": "6/3",
-   "status": "done · triaged"
+   "status": "follow-up"
   },
   {
    "name": "Business Strat LnL",
    "date": "6/4",
-   "status": "done"
+   "status": "delivered"
   },
   {
    "name": "ACO and PediOps",
    "date": "6/9",
-   "status": "open"
+   "status": "scheduled"
   },
   {
    "name": "Org Summit",
    "date": "6/10",
-   "status": "open"
+   "status": "scheduled"
   },
   {
    "name": "Pharmacy Cohort 2hr(a)",
    "date": "6/16",
-   "status": "open"
+   "status": "designing"
   },
   {
    "name": "Pharmacy Cohort 2hr(b)",
    "date": "6/25",
-   "status": "open"
+   "status": "designing"
   },
   {
    "name": "GEP Admins",
    "date": "7/9",
-   "status": "open"
+   "status": "scheduled"
   },
   {
    "name": "MCO workshop",
    "date": "7/15",
-   "status": "open"
+   "status": "scoping"
   },
   {
    "name": "Inpatient/Ancillary Services",
    "date": "7/22",
-   "status": "open"
+   "status": "scheduled"
   },
   {
    "name": "Business Strat Full Day",
    "date": "8/6",
-   "status": "in progress"
+   "status": "designing"
   }
  ],
  "retreatSteps": [
@@ -404,7 +404,7 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-06-04T20:29:30.163Z",
+ "lastUpdated": "2026-06-04T20:40:00Z",
  "archivedItems": [
   {
    "id": "arc-20260515-f490c923",
@@ -1088,8 +1088,8 @@
    "restoreStatus": "open"
   }
  ],
- "localUpdatedAt": "2026-06-04T20:29:30.163Z",
- "syncedFromLocalAt": "2026-06-04T20:29:30.163Z",
+ "localUpdatedAt": "2026-06-04T20:40:00Z",
+ "syncedFromLocalAt": "2026-06-04T20:40:00Z",
  "stagedChanges": [
   {
    "id": "stage-20260507-daily-persona-jumpstart-suite",
@@ -1119,5 +1119,5 @@
    "stagedAt": "2026-05-07T18:00:00-04:00"
   }
  ],
- "zSyncNote": "Synced from Gus latest local export at 2026-06-04T20:29:30.163Z; includes refined workshop tracker dates/statuses."
+ "zSyncNote": "Implemented workshop lifecycle stages: scoping, scheduled, designing, ready, delivered, follow-up, closed; updated tracker/list statuses and stage color support."
 }
