@@ -244,13 +244,13 @@
       "status": "in motion"
     },
     {
-      "date": "Jun 24",
-      "text": "Bravely Monthly Meeting · design feedback on prototype iteration",
-      "status": "prep needed"
+      "date": "Jun 15",
+      "text": "MCO Workshops",
+      "status": "upcoming"
     },
     {
       "date": "Aug 1",
-      "text": "Intro to AI and prompt coach (differentiated, +gov, and REACH intro and advanced prompting), pushed to repo",
+      "text": "Repo Rollout:\nIntro to AI and prompt coach (differentiated, +gov, and REACH intro and advanced prompting), pushed to repo",
       "status": "upcoming"
     }
   ],
@@ -384,8 +384,22 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-05T01:05:01.224Z",
+  "lastUpdated": "2026-06-05T01:48:45.497Z",
   "archivedItems": [
+    {
+      "id": "arc-1780624087392-ns48nv",
+      "kind": "milestone",
+      "list": null,
+      "label": "Milestones",
+      "text": "Bravely Monthly Meeting · design feedback on prototype iteration",
+      "item": {
+        "date": "Jun 24",
+        "text": "Bravely Monthly Meeting · design feedback on prototype iteration",
+        "status": "done"
+      },
+      "archivedAt": "2026-06-05T01:48:07.392Z",
+      "restoreStatus": "open"
+    },
     {
       "id": "arc-1780621435298-3wifou",
       "kind": "list",
@@ -1123,8 +1137,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-05T01:05:01.224Z",
-  "syncedFromLocalAt": "2026-06-05T01:05:01.224Z",
+  "localUpdatedAt": "2026-06-05T01:48:45.497Z",
+  "syncedFromLocalAt": "2026-06-05T01:48:45.497Z",
   "stagedChanges": [],
-  "zSyncNote": "Synced Gus June 5 dashboard export; normalized milestone statuses for milestone dropdown controls."
+  "zSyncNote": "Synced Gus local dashboard export from 2026-06-05T01:48:45.497Z; preserved UI polish/caret fixes; Bravely milestone archived; MCO and Repo Rollout milestones current."
 }
