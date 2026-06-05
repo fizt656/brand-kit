@@ -93,6 +93,7 @@ const Graph = {
         line.setAttribute('y1', node.y);
         line.setAttribute('x2', connNode.x);
         line.setAttribute('y2', connNode.y);
+        line.setAttribute('pathLength', '1');
 
         this.edgesGroup.appendChild(line);
       });
@@ -267,6 +268,31 @@ const Graph = {
     });
   },
 
+  // Orient an edge so draw animations radiate outward from the active node
+  orientEdgeFromNode(edge, sourceId) {
+    const fromId = edge.dataset.from;
+    const toId = edge.dataset.to;
+    const source = this.nodesMap[sourceId];
+    const targetId = sourceId === fromId ? toId : fromId;
+    const target = this.nodesMap[targetId];
+    if (!source || !target) return;
+
+    edge.setAttribute('x1', source.x);
+    edge.setAttribute('y1', source.y);
+    edge.setAttribute('x2', target.x);
+    edge.setAttribute('y2', target.y);
+  },
+
+  // Briefly draw the primary highlighted edge instead of snapping it on
+  radiateEdge(edge, sourceId) {
+    this.orientEdgeFromNode(edge, sourceId);
+    edge.classList.remove('radiating');
+    // Force style flush so repeated hover retriggers the animation.
+    edge.getBoundingClientRect();
+    edge.classList.add('radiating');
+    window.setTimeout(() => edge.classList.remove('radiating'), 430);
+  },
+
   // Highlight connected edges/nodes for lightweight exploration
   highlightConnections(nodeId, highlight = true) {
     const edges = document.querySelectorAll('.edge');
@@ -293,9 +319,10 @@ const Graph = {
       if (from === nodeId || to === nodeId) {
         if (highlight) {
           edge.classList.add('connected');
+          this.radiateEdge(edge, nodeId);
           this.edgesGroup.appendChild(edge);
         } else {
-          edge.classList.remove('connected');
+          edge.classList.remove('connected', 'radiating');
         }
       } else if (!highlight) {
         edge.classList.remove('connected');
@@ -334,10 +361,11 @@ const Graph = {
       const to = edge.dataset.to;
 
       if (!expandedNodeId) {
-        edge.classList.remove('connected', 'faded');
+        edge.classList.remove('connected', 'faded', 'radiating');
       } else if (from === expandedNodeId || to === expandedNodeId) {
         edge.classList.add('connected');
-        edge.classList.remove('faded');
+        edge.classList.remove('faded', 'radiating');
+        this.orientEdgeFromNode(edge, expandedNodeId);
         this.edgesGroup.appendChild(edge);
       } else {
         edge.classList.add('faded');

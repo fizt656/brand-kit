@@ -311,6 +311,12 @@ body {
   stroke-dashoffset: 0;
 }
 
+.edge.connected.radiating {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: edgeRadiate 360ms cubic-bezier(0.18, 0.72, 0.22, 1) forwards;
+}
+
 .edge.faded {
   opacity: 0.06;
 }
@@ -352,6 +358,11 @@ body {
   16% { opacity: 0.88; }
   72% { opacity: 0.56; }
   100% { opacity: 0; stroke-dashoffset: -0.18; }
+}
+
+@keyframes edgeRadiate {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
 }
 
 /* ================================
