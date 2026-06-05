@@ -221,20 +221,66 @@ body {
 }
 
 #graph-container {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 64px 12px 60px;
+  padding: 64px 12px 76px;
   min-height: 100vh;
   min-height: 100dvh;
+  overflow: hidden;
 }
 
 #graph-svg {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: auto;
   max-width: 1200px;
   aspect-ratio: 12 / 7;
+}
+
+#graph-container::before {
+  content: '';
+  position: absolute;
+  inset: 9vh 3vw 12vh;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.16;
+  background:
+    radial-gradient(circle at 18% 42%, rgba(94, 138, 158, 0.16) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 72% 26%, rgba(184, 149, 46, 0.14) 0 1px, transparent 1.6px),
+    radial-gradient(circle at 58% 72%, rgba(74, 66, 56, 0.10) 0 1px, transparent 1.5px),
+    linear-gradient(113deg, transparent 0 46%, rgba(94, 138, 158, 0.055) 46.2% 46.5%, transparent 46.8% 100%),
+    linear-gradient(32deg, transparent 0 58%, rgba(201, 169, 98, 0.055) 58.2% 58.5%, transparent 58.8% 100%);
+  background-size: 180px 130px, 230px 170px, 210px 150px, 100% 100%, 100% 100%;
+  mix-blend-mode: multiply;
+}
+
+.graph-hint {
+  position: absolute;
+  left: max(22px, calc((100vw - 1200px) / 2 + 22px));
+  bottom: 52px;
+  z-index: 2;
+  margin: 0;
+  max-width: min(420px, calc(100vw - 44px));
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+  text-transform: lowercase;
+  color: rgba(74, 66, 56, 0.58);
+}
+
+.graph-hint::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  margin-right: 8px;
+  vertical-align: middle;
+  background: rgba(201, 169, 98, 0.65);
 }
 
 /* ================================
@@ -275,8 +321,37 @@ body {
   animation: drawEdge 1s var(--ease-out) forwards;
 }
 
+.neural-pulse {
+  fill: none;
+  pointer-events: none;
+  stroke: var(--color-edge-active);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 0.16 0.84;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  filter: drop-shadow(0 0 3px rgba(201, 169, 98, 0.36));
+  animation: neuralPulse 760ms cubic-bezier(0.2, 0.72, 0.24, 1) forwards;
+  animation-delay: var(--pulse-delay, 0ms);
+}
+
+.neural-pulse.echo {
+  stroke-width: 1.15;
+  stroke: rgba(94, 138, 158, 0.78);
+  stroke-dasharray: 0.1 0.9;
+  filter: drop-shadow(0 0 2px rgba(94, 138, 158, 0.24));
+  animation-duration: 900ms;
+}
+
 @keyframes drawEdge {
   to { stroke-dashoffset: 0; }
+}
+
+@keyframes neuralPulse {
+  0% { opacity: 0; stroke-dashoffset: 1; }
+  16% { opacity: 0.88; }
+  72% { opacity: 0.56; }
+  100% { opacity: 0; stroke-dashoffset: -0.18; }
 }
 
 /* ================================
@@ -1137,6 +1212,22 @@ body {
    RESPONSIVE — PHONE
    ================================ */
 
+@media (max-width: 760px) {
+  #graph-container {
+    align-items: center;
+    padding-bottom: 96px;
+  }
+
+  .graph-hint {
+    left: 22px;
+    right: 22px;
+    bottom: 62px;
+    max-width: none;
+    font-size: 9.5px;
+    letter-spacing: 0.065em;
+  }
+}
+
 @media (max-width: 480px) {
   #graph-container {
     padding: 48px 2px 44px;
@@ -1212,6 +1303,10 @@ body {
     animation: none;
     stroke-dasharray: none;
     stroke-dashoffset: 0;
+  }
+
+  .neural-pulse {
+    display: none;
   }
 }
 

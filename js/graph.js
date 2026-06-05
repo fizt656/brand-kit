@@ -8,6 +8,7 @@ const Graph = {
   svg: null,
   edgesGroup: null,
   nodesGroup: null,
+  pulseGroup: null,
   viewBox: { width: 1200, height: 700 },
 
   // Initialize the graph
@@ -15,6 +16,7 @@ const Graph = {
     this.svg = document.getElementById('graph-svg');
     this.edgesGroup = document.getElementById('edges-group');
     this.nodesGroup = document.getElementById('nodes-group');
+    this.pulseGroup = document.getElementById('pulse-group');
 
     // Set viewBox for responsive scaling
     this.svg.setAttribute('viewBox', `0 0 ${this.viewBox.width} ${this.viewBox.height}`);
@@ -218,11 +220,61 @@ const Graph = {
       .filter(Boolean);
   },
 
+  // Clear transient neural hover pulses
+  clearPulseSignals() {
+    if (!this.pulseGroup) return;
+    this.pulseGroup.innerHTML = '';
+  },
+
+  // Draw a temporary animated signal between two nodes
+  drawPulseLine(fromNode, toNode, className = '', delayMs = 0) {
+    if (!this.pulseGroup || !fromNode || !toNode) return;
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('class', `neural-pulse${className ? ` ${className}` : ''}`);
+    line.setAttribute('x1', fromNode.x);
+    line.setAttribute('y1', fromNode.y);
+    line.setAttribute('x2', toNode.x);
+    line.setAttribute('y2', toNode.y);
+    line.setAttribute('pathLength', '1');
+    line.style.setProperty('--pulse-delay', `${delayMs}ms`);
+    this.pulseGroup.appendChild(line);
+
+    const lifeMs = 1200 + delayMs;
+    window.setTimeout(() => line.remove(), lifeMs);
+  },
+
+  // Send a soft signal from the hovered node, then a quieter second-order echo
+  emitNeuralPulse(nodeId) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    this.clearPulseSignals();
+    const source = this.nodesMap[nodeId];
+    if (!source) return;
+
+    const connectedIds = source.connections || [];
+    connectedIds.forEach((connId, idx) => {
+      const target = this.nodesMap[connId];
+      if (!target) return;
+      this.drawPulseLine(source, target, '', idx * 38);
+
+      const echoIds = (target.connections || [])
+        .filter(id => id !== nodeId && id !== source.id)
+        .slice(0, 3);
+      echoIds.forEach((echoId, echoIdx) => {
+        const echoTarget = this.nodesMap[echoId];
+        if (!echoTarget) return;
+        this.drawPulseLine(target, echoTarget, 'echo', 420 + idx * 38 + echoIdx * 42);
+      });
+    });
+  },
+
   // Highlight connected edges/nodes for lightweight exploration
   highlightConnections(nodeId, highlight = true) {
     const edges = document.querySelectorAll('.edge');
     const nodes = document.querySelectorAll('.node');
     const connectedIds = new Set(this.nodesMap[nodeId]?.connections || []);
+
+    if (highlight) this.emitNeuralPulse(nodeId);
+    else this.clearPulseSignals();
 
     nodes.forEach(node => {
       const id = node.dataset.id;
