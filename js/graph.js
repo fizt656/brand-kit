@@ -236,8 +236,12 @@ const Graph = {
       const to = edge.dataset.to;
 
       if (from === nodeId || to === nodeId) {
-        if (highlight) edge.classList.add('connected');
-        else edge.classList.remove('connected');
+        if (highlight) {
+          edge.classList.add('connected');
+          this.edgesGroup.appendChild(edge);
+        } else {
+          edge.classList.remove('connected');
+        }
       } else if (!highlight) {
         edge.classList.remove('connected');
       }
@@ -279,6 +283,7 @@ const Graph = {
       } else if (from === expandedNodeId || to === expandedNodeId) {
         edge.classList.add('connected');
         edge.classList.remove('faded');
+        this.edgesGroup.appendChild(edge);
       } else {
         edge.classList.add('faded');
         edge.classList.remove('connected');
