@@ -101,7 +101,8 @@ const Graph = {
   renderNodes() {
     this.nodes.forEach(node => {
       const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      group.setAttribute('class', `node hemisphere-${node.hemisphere}`);
+      const majorNodeIds = new Set(['ai-education', 'neuroscience', 'family', 'heritage', 'making', 'flow-state', 'center']);
+      group.setAttribute('class', `node hemisphere-${node.hemisphere}${majorNodeIds.has(node.id) ? ' node-major' : ''}`);
       group.setAttribute('id', `node-${node.id}`);
       group.setAttribute('data-id', node.id);
       group.setAttribute('tabindex', '0');
@@ -116,6 +117,16 @@ const Graph = {
       } else {
         // Base 5, +0.8 per connection, capped at 14
         radius = Math.min(5 + connCount * 0.8, 14);
+      }
+
+      // Center halo gives the map a subtle gravitational anchor
+      if (node.id === 'center') {
+        const halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        halo.setAttribute('class', 'center-halo');
+        halo.setAttribute('cx', node.x);
+        halo.setAttribute('cy', node.y);
+        halo.setAttribute('r', 22);
+        group.appendChild(halo);
       }
 
       // Circle element
@@ -205,20 +216,31 @@ const Graph = {
       .filter(Boolean);
   },
 
-  // Highlight connected edges
+  // Highlight connected edges/nodes for lightweight exploration
   highlightConnections(nodeId, highlight = true) {
     const edges = document.querySelectorAll('.edge');
+    const nodes = document.querySelectorAll('.node');
+    const connectedIds = new Set(this.nodesMap[nodeId]?.connections || []);
+
+    nodes.forEach(node => {
+      const id = node.dataset.id;
+      node.classList.remove('hover-source', 'hover-connected', 'hover-faded');
+
+      if (!highlight) return;
+      if (id === nodeId) node.classList.add('hover-source');
+      else if (connectedIds.has(id)) node.classList.add('hover-connected');
+      else node.classList.add('hover-faded');
+    });
 
     edges.forEach(edge => {
       const from = edge.dataset.from;
       const to = edge.dataset.to;
 
       if (from === nodeId || to === nodeId) {
-        if (highlight) {
-          edge.classList.add('connected');
-        } else {
-          edge.classList.remove('connected');
-        }
+        if (highlight) edge.classList.add('connected');
+        else edge.classList.remove('connected');
+      } else if (!highlight) {
+        edge.classList.remove('connected');
       }
     });
   },
@@ -233,6 +255,7 @@ const Graph = {
 
     nodes.forEach(node => {
       const id = node.dataset.id;
+      node.classList.remove('hover-source', 'hover-connected', 'hover-faded');
 
       if (!expandedNodeId) {
         node.classList.remove('faded', 'expanded', 'active');

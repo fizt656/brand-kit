@@ -258,12 +258,13 @@ body {
 
 .edge.connected {
   stroke: var(--color-edge-active);
-  stroke-width: 1.5;
-  opacity: 0.7;
+  stroke-width: 1.6;
+  opacity: 0.82;
+  filter: drop-shadow(0 0 2px rgba(201, 169, 98, 0.32));
 }
 
 .edge.faded {
-  opacity: 0.08;
+  opacity: 0.06;
 }
 
 .edge.drawing {
@@ -283,7 +284,9 @@ body {
 .node {
   cursor: pointer;
   opacity: 0;
-  transition: opacity var(--transition-medium);
+  transition:
+    opacity var(--transition-medium),
+    filter var(--transition-fast);
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -292,21 +295,57 @@ body {
 }
 
 .node.faded {
-  opacity: 0.12;
+  opacity: 0.13;
   pointer-events: none;
+}
+
+.node.hover-faded {
+  opacity: 0.28;
+}
+
+.node.hover-connected,
+.node.hover-source {
+  opacity: 1;
 }
 
 .node-circle {
   transition:
     r var(--transition-fast),
     fill var(--transition-fast),
-    filter var(--transition-fast);
+    filter var(--transition-fast),
+    stroke var(--transition-fast),
+    stroke-width var(--transition-fast);
   stroke: none;
 }
 
+.center-halo {
+  fill: none;
+  stroke: rgba(201, 169, 98, 0.28);
+  stroke-width: 1;
+  opacity: 0.72;
+  pointer-events: none;
+  transition:
+    r var(--transition-fast),
+    opacity var(--transition-fast),
+    stroke var(--transition-fast);
+}
+
+.node#node-center:hover .center-halo,
+.node#node-center.active .center-halo,
+.node#node-center.hover-source .center-halo {
+  r: 25;
+  opacity: 0.95;
+  stroke: rgba(201, 169, 98, 0.48);
+}
+
 .node:hover .node-circle,
-.node.active .node-circle {
+.node.active .node-circle,
+.node.hover-source .node-circle {
   r: 10;
+}
+
+.node.hover-connected .node-circle {
+  r: 8.5;
 }
 
 .node#node-center:hover .node-circle,
@@ -320,9 +359,11 @@ body {
 }
 
 .node.hemisphere-left:hover .node-circle,
-.node.hemisphere-left.active .node-circle {
+.node.hemisphere-left.active .node-circle,
+.node.hemisphere-left.hover-source .node-circle,
+.node.hemisphere-left.hover-connected .node-circle {
   fill: var(--color-left-hover);
-  filter: drop-shadow(0 0 6px rgba(94, 138, 158, 0.4));
+  filter: drop-shadow(0 0 7px rgba(94, 138, 158, 0.42));
 }
 
 /* Right hemisphere — gold/copper */
@@ -331,9 +372,11 @@ body {
 }
 
 .node.hemisphere-right:hover .node-circle,
-.node.hemisphere-right.active .node-circle {
+.node.hemisphere-right.active .node-circle,
+.node.hemisphere-right.hover-source .node-circle,
+.node.hemisphere-right.hover-connected .node-circle {
   fill: var(--color-right-hover);
-  filter: drop-shadow(0 0 6px rgba(184, 149, 46, 0.4));
+  filter: drop-shadow(0 0 7px rgba(184, 149, 46, 0.42));
 }
 
 /* Center — warm charcoal */
@@ -342,9 +385,11 @@ body {
 }
 
 .node.hemisphere-center:hover .node-circle,
-.node.hemisphere-center.active .node-circle {
+.node.hemisphere-center.active .node-circle,
+.node.hemisphere-center.hover-source .node-circle,
+.node.hemisphere-center.hover-connected .node-circle {
   fill: var(--color-center-hover);
-  filter: drop-shadow(0 0 6px rgba(74, 66, 56, 0.3));
+  filter: drop-shadow(0 0 7px rgba(74, 66, 56, 0.32));
 }
 
 /* ================================
@@ -368,13 +413,32 @@ body {
 
 .node:hover .node-label,
 .node.active .node-label,
+.node.hover-source .node-label,
+.node.hover-connected .node-label,
 .node-label.visible {
   opacity: 1;
 }
 
+.node.node-major .node-label.visible {
+  opacity: 0.96;
+}
+
 .node:hover .node-label,
-.node.active .node-label {
+.node.active .node-label,
+.node.hover-source .node-label,
+.node.hover-connected .node-label {
   fill: var(--color-text);
+}
+
+.node.node-major .node-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.105em;
+  fill: var(--color-text);
+}
+
+.node.hover-faded .node-label.visible {
+  opacity: 0.34;
 }
 
 .node.faded .node-label {
