@@ -172,6 +172,9 @@ const Graph = {
     edges.forEach((edge, i) => {
       setTimeout(() => {
         edge.classList.add('visible', 'drawing');
+        setTimeout(() => {
+          edge.classList.remove('drawing');
+        }, 1100);
       }, 400 + i * 30);
     });
 
