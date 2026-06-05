@@ -202,12 +202,16 @@
     td[contenteditable="true"]:focus { border-color: var(--gold); background:#fffdfa; }
     .section-meta { margin-top:10px; display:flex; justify-content:space-between; gap:10px; align-items:center; }
     .schedule-list, .milestone-list { display:grid; gap:8px; }
-    .sched-row, .mile-row {
+    .sched-row {
       display:grid; grid-template-columns: 88px 1fr; gap:10px; align-items:start;
     }
+    .mile-row {
+      display:grid; grid-template-columns: 76px minmax(0,1fr) 132px auto; gap:9px; align-items:start;
+      padding:8px 9px; border:1px solid #efe6d2; border-radius:12px; background:#fffdfa;
+    }
     .sched-time, .mile-date { font-family:"JetBrains Mono",monospace; font-size:12px; color:#6f644f; padding-top:7px; }
-    .mile-row { grid-template-columns: 92px 1fr 92px; }
-    .mile-status { min-width: 86px; }
+    .mile-row .text-edit { line-height:1.35; padding-top:4px; }
+    .mile-status { min-width: 124px; width:100%; }
     .support-card { min-height: 180px; }
     .retreat-section { margin-top:18px; }
     .retreat-section .card { background:var(--card); border:1px solid var(--gold); border-radius:14px; padding:18px; box-shadow: 0 1px 4px rgba(201,169,98,.08); }
@@ -227,6 +231,10 @@
     .mini-pill { font-size:10px; padding:3px 7px; border-radius:999px; background:#f8f2e5; border:1px solid var(--line); color:#7a6a53; }
     .focus-big { font-family:"Playfair Display",serif; font-size:26px; line-height:1.05; margin:0 0 10px; }
     .command-schedule .sched-row { grid-template-columns:72px 1fr; }
+    .status-upcoming { background:#f7efe0; border-color:#e4cfa8; color:#755f33; }
+    .status-prep-needed { background:#fff2c8; border-color:#dfb94e; color:#765414; }
+    .status-in-motion { background:#e4f0ff; border-color:#9bbce8; color:#285d95; }
+    .status-at-risk { background:#ffe1d7; border-color:#e8937c; color:#943b25; }
     .board-shell.hidden, .retreat-section.hidden { display:none; }
     @media (max-width: 1100px) {
       .layout { grid-template-columns:1fr; }
@@ -527,6 +535,7 @@
     const DATA_URL = './dashboard-data.json';
     const STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed','open','in progress','waiting','done'];
     const WORKSHOP_STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed'];
+    const MILESTONE_STATUS_OPTIONS = ['upcoming','prep needed','in motion','at risk','ready','done'];
     const CORE_LISTS = ['workshops','admin','strategy','persona','cop','articleIdeas'];
     const LIST_LABELS = { workshops:'Workshops', admin:'Admin', strategy:'Strategy', persona:'Persona', cop:'CoP', articleIdeas:'Article Ideas' };
 
@@ -676,6 +685,10 @@
 
     function pillClass(v){
       const val = (v || 'open').toLowerCase();
+      if (val.includes('prep')) return 'status-prep-needed';
+      if (val.includes('motion')) return 'status-in-motion';
+      if (val.includes('risk')) return 'status-at-risk';
+      if (val.includes('upcoming')) return 'status-upcoming';
       if (val.includes('follow')) return 'status-follow-up';
       if (val.includes('scoping')) return 'status-scoping';
       if (val.includes('scheduled')) return 'status-scheduled';
@@ -696,6 +709,15 @@
       if (val === 'waiting') return 'waiting';
       if (val === 'done') return 'done';
       return 'open';
+    }
+    function normalizeMilestoneStatus(v){
+      const val = (v || '').trim().toLowerCase().replace(/[–—_-]/g, ' ').replace(/\s+/g, ' ');
+      if (['prep','prep needed','needs prep','waiting'].includes(val)) return 'prep needed';
+      if (['in motion','active','in progress','progress'].includes(val)) return 'in motion';
+      if (['at risk','risk','blocked'].includes(val)) return 'at risk';
+      if (['ready'].includes(val)) return 'ready';
+      if (['done','closed','complete','completed'].includes(val)) return 'done';
+      return 'upcoming';
     }
     function isArchivableStatus(v){
       const val = normalizeStatus(v);
@@ -865,7 +887,7 @@
       row.innerHTML = `
         <div class="mile-date mini-edit" contenteditable="true" data-role="mile-date" data-idx="${idx}">${item.date || ''}</div>
         <div class="text-edit" contenteditable="true" data-role="mile-text" data-idx="${idx}">${item.text || ''}</div>
-        <div class="pill ${pillClass(item.status)} pill-edit mile-status" contenteditable="true" data-role="mile-status" data-idx="${idx}">${item.status || 'open'}</div>${isArchivableStatus(item.status) ? `<button class="archive-inline" data-role="archive-mile" data-idx="${idx}">Archive</button>` : ''}
+        <div>${milestoneStatusSelect(item.status, idx)}</div>${normalizeMilestoneStatus(item.status) === 'done' ? `<button class="archive-inline" data-role="archive-mile" data-idx="${idx}">Archive</button>` : ''}
       `;
       return row;
     }
@@ -1361,10 +1383,31 @@
       });
     }
 
+    function milestoneDateKey(item){
+      const dt = parseCommandDate(item?.date, 2026);
+      return dt ? commandDateKey(dt) : '9999-99-99';
+    }
+
+    function sortMilestones(data){
+      data.milestones = data.milestones || [];
+      data.milestones.sort((a,b) => {
+        const ad = milestoneDateKey(a);
+        const bd = milestoneDateKey(b);
+        if (ad !== bd) return ad.localeCompare(bd);
+        return String(a.text || '').localeCompare(String(b.text || ''));
+      });
+    }
+
     function workshopStatusSelect(status, idx){
       const current = normalizeStatus(status || 'scoping');
       const options = WORKSHOP_STATUS_OPTIONS.map(opt => `<option value="${opt}"${opt === current ? ' selected' : ''}>${opt}</option>`).join('');
       return `<select data-role="workshop-status-select" data-idx="${idx}" class="pill status-select ${pillClass(current)}" title="Workshop stage">${options}</select>`;
+    }
+
+    function milestoneStatusSelect(status, idx){
+      const current = normalizeMilestoneStatus(status || 'upcoming');
+      const options = MILESTONE_STATUS_OPTIONS.map(opt => `<option value="${opt}"${opt === current ? ' selected' : ''}>${opt}</option>`).join('');
+      return `<select data-role="milestone-status-select" data-idx="${idx}" class="pill status-select mile-status ${pillClass(current)}" title="Milestone status">${options}</select>`;
     }
 
     function commandPrettyDate(dt){
@@ -1635,6 +1678,7 @@
         tbody.appendChild(tr);
       });
 
+      sortMilestones(data);
       const milestoneList = document.getElementById('milestoneList');
       milestoneList.innerHTML = '';
       (data.milestones || []).forEach((m, idx) => milestoneList.appendChild(milestoneRow(m, idx)));
@@ -1683,15 +1727,12 @@
             }
             render(data); saveLocal(data); return;
           }
-          if (role === 'mile-date') data.milestones[idx].date = txt;
-          if (role === 'mile-text') data.milestones[idx].text = txt;
-          if (role === 'mile-status') {
-            data.milestones[idx].status = normalizeStatus(txt);
-            if (data.milestones[idx].status === 'done') {
-              archiveBoardRef({ kind:'milestone', idx, item: data.milestones[idx] }, data);
-            }
+          if (role === 'mile-date') {
+            data.milestones[idx].date = txt;
+            sortMilestones(data);
             render(data); saveLocal(data); return;
           }
+          if (role === 'mile-text') data.milestones[idx].text = txt;
           if (role === 'retreat-status') {
             data.retreatSteps[idx].status = normalizeStatus(txt);
             if (data.retreatSteps[idx].status === 'done') {
@@ -1708,6 +1749,14 @@
         sel.onchange = () => {
           const idx = Number(sel.dataset.idx);
           if (data.workshopTracker?.[idx]) data.workshopTracker[idx].status = normalizeStatus(sel.value);
+          render(data); saveLocal(data);
+        };
+      });
+
+      document.querySelectorAll('[data-role="milestone-status-select"]').forEach(sel => {
+        sel.onchange = () => {
+          const idx = Number(sel.dataset.idx);
+          if (data.milestones?.[idx]) data.milestones[idx].status = normalizeMilestoneStatus(sel.value);
           render(data); saveLocal(data);
         };
       });
@@ -1754,7 +1803,8 @@
       };
       document.getElementById('addMilestone').onclick = () => {
         data.milestones = data.milestones || [];
-        data.milestones.push({ date:'', text:'', status:'open' });
+        data.milestones.push({ date:'', text:'', status:'upcoming' });
+        sortMilestones(data);
         render(data); saveLocal(data);
       };
       document.getElementById('addRetreatStep').onclick = () => {
