@@ -101,8 +101,7 @@ const Graph = {
   renderNodes() {
     this.nodes.forEach(node => {
       const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-      const majorNodeIds = new Set(['ai-education', 'neuroscience', 'family', 'heritage', 'making', 'flow-state', 'center']);
-      group.setAttribute('class', `node hemisphere-${node.hemisphere}${majorNodeIds.has(node.id) ? ' node-major' : ''}`);
+      group.setAttribute('class', `node hemisphere-${node.hemisphere}`);
       group.setAttribute('id', `node-${node.id}`);
       group.setAttribute('data-id', node.id);
       group.setAttribute('tabindex', '0');

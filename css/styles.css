@@ -419,9 +419,6 @@ body {
   opacity: 1;
 }
 
-.node.node-major .node-label.visible {
-  opacity: 0.96;
-}
 
 .node:hover .node-label,
 .node.active .node-label,
@@ -430,16 +427,7 @@ body {
   fill: var(--color-text);
 }
 
-.node.node-major .node-label {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.105em;
-  fill: var(--color-text);
-}
 
-.node.hover-faded .node-label.visible {
-  opacity: 0.34;
-}
 
 .node.faded .node-label {
   opacity: 0 !important;
