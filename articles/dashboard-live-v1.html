@@ -532,7 +532,7 @@
     // ============================================
     const STORAGE_KEY = 'dashboard_live_v1_local_v4';
     const SYNC_KEY = 'dashboard_live_v1_sync_v1';
-    const DATA_URL = './dashboard-data.json';
+    const DATA_URL = `./dashboard-data.json?v=${Date.now()}`;
     const STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed','open','in progress','waiting','done'];
     const WORKSHOP_STATUS_OPTIONS = ['scoping','scheduled','designing','ready','delivered','follow-up','closed'];
     const MILESTONE_STATUS_OPTIONS = ['upcoming','prep needed','in motion','at risk','ready','done'];
