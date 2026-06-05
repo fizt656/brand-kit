@@ -261,26 +261,36 @@ body {
 .graph-hint {
   position: absolute;
   left: max(22px, calc((100vw - 1200px) / 2 + 22px));
-  bottom: 52px;
+  top: 86px;
   z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
   margin: 0;
-  max-width: min(420px, calc(100vw - 44px));
+  max-width: min(520px, calc(100vw - 44px));
+  padding: 9px 13px 9px 12px;
+  border: 1px solid rgba(201, 169, 98, 0.36);
+  border-radius: 999px;
+  background: rgba(250, 248, 243, 0.86);
+  box-shadow: 0 8px 28px rgba(74, 66, 56, 0.045);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   font-family: var(--font-mono);
-  font-size: 10px;
-  line-height: 1.5;
-  letter-spacing: 0.08em;
+  font-size: 11px;
+  line-height: 1.35;
+  letter-spacing: 0.075em;
   text-transform: lowercase;
-  color: rgba(74, 66, 56, 0.58);
+  color: rgba(74, 66, 56, 0.76);
 }
 
 .graph-hint::before {
   content: '';
-  display: inline-block;
-  width: 18px;
-  height: 1px;
-  margin-right: 8px;
-  vertical-align: middle;
-  background: rgba(201, 169, 98, 0.65);
+  flex: 0 0 auto;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(201, 169, 98, 0.82);
+  box-shadow: 0 0 0 4px rgba(201, 169, 98, 0.12);
 }
 
 /* ================================
@@ -1234,22 +1244,27 @@ body {
 @media (max-width: 760px) {
   #graph-container {
     align-items: center;
-    padding-bottom: 96px;
+    padding-top: 92px;
+    padding-bottom: 76px;
   }
 
   .graph-hint {
-    left: 22px;
-    right: 22px;
-    bottom: 62px;
+    top: 70px;
+    left: 18px;
+    right: 18px;
     max-width: none;
-    font-size: 9.5px;
-    letter-spacing: 0.065em;
+    justify-content: center;
+    padding: 8px 11px;
+    font-size: 9.8px;
+    letter-spacing: 0.058em;
+    white-space: normal;
+    text-align: center;
   }
 }
 
 @media (max-width: 480px) {
   #graph-container {
-    padding: 48px 2px 44px;
+    padding: 92px 2px 56px;
   }
 
   #content-title {
