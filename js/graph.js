@@ -244,7 +244,7 @@ const Graph = {
     window.setTimeout(() => line.remove(), lifeMs);
   },
 
-  // Send a soft signal from the hovered node, then a quieter second-order echo
+  // Send a soft signal from the hovered node, then quieter second/third-order echoes
   emitNeuralPulse(nodeId) {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     this.clearPulseSignals();
@@ -252,6 +252,9 @@ const Graph = {
     if (!source) return;
 
     const connectedIds = source.connections || [];
+    let whisperCount = 0;
+    const whisperLimit = 14;
+
     connectedIds.forEach((connId, idx) => {
       const target = this.nodesMap[connId];
       if (!target) return;
@@ -264,6 +267,14 @@ const Graph = {
         const echoTarget = this.nodesMap[echoId];
         if (!echoTarget) return;
         this.drawPulseLine(target, echoTarget, 'echo', 420 + idx * 38 + echoIdx * 42);
+
+        if (whisperCount >= whisperLimit) return;
+        const whisperId = (echoTarget.connections || [])
+          .find(id => id !== nodeId && id !== source.id && id !== target.id && id !== echoTarget.id);
+        const whisperTarget = this.nodesMap[whisperId];
+        if (!whisperTarget) return;
+        this.drawPulseLine(echoTarget, whisperTarget, 'whisper', 760 + idx * 38 + echoIdx * 48 + whisperCount * 18);
+        whisperCount += 1;
       });
     });
   },

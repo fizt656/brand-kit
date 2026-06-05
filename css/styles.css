@@ -349,6 +349,14 @@ body {
   animation-duration: 900ms;
 }
 
+.neural-pulse.whisper {
+  stroke-width: 0.8;
+  stroke: rgba(116, 101, 82, 0.42);
+  stroke-dasharray: 0.075 0.925;
+  filter: none;
+  animation-duration: 1060ms;
+}
+
 @keyframes drawEdge {
   to { stroke-dashoffset: 0; }
 }
