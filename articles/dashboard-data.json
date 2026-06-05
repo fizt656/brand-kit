@@ -127,35 +127,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-04",
+  "scheduleDate": "2026-06-05",
   "schedule": [
     {
       "time": "9:00 AM-9:30 AM",
-      "text": "I&A <> Genetics: AI Solutions for PDF to Progeny TSV"
+      "text": "resolve meeting conflict w HR (Jordan represent?)"
     },
     {
-      "time": "9:30 AM-11:00 AM",
-      "text": "Biz Strategy + Summit prep"
+      "time": "10:00 AM-10:30 AM",
+      "text": "Emily <> Gus"
     },
     {
-      "time": "11:00 AM-11:30 AM",
-      "text": "Workshop Review: GitHub Copilot Session #1"
+      "time": "11:00 AM-12:00 PM",
+      "text": "Talent Strategy Refresh and Prep"
     },
     {
-      "time": "11:30 AM-12:00 PM",
-      "text": "Manny <> Gus OE Sync"
+      "time": "1:00 PM-1:45 PM",
+      "text": "AI talent strategy and AI's impact on DFCI's workforce"
     },
     {
-      "time": "12:00 PM-1:00 PM",
-      "text": "Business Strategy Lunch and Learn:  Gen AI Refresher & Updates"
+      "time": "1:30 PM-2:00 PM",
+      "text": "BS + ED&A Planning Sessions for GenAI Training"
     },
     {
-      "time": "2:00 PM-3:00 PM",
-      "text": "Impact map + admin cleanup"
+      "time": "2:00 PM-4:00 PM",
+      "text": "Pharmacy Workshop HOLD"
     },
     {
-      "time": "3:00 PM-4:30 PM",
-      "text": "Bravely next steps"
+      "time": "4:00 PM-5:00 PM",
+      "text": "Dashboard + next-week control table"
     }
   ],
   "workshopTracker": [
@@ -384,7 +384,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-05T01:48:45.497Z",
+  "lastUpdated": "2026-06-05T11:00:51.549Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
