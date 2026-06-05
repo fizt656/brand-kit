@@ -9,14 +9,14 @@
       "connections": [
         "flow-state",
         "family",
-        "new-node",
+        "swimming",
         "sparks",
         "heritage",
         "neuroscience",
         "neurace",
         "metal-guitar",
         "morning-ritual",
-        "new-node-1",
+        "squiggy",
         "ai-roleplay",
         "gym",
         "watch"
@@ -125,11 +125,11 @@
         "code",
         "gym",
         "family",
-        "new-node",
+        "swimming",
         "sparks",
         "metal-guitar",
         "morning-ritual",
-        "new-node-1",
+        "squiggy",
         "f1",
         "ai-education",
         "watch"
@@ -154,9 +154,9 @@
         "gym",
         "morning-ritual",
         "metal-guitar",
-        "new-node",
+        "swimming",
         "f1",
-        "new-node-1",
+        "squiggy",
         "watch"
       ],
       "content": {
@@ -249,7 +249,7 @@
         "heritage",
         "code",
         "neuroscience",
-        "new-node-1",
+        "squiggy",
         "f1",
         "ai-education",
         "watch"
@@ -269,7 +269,7 @@
       "connections": [
         "making",
         "sparks",
-        "new-node-1"
+        "squiggy"
       ],
       "content": {
         "title": "DJing",
@@ -286,7 +286,7 @@
       "connections": [
         "making",
         "sparks",
-        "new-node-1"
+        "squiggy"
       ],
       "content": {
         "title": "Sunday Kitchen Club",
@@ -302,12 +302,12 @@
       "y": 75,
       "connections": [
         "family",
-        "new-node",
+        "swimming",
         "sparks",
         "making",
         "morning-ritual",
         "center",
-        "new-node-1",
+        "squiggy",
         "watch"
       ],
       "content": {
@@ -329,11 +329,11 @@
         "making",
         "kitchen",
         "djing",
-        "new-node",
+        "swimming",
         "morning-ritual",
         "heritage",
         "gym",
-        "new-node-1",
+        "squiggy",
         "watch"
       ],
       "content": {
@@ -375,11 +375,11 @@
       "connections": [
         "flow-state",
         "family",
-        "new-node",
+        "swimming",
         "neurace",
         "morning-ritual",
         "sparks",
-        "new-node-1",
+        "squiggy",
         "center"
       ],
       "content": {
@@ -477,12 +477,12 @@
         "family",
         "sparks",
         "making",
-        "new-node",
+        "swimming",
         "heritage",
         "center",
         "flow-state",
         "gym",
-        "new-node-1",
+        "squiggy",
         "f1"
       ],
       "content": {
@@ -492,7 +492,7 @@
       }
     },
     {
-      "id": "new-node",
+      "id": "swimming",
       "label": "Swimming",
       "hemisphere": "right",
       "x": 80,
@@ -505,16 +505,16 @@
         "gym",
         "morning-ritual",
         "sparks",
-        "new-node-1"
+        "squiggy"
       ],
       "content": {
-        "title": "New Node",
-        "body": "",
+        "title": "Swimming",
+        "body": "Maz and Baz took us swimming in the wavy ocean almost every day, so the water became a kind of teacher. You learned to read the current, soften when a wave hit, find your breath again, and keep going. It was play, but it was also adaptation, survival, and persistence woven into the body. A rhythm you still return to when life gets rough.",
         "image": null
       }
     },
     {
-      "id": "new-node-1",
+      "id": "squiggy",
       "label": "Squiggy",
       "hemisphere": "right",
       "x": 85,
@@ -527,7 +527,7 @@
         "kitchen",
         "heritage",
         "sparks",
-        "new-node",
+        "swimming",
         "morning-ritual",
         "djing",
         "gym"
