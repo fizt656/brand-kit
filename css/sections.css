@@ -31,10 +31,12 @@
 }
 
 .section-hero .section-subtitle {
-  font-size: 1rem;
-  line-height: 1.7;
+  font-family: var(--font-interface);
+  font-size: 0.86rem;
+  line-height: 1.85;
+  letter-spacing: 0.018em;
   color: var(--color-text-muted);
-  max-width: 560px;
+  max-width: 620px;
   margin: 0 auto;
 }
 
@@ -57,7 +59,7 @@
 
 /* Kicker labels */
 .section-kicker {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -108,7 +110,7 @@
 .section-card a {
   color: var(--color-right);
   text-decoration: none;
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.62rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -122,7 +124,7 @@
 /* Status tags */
 .status-tag {
   display: inline-block;
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -165,7 +167,7 @@
 }
 
 .creative-matrix th {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.6rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -214,7 +216,7 @@
 }
 
 .view-all-btn {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.58rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -329,7 +331,7 @@
 
 .talk-meta,
 .press-meta {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.62rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -338,7 +340,7 @@
 
 .talk-date,
 .press-date {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--color-text-muted);
@@ -378,7 +380,7 @@
 }
 
 .conf-item .conf-date {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.6rem;
   letter-spacing: 0.1em;
   color: var(--color-text-muted);
@@ -404,7 +406,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -448,7 +450,7 @@
 
 .form-group label {
   display: block;
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.6rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -492,7 +494,7 @@
 }
 
 .form-submit {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -532,7 +534,7 @@
 }
 
 .section-footer .social-links a {
-  font-family: var(--font-mono);
+  font-family: var(--font-interface);
   font-size: 0.68rem;
   letter-spacing: 0.12em;
   text-transform: uppercase;
