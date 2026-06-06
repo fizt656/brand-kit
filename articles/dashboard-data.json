@@ -180,13 +180,13 @@
       "status": "designing"
     },
     {
-      "name": "Pharmacy Cohort 2hr(a)",
-      "date": "6/16",
+      "name": "ACO and PediOps",
+      "date": "6/24",
       "status": "designing"
     },
     {
-      "name": "ACO and PediOps",
-      "date": "6/24",
+      "name": "Pharmacy Cohort 2hr(a)",
+      "date": "6/25",
       "status": "designing"
     },
     {
@@ -208,6 +208,11 @@
       "name": "Inpatient/Ancillary Services",
       "date": "7/22",
       "status": "scheduled"
+    },
+    {
+      "name": "Business Ops",
+      "date": "8/4",
+      "status": "scoping"
     },
     {
       "name": "Business Strat Full Day",
@@ -244,13 +249,23 @@
       "status": "in motion"
     },
     {
-      "date": "Jun 15",
+      "date": "Jun 23",
+      "text": "Bravely Presentation >> differentiating impact for different stakeholders >> Cleo >> ASD >> JFC Peds, and design cycle process.",
+      "status": "prep needed"
+    },
+    {
+      "date": "Jul 15",
       "text": "MCO Workshops",
       "status": "upcoming"
     },
     {
       "date": "Aug 1",
       "text": "Repo Rollout:\nIntro to AI and prompt coach (differentiated, +gov, and REACH intro and advanced prompting), pushed to repo",
+      "status": "upcoming"
+    },
+    {
+      "date": "",
+      "text": "",
       "status": "upcoming"
     }
   ],
@@ -274,13 +289,13 @@
       "area": "Summer Retreat",
       "dueLabel": "Jun 4",
       "sortKey": "2026-06-04",
-      "done": false
+      "done": true
     },
     {
       "text": "Bravely: refactor current materials/approach",
       "area": "Bravely",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 28",
+      "sortKey": "2026-06-28",
       "done": false
     },
     {
@@ -293,22 +308,22 @@
     {
       "text": "Update Smartsheet with project progress and impact mapping",
       "area": "Admin / Strategy",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 10",
+      "sortKey": "2026-06-10",
       "done": false
     },
     {
       "text": "Get HR clarity on tutorial videos: what is possible/allowed so work can be divided/conquered",
       "area": "Content / HR",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 20",
+      "sortKey": "2026-06-20",
       "done": false
     },
     {
       "text": "Example video and framework for quick-hit social media style tips videos",
       "area": "Content",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 26",
+      "sortKey": "2026-06-26",
       "done": false
     },
     {
@@ -320,8 +335,8 @@
     },
     {
       "text": "start a file /  list of things to procure/buy/hire re: Brent's request (September is cutoff)",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 25",
+      "sortKey": "2026-06-25",
       "done": false
     },
     {
@@ -334,8 +349,8 @@
     {
       "text": "Bravely: connect with Charlotta about bringing in tech people and MDs for next design-feedback phase (email follow up)",
       "area": "Bravely",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
+      "dueLabel": "Jun 10",
+      "sortKey": "2026-06-10",
       "done": false
     },
     {
@@ -381,10 +396,16 @@
       "dueLabel": "Jun 18",
       "sortKey": "2026-06-18",
       "done": false
+    },
+    {
+      "text": "Read Dan's doc SAE champions",
+      "dueLabel": "Jun 8",
+      "sortKey": "2026-06-08",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-05T11:00:51.549Z",
+  "lastUpdated": "2026-06-06T02:23:38.998Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1137,8 +1158,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-05T01:48:45.497Z",
-  "syncedFromLocalAt": "2026-06-05T01:48:45.497Z",
+  "localUpdatedAt": "2026-06-06T02:23:38.998Z",
+  "syncedFromLocalAt": "2026-06-06T02:23:38.998Z",
   "stagedChanges": [],
-  "zSyncNote": "Synced Gus local dashboard export from 2026-06-05T01:48:45.497Z; preserved UI polish/caret fixes; Bravely milestone archived; MCO and Repo Rollout milestones current."
+  "zSyncNote": "Synced Gus local dashboard export from 2026-06-06T02:23:38.998Z; treated export as authoritative and preserved local edits/archive state."
 }
