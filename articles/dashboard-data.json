@@ -127,35 +127,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-05",
+  "scheduleDate": "2026-06-08",
   "schedule": [
     {
+      "time": "9:00 AM-9:45 AM",
+      "text": "Rival<>AI Education Kick-Off"
+    },
+    {
       "time": "9:00 AM-9:30 AM",
-      "text": "resolve meeting conflict w HR (Jordan represent?)"
+      "text": "week pre-reads, priority chart"
     },
     {
-      "time": "10:00 AM-10:30 AM",
-      "text": "Emily <> Gus"
+      "time": "9:30 AM-10:30 AM",
+      "text": "Presentation | Hamis Chaudry | Sr. Analyst Supporting Business Strategy"
     },
     {
-      "time": "11:00 AM-12:00 PM",
-      "text": "Talent Strategy Refresh and Prep"
+      "time": "10:30 AM-12:00 PM",
+      "text": "Pharmacy Cohort Content, MCO, and Bravely Labs / Katie connect"
     },
     {
-      "time": "1:00 PM-1:45 PM",
-      "text": "AI talent strategy and AI's impact on DFCI's workforce"
+      "time": "12:00 PM-1:00 PM",
+      "text": "Mariam<>Gus pt II"
     },
     {
-      "time": "1:30 PM-2:00 PM",
-      "text": "BS + ED&A Planning Sessions for GenAI Training"
+      "time": "2:00 PM-2:30 PM",
+      "text": "SmartRx Scoping and Planning"
     },
     {
-      "time": "2:00 PM-4:00 PM",
-      "text": "Pharmacy Workshop HOLD"
-    },
-    {
-      "time": "4:00 PM-5:00 PM",
-      "text": "Dashboard + next-week control table"
+      "time": "2:45 PM-3:45 PM",
+      "text": "HOLD"
     }
   ],
   "workshopTracker": [
@@ -405,7 +405,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-06T02:23:38.998Z",
+  "lastUpdated": "2026-06-08T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1158,8 +1158,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-06T02:23:38.998Z",
-  "syncedFromLocalAt": "2026-06-06T02:23:38.998Z",
+  "localUpdatedAt": "2026-06-08T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-06-08T07:00:00-04:00",
   "stagedChanges": [],
-  "zSyncNote": "Synced Gus local dashboard export from 2026-06-06T02:23:38.998Z; treated export as authoritative and preserved local edits/archive state."
+  "zSyncNote": "Schedule synced from DFCI work calendar for Monday, Jun 8, 2026 morning briefing."
 }
