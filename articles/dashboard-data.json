@@ -127,35 +127,27 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-08",
+  "scheduleDate": "2026-06-09",
   "schedule": [
     {
-      "time": "9:00 AM-9:45 AM",
-      "text": "Rival<>AI Education Kick-Off"
+      "time": "All day",
+      "text": "Informatics & Analytics Summit (in-person attendance required) · Jun 9-12"
     },
     {
-      "time": "9:00 AM-9:30 AM",
-      "text": "week pre-reads, priority chart"
+      "time": "9:00 AM-9:50 AM",
+      "text": "JFC Stakeholder Feedback Integration"
     },
     {
-      "time": "9:30 AM-10:30 AM",
-      "text": "Presentation | Hamis Chaudry | Sr. Analyst Supporting Business Strategy"
+      "time": "10:00 AM-11:00 AM",
+      "text": "Learning Repo Artifacts"
     },
     {
-      "time": "10:30 AM-12:00 PM",
-      "text": "Pharmacy Cohort Content, MCO, and Bravely Labs / Katie connect"
+      "time": "12:45 PM-4:00 PM",
+      "text": "ED&A Fun Team outing · Boda Borg Boston"
     },
     {
-      "time": "12:00 PM-1:00 PM",
-      "text": "Mariam<>Gus pt II"
-    },
-    {
-      "time": "2:00 PM-2:30 PM",
-      "text": "SmartRx Scoping and Planning"
-    },
-    {
-      "time": "2:45 PM-3:45 PM",
-      "text": "HOLD"
+      "time": "1:30 PM-2:30 PM",
+      "text": "JFC Prototype Iteration"
     }
   ],
   "workshopTracker": [
@@ -405,7 +397,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-08T07:00:00-04:00",
+  "lastUpdated": "2026-06-09T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1158,8 +1150,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-08T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-06-08T07:00:00-04:00",
+  "localUpdatedAt": "2026-06-09T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-06-09T07:00:00-04:00",
   "stagedChanges": [],
-  "zSyncNote": "Schedule synced from DFCI work calendar for Monday, Jun 8, 2026 morning briefing."
+  "zSyncNote": "Morning briefing sync: schedule refreshed from work calendar for Tue Jun 9; canceled/hold blocks suppressed."
 }
