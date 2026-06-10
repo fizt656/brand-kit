@@ -127,27 +127,39 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-09",
+  "scheduleDate": "2026-06-10",
   "schedule": [
     {
       "time": "All day",
-      "text": "Informatics & Analytics Summit (in-person attendance required) · Jun 9-12"
+      "text": "Informatics & Analytics Summit · in-person · Jun 9-11"
     },
     {
-      "time": "9:00 AM-9:50 AM",
-      "text": "JFC Stakeholder Feedback Integration"
+      "time": "8:30 AM-9:15 AM",
+      "text": "Summit Registration · Overland 3rd floor kitchen"
+    },
+    {
+      "time": "9:15 AM-9:45 AM",
+      "text": "Summit Welcome Presentation · Red Sox"
     },
     {
       "time": "10:00 AM-11:00 AM",
-      "text": "Learning Repo Artifacts"
+      "text": "OpenAI API Essentials · Red Sox"
     },
     {
-      "time": "12:45 PM-4:00 PM",
-      "text": "ED&A Fun Team outing · Boda Borg Boston"
+      "time": "11:15 AM-12:15 PM",
+      "text": "LLM Evaluations · Red Sox"
     },
     {
-      "time": "1:30 PM-2:30 PM",
-      "text": "JFC Prototype Iteration"
+      "time": "1:15 PM-2:10 PM",
+      "text": "Databricks RAG + Agent Bricks · BA-457"
+    },
+    {
+      "time": "2:20 PM-3:15 PM",
+      "text": "GitHub Copilot — Use Case 2 · Red Sox"
+    },
+    {
+      "time": "3:30 PM-5:00 PM",
+      "text": "Summit Reception · Yawkey 306/307/308"
     }
   ],
   "workshopTracker": [
@@ -397,7 +409,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-09T07:00:00-04:00",
+  "lastUpdated": "2026-06-10T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1150,7 +1162,7 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-09T07:00:00-04:00",
+  "localUpdatedAt": "2026-06-10T07:00:00-04:00",
   "syncedFromLocalAt": "2026-06-09T07:00:00-04:00",
   "stagedChanges": [],
   "zSyncNote": "Morning briefing sync: schedule refreshed from work calendar for Tue Jun 9; canceled/hold blocks suppressed."
