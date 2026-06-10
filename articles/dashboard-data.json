@@ -406,10 +406,17 @@
       "dueLabel": "Jun 8",
       "sortKey": "2026-06-08",
       "done": false
+    },
+    {
+      "text": "ED&A Labs: prepare 20-min Bravely process segment covering approach, design meetings with team, stakeholder gathering, comms, and WIIFM for each group",
+      "area": "ED&A Labs / Bravely",
+      "dueLabel": "Mon Jun 22",
+      "sortKey": "2026-06-22",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-10T07:00:00-04:00",
+  "lastUpdated": "2026-06-10T17:02:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1162,8 +1169,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-10T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-06-09T07:00:00-04:00",
+  "localUpdatedAt": "2026-06-10T17:02:00.000Z",
+  "syncedFromLocalAt": "2026-06-10T17:02:00.000Z",
   "stagedChanges": [],
   "zSyncNote": "Morning briefing sync: schedule refreshed from work calendar for Tue Jun 9; canceled/hold blocks suppressed."
 }
