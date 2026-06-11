@@ -127,39 +127,31 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-10",
+  "scheduleDate": "2026-06-11",
   "schedule": [
     {
       "time": "All day",
-      "text": "Informatics & Analytics Summit · in-person · Jun 9-11"
+      "text": "Informatics & Analytics Summit · in-person attendance required · Jun 9-11"
     },
     {
-      "time": "8:30 AM-9:15 AM",
-      "text": "Summit Registration · Overland 3rd floor kitchen"
+      "time": "9:00 AM-5:00 PM",
+      "text": "PTO"
     },
     {
-      "time": "9:15 AM-9:45 AM",
-      "text": "Summit Welcome Presentation · Red Sox"
+      "time": "9:30 AM-11:00 AM",
+      "text": "Learning Repo Iteration"
     },
     {
-      "time": "10:00 AM-11:00 AM",
-      "text": "OpenAI API Essentials · Red Sox"
+      "time": "11:00 AM-2:00 PM",
+      "text": "I&A Social Event · American Flatbread Brighton · 76 Guest St, Boston"
     },
     {
-      "time": "11:15 AM-12:15 PM",
-      "text": "LLM Evaluations · Red Sox"
+      "time": "2:00 PM-3:00 PM",
+      "text": "CoP / Champions Materials"
     },
     {
-      "time": "1:15 PM-2:10 PM",
-      "text": "Databricks RAG + Agent Bricks · BA-457"
-    },
-    {
-      "time": "2:20 PM-3:15 PM",
-      "text": "GitHub Copilot — Use Case 2 · Red Sox"
-    },
-    {
-      "time": "3:30 PM-5:00 PM",
-      "text": "Summit Reception · Yawkey 306/307/308"
+      "time": "4:00 PM-4:30 PM",
+      "text": "SmartRx · Internal Discussion / Planning"
     }
   ],
   "workshopTracker": [
