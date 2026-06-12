@@ -127,31 +127,27 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-11",
+  "scheduleDate": "2026-06-12",
   "schedule": [
     {
-      "time": "All day",
-      "text": "Informatics & Analytics Summit · in-person attendance required · Jun 9-11"
+      "time": "9:00 AM-9:30 AM",
+      "text": "BIOLINK"
     },
     {
-      "time": "9:00 AM-5:00 PM",
+      "time": "9:30 AM-5:00 PM",
       "text": "PTO"
     },
     {
-      "time": "9:30 AM-11:00 AM",
-      "text": "Learning Repo Iteration"
+      "time": "11:00 AM-11:50 AM",
+      "text": "GenAI Open Studio & Office Hours"
     },
     {
-      "time": "11:00 AM-2:00 PM",
-      "text": "I&A Social Event · American Flatbread Brighton · 76 Guest St, Boston"
+      "time": "2:00 PM-4:00 PM",
+      "text": "Pharmacy Workshop HOLD"
     },
     {
-      "time": "2:00 PM-3:00 PM",
-      "text": "CoP / Champions Materials"
-    },
-    {
-      "time": "4:00 PM-4:30 PM",
-      "text": "SmartRx · Internal Discussion / Planning"
+      "time": "4:00 PM-5:00 PM",
+      "text": "Documentation + next week table"
     }
   ],
   "workshopTracker": [
@@ -408,7 +404,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-10T17:02:00.000Z",
+  "lastUpdated": "2026-06-12T11:00:00Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
