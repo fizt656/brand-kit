@@ -127,27 +127,19 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-12",
+  "scheduleDate": "2026-06-15",
   "schedule": [
     {
       "time": "9:00 AM-9:30 AM",
-      "text": "BIOLINK"
+      "text": "week pre-reads, priority chart"
     },
     {
-      "time": "9:30 AM-5:00 PM",
-      "text": "PTO"
+      "time": "10:00 AM-11:30 AM",
+      "text": "Pharm Content Start"
     },
     {
-      "time": "11:00 AM-11:50 AM",
-      "text": "GenAI Open Studio & Office Hours"
-    },
-    {
-      "time": "2:00 PM-4:00 PM",
-      "text": "Pharmacy Workshop HOLD"
-    },
-    {
-      "time": "4:00 PM-5:00 PM",
-      "text": "Documentation + next week table"
+      "time": "3:00 PM-4:00 PM",
+      "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
     }
   ],
   "workshopTracker": [
@@ -404,7 +396,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-12T11:00:00Z",
+  "lastUpdated": "2026-06-13T22:08:00Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1157,8 +1149,27 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-10T17:02:00.000Z",
+  "localUpdatedAt": "2026-06-13T22:08:00Z",
   "syncedFromLocalAt": "2026-06-10T17:02:00.000Z",
-  "stagedChanges": [],
-  "zSyncNote": "Morning briefing sync: schedule refreshed from work calendar for Tue Jun 9; canceled/hold blocks suppressed."
+  "stagedChanges": [
+    {
+      "id": "stage-20260613-daily-org-summit-post-event-status",
+      "status": "needs approval",
+      "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
+      "where": "Workshop Tracker + Important Dates & Milestones",
+      "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
+      "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
+    },
+    {
+      "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
+      "status": "needs approval",
+      "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
+      "where": "To-Dos lane + MCO/Bravely/Admin items",
+      "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
+      "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
+    }
+  ],
+  "zSyncNote": "2026-06-13 daily dashboard review: auto-refreshed next workday schedule and staged post-date triage items."
 }
