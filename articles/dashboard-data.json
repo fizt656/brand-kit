@@ -127,19 +127,35 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-15",
+  "scheduleDate": "2026-06-16",
   "schedule": [
     {
-      "time": "9:00 AM-9:30 AM",
-      "text": "week pre-reads, priority chart"
+      "time": "8:30 AM-9:00 AM",
+      "text": "Ambulatory Care Lunch & Learn: ED&A Generative AI Prep Meeting"
     },
     {
-      "time": "10:00 AM-11:30 AM",
-      "text": "Pharm Content Start"
+      "time": "9:00 AM-9:50 AM",
+      "text": "Bravely v0.2 build"
     },
     {
-      "time": "3:00 PM-4:00 PM",
-      "text": "Data Platform & Analytics Enablement Team: Bi-Weekly Leadership Meeting"
+      "time": "10:00 AM-11:00 AM",
+      "text": "Bravely v0.2 build"
+    },
+    {
+      "time": "11:00 AM-11:30 AM",
+      "text": "HOLD onc-ventures"
+    },
+    {
+      "time": "1:00 PM-1:30 PM",
+      "text": "HOLD"
+    },
+    {
+      "time": "1:30 PM-2:30 PM",
+      "text": "JFC Prototyp Iteration"
+    },
+    {
+      "time": "2:30 PM-3:00 PM",
+      "text": "HOLD"
     }
   ],
   "workshopTracker": [
@@ -396,7 +412,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-13T22:08:00Z",
+  "lastUpdated": "2026-06-16 7:00 AM",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1149,8 +1165,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-13T22:08:00Z",
-  "syncedFromLocalAt": "2026-06-10T17:02:00.000Z",
+  "localUpdatedAt": "2026-06-16T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-06-16T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260613-daily-org-summit-post-event-status",
@@ -1171,5 +1187,5 @@
       "stagedAt": "2026-06-13T18:08:00-04:00"
     }
   ],
-  "zSyncNote": "2026-06-13 daily dashboard review: auto-refreshed next workday schedule and staged post-date triage items."
+  "zSyncNote": "Schedule refreshed from DFCI work calendar for Tue Jun 16, 2026 morning briefing."
 }
