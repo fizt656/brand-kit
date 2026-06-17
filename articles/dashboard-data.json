@@ -127,35 +127,27 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-16",
+  "scheduleDate": "2026-06-17",
   "schedule": [
     {
-      "time": "8:30 AM-9:00 AM",
-      "text": "Ambulatory Care Lunch & Learn: ED&A Generative AI Prep Meeting"
-    },
-    {
-      "time": "9:00 AM-9:50 AM",
-      "text": "Bravely v0.2 build"
-    },
-    {
       "time": "10:00 AM-11:00 AM",
-      "text": "Bravely v0.2 build"
+      "text": "ED&A Monthly Leads Meeting (D1635)"
     },
     {
-      "time": "11:00 AM-11:30 AM",
-      "text": "HOLD onc-ventures"
+      "time": "10:00 AM-10:30 AM",
+      "text": "Review / update agenda"
     },
     {
-      "time": "1:00 PM-1:30 PM",
-      "text": "HOLD"
+      "time": "11:30 AM-12:00 PM",
+      "text": "Gus Halwani / Ben Freeberg (Oncology Ventures)"
     },
     {
-      "time": "1:30 PM-2:30 PM",
-      "text": "JFC Prototyp Iteration"
+      "time": "1:00 PM-1:50 PM",
+      "text": "GenAI Community of Practice"
     },
     {
-      "time": "2:30 PM-3:00 PM",
-      "text": "HOLD"
+      "time": "2:00 PM-2:45 PM",
+      "text": "GPT4DFCI <> SM"
     }
   ],
   "workshopTracker": [
