@@ -127,27 +127,59 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-17",
+  "scheduleDate": "2026-06-18",
   "schedule": [
     {
-      "time": "10:00 AM-11:00 AM",
-      "text": "ED&A Monthly Leads Meeting (D1635)"
+      "time": "8:00 AM-9:00 AM",
+      "text": "ZOOM:  Gus Halwani & Mark Levin"
     },
     {
-      "time": "10:00 AM-10:30 AM",
-      "text": "Review / update agenda"
+      "time": "9:00 AM-9:30 AM",
+      "text": "BS + ED&A Planning Sessions for GenAI Training"
+    },
+    {
+      "time": "9:00 AM-9:50 AM",
+      "text": "DFCI<>Rival AI Education Checkpoint"
+    },
+    {
+      "time": "9:30 AM-11:00 AM",
+      "text": "Bravely demo-ready pass"
+    },
+    {
+      "time": "11:00 AM-11:30 AM",
+      "text": "Claude Code enablement planning"
     },
     {
       "time": "11:30 AM-12:00 PM",
-      "text": "Gus Halwani / Ben Freeberg (Oncology Ventures)"
+      "text": "ACO Lunch and Learn Planning: Follow-Up"
     },
     {
-      "time": "1:00 PM-1:50 PM",
-      "text": "GenAI Community of Practice"
+      "time": "12:00 PM-12:30 PM",
+      "text": "test"
     },
     {
-      "time": "2:00 PM-2:45 PM",
-      "text": "GPT4DFCI <> SM"
+      "time": "1:00 PM-2:00 PM",
+      "text": "MLC prompt/ Guardrails Conversation"
+    },
+    {
+      "time": "1:00 PM-2:00 PM",
+      "text": "Jira Migration Plan Sync - AI Education"
+    },
+    {
+      "time": "2:00 PM-3:00 PM",
+      "text": "CoP / Champions Materials"
+    },
+    {
+      "time": "2:30 PM-3:00 PM",
+      "text": "Pharmacy AI Workshop ED&A Planning"
+    },
+    {
+      "time": "3:00 PM-3:45 PM",
+      "text": "Jordan<>Gus"
+    },
+    {
+      "time": "4:00 PM-5:00 PM",
+      "text": "Snowflake & DFCI: Cortex Office Hours"
     }
   ],
   "workshopTracker": [
@@ -404,7 +436,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-16 7:00 AM",
+  "lastUpdated": "2026-06-18 7:00 AM",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1157,8 +1189,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-16T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-06-16T07:00:00-04:00",
+  "localUpdatedAt": "2026-06-18T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-06-18T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260613-daily-org-summit-post-event-status",
@@ -1179,5 +1211,5 @@
       "stagedAt": "2026-06-13T18:08:00-04:00"
     }
   ],
-  "zSyncNote": "Schedule refreshed from DFCI work calendar for Tue Jun 16, 2026 morning briefing."
+  "zSyncNote": "Morning briefing sync: Day schedule refreshed from DFCI work calendar for Thu Jun 18, 2026."
 }
