@@ -1185,22 +1185,31 @@
  "syncedFromLocalAt": "2026-06-22T17:57:20.516Z",
  "stagedChanges": [
   {
-   "id": "stage-20260613-daily-org-summit-post-event-status",
+   "id": "stage-20260622-dashboard-reconcile-stale-lane-text",
    "status": "needs approval",
-   "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
-   "where": "Workshop Tracker + Important Dates & Milestones",
-   "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
-   "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
-   "stagedAt": "2026-06-13T18:08:00-04:00"
+   "summary": "Reconcile stale May/early-June next-action language in lane summaries against the refreshed Jun 22 export.",
+   "where": "In-Flight Work + Projects lanes",
+   "why": "The open to-do list now carries current Jun 23-28 execution dates, while several lane summary rows still mention May 18, May 20, May 28, or Jun 15 as active next actions.",
+   "note": "Safe to auto-apply only as wording cleanup if Gus agrees the refreshed export should be treated as the source of truth.",
+   "stagedAt": "2026-06-22T18:25:00-04:00"
   },
   {
-   "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
+   "id": "stage-20260622-workshop-status-alignment",
    "status": "needs approval",
-   "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
-   "where": "To-Dos lane + MCO/Bravely/Admin items",
-   "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
-   "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
-   "stagedAt": "2026-06-13T18:08:00-04:00"
+   "summary": "Align workshop lane text with the refreshed tracker statuses and dates.",
+   "where": "Workshops lane + Workshop Tracker",
+   "why": "Org Summit is now `done` / `follow-up` in the export but the lane text still says scheduled; MCO still references a Jun 12 next meeting while the current to-do says Jun 24; Pharmacy lane still mentions Jun 16 even though active tracker rows are Jun 25.",
+   "note": "Needs Gus approval because this changes visible interpretation of workshop stage text, even though it appears to be cleanup.",
+   "stagedAt": "2026-06-22T18:25:00-04:00"
+  },
+  {
+   "id": "stage-20260622-smart-rx-ai-hub-triage",
+   "status": "needs approval",
+   "summary": "Decide whether SmartRX and AI Hub V1 should remain active lane items or be reframed as follow-on work.",
+   "where": "In-Flight Work + Projects + Persona lanes",
+   "why": "The refreshed export marks the old SmartRX May 18 check and AI Hub V1 curriculum build as done, but related open lane rows still describe them as active project work.",
+   "note": "Needs Gus approval because this may be real continuing work rather than stale dashboard residue.",
+   "stagedAt": "2026-06-22T18:25:00-04:00"
   }
  ],
  "zSyncNote": "2026-06-22 sync: refreshed from Gus's latest dashboard export with updated to-dos, workshops, milestones, and schedule."
