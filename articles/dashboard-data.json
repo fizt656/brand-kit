@@ -127,40 +127,44 @@
    }
   ]
  },
- "scheduleDate": "2026-06-22",
- "schedule": [
-  {
-   "time": "9:00 AM-9:30 AM",
-   "text": "week pre-reads, priority chart"
-  },
-  {
-   "time": "9:30 AM-10:00 AM",
-   "text": "Amb Care Lunch & Learn Prep"
-  },
-  {
-   "time": "10:00 AM-10:30 AM",
-   "text": "Cyera + FIFA World Cup Introductions"
-  },
-  {
-   "time": "11:00 AM-12:00 PM",
-   "text": "HOLD"
-  },
-  {
-   "time": "1:00 PM-2:00 PM",
-   "text": "AI Education Program for Business Strategy (Hybrid)"
-  },
-  {
-   "time": "1:00 PM-1:30 PM",
-   "text": "DFCI <> Dyania Health"
-  },
-  {
-   "time": "1:00 PM-2:00 PM",
-   "text": "HOLD"
-  },
-  {
-   "time": "3:00 PM-4:00 PM",
-   "text": "Ideogram / Design Sandbox"
-  }
+ "scheduleDate": "2026-06-23",
+ "schedule":  [
+   {
+     "time": "9:00 AM-9:50 AM",
+     "text": "JFC Stakeholder Feedback Integration"
+   },
+   {
+     "time": "9:00 AM-9:50 AM",
+     "text": "AI Talent Strategy (cont’d)"
+   },
+   {
+     "time": "10:00 AM-11:00 AM",
+     "text": "Learning Repo Artifacts"
+   },
+   {
+     "time": "11:00 AM-12:00 PM",
+     "text": "Monthly ED&A Labs (June 2026 rescheduled due to Summit)"
+   },
+   {
+     "time": "1:00 PM-1:30 PM",
+     "text": "HOLD"
+   },
+   {
+     "time": "1:30 PM-2:30 PM",
+     "text": "JFC Prototyp Iteration"
+   },
+   {
+     "time": "2:30 PM-3:00 PM",
+     "text": "HOLD"
+   },
+   {
+     "time": "3:30 PM-4:00 PM",
+     "text": "Claude Code enablement planning"
+   },
+   {
+     "time": "4:00 PM-5:30 PM",
+     "text": "Walter Chick @ Trillium"
+   }
  ],
  "workshopTracker": [
   {
@@ -428,7 +432,7 @@
   }
  ],
  "derivedDones": {},
- "lastUpdated": "2026-06-22T17:57:20.516Z",
+ "lastUpdated": "2026-06-23T11:00:00.000Z",
  "archivedItems": [
   {
    "id": "arc-1780624087392-ns48nv",
@@ -1212,5 +1216,5 @@
    "stagedAt": "2026-06-22T18:25:00-04:00"
   }
  ],
- "zSyncNote": "2026-06-22 sync: refreshed from Gus's latest dashboard export with updated to-dos, workshops, milestones, and schedule."
+ "zSyncNote": "2026-06-23 morning briefing sync: Day's Schedule refreshed from DFCI work calendar."
 }
