@@ -1214,6 +1214,15 @@
    "why": "The refreshed export marks the old SmartRX May 18 check and AI Hub V1 curriculum build as done, but related open lane rows still describe them as active project work.",
    "note": "Needs Gus approval because this may be real continuing work rather than stale dashboard residue.",
    "stagedAt": "2026-06-22T18:25:00-04:00"
+  },
+  {
+   "id": "stage-20260623-bravely-aco-day-end-triage",
+   "status": "needs approval",
+   "summary": "Confirm whether the Jun 23 Bravely / ED&A Labs / ACO packet items should be marked done, carried forward, or converted into follow-ups.",
+   "where": "To-Dos + Meeting Prep + Bravely milestone",
+   "why": "Three open items are due today and the calendar shows matching work blocks, but there is no confirmation yet that the Bravely process segment, feedback integration, or ACO packet work actually landed.",
+   "note": "Do not auto-apply completion; safe next action is Gus confirmation after today's work block/window.",
+   "stagedAt": "2026-06-23T18:00:00-04:00"
   }
  ],
  "zSyncNote": "2026-06-23 morning briefing sync: Day's Schedule refreshed from DFCI work calendar."
