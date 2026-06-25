@@ -127,27 +127,19 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-24",
+  "scheduleDate": "2026-06-25",
   "schedule": [
     {
-      "time": "10:00 AM-12:10 PM",
-      "text": "Jira Ways of Working Training (Teams)"
+      "time": "Today",
+      "text": "Pharmacy Cohort 2hr(a) · calendar auth unavailable; time not pulled"
     },
     {
-      "time": "10:00 AM-10:30 AM",
-      "text": "Gus<>Jess monthly coffee (Cafe Nero)"
+      "time": "Today",
+      "text": "Pharmacy Cohort 2hr(b) · calendar auth unavailable; time not pulled"
     },
     {
-      "time": "11:30 AM-12:00 PM",
-      "text": "Intro meeting with Jason Johnson (Dana 1642B)"
-    },
-    {
-      "time": "12:00 PM-1:30 PM",
-      "text": "DFCI Ambulatory Care Lunch and Learn: ED&A Generative AI"
-    },
-    {
-      "time": "2:00 PM-3:00 PM",
-      "text": "Bravely Monthly Meeting (Dana 2001B)"
+      "time": "Day focus",
+      "text": "Brent procure/buy/hire list · due today"
     }
   ],
   "workshopTracker": [
@@ -416,7 +408,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-24T11:00:00.000Z",
+  "lastUpdated": "2026-06-25T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1209,5 +1201,5 @@
       "stagedAt": "2026-06-23T18:00:00-04:00"
     }
   ],
-  "zSyncNote": "Morning briefing sync: Day schedule refreshed from work calendar for Wed Jun 24; dashboard lanes/todos preserved for Gus review."
+  "zSyncNote": "Morning briefing sync: Day schedule refreshed for Thu Jun 25 from dashboard tracker because Gog calendar auth was unavailable; dashboard lanes/todos preserved for Gus review."
 }
