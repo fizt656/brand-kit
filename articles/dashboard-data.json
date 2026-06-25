@@ -1199,6 +1199,15 @@
       "why": "Three open items are due today and the calendar shows matching work blocks, but there is no confirmation yet that the Bravely process segment, feedback integration, or ACO packet work actually landed.",
       "note": "Do not auto-apply completion; safe next action is Gus confirmation after today's work block/window.",
       "stagedAt": "2026-06-23T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260625-end-of-day-triage",
+      "status": "needs approval",
+      "summary": "Confirm Jun 25 Pharmacy cohorts and Brent procurement list status, then carry forward or close related overdue Jun 23-24 items.",
+      "where": "Workshops + To-Dos + Meeting Prep",
+      "why": "The dashboard schedule for today shows both Pharmacy cohorts and the Brent procure/buy/hire list, while the open list still has Jun 23-24 Bravely, ACO, Mark/Acera, Jordan/Imran, and MCO follow-up items without completion evidence.",
+      "note": "Do not auto-apply completion. Safe next action is Gus confirmation: delivered/done, carry forward, or convert into specific follow-ups.",
+      "stagedAt": "2026-06-25T18:00:00-04:00"
     }
   ],
   "zSyncNote": "Morning briefing sync: Day schedule refreshed for Thu Jun 25 from dashboard tracker because Gog calendar auth was unavailable; dashboard lanes/todos preserved for Gus review."
