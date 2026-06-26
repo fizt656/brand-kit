@@ -127,19 +127,23 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-25",
+  "scheduleDate": "2026-06-26",
   "schedule": [
     {
-      "time": "Today",
-      "text": "Pharmacy Cohort 2hr(a) · calendar auth unavailable; time not pulled"
+      "time": "Calendar",
+      "text": "Work calendar pull timed out in briefing runtime; confirm first anchor in Outlook/Google before deep work."
     },
     {
       "time": "Today",
-      "text": "Pharmacy Cohort 2hr(b) · calendar auth unavailable; time not pulled"
+      "text": "Update Smartsheet with project progress and impact mapping"
     },
     {
-      "time": "Day focus",
-      "text": "Brent procure/buy/hire list · due today"
+      "time": "Today",
+      "text": "Example video + framework for quick-hit social media style tips"
+    },
+    {
+      "time": "Today",
+      "text": "Read Dan SAE Champions doc + review Jordan squad framework"
     }
   ],
   "workshopTracker": [
@@ -408,7 +412,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-25T11:00:00.000Z",
+  "lastUpdated": "2026-06-26T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
