@@ -1203,23 +1203,32 @@
   "syncedFromLocalAt": "2026-06-26T20:41:59.166Z",
   "stagedChanges": [
     {
-      "id": "stage-20260613-daily-org-summit-post-event-status",
+      "id": "stage-20260626-daily-schedule-refresh",
       "status": "needs approval",
-      "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
-      "where": "Workshop Tracker + Important Dates & Milestones",
-      "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
-      "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
-      "stagedAt": "2026-06-13T18:08:00-04:00"
+      "summary": "Refresh the dashboard schedule snapshot from Jun 22 to the current/next-week view.",
+      "where": "Master Dashboard scheduleDate + Schedule Snapshot",
+      "why": "The dashboard export was refreshed on Jun 26, but scheduleDate and the visible schedule snapshot still point to Jun 22.",
+      "note": "Safe to apply mechanically once the current calendar/export source is selected; no content assumptions needed.",
+      "stagedAt": "2026-06-26T18:02:00-04:00"
     },
     {
-      "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
+      "id": "stage-20260626-daily-pharmacy-post-cohort-status",
       "status": "needs approval",
-      "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
-      "where": "To-Dos lane + MCO/Bravely/Admin items",
-      "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
-      "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
-      "stagedAt": "2026-06-13T18:08:00-04:00"
+      "summary": "Confirm whether the Jun 25 Pharmacy cohorts should move from designing to delivered/follow-up.",
+      "where": "Workshops Pipeline + Workshop Tracker",
+      "why": "Both Pharmacy Cohort 2hr rows are dated Jun 25 and still marked `designing`; today is Jun 26 and there is no confirmation yet that they happened or what follow-up remains.",
+      "note": "Do not auto-apply. Needs Gus confirmation: delivered, follow-up, postponed, or still designing.",
+      "stagedAt": "2026-06-26T18:02:00-04:00"
+    },
+    {
+      "id": "stage-20260626-daily-overdue-triage-jun24-jun26",
+      "status": "needs approval",
+      "summary": "Triage remaining Jun 24-26 open items instead of carrying stale dates into next week.",
+      "where": "To-Dos lane",
+      "why": "Open dated items include Mark/Acera follow-up from Jun 24, Brent procure/buy/hire list from Jun 25, and Jun 26 Smartsheet, quick-hit video, Jordan squad mapping, and Dan SAE champions doc.",
+      "note": "Needs Gus approval to mark done, defer with new dates, convert into follow-ups, or leave active.",
+      "stagedAt": "2026-06-26T18:02:00-04:00"
     }
   ],
-  "zSyncNote": "2026-06-22 sync: refreshed from Gus's latest dashboard export with updated to-dos, workshops, milestones, and schedule."
+  "zSyncNote": "2026-06-26 sync: refreshed from Gus's latest dashboard export; staged drawer updated during daily dashboard review."
 }
