@@ -1200,6 +1200,15 @@
       "why": "Open dated items include Mark/Acera follow-up from Jun 24, Brent procure/buy/hire list from Jun 25, and Jun 26 Smartsheet, quick-hit video, Jordan squad mapping, and Dan SAE champions doc.",
       "note": "Needs Gus approval to mark done, defer with new dates, convert into follow-ups, or leave active.",
       "stagedAt": "2026-06-26T18:02:00-04:00"
+    },
+    {
+      "id": "stage-20260629-dashboard-source-live-schedule-reconcile",
+      "status": "needs approval",
+      "summary": "Reconcile the local source schedule and live dashboard schedule for the week of Jun 29.",
+      "where": "Master Dashboard scheduleDate + Schedule Snapshot + live dashboard-data.json",
+      "why": "Local source still points to Jun 22 with Jun 22 meetings, while the live dashboard points to Jun 29 but only shows a calendar-sync-unavailable placeholder.",
+      "note": "Safe to refresh mechanically from the current calendar/export once the source is available; do not infer meetings from memory.",
+      "stagedAt": "2026-06-29T18:00:00-04:00"
     }
   ],
   "zSyncNote": "2026-06-26 sync: refreshed from Gus's latest dashboard export; staged drawer updated during daily dashboard review."
