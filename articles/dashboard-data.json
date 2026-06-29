@@ -127,39 +127,11 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-22",
+  "scheduleDate": "2026-06-29",
   "schedule": [
     {
-      "time": "9:00 AM-9:30 AM",
-      "text": "week pre-reads, priority chart"
-    },
-    {
-      "time": "9:30 AM-10:00 AM",
-      "text": "Amb Care Lunch & Learn Prep"
-    },
-    {
-      "time": "10:00 AM-10:30 AM",
-      "text": "Cyera + FIFA World Cup Introductions"
-    },
-    {
-      "time": "11:00 AM-12:00 PM",
-      "text": "HOLD"
-    },
-    {
-      "time": "1:00 PM-2:00 PM",
-      "text": "AI Education Program for Business Strategy (Hybrid)"
-    },
-    {
-      "time": "1:00 PM-1:30 PM",
-      "text": "DFCI <> Dyania Health"
-    },
-    {
-      "time": "1:00 PM-2:00 PM",
-      "text": "HOLD"
-    },
-    {
-      "time": "3:00 PM-4:00 PM",
-      "text": "Ideogram / Design Sandbox"
+      "time": "7:00 AM",
+      "text": "Calendar sync unavailable in morning run; check DFCI calendar directly"
     }
   ],
   "workshopTracker": [
