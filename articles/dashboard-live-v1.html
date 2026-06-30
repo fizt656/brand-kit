@@ -2019,8 +2019,7 @@
           localStorage.setItem(SYNC_KEY, JSON.stringify({ exportedAt: syncStamp }));
           alert('Download failed, so I copied the export to clipboard instead.\n\nPaste in chat to sync.');
         } catch {
-          console.log(payload);
-          alert('Export failed. Check console for exported data.');
+          alert('Export failed. Try again or send a screenshot of the dashboard state.');
         }
       }
     };
