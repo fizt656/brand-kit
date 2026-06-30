@@ -1175,6 +1175,24 @@
   "syncedFromLocalAt": "2026-06-30T11:00:00.000Z",
   "stagedChanges": [
     {
+      "id": "stage-20260630-daily-jun29-jul01-triage",
+      "status": "needs approval",
+      "summary": "Triage the Bravely resources item dated Jun 29 and the TPP clinical AI follow-up agenda due Jul 1.",
+      "where": "To-Dos lane + In-Flight Work / Meeting Prep",
+      "why": "The Bravely resources meeting is now past its Jun 29 due date, and the TPP agenda item is due tomorrow; recent memory did not confirm either as completed.",
+      "note": "Needs Gus confirmation to mark done, defer, convert into a meeting-prep action, or leave active.",
+      "stagedAt": "2026-06-30T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260630-daily-source-live-schedule-sync",
+      "status": "needs approval",
+      "summary": "Bring the local source and live dashboard schedule snapshot back into agreement.",
+      "where": "Master Dashboard scheduleDate + Schedule Snapshot + live dashboard-data.json",
+      "why": "Local source still shows Jun 22 meetings, while the live data shows Jun 30 with only a calendar-sync-unavailable placeholder.",
+      "note": "Safe to apply mechanically once calendar/export data is available; do not infer today's meetings from stale source.",
+      "stagedAt": "2026-06-30T18:00:00-04:00"
+    },
+    {
       "id": "stage-20260626-daily-schedule-refresh",
       "status": "needs approval",
       "summary": "Refresh the dashboard schedule snapshot from Jun 22 to the current/next-week view.",
