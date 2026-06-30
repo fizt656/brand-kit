@@ -127,7 +127,7 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-29",
+  "scheduleDate": "2026-06-30",
   "schedule": [
     {
       "time": "7:00 AM",
@@ -418,7 +418,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-26T20:41:59.166Z",
+  "lastUpdated": "2026-06-30T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1172,7 +1172,7 @@
     }
   ],
   "localUpdatedAt": "2026-06-26T20:41:59.166Z",
-  "syncedFromLocalAt": "2026-06-26T20:41:59.166Z",
+  "syncedFromLocalAt": "2026-06-30T11:00:00.000Z",
   "stagedChanges": [
     {
       "id": "stage-20260626-daily-schedule-refresh",
@@ -1211,5 +1211,5 @@
       "stagedAt": "2026-06-29T18:00:00-04:00"
     }
   ],
-  "zSyncNote": "2026-06-26 sync: refreshed from Gus's latest dashboard export; staged drawer updated during daily dashboard review."
+  "zSyncNote": "2026-06-30 morning sync: schedule date refreshed; calendar pull timed out/no output, so visible schedule keeps the calendar-sync-unavailable placeholder."
 }
