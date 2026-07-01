@@ -127,11 +127,39 @@
       }
     ]
   },
-  "scheduleDate": "2026-07-01",
+  "scheduleDate": "2026-06-22",
   "schedule": [
     {
-      "time": "7:00 AM",
-      "text": "Calendar sync unavailable in morning run; check DFCI calendar directly"
+      "time": "9:00 AM-9:30 AM",
+      "text": "week pre-reads, priority chart"
+    },
+    {
+      "time": "9:30 AM-10:00 AM",
+      "text": "Amb Care Lunch & Learn Prep"
+    },
+    {
+      "time": "10:00 AM-10:30 AM",
+      "text": "Cyera + FIFA World Cup Introductions"
+    },
+    {
+      "time": "11:00 AM-12:00 PM",
+      "text": "HOLD"
+    },
+    {
+      "time": "1:00 PM-2:00 PM",
+      "text": "AI Education Program for Business Strategy (Hybrid)"
+    },
+    {
+      "time": "1:00 PM-1:30 PM",
+      "text": "DFCI <> Dyania Health"
+    },
+    {
+      "time": "1:00 PM-2:00 PM",
+      "text": "HOLD"
+    },
+    {
+      "time": "3:00 PM-4:00 PM",
+      "text": "Ideogram / Design Sandbox"
     }
   ],
   "workshopTracker": [
@@ -247,27 +275,6 @@
   ],
   "todos": [
     {
-      "text": "SmartRX: check on next design iteration meeting",
-      "area": "Projects",
-      "dueLabel": "Mon May 18",
-      "sortKey": "2026-05-18",
-      "done": true
-    },
-    {
-      "text": "Add/triage Rams and Alex OP workshop needs",
-      "area": "Workshops",
-      "dueLabel": "Mon May 18",
-      "sortKey": "2026-05-18",
-      "done": true
-    },
-    {
-      "text": "Summer Retreat: meet with each track lead and review progress",
-      "area": "Summer Retreat",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
-      "done": true
-    },
-    {
       "text": "Bravely: refactor current materials/approach",
       "area": "Bravely",
       "dueLabel": "Jun 28",
@@ -275,25 +282,11 @@
       "done": false
     },
     {
-      "text": "Make V1 curriculum materials for AI Hub rollout: AI basics, GPT4DFCI tutorials, applied prompt-engineering roleplay coach with onboarding/resources/DFCI scenarios, deck + talk track, and 2-min governance video script",
-      "area": "AI Hub / Curriculum",
-      "dueLabel": "Wed May 20",
-      "sortKey": "2026-05-20",
-      "done": true
-    },
-    {
       "text": "Update Smartsheet with project progress and impact mapping",
       "area": "Admin / Strategy",
       "dueLabel": "Jun 26",
       "sortKey": "2026-06-26",
       "done": false
-    },
-    {
-      "text": "Get HR clarity on tutorial videos: what is possible/allowed so work can be divided/conquered",
-      "area": "Content / HR",
-      "dueLabel": "Jun 26",
-      "sortKey": "2026-06-26",
-      "done": true
     },
     {
       "text": "Example video and framework for quick-hit social media style tips videos",
@@ -316,55 +309,10 @@
       "done": false
     },
     {
-      "text": "Send systems access form to Marta and Ben",
-      "area": "Admin / Systems Access",
-      "dueLabel": "Wed May 27, noon",
-      "sortKey": "2026-05-27T12:00:00",
-      "done": true
-    },
-    {
-      "text": "Bravely: connect with Charlotta about bringing in tech people and MDs for next design-feedback phase (email follow up)",
-      "area": "Bravely",
-      "dueLabel": "Jun 10",
-      "sortKey": "2026-06-10",
-      "done": true
-    },
-    {
-      "text": "Schedule next meeting with Andy for MCO workshop, post alignment w Jordan",
-      "area": "Workshops / MCO",
-      "dueLabel": "Jun 24",
-      "sortKey": "2026-06-24",
-      "done": true
-    },
-    {
-      "text": "blurb describing our clinical AI education kick-off, for Joel",
-      "dueLabel": "Jun 2",
-      "sortKey": "2026-06-02",
-      "done": true
-    },
-    {
-      "text": "schedule next 1-1 with Manny to update him on latest w Joel et al, and to align together for OpenEvidence rollout.",
-      "dueLabel": "Jun 2",
-      "sortKey": "2026-06-02",
-      "done": true
-    },
-    {
       "text": "Bravely: features and integrate feedback from last session (Z has context), look at possibly refactor (if needed)",
       "dueLabel": "Jul 15",
       "sortKey": "2026-07-15",
       "done": false
-    },
-    {
-      "text": "SHOWTIME! (GEP for MDs on 6/3)",
-      "dueLabel": "Jun 3",
-      "sortKey": "2026-06-03",
-      "done": true
-    },
-    {
-      "text": "SHOWTIME! (Biz-Strat LnL 6/4)",
-      "dueLabel": "Jun 4",
-      "sortKey": "2026-06-04",
-      "done": true
     },
     {
       "text": "Review Jordan's squad framework and map organic roles for SmartRX and Bravely; consider implications for JIRA migration from Smartsheet",
@@ -380,23 +328,10 @@
       "done": false
     },
     {
-      "text": "ED&A Labs: prepare 20-min Bravely process segment covering approach, design meetings with team, stakeholder gathering, comms, and WIIFM for each group",
-      "area": "ED&A Labs / Bravely",
-      "dueLabel": "Jun 23",
-      "sortKey": "2026-06-23",
-      "done": true
-    },
-    {
       "text": "follow up email to Mark re: Brightstory and Sam, follow up Acera too",
       "dueLabel": "Jun 24",
       "sortKey": "2026-06-24",
       "done": false
-    },
-    {
-      "text": "time-blocking slides for ACO + facilitator packet / participant packet.",
-      "dueLabel": "Jun 23",
-      "sortKey": "2026-06-23",
-      "done": true
     },
     {
       "text": "AI Talent Strategy -- Guiding Principles,  Protocol Workshop (notebook LM has a photo-outline for the session, in - chat, and in a note called 'AI Talent Strategy Meeting Protocol'",
@@ -405,20 +340,32 @@
       "done": false
     },
     {
-      "text": "SuperPrompt Training for Pharmacy team (10mins), and template super prompt (very general case, not necessarily assistant).",
-      "dueLabel": "Jun 24",
-      "sortKey": "2026-06-24",
-      "done": true
-    },
-    {
       "text": "TPP for clinical AI follow-up --concrete agenda to start workshops",
       "dueLabel": "Jul 1",
       "sortKey": "2026-07-01",
       "done": false
+    },
+    {
+      "text": "AEUs in WorkDay",
+      "dueLabel": "Jul 2",
+      "sortKey": "2026-07-02",
+      "done": false
+    },
+    {
+      "text": "Annual Review Season",
+      "dueLabel": "Aug 1 - Sep 30",
+      "sortKey": "Aug 1 - Sep 30",
+      "done": false
+    },
+    {
+      "text": "build/buy infographic for data camp vs us doing it ourselves",
+      "dueLabel": "Jul 6",
+      "sortKey": "2026-07-06",
+      "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-06-30T11:00:00.000Z",
+  "lastUpdated": "2026-07-01T13:46:43.126Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1171,63 +1118,27 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-06-26T20:41:59.166Z",
-  "syncedFromLocalAt": "2026-06-30T11:00:00.000Z",
+  "localUpdatedAt": "2026-07-01T13:46:43.126Z",
+  "syncedFromLocalAt": "2026-07-01T13:46:43.126Z",
   "stagedChanges": [
     {
-      "id": "stage-20260630-daily-jun29-jul01-triage",
+      "id": "stage-20260613-daily-org-summit-post-event-status",
       "status": "needs approval",
-      "summary": "Triage the Bravely resources item dated Jun 29 and the TPP clinical AI follow-up agenda due Jul 1.",
-      "where": "To-Dos lane + In-Flight Work / Meeting Prep",
-      "why": "The Bravely resources meeting is now past its Jun 29 due date, and the TPP agenda item is due tomorrow; recent memory did not confirm either as completed.",
-      "note": "Needs Gus confirmation to mark done, defer, convert into a meeting-prep action, or leave active.",
-      "stagedAt": "2026-06-30T18:00:00-04:00"
+      "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
+      "where": "Workshop Tracker + Important Dates & Milestones",
+      "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
+      "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
     },
     {
-      "id": "stage-20260630-daily-source-live-schedule-sync",
+      "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
       "status": "needs approval",
-      "summary": "Bring the local source and live dashboard schedule snapshot back into agreement.",
-      "where": "Master Dashboard scheduleDate + Schedule Snapshot + live dashboard-data.json",
-      "why": "Local source still shows Jun 22 meetings, while the live data shows Jun 30 with only a calendar-sync-unavailable placeholder.",
-      "note": "Safe to apply mechanically once calendar/export data is available; do not infer today's meetings from stale source.",
-      "stagedAt": "2026-06-30T18:00:00-04:00"
-    },
-    {
-      "id": "stage-20260626-daily-schedule-refresh",
-      "status": "needs approval",
-      "summary": "Refresh the dashboard schedule snapshot from Jun 22 to the current/next-week view.",
-      "where": "Master Dashboard scheduleDate + Schedule Snapshot",
-      "why": "The dashboard export was refreshed on Jun 26, but scheduleDate and the visible schedule snapshot still point to Jun 22.",
-      "note": "Safe to apply mechanically once the current calendar/export source is selected; no content assumptions needed.",
-      "stagedAt": "2026-06-26T18:02:00-04:00"
-    },
-    {
-      "id": "stage-20260626-daily-pharmacy-post-cohort-status",
-      "status": "needs approval",
-      "summary": "Confirm whether the Jun 25 Pharmacy cohorts should move from designing to delivered/follow-up.",
-      "where": "Workshops Pipeline + Workshop Tracker",
-      "why": "Both Pharmacy Cohort 2hr rows are dated Jun 25 and still marked `designing`; today is Jun 26 and there is no confirmation yet that they happened or what follow-up remains.",
-      "note": "Do not auto-apply. Needs Gus confirmation: delivered, follow-up, postponed, or still designing.",
-      "stagedAt": "2026-06-26T18:02:00-04:00"
-    },
-    {
-      "id": "stage-20260626-daily-overdue-triage-jun24-jun26",
-      "status": "needs approval",
-      "summary": "Triage remaining Jun 24-26 open items instead of carrying stale dates into next week.",
-      "where": "To-Dos lane",
-      "why": "Open dated items include Mark/Acera follow-up from Jun 24, Brent procure/buy/hire list from Jun 25, and Jun 26 Smartsheet, quick-hit video, Jordan squad mapping, and Dan SAE champions doc.",
-      "note": "Needs Gus approval to mark done, defer with new dates, convert into follow-ups, or leave active.",
-      "stagedAt": "2026-06-26T18:02:00-04:00"
-    },
-    {
-      "id": "stage-20260629-dashboard-source-live-schedule-reconcile",
-      "status": "needs approval",
-      "summary": "Reconcile the local source schedule and live dashboard schedule for the week of Jun 29.",
-      "where": "Master Dashboard scheduleDate + Schedule Snapshot + live dashboard-data.json",
-      "why": "Local source still points to Jun 22 with Jun 22 meetings, while the live dashboard points to Jun 29 but only shows a calendar-sync-unavailable placeholder.",
-      "note": "Safe to refresh mechanically from the current calendar/export once the source is available; do not infer meetings from memory.",
-      "stagedAt": "2026-06-29T18:00:00-04:00"
+      "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
+      "where": "To-Dos lane + MCO/Bravely/Admin items",
+      "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
+      "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
     }
   ],
-  "zSyncNote": "2026-07-01 morning sync: schedule date refreshed; Gog calendar auth required an interactive keyring password, so visible schedule keeps the calendar-sync-unavailable placeholder."
+  "zSyncNote": "2026-06-22 sync: refreshed from Gus's latest dashboard export with updated to-dos, workshops, milestones, and schedule."
 }
