@@ -127,7 +127,7 @@
       }
     ]
   },
-  "scheduleDate": "2026-06-30",
+  "scheduleDate": "2026-07-01",
   "schedule": [
     {
       "time": "7:00 AM",
@@ -1229,5 +1229,5 @@
       "stagedAt": "2026-06-29T18:00:00-04:00"
     }
   ],
-  "zSyncNote": "2026-06-30 morning sync: schedule date refreshed; calendar pull timed out/no output, so visible schedule keeps the calendar-sync-unavailable placeholder."
+  "zSyncNote": "2026-07-01 morning sync: schedule date refreshed; Gog calendar auth required an interactive keyring password, so visible schedule keeps the calendar-sync-unavailable placeholder."
 }
