@@ -1110,6 +1110,33 @@
       "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
       "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
       "stagedAt": "2026-06-13T18:08:00-04:00"
+    },
+    {
+      "id": "stage-20260702-daily-calendar-auth-blocker",
+      "status": "needs attention",
+      "summary": "Resolve or work around the calendar pull blocker before trusting the Day Schedule.",
+      "where": "Day Schedule + dashboard publishing flow",
+      "why": "The live dashboard schedule for Jul 2 shows a Gog keyring auth blocker instead of calendar events, while the local source still has the older Jun 22 schedule.",
+      "note": "Needs Gus or Z follow-up before applying schedule changes; safe next step is to verify Outlook directly or repair non-interactive Gog auth.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260702-daily-post-jun25-workshops",
+      "status": "needs approval",
+      "summary": "Review post-date workshop statuses for Pharmacy cohorts and Org Summit.",
+      "where": "Workshop Tracker + Workshops lane",
+      "why": "Pharmacy Cohort 2hr(a/b) are dated Jun 25 but still marked designing, and Org Summit is mixed across the dashboard as done/follow-up/scheduled.",
+      "note": "Needs Gus approval to decide delivered, follow-up, or closed for each item.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260702-daily-current-overdue-triage",
+      "status": "needs approval",
+      "summary": "Triage overdue and today-dated to-dos before the list gets stale.",
+      "where": "To-Dos lane",
+      "why": "Open items dated Jun 24-Jun 29, Jul 1, and Jul 2 remain active, including Bravely/admin follow-ups, TPP clinical AI follow-up, and AEUs in WorkDay.",
+      "note": "Needs Gus approval to mark done, defer, keep active, or drop.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
     }
   ],
   "zSyncNote": "2026-07-02 morning briefing sync: calendar pull blocked by non-interactive Gog keyring auth; Day Schedule marked for direct Outlook verification."
