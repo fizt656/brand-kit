@@ -127,11 +127,31 @@
       }
     ]
   },
-  "scheduleDate": "2026-07-02",
+  "scheduleDate": "2026-07-03",
   "schedule": [
     {
-      "time": "Today",
-      "text": "DFCI calendar pull blocked by Gog keyring auth in cron; verify Outlook calendar directly."
+      "time": "8:00-8:01 AM",
+      "text": "Timesheet"
+    },
+    {
+      "time": "9:30-10:00 AM",
+      "text": "HOLD"
+    },
+    {
+      "time": "10:00-10:30 AM",
+      "text": "Emily <> Gus"
+    },
+    {
+      "time": "11:00-11:30 AM",
+      "text": "Joel Agenda"
+    },
+    {
+      "time": "1:00-1:30 PM",
+      "text": "Jira Setup"
+    },
+    {
+      "time": "4:00-5:00 PM",
+      "text": "Documentation, next week table"
     }
   ],
   "workshopTracker": [
@@ -337,7 +357,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-07-02T07:02:26-04:00",
+  "lastUpdated": "2026-07-03T07:00:00-04:00",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1090,8 +1110,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-07-02T07:02:26-04:00",
-  "syncedFromLocalAt": "2026-07-01T13:46:43.126Z",
+  "localUpdatedAt": "2026-07-03T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-07-03T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260613-daily-org-summit-post-event-status",
@@ -1139,5 +1159,5 @@
       "stagedAt": "2026-07-02T18:00:00-04:00"
     }
   ],
-  "zSyncNote": "2026-07-02 morning briefing sync: calendar pull blocked by non-interactive Gog keyring auth; Day Schedule marked for direct Outlook verification."
+  "zSyncNote": "2026-07-03 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved for Gus review."
 }
