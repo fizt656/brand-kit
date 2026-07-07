@@ -127,27 +127,31 @@
       }
     ]
   },
-  "scheduleDate": "2026-07-06",
+  "scheduleDate": "2026-07-07",
   "schedule": [
     {
-      "time": "9:00-9:30 AM",
-      "text": "week pre-reads, priority chart"
+      "time": "9:00-9:50 AM",
+      "text": "JFC Stakeholder Feedback Integration"
     },
     {
-      "time": "11:00 AM-12:00 PM",
-      "text": "GEP Preflight"
+      "time": "10:00-11:00 AM",
+      "text": "GEP Admins preflight"
     },
     {
-      "time": "12:00-12:45 PM",
-      "text": "AI Education TPP Follow-up"
+      "time": "12:00-1:00 PM",
+      "text": "Atlan Data Catalog Training & Enablement"
     },
     {
-      "time": "1:00-1:30 PM",
-      "text": "Canceled: Katz / Halwani / Brent / Jordan monthly"
+      "time": "12:00-1:00 PM",
+      "text": "Office Hours: AI Education Program (optional)"
     },
     {
-      "time": "3:00-4:00 PM",
-      "text": "Claude Code Enterprise Implementation Rollout"
+      "time": "1:00-2:00 PM",
+      "text": "Pharmacy-ED&A AI Program Monthly Meeting"
+    },
+    {
+      "time": "1:30-2:30 PM",
+      "text": "JFC Prototype Iteration"
     }
   ],
   "workshopTracker": [
@@ -353,7 +357,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-07-06T11:00:00.000Z",
+  "lastUpdated": "2026-07-07T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1153,7 +1157,43 @@
       "why": "Open items dated Jun 24-Jun 29, Jul 1, and Jul 2 remain active, including Bravely/admin follow-ups, TPP clinical AI follow-up, and AEUs in WorkDay.",
       "note": "Needs Gus approval to mark done, defer, keep active, or drop.",
       "stagedAt": "2026-07-02T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260706-daily-stale-calendar-blocker-cleanup",
+      "status": "needs approval",
+      "summary": "Clear or mark resolved the old Jul 2 calendar-auth blocker staged item.",
+      "where": "Staged drawer + Day Schedule review notes",
+      "why": "Both local and live dashboard JSON now show a refreshed Jul 6 schedule, so the Jul 2 \"calendar auth blocker\" staged item appears stale.",
+      "note": "Safe to apply if Gus agrees the calendar refresh is working again; I did not remove it automatically.",
+      "stagedAt": "2026-07-06T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260706-daily-source-doc-schedule-sync",
+      "status": "needs approval",
+      "summary": "Sync the markdown source dashboard from the current live/local JSON state.",
+      "where": "00_master-dashboard-weekly-control.md, To-Dos lane, and Workshops lane",
+      "why": "The JSON/live dashboard is dated Jul 6, but the markdown source still says week of Jun 22 and schedule snapshot Jul 3. Source docs are drifting behind the visible dashboard.",
+      "note": "Mechanical but visible source hygiene; needs approval before rewriting source docs around the current week.",
+      "stagedAt": "2026-07-06T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260706-daily-jul6-jul9-work-triage",
+      "status": "needs approval",
+      "summary": "Triage today-dated items and the Jul 9 GEP Admins workshop prep state.",
+      "where": "To-Dos lane + Workshop Tracker",
+      "why": "Two open todos are dated Jul 6, TPP follow-up is still open from Jul 1, and GEP Admins is scheduled for Jul 9 after today's GEP Preflight block.",
+      "note": "Needs Gus approval or a quick correction: mark done, defer, keep active, or update workshop stage to designing/ready.",
+      "stagedAt": "2026-07-06T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260707-daily-jul7-work-triage",
+      "status": "needs approval",
+      "summary": "Use today's JFC and GEP blocks to pin down next visible deliverables.",
+      "where": "Day Schedule + To-Dos lane + Workshop Tracker",
+      "why": "Today's calendar has two JFC blocks plus a GEP Admins preflight before the Jul 9 workshop; open Jul 1/Jul 6 dashboard to-dos still need triage.",
+      "note": "Suggested nudge: capture decisions from the JFC feedback block and confirm whether GEP Admins is designing or ready after the preflight.",
+      "stagedAt": "2026-07-07T07:00:00-04:00"
     }
   ],
-  "zSyncNote": "2026-07-06 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved for Gus review."
+  "zSyncNote": "2026-07-07 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved; fresh staged triage note added for JFC/GEP focus."
 }
