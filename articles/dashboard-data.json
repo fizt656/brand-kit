@@ -1189,6 +1189,24 @@
       "why": "Today's calendar has two JFC blocks plus a GEP Admins preflight before the Jul 9 workshop; open Jul 1/Jul 6 dashboard to-dos still need triage.",
       "note": "Suggested nudge: capture decisions from the JFC feedback block and confirm whether GEP Admins is designing or ready after the preflight.",
       "stagedAt": "2026-07-07T07:00:00-04:00"
+    },
+    {
+      "id": "stage-20260708-daily-gep-admins-readiness",
+      "status": "needs approval",
+      "summary": "Confirm GEP Admins readiness before tomorrow's Jul 9 session.",
+      "where": "Workshop Tracker + Workshops lane",
+      "why": "The live dashboard still has GEP Admins as scheduled with deck/prep details to firm up, and the Jul 7 staged note expected a preflight decision.",
+      "note": "Needs Gus approval or quick correction: set to ready/designing, add the concrete next prep step, or leave scheduled if nothing changed.",
+      "stagedAt": "2026-07-08T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260708-daily-local-live-sync",
+      "status": "needs approval",
+      "summary": "Sync local dashboard source files with the Jul 8 live dashboard state.",
+      "where": "00_master-dashboard-weekly-control.md, dashboard-data.local.json, To-Dos lane, and Workshops lane",
+      "why": "The live dashboard is refreshed for Jul 8, but local markdown/source files still show older week and schedule snapshots in several places.",
+      "note": "Mechanical source hygiene, but it rewrites visible working-source context, so it should wait for approval.",
+      "stagedAt": "2026-07-08T18:00:00-04:00"
     }
   ],
   "zSyncNote": "2026-07-08 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved; no inferred status changes applied."
