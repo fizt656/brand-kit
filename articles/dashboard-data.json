@@ -127,31 +127,27 @@
       }
     ]
   },
-  "scheduleDate": "2026-07-07",
+  "scheduleDate": "2026-07-08",
   "schedule": [
     {
-      "time": "9:00-9:50 AM",
-      "text": "JFC Stakeholder Feedback Integration"
+      "time": "8:00-8:30 AM",
+      "text": "Arrive From Commute"
     },
     {
-      "time": "10:00-11:00 AM",
-      "text": "GEP Admins preflight"
+      "time": "9:00-9:30 AM",
+      "text": "settle in"
     },
     {
-      "time": "12:00-1:00 PM",
-      "text": "Atlan Data Catalog Training & Enablement"
-    },
-    {
-      "time": "12:00-1:00 PM",
-      "text": "Office Hours: AI Education Program (optional)"
+      "time": "10:00-10:30 AM",
+      "text": "review / update agenda"
     },
     {
       "time": "1:00-2:00 PM",
-      "text": "Pharmacy-ED&A AI Program Monthly Meeting"
+      "text": "ED&A Monthly Leads Meeting"
     },
     {
-      "time": "1:30-2:30 PM",
-      "text": "JFC Prototype Iteration"
+      "time": "3:30-4:30 PM",
+      "text": "Bus/Commute Window"
     }
   ],
   "workshopTracker": [
@@ -357,7 +353,7 @@
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-07-07T11:00:00.000Z",
+  "lastUpdated": "2026-07-08T11:00:00.000Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1110,8 +1106,8 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-07-03T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-07-03T07:00:00-04:00",
+  "localUpdatedAt": "2026-07-08T07:00:00-04:00",
+  "syncedFromLocalAt": "2026-07-08T07:00:00-04:00",
   "stagedChanges": [
     {
       "id": "stage-20260613-daily-org-summit-post-event-status",
@@ -1195,5 +1191,5 @@
       "stagedAt": "2026-07-07T07:00:00-04:00"
     }
   ],
-  "zSyncNote": "2026-07-07 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved; fresh staged triage note added for JFC/GEP focus."
+  "zSyncNote": "2026-07-08 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; lanes/todos preserved; no inferred status changes applied."
 }
