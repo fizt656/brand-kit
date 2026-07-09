@@ -1215,6 +1215,24 @@
       "why": "The live dashboard is refreshed for Jul 8, but local markdown/source files still show older week and schedule snapshots in several places.",
       "note": "Mechanical source hygiene, but it rewrites visible working-source context, so it should wait for approval.",
       "stagedAt": "2026-07-08T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260709-daily-gep-admins-post-session",
+      "status": "needs approval",
+      "summary": "Confirm whether GEP Admins should move out of scheduled after today's Jul 9 session window.",
+      "where": "Workshop Tracker + Workshops lane",
+      "why": "GEP Admins is dated Jul 9 and remains marked scheduled; today's live schedule has already moved past the main workday, but I do not have a confirmation that the session happened or what follow-up remains.",
+      "note": "Needs Gus approval: likely delivered or follow-up if it happened, keep scheduled only if postponed/no-show.",
+      "stagedAt": "2026-07-09T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260709-daily-local-live-schedule-drift",
+      "status": "needs approval",
+      "summary": "Reconcile local dashboard JSON and markdown source docs with the live Jul 9 schedule.",
+      "where": "dashboard-data.local.json, 00_master-dashboard-weekly-control.md, To-Dos lane, and Workshops lane",
+      "why": "The live dashboard shows Jul 9 calendar blocks, while local JSON still shows Jul 6 and markdown source docs still show an older Jul 3 snapshot/week-of Jun 22 context.",
+      "note": "Safe as source hygiene once approved; no project/workshop status changes should be inferred during the sync.",
+      "stagedAt": "2026-07-09T18:00:00-04:00"
     }
   ],
   "zSyncNote": "2026-07-09 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; routine blocks suppressed; lanes/todos preserved; no inferred status changes applied."
