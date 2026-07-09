@@ -187,7 +187,7 @@
     {
       "name": "Pharmacy Cohort 2hr(a)",
       "date": "6/25",
-      "status": "designing"
+      "status": "follow-up"
     },
     {
       "name": "Pharmacy Cohort 2hr(b)",
@@ -197,7 +197,7 @@
     {
       "name": "GEP Admins",
       "date": "7/9",
-      "status": "scheduled"
+      "status": "scoping"
     },
     {
       "name": "MCO workshop",
@@ -275,33 +275,33 @@
       "area": "Bravely",
       "dueLabel": "Jun 28",
       "sortKey": "2026-06-28",
-      "done": false
+      "done": true
     },
     {
       "text": "Update Smartsheet with project progress and impact mapping",
       "area": "Admin / Strategy",
       "dueLabel": "Jun 26",
       "sortKey": "2026-06-26",
-      "done": false
+      "done": true
     },
     {
       "text": "Example video and framework for quick-hit social media style tips videos",
       "area": "Content",
-      "dueLabel": "Jun 26",
-      "sortKey": "2026-06-26",
+      "dueLabel": "Jul 26",
+      "sortKey": "2026-07-26",
       "done": false
     },
     {
       "text": "Bravely resources: meeting with Jordan and Imran to discuss dev resource + Databricks endpoints",
       "area": "In-Flight Work",
-      "dueLabel": "Jun 29",
-      "sortKey": "2026-06-29",
+      "dueLabel": "Jul 29",
+      "sortKey": "2026-07-29",
       "done": false
     },
     {
-      "text": "start a file /  list of things to procure/buy/hire re: Brent's request (September is cutoff)",
-      "dueLabel": "Jun 25",
-      "sortKey": "2026-06-25",
+      "text": "start a file / list of things to procure/buy/hire re: Brent's request (September is cutoff)",
+      "dueLabel": "Jul 25",
+      "sortKey": "2026-07-25",
       "done": false
     },
     {
@@ -315,37 +315,37 @@
       "area": "Strategy / Project Management",
       "dueLabel": "Jun 26",
       "sortKey": "2026-06-26",
-      "done": false
+      "done": true
     },
     {
       "text": "Read Dan's doc SAE champions",
       "dueLabel": "Jun 26",
       "sortKey": "2026-06-26",
-      "done": false
+      "done": true
     },
     {
       "text": "follow up email to Mark re: Brightstory and Sam, follow up Acera too",
       "dueLabel": "Jun 24",
       "sortKey": "2026-06-24",
-      "done": false
+      "done": true
     },
     {
-      "text": "AI Talent Strategy -- Guiding Principles,  Protocol Workshop (notebook LM has a photo-outline for the session, in - chat, and in a note called 'AI Talent Strategy Meeting Protocol'",
-      "dueLabel": "Jul 6",
-      "sortKey": "2026-07-06",
+      "text": "AI Talent Strategy -- Guiding Principles, Protocol Workshop (notebook LM has a photo-outline for the session, in - chat, and in a note called 'AI Talent Strategy Meeting Protocol'",
+      "dueLabel": "Jul 16",
+      "sortKey": "2026-07-16",
       "done": false
     },
     {
       "text": "TPP for clinical AI follow-up --concrete agenda to start workshops",
       "dueLabel": "Jul 1",
       "sortKey": "2026-07-01",
-      "done": false
+      "done": true
     },
     {
       "text": "AEUs in WorkDay",
       "dueLabel": "Jul 2",
       "sortKey": "2026-07-02",
-      "done": false
+      "done": true
     },
     {
       "text": "Annual Review Season",
@@ -357,11 +357,85 @@
       "text": "build/buy infographic for data camp vs us doing it ourselves",
       "dueLabel": "Jul 6",
       "sortKey": "2026-07-06",
+      "done": true
+    },
+    {
+      "text": "Example video and framework for quick-hit social media style tips videos",
+      "area": "Content",
+      "dueLabel": "Jul 15",
+      "sortKey": "2026-07-15",
+      "done": false
+    },
+    {
+      "text": "Bravely token resources",
+      "area": "In-Flight Work",
+      "dueLabel": "Jun 29",
+      "sortKey": "2026-06-29",
+      "done": true
+    },
+    {
+      "text": "start a file / list of things to procure/buy/hire re: Brent's request (September is cutoff)",
+      "dueLabel": "Jul 25",
+      "sortKey": "2026-07-25",
+      "done": false
+    },
+    {
+      "text": "AI Talent Strategy -- Guiding Principles, Protocol Workshop (notebook LM has a photo-outline for the session, in - chat, and in a note called 'AI Talent Strategy Meeting Protocol'",
+      "dueLabel": "Jul 14",
+      "sortKey": "2026-07-14",
+      "done": false
+    },
+    {
+      "text": "TPP for clinical AI follow-up --concrete agenda to start workshops",
+      "dueLabel": "Jul 6",
+      "sortKey": "2026-07-06",
+      "done": true
+    },
+    {
+      "text": "I&A ups killing, manager workshop draft",
+      "dueLabel": "Aug 1",
+      "sortKey": "2026-08-01",
+      "done": false
+    },
+    {
+      "text": "SEND CHAMPIONS - MARTA EMAIL (drafted in outlook already)",
+      "dueLabel": "Jul 6",
+      "sortKey": "2026-07-06",
+      "done": true
+    },
+    {
+      "text": "async review Bus-Strat use cases",
+      "dueLabel": "Jul 20",
+      "sortKey": "2026-07-20",
+      "done": false
+    },
+    {
+      "text": "Review Claire Comms Docs (data camp? up to date claude stuff (maybe link to repo)",
+      "dueLabel": "Jul 10",
+      "sortKey": "2026-07-10",
+      "done": false
+    },
+    {
+      "text": "Claude Code and Claude AI jumpstarts",
+      "dueLabel": "Jul 10",
+      "sortKey": "2026-07-10",
+      "done": false
+    },
+    {
+      "text": "Add Swim Lanes content to assistant prototype",
+      "dueLabel": "Jul 10",
+      "sortKey": "2026-07-10",
+      "done": false
+    },
+    {
+      "text": "scenario library for Julien",
+      "dueLabel": "Jul 10",
+      "sortKey": "2026-07-10",
       "done": false
     }
   ],
   "derivedDones": {},
-  "lastUpdated": "2026-07-08T11:00:00.000Z",
+  "lastUpdated": "2026-07-09T23:40:54.075Z",
   "archivedItems": [
     {
       "id": "arc-1780624087392-ns48nv",
@@ -1114,53 +1188,53 @@
       "restoreStatus": "open"
     }
   ],
-  "localUpdatedAt": "2026-07-08T07:00:00-04:00",
-  "syncedFromLocalAt": "2026-07-08T07:00:00-04:00",
+  "localUpdatedAt": "2026-07-09T23:40:54.075Z",
+  "syncedFromLocalAt": "2026-07-09T23:40:54.075Z",
   "stagedChanges": [
     {
-      "id": "stage-20260613-daily-org-summit-post-event-status",
+      "id": "stage-20260709-daily-gep-admins-post-session",
       "status": "needs approval",
-      "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
-      "where": "Workshop Tracker + Important Dates & Milestones",
-      "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
-      "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
-      "stagedAt": "2026-06-13T18:08:00-04:00"
-    },
-    {
-      "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
-      "status": "needs approval",
-      "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
-      "where": "To-Dos lane + MCO/Bravely/Admin items",
-      "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
-      "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
-      "stagedAt": "2026-06-13T18:08:00-04:00"
-    },
-    {
-      "id": "stage-20260702-daily-calendar-auth-blocker",
-      "status": "needs attention",
-      "summary": "Resolve or work around the calendar pull blocker before trusting the Day Schedule.",
-      "where": "Day Schedule + dashboard publishing flow",
-      "why": "The live dashboard schedule for Jul 2 shows a Gog keyring auth blocker instead of calendar events, while the local source still has the older Jun 22 schedule.",
-      "note": "Needs Gus or Z follow-up before applying schedule changes; safe next step is to verify Outlook directly or repair non-interactive Gog auth.",
-      "stagedAt": "2026-07-02T18:00:00-04:00"
-    },
-    {
-      "id": "stage-20260702-daily-post-jun25-workshops",
-      "status": "needs approval",
-      "summary": "Review post-date workshop statuses for Pharmacy cohorts and Org Summit.",
+      "summary": "Confirm whether GEP Admins should move out of scheduled after today's Jul 9 session window.",
       "where": "Workshop Tracker + Workshops lane",
-      "why": "Pharmacy Cohort 2hr(a/b) are dated Jun 25 but still marked designing, and Org Summit is mixed across the dashboard as done/follow-up/scheduled.",
-      "note": "Needs Gus approval to decide delivered, follow-up, or closed for each item.",
-      "stagedAt": "2026-07-02T18:00:00-04:00"
+      "why": "GEP Admins is dated Jul 9 and remains marked scheduled; today's live schedule has already moved past the main workday, but I do not have a confirmation that the session happened or what follow-up remains.",
+      "note": "Needs Gus approval: likely delivered or follow-up if it happened, keep scheduled only if postponed/no-show.",
+      "stagedAt": "2026-07-09T18:00:00-04:00"
     },
     {
-      "id": "stage-20260702-daily-current-overdue-triage",
+      "id": "stage-20260709-daily-local-live-schedule-drift",
       "status": "needs approval",
-      "summary": "Triage overdue and today-dated to-dos before the list gets stale.",
-      "where": "To-Dos lane",
-      "why": "Open items dated Jun 24-Jun 29, Jul 1, and Jul 2 remain active, including Bravely/admin follow-ups, TPP clinical AI follow-up, and AEUs in WorkDay.",
-      "note": "Needs Gus approval to mark done, defer, keep active, or drop.",
-      "stagedAt": "2026-07-02T18:00:00-04:00"
+      "summary": "Reconcile local dashboard JSON and markdown source docs with the live Jul 9 schedule.",
+      "where": "dashboard-data.local.json, 00_master-dashboard-weekly-control.md, To-Dos lane, and Workshops lane",
+      "why": "The live dashboard shows Jul 9 calendar blocks, while local JSON still shows Jul 6 and markdown source docs still show an older Jul 3 snapshot/week-of Jun 22 context.",
+      "note": "Safe as source hygiene once approved; no project/workshop status changes should be inferred during the sync.",
+      "stagedAt": "2026-07-09T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260708-daily-gep-admins-readiness",
+      "status": "needs approval",
+      "summary": "Confirm GEP Admins readiness before tomorrow's Jul 9 session.",
+      "where": "Workshop Tracker + Workshops lane",
+      "why": "The live dashboard still has GEP Admins as scheduled with deck/prep details to firm up, and the Jul 7 staged note expected a preflight decision.",
+      "note": "Needs Gus approval or quick correction: set to ready/designing, add the concrete next prep step, or leave scheduled if nothing changed.",
+      "stagedAt": "2026-07-08T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260708-daily-local-live-sync",
+      "status": "needs approval",
+      "summary": "Sync local dashboard source files with the Jul 8 live dashboard state.",
+      "where": "00_master-dashboard-weekly-control.md, dashboard-data.local.json, To-Dos lane, and Workshops lane",
+      "why": "The live dashboard is refreshed for Jul 8, but local markdown/source files still show older week and schedule snapshots in several places.",
+      "note": "Mechanical source hygiene, but it rewrites visible working-source context, so it should wait for approval.",
+      "stagedAt": "2026-07-08T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260707-daily-jul7-work-triage",
+      "status": "needs approval",
+      "summary": "Use today's JFC and GEP blocks to pin down next visible deliverables.",
+      "where": "Day Schedule + To-Dos lane + Workshop Tracker",
+      "why": "Today's calendar has two JFC blocks plus a GEP Admins preflight before the Jul 9 workshop; open Jul 1/Jul 6 dashboard to-dos still need triage.",
+      "note": "Suggested nudge: capture decisions from the JFC feedback block and confirm whether GEP Admins is designing or ready after the preflight.",
+      "stagedAt": "2026-07-07T07:00:00-04:00"
     },
     {
       "id": "stage-20260706-daily-stale-calendar-blocker-cleanup",
@@ -1190,49 +1264,49 @@
       "stagedAt": "2026-07-06T18:00:00-04:00"
     },
     {
-      "id": "stage-20260707-daily-jul7-work-triage",
-      "status": "needs approval",
-      "summary": "Use today's JFC and GEP blocks to pin down next visible deliverables.",
-      "where": "Day Schedule + To-Dos lane + Workshop Tracker",
-      "why": "Today's calendar has two JFC blocks plus a GEP Admins preflight before the Jul 9 workshop; open Jul 1/Jul 6 dashboard to-dos still need triage.",
-      "note": "Suggested nudge: capture decisions from the JFC feedback block and confirm whether GEP Admins is designing or ready after the preflight.",
-      "stagedAt": "2026-07-07T07:00:00-04:00"
+      "id": "stage-20260702-daily-calendar-auth-blocker",
+      "status": "needs attention",
+      "summary": "Resolve or work around the calendar pull blocker before trusting the Day Schedule.",
+      "where": "Day Schedule + dashboard publishing flow",
+      "why": "The live dashboard schedule for Jul 2 shows a Gog keyring auth blocker instead of calendar events, while the local source still has the older Jun 22 schedule.",
+      "note": "Needs Gus or Z follow-up before applying schedule changes; safe next step is to verify Outlook directly or repair non-interactive Gog auth.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
     },
     {
-      "id": "stage-20260708-daily-gep-admins-readiness",
+      "id": "stage-20260702-daily-post-jun25-workshops",
       "status": "needs approval",
-      "summary": "Confirm GEP Admins readiness before tomorrow's Jul 9 session.",
+      "summary": "Review post-date workshop statuses for Pharmacy cohorts and Org Summit.",
       "where": "Workshop Tracker + Workshops lane",
-      "why": "The live dashboard still has GEP Admins as scheduled with deck/prep details to firm up, and the Jul 7 staged note expected a preflight decision.",
-      "note": "Needs Gus approval or quick correction: set to ready/designing, add the concrete next prep step, or leave scheduled if nothing changed.",
-      "stagedAt": "2026-07-08T18:00:00-04:00"
+      "why": "Pharmacy Cohort 2hr(a/b) are dated Jun 25 but still marked designing, and Org Summit is mixed across the dashboard as done/follow-up/scheduled.",
+      "note": "Needs Gus approval to decide delivered, follow-up, or closed for each item.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
     },
     {
-      "id": "stage-20260708-daily-local-live-sync",
+      "id": "stage-20260702-daily-current-overdue-triage",
       "status": "needs approval",
-      "summary": "Sync local dashboard source files with the Jul 8 live dashboard state.",
-      "where": "00_master-dashboard-weekly-control.md, dashboard-data.local.json, To-Dos lane, and Workshops lane",
-      "why": "The live dashboard is refreshed for Jul 8, but local markdown/source files still show older week and schedule snapshots in several places.",
-      "note": "Mechanical source hygiene, but it rewrites visible working-source context, so it should wait for approval.",
-      "stagedAt": "2026-07-08T18:00:00-04:00"
+      "summary": "Triage overdue and today-dated to-dos before the list gets stale.",
+      "where": "To-Dos lane",
+      "why": "Open items dated Jun 24-Jun 29, Jul 1, and Jul 2 remain active, including Bravely/admin follow-ups, TPP clinical AI follow-up, and AEUs in WorkDay.",
+      "note": "Needs Gus approval to mark done, defer, keep active, or drop.",
+      "stagedAt": "2026-07-02T18:00:00-04:00"
     },
     {
-      "id": "stage-20260709-daily-gep-admins-post-session",
+      "id": "stage-20260613-daily-org-summit-post-event-status",
       "status": "needs approval",
-      "summary": "Confirm whether GEP Admins should move out of scheduled after today's Jul 9 session window.",
-      "where": "Workshop Tracker + Workshops lane",
-      "why": "GEP Admins is dated Jul 9 and remains marked scheduled; today's live schedule has already moved past the main workday, but I do not have a confirmation that the session happened or what follow-up remains.",
-      "note": "Needs Gus approval: likely delivered or follow-up if it happened, keep scheduled only if postponed/no-show.",
-      "stagedAt": "2026-07-09T18:00:00-04:00"
+      "summary": "Move Org Summit out of active/in-motion state now that the Jun 9-11 window has passed.",
+      "where": "Workshop Tracker + Important Dates & Milestones",
+      "why": "The dashboard still shows Org Summit as `designing` / `in motion`, but its dated window ended on Jun 11. It likely needs `delivered` or `follow-up`, not active design.",
+      "note": "Needs Gus approval because I do not have confirmation of what follow-up remains or whether it is safe to mark done.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
     },
     {
-      "id": "stage-20260709-daily-local-live-schedule-drift",
+      "id": "stage-20260613-daily-overdue-triage-jun8-jun12",
       "status": "needs approval",
-      "summary": "Reconcile local dashboard JSON and markdown source docs with the live Jul 9 schedule.",
-      "where": "dashboard-data.local.json, 00_master-dashboard-weekly-control.md, To-Dos lane, and Workshops lane",
-      "why": "The live dashboard shows Jul 9 calendar blocks, while local JSON still shows Jul 6 and markdown source docs still show an older Jul 3 snapshot/week-of Jun 22 context.",
-      "note": "Safe as source hygiene once approved; no project/workshop status changes should be inferred during the sync.",
-      "stagedAt": "2026-07-09T18:00:00-04:00"
+      "summary": "Triage past-due open items from Jun 8-12 instead of letting them linger as stale deadlines.",
+      "where": "To-Dos lane + MCO/Bravely/Admin items",
+      "why": "Open items still dated Jun 8, Jun 10, and Jun 12 include Dan SAE champions doc, Smartsheet impact mapping, Charlotta follow-up, and next MCO meeting with Andy.",
+      "note": "Needs Gus approval to decide whether each is done, deferred, still active, or no longer relevant.",
+      "stagedAt": "2026-06-13T18:08:00-04:00"
     }
   ],
   "zSyncNote": "2026-07-09 morning briefing sync: Day Schedule refreshed from DFCI work calendar via Gog; routine blocks suppressed; lanes/todos preserved; no inferred status changes applied."
