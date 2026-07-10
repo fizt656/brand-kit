@@ -1180,6 +1180,24 @@
   "syncedFromLocalAt": "2026-07-10T11:00:00.000Z",
   "stagedChanges": [
     {
+      "id": "stage-20260710-daily-source-doc-sync",
+      "status": "needs approval",
+      "summary": "Sync markdown source docs to the current Jul 10 dashboard JSON/live state.",
+      "where": "00_master-dashboard-weekly-control.md, 02_todos-execution.md, 03_workshops-pipeline.md, and related lane docs",
+      "why": "Local and live dashboard JSON now match Jul 10, but the markdown source pages still show older Jun 22/Jul 3 snapshots and pre-Jul 9 workshop states.",
+      "note": "Safe as source hygiene once approved; should not infer new workshop or todo status changes during the sync.",
+      "stagedAt": "2026-07-10T18:00:00-04:00"
+    },
+    {
+      "id": "stage-20260710-daily-staged-drawer-cleanup",
+      "status": "needs approval",
+      "summary": "Clean up stale or duplicate staged review items from Jul 2-Jul 9.",
+      "where": "Staged drawer + dashboard review notes",
+      "why": "Calendar sync appears restored and the Jul 10 schedule is live; several older staged notes now overlap or describe pre-Jul 10 drift, especially GEP Admins readiness/post-session and calendar-auth cleanup.",
+      "note": "Needs Gus approval because cleanup may hide unresolved decisions; keep only the active decision points after approval.",
+      "stagedAt": "2026-07-10T18:00:00-04:00"
+    },
+    {
       "id": "stage-20260709-daily-gep-admins-post-session",
       "status": "needs approval",
       "summary": "Confirm whether GEP Admins should move out of scheduled after today's Jul 9 session window.",
