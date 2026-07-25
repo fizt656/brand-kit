@@ -99,6 +99,42 @@
       "sha256": "d605840964557cf486694d8d74a67442aa42d70ef5ddc814c606c537c23c82b4",
       "sensitive": false,
       "requiresExplicitUse": false
+    },
+    {
+      "id": "snoopybeats_purple_sky_rock_beach",
+      "label": "Snoopybeats Purple Sky Rock Beach",
+      "category": "backdrop",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/snoopybeats_purple_sky_rock_beach.jpg",
+      "sha256": "75187c041f5929888e11ea213c592eadcd7052a4badb3f98b14140da0f7b21c6",
+      "sensitive": false,
+      "requiresExplicitUse": false
+    },
+    {
+      "id": "snoopybeats_crystal_cowgirl_pink_horse",
+      "label": "Snoopybeats Crystal Cowgirl Pink Horse",
+      "category": "style",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/snoopybeats_crystal_cowgirl_pink_horse.jpg",
+      "sha256": "0a0eb7e73e4f3200d5a7559b3259b4d541eccda3fa58e7dce9eaa71f03c74609",
+      "sensitive": false,
+      "requiresExplicitUse": false
+    },
+    {
+      "id": "snoopybeats_sunrise_rock_beach_wide",
+      "label": "Snoopybeats Sunrise Rock Beach Wide",
+      "category": "backdrop",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/snoopybeats_sunrise_rock_beach_wide.jpg",
+      "sha256": "e0e9baf5009ba9390d3baeaae6fe3fe65fc3e0d468bb02e0904f7f6f80db66ec",
+      "sensitive": false,
+      "requiresExplicitUse": false
+    },
+    {
+      "id": "snoopybeats_milkshake_ranch_logo",
+      "label": "Snoopybeats Milkshake Ranch Logo",
+      "category": "brand",
+      "publicUrl": "https://gushalwani.com/seedcam-refs/snoopybeats_milkshake_ranch_logo.jpg",
+      "sha256": "2e81a991f5e0698d10a083510078d63378549268158ccc1305257a75ff2c957d",
+      "sensitive": false,
+      "requiresExplicitUse": false
     }
   ]
 }
