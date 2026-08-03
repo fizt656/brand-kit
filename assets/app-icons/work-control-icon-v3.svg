@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title id="title">Work Control</title>
+  <rect width="512" height="512" fill="#12140f"/>
+  <path d="M72 54h86M54 72v86M354 54h86M458 72v86M54 354v86M72 458h86M458 354v86M354 458h86"
+        fill="none" stroke="#6e7452" stroke-width="12" stroke-linecap="square"/>
+  <path d="M116 138H92v236h24M396 138h24v236h-24" fill="none" stroke="#d4a84d"
+        stroke-width="18" stroke-linecap="square" stroke-linejoin="miter"/>
+  <g fill="none" stroke="#e5dec8" stroke-width="16">
+    <rect x="144" y="162" width="28" height="28"/>
+    <rect x="144" y="242" width="28" height="28"/>
+    <rect x="144" y="322" width="28" height="28"/>
+  </g>
+  <g fill="#e5dec8">
+    <rect x="206" y="168" width="166" height="16"/>
+    <rect x="206" y="248" width="118" height="16"/>
+    <rect x="206" y="328" width="142" height="16"/>
+  </g>
+  <rect x="148" y="246" width="20" height="20" fill="#899267"/>
+  <rect x="336" y="248" width="36" height="16" fill="#d4a84d"/>
+  <g fill="#899267">
+    <rect x="92" y="412" width="12" height="12"/>
+    <rect x="116" y="412" width="44" height="12" opacity=".55"/>
+  </g>
+</svg>
