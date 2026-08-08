@@ -4,6 +4,7 @@
   --paper-deep: #ede7da;
   --ink: #221f1a;
   --gold: #b48635;
+  --pwn-green: #267d4b;
   --ash: #292724;
   --chalk: #f0ece3;
   --rust: #8b432a;
@@ -38,6 +39,9 @@ body[data-theme="bone"] { --page: #e8e2d5; --type: #181714; --faint: rgba(24,23,
 body[data-theme="ash"] { color-scheme: dark; --page: var(--ash); --type: var(--chalk); --faint: rgba(240,236,227,.66); --hairline: rgba(240,236,227,.32); }
 body[data-theme="black"] { color-scheme: dark; --page: #11100f; --type: #ece8df; --faint: rgba(236,232,223,.64); --hairline: rgba(236,232,223,.3); }
 body[data-theme="rust"] { color-scheme: dark; --page: #6f3422; --type: #f1eadd; --faint: rgba(241,234,221,.7); --hairline: rgba(241,234,221,.34); }
+body[data-theme="ash"],
+body[data-theme="black"],
+body[data-theme="rust"] { --pwn-green: #9af2aa; }
 
 button, a, input { -webkit-tap-highlight-color: transparent; }
 button, input { color: inherit; font: inherit; }
@@ -2021,15 +2025,66 @@ body[data-theme="rust"].signal-glitch .transmission-layer { mix-blend-mode: scre
 .route-node svg path { fill: none; stroke: currentColor; stroke-width: 1; vector-effect: non-scaling-stroke; }
 .route-number,
 .route-state { font: 700 .62rem/1 var(--mono); letter-spacing: .06em; }
-.route-state { color: var(--gold); }
+.route-state { color: inherit; }
 .route-node:hover,
 .route-node:focus-visible,
 .route-node.visited { color: color-mix(in srgb, var(--type) 68%, transparent); }
-.route-node.current { color: var(--type); }
-.route-node.current svg { box-shadow: 0 0 0 1px var(--type), 0 0 18px color-mix(in srgb, var(--gold) 14%, transparent); }
-.route-node.next { color: color-mix(in srgb, var(--gold) 70%, var(--type)); }
-.route-node.pwned { color: var(--gold); }
-.route-node.pwned svg { background: color-mix(in srgb, var(--gold) 12%, var(--page)); }
+.route-node.current:not(.pwned) { color: var(--gold); }
+.route-node.current:not(.pwned) svg { box-shadow: 0 0 0 1px var(--gold), 0 0 18px color-mix(in srgb, var(--gold) 24%, transparent); }
+.route-node.next:not(.pwned) { color: color-mix(in srgb, var(--gold) 68%, var(--type)); }
+.route-node.next:not(.pwned) svg circle { stroke-dasharray: 2 3; }
+.route-node.pwned {
+  color: var(--pwn-green);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--pwn-green) 12%, transparent), transparent);
+}
+.route-node.pwned .route-state {
+  font-weight: 900;
+  text-shadow: 0 0 9px color-mix(in srgb, var(--pwn-green) 48%, transparent);
+}
+.route-node.pwned svg {
+  background: color-mix(in srgb, var(--pwn-green) 17%, var(--page));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--pwn-green) 76%, transparent), 0 0 14px color-mix(in srgb, var(--pwn-green) 25%, transparent);
+}
+.route-node.pwned svg polygon {
+  fill: color-mix(in srgb, var(--pwn-green) 24%, transparent);
+  stroke-width: 1.35;
+}
+.route-node.final-node:not(.pwned) {
+  color: color-mix(in srgb, var(--gold) 84%, var(--type));
+}
+.route-node.final-node:not(.pwned) svg {
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold) 18%, var(--page)), var(--page) 64%);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--gold) 68%, transparent), 0 0 21px color-mix(in srgb, var(--gold) 22%, transparent);
+  animation: final-node-wait 2.8s steps(5, end) infinite;
+}
+.route-node.final-node:not(.pwned) svg circle {
+  stroke-dasharray: 2 2.5;
+  transform-origin: 20px 20px;
+  animation: final-orbit 8s linear infinite;
+}
+.route-node.final-node.pwned {
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--pwn-green) 22%, transparent), transparent);
+}
+.route-node.final-node.pwned svg {
+  box-shadow: 0 0 0 1px var(--pwn-green), 0 0 0 5px color-mix(in srgb, var(--pwn-green) 10%, transparent), 0 0 24px color-mix(in srgb, var(--pwn-green) 38%, transparent);
+  animation: final-node-complete 3.2s ease-in-out infinite;
+}
+.doors.route-complete .route-heading strong {
+  color: var(--pwn-green);
+  text-shadow: 0 0 10px color-mix(in srgb, var(--pwn-green) 28%, transparent);
+}
+
+@keyframes final-node-wait {
+  0%, 100% { transform: none; filter: none; }
+  42% { transform: scale(.94); filter: contrast(1.28); }
+  51% { transform: translateX(2px) scale(1.04); filter: contrast(1.6); }
+  58% { transform: translateX(-1px); }
+}
+@keyframes final-orbit { to { transform: rotate(360deg); } }
+@keyframes final-node-complete {
+  0%, 100% { filter: none; }
+  50% { filter: brightness(1.16); box-shadow: 0 0 0 1px var(--pwn-green), 0 0 0 7px color-mix(in srgb, var(--pwn-green) 12%, transparent), 0 0 30px color-mix(in srgb, var(--pwn-green) 48%, transparent); }
+}
 
 .hack-celebration {
   position: fixed;
@@ -2501,7 +2556,9 @@ body.signal-glitch.glitch-tracking::after {
   .wordmark.identity-unstable,
   .wordmark.identity-unstable::before,
   .wordmark.identity-unstable::after,
-  .wordmark.identity-resolved { animation: none; }
+  .wordmark.identity-resolved,
+  .route-node.final-node svg,
+  .route-node.final-node svg circle { animation: none; }
   body.signal-glitch.glitch-roll::after,
   body.signal-glitch.glitch-tracking::after { display: none; }
 }

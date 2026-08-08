@@ -22,7 +22,8 @@
     found: "assets/audio/frequency-found.mp3",
     tapeStart: "assets/audio/tape-machine-start.mp3",
     tapeStop: "assets/audio/tape-machine-stop.mp3",
-    switches: "assets/audio/switches"
+    switches: "assets/audio/switches",
+    resolves: "assets/audio/resolves"
   };
   const GLITCH_LINES = [
     "SYNC ERROR // CARRIER DRIFT",
@@ -277,6 +278,7 @@
   let ambientLooping = false;
   let fragmentResolutionPending = false;
   const switchAudio = new Map();
+  const resolveAudio = new Map();
 
   const saved = loadState();
   const state = {
@@ -784,12 +786,14 @@
       const visited = state.visited.has(id);
       const current = id === currentRoom;
       const next = index === currentIndex + 1;
-      const classes = ["route-node", solved && "pwned", visited && "visited", current && "current", next && "next"].filter(Boolean).join(" ");
-      const status = solved ? "pwned" : current ? "current carrier" : visited ? "visited, circuit open" : "unread carrier";
+      const final = index === STORY_PATH.length - 1;
+      const classes = ["route-node", solved && "pwned", visited && "visited", current && "current", next && "next", final && "final-node"].filter(Boolean).join(" ");
+      const status = solved ? "pwned" : current ? "current carrier" : final ? "final carrier, unread" : visited ? "visited, circuit open" : "unread carrier";
       return `<a class="${classes}" href="#${id}" data-label="${data.title.replace(/\n/g, " ")}" aria-label="Carrier ${index + 1} of ${ROOM_IDS.length}: ${data.title.replace(/\n/g, " ")}; ${status}">
-        <span class="route-number">${String(index + 1).padStart(2, "0")}</span>${routeGlyph(index)}<span class="route-state">${solved ? "PWN" : current ? "YOU" : ""}</span>
+        <span class="route-number">${String(index + 1).padStart(2, "0")}</span>${routeGlyph(index)}<span class="route-state">${solved ? "PWN" : current ? "YOU" : final ? "Ω" : ""}</span>
       </a>`;
     }).join("");
+    doors.classList.toggle("route-complete", solvedCount === ROOM_IDS.length);
     doors.innerHTML = `<div class="route-heading"><span>THE OTHER MAP</span><strong>${String(solvedCount).padStart(2, "0")} / ${ROOM_IDS.length} PWNED</strong><small>CLOSE EACH CIRCUIT</small></div><div class="route-track">${nodes}</div>`;
   }
 
@@ -876,6 +880,7 @@
 
     if (state.solved.has(id)) markResolved();
     preloadSwitchCue(id);
+    preloadResolveCue(id);
 
     keys.forEach((key) => key.addEventListener("click", () => {
       if (state.solved.has(id)) return;
@@ -910,7 +915,7 @@
         renderDoors();
         setResponse("CIRCUIT CLOSED // PERSONA FRAGMENT DECRYPTED");
         consoleElement.classList.add("switching");
-        playSwitchCue(id);
+        playResolveCue(id);
         pulseNeuralField();
         triggerHackCelebration(String(STORY_PATH.indexOf(id) + 1).padStart(2, "0"), `${data.title.replace(/\n/g, " ")} // PWNED`, state.solved.size);
         window.setTimeout(
@@ -1169,6 +1174,22 @@
   function playSwitchCue(id) {
     if (!soundOn) return;
     const cue = preloadSwitchCue(id);
+    cue.currentTime = 0;
+    cue.play().catch(() => {});
+  }
+
+  function preloadResolveCue(id) {
+    if (resolveAudio.has(id)) return resolveAudio.get(id);
+    const cue = new Audio(`${AUDIO.resolves}/${id}.mp3`);
+    cue.preload = "auto";
+    cue.volume = 1;
+    resolveAudio.set(id, cue);
+    return cue;
+  }
+
+  function playResolveCue(id) {
+    if (!soundOn) return;
+    const cue = preloadResolveCue(id);
     cue.currentTime = 0;
     cue.play().catch(() => {});
   }
