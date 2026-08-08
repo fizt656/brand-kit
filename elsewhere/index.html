@@ -8,14 +8,22 @@
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260808b">
+  <link rel="stylesheet" href="labyrinth.css?v=20260808c">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
   <div class="material" aria-hidden="true"></div>
+  <svg id="neural-field" class="neural-field" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
 
   <header class="edge">
     <a class="wordmark" href="/">Gus Halwani, <span>PhD</span></a>
+    <button id="message-player" class="message-player" type="button" aria-pressed="false" aria-label="Play unheard message">
+      <span class="message-mark" aria-hidden="true"></span>
+      <span class="message-copy">
+        <span class="message-label">you have a message</span>
+        <span id="message-state" class="message-state" aria-live="polite">00:24</span>
+      </span>
+    </button>
     <div class="edge-actions">
       <button id="sound-toggle" type="button" aria-pressed="false">sound</button>
       <button id="erase-route" type="button">erase</button>
@@ -30,15 +38,19 @@
         <button id="enter-labyrinth" type="button">enter</button>
       </div>
       <button class="threshold-object" id="threshold-object" type="button" aria-label="Enter the other map">
-        <svg viewBox="0 0 420 520" role="img" aria-label="An irregular folded brass form">
+        <svg viewBox="0 0 420 520" role="img" aria-label="An irregular neural seed">
           <defs>
             <filter id="threshold-warp">
               <feTurbulence type="fractalNoise" baseFrequency=".012 .026" numOctaves="3" seed="17" result="noise"/>
               <feDisplacementMap in="SourceGraphic" in2="noise" scale="18"/>
             </filter>
           </defs>
-          <path class="threshold-object-fill" filter="url(#threshold-warp)" d="M209 34C271 62 331 132 318 203c-11 60-75 75-65 131 7 38 61 67 39 111-19 37-92 50-137 24-42-24-31-82-46-124-18-51-58-85-31-142 26-54 77-194 131-169Z"/>
-          <path class="threshold-object-line" d="M102 373c72-58 158-117 184-226M116 420c62-106 111-188 178-256M82 244c92 11 165 57 205 127"/>
+          <path class="threshold-object-fill" filter="url(#threshold-warp)" d="M212 181c51-7 98 28 103 74 6 53-41 83-80 111-43 31-111 28-130-19-20-48 27-82 41-119 11-29 28-42 66-47Z"/>
+          <path class="threshold-object-line threshold-axon" d="M155 235C92 194 84 137 31 102M281 237c51-35 76-91 119-109M125 314c-64 26-75 78-115 107M287 330c58 27 73 84 119 109M216 187C204 116 238 80 221 20"/>
+          <path class="threshold-object-line" d="M169 245c28 20 58 31 91 30M151 294c41-12 78-2 111 29M185 348c-5-34 7-67 37-99"/>
+          <g class="threshold-synapses">
+            <circle cx="31" cy="102" r="7"/><circle cx="400" cy="128" r="5"/><circle cx="10" cy="421" r="5"/><circle cx="406" cy="439" r="8"/><circle cx="221" cy="20" r="6"/>
+          </g>
         </svg>
       </button>
       <p class="threshold-fault" aria-hidden="true">42.3601 / 33.8938 / —</p>
@@ -56,18 +68,12 @@
     </section>
   </main>
 
-  <dialog id="transmission" class="transmission" aria-labelledby="transmission-title">
-    <button class="dialog-close" type="button" aria-label="Close">×</button>
-    <p id="transmission-title">a recovered line</p>
-    <p>eventually the instruments began answering one another.</p>
-    <button id="play-transmission" type="button">play</button>
-  </dialog>
-
   <template id="door-template">
     <a class="door" href="#"><span></span></a>
   </template>
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
-  <script src="labyrinth.js?v=20260808b"></script>
+  <audio id="message-audio" preload="metadata" src="assets/audio/message.mp3"></audio>
+  <script src="labyrinth.js?v=20260808c"></script>
 </body>
 </html>

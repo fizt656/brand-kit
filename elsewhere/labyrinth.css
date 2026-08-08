@@ -73,6 +73,50 @@ body[data-theme="ash"] .material,
 body[data-theme="black"] .material,
 body[data-theme="rust"] .material { mix-blend-mode: screen; opacity: .12; }
 
+.neural-field {
+  position: fixed;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  color: var(--type, var(--ink));
+  opacity: .23;
+  transition: color .55s var(--ease), opacity .7s var(--ease);
+}
+.neural-edge {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: .82;
+  vector-effect: non-scaling-stroke;
+  opacity: .26;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.neural-edge.learned { stroke: var(--gold); opacity: .62; }
+.neural-node {
+  fill: currentColor;
+  opacity: .27;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.neural-node.learned { fill: var(--gold); opacity: .76; }
+.neural-signatures { fill: none; stroke: currentColor; stroke-width: .72; opacity: .18; vector-effect: non-scaling-stroke; }
+.neural-signatures circle:last-of-type { stroke: var(--gold); stroke-dasharray: 4 7; }
+.neural-field.awake .neural-edge { animation: neural-draw 1.45s var(--ease) both; animation-delay: var(--delay); }
+.neural-field.awake .neural-node { animation: neuron-arrive .7s var(--ease) both; animation-delay: calc(.35s + var(--delay)); }
+.neural-field.receiving .neural-edge.learned {
+  stroke-dasharray: .035 .965;
+  animation: neural-signal 2.8s linear infinite;
+  animation-delay: var(--delay);
+}
+.neural-field.receiving .neural-node.learned { animation: neuron-listen 2.1s ease-in-out infinite; animation-delay: var(--delay); }
+.neural-field.remembering { animation: field-remember 1.7s var(--ease) both; }
+body[data-room="threshold"] .neural-field { opacity: .13; }
+body[data-theme="ash"] .neural-field,
+body[data-theme="black"] .neural-field,
+body[data-theme="rust"] .neural-field { mix-blend-mode: screen; opacity: .2; }
+
 .edge {
   position: fixed;
   z-index: 100;
@@ -125,6 +169,59 @@ body[data-theme="rust"] .material { mix-blend-mode: screen; opacity: .12; }
 .edge-actions button:hover, .edge-actions a:hover { text-decoration: line-through; }
 #erase-route { display: none; }
 body:not([data-room="threshold"]) #erase-route { display: inline-block; }
+
+.message-player {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: .62rem;
+  min-height: 44px;
+  border: 0;
+  padding: .25rem .4rem;
+  transform: translateX(-50%);
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  pointer-events: auto;
+  text-align: left;
+}
+.message-mark {
+  position: relative;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: .7;
+}
+.message-mark::before {
+  content: "";
+  position: absolute;
+  left: 8px;
+  top: 6px;
+  width: 0;
+  height: 0;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 6px solid currentColor;
+}
+.message-copy { display: grid; gap: .18rem; }
+.message-label { font: 400 .56rem/1 var(--mono); letter-spacing: .075em; white-space: nowrap; }
+.message-state { color: var(--faint); font: 400 .45rem/1 var(--mono); letter-spacing: .1em; }
+.message-player:not(.heard):not(.playing) .message-mark { animation: message-waiting 3.2s ease-in-out infinite; }
+.message-player.playing .message-mark { border-color: var(--gold); }
+.message-player.playing .message-mark::before {
+  left: 7px;
+  top: 6px;
+  width: 2px;
+  height: 8px;
+  border: 0;
+  background: currentColor;
+  box-shadow: 5px 0 0 currentColor;
+}
+.message-player.heard { opacity: .62; }
+.message-player:hover .message-label { text-decoration: line-through; }
 
 main { position: relative; z-index: 2; }
 
@@ -183,6 +280,8 @@ main { position: relative; z-index: 2; }
 .threshold-object svg { display: block; width: 100%; overflow: visible; }
 .threshold-object-fill { fill: #ba8c3d; stroke: #221f1a; stroke-width: 1.2; }
 .threshold-object-line { fill: none; stroke: #221f1a; stroke-width: 1; opacity: .5; }
+.threshold-axon { stroke-width: 1.25; }
+.threshold-synapses { fill: #ba8c3d; stroke: #221f1a; stroke-width: 1; }
 
 .threshold-fault {
   position: absolute;
@@ -480,19 +579,6 @@ main { position: relative; z-index: 2; }
 .door:nth-child(2) { right: clamp(1.4rem, 4vw, 4rem); top: 38%; }
 .door:nth-child(3) { right: clamp(1.4rem, 4vw, 4rem); bottom: 2rem; }
 
-.transmission {
-  width: min(88vw, 460px);
-  border: 1px solid currentColor;
-  padding: clamp(2rem, 6vw, 4rem);
-  background: var(--page);
-  color: var(--type);
-  font: .68rem/1.7 var(--mono);
-}
-.transmission::backdrop { background: rgba(0,0,0,.56); }
-.transmission p:first-of-type { margin-top: 0; color: var(--faint); }
-.transmission button { border: 0; border-bottom: 1px solid currentColor; padding: .3rem 0; background: transparent; cursor: pointer; }
-.dialog-close { position: absolute; top: .7rem; right: .85rem; border: 0 !important; font-size: 1.2rem !important; }
-
 .noscript {
   position: fixed;
   z-index: 500;
@@ -569,6 +655,24 @@ body[data-room="strange-loop"] .room-fragment { left: 9vw; bottom: 17vh; }
 body[data-room="strange-loop"] .room-artifact { left: 50%; top: 58%; transform: translate(-50%, -50%); }
 body[data-room="strange-loop"] .room-response { right: 8vw; bottom: 15vh; }
 
+@keyframes neural-draw { to { stroke-dashoffset: 0; } }
+@keyframes neural-signal { to { stroke-dashoffset: -1; } }
+@keyframes neuron-arrive {
+  from { opacity: 0; transform: scale(.1); }
+  to { transform: scale(1); }
+}
+@keyframes neuron-listen {
+  0%, 100% { transform: scale(.8); opacity: .36; }
+  50% { transform: scale(1.45); opacity: .9; }
+}
+@keyframes field-remember {
+  0%, 100% { opacity: .23; filter: none; }
+  38% { opacity: .48; filter: contrast(1.35); }
+}
+@keyframes message-waiting {
+  0%, 78%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 0%, transparent); }
+  86% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--gold) 12%, transparent); }
+}
 @keyframes threshold-tear {
   0% { filter: none; transform: none; opacity: 1; }
   35% { filter: contrast(1.6); transform: translateX(7px) skewX(-1deg); opacity: .82; }
@@ -590,6 +694,12 @@ body[data-room="strange-loop"] .room-response { right: 8vw; bottom: 15vh; }
   .wordmark { font-size: 1rem; }
   .edge-actions { gap: .25rem; }
   .edge-actions button, .edge-actions a { font-size: .62rem; }
+  .message-player { position: fixed; top: 58px; min-height: 42px; padding: .2rem .35rem; }
+  .message-label { font-size: .52rem; }
+  .message-mark { width: 20px; height: 20px; flex-basis: 20px; }
+  .message-mark::before { left: 7px; top: 5px; }
+  .message-player.playing .message-mark::before { left: 6px; top: 5px; }
+  .neural-field { opacity: .2; }
   .threshold { padding-top: 6rem; }
   .threshold-copy { top: 38%; }
   .threshold h1 { font-size: clamp(2.3rem, 11vw, 3.4rem); }

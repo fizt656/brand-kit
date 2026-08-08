@@ -3,6 +3,12 @@
 
   const STORAGE_KEY = "gus-other-map-v1";
   const FREQUENCIES = ["audio", "neural", "data", "motion", "craft", "water", "home"];
+  const AUDIO = {
+    ambient: "assets/audio/neural-room-loop.mp3",
+    threshold: "assets/audio/threshold-wake.mp3",
+    axon: "assets/audio/axon-pulse.mp3",
+    found: "assets/audio/frequency-found.mp3"
+  };
 
   const ROOMS = {
     foyer: {
@@ -133,17 +139,24 @@
   const roomArtifact = $("#room-artifact");
   const response = $("#room-response");
   const doors = $("#doors");
+  const neuralField = $("#neural-field");
+  const messageAudio = $("#message-audio");
+  const messageButton = $("#message-player");
+  const messageState = $("#message-state");
   let currentRoom = "threshold";
   let soundOn = false;
   let audioContext = null;
   let activeTone = [];
   let interactionCleanup = null;
+  let ambientAudio = null;
+  let ambientFade = 0;
 
   const saved = loadState();
   const state = {
     visited: new Set(Array.isArray(saved.visited) ? saved.visited : []),
     frequencies: new Set(Array.isArray(saved.frequencies) ? saved.frequencies : []),
-    resolutionSeen: Boolean(saved.resolutionSeen)
+    resolutionSeen: Boolean(saved.resolutionSeen),
+    messageHeard: Boolean(saved.messageHeard)
   };
 
   function loadState() {
@@ -160,7 +173,8 @@
       localStorage.setItem(STORAGE_KEY, JSON.stringify({
         visited: [...state.visited],
         frequencies: [...state.frequencies],
-        resolutionSeen: state.resolutionSeen
+        resolutionSeen: state.resolutionSeen,
+        messageHeard: state.messageHeard
       }));
     } catch (_) {
       // The room still exists if the browser forgets it.
@@ -198,6 +212,7 @@
     $(".skip-link").href = "#threshold-title";
     cleanupInteraction();
     stopRoomTone();
+    renderNeuralField("threshold");
     window.scrollTo({ top: 0, behavior: "auto" });
     if (shouldMoveFocus) focusHeading($("#threshold-title"));
   }
@@ -231,10 +246,14 @@
     response.classList.remove("visible");
     roomArtifact.innerHTML = artifactMarkup(data.visual);
     renderDoors(data.doors);
+    renderNeuralField(id);
     cleanupInteraction();
     setupInteraction(data.visual);
 
-    if (soundOn) startRoomTone(data.tone);
+    if (soundOn) {
+      startRoomTone(data.tone);
+      playAsset("axon", .38);
+    }
     labyrinth.classList.remove("room-entering");
     void labyrinth.offsetWidth;
     labyrinth.classList.add("room-entering");
@@ -249,6 +268,77 @@
 
   function defs(seed = 9) {
     return `<defs><filter id="rough-${seed}"><feTurbulence type="fractalNoise" baseFrequency=".013 .027" numOctaves="3" seed="${seed}" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="13"/></filter></defs>`;
+  }
+
+  function hashRoom(value) {
+    return [...value].reduce((hash, character) => ((hash << 5) - hash + character.charCodeAt(0)) | 0, 2166136261) >>> 0;
+  }
+
+  function seeded(seed) {
+    let value = seed || 1;
+    return () => {
+      value = (value * 1664525 + 1013904223) >>> 0;
+      return value / 4294967296;
+    };
+  }
+
+  function renderNeuralField(id) {
+    const random = seeded(hashRoom(id));
+    const nodes = [{ x: 500 + (random() - .5) * 130, y: 350 + (random() - .5) * 90 }];
+    for (let index = 1; index < 19; index += 1) {
+      const angle = random() * Math.PI * 2;
+      const radius = 92 + random() * 430;
+      nodes.push({
+        x: Math.max(28, Math.min(972, nodes[0].x + Math.cos(angle) * radius * 1.24)),
+        y: Math.max(28, Math.min(672, nodes[0].y + Math.sin(angle) * radius * .82))
+      });
+    }
+
+    const connections = [];
+    nodes.slice(1).forEach((node, index) => {
+      let parent = 0;
+      let distance = Infinity;
+      nodes.slice(0, index + 1).forEach((candidate, candidateIndex) => {
+        const score = Math.hypot(node.x - candidate.x, node.y - candidate.y) * (.86 + random() * .28);
+        if (score < distance) { distance = score; parent = candidateIndex; }
+      });
+      connections.push([parent, index + 1]);
+    });
+    for (let index = 0; index < 4; index += 1) {
+      const from = 1 + Math.floor(random() * (nodes.length - 1));
+      let to = 1 + Math.floor(random() * (nodes.length - 1));
+      if (to === from) to = (to + 5) % (nodes.length - 1) + 1;
+      connections.push([from, to]);
+    }
+
+    const learned = Math.min(nodes.length, 2 + state.visited.size + state.frequencies.size * 2);
+    const paths = connections.map(([from, to], index) => {
+      const a = nodes[from];
+      const b = nodes[to];
+      const bend = (random() - .5) * 86;
+      const cx = (a.x + b.x) / 2 + bend;
+      const cy = (a.y + b.y) / 2 - bend * .55;
+      const active = from < learned && to < learned ? " learned" : "";
+      return `<path class="neural-edge${active}" pathLength="1" style="--delay:${(index * .047).toFixed(2)}s" d="M${a.x.toFixed(1)} ${a.y.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}"/>`;
+    }).join("");
+    const points = nodes.map((node, index) => {
+      const active = index < learned ? " learned" : "";
+      const radius = index === 0 ? 7 : 2.4 + random() * 2.7;
+      return `<circle class="neural-node${active}" style="--delay:${(index * .061).toFixed(2)}s" cx="${node.x.toFixed(1)}" cy="${node.y.toFixed(1)}" r="${radius.toFixed(1)}"/>`;
+    }).join("");
+    const origin = nodes[0];
+    neuralField.classList.remove("awake", "remembering");
+    neuralField.innerHTML = `<g class="neural-edges">${paths}</g><g class="neural-nodes">${points}</g>
+      <g class="neural-signatures" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)})">
+        <circle r="23"/><circle r="38"/><path d="M-62 0h39M23 0h62M0-61v38M0 23v42"/>
+      </g>`;
+    requestAnimationFrame(() => neuralField.classList.add("awake"));
+  }
+
+  function pulseNeuralField() {
+    neuralField.classList.remove("remembering");
+    void neuralField.getBoundingClientRect();
+    neuralField.classList.add("remembering");
   }
 
   function artifactMarkup(type) {
@@ -339,7 +429,7 @@
       part.classList.toggle("touched");
       setResponse(part.dataset.line || "");
       playClick(148 + index * 53);
-      if (part.dataset.transmission === "true") openDialog($("#transmission"));
+      if (part.dataset.transmission === "true") toggleMessage();
     }));
   }
 
@@ -514,17 +604,8 @@
     state.frequencies.add(id);
     saveState();
     roomArtifact.classList.add("discovered");
+    pulseNeuralField();
     playAcquired();
-  }
-
-  function openDialog(dialog) {
-    if (typeof dialog.showModal === "function") dialog.showModal();
-    else dialog.setAttribute("open", "");
-  }
-
-  function closeDialog(dialog) {
-    if (typeof dialog.close === "function") dialog.close();
-    else dialog.removeAttribute("open");
   }
 
   function ensureAudio() {
@@ -543,7 +624,7 @@
     if (!context || !soundOn) return;
     const master = context.createGain();
     master.gain.setValueAtTime(.0001, context.currentTime);
-    master.gain.exponentialRampToValueAtTime(.018, context.currentTime + 1.8);
+    master.gain.exponentialRampToValueAtTime(.0065, context.currentTime + 1.8);
     master.connect(context.destination);
     activeTone = frequencies.map((frequency, index) => {
       const oscillator = context.createOscillator();
@@ -574,15 +655,60 @@
   }
 
   function toggleSound() {
-    soundOn = !soundOn;
+    setSoundState(!soundOn);
+  }
+
+  function setSoundState(enabled, quietStart = false) {
+    soundOn = enabled;
     const button = $("#sound-toggle");
     button.textContent = soundOn ? "sound on" : "sound";
     button.setAttribute("aria-pressed", String(soundOn));
     if (soundOn) {
       ensureAudio();
+      startAmbient();
       if (ROOMS[currentRoom]) startRoomTone(ROOMS[currentRoom].tone);
-      else playTransmissionTone();
-    } else stopRoomTone();
+      else if (!quietStart) playAsset("threshold", .52);
+    } else {
+      stopRoomTone();
+      stopAmbient();
+      if (!messageAudio.paused) messageAudio.pause();
+    }
+  }
+
+  function fadeMedia(media, target, duration = 520) {
+    clearInterval(ambientFade);
+    const start = media.volume;
+    const began = performance.now();
+    ambientFade = window.setInterval(() => {
+      const progress = Math.min(1, (performance.now() - began) / duration);
+      media.volume = start + (target - start) * progress;
+      if (progress >= 1) clearInterval(ambientFade);
+    }, 40);
+  }
+
+  function startAmbient() {
+    if (!ambientAudio) {
+      ambientAudio = new Audio(AUDIO.ambient);
+      ambientAudio.loop = true;
+      ambientAudio.preload = "auto";
+      ambientAudio.volume = 0;
+    }
+    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .18 : .055, 1100)).catch(() => {});
+  }
+
+  function stopAmbient() {
+    if (!ambientAudio) return;
+    fadeMedia(ambientAudio, 0, 220);
+    window.setTimeout(() => {
+      if (!soundOn && ambientAudio) ambientAudio.pause();
+    }, 250);
+  }
+
+  function playAsset(name, volume = .5) {
+    if (!soundOn || !AUDIO[name]) return;
+    const cue = new Audio(AUDIO[name]);
+    cue.volume = volume;
+    cue.play().catch(() => {});
   }
 
   function playClick(frequency = 180, volume = .028) {
@@ -602,14 +728,30 @@
 
   function playAcquired() {
     if (!soundOn) return;
-    [165, 247, 371].forEach((frequency, index) => setTimeout(() => playClick(frequency, .03), index * 105));
+    playAsset("found", .52);
   }
 
-  function playTransmissionTone() {
-    soundOn = true;
-    $("#sound-toggle").textContent = "sound on";
-    $("#sound-toggle").setAttribute("aria-pressed", "true");
-    [98, 147, 196, 294, 147].forEach((frequency, index) => setTimeout(() => playClick(frequency, .026), index * 180));
+  function formatTime(value) {
+    const seconds = Math.max(0, Math.ceil(Number.isFinite(value) ? value : 24));
+    return `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
+  }
+
+  function updateMessageState() {
+    const remaining = (messageAudio.duration || 24) - messageAudio.currentTime;
+    messageState.textContent = messageAudio.paused ? (state.messageHeard ? "heard" : formatTime(remaining)) : formatTime(remaining);
+  }
+
+  function toggleMessage() {
+    if (!messageAudio.paused) {
+      messageAudio.pause();
+      return;
+    }
+    if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
+    setSoundState(true, true);
+    fadeMedia(ambientAudio, .055, 260);
+    messageAudio.play().catch(() => {
+      messageState.textContent = "blocked";
+    });
   }
 
   function eraseRoute() {
@@ -617,7 +759,14 @@
     state.visited.clear();
     state.frequencies.clear();
     state.resolutionSeen = false;
+    state.messageHeard = false;
     saveState();
+    messageAudio.pause();
+    messageAudio.currentTime = 0;
+    messageButton.classList.remove("heard", "playing");
+    messageButton.setAttribute("aria-pressed", "false");
+    messageButton.setAttribute("aria-label", "Play unheard message");
+    messageState.textContent = "00:24";
     location.hash = "threshold";
   }
 
@@ -625,10 +774,32 @@
   $("#threshold-object").addEventListener("click", enter);
   $("#sound-toggle").addEventListener("click", toggleSound);
   $("#erase-route").addEventListener("click", eraseRoute);
-  $("#play-transmission").addEventListener("click", playTransmissionTone);
-  $(".dialog-close").addEventListener("click", () => closeDialog($("#transmission")));
-  $("#transmission").addEventListener("click", (event) => {
-    if (event.target === $("#transmission")) closeDialog($("#transmission"));
+  messageButton.addEventListener("click", toggleMessage);
+  messageAudio.addEventListener("play", () => {
+    messageButton.classList.add("playing");
+    messageButton.setAttribute("aria-pressed", "true");
+    messageButton.setAttribute("aria-label", "Pause message");
+    neuralField.classList.add("receiving");
+    updateMessageState();
+  });
+  messageAudio.addEventListener("timeupdate", updateMessageState);
+  messageAudio.addEventListener("pause", () => {
+    messageButton.classList.remove("playing");
+    messageButton.setAttribute("aria-pressed", "false");
+    messageButton.setAttribute("aria-label", state.messageHeard
+      ? "Play message again"
+      : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
+    neuralField.classList.remove("receiving");
+    if (soundOn && ambientAudio) fadeMedia(ambientAudio, .18, 480);
+    updateMessageState();
+  });
+  messageAudio.addEventListener("ended", () => {
+    state.messageHeard = true;
+    saveState();
+    messageButton.classList.add("heard");
+    messageButton.setAttribute("aria-label", "Play message again");
+    messageState.textContent = "heard";
+    pulseNeuralField();
   });
   $(".skip-link").addEventListener("click", (event) => {
     event.preventDefault();
@@ -637,7 +808,13 @@
     target.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
   });
   addEventListener("hashchange", route);
-  addEventListener("beforeunload", stopRoomTone);
+  addEventListener("beforeunload", () => { stopRoomTone(); stopAmbient(); });
+
+  if (state.messageHeard) {
+    messageButton.classList.add("heard");
+    messageState.textContent = "heard";
+    messageButton.setAttribute("aria-label", "Play message again");
+  }
 
   route();
 })();
