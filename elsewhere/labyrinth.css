@@ -240,6 +240,7 @@ body:not([data-room="threshold"]) #erase-route { display: inline-block; }
   pointer-events: auto;
   text-align: left;
 }
+.message-player[hidden] { display: none !important; }
 .message-mark {
   position: relative;
   width: 22px;

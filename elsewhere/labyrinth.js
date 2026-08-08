@@ -439,6 +439,7 @@
     threshold.hidden = false;
     thresholdCopy.hidden = false;
     perceptionGate.hidden = true;
+    messageButton.hidden = true;
     threshold.classList.remove("tearing");
     labyrinth.hidden = true;
     resolution.hidden = true;
@@ -532,6 +533,12 @@
   }
 
   function openGate() {
+    messageButton.hidden = false;
+    if (!autoAudioStarted) {
+      autoAudioStarted = true;
+      activateAudio(true);
+      if (!state.messageHeard && messageAudio.paused) toggleMessage();
+    }
     if (state.gateUnlocked) {
       enterLabyrinth();
       return;
@@ -548,6 +555,7 @@
   function leaveGate() {
     perceptionGate.hidden = true;
     thresholdCopy.hidden = false;
+    messageButton.hidden = true;
     scheduleTransmissionGlitch();
     triggerTransmissionGlitch("RETURNING TO CARRIER SEARCH", 480);
     focusHeading($("#threshold-title"));
@@ -562,6 +570,7 @@
     threshold.hidden = true;
     labyrinth.hidden = false;
     resolution.hidden = true;
+    messageButton.hidden = false;
     $(".skip-link").href = "#room-title";
     state.visited.add(id);
     saveState();
@@ -902,6 +911,7 @@
     document.body.classList.remove("signal-glitch", ...GLITCH_MODES, "power-fault");
     labyrinth.hidden = true;
     resolution.hidden = false;
+    messageButton.hidden = false;
     document.body.dataset.room = "resolution";
     setTheme("black");
     syncIdentitySignal();
@@ -1421,18 +1431,6 @@
     else startAmbient();
   });
 
-  function startFirstVisitAudio(event) {
-    if (autoAudioStarted) return;
-    if (event.target.closest && event.target.closest("#sound-toggle")) return;
-    autoAudioStarted = true;
-    document.removeEventListener("pointerdown", startFirstVisitAudio);
-    activateAudio(true);
-    if (!state.messageHeard && messageAudio.paused && !(event.target.closest && event.target.closest("#message-player"))) {
-      toggleMessage();
-    }
-  }
-
-  document.addEventListener("pointerdown", startFirstVisitAudio);
   reducedMotion.addEventListener("change", syncIdentitySignal);
 
   if (state.messageHeard) {
