@@ -8,11 +8,13 @@
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260808c">
+  <link rel="stylesheet" href="labyrinth.css?v=20260808e">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
   <div class="material" aria-hidden="true"></div>
+  <div class="crt-scan" aria-hidden="true"></div>
+  <div class="crt-glitch" aria-hidden="true"></div>
   <svg id="neural-field" class="neural-field" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
 
   <header class="edge">
@@ -34,8 +36,9 @@
   <main id="stage">
     <section id="threshold" class="threshold" aria-labelledby="threshold-title">
       <div class="threshold-copy">
+        <p class="threshold-boot" aria-hidden="true">REMOTE SHELL // UNLISTED MEMORY // CARRIER UNSTABLE</p>
         <h1 id="threshold-title">There is another map.</h1>
-        <button id="enter-labyrinth" type="button">enter</button>
+        <button id="enter-labyrinth" type="button">close the circuit</button>
       </div>
       <button class="threshold-object" id="threshold-object" type="button" aria-label="Enter the other map">
         <svg viewBox="0 0 420 520" role="img" aria-label="An irregular neural seed">
@@ -61,8 +64,19 @@
         <p id="room-index" class="room-index"></p>
         <h2 id="room-title"></h2>
         <p id="room-fragment" class="room-fragment"></p>
+        <section id="room-terminal" class="room-terminal" aria-labelledby="room-terminal-label">
+          <p id="room-terminal-label" class="terminal-label"></p>
+          <p id="room-terminal-copy" class="terminal-copy"></p>
+          <pre id="room-terminal-ascii" class="terminal-ascii" aria-hidden="true"></pre>
+        </section>
         <div id="room-artifact" class="room-artifact"></div>
         <p id="room-response" class="room-response" role="status"></p>
+        <section id="story-terminal" class="story-terminal" aria-labelledby="story-terminal-label" hidden>
+          <p id="story-terminal-label" class="story-label">DECRYPTED PERSONA FRAGMENT</p>
+          <p id="story-copy" class="story-copy"></p>
+          <div id="story-links" class="story-links"></div>
+        </section>
+        <p id="room-progress" class="room-progress"></p>
       </article>
       <nav id="doors" class="doors" aria-label="Ways out"></nav>
     </section>
@@ -74,6 +88,6 @@
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
   <audio id="message-audio" preload="metadata" src="assets/audio/message.mp3"></audio>
-  <script src="labyrinth.js?v=20260808c"></script>
+  <script src="labyrinth.js?v=20260808e"></script>
 </body>
 </html>
