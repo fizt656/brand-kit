@@ -3,6 +3,13 @@
 
   const STORAGE_KEY = "gus-other-map-v1";
   const ROOM_IDS = ["foyer", "listening", "tunnel", "whiteboard", "lab", "pitlane", "engine", "shore", "kitchen", "watch", "quiet-center", "field-notes", "strange-loop"];
+  const STORY_PATH = [...ROOM_IDS];
+  const ARC_PHASES = [
+    { through: 2, number: "I", name: "ATTUNE", instruction: "notice what the noise is hiding" },
+    { through: 4, number: "II", name: "TRANSLATE", instruction: "make the signal usable" },
+    { through: 9, number: "III", name: "CARE", instruction: "let attention become practice" },
+    { through: 12, number: "IV", name: "RETURN", instruction: "find what the instruments were carrying" }
+  ];
   const PUZZLE_SYMBOLS = ["○", "△", "□", "◇"];
   const AUDIO = {
     ambient: "assets/audio/neural-room-loop.mp3",
@@ -23,7 +30,7 @@
       terminal: "The instruments kept changing: console, cortex, classroom, model. The operation underneath did not. Find a signal, remove what hides it, return it to another human in usable form.",
       ascii: ["o---o---[?]", " \\  |  /", "  [GUS]"],
       nodes: ["AUDIO SIGNAL", "NEURAL SIGNAL", "DATA SIGNAL", "SAME HAND", "NEW INSTRUMENT", "GUS"],
-      puzzle: { labels: ["HEAR", "TRACE", "TRANSLATE", "RETURN"], solution: [0, 1, 2], clue: "THREAD ORDER :: HEAR > TRACE > TRANSLATE", shape: 0 },
+      puzzle: { labels: ["HEAR", "TRACE", "TRANSLATE", "RETURN"], solution: [0, 1, 2], clue: "Reception comes first. Follow it inward. Make it portable.", shape: 0 },
       story: "He is not a collection of career changes. He is one listener moving through different kinds of noise: sound, brains, learning, and machines. The signal thread is the continuity.",
       doors: [["listening", "hiss"], ["engine", "heat"], ["shore", "west"]]
     },
@@ -37,7 +44,7 @@
       terminal: "Before the lab and before the classroom, there was a room full of pressure waves. The first discipline was not making things louder. It was learning which part of the room was already speaking.",
       ascii: ["~~~~|\u00b7|~~~~", "  [ REC ]", "< room_tone >"],
       nodes: ["ROOM TONE", "GAIN", "FEEDBACK", "BEFORE MEANING", "MIX", "EAR"],
-      puzzle: { labels: ["ROOM", "SOURCE", "NOISE", "MEANING"], solution: [0, 2, 3], clue: "KEEP PATH :: ROOM > NOISE > MEANING", shape: 1 },
+      puzzle: { labels: ["ROOM", "SOURCE", "NOISE", "MEANING"], solution: [0, 2, 3], clue: "Hear the whole field. Name the interference. Meaning comes last.", shape: 1 },
       story: "Sound engineering taught him the oldest version of his work: listen before acting, separate source from noise, and shape an experience without crushing its life out of it.",
       doors: [["tunnel", "inside"], ["kitchen", "slow"], ["foyer", "back"]]
     },
@@ -51,7 +58,7 @@
       terminal: "The wire was never only wire. Every passage altered the next passage; repetition became structure. He followed sound inward until listening turned into plasticity, behavior, and the machinery of learning.",
       ascii: ["o---o    o", "    \\--o--o", "use => route"],
       nodes: ["NEURON", "PLASTICITY", "USE", "PATH", "SENSE", "BRAIN"],
-      puzzle: { labels: ["SENSE", "SYNAPSE", "ROUTE", "USE"], solution: [0, 1, 3], clue: "PLASTIC PATH :: SENSE > SYNAPSE > USE", shape: 2 },
+      puzzle: { labels: ["SENSE", "SYNAPSE", "ROUTE", "USE"], solution: [0, 1, 3], clue: "The world arrives. A connection changes. Repetition leaves the mark.", shape: 2 },
       story: "Neuroscience gave the signal thread a living substrate. Learning was no longer an abstraction; it was a path physically changed by use, attention, repetition, and consequence.",
       doors: [["lab", "below"], ["whiteboard", "translate"], ["listening", "echo"]]
     },
@@ -65,7 +72,7 @@
       terminal: "A capability is not yet a lesson. The whiteboard activates only when the question moves toward context, then toward the person who must use the answer after the room is empty.",
       ascii: ["[?]--[ctx]", "       \\ ", "      [you]"],
       nodes: ["QUESTION", "CONTEXT", "PERSON", "MODEL", "TRANSLATE", "DFCI"],
-      puzzle: { labels: ["CAPABILITY", "QUESTION", "CONTEXT", "PERSON"], solution: [1, 2, 3], clue: "TEACHING PATH :: QUESTION > CONTEXT > PERSON", shape: 3 },
+      puzzle: { labels: ["CAPABILITY", "QUESTION", "CONTEXT", "PERSON"], solution: [1, 2, 3], clue: "Do not begin with the tool. Ask. Situate. Return to the human.", shape: 3 },
       story: "Teaching is where his technical curiosity becomes service. At Dana-Farber, the point is not AI spectacle; it is helping real people form better questions and use powerful systems with judgment.",
       doors: [["lab", "test"], ["quiet-center", "why"], ["field-notes", "scraps"]]
     },
@@ -79,7 +86,7 @@
       terminal: "The visible model is only the loudest component. Data enters from one wall, workflow from another, and human consequence through a door nobody labels. Close all three before calling it a system.",
       ascii: ["[M] [D] [W]", " \\   |   /", "  < HUMAN >"],
       nodes: ["MODEL", "DATA", "WORKFLOW", "GUARDRAIL", "HUMAN", "ENABLE"],
-      puzzle: { labels: ["MODEL", "DATA", "WORKFLOW", "DEMO"], solution: [0, 1, 2], clue: "SYSTEM BUS :: MODEL > DATA > WORKFLOW", shape: 4 },
+      puzzle: { labels: ["MODEL", "DATA", "WORKFLOW", "DEMO"], solution: [0, 1, 2], clue: "The loud component is not the system. Feed it, place it, then use it.", shape: 4 },
       story: "He works on the layer most AI demos omit: the human system around the model. Enablement means workflow, literacy, guardrails, and enough understanding for people to remain authors of the work.",
       doors: [["pitlane", "margin"], ["tunnel", "carbon"], ["quiet-center", "dim"]]
     },
@@ -93,7 +100,7 @@
       terminal: "The fast line is assembled early. Brake before fear, look beyond the visible corner, turn once, and leave the machine enough margin to tell you what the surface knows.",
       ascii: ["----\\__", "      ) )", "0.017 sec"],
       nodes: ["0.017", "LOOK AHEAD", "BRAKE", "TURN", "MARGIN", "FEEL"],
-      puzzle: { labels: ["BRAKE", "LOOK", "TURN", "POWER"], solution: [0, 1, 2], clue: "CORNER ORDER :: BRAKE > LOOK > TURN", shape: 5 },
+      puzzle: { labels: ["BRAKE", "LOOK", "TURN", "POWER"], solution: [0, 1, 2], clue: "Speed is decided before the corner: create margin, move the eyes, commit once.", shape: 5 },
       story: "Driving compresses perception into action. The pleasure is not raw speed; it is the tiny margin where attention, timing, mechanical feedback, and trust become one clean line.",
       doors: [["engine", "hot"], ["watch", "late"], ["lab", "readout"]]
     },
@@ -107,7 +114,7 @@
       terminal: "An old machine is not a disposable object. Cold oil, tired rubber, one unexplained vibration: each asks for patience before force. Warm it, hear it, keep what has earned a history.",
       ascii: ["[cold]..[warm]", "   \u03a9 / rpm", "KEEP / REPAIR"],
       nodes: ["E46", "WARM FIRST", "PATINA", "TORQUE", "CARE", "KEEP"],
-      puzzle: { labels: ["COLD", "WAIT", "WARM", "REV"], solution: [0, 1, 2], clue: "START ORDER :: COLD > WAIT > WARM", shape: 6 },
+      puzzle: { labels: ["COLD", "WAIT", "WARM", "REV"], solution: [0, 1, 2], clue: "Name the condition. Give the metal time. Proceed only after it changes.", shape: 6 },
       story: "The E46 is not here as a mascot. It reveals a deeper instinct: repair instead of replace, understand the complaint, preserve character, and accept that care sometimes arrives carrying a wrench and several curses.",
       doors: [["pitlane", "cut"], ["shore", "coast"], ["foyer", "off"]]
     },
@@ -121,7 +128,7 @@
       terminal: "Beirut remained in the coordinate system after the body moved west at seventeen. War altered the coastline; migration altered the scale. The heading survived both transformations.",
       ascii: ["BEY ~~~> WEST", " 17 / bearing", "home != place"],
       nodes: ["BEIRUT", "17", "WEST", "HEADING", "MIGRATION", "RETURN"],
-      puzzle: { labels: ["BEIRUT", "WEST", "HOME", "RETURN"], solution: [0, 1, 2], clue: "BEARING :: BEIRUT > WEST > HOME", shape: 0 },
+      puzzle: { labels: ["BEIRUT", "WEST", "HOME", "RETURN"], solution: [0, 1, 2], clue: "The origin remains. The body moves. The carried place changes meaning.", shape: 0 },
       story: "Leaving Beirut at seventeen did not erase the first map. It made identity portable: language, humor, vigilance, music, family, and a heading that can survive when geography does not hold still.",
       doors: [["kitchen", "carry"], ["watch", "drift"], ["foyer", "orient"]]
     },
@@ -135,7 +142,7 @@
       terminal: "The most important system has no dashboard. It runs on showing up, remembering what each person needs, keeping the heat low, and making a table where Maria, the kids, and the unfinished day can land.",
       ascii: ["  (  steam  )", "[time]+[care]", "  => TABLE"],
       nodes: ["MARIA", "DAD", "LOW HEAT", "TABLE", "FAMILY", "TIME"],
-      puzzle: { labels: ["WATER", "TIME", "TASTE", "SERVE"], solution: [0, 1, 3], clue: "HOME ORDER :: WATER > TIME > SERVE", shape: 1 },
+      puzzle: { labels: ["WATER", "TIME", "TASTE", "SERVE"], solution: [0, 1, 3], clue: "Begin with what sustains. Refuse the shortcut. End at the table.", shape: 1 },
       story: "Family is not the soft edge of the map; it is the load-bearing center. Curiosity matters, work matters, making matters—but the system is only healthy if there is still a table to return to.",
       doors: [["quiet-center", "keep"], ["listening", "mix"], ["shore", "salt"]]
     },
@@ -149,7 +156,7 @@
       terminal: "Two seconds is nothing until it repeats. Observe the drift, touch only what moved, measure again. The pleasure is not perfection; it is the patient conversation between hand and mechanism.",
       ascii: ["+2 +2 +2", "   /|", "[adjust]"],
       nodes: ["+2 SEC", "MEASURE", "ADJUST", "CRAFT", "PATIENT", "KEEP"],
-      puzzle: { labels: ["OBSERVE", "ADJUST", "MEASURE", "KEEP"], solution: [0, 1, 2], clue: "BENCH LOOP :: OBSERVE > ADJUST > MEASURE", shape: 2 },
+      puzzle: { labels: ["OBSERVE", "ADJUST", "MEASURE", "KEEP"], solution: [0, 1, 2], clue: "Attention before intervention. Touch only what moved. Ask the mechanism again.", shape: 2 },
       story: "The tinkerer is a way of knowing. He trusts the loop of observe, adjust, measure—not because everything must be optimized, but because attention is one of the ways care becomes visible.",
       doors: [["pitlane", "time"], ["shore", "tide"], ["quiet-center", "keep"]]
     },
@@ -163,7 +170,7 @@
       terminal: "Some signals are not problems to solve. Maz and Baz remain in the objects that carried the family, in practical hands, in the lamp left on for whoever comes home late. Do not optimize this channel.",
       ascii: ["MAZ     BAZ", "   \\ | /", "    (*)"],
       nodes: ["MAZ", "BAZ", "LAMP", "LINEAGE", "CARRIED", "STILL HERE"],
-      puzzle: { labels: ["LAMP", "NAME", "SILENCE", "KEEP"], solution: [0, 2, 3], clue: "NO MEASURE :: LAMP > SILENCE > KEEP", shape: 3 },
+      puzzle: { labels: ["LAMP", "NAME", "SILENCE", "KEEP"], solution: [0, 2, 3], clue: "Leave the light. Do not fill the room. Carry what remains.", shape: 3 },
       story: "Maz and Baz are not backstory. They are active inheritance: humor, endurance, practical love, and the instinct to keep a lamp on. Some rooms become sacred by refusing to explain them away.",
       doors: [["strange-loop", "continue"], ["field-notes", "paper"], ["foyer", "lamp"]]
     },
@@ -177,7 +184,7 @@
       terminal: "A thought becomes useful when it survives outside the skull. Notes become frameworks; frameworks become rooms other people can enter. Publish before certainty sands off the living edge.",
       ascii: ["[notice]", "   | write", "   v publish"],
       nodes: ["SIGNAL THREAD", "HARNESS", "FIRST PRINCIPLES", "TEACH", "WRITE", "SPEAK"],
-      puzzle: { labels: ["NOTICE", "WRITE", "PUBLISH", "FORGET"], solution: [0, 1, 2], clue: "PAGE ROUTE :: NOTICE > WRITE > PUBLISH", shape: 4 },
+      puzzle: { labels: ["NOTICE", "WRITE", "PUBLISH", "FORGET"], solution: [0, 1, 2], clue: "Catch the living edge. Give it structure. Release it before certainty arrives.", shape: 4 },
       story: "Writing and speaking are his external memory system. They turn private pattern-recognition into a structure someone else can test, use, disagree with, and carry forward.",
       links: [["HARNESS / I", "/articles/harness-part-1.html"], ["FIRST PRINCIPLES", "/articles/first-principles.html"], ["ATTACK SURFACE", "/articles/agents-attack-surface.html"]],
       doors: [["whiteboard", "return"], ["strange-loop", "fold"], ["foyer", "file"]]
@@ -192,7 +199,7 @@
       terminal: "The map refuses a center because the same operation is distributed everywhere. Sound trains the ear. Brains explain change. Teaching makes it transferable. Machines extend reach. Family decides why any of it matters.",
       ascii: ["SOUND -> BRAIN", "  ^       |", "MACHINE <- TEACH"],
       nodes: ["SOUND", "BRAIN", "LEARNING", "MACHINE", "FAMILY", "RETURN"],
-      puzzle: { labels: ["SOUND", "BRAIN", "TEACH", "MACHINE"], solution: [0, 1, 2, 3], clue: "CLOSE THE LOOP :: SOUND > BRAIN > TEACH > MACHINE", shape: 5 },
+      puzzle: { labels: ["SOUND", "BRAIN", "TEACH", "MACHINE"], solution: [0, 1, 2, 3], clue: "The first ear leads inward. Learning returns outward. The newest instrument waits last.", shape: 5 },
       story: "There was never one true profession hiding behind the others. The real work is signal, learning, and care moving through different instruments. The route looks back because the map is the person making it.",
       doors: [["foyer", "again"], ["listening", "hear"], ["quiet-center", "rest"]]
     }
@@ -202,6 +209,8 @@
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
   const reducedMotion = matchMedia("(prefers-reduced-motion: reduce)");
   const threshold = $("#threshold");
+  const thresholdCopy = $(".threshold-copy");
+  const perceptionGate = $("#perception-gate");
   const labyrinth = $("#labyrinth");
   const room = $("#room");
   const roomArtifact = $("#room-artifact");
@@ -213,6 +222,7 @@
   const storyCopy = $("#story-copy");
   const storyLinks = $("#story-links");
   const roomProgress = $("#room-progress");
+  const resolution = $("#resolution");
   const doors = $("#doors");
   const neuralField = $("#neural-field");
   const messageAudio = $("#message-audio");
@@ -225,6 +235,9 @@
   let interactionCleanup = null;
   let ambientAudio = null;
   let ambientFade = 0;
+  let messageSource = null;
+  let messageCarrier = null;
+  let responseTimer = 0;
   const switchAudio = new Map();
 
   const saved = loadState();
@@ -232,6 +245,7 @@
     visited: new Set(Array.isArray(saved.visited) ? saved.visited : []),
     frequencies: new Set(Array.isArray(saved.frequencies) ? saved.frequencies : []),
     solved: new Set(Array.isArray(saved.solved) ? saved.solved : []),
+    gateUnlocked: Boolean(saved.gateUnlocked),
     resolutionSeen: Boolean(saved.resolutionSeen),
     messageHeard: Boolean(saved.messageHeard)
   };
@@ -251,6 +265,7 @@
         visited: [...state.visited],
         frequencies: [...state.frequencies],
         solved: [...state.solved],
+        gateUnlocked: state.gateUnlocked,
         resolutionSeen: state.resolutionSeen,
         messageHeard: state.messageHeard
       }));
@@ -275,7 +290,7 @@
 
   function route() {
     const requested = requestedRoom();
-    if (requested === "threshold") showThreshold();
+    if (requested === "threshold" || !state.gateUnlocked) showThreshold();
     else renderRoom(ROOMS[requested] ? requested : "foyer");
   }
 
@@ -285,23 +300,111 @@
     document.body.dataset.room = "threshold";
     setTheme("paper");
     threshold.hidden = false;
+    thresholdCopy.hidden = false;
+    perceptionGate.hidden = true;
     threshold.classList.remove("tearing");
     labyrinth.hidden = true;
+    resolution.hidden = true;
     $(".skip-link").href = "#threshold-title";
     cleanupInteraction();
     stopRoomTone();
     renderNeuralField("threshold");
+    const beginButton = $("#begin-gate");
+    beginButton.lastChild.textContent = state.gateUnlocked ? " to return elsewhere" : " to attempt entry";
+    $(".pointer-action", beginButton).textContent = matchMedia("(pointer: coarse)").matches ? "tap" : "click";
     window.scrollTo({ top: 0, behavior: "auto" });
     if (shouldMoveFocus) focusHeading($("#threshold-title"));
   }
 
-  function enter() {
+  function enterLabyrinth() {
+    const openFoyer = () => {
+      if (requestedRoom() === "foyer") renderRoom("foyer");
+      else location.hash = "foyer";
+    };
     if (reducedMotion.matches) {
-      location.hash = "foyer";
+      openFoyer();
       return;
     }
     threshold.classList.add("tearing");
-    setTimeout(() => { location.hash = "foyer"; }, 420);
+    setTimeout(openFoyer, 420);
+  }
+
+  function maskXor(...masks) {
+    return masks.reduce((result, mask) => result ^ mask, 0);
+  }
+
+  function rotateMask(mask) {
+    let rotated = 0;
+    for (let row = 0; row < 4; row += 1) {
+      for (let column = 0; column < 4; column += 1) {
+        const source = row * 4 + column;
+        const target = column * 4 + (3 - row);
+        if (mask & (1 << source)) rotated |= 1 << target;
+      }
+    }
+    return rotated;
+  }
+
+  function maskMarkup(mask, missing = false) {
+    if (missing) return `<span class="matrix-missing" aria-hidden="true">?</span><span class="sr-only">missing grid</span>`;
+    const cells = Array.from({ length: 16 }, (_, index) => `<i class="${mask & (1 << index) ? "on" : ""}"></i>`).join("");
+    return `<span class="mini-grid" aria-hidden="true">${cells}</span><span class="sr-only">patterned four by four grid</span>`;
+  }
+
+  function renderGatePuzzle() {
+    const a = 0b1000010000100001;
+    const b = 0b0010010110100100;
+    const c = 0b0110100110010110;
+    const d = 0b0001111001111000;
+    const target = maskXor(a, b, c, d);
+    const matrix = [a, b, maskXor(a, b), c, d, maskXor(c, d), maskXor(a, c), maskXor(b, d), null];
+    $("#gate-matrix").innerHTML = matrix.map((mask, index) => `<div class="matrix-tile${mask === null ? " missing" : ""}" aria-label="${mask === null ? "missing ninth pattern" : `pattern ${index + 1}`}">${maskMarkup(mask || 0, mask === null)}</div>`).join("");
+
+    const candidates = [
+      maskXor(a, d),
+      target,
+      target ^ (1 << 5) ^ (1 << 10),
+      rotateMask(target),
+      maskXor(b, c),
+      target ^ (1 << 3) ^ (1 << 12)
+    ];
+    const options = $("#gate-options");
+    options.innerHTML = candidates.map((mask, index) => `<button type="button" class="gate-option" data-answer="${mask === target}" aria-label="Option ${String.fromCharCode(65 + index)}"><span>${String.fromCharCode(65 + index)}</span>${maskMarkup(mask)}</button>`).join("");
+    $("#gate-readout").textContent = "OBSERVE BEFORE OPERATING.";
+    options.querySelectorAll(".gate-option").forEach((option) => option.addEventListener("click", () => {
+      options.querySelectorAll(".gate-option").forEach((candidate) => candidate.classList.remove("wrong"));
+      if (option.dataset.answer !== "true") {
+        option.classList.add("wrong");
+        $("#gate-readout").textContent = "NO. OVERLAP CANCELS; DIFFERENCE REMAINS.";
+        playClick(71, .035);
+        return;
+      }
+      state.gateUnlocked = true;
+      saveState();
+      option.classList.add("correct");
+      perceptionGate.classList.add("admitted");
+      $("#gate-readout").textContent = "PATTERN ACCEPTED // THE DOOR REMEMBERS YOU.";
+      playAsset("threshold", .52);
+      window.setTimeout(enterLabyrinth, reducedMotion.matches ? 80 : 1150);
+    }));
+  }
+
+  function openGate() {
+    if (state.gateUnlocked) {
+      enterLabyrinth();
+      return;
+    }
+    thresholdCopy.hidden = true;
+    perceptionGate.hidden = false;
+    perceptionGate.classList.remove("admitted");
+    renderGatePuzzle();
+    focusHeading($("#gate-title"));
+  }
+
+  function leaveGate() {
+    perceptionGate.hidden = true;
+    thresholdCopy.hidden = false;
+    focusHeading($("#threshold-title"));
   }
 
   function renderRoom(id) {
@@ -312,12 +415,16 @@
     setTheme(data.theme);
     threshold.hidden = true;
     labyrinth.hidden = false;
+    resolution.hidden = true;
     $(".skip-link").href = "#room-title";
     state.visited.add(id);
     saveState();
 
     room.className = `room room-${id}`;
     $("#room-index").textContent = data.index;
+    const pathIndex = STORY_PATH.indexOf(id);
+    const phase = ARC_PHASES.find((candidate) => pathIndex <= candidate.through) || ARC_PHASES.at(-1);
+    $("#room-arc").textContent = `ACT ${phase.number} // ${phase.name} // ${phase.instruction}`;
     $("#room-title").textContent = data.title;
     $("#room-fragment").textContent = data.fragment;
     terminalLabel.textContent = data.terminalLabel;
@@ -466,10 +573,16 @@
   function renderDoors(roomDoors) {
     doors.innerHTML = "";
     const template = $("#door-template");
-    roomDoors.forEach(([id, label]) => {
+    const currentIndex = STORY_PATH.indexOf(currentRoom);
+    const nextId = STORY_PATH[currentIndex + 1];
+    const ordered = [...roomDoors];
+    if (nextId && !ordered.some(([id]) => id === nextId)) ordered.unshift([nextId, "follow signal"]);
+    ordered.sort(([a], [b]) => Number(b === nextId) - Number(a === nextId));
+    ordered.slice(0, 3).forEach(([id, label]) => {
       const fragment = template.content.cloneNode(true);
       const link = $(".door", fragment);
       link.href = `#${id}`;
+      link.classList.toggle("door-primary", id === nextId);
       link.setAttribute("aria-label", `${label}; go to ${ROOMS[id].title.replace(/\n/g, " ").toLowerCase()}`);
       $("span", fragment).textContent = label;
       doors.appendChild(fragment);
@@ -482,8 +595,10 @@
   }
 
   function setResponse(text) {
+    clearTimeout(responseTimer);
     response.textContent = text;
     response.classList.toggle("visible", Boolean(text));
+    if (text) responseTimer = window.setTimeout(() => response.classList.remove("visible"), 2600);
   }
 
   function renderStory(id, data) {
@@ -493,12 +608,33 @@
     storyLinks.innerHTML = solved && Array.isArray(data.links)
       ? data.links.map(([label, href]) => `<a href="${href}">${label}<span aria-hidden="true">↗</span></a>`).join("")
       : "";
+    if (solved && state.solved.size === ROOM_IDS.length) {
+      storyLinks.insertAdjacentHTML("beforeend", `<button class="final-transmission" type="button">FINAL TRANSMISSION <span aria-hidden="true">↗</span></button>`);
+      $(".final-transmission", storyLinks).addEventListener("click", openResolution);
+    }
     room.classList.toggle("room-solved", solved);
   }
 
   function renderProgress() {
     const solved = ROOM_IDS.filter((id) => state.solved.has(id)).length;
-    roomProgress.textContent = `FRAGMENTS DECRYPTED :: ${String(solved).padStart(2, "0")} / ${ROOM_IDS.length}`;
+    const position = Math.max(0, STORY_PATH.indexOf(currentRoom)) + 1;
+    roomProgress.textContent = `CARRIER ${String(position).padStart(2, "0")} / ${ROOM_IDS.length} // DECRYPTED ${String(solved).padStart(2, "0")}`;
+  }
+
+  function openResolution() {
+    cleanupInteraction();
+    labyrinth.hidden = true;
+    resolution.hidden = false;
+    document.body.dataset.room = "resolution";
+    setTheme("black");
+    stopRoomTone();
+    window.scrollTo({ top: 0, behavior: "auto" });
+    focusHeading($("#resolution-title"));
+  }
+
+  function closeResolution() {
+    resolution.hidden = true;
+    renderRoom(currentRoom === "resolution" || !ROOMS[currentRoom] ? "strange-loop" : currentRoom);
   }
 
   function setupInteraction(id, data) {
@@ -565,6 +701,7 @@
         consoleElement.classList.add("switching");
         playSwitchCue(id);
         pulseNeuralField();
+        if (state.resolutionSeen) window.setTimeout(openResolution, reducedMotion.matches ? 100 : 1450);
         return;
       }
 
@@ -597,9 +734,66 @@
       const Context = window.AudioContext || window.webkitAudioContext;
       if (!Context) return null;
       audioContext = new Context();
+      setupMessageProcessing(audioContext);
     }
     if (audioContext.state === "suspended") audioContext.resume();
     return audioContext;
+  }
+
+  function setupMessageProcessing(context) {
+    if (messageSource) return;
+    messageSource = context.createMediaElementSource(messageAudio);
+    const highpass = context.createBiquadFilter();
+    const lowpass = context.createBiquadFilter();
+    const presence = context.createBiquadFilter();
+    const distortion = context.createWaveShaper();
+    const output = context.createGain();
+    highpass.type = "highpass";
+    highpass.frequency.value = 310;
+    lowpass.type = "lowpass";
+    lowpass.frequency.value = 3050;
+    presence.type = "peaking";
+    presence.frequency.value = 1650;
+    presence.Q.value = 1.1;
+    presence.gain.value = 5.5;
+    const curve = new Float32Array(512);
+    for (let index = 0; index < curve.length; index += 1) {
+      const value = index * 2 / (curve.length - 1) - 1;
+      curve[index] = Math.tanh(value * 1.85);
+    }
+    distortion.curve = curve;
+    distortion.oversample = "2x";
+    output.gain.value = .88;
+    messageSource.connect(highpass).connect(lowpass).connect(presence).connect(distortion).connect(output).connect(context.destination);
+  }
+
+  function startMessageCarrier() {
+    stopMessageCarrier();
+    const context = ensureAudio();
+    if (!context) return;
+    const duration = 2;
+    const buffer = context.createBuffer(1, context.sampleRate * duration, context.sampleRate);
+    const channel = buffer.getChannelData(0);
+    for (let index = 0; index < channel.length; index += 1) channel[index] = (Math.random() * 2 - 1) * .42;
+    const source = context.createBufferSource();
+    const bandpass = context.createBiquadFilter();
+    const gain = context.createGain();
+    source.buffer = buffer;
+    source.loop = true;
+    bandpass.type = "bandpass";
+    bandpass.frequency.value = 1850;
+    bandpass.Q.value = .62;
+    gain.gain.value = .0065;
+    source.connect(bandpass).connect(gain).connect(context.destination);
+    source.start();
+    messageCarrier = source;
+  }
+
+  function stopMessageCarrier() {
+    if (!messageCarrier) return;
+    try { messageCarrier.stop(); } catch (_) { /* already stopped */ }
+    messageCarrier.disconnect();
+    messageCarrier = null;
   }
 
   function startRoomTone(frequencies = [48, 96]) {
@@ -655,6 +849,7 @@
     } else {
       stopRoomTone();
       stopAmbient();
+      stopMessageCarrier();
       if (!messageAudio.paused) messageAudio.pause();
     }
   }
@@ -759,6 +954,7 @@
     state.visited.clear();
     state.frequencies.clear();
     state.solved.clear();
+    state.gateUnlocked = false;
     state.resolutionSeen = false;
     state.messageHeard = false;
     saveState();
@@ -771,8 +967,26 @@
     location.hash = "threshold";
   }
 
-  $("#enter-labyrinth").addEventListener("click", enter);
-  $("#threshold-object").addEventListener("click", enter);
+  $("#begin-gate").addEventListener("click", openGate);
+  $("#threshold-object").addEventListener("click", openGate);
+  $("#leave-gate").addEventListener("click", leaveGate);
+  $("#close-resolution").addEventListener("click", closeResolution);
+  $("#signal-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") || "").trim();
+    const reply = String(data.get("reply") || "").trim();
+    const message = String(data.get("message") || "").trim();
+    if (!message) return;
+    const body = [
+      message,
+      "",
+      "— transmitted from Elsewhere",
+      name ? `Name: ${name}` : "",
+      reply ? `Return address: ${reply}` : ""
+    ].filter(Boolean).join("\n");
+    location.href = `mailto:gushalwani@alum.mit.edu?subject=${encodeURIComponent("Signal received from Elsewhere")}&body=${encodeURIComponent(body)}`;
+  });
   $("#sound-toggle").addEventListener("click", toggleSound);
   $("#erase-route").addEventListener("click", eraseRoute);
   messageButton.addEventListener("click", toggleMessage);
@@ -781,6 +995,7 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
+    startMessageCarrier();
     updateMessageState();
   });
   messageAudio.addEventListener("timeupdate", updateMessageState);
@@ -791,6 +1006,7 @@
       ? "Play message again"
       : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
     neuralField.classList.remove("receiving");
+    stopMessageCarrier();
     if (soundOn && ambientAudio) fadeMedia(ambientAudio, .18, 480);
     updateMessageState();
   });
@@ -801,6 +1017,12 @@
     messageButton.setAttribute("aria-label", "Play message again");
     messageState.textContent = "heard";
     pulseNeuralField();
+    stopMessageCarrier();
+    stopAmbient();
+    stopRoomTone();
+    soundOn = false;
+    $("#sound-toggle").textContent = "sound";
+    $("#sound-toggle").setAttribute("aria-pressed", "false");
   });
   $(".skip-link").addEventListener("click", (event) => {
     event.preventDefault();

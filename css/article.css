@@ -148,3 +148,14 @@
   .article-wrap{ padding: 68px 10px 44px; }
   .article-card{ padding: 18px; }
 }
+
+/* Long-form copy should remain genuinely long-form on small screens. */
+.article-card .article-subtitle { font-size: 1rem; line-height: 1.7; }
+.article-body { font-size: 1.06rem; line-height: 1.82; }
+.article-body p { font-size: inherit; }
+.article-body h2 { font-size: .8rem; line-height: 1.5; }
+.article-cta a { font-size: .68rem; }
+
+@media (max-width: 768px){
+  .article-body { font-size: 1.04rem; line-height: 1.78; }
+}

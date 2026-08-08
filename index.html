@@ -6,13 +6,14 @@
   <meta name="description" content="Gus Halwani — computational neuroscientist, founder, and enthusiast of precision machines and analog craft">
   <meta name="theme-color" content="#faf8f3">
   <title>Gus Halwani</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='9' fill='%23b8952e'/%3E%3Cpath d='M32 3v15M32 46v15M3 32h15M46 32h15' stroke='%232b261d' stroke-width='2'/%3E%3C/svg%3E">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260808f">
 </head>
 <body>
 
@@ -78,8 +79,8 @@
   <!-- Expanded Content Overlay -->
   <div id="content-overlay" class="hidden">
     <div id="content-panel">
-      <button id="close-btn" aria-label="Close">&times;</button>
-      <h2 id="content-title"></h2>
+      <button id="close-btn" type="button" aria-label="Close">&times;</button>
+      <h2 id="content-title">Selected node</h2>
       <p id="content-body"></p>
       <div id="content-connections">
         <span class="connections-label">Explore:</span>
@@ -97,7 +98,7 @@
     <div id="articles-panel">
       <div class="articles-head">
         <h2>Articles</h2>
-        <button id="articles-close-btn" class="panel-close-btn" aria-label="Close articles">&times;</button>
+        <button id="articles-close-btn" class="panel-close-btn" type="button" tabindex="-1" aria-label="Close articles">&times;</button>
       </div>
       <p class="articles-subhead">Long-form writing from The Signal Thread. Master copies live here.</p>
       <div id="articles-grid"></div>
@@ -122,6 +123,6 @@
   </div>
 
   <script src="js/graph.js"></script>
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260808f"></script>
 </body>
 </html>

@@ -116,7 +116,10 @@ const App = {
         this.graphInitialized = true;
         Graph.init().then(() => {
           this.bindEvents();
+          this.prepareMapViewport();
         });
+      } else {
+        this.prepareMapViewport();
       }
     };
 
@@ -125,6 +128,18 @@ const App = {
     } else {
       setTimeout(show, 400);
     }
+  },
+
+  prepareMapViewport() {
+    const hint = this.graphContainer.querySelector('.graph-hint');
+    const mobile = window.innerWidth <= 760;
+    hint.textContent = mobile
+      ? 'swipe to explore. tap a node to open the story.'
+      : 'hover a node to trace the signal. click to open the story.';
+    if (!mobile) return;
+    requestAnimationFrame(() => {
+      this.graphContainer.scrollLeft = Math.max(0, (this.graphContainer.scrollWidth - this.graphContainer.clientWidth) / 2);
+    });
   },
 
   bindGlobalEvents() {
@@ -202,12 +217,14 @@ const App = {
   openArticles() {
     this.articlesOverlay.classList.remove('hidden');
     this.articlesOverlay.setAttribute('aria-hidden', 'false');
+    this.articlesCloseBtn.tabIndex = 0;
     this.articlesCloseBtn.focus();
   },
 
   closeArticles() {
     this.articlesOverlay.classList.add('hidden');
     this.articlesOverlay.setAttribute('aria-hidden', 'true');
+    this.articlesCloseBtn.tabIndex = -1;
     this.articlesBtn.focus();
   },
 

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -8,7 +8,7 @@
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260808e">
+  <link rel="stylesheet" href="labyrinth.css?v=20260808f">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
@@ -36,11 +36,13 @@
   <main id="stage">
     <section id="threshold" class="threshold" aria-labelledby="threshold-title">
       <div class="threshold-copy">
-        <p class="threshold-boot" aria-hidden="true">REMOTE SHELL // UNLISTED MEMORY // CARRIER UNSTABLE</p>
+        <p class="threshold-boot" aria-hidden="true">UNLISTED CIRCUIT // PERCEPTION GATE // CARRIER UNSTABLE</p>
+        <p class="threshold-kicker">You found the door. That was the easy pattern.</p>
         <h1 id="threshold-title">There is another map.</h1>
-        <button id="enter-labyrinth" type="button">close the circuit</button>
+        <p class="threshold-taunt">It does not open for credentials, confidence, or unusually energetic networking.</p>
+        <button id="begin-gate" type="button"><span class="pointer-action">click</span> to attempt entry</button>
       </div>
-      <button class="threshold-object" id="threshold-object" type="button" aria-label="Enter the other map">
+      <button class="threshold-object" id="threshold-object" type="button" aria-label="Attempt the Elsewhere perception gate">
         <svg viewBox="0 0 420 520" role="img" aria-label="An irregular neural seed">
           <defs>
             <filter id="threshold-warp">
@@ -57,15 +59,33 @@
         </svg>
       </button>
       <p class="threshold-fault" aria-hidden="true">42.3601 / 33.8938 / —</p>
+
+      <section id="perception-gate" class="perception-gate" aria-labelledby="gate-title" hidden>
+        <div class="gate-frame">
+          <div class="gate-heading">
+            <p>PERCEPTION TEST 01 // NO TIMER // NO ACCOUNT</p>
+            <h2 id="gate-title">Complete the field.</h2>
+            <p>The same operation governs every row and every column. What overlaps does not survive.</p>
+          </div>
+          <div id="gate-matrix" class="gate-matrix" role="group" aria-label="Eight patterned grids and one missing grid"></div>
+          <div class="gate-answer-block">
+            <p class="gate-prompt">SELECT THE MISSING SIGNAL</p>
+            <div id="gate-options" class="gate-options"></div>
+            <p id="gate-readout" class="gate-readout" role="status">OBSERVE BEFORE OPERATING.</p>
+          </div>
+          <button id="leave-gate" class="leave-gate" type="button">not yet</button>
+        </div>
+      </section>
     </section>
 
     <section id="labyrinth" class="labyrinth" hidden aria-live="polite">
       <article id="room" class="room">
         <p id="room-index" class="room-index"></p>
-        <h2 id="room-title"></h2>
+        <p id="room-arc" class="room-arc"></p>
+        <h2 id="room-title">Loading signal</h2>
         <p id="room-fragment" class="room-fragment"></p>
         <section id="room-terminal" class="room-terminal" aria-labelledby="room-terminal-label">
-          <p id="room-terminal-label" class="terminal-label"></p>
+          <p id="room-terminal-label" class="terminal-label">Signal dossier</p>
           <p id="room-terminal-copy" class="terminal-copy"></p>
           <pre id="room-terminal-ascii" class="terminal-ascii" aria-hidden="true"></pre>
         </section>
@@ -80,14 +100,37 @@
       </article>
       <nav id="doors" class="doors" aria-label="Ways out"></nav>
     </section>
+
+    <section id="resolution" class="resolution" aria-labelledby="resolution-title" hidden>
+      <div class="resolution-field" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <div class="resolution-copy">
+        <p class="resolution-kicker">THIRTEEN FRAGMENTS // ONE CARRIER</p>
+        <h2 id="resolution-title">You found the human in the machine.</h2>
+        <p>The professions were instruments. The work was always the same: listen closely, find the signal, make it useful, and carry it back to people.</p>
+        <p class="resolution-aside">You also spent this long inside a stranger’s cryptic website, which suggests we may have things to discuss.</p>
+        <form id="signal-form" class="signal-form">
+          <label for="signal-name">YOUR NAME <span>optional</span></label>
+          <input id="signal-name" name="name" type="text" autocomplete="name" maxlength="80">
+          <label for="signal-reply">RETURN ADDRESS <span>optional</span></label>
+          <input id="signal-reply" name="reply" type="email" autocomplete="email" inputmode="email" maxlength="160">
+          <label for="signal-message">TRANSMISSION</label>
+          <textarea id="signal-message" name="message" rows="5" maxlength="2000" required></textarea>
+          <button type="submit">open outbound channel</button>
+          <p>This opens your mail app. Nothing leaves this page until you send it.</p>
+        </form>
+        <button id="close-resolution" class="close-resolution" type="button">return to the map</button>
+      </div>
+    </section>
   </main>
 
   <template id="door-template">
-    <a class="door" href="#"><span></span></a>
+    <a class="door" href="#"><span>door</span></a>
   </template>
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
   <audio id="message-audio" preload="metadata" src="assets/audio/message.mp3"></audio>
-  <script src="labyrinth.js?v=20260808e"></script>
+  <script src="labyrinth.js?v=20260808f"></script>
 </body>
 </html>

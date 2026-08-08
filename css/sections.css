@@ -57,6 +57,22 @@
   margin-bottom: var(--space-md);
 }
 
+.role-summary {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.profile-inline {
+  color: var(--color-right);
+  font-family: var(--font-mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
 /* Kicker labels */
 .section-kicker {
   font-family: var(--font-interface);
@@ -607,4 +623,36 @@
   .family-statement {
     font-size: 1.15rem;
   }
+}
+
+/* Site-wide content readability pass. Small uppercase labels remain compact;
+   prose and controls get a comfortable, responsive floor. */
+.section-hero .section-subtitle { font-size: 1rem; line-height: 1.75; color: var(--color-text-secondary); }
+.section-card p { font-size: 1rem; line-height: 1.7; }
+.section-card a { font-size: .7rem; }
+.status-tag { font-size: .65rem; }
+.creative-cell .placeholder,
+.family-photo,
+.video-placeholder { font-size: .95rem; }
+.family-closing { font-size: 1.03rem; line-height: 1.75; color: var(--color-text-secondary); }
+.talk-meta,
+.press-meta { font-size: .68rem; line-height: 1.5; }
+.talk-date,
+.press-date,
+.conf-item .conf-date { font-size: .67rem; }
+.conf-item span { font-size: 1rem; }
+.contact-pill { font-size: .72rem; }
+.contact-pill.secondary { font-size: .68rem; }
+.form-group label { font-size: .67rem; }
+.form-group input,
+.form-group select,
+.form-group textarea { font-size: 1rem; line-height: 1.5; }
+.form-submit { font-size: .72rem; }
+
+@media (max-width: 768px) {
+  .section-hero .section-subtitle,
+  .section-card p,
+  .family-closing,
+  .conf-item span { font-size: 1rem; }
+  .section-footer .social-links a { font-size: .62rem; }
 }
