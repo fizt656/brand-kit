@@ -446,6 +446,8 @@
     cleanupInteraction();
     stopRoomTone();
     renderNeuralField("threshold");
+    scheduleTransmissionGlitch();
+    window.setTimeout(() => triggerTransmissionGlitch("CARRIER SEARCH // NO LOCK", 620), reducedMotion.matches ? 0 : 360);
     const beginButton = $("#begin-gate");
     beginButton.lastChild.textContent = state.gateUnlocked ? " to return elsewhere" : " to attempt entry";
     $(".pointer-action", beginButton).textContent = matchMedia("(pointer: coarse)").matches ? "tap" : "click";
@@ -538,12 +540,16 @@
     perceptionGate.hidden = false;
     perceptionGate.classList.remove("admitted");
     renderGatePuzzle();
+    scheduleTransmissionGlitch();
+    window.setTimeout(() => triggerTransmissionGlitch("PERCEPTION GATE // SIGNAL DAMAGED", 680), reducedMotion.matches ? 0 : 120);
     focusHeading($("#gate-title"));
   }
 
   function leaveGate() {
     perceptionGate.hidden = true;
     thresholdCopy.hidden = false;
+    scheduleTransmissionGlitch();
+    triggerTransmissionGlitch("RETURNING TO CARRIER SEARCH", 480);
     focusHeading($("#threshold-title"));
   }
 
@@ -721,7 +727,8 @@
   function scheduleTransmissionGlitch() {
     clearTimeout(glitchTimer);
     if (reducedMotion.matches || document.hidden || document.body.dataset.room === "resolution") return;
-    const delay = 3200 + Math.random() * 5000;
+    const atEntrance = document.body.dataset.room === "threshold";
+    const delay = atEntrance ? 1400 + Math.random() * 2600 : 3200 + Math.random() * 5000;
     glitchTimer = window.setTimeout(() => {
       triggerTransmissionGlitch("", 420 + Math.random() * 320);
       if (Math.random() < .3) {
@@ -1438,6 +1445,6 @@
   syncIdentitySignal();
   startAmbient();
 
-  scheduleTransmissionGlitch();
   route();
+  scheduleTransmissionGlitch();
 })();

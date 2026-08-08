@@ -1793,7 +1793,13 @@ body:not([data-room="threshold"]) .room-fragment {
 body.signal-glitch .transmission-layer { opacity: .88; animation: transmission-flash .68s steps(4, end) both; }
 body.signal-glitch main,
 body.signal-glitch .edge,
-body.signal-glitch .neural-field { animation: screen-jolt .68s steps(5, end) both; }
+body.signal-glitch .neural-field,
+body.signal-glitch .phase-telemetry,
+body.signal-glitch .perception-gate { animation: screen-jolt .68s steps(5, end) both; }
+body[data-room="threshold"].signal-glitch .threshold-object,
+body[data-room="threshold"].signal-glitch .gate-frame {
+  filter: drop-shadow(5px 0 rgba(201, 51, 47, .18)) drop-shadow(-5px 0 rgba(57, 171, 177, .18));
+}
 body.signal-glitch .crt-glitch { opacity: .84; }
 body[data-theme="ash"].signal-glitch .transmission-layer,
 body[data-theme="black"].signal-glitch .transmission-layer,
@@ -2422,7 +2428,9 @@ body.power-fault .neural-field { animation: power-reboot .82s steps(8, end) both
 /* 2026-08 carrier grime and solved-fragment hierarchy. */
 body.signal-glitch.glitch-chroma main,
 body.signal-glitch.glitch-chroma .edge,
-body.signal-glitch.glitch-chroma .neural-field {
+body.signal-glitch.glitch-chroma .neural-field,
+body.signal-glitch.glitch-chroma .phase-telemetry,
+body.signal-glitch.glitch-chroma .perception-gate {
   animation: chroma-slip .72s steps(6, end) both;
 }
 body.signal-glitch.glitch-chroma h1,
