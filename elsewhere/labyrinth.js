@@ -257,6 +257,14 @@
   const identity = $(".wordmark");
   const identityName = $("#identity-name");
   const identityDegree = $("#identity-degree");
+  const phaseTelemetry = $("#phase-telemetry");
+  const phaseAttempt = $("#phase-attempt");
+  const phaseScope = $("#phase-scope");
+  const phaseMeterFill = $("#phase-meter-fill");
+  const phaseMarker = $("#phase-marker");
+  const phaseReading = $("#phase-reading");
+  const phaseStatus = $("#phase-status");
+  const contactLink = $("#contact-link");
   let currentRoom = "threshold";
   let soundOn = false;
   let musicOn = true;
@@ -275,6 +283,8 @@
   let celebrationTimer = 0;
   let messageStartTimer = 0;
   let identityTimer = 0;
+  let phaseTimer = 0;
+  let phaseAttemptCount = 0;
   let ambientLooping = false;
   let fragmentResolutionPending = false;
   const switchAudio = new Map();
@@ -352,15 +362,59 @@
   function syncIdentitySignal() {
     clearTimeout(identityTimer);
     const resolved = state.resolutionSeen || state.solved.size === ROOM_IDS.length;
+    document.body.classList.toggle("phase-complete", resolved);
+    contactLink.hidden = !resolved;
     identity.classList.toggle("identity-unstable", !resolved);
     identity.classList.toggle("identity-resolved", resolved);
     if (resolved) {
       identityName.textContent = "Gus Halwani,";
       identityDegree.textContent = "PhD";
       identity.dataset.ghost = "Gus Halwani, PhD";
+      syncPhaseTelemetry(true);
       return;
     }
     scrambleIdentity();
+    syncPhaseTelemetry(false);
+  }
+
+  function phaseScopeFrame(progress, failed = false) {
+    const lead = Math.max(1, Math.min(11, Math.round(progress / 9)));
+    const upper = Array.from({ length: 13 }, (_, index) => index < lead ? "━" : index === lead ? "╮" : "·").join("");
+    const lower = Array.from({ length: 13 }, (_, index) => index < lead - 1 ? "━" : index === lead - 1 ? "╯" : index === lead + 1 && failed ? "×" : "·").join("");
+    return `${upper}\n${lower}`;
+  }
+
+  function syncPhaseTelemetry(locked = state.solved.size === ROOM_IDS.length) {
+    clearTimeout(phaseTimer);
+    if (locked) {
+      phaseTelemetry.classList.add("locked");
+      phaseAttempt.textContent = "LOCK 13:13";
+      phaseScope.textContent = "━━━━━━━━━━━━━\n━━━━━━━━━━━━━";
+      phaseMeterFill.style.width = "100%";
+      phaseMarker.style.left = "100%";
+      phaseReading.textContent = "COHERENCE 100.0%";
+      phaseStatus.textContent = "LOCKED";
+      return;
+    }
+    phaseTelemetry.classList.remove("locked");
+    let cycle = 0;
+    const tick = () => {
+      const solvedRatio = state.solved.size / ROOM_IDS.length;
+      const rise = cycle < 8 ? cycle / 8 : Math.max(0, 1 - (cycle - 8) / 3);
+      const ceiling = 76 + solvedRatio * 22.7 + Math.random() * 1.2;
+      const coherence = Math.min(99.4, 28 + rise * (ceiling - 28));
+      const failed = cycle >= 8;
+      if (cycle === 0) phaseAttemptCount += 1;
+      phaseAttempt.textContent = `TRY ${String(phaseAttemptCount).padStart(3, "0")}`;
+      phaseScope.textContent = phaseScopeFrame(coherence, failed);
+      phaseMeterFill.style.width = `${coherence}%`;
+      phaseMarker.style.left = `${Math.min(99, coherence)}%`;
+      phaseReading.textContent = `COHERENCE ${coherence.toFixed(1)}%`;
+      phaseStatus.textContent = failed ? "DRIFT // RETRY" : coherence > 88 ? "NEAR LOCK" : "ACQUIRING";
+      cycle = (cycle + 1) % 12;
+      phaseTimer = window.setTimeout(tick, reducedMotion.matches ? 1600 : 420 + Math.random() * 180);
+    };
+    tick();
   }
 
   function requestedRoom() {
@@ -435,6 +489,7 @@
   }
 
   function renderGatePuzzle() {
+    $("#carrier-outlines").innerHTML = STORY_PATH.map((_, index) => routeGlyph(index)).join("");
     const a = 0b1000010000100001;
     const b = 0b0010010110100100;
     const c = 0b0110100110010110;
@@ -636,7 +691,7 @@
   }
 
   function triggerTransmissionGlitch(label = "", duration = 420) {
-    if (reducedMotion.matches || document.hidden) return;
+    if (reducedMotion.matches || document.hidden || document.body.dataset.room === "resolution") return;
     clearTimeout(glitchRelease);
     document.body.classList.remove("signal-glitch", ...GLITCH_MODES);
     transmissionCode.textContent = `${label || GLITCH_LINES[Math.floor(Math.random() * GLITCH_LINES.length)]}\n${Math.random().toString(2).slice(2, 18)} // ${Math.random().toString(16).slice(2, 10).toUpperCase()}`;
@@ -665,7 +720,7 @@
 
   function scheduleTransmissionGlitch() {
     clearTimeout(glitchTimer);
-    if (reducedMotion.matches || document.hidden) return;
+    if (reducedMotion.matches || document.hidden || document.body.dataset.room === "resolution") return;
     const delay = 3200 + Math.random() * 5000;
     glitchTimer = window.setTimeout(() => {
       triggerTransmissionGlitch("", 420 + Math.random() * 320);
@@ -835,6 +890,9 @@
 
   function openResolution() {
     cleanupInteraction();
+    clearTimeout(glitchTimer);
+    clearTimeout(glitchRelease);
+    document.body.classList.remove("signal-glitch", ...GLITCH_MODES, "power-fault");
     labyrinth.hidden = true;
     resolution.hidden = false;
     document.body.dataset.room = "resolution";
@@ -848,6 +906,7 @@
   function closeResolution() {
     resolution.hidden = true;
     renderRoom(currentRoom === "resolution" || !ROOMS[currentRoom] ? "strange-loop" : currentRoom);
+    scheduleTransmissionGlitch();
   }
 
   function setupInteraction(id, data) {
@@ -874,7 +933,8 @@
     const markResolved = () => {
       consoleElement.classList.add("resolved");
       keys.forEach((key, index) => key.classList.toggle("accepted", solution.includes(index)));
-      switchCaption.textContent = "REPLAY";
+      switchCaption.textContent = "REPLAY LOCK";
+      circuitSwitch.setAttribute("aria-label", `Replay the ${data.title.replace(/\n/g, " ").toLowerCase()} resolve cue`);
       readout.textContent = "CIRCUIT CLOSED :: FRAGMENT AVAILABLE";
     };
 
@@ -1242,14 +1302,15 @@
     }, 260);
   }
 
-  function eraseRoute() {
-    if (!confirm("Erase the route this browser remembers?")) return;
+  function eraseRoute(force = false) {
+    if (!force && !confirm("Erase all 13 solved carriers and replay from the locked door?")) return;
     state.visited.clear();
     state.frequencies.clear();
     state.solved.clear();
     state.gateUnlocked = false;
     state.resolutionSeen = false;
     state.messageHeard = false;
+    phaseAttemptCount = 0;
     syncIdentitySignal();
     saveState();
     clearTimeout(messageStartTimer);
@@ -1259,13 +1320,27 @@
     messageButton.setAttribute("aria-pressed", "false");
     messageButton.setAttribute("aria-label", "Play unheard message");
     messageState.textContent = formatTime(messageAudio.duration || 32);
-    location.hash = "threshold";
+    if (location.hash === "#threshold") showThreshold();
+    else location.hash = "threshold";
   }
 
   $("#begin-gate").addEventListener("click", openGate);
   $("#threshold-object").addEventListener("click", openGate);
   $("#leave-gate").addEventListener("click", leaveGate);
   $("#close-resolution").addEventListener("click", closeResolution);
+  $("#replay-experience").addEventListener("click", () => {
+    if (!confirm("Replay Elsewhere from the locked door? This clears all 13 PWN states on this browser.")) return;
+    resolution.hidden = true;
+    eraseRoute(true);
+  });
+  contactLink.addEventListener("click", () => {
+    if (document.body.dataset.room === "resolution") {
+      $("#signal-form").scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
+      $("#signal-message").focus({ preventScroll: true });
+      return;
+    }
+    openResolution();
+  });
   fragmentRevealClose.addEventListener("click", closeFragmentReveal);
   fragmentReveal.addEventListener("click", (event) => {
     if (event.target === fragmentReveal) closeFragmentReveal();
@@ -1290,7 +1365,7 @@
     location.href = `mailto:grander.iron7t@icloud.com?subject=${encodeURIComponent("Signal received from Elsewhere")}&body=${encodeURIComponent(body)}`;
   });
   $("#sound-toggle").addEventListener("click", toggleSound);
-  $("#erase-route").addEventListener("click", eraseRoute);
+  $("#erase-route").addEventListener("click", () => eraseRoute(false));
   messageButton.addEventListener("click", toggleMessage);
   messageAudio.addEventListener("play", () => {
     messageButton.classList.add("playing");
@@ -1331,7 +1406,7 @@
     target.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
   });
   addEventListener("hashchange", route);
-  addEventListener("beforeunload", () => { clearTimeout(identityTimer); stopRoomTone(); stopAmbient(); });
+  addEventListener("beforeunload", () => { clearTimeout(identityTimer); clearTimeout(phaseTimer); stopRoomTone(); stopAmbient(); });
   document.addEventListener("visibilitychange", () => {
     scheduleTransmissionGlitch();
     if (!ambientAudio || !musicOn) return;

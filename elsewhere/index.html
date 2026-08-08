@@ -8,7 +8,7 @@
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260808l">
+  <link rel="stylesheet" href="labyrinth.css?v=20260808m">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
@@ -37,10 +37,19 @@
     </button>
     <div class="edge-actions">
       <button id="sound-toggle" type="button" aria-pressed="true">music: on</button>
+      <button id="contact-link" type="button" hidden>contact</button>
       <button id="erase-route" type="button">erase</button>
       <a href="/" aria-label="Exit elsewhere">exit</a>
     </div>
   </header>
+
+  <aside id="phase-telemetry" class="phase-telemetry" aria-label="Phase-lock acquisition telemetry">
+    <div class="phase-telemetry-head"><span>PHASE//ACQUIRE</span><b id="phase-attempt">TRY 001</b></div>
+    <pre id="phase-scope" aria-hidden="true">╶─╮  ╭──╮ ╭─╴
+  ╰──╯  ╰─╯</pre>
+    <div class="phase-meter" aria-hidden="true"><i id="phase-meter-fill"></i><em id="phase-marker"></em></div>
+    <p><span id="phase-reading">COHERENCE 00.0%</span><strong id="phase-status">NO LOCK</strong></p>
+  </aside>
 
   <main id="stage">
     <section id="threshold" class="threshold" aria-labelledby="threshold-title">
@@ -92,7 +101,9 @@
             <div id="gate-options" class="gate-options"></div>
             <p id="gate-readout" class="gate-readout" role="status">OBSERVE BEFORE OPERATING.</p>
           </div>
-          <button id="leave-gate" class="leave-gate" type="button">not yet</button>
+          <button id="leave-gate" class="leave-gate" type="button" aria-label="Return to the locked door">
+            <span id="carrier-outlines" class="carrier-outlines" aria-hidden="true"></span>
+          </button>
         </div>
       </section>
     </section>
@@ -123,10 +134,31 @@
 
     <section id="resolution" class="resolution" aria-labelledby="resolution-title" hidden>
       <div class="resolution-field" aria-hidden="true">
-        <span></span><span></span><span></span><span></span><span></span>
+        <svg viewBox="0 0 1000 800" preserveAspectRatio="xMidYMid slice">
+          <g class="resolution-geometry">
+            <path d="M64 640 214 476 386 566 510 328 704 416 936 152"/>
+            <path d="M82 170 252 288 400 116 590 238 774 98 928 236"/>
+            <polygon points="510,192 664,280 664,456 510,544 356,456 356,280"/>
+            <circle cx="510" cy="368" r="118"/><circle cx="510" cy="368" r="176"/>
+          </g>
+          <g class="resolution-neuron">
+            <path d="M448 346c-52-40-96-54-157-36M430 390c-62 0-108 30-162 86M462 316c-15-61 7-103-14-163M566 336c58-38 94-79 166-79M579 395c68 9 118 48 167 105M494 450c-9 44-38 86-23 152"/>
+            <path class="resolution-soma" d="M464 309c40-24 96-10 120 30 26 44 7 100-36 126-42 25-103 13-126-30-24-44 3-100 42-126Z"/>
+            <circle cx="291" cy="310" r="7"/><circle cx="268" cy="476" r="7"/><circle cx="448" cy="153" r="7"/><circle cx="732" cy="257" r="7"/><circle cx="746" cy="500" r="7"/><circle cx="471" cy="602" r="7"/>
+          </g>
+        </svg>
       </div>
       <div class="resolution-copy">
-        <p class="resolution-kicker">THIRTEEN FRAGMENTS // ONE CARRIER</p>
+        <section class="phase-lock-success" aria-label="Phase lock successful">
+          <div><span>SIGNAL STABLE</span><strong>PHASE LOCK // 13:13</strong></div>
+          <svg viewBox="0 0 640 92" role="img" aria-label="Two waveforms converging into phase lock">
+            <path class="lock-grid" d="M0 23H640M0 46H640M0 69H640M80 0V92M160 0V92M240 0V92M320 0V92M400 0V92M480 0V92M560 0V92"/>
+            <path class="lock-trace lock-trace-a" d="M0 48C28 12 52 12 80 48s52 36 80 0 52-36 80 0 52 36 80 0 52-36 80 0 52 36 80 0 52-36 80 0 52 36 80 0 52-36 80 0"/>
+            <path class="lock-trace lock-trace-b" d="M0 58C30 27 51 20 80 48s51 28 80 0 51-28 80 0 51 28 80 0 52-28 80 0 52 30 80 0 52-32 80 0 52 34 80 0 52-35 80 0"/>
+          </svg>
+          <p>Δφ 0.0000 RAD // COHERENCE 100.0% // CARRIER IDENTIFIED</p>
+        </section>
+        <p class="resolution-kicker">THIRTEEN FRAGMENTS // ONE CARRIER // CHANNEL OPEN</p>
         <h2 id="resolution-title">You found the human in the machine.</h2>
         <p class="resolution-aside">You also spent this long inside a stranger’s cryptic website, which suggests we may have things to discuss.</p>
         <form id="signal-form" class="signal-form">
@@ -139,7 +171,10 @@
           <button type="submit">open outbound channel</button>
           <p>This opens your mail app. Nothing leaves this page until you send it.</p>
         </form>
-        <button id="close-resolution" class="close-resolution" type="button">return to the map</button>
+        <div class="resolution-actions">
+          <button id="close-resolution" class="close-resolution" type="button">return to the map</button>
+          <button id="replay-experience" class="replay-experience" type="button">replay from the locked door</button>
+        </div>
       </div>
     </section>
   </main>
@@ -167,6 +202,6 @@
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
   <audio id="message-audio" preload="metadata" src="assets/audio/message-v3.mp3"></audio>
-  <script src="labyrinth.js?v=20260808l"></script>
+  <script src="labyrinth.js?v=20260808m"></script>
 </body>
 </html>
