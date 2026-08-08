@@ -668,6 +668,42 @@ body[data-room="strange-loop"] .room-response { right: 8vw; bottom: 15vh; }
     transform-origin: top left;
   }
   .room-artifact { scale: .78; }
+
+  body[data-room="whiteboard"] .room h2 { right: .25rem; }
+  body[data-room="lab"] .room-artifact { translate: 0 -6rem; }
+  body[data-room="pitlane"] .room-artifact,
+  body[data-room="shore"] .room-artifact { translate: 0 -1rem; }
+  body[data-room="strange-loop"] .room-artifact { translate: 0 -5.25rem; scale: .65; }
+}
+
+@media (max-width: 760px) and (max-height: 520px) and (orientation: landscape) {
+  .doors {
+    inset: 56px 0 0;
+    display: block;
+    height: auto;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+  .door, .door:nth-child(1), .door:nth-child(2), .door:nth-child(3) {
+    position: absolute;
+    flex: none;
+    width: auto;
+    max-width: none;
+    min-width: 44px;
+    min-height: 44px;
+    padding: .55rem .35rem;
+    background: color-mix(in srgb, var(--page) 88%, transparent);
+  }
+  .door:nth-child(1) { left: 1rem; top: auto; right: auto; bottom: .35rem; }
+  .door:nth-child(2) { left: auto; top: 37%; right: 1rem; bottom: auto; }
+  .door:nth-child(3) { left: auto; top: auto; right: 1rem; bottom: .35rem; }
+
+  body[data-room="foyer"] .room-artifact { translate: 0 -3rem; }
+  body[data-room="tunnel"] .room h2 { width: 9ch; font-size: clamp(3rem, 10vw, 4.5rem); }
+  body[data-room="kitchen"] .room-artifact { translate: 0 4rem; }
+  body[data-room="watch"] .room-artifact { translate: -1.5rem -3.5rem; }
+  body[data-room="strange-loop"] .room-artifact { translate: 0 -5.75rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
