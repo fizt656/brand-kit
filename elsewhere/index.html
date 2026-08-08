@@ -4,119 +4,70 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-  <meta name="theme-color" content="#070a0c">
-  <meta name="description" content="The Other Map — an unreliable atlas of one signal.">
-  <title>The Other Map — Gus Halwani</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23b98a4e' stroke-width='2'/%3E%3Cpath d='M13 36c10-14 19 13 38-9' fill='none' stroke='%235fafa3' stroke-width='3'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260807d">
+  <meta name="theme-color" content="#faf8f3">
+  <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
+  <title>Elsewhere — Gus Halwani</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="labyrinth.css?v=20260808b">
 </head>
-<body>
-  <a class="skip-link" href="#room-title">Skip to the current room</a>
-  <canvas id="signal-field" aria-hidden="true"></canvas>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="scanline" aria-hidden="true"></div>
+<body data-room="threshold" data-theme="paper">
+  <a class="skip-link" href="#threshold-title">Skip to the current room</a>
+  <div class="material" aria-hidden="true"></div>
 
-  <header class="instrument-bar" aria-label="Receiver controls">
-    <a class="identity-mark" href="#threshold" aria-label="Return to the threshold">
-      <span>G.H.</span><i></i><span>OTHER MAP</span><small>01</small>
-    </a>
-    <div class="instrument-readout">
-      <span id="room-coordinate">42.3601° N / 71.0589° W</span>
-      <button id="message-button" class="text-button" type="button" aria-haspopup="dialog">
-        <span class="status-light"></span>1 SIGNAL WAITING
-      </button>
-    </div>
-    <div class="instrument-actions">
-      <button id="sound-toggle" class="text-button" type="button" aria-pressed="false">SOUND OFF</button>
-      <a href="/" class="text-button">EXIT</a>
+  <header class="edge">
+    <a class="wordmark" href="/">Gus Halwani, <span>PhD</span></a>
+    <div class="edge-actions">
+      <button id="sound-toggle" type="button" aria-pressed="false">sound</button>
+      <button id="erase-route" type="button">erase</button>
+      <a href="/" aria-label="Exit elsewhere">exit</a>
     </div>
   </header>
 
-  <main>
+  <main id="stage">
     <section id="threshold" class="threshold" aria-labelledby="threshold-title">
-      <div class="threshold-image" role="img" aria-label="A nocturnal shoreline merges with a garage full of strange instruments, a black E46 M3, and Gus standing at the boundary."></div>
-      <div class="threshold-vignette" aria-hidden="true"></div>
-      <div class="threshold-signal" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="threshold-copy">
-        <p class="eyebrow">UNREGISTERED INSTRUMENT / PRIVATE FREQUENCY</p>
-        <h1 id="threshold-title"><span>THE</span> OTHER MAP</h1>
-        <p class="threshold-deck">An unreliable atlas of one signal.</p>
-        <button id="enter-labyrinth" class="primary-action" type="button">
-          <span>CALIBRATE RECEIVER</span><i aria-hidden="true">↗</i>
-        </button>
-        <p class="threshold-note">Nothing here is arranged chronologically. This is probably deliberate.</p>
+        <h1 id="threshold-title">There is another map.</h1>
+        <button id="enter-labyrinth" type="button">enter</button>
       </div>
-      <div class="threshold-coordinates" aria-hidden="true">
-        <span>BEIRUT</span><i></i><span>BOSTON</span><i></i><span>ELSEWHERE</span>
-      </div>
+      <button class="threshold-object" id="threshold-object" type="button" aria-label="Enter the other map">
+        <svg viewBox="0 0 420 520" role="img" aria-label="An irregular folded brass form">
+          <defs>
+            <filter id="threshold-warp">
+              <feTurbulence type="fractalNoise" baseFrequency=".012 .026" numOctaves="3" seed="17" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="18"/>
+            </filter>
+          </defs>
+          <path class="threshold-object-fill" filter="url(#threshold-warp)" d="M209 34C271 62 331 132 318 203c-11 60-75 75-65 131 7 38 61 67 39 111-19 37-92 50-137 24-42-24-31-82-46-124-18-51-58-85-31-142 26-54 77-194 131-169Z"/>
+          <path class="threshold-object-line" d="M102 373c72-58 158-117 184-226M116 420c62-106 111-188 178-256M82 244c92 11 165 57 205 127"/>
+        </svg>
+      </button>
+      <p class="threshold-fault" aria-hidden="true">42.3601 / 33.8938 / —</p>
     </section>
 
     <section id="labyrinth" class="labyrinth" hidden aria-live="polite">
-      <div class="room-shell">
-        <div id="room-visual" class="room-visual" aria-hidden="true"></div>
-        <article class="room-copy">
-          <div class="room-index">
-            <span id="room-number">00</span>
-            <span id="room-kicker">RECEIVER HALL</span>
-          </div>
-          <h2 id="room-title">The Receiver Hall</h2>
-          <p id="room-deck" class="room-deck"></p>
-          <blockquote id="room-fragment" class="room-fragment"></blockquote>
-          <div id="room-interaction" class="room-interaction"></div>
-        </article>
-      </div>
-      <nav id="doors" class="doors" aria-label="Paths from this room"></nav>
+      <article id="room" class="room">
+        <p id="room-index" class="room-index"></p>
+        <h2 id="room-title"></h2>
+        <p id="room-fragment" class="room-fragment"></p>
+        <div id="room-artifact" class="room-artifact"></div>
+        <p id="room-response" class="room-response" role="status"></p>
+      </article>
+      <nav id="doors" class="doors" aria-label="Ways out"></nav>
     </section>
   </main>
 
-  <aside id="compass" class="compass" hidden aria-label="Recovered map">
-    <button id="compass-toggle" class="compass-toggle" type="button" aria-label="Open recovered map" aria-expanded="false" aria-controls="compass-panel">
-      <span class="compass-rose" aria-hidden="true">✣</span>
-      <span>RECOVERED MAP</span>
-    </button>
-    <div id="compass-panel" class="compass-panel" hidden>
-      <p>The instrument remembers where you have been. It does not know where you are going.</p>
-      <div id="compass-rooms" class="compass-rooms"></div>
-      <button id="forget-route" class="minor-action" type="button">ERASE THIS ROUTE</button>
-    </div>
-  </aside>
-
-  <aside class="frequency-rack" aria-label="Collected frequencies">
-    <button id="frequency-toggle" type="button" aria-label="Open collected frequencies" aria-expanded="false" aria-controls="frequency-panel">
-      <span>FREQUENCIES</span><strong id="frequency-count">0 / 7</strong>
-    </button>
-    <div id="frequency-panel" hidden>
-      <ol id="frequency-list"></ol>
-    </div>
-  </aside>
-
   <dialog id="transmission" class="transmission" aria-labelledby="transmission-title">
-    <button class="dialog-close" type="button" aria-label="Close transmission">×</button>
-    <p id="transmission-title" class="eyebrow">RECOVERED TRANSMISSION / SOURCE UNKNOWN</p>
-    <div class="waveform" aria-hidden="true"></div>
-    <p>I started with audio signals, followed them into neural signals, then data signals. Eventually the instruments began talking to one another.</p>
-    <p class="transmission-last">This is not the official map. It may be more accurate.</p>
-    <button id="play-transmission" class="minor-action" type="button">PLAY THE TONE</button>
-  </dialog>
-
-  <dialog id="resolution" class="resolution" aria-labelledby="resolution-title">
     <button class="dialog-close" type="button" aria-label="Close">×</button>
-    <p class="eyebrow">FULL SPECTRUM / 7 OF 7</p>
-    <div class="resolution-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-    <h2 id="resolution-title">THE SIGNAL<br>WAS NEVER<br>ONE THING.</h2>
-    <p>It was the thread between them.</p>
-    <a class="primary-action" href="#strange-loop">FOLLOW IT BACK <i aria-hidden="true">↗</i></a>
+    <p id="transmission-title">a recovered line</p>
+    <p>eventually the instruments began answering one another.</p>
+    <button id="play-transmission" type="button">play</button>
   </dialog>
 
   <template id="door-template">
-    <a class="door" href="#">
-      <span class="door-mark" aria-hidden="true"></span>
-      <span class="door-copy"><small></small><strong></strong></span>
-      <span class="door-arrow" aria-hidden="true">↗</span>
-    </a>
+    <a class="door" href="#"><span></span></a>
   </template>
 
-  <noscript><p class="noscript">This instrument needs JavaScript to remember the route. The official map is still available <a href="/">here</a>.</p></noscript>
-  <script src="labyrinth.js?v=20260807d"></script>
+  <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
+  <script src="labyrinth.js?v=20260808b"></script>
 </body>
 </html>

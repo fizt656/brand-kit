@@ -31,6 +31,7 @@ Thumbs.db
 *.log
 *.tmp
 *.bak
+.playwright-cli/
 
 # Python cache (if local scripts get added)
 __pycache__/
