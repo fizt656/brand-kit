@@ -12,6 +12,9 @@
   ];
   const PUZZLE_SYMBOLS = ["○", "△", "□", "◇"];
   const AMBIENT_LOOP_OFFSET = 0.08;
+  const IDENTITY_NAME = "GUS HALWANI,";
+  const IDENTITY_DEGREE = "PHD";
+  const IDENTITY_GLYPHS = "0123456789ABCDEF∆◇#?/";
   const AUDIO = {
     ambient: "assets/audio/carrier-thirteen.mp3?v=2",
     threshold: "assets/audio/threshold-wake.mp3",
@@ -250,6 +253,9 @@
   const messageAudio = $("#message-audio");
   const messageButton = $("#message-player");
   const messageState = $("#message-state");
+  const identity = $(".wordmark");
+  const identityName = $("#identity-name");
+  const identityDegree = $("#identity-degree");
   let currentRoom = "threshold";
   let soundOn = false;
   let musicOn = true;
@@ -267,6 +273,7 @@
   let powerFaultTimer = 0;
   let celebrationTimer = 0;
   let messageStartTimer = 0;
+  let identityTimer = 0;
   let ambientLooping = false;
   let fragmentResolutionPending = false;
   const switchAudio = new Map();
@@ -312,6 +319,46 @@
     document.body.dataset.theme = theme;
     const colors = { paper: "#faf8f3", bone: "#e8e2d5", ash: "#292724", black: "#11100f", rust: "#6f3422" };
     $("meta[name='theme-color']").setAttribute("content", colors[theme] || colors.paper);
+  }
+
+  function cipherIdentityPart(source, revealChance) {
+    return [...source].map((character) => {
+      if (character === " ") return Math.random() < .48 ? " " : "/";
+      if (character === ",") return Math.random() < .42 ? "," : ":";
+      if (Math.random() < revealChance) return character;
+      return IDENTITY_GLYPHS[Math.floor(Math.random() * IDENTITY_GLYPHS.length)];
+    }).join("");
+  }
+
+  function scrambleIdentity() {
+    clearTimeout(identityTimer);
+    if (!identity.classList.contains("identity-unstable")) return;
+    if (reducedMotion.matches) {
+      identityName.textContent = "6U5 H4LW4N1,";
+      identityDegree.textContent = "?H∆";
+      identity.dataset.ghost = "6U5 H4LW4N1, ?H∆";
+      return;
+    }
+    const name = cipherIdentityPart(IDENTITY_NAME, .2 + Math.random() * .18);
+    const degree = cipherIdentityPart(IDENTITY_DEGREE, .14 + Math.random() * .16);
+    identityName.textContent = name;
+    identityDegree.textContent = degree;
+    identity.dataset.ghost = `${name} ${degree}`;
+    identityTimer = window.setTimeout(scrambleIdentity, 72 + Math.random() * 118);
+  }
+
+  function syncIdentitySignal() {
+    clearTimeout(identityTimer);
+    const resolved = state.resolutionSeen || state.solved.size === ROOM_IDS.length;
+    identity.classList.toggle("identity-unstable", !resolved);
+    identity.classList.toggle("identity-resolved", resolved);
+    if (resolved) {
+      identityName.textContent = "Gus Halwani,";
+      identityDegree.textContent = "PhD";
+      identity.dataset.ghost = "Gus Halwani, PhD";
+      return;
+    }
+    scrambleIdentity();
   }
 
   function requestedRoom() {
@@ -608,8 +655,7 @@
     if (ambientAudio && musicOn && !ambientAudio.paused) {
       fadeMedia(ambientAudio, .015, 80);
       window.setTimeout(() => {
-        if (musicOn && ambientAudio && !messageAudio.paused) fadeMedia(ambientAudio, .11, 180);
-        else if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, 420);
+        if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, messageAudio.paused ? 420 : 180);
       }, 520);
     }
     powerFaultTimer = window.setTimeout(() => document.body.classList.remove("power-fault"), reducedMotion.matches ? 100 : 820);
@@ -789,6 +835,7 @@
     resolution.hidden = false;
     document.body.dataset.room = "resolution";
     setTheme("black");
+    syncIdentitySignal();
     stopRoomTone();
     window.scrollTo({ top: 0, behavior: "auto" });
     focusHeading($("#resolution-title"));
@@ -856,6 +903,7 @@
         state.solved.add(id);
         state.resolutionSeen = state.solved.size === ROOM_IDS.length;
         saveState();
+        syncIdentitySignal();
         markResolved();
         renderStory(id, data);
         renderProgress();
@@ -939,7 +987,7 @@
     compressor.ratio.value = 4.5;
     compressor.attack.value = .004;
     compressor.release.value = .16;
-    output.gain.value = .46;
+    output.gain.value = .34;
     const wow = context.createOscillator();
     const wowDepth = context.createGain();
     const flutter = context.createOscillator();
@@ -1091,7 +1139,7 @@
         ambientAudio.play().catch(() => {});
       });
     }
-    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .26 : .11, 1100)).catch(() => {});
+    ambientAudio.play().then(() => fadeMedia(ambientAudio, .26, 1100)).catch(() => {});
   }
 
   function stopAmbient() {
@@ -1164,7 +1212,6 @@
     }
     if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
     activateAudio(true);
-    if (ambientAudio && musicOn) fadeMedia(ambientAudio, .11, 260);
     playAsset("tapeStart", .9);
     messageState.textContent = "loading";
     messageStartTimer = window.setTimeout(() => {
@@ -1182,6 +1229,7 @@
     state.gateUnlocked = false;
     state.resolutionSeen = false;
     state.messageHeard = false;
+    syncIdentitySignal();
     saveState();
     clearTimeout(messageStartTimer);
     messageAudio.pause();
@@ -1218,7 +1266,7 @@
       name ? `Name: ${name}` : "",
       reply ? `Return address: ${reply}` : ""
     ].filter(Boolean).join("\n");
-    location.href = `mailto:gushalwani@alum.mit.edu?subject=${encodeURIComponent("Signal received from Elsewhere")}&body=${encodeURIComponent(body)}`;
+    location.href = `mailto:grander.iron7t@icloud.com?subject=${encodeURIComponent("Signal received from Elsewhere")}&body=${encodeURIComponent(body)}`;
   });
   $("#sound-toggle").addEventListener("click", toggleSound);
   $("#erase-route").addEventListener("click", eraseRoute);
@@ -1228,7 +1276,6 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
-    if (ambientAudio) fadeMedia(ambientAudio, .11, 240);
     startMessageCarrier();
     updateMessageState();
   });
@@ -1263,7 +1310,7 @@
     target.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
   });
   addEventListener("hashchange", route);
-  addEventListener("beforeunload", () => { stopRoomTone(); stopAmbient(); });
+  addEventListener("beforeunload", () => { clearTimeout(identityTimer); stopRoomTone(); stopAmbient(); });
   document.addEventListener("visibilitychange", () => {
     scheduleTransmissionGlitch();
     if (!ambientAudio || !musicOn) return;
@@ -1283,6 +1330,7 @@
   }
 
   document.addEventListener("pointerdown", startFirstVisitAudio);
+  reducedMotion.addEventListener("change", syncIdentitySignal);
 
   if (state.messageHeard) {
     messageButton.classList.add("heard");
@@ -1291,6 +1339,7 @@
   }
 
   updateMusicButton();
+  syncIdentitySignal();
   startAmbient();
 
   scheduleTransmissionGlitch();
