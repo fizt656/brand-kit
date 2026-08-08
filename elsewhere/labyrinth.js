@@ -11,6 +11,7 @@
     { through: 12, number: "IV", name: "RETURN", instruction: "find what the instruments were carrying" }
   ];
   const PUZZLE_SYMBOLS = ["○", "△", "□", "◇"];
+  const AMBIENT_LOOP_OFFSET = 6.8;
   const AUDIO = {
     ambient: "assets/audio/carrier-thirteen.mp3",
     threshold: "assets/audio/threshold-wake.mp3",
@@ -241,11 +242,17 @@
   const hackCode = $("#hack-code");
   const hackAscii = $("#hack-ascii");
   const hackStatus = $("#hack-status");
+  const fragmentReveal = $("#fragment-reveal");
+  const fragmentRevealCode = $("#fragment-reveal-code");
+  const fragmentRevealCopy = $("#fragment-reveal-copy");
+  const fragmentRevealClose = $("#fragment-reveal-close");
   const messageAudio = $("#message-audio");
   const messageButton = $("#message-player");
   const messageState = $("#message-state");
   let currentRoom = "threshold";
   let soundOn = false;
+  let musicOn = true;
+  let autoAudioStarted = false;
   let audioContext = null;
   let activeTone = [];
   let interactionCleanup = null;
@@ -256,8 +263,11 @@
   let responseTimer = 0;
   let glitchTimer = 0;
   let glitchRelease = 0;
+  let powerFaultTimer = 0;
   let celebrationTimer = 0;
   let messageStartTimer = 0;
+  let ambientLooping = false;
+  let fragmentResolutionPending = false;
   const switchAudio = new Map();
 
   const saved = loadState();
@@ -267,8 +277,10 @@
     solved: new Set(Array.isArray(saved.solved) ? saved.solved : []),
     gateUnlocked: Boolean(saved.gateUnlocked),
     resolutionSeen: Boolean(saved.resolutionSeen),
-    messageHeard: Boolean(saved.messageHeard)
+    messageHeard: Boolean(saved.messageHeard),
+    musicOn: saved.musicOn !== false
   };
+  musicOn = state.musicOn;
 
   function loadState() {
     try {
@@ -287,7 +299,8 @@
         solved: [...state.solved],
         gateUnlocked: state.gateUnlocked,
         resolutionSeen: state.resolutionSeen,
-        messageHeard: state.messageHeard
+        messageHeard: state.messageHeard,
+        musicOn
       }));
     } catch (_) {
       // The room still exists if the browser forgets it.
@@ -396,6 +409,7 @@
       if (option.dataset.answer !== "true") {
         option.classList.add("wrong");
         $("#gate-readout").textContent = "NO. OVERLAP CANCELS; DIFFERENCE REMAINS.";
+        triggerPowerFault("PERCEPTION GATE REJECTED");
         playClick(71, .035);
         return;
       }
@@ -548,10 +562,17 @@
       return `<text class="neural-label" style="--delay:${(.48 + index * .11).toFixed(2)}s" x="${(node.x + dx).toFixed(1)}" y="${(node.y + dy).toFixed(1)}" text-anchor="${anchor}">${label}</text>`;
     }).join("");
     const origin = nodes[0];
+    const cellTurn = (hashRoom(id) % 52) - 26;
+    const cellScale = .72 + (hashRoom(`${id}-cell`) % 28) / 100;
     room.style.setProperty("--origin-x", `${(origin.x / 10).toFixed(2)}%`);
     room.style.setProperty("--origin-y", `${(origin.y / 7).toFixed(2)}%`);
     neuralField.classList.remove("awake", "remembering");
     neuralField.innerHTML = `<g class="neural-edges">${paths}</g><g class="neural-nodes">${points}</g><g class="neural-labels">${labels}</g>
+      <g class="neural-cell" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)}) rotate(${cellTurn}) scale(${cellScale.toFixed(2)})">
+        <path class="neural-cell-branches" d="M-18-11C-71-30-87-76-143-87M-27 8c-59 8-82 47-137 56M8-27C18-77 2-103 25-148M22-12c52-28 79-67 143-71M28 12c61 11 85 51 145 66M18 25c25 53 61 66 118 83"/>
+        <path class="neural-cell-soma" d="M-23-25C2-45 35-30 42-2 50 29 18 49-12 39-43 28-49-6-23-25Z"/>
+        <path class="neural-cell-glitch" d="M-38-5h82M-31 9h66M-19 23h42"/>
+      </g>
       <g class="neural-signatures" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)})">
         <circle r="23"/><circle r="38"/><path d="M-62 0h39M23 0h62M0-61v38M0 23v42"/>
       </g>`;
@@ -574,6 +595,22 @@
     void document.body.offsetWidth;
     document.body.classList.add("signal-glitch");
     glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch"), duration);
+  }
+
+  function triggerPowerFault(label = "CHECKSUM MISMATCH") {
+    clearTimeout(powerFaultTimer);
+    document.body.classList.remove("power-fault");
+    void document.body.offsetWidth;
+    document.body.classList.add("power-fault");
+    triggerTransmissionGlitch(`VOLTAGE DROP // ${label}`, 760);
+    if (ambientAudio && musicOn && !ambientAudio.paused) {
+      fadeMedia(ambientAudio, .015, 80);
+      window.setTimeout(() => {
+        if (musicOn && ambientAudio && !messageAudio.paused) fadeMedia(ambientAudio, .05, 180);
+        else if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, 420);
+      }, 520);
+    }
+    powerFaultTimer = window.setTimeout(() => document.body.classList.remove("power-fault"), reducedMotion.matches ? 100 : 820);
   }
 
   function scheduleTransmissionGlitch() {
@@ -613,10 +650,49 @@
     }, reducedMotion.matches ? 120 : 1650);
   }
 
+  function showFragmentReveal(id, data, opensResolution = false) {
+    fragmentResolutionPending = opensResolution;
+    fragmentRevealCode.textContent = `CARRIER ${String(STORY_PATH.indexOf(id) + 1).padStart(2, "0")} // PERSONA CACHE RESTORED`;
+    fragmentRevealCopy.textContent = data.story;
+    fragmentReveal.hidden = false;
+    document.body.classList.add("fragment-open");
+    window.setTimeout(() => fragmentRevealClose.focus({ preventScroll: true }), 40);
+  }
+
+  function closeFragmentReveal() {
+    if (fragmentReveal.hidden) return;
+    fragmentReveal.hidden = true;
+    document.body.classList.remove("fragment-open");
+    if (fragmentResolutionPending) {
+      fragmentResolutionPending = false;
+      openResolution();
+      return;
+    }
+    const circuit = $(".circuit-switch", roomArtifact);
+    if (circuit) circuit.focus({ preventScroll: true });
+  }
+
+  function polygonPoints(sides, radius, center = 300, turn = -Math.PI / 2) {
+    return Array.from({ length: sides }, (_, point) => {
+      const angle = turn + point * Math.PI * 2 / sides;
+      return `${(center + Math.cos(angle) * radius).toFixed(1)},${(center + Math.sin(angle) * radius).toFixed(1)}`;
+    }).join(" ");
+  }
+
+  function puzzleGeometry(variant) {
+    const sides = 3 + (variant % 6);
+    const turn = -Math.PI / 2 + (variant % 2 ? Math.PI / sides : 0);
+    const outer = polygonPoints(sides, 198, 300, turn);
+    const inner = polygonPoints(sides, 126, 300, turn + (variant % 3) * .12);
+    const orbit = 58 + (variant % 4) * 13;
+    return `<polygon points="${outer}"/><polygon points="${inner}"/><circle cx="300" cy="300" r="${orbit}"/><path d="M300 102 300 498M102 300 498 300" transform="rotate(${(variant * 17) % 90} 300 300)"/>`;
+  }
+
   function artifactMarkup(id, data) {
     const keys = data.puzzle.labels.map((label, index) => `<button class="signal-key signal-key-${index}" type="button" data-key="${index}" aria-label="Route ${label}"><span class="key-glyph" aria-hidden="true">${PUZZLE_SYMBOLS[index]}</span><span class="key-word">${label}</span></button>`).join("");
-    const shapeRotation = data.puzzle.shape * 11;
-    return `<div class="signal-console" data-shape="${data.puzzle.shape}" style="--shape-rotation:${shapeRotation}deg">
+    const variant = STORY_PATH.indexOf(id);
+    const shapeRotation = variant * 7;
+    return `<div class="signal-console" data-shape="${data.puzzle.shape}" data-variant="${variant}" style="--shape-rotation:${shapeRotation}deg">
       <svg class="switch-geometry" viewBox="0 0 600 600" aria-hidden="true">
         ${defs(50 + data.puzzle.shape)}
         <g class="geometry-faint">
@@ -625,8 +701,7 @@
           <path class="geometry-diagonal" d="m133 133 93 93m148 148 93 93m0-334-93 93M226 374l-93 93"/>
         </g>
         <g class="geometry-live" filter="url(#rough-${50 + data.puzzle.shape})">
-          <path d="M300 102 466 198 466 390 300 498 134 390 134 198Z"/>
-          <path d="M300 175 408 238 408 362 300 425 192 362 192 238Z"/>
+          ${puzzleGeometry(variant)}
         </g>
         <g class="geometry-marks"><path d="M300 51v30M549 300h-30M300 549v-30M51 300h30"/><circle cx="300" cy="300" r="47"/></g>
       </svg>
@@ -648,8 +723,8 @@
       const radius = point % 2 && sides > 5 ? 13 : 17;
       return `${(20 + Math.cos(angle) * radius).toFixed(1)},${(20 + Math.sin(angle) * radius).toFixed(1)}`;
     }).join(" ");
-    const turn = (index * 29) % 180;
-    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><polygon points="${points}"></polygon><path d="M20 8v24M8 20h24" transform="rotate(${turn} 20 20)"></path></svg>`;
+    const turn = (index * 17) % 90;
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><polygon points="${points}"></polygon><path d="M20 7v26M7 20h26" transform="rotate(${turn} 20 20)"></path></svg>`;
   }
 
   function renderDoors() {
@@ -788,7 +863,10 @@
         playSwitchCue(id);
         pulseNeuralField();
         triggerHackCelebration(String(STORY_PATH.indexOf(id) + 1).padStart(2, "0"), `${data.title.replace(/\n/g, " ")} // PWNED`, state.solved.size);
-        if (state.resolutionSeen) window.setTimeout(openResolution, reducedMotion.matches ? 100 : 2100);
+        window.setTimeout(
+          () => showFragmentReveal(id, data, state.resolutionSeen),
+          reducedMotion.matches ? 140 : 1720
+        );
         return;
       }
 
@@ -796,6 +874,7 @@
       void consoleElement.offsetWidth;
       consoleElement.classList.add("fault");
       setResponse("CHECKSUM MISMATCH // ROUTE CLEARED");
+      triggerPowerFault("CIRCUIT REJECTED");
       playClick(67, .035);
       entered = [];
       faultTimer = window.setTimeout(() => {
@@ -947,26 +1026,35 @@
   }
 
   function toggleSound() {
-    setSoundState(!soundOn);
+    setMusicState(!musicOn);
   }
 
-  function setSoundState(enabled, quietStart = false) {
-    soundOn = enabled;
-    const button = $("#sound-toggle");
-    button.textContent = soundOn ? "sound on" : "sound";
-    button.setAttribute("aria-pressed", String(soundOn));
-    if (soundOn) {
-      ensureAudio();
+  function activateAudio(quietStart = false) {
+    soundOn = true;
+    ensureAudio();
+    if (musicOn) startAmbient();
+    if (ROOMS[currentRoom]) startRoomTone(ROOMS[currentRoom].tone);
+    else if (!quietStart) playAsset("threshold", .52);
+  }
+
+  function setMusicState(enabled) {
+    musicOn = enabled;
+    state.musicOn = enabled;
+    saveState();
+    updateMusicButton();
+    activateAudio(true);
+    if (musicOn) {
       startAmbient();
-      if (ROOMS[currentRoom]) startRoomTone(ROOMS[currentRoom].tone);
-      else if (!quietStart) playAsset("threshold", .52);
     } else {
-      clearTimeout(messageStartTimer);
-      stopRoomTone();
       stopAmbient();
-      stopMessageCarrier();
-      if (!messageAudio.paused) messageAudio.pause();
     }
+  }
+
+  function updateMusicButton() {
+    const button = $("#sound-toggle");
+    button.textContent = musicOn ? "music: on" : "music: off";
+    button.setAttribute("aria-pressed", String(musicOn));
+    button.setAttribute("aria-label", musicOn ? "Turn background music off" : "Turn background music on");
   }
 
   function fadeMedia(media, target, duration = 520) {
@@ -981,11 +1069,25 @@
   }
 
   function startAmbient() {
+    if (!musicOn) return;
     if (!ambientAudio) {
       ambientAudio = new Audio(AUDIO.ambient);
-      ambientAudio.loop = true;
+      ambientAudio.loop = false;
       ambientAudio.preload = "auto";
       ambientAudio.volume = 0;
+      ambientAudio.addEventListener("timeupdate", () => {
+        if (ambientLooping || !musicOn || !Number.isFinite(ambientAudio.duration)) return;
+        if (ambientAudio.duration - ambientAudio.currentTime > .32) return;
+        ambientLooping = true;
+        ambientAudio.currentTime = AMBIENT_LOOP_OFFSET;
+        ambientAudio.play().catch(() => {});
+        window.setTimeout(() => { ambientLooping = false; }, 260);
+      });
+      ambientAudio.addEventListener("ended", () => {
+        if (!musicOn) return;
+        ambientAudio.currentTime = AMBIENT_LOOP_OFFSET;
+        ambientAudio.play().catch(() => {});
+      });
     }
     ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .26 : .05, 1100)).catch(() => {});
   }
@@ -994,7 +1096,7 @@
     if (!ambientAudio) return;
     fadeMedia(ambientAudio, 0, 220);
     window.setTimeout(() => {
-      if (!soundOn && ambientAudio) ambientAudio.pause();
+      if (!musicOn && ambientAudio) ambientAudio.pause();
     }, 250);
   }
 
@@ -1059,8 +1161,8 @@
       return;
     }
     if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
-    setSoundState(true, true);
-    fadeMedia(ambientAudio, .05, 260);
+    activateAudio(true);
+    if (ambientAudio && musicOn) fadeMedia(ambientAudio, .05, 260);
     playAsset("tapeStart", .9);
     messageState.textContent = "loading";
     messageStartTimer = window.setTimeout(() => {
@@ -1093,6 +1195,13 @@
   $("#threshold-object").addEventListener("click", openGate);
   $("#leave-gate").addEventListener("click", leaveGate);
   $("#close-resolution").addEventListener("click", closeResolution);
+  fragmentRevealClose.addEventListener("click", closeFragmentReveal);
+  fragmentReveal.addEventListener("click", (event) => {
+    if (event.target === fragmentReveal) closeFragmentReveal();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !fragmentReveal.hidden) closeFragmentReveal();
+  });
   $("#signal-form").addEventListener("submit", (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -1131,7 +1240,7 @@
       : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
     neuralField.classList.remove("receiving");
     stopMessageCarrier();
-    if (soundOn && ambientAudio) fadeMedia(ambientAudio, .26, 480);
+    if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, 480);
     updateMessageState();
   });
   messageAudio.addEventListener("ended", () => {
@@ -1143,11 +1252,7 @@
     pulseNeuralField();
     playAsset("tapeStop", .9);
     stopMessageCarrier();
-    stopAmbient();
-    stopRoomTone();
-    soundOn = false;
-    $("#sound-toggle").textContent = "sound";
-    $("#sound-toggle").setAttribute("aria-pressed", "false");
+    if (musicOn && ambientAudio) window.setTimeout(() => fadeMedia(ambientAudio, .26, 420), 300);
   });
   $(".skip-link").addEventListener("click", (event) => {
     event.preventDefault();
@@ -1159,16 +1264,32 @@
   addEventListener("beforeunload", () => { stopRoomTone(); stopAmbient(); });
   document.addEventListener("visibilitychange", () => {
     scheduleTransmissionGlitch();
-    if (!ambientAudio || !soundOn) return;
+    if (!ambientAudio || !musicOn) return;
     if (document.hidden) ambientAudio.pause();
     else startAmbient();
   });
+
+  function startFirstVisitAudio(event) {
+    if (autoAudioStarted) return;
+    if (event.target.closest && event.target.closest("#sound-toggle")) return;
+    autoAudioStarted = true;
+    document.removeEventListener("pointerdown", startFirstVisitAudio);
+    activateAudio(true);
+    if (!state.messageHeard && messageAudio.paused && !(event.target.closest && event.target.closest("#message-player"))) {
+      toggleMessage();
+    }
+  }
+
+  document.addEventListener("pointerdown", startFirstVisitAudio);
 
   if (state.messageHeard) {
     messageButton.classList.add("heard");
     messageState.textContent = "heard";
     messageButton.setAttribute("aria-label", "Play message again");
   }
+
+  updateMusicButton();
+  startAmbient();
 
   scheduleTransmissionGlitch();
   route();
