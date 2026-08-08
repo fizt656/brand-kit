@@ -11,9 +11,9 @@
     { through: 12, number: "IV", name: "RETURN", instruction: "find what the instruments were carrying" }
   ];
   const PUZZLE_SYMBOLS = ["○", "△", "□", "◇"];
-  const AMBIENT_LOOP_OFFSET = 6.8;
+  const AMBIENT_LOOP_OFFSET = 0.08;
   const AUDIO = {
-    ambient: "assets/audio/carrier-thirteen.mp3",
+    ambient: "assets/audio/carrier-thirteen.mp3?v=2",
     threshold: "assets/audio/threshold-wake.mp3",
     axon: "assets/audio/axon-pulse.mp3",
     found: "assets/audio/frequency-found.mp3",
@@ -29,6 +29,7 @@
     "PERSONA CACHE / UNSTABLE",
     "THE MAP IS LISTENING"
   ];
+  const GLITCH_MODES = ["glitch-chroma", "glitch-roll", "glitch-tracking"];
 
   const ROOMS = {
     foyer: {
@@ -42,7 +43,7 @@
       ascii: ["o---o---[?]", " \\  |  /", "  [GUS]"],
       nodes: ["AUDIO SIGNAL", "NEURAL SIGNAL", "DATA SIGNAL", "SAME HAND", "NEW INSTRUMENT", "GUS"],
       puzzle: { labels: ["HEAR", "TRACE", "TRANSLATE", "RETURN"], solution: [0, 1, 2], clue: "Reception comes first. Follow it inward. Make it portable.", shape: 0 },
-      story: "He is not a collection of career changes. He is one listener moving through different kinds of noise: sound, brains, learning, and machines. The signal thread is the continuity.",
+      story: "Gus started in audio, moved into neuroscience and education, and now helps people use AI thoughtfully. He keeps following the same question: how do you find the signal, understand it, and make it useful to someone else?",
       doors: [["listening", "hiss"], ["engine", "heat"], ["shore", "west"]]
     },
     listening: {
@@ -56,7 +57,7 @@
       ascii: ["~~~~|\u00b7|~~~~", "  [ REC ]", "< room_tone >"],
       nodes: ["ROOM TONE", "GAIN", "FEEDBACK", "BEFORE MEANING", "MIX", "EAR"],
       puzzle: { labels: ["ROOM", "SOURCE", "NOISE", "MEANING"], solution: [0, 2, 3], clue: "Hear the whole field. Name the interference. Meaning comes last.", shape: 1 },
-      story: "Sound engineering taught him the oldest version of his work: listen before acting, separate source from noise, and shape an experience without crushing its life out of it.",
+      story: "Gus learned to listen in studios: to the source, the room, and the space between them. That habit still shapes how he works—pay attention first, then decide what needs changing.",
       doors: [["tunnel", "inside"], ["kitchen", "slow"], ["foyer", "back"]]
     },
     tunnel: {
@@ -70,7 +71,7 @@
       ascii: ["o---o    o", "    \\--o--o", "use => route"],
       nodes: ["NEURON", "PLASTICITY", "USE", "PATH", "SENSE", "BRAIN"],
       puzzle: { labels: ["SENSE", "SYNAPSE", "ROUTE", "USE"], solution: [0, 1, 3], clue: "The world arrives. A connection changes. Repetition leaves the mark.", shape: 2 },
-      story: "Neuroscience gave the signal thread a living substrate. Learning was no longer an abstraction; it was a path physically changed by use, attention, repetition, and consequence.",
+      story: "Neuroscience gave Gus a closer look at how people learn and change. He was drawn to plasticity: the quiet fact that repeated experience can reshape the path.",
       doors: [["lab", "below"], ["whiteboard", "translate"], ["listening", "echo"]]
     },
     whiteboard: {
@@ -84,7 +85,7 @@
       ascii: ["[?]--[ctx]", "       \\ ", "      [you]"],
       nodes: ["QUESTION", "CONTEXT", "PERSON", "MODEL", "TRANSLATE", "DFCI"],
       puzzle: { labels: ["CAPABILITY", "QUESTION", "CONTEXT", "PERSON"], solution: [1, 2, 3], clue: "Do not begin with the tool. Ask. Situate. Return to the human.", shape: 3 },
-      story: "Teaching is where his technical curiosity becomes service. At Dana-Farber, the point is not AI spectacle; it is helping real people form better questions and use powerful systems with judgment.",
+      story: "Gus loves learning new tools, but he cares more about whether another person can use them well. At Dana-Farber, he teaches AI by starting with real work, good questions, and human judgment.",
       doors: [["lab", "test"], ["quiet-center", "why"], ["field-notes", "scraps"]]
     },
     lab: {
@@ -98,7 +99,7 @@
       ascii: ["[M] [D] [W]", " \\   |   /", "  < HUMAN >"],
       nodes: ["MODEL", "DATA", "WORKFLOW", "GUARDRAIL", "HUMAN", "ENABLE"],
       puzzle: { labels: ["MODEL", "DATA", "WORKFLOW", "DEMO"], solution: [0, 1, 2], clue: "The loud component is not the system. Feed it, place it, then use it.", shape: 4 },
-      story: "He works on the layer most AI demos omit: the human system around the model. Enablement means workflow, literacy, guardrails, and enough understanding for people to remain authors of the work.",
+      story: "Gus spends a lot of time looking past the model itself. He is curious about how data, workflow, policy, and people fit together—and what has to be true for AI to actually help.",
       doors: [["pitlane", "margin"], ["tunnel", "carbon"], ["quiet-center", "dim"]]
     },
     pitlane: {
@@ -112,7 +113,7 @@
       ascii: ["----\\__", "      ) )", "0.017 sec"],
       nodes: ["0.017", "LOOK AHEAD", "BRAKE", "TURN", "MARGIN", "FEEL"],
       puzzle: { labels: ["BRAKE", "LOOK", "TURN", "POWER"], solution: [0, 1, 2], clue: "Speed is decided before the corner: create margin, move the eyes, commit once.", shape: 5 },
-      story: "Driving compresses perception into action. The pleasure is not raw speed; it is the tiny margin where attention, timing, mechanical feedback, and trust become one clean line.",
+      story: "On track, Gus likes the small decisions that make a lap feel right: where to look, when to brake, and when to trust the car. Speed is part of it, but attention is the better part.",
       doors: [["engine", "hot"], ["watch", "late"], ["lab", "readout"]]
     },
     engine: {
@@ -126,7 +127,7 @@
       ascii: ["[cold]..[warm]", "   \u03a9 / rpm", "KEEP / REPAIR"],
       nodes: ["E46", "WARM FIRST", "PATINA", "TORQUE", "CARE", "KEEP"],
       puzzle: { labels: ["COLD", "WAIT", "WARM", "REV"], solution: [0, 1, 2], clue: "Name the condition. Give the metal time. Proceed only after it changes.", shape: 6 },
-      story: "The E46 is not here as a mascot. It reveals a deeper instinct: repair instead of replace, understand the complaint, preserve character, and accept that care sometimes arrives carrying a wrench and several curses.",
+      story: "Gus has kept his E46 M3 alive through patience, research, busted knuckles, and highly specific profanity. He would usually rather understand and repair a good old thing than replace it.",
       doors: [["pitlane", "cut"], ["shore", "coast"], ["foyer", "off"]]
     },
     shore: {
@@ -140,7 +141,7 @@
       ascii: ["BEY ~~~> WEST", " 17 / bearing", "home != place"],
       nodes: ["BEIRUT", "17", "WEST", "HEADING", "MIGRATION", "RETURN"],
       puzzle: { labels: ["BEIRUT", "WEST", "HOME", "RETURN"], solution: [0, 1, 2], clue: "The origin remains. The body moves. The carried place changes meaning.", shape: 0 },
-      story: "Leaving Beirut at seventeen did not erase the first map. It made identity portable: language, humor, vigilance, music, family, and a heading that can survive when geography does not hold still.",
+      story: "Gus grew up in Beirut and moved to the United States at seventeen. Lebanon still shows up in his ear, humor, food, family, and the way he reads a room.",
       doors: [["kitchen", "carry"], ["watch", "drift"], ["foyer", "orient"]]
     },
     kitchen: {
@@ -154,7 +155,7 @@
       ascii: ["  (  steam  )", "[time]+[care]", "  => TABLE"],
       nodes: ["MARIA", "DAD", "LOW HEAT", "TABLE", "FAMILY", "TIME"],
       puzzle: { labels: ["WATER", "TIME", "TASTE", "SERVE"], solution: [0, 1, 3], clue: "Begin with what sustains. Refuse the shortcut. End at the table.", shape: 1 },
-      story: "Family is not the soft edge of the map; it is the load-bearing center. Curiosity matters, work matters, making matters—but the system is only healthy if there is still a table to return to.",
+      story: "Gus is a husband and a dad before any job title. The workbench and laptop can run late, but home is where the important signal lives.",
       doors: [["quiet-center", "keep"], ["listening", "mix"], ["shore", "salt"]]
     },
     watch: {
@@ -168,7 +169,7 @@
       ascii: ["+2 +2 +2", "   /|", "[adjust]"],
       nodes: ["+2 SEC", "MEASURE", "ADJUST", "CRAFT", "PATIENT", "KEEP"],
       puzzle: { labels: ["OBSERVE", "ADJUST", "MEASURE", "KEEP"], solution: [0, 1, 2], clue: "Attention before intervention. Touch only what moved. Ask the mechanism again.", shape: 2 },
-      story: "The tinkerer is a way of knowing. He trusts the loop of observe, adjust, measure—not because everything must be optimized, but because attention is one of the ways care becomes visible.",
+      story: "Gus likes mechanisms that answer back: watches, cars, audio gear, and code. He learns by observing, making one careful adjustment, and seeing what changed.",
       doors: [["pitlane", "time"], ["shore", "tide"], ["quiet-center", "keep"]]
     },
     "quiet-center": {
@@ -182,7 +183,7 @@
       ascii: ["MAZ     BAZ", "   \\ | /", "    (*)"],
       nodes: ["MAZ", "BAZ", "LAMP", "LINEAGE", "CARRIED", "STILL HERE"],
       puzzle: { labels: ["LAMP", "NAME", "SILENCE", "KEEP"], solution: [0, 2, 3], clue: "Leave the light. Do not fill the room. Carry what remains.", shape: 3 },
-      story: "Maz and Baz are not backstory. They are active inheritance: humor, endurance, practical love, and the instinct to keep a lamp on. Some rooms become sacred by refusing to explain them away.",
+      story: "Maz and Baz taught Gus a practical kind of love: show up, fix what matters, and keep the light on. Their humor, hands, and ways of caring are still part of how he moves through the world.",
       doors: [["strange-loop", "continue"], ["field-notes", "paper"], ["foyer", "lamp"]]
     },
     "field-notes": {
@@ -196,7 +197,7 @@
       ascii: ["[notice]", "   | write", "   v publish"],
       nodes: ["SIGNAL THREAD", "HARNESS", "FIRST PRINCIPLES", "TEACH", "WRITE", "SPEAK"],
       puzzle: { labels: ["NOTICE", "WRITE", "PUBLISH", "FORGET"], solution: [0, 1, 2], clue: "Catch the living edge. Give it structure. Release it before certainty arrives.", shape: 4 },
-      story: "Writing and speaking are his external memory system. They turn private pattern-recognition into a structure someone else can test, use, disagree with, and carry forward.",
+      story: "Gus writes and speaks to make ideas easier to examine with other people. He is happiest when a rough observation becomes something useful enough to test, question, or build on.",
       links: [["HARNESS / I", "/articles/harness-part-1.html"], ["FIRST PRINCIPLES", "/articles/first-principles.html"], ["ATTACK SURFACE", "/articles/agents-attack-surface.html"]],
       doors: [["whiteboard", "return"], ["strange-loop", "fold"], ["foyer", "file"]]
     },
@@ -211,7 +212,7 @@
       ascii: ["SOUND -> BRAIN", "  ^       |", "MACHINE <- TEACH"],
       nodes: ["SOUND", "BRAIN", "LEARNING", "MACHINE", "FAMILY", "RETURN"],
       puzzle: { labels: ["SOUND", "BRAIN", "TEACH", "MACHINE"], solution: [0, 1, 2, 3], clue: "The first ear leads inward. Learning returns outward. The newest instrument waits last.", shape: 5 },
-      story: "There was never one true profession hiding behind the others. The real work is signal, learning, and care moving through different instruments. The route looks back because the map is the person making it.",
+      story: "Sound, neuroscience, education, and AI are all parts of Gus's route. He is still following the signal, still learning what carries across, and still curious about where it leads next.",
       doors: [["foyer", "again"], ["listening", "hear"], ["quiet-center", "rest"]]
     }
   };
@@ -588,13 +589,14 @@
   function triggerTransmissionGlitch(label = "", duration = 420) {
     if (reducedMotion.matches || document.hidden) return;
     clearTimeout(glitchRelease);
-    document.body.classList.remove("signal-glitch");
+    document.body.classList.remove("signal-glitch", ...GLITCH_MODES);
     transmissionCode.textContent = `${label || GLITCH_LINES[Math.floor(Math.random() * GLITCH_LINES.length)]}\n${Math.random().toString(2).slice(2, 18)} // ${Math.random().toString(16).slice(2, 10).toUpperCase()}`;
     document.documentElement.style.setProperty("--tear-y", `${12 + Math.random() * 70}%`);
     document.documentElement.style.setProperty("--tear-shift", `${Math.round(7 + Math.random() * 17)}px`);
     void document.body.offsetWidth;
-    document.body.classList.add("signal-glitch");
-    glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch"), duration);
+    const mode = GLITCH_MODES[Math.floor(Math.random() * GLITCH_MODES.length)];
+    document.body.classList.add("signal-glitch", mode);
+    glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch", ...GLITCH_MODES), duration);
   }
 
   function triggerPowerFault(label = "CHECKSUM MISMATCH") {
@@ -606,7 +608,7 @@
     if (ambientAudio && musicOn && !ambientAudio.paused) {
       fadeMedia(ambientAudio, .015, 80);
       window.setTimeout(() => {
-        if (musicOn && ambientAudio && !messageAudio.paused) fadeMedia(ambientAudio, .05, 180);
+        if (musicOn && ambientAudio && !messageAudio.paused) fadeMedia(ambientAudio, .11, 180);
         else if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, 420);
       }, 520);
     }
@@ -616,10 +618,10 @@
   function scheduleTransmissionGlitch() {
     clearTimeout(glitchTimer);
     if (reducedMotion.matches || document.hidden) return;
-    const delay = 4300 + Math.random() * 6200;
+    const delay = 3200 + Math.random() * 5000;
     glitchTimer = window.setTimeout(() => {
-      triggerTransmissionGlitch("", 380 + Math.random() * 260);
-      if (Math.random() < .22) {
+      triggerTransmissionGlitch("", 420 + Math.random() * 320);
+      if (Math.random() < .3) {
         window.setTimeout(() => triggerTransmissionGlitch("PACKET ECHO // BAD COPY", 260), 150);
       }
       scheduleTransmissionGlitch();
@@ -919,11 +921,11 @@
     highpass.type = "highpass";
     highpass.frequency.value = 310;
     lowpass.type = "lowpass";
-    lowpass.frequency.value = 2850;
+    lowpass.frequency.value = 2450;
     presence.type = "peaking";
     presence.frequency.value = 1650;
     presence.Q.value = 1.1;
-    presence.gain.value = 6.5;
+    presence.gain.value = 3.2;
     const curve = new Float32Array(512);
     for (let index = 0; index < curve.length; index += 1) {
       const value = index * 2 / (curve.length - 1) - 1;
@@ -937,7 +939,7 @@
     compressor.ratio.value = 4.5;
     compressor.attack.value = .004;
     compressor.release.value = .16;
-    output.gain.value = .82;
+    output.gain.value = .46;
     const wow = context.createOscillator();
     const wowDepth = context.createGain();
     const flutter = context.createOscillator();
@@ -976,7 +978,7 @@
     bandpass.type = "bandpass";
     bandpass.frequency.value = 2200;
     bandpass.Q.value = .48;
-    gain.gain.value = .013;
+    gain.gain.value = .018;
     source.connect(bandpass).connect(gain).connect(context.destination);
     source.start();
     messageCarrier = source;
@@ -1089,7 +1091,7 @@
         ambientAudio.play().catch(() => {});
       });
     }
-    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .26 : .05, 1100)).catch(() => {});
+    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .26 : .11, 1100)).catch(() => {});
   }
 
   function stopAmbient() {
@@ -1162,7 +1164,7 @@
     }
     if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
     activateAudio(true);
-    if (ambientAudio && musicOn) fadeMedia(ambientAudio, .05, 260);
+    if (ambientAudio && musicOn) fadeMedia(ambientAudio, .11, 260);
     playAsset("tapeStart", .9);
     messageState.textContent = "loading";
     messageStartTimer = window.setTimeout(() => {
@@ -1226,7 +1228,7 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
-    if (ambientAudio) fadeMedia(ambientAudio, .05, 240);
+    if (ambientAudio) fadeMedia(ambientAudio, .11, 240);
     startMessageCarrier();
     updateMessageState();
   });

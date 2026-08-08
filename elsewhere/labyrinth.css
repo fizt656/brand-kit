@@ -2323,3 +2323,109 @@ body.power-fault .neural-field { animation: power-reboot .82s steps(8, end) both
   .fragment-reveal-frame { animation: none; }
   body.power-fault::before { display: none; }
 }
+
+/* 2026-08 carrier grime and solved-fragment hierarchy. */
+body.signal-glitch.glitch-chroma main,
+body.signal-glitch.glitch-chroma .edge,
+body.signal-glitch.glitch-chroma .neural-field {
+  animation: chroma-slip .72s steps(6, end) both;
+}
+body.signal-glitch.glitch-chroma h1,
+body.signal-glitch.glitch-chroma h2,
+body.signal-glitch.glitch-chroma .terminal-copy,
+body.signal-glitch.glitch-chroma .story-copy {
+  text-shadow: 3px 0 rgba(201, 51, 47, .42), -3px 0 rgba(57, 171, 177, .4);
+}
+body.signal-glitch.glitch-roll::after,
+body.signal-glitch.glitch-tracking::after {
+  content: "";
+  position: fixed;
+  z-index: 305;
+  inset: 0;
+  pointer-events: none;
+}
+body.signal-glitch.glitch-roll::after {
+  background: linear-gradient(180deg, transparent 0 38%, rgba(239, 248, 224, .24) 45%, rgba(7, 11, 8, .34) 52%, transparent 61%);
+  mix-blend-mode: difference;
+  animation: vertical-hold .74s steps(7, end) both;
+}
+body.signal-glitch.glitch-tracking::after {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 5px, rgba(226, 242, 208, .18) 6px, transparent 8px),
+    linear-gradient(90deg, transparent 0 21%, rgba(161, 207, 128, .14) 21% 22%, transparent 22% 77%, rgba(155, 67, 52, .13) 77% 78%, transparent 78%);
+  mix-blend-mode: exclusion;
+  animation: tracking-loss .64s steps(5, end) both;
+}
+
+.room.room-solved .room-fragment {
+  color: var(--faint);
+  opacity: .62;
+}
+
+@media (min-width: 1181px) {
+  .room.room-solved .story-terminal {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    margin: 0;
+  }
+  .room.room-solved .room-fragment {
+    grid-column: 1;
+    grid-row: 3;
+    align-self: start;
+    margin: .25rem 0 0;
+    font-size: clamp(.76rem, .82vw, .86rem);
+  }
+  .room.room-solved .room-terminal {
+    grid-column: 3;
+    grid-row: 1 / 4;
+    align-self: end;
+    margin: 0;
+  }
+}
+
+@media (min-width: 761px) and (max-width: 1180px) {
+  .room.room-solved .story-terminal {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: start;
+    width: 100%;
+    margin: 0;
+  }
+  .room.room-solved .room-fragment {
+    grid-column: 1;
+    grid-row: 3;
+    margin: .2rem 0 .6rem;
+    font-size: .78rem;
+  }
+  .room.room-solved .room-terminal {
+    grid-column: 1;
+    grid-row: 4;
+  }
+  .room.room-solved .room-artifact { grid-row: 1 / 5; }
+}
+
+@keyframes chroma-slip {
+  0%, 100% { transform: none; filter: none; }
+  14% { transform: translateX(9px) skewX(.45deg); filter: contrast(1.36) saturate(.55) hue-rotate(-6deg); }
+  31% { transform: translateX(-5px); filter: contrast(1.08) saturate(1.28); }
+  52% { transform: translateY(2px) scaleX(1.008); filter: hue-rotate(9deg); }
+  74% { transform: translateX(-2px); filter: contrast(1.18); }
+}
+@keyframes vertical-hold {
+  0%, 100% { opacity: 0; transform: translateY(-48%); }
+  15% { opacity: .72; transform: translateY(-22%); }
+  42% { opacity: .35; transform: translateY(18%); }
+  71% { opacity: .62; transform: translateY(54%); }
+}
+@keyframes tracking-loss {
+  0%, 100% { opacity: 0; transform: none; }
+  18% { opacity: .7; transform: translateY(3px) scaleY(1.015); }
+  39% { opacity: .28; transform: translateX(-8px); }
+  63% { opacity: .55; transform: translateX(5px) scaleY(.99); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.signal-glitch.glitch-roll::after,
+  body.signal-glitch.glitch-tracking::after { display: none; }
+}
