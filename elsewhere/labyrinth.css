@@ -2429,3 +2429,19 @@ body.signal-glitch.glitch-tracking::after {
   body.signal-glitch.glitch-roll::after,
   body.signal-glitch.glitch-tracking::after { display: none; }
 }
+
+/* Keep the inheritance-room heading inside its column at every viewport. */
+body[data-room="quiet-center"] .room h2 {
+  width: 100%;
+  max-width: 100%;
+  font-size: clamp(2.4rem, 3.2vw, 4.5rem);
+  line-height: .92;
+  letter-spacing: -.06em;
+  opacity: .82;
+}
+
+@media (max-width: 760px) {
+  body[data-room="quiet-center"] .room h2 {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+}

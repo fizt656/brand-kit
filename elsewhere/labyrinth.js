@@ -81,11 +81,11 @@
       theme: "bone",
       tone: [64, 192],
       terminalLabel: "CHANNEL 03 // EDUCATION",
-      terminal: "A capability is not yet a lesson. The whiteboard activates only when the question moves toward context, then toward the person who must use the answer after the room is empty.",
+      terminal: "A tool is only the beginning. Build it around the people doing the work, then design the learning with them: immersive practice, shared problems, and hackathons where the room can change the thing it is learning to use.",
       ascii: ["[?]--[ctx]", "       \\ ", "      [you]"],
       nodes: ["QUESTION", "CONTEXT", "PERSON", "MODEL", "TRANSLATE", "DFCI"],
       puzzle: { labels: ["CAPABILITY", "QUESTION", "CONTEXT", "PERSON"], solution: [1, 2, 3], clue: "Do not begin with the tool. Ask. Situate. Return to the human.", shape: 3 },
-      story: "Gus loves learning new tools, but he cares more about whether another person can use them well. At Dana-Farber, he teaches AI by starting with real work, good questions, and human judgment.",
+      story: "At Dana-Farber, Gus builds practical AI tools for people, then co-designs immersive training and hackathons with them. The point is not just to explain the technology, but to make something useful together and learn from what happens in the room.",
       doors: [["lab", "test"], ["quiet-center", "why"], ["field-notes", "scraps"]]
     },
     lab: {
@@ -98,7 +98,7 @@
       terminal: "The visible model is only the loudest component. Data enters from one wall, workflow from another, and human consequence through a door nobody labels. Close all three before calling it a system.",
       ascii: ["[M] [D] [W]", " \\   |   /", "  < HUMAN >"],
       nodes: ["MODEL", "DATA", "WORKFLOW", "GUARDRAIL", "HUMAN", "ENABLE"],
-      puzzle: { labels: ["MODEL", "DATA", "WORKFLOW", "DEMO"], solution: [0, 1, 2], clue: "The loud component is not the system. Feed it, place it, then use it.", shape: 4 },
+      puzzle: { labels: ["MODEL", "DATA", "WORKFLOW", "DEMO"], solution: [1, 2, 3], clue: "The loud component is not the system. Begin with what feeds it, place it in the work, then prove it in use.", shape: 4 },
       story: "Gus spends a lot of time looking past the model itself. He is curious about how data, workflow, policy, and people fit together—and what has to be true for AI to actually help.",
       doors: [["pitlane", "margin"], ["tunnel", "carbon"], ["quiet-center", "dim"]]
     },
@@ -125,9 +125,9 @@
       terminalLabel: "CHANNEL 06 // MECHANICAL CARE",
       terminal: "An old machine is not a disposable object. Cold oil, tired rubber, one unexplained vibration: each asks for patience before force. Warm it, hear it, keep what has earned a history.",
       ascii: ["[cold]..[warm]", "   \u03a9 / rpm", "KEEP / REPAIR"],
-      nodes: ["E46", "WARM FIRST", "PATINA", "TORQUE", "CARE", "KEEP"],
+      nodes: ["OLD CARS", "WARM FIRST", "PATINA", "TORQUE", "CARE", "KEEP"],
       puzzle: { labels: ["COLD", "WAIT", "WARM", "REV"], solution: [0, 1, 2], clue: "Name the condition. Give the metal time. Proceed only after it changes.", shape: 6 },
-      story: "Gus has kept his E46 M3 alive through patience, research, busted knuckles, and highly specific profanity. He would usually rather understand and repair a good old thing than replace it.",
+      story: "Gus likes old cars and old things: objects with history, quirks, and something left to teach. He would usually rather understand and repair a good old thing than replace it, with patience, research, busted knuckles, and highly specific profanity.",
       doors: [["pitlane", "cut"], ["shore", "coast"], ["foyer", "off"]]
     },
     shore: {
@@ -151,11 +151,11 @@
       theme: "paper",
       tone: [65, 130],
       terminalLabel: "CHANNEL 08 // FAMILY",
-      terminal: "The most important system has no dashboard. It runs on showing up, remembering what each person needs, keeping the heat low, and making a table where Maria, the kids, and the unfinished day can land.",
+      terminal: "The most important system has no dashboard. It runs on showing up, remembering what each person needs, keeping the heat low, and making a table where Maria, Cleo-Mayyada, and the unfinished day can land.",
       ascii: ["  (  steam  )", "[time]+[care]", "  => TABLE"],
-      nodes: ["MARIA", "DAD", "LOW HEAT", "TABLE", "FAMILY", "TIME"],
+      nodes: ["MARIA", "CLEO-MAYYADA", "LOW HEAT", "TABLE", "FAMILY", "TIME"],
       puzzle: { labels: ["WATER", "TIME", "TASTE", "SERVE"], solution: [0, 1, 3], clue: "Begin with what sustains. Refuse the shortcut. End at the table.", shape: 1 },
-      story: "Gus is a husband and a dad before any job title. The workbench and laptop can run late, but home is where the important signal lives.",
+      story: "Maria and Cleo-Mayyada come before any job title. The workbench and laptop can run late, but home is where the important signal lives.",
       doors: [["quiet-center", "keep"], ["listening", "mix"], ["shore", "salt"]]
     },
     watch: {
@@ -174,7 +174,7 @@
     },
     "quiet-center": {
       index: "—",
-      title: "NOTHING TO MEASURE",
+      title: "NOTHING\nTO MEASURE",
       fragment: "leave the lamp.",
       theme: "paper",
       tone: [48, 96],
