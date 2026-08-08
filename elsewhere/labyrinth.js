@@ -12,10 +12,12 @@
   ];
   const PUZZLE_SYMBOLS = ["○", "△", "□", "◇"];
   const AUDIO = {
-    ambient: "assets/audio/neural-room-loop.mp3",
+    ambient: "assets/audio/carrier-thirteen.mp3",
     threshold: "assets/audio/threshold-wake.mp3",
     axon: "assets/audio/axon-pulse.mp3",
     found: "assets/audio/frequency-found.mp3",
+    tapeStart: "assets/audio/tape-machine-start.mp3",
+    tapeStop: "assets/audio/tape-machine-stop.mp3",
     switches: "assets/audio/switches"
   };
   const GLITCH_LINES = [
@@ -255,6 +257,7 @@
   let glitchTimer = 0;
   let glitchRelease = 0;
   let celebrationTimer = 0;
+  let messageStartTimer = 0;
   const switchAudio = new Map();
 
   const saved = loadState();
@@ -561,13 +564,13 @@
     neuralField.classList.add("remembering");
   }
 
-  function triggerTransmissionGlitch(label = "", duration = 320) {
+  function triggerTransmissionGlitch(label = "", duration = 420) {
     if (reducedMotion.matches || document.hidden) return;
     clearTimeout(glitchRelease);
     document.body.classList.remove("signal-glitch");
     transmissionCode.textContent = `${label || GLITCH_LINES[Math.floor(Math.random() * GLITCH_LINES.length)]}\n${Math.random().toString(2).slice(2, 18)} // ${Math.random().toString(16).slice(2, 10).toUpperCase()}`;
     document.documentElement.style.setProperty("--tear-y", `${12 + Math.random() * 70}%`);
-    document.documentElement.style.setProperty("--tear-shift", `${Math.round(5 + Math.random() * 15)}px`);
+    document.documentElement.style.setProperty("--tear-shift", `${Math.round(7 + Math.random() * 17)}px`);
     void document.body.offsetWidth;
     document.body.classList.add("signal-glitch");
     glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch"), duration);
@@ -576,9 +579,12 @@
   function scheduleTransmissionGlitch() {
     clearTimeout(glitchTimer);
     if (reducedMotion.matches || document.hidden) return;
-    const delay = 6800 + Math.random() * 9200;
+    const delay = 4300 + Math.random() * 6200;
     glitchTimer = window.setTimeout(() => {
-      triggerTransmissionGlitch();
+      triggerTransmissionGlitch("", 380 + Math.random() * 260);
+      if (Math.random() < .22) {
+        window.setTimeout(() => triggerTransmissionGlitch("PACKET ECHO // BAD COPY", 260), 150);
+      }
       scheduleTransmissionGlitch();
     }, delay);
   }
@@ -955,6 +961,7 @@
       if (ROOMS[currentRoom]) startRoomTone(ROOMS[currentRoom].tone);
       else if (!quietStart) playAsset("threshold", .52);
     } else {
+      clearTimeout(messageStartTimer);
       stopRoomTone();
       stopAmbient();
       stopMessageCarrier();
@@ -980,7 +987,7 @@
       ambientAudio.preload = "auto";
       ambientAudio.volume = 0;
     }
-    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .18 : .055, 1100)).catch(() => {});
+    ambientAudio.play().then(() => fadeMedia(ambientAudio, messageAudio.paused ? .26 : .05, 1100)).catch(() => {});
   }
 
   function stopAmbient() {
@@ -1045,16 +1052,22 @@
   }
 
   function toggleMessage() {
+    clearTimeout(messageStartTimer);
     if (!messageAudio.paused) {
       messageAudio.pause();
+      playAsset("tapeStop", .9);
       return;
     }
     if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
     setSoundState(true, true);
-    fadeMedia(ambientAudio, .055, 260);
-    messageAudio.play().catch(() => {
-      messageState.textContent = "blocked";
-    });
+    fadeMedia(ambientAudio, .05, 260);
+    playAsset("tapeStart", .9);
+    messageState.textContent = "loading";
+    messageStartTimer = window.setTimeout(() => {
+      messageAudio.play().catch(() => {
+        messageState.textContent = "blocked";
+      });
+    }, 260);
   }
 
   function eraseRoute() {
@@ -1066,12 +1079,13 @@
     state.resolutionSeen = false;
     state.messageHeard = false;
     saveState();
+    clearTimeout(messageStartTimer);
     messageAudio.pause();
     messageAudio.currentTime = 0;
     messageButton.classList.remove("heard", "playing");
     messageButton.setAttribute("aria-pressed", "false");
     messageButton.setAttribute("aria-label", "Play unheard message");
-    messageState.textContent = "00:24";
+    messageState.textContent = formatTime(messageAudio.duration || 32);
     location.hash = "threshold";
   }
 
@@ -1103,6 +1117,7 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
+    if (ambientAudio) fadeMedia(ambientAudio, .05, 240);
     startMessageCarrier();
     updateMessageState();
   });
@@ -1116,7 +1131,7 @@
       : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
     neuralField.classList.remove("receiving");
     stopMessageCarrier();
-    if (soundOn && ambientAudio) fadeMedia(ambientAudio, .18, 480);
+    if (soundOn && ambientAudio) fadeMedia(ambientAudio, .26, 480);
     updateMessageState();
   });
   messageAudio.addEventListener("ended", () => {
@@ -1126,6 +1141,7 @@
     messageButton.setAttribute("aria-label", "Play message again");
     messageState.textContent = "heard";
     pulseNeuralField();
+    playAsset("tapeStop", .9);
     stopMessageCarrier();
     stopAmbient();
     stopRoomTone();
@@ -1141,7 +1157,12 @@
   });
   addEventListener("hashchange", route);
   addEventListener("beforeunload", () => { stopRoomTone(); stopAmbient(); });
-  document.addEventListener("visibilitychange", scheduleTransmissionGlitch);
+  document.addEventListener("visibilitychange", () => {
+    scheduleTransmissionGlitch();
+    if (!ambientAudio || !soundOn) return;
+    if (document.hidden) ambientAudio.pause();
+    else startAmbient();
+  });
 
   if (state.messageHeard) {
     messageButton.classList.add("heard");
