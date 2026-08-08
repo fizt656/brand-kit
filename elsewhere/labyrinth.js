@@ -18,6 +18,14 @@
     found: "assets/audio/frequency-found.mp3",
     switches: "assets/audio/switches"
   };
+  const GLITCH_LINES = [
+    "SYNC ERROR // CARRIER DRIFT",
+    "0x13 :: SIGNAL PARTIAL",
+    "ASCII HANDSHAKE FAILED",
+    "TRACKING... TRACKING...",
+    "PERSONA CACHE / UNSTABLE",
+    "THE MAP IS LISTENING"
+  ];
 
   const ROOMS = {
     foyer: {
@@ -222,9 +230,15 @@
   const storyCopy = $("#story-copy");
   const storyLinks = $("#story-links");
   const roomProgress = $("#room-progress");
+  const roomMission = $("#room-mission");
   const resolution = $("#resolution");
   const doors = $("#doors");
   const neuralField = $("#neural-field");
+  const transmissionCode = $("#transmission-code");
+  const hackCelebration = $("#hack-celebration");
+  const hackCode = $("#hack-code");
+  const hackAscii = $("#hack-ascii");
+  const hackStatus = $("#hack-status");
   const messageAudio = $("#message-audio");
   const messageButton = $("#message-player");
   const messageState = $("#message-state");
@@ -238,6 +252,9 @@
   let messageSource = null;
   let messageCarrier = null;
   let responseTimer = 0;
+  let glitchTimer = 0;
+  let glitchRelease = 0;
+  let celebrationTimer = 0;
   const switchAudio = new Map();
 
   const saved = loadState();
@@ -385,7 +402,8 @@
       perceptionGate.classList.add("admitted");
       $("#gate-readout").textContent = "PATTERN ACCEPTED // THE DOOR REMEMBERS YOU.";
       playAsset("threshold", .52);
-      window.setTimeout(enterLabyrinth, reducedMotion.matches ? 80 : 1150);
+      triggerHackCelebration("ACCESS", "PERCEPTION GATE PWNED", 0);
+      window.setTimeout(enterLabyrinth, reducedMotion.matches ? 80 : 1750);
     }));
   }
 
@@ -435,7 +453,7 @@
     roomArtifact.innerHTML = artifactMarkup(id, data);
     renderStory(id, data);
     renderProgress();
-    renderDoors(data.doors);
+    renderDoors();
     renderNeuralField(id);
     cleanupInteraction();
     setupInteraction(id, data);
@@ -447,6 +465,7 @@
     labyrinth.classList.remove("room-entering");
     void labyrinth.offsetWidth;
     labyrinth.classList.add("room-entering");
+    triggerTransmissionGlitch(`CARRIER ${String(pathIndex + 1).padStart(2, "0")}`, 260);
     window.scrollTo({ top: 0, behavior: "auto" });
     if (shouldMoveFocus) focusHeading($("#room-title"));
   }
@@ -542,6 +561,52 @@
     neuralField.classList.add("remembering");
   }
 
+  function triggerTransmissionGlitch(label = "", duration = 320) {
+    if (reducedMotion.matches || document.hidden) return;
+    clearTimeout(glitchRelease);
+    document.body.classList.remove("signal-glitch");
+    transmissionCode.textContent = `${label || GLITCH_LINES[Math.floor(Math.random() * GLITCH_LINES.length)]}\n${Math.random().toString(2).slice(2, 18)} // ${Math.random().toString(16).slice(2, 10).toUpperCase()}`;
+    document.documentElement.style.setProperty("--tear-y", `${12 + Math.random() * 70}%`);
+    document.documentElement.style.setProperty("--tear-shift", `${Math.round(5 + Math.random() * 15)}px`);
+    void document.body.offsetWidth;
+    document.body.classList.add("signal-glitch");
+    glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch"), duration);
+  }
+
+  function scheduleTransmissionGlitch() {
+    clearTimeout(glitchTimer);
+    if (reducedMotion.matches || document.hidden) return;
+    const delay = 6800 + Math.random() * 9200;
+    glitchTimer = window.setTimeout(() => {
+      triggerTransmissionGlitch();
+      scheduleTransmissionGlitch();
+    }, delay);
+  }
+
+  function triggerHackCelebration(code, label, solvedCount) {
+    clearTimeout(celebrationTimer);
+    hackCelebration.hidden = false;
+    hackCode.textContent = `0x${String(code).toUpperCase()} // ROOT HANDSHAKE`;
+    hackStatus.textContent = solvedCount
+      ? `${label} // ${String(solvedCount).padStart(2, "0")} OF ${ROOM_IDS.length} CARRIERS OWNED`
+      : label;
+    hackAscii.textContent = [
+      "+----------------------------------+",
+      "|  █▀█ █░█░█ █▄░█ █▀▀ █▀▄        |",
+      "|  █▀▀ ▀▄▀▄▀ █░▀█ ██▄ █▄▀        |",
+      "|        SIGNAL ACCEPTED          |",
+      "+----------------------------------+"
+    ].join("\n");
+    hackCelebration.classList.remove("active");
+    void hackCelebration.offsetWidth;
+    hackCelebration.classList.add("active");
+    triggerTransmissionGlitch("PRIVILEGE ESCALATION", 620);
+    celebrationTimer = window.setTimeout(() => {
+      hackCelebration.classList.remove("active");
+      hackCelebration.hidden = true;
+    }, reducedMotion.matches ? 120 : 1650);
+  }
+
   function artifactMarkup(id, data) {
     const keys = data.puzzle.labels.map((label, index) => `<button class="signal-key signal-key-${index}" type="button" data-key="${index}" aria-label="Route ${label}"><span class="key-glyph" aria-hidden="true">${PUZZLE_SYMBOLS[index]}</span><span class="key-word">${label}</span></button>`).join("");
     const shapeRotation = data.puzzle.shape * 11;
@@ -570,23 +635,33 @@
     </div>`;
   }
 
-  function renderDoors(roomDoors) {
-    doors.innerHTML = "";
-    const template = $("#door-template");
+  function routeGlyph(index) {
+    const sides = 3 + (index % 6);
+    const points = Array.from({ length: sides }, (_, point) => {
+      const angle = -Math.PI / 2 + point * Math.PI * 2 / sides;
+      const radius = point % 2 && sides > 5 ? 13 : 17;
+      return `${(20 + Math.cos(angle) * radius).toFixed(1)},${(20 + Math.sin(angle) * radius).toFixed(1)}`;
+    }).join(" ");
+    const turn = (index * 29) % 180;
+    return `<svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18"></circle><polygon points="${points}"></polygon><path d="M20 8v24M8 20h24" transform="rotate(${turn} 20 20)"></path></svg>`;
+  }
+
+  function renderDoors() {
+    const solvedCount = ROOM_IDS.filter((id) => state.solved.has(id)).length;
     const currentIndex = STORY_PATH.indexOf(currentRoom);
-    const nextId = STORY_PATH[currentIndex + 1];
-    const ordered = [...roomDoors];
-    if (nextId && !ordered.some(([id]) => id === nextId)) ordered.unshift([nextId, "follow signal"]);
-    ordered.sort(([a], [b]) => Number(b === nextId) - Number(a === nextId));
-    ordered.slice(0, 3).forEach(([id, label]) => {
-      const fragment = template.content.cloneNode(true);
-      const link = $(".door", fragment);
-      link.href = `#${id}`;
-      link.classList.toggle("door-primary", id === nextId);
-      link.setAttribute("aria-label", `${label}; go to ${ROOMS[id].title.replace(/\n/g, " ").toLowerCase()}`);
-      $("span", fragment).textContent = label;
-      doors.appendChild(fragment);
-    });
+    const nodes = STORY_PATH.map((id, index) => {
+      const data = ROOMS[id];
+      const solved = state.solved.has(id);
+      const visited = state.visited.has(id);
+      const current = id === currentRoom;
+      const next = index === currentIndex + 1;
+      const classes = ["route-node", solved && "pwned", visited && "visited", current && "current", next && "next"].filter(Boolean).join(" ");
+      const status = solved ? "pwned" : current ? "current carrier" : visited ? "visited, circuit open" : "unread carrier";
+      return `<a class="${classes}" href="#${id}" data-label="${data.title.replace(/\n/g, " ")}" aria-label="Carrier ${index + 1} of ${ROOM_IDS.length}: ${data.title.replace(/\n/g, " ")}; ${status}">
+        <span class="route-number">${String(index + 1).padStart(2, "0")}</span>${routeGlyph(index)}<span class="route-state">${solved ? "PWN" : current ? "YOU" : ""}</span>
+      </a>`;
+    }).join("");
+    doors.innerHTML = `<div class="route-heading"><span>THE OTHER MAP</span><strong>${String(solvedCount).padStart(2, "0")} / ${ROOM_IDS.length} PWNED</strong><small>CLOSE EACH CIRCUIT</small></div><div class="route-track">${nodes}</div>`;
   }
 
   function cleanupInteraction() {
@@ -618,7 +693,11 @@
   function renderProgress() {
     const solved = ROOM_IDS.filter((id) => state.solved.has(id)).length;
     const position = Math.max(0, STORY_PATH.indexOf(currentRoom)) + 1;
-    roomProgress.textContent = `CARRIER ${String(position).padStart(2, "0")} / ${ROOM_IDS.length} // DECRYPTED ${String(solved).padStart(2, "0")}`;
+    const closed = state.solved.has(currentRoom);
+    roomProgress.textContent = `CARRIER ${String(position).padStart(2, "0")} OF ${ROOM_IDS.length} // ${String(solved).padStart(2, "0")} PWNED`;
+    roomMission.textContent = closed
+      ? "CIRCUIT PWNED // PERSONA FRAGMENT DECRYPTED"
+      : "READ THE CLUE // TOUCH THE NODES IN ORDER // CLOSE THE CIRCUIT";
   }
 
   function openResolution() {
@@ -697,11 +776,13 @@
         markResolved();
         renderStory(id, data);
         renderProgress();
+        renderDoors();
         setResponse("CIRCUIT CLOSED // PERSONA FRAGMENT DECRYPTED");
         consoleElement.classList.add("switching");
         playSwitchCue(id);
         pulseNeuralField();
-        if (state.resolutionSeen) window.setTimeout(openResolution, reducedMotion.matches ? 100 : 1450);
+        triggerHackCelebration(String(STORY_PATH.indexOf(id) + 1).padStart(2, "0"), `${data.title.replace(/\n/g, " ")} // PWNED`, state.solved.size);
+        if (state.resolutionSeen) window.setTimeout(openResolution, reducedMotion.matches ? 100 : 2100);
         return;
       }
 
@@ -747,43 +828,70 @@
     const lowpass = context.createBiquadFilter();
     const presence = context.createBiquadFilter();
     const distortion = context.createWaveShaper();
+    const tapeDelay = context.createDelay(.04);
+    const compressor = context.createDynamicsCompressor();
     const output = context.createGain();
     highpass.type = "highpass";
     highpass.frequency.value = 310;
     lowpass.type = "lowpass";
-    lowpass.frequency.value = 3050;
+    lowpass.frequency.value = 2850;
     presence.type = "peaking";
     presence.frequency.value = 1650;
     presence.Q.value = 1.1;
-    presence.gain.value = 5.5;
+    presence.gain.value = 6.5;
     const curve = new Float32Array(512);
     for (let index = 0; index < curve.length; index += 1) {
       const value = index * 2 / (curve.length - 1) - 1;
-      curve[index] = Math.tanh(value * 1.85);
+      curve[index] = Math.tanh(value * 2.35);
     }
     distortion.curve = curve;
-    distortion.oversample = "2x";
-    output.gain.value = .88;
-    messageSource.connect(highpass).connect(lowpass).connect(presence).connect(distortion).connect(output).connect(context.destination);
+    distortion.oversample = "none";
+    tapeDelay.delayTime.value = .006;
+    compressor.threshold.value = -26;
+    compressor.knee.value = 13;
+    compressor.ratio.value = 4.5;
+    compressor.attack.value = .004;
+    compressor.release.value = .16;
+    output.gain.value = .82;
+    const wow = context.createOscillator();
+    const wowDepth = context.createGain();
+    const flutter = context.createOscillator();
+    const flutterDepth = context.createGain();
+    wow.type = "sine";
+    wow.frequency.value = .43;
+    wowDepth.gain.value = .0028;
+    flutter.type = "triangle";
+    flutter.frequency.value = 5.7;
+    flutterDepth.gain.value = .00032;
+    wow.connect(wowDepth).connect(tapeDelay.delayTime);
+    flutter.connect(flutterDepth).connect(tapeDelay.delayTime);
+    wow.start();
+    flutter.start();
+    messageSource.connect(highpass).connect(lowpass).connect(presence).connect(distortion).connect(tapeDelay).connect(compressor).connect(output).connect(context.destination);
   }
 
   function startMessageCarrier() {
     stopMessageCarrier();
     const context = ensureAudio();
     if (!context) return;
-    const duration = 2;
+    const duration = 4;
     const buffer = context.createBuffer(1, context.sampleRate * duration, context.sampleRate);
     const channel = buffer.getChannelData(0);
-    for (let index = 0; index < channel.length; index += 1) channel[index] = (Math.random() * 2 - 1) * .42;
+    let pop = 0;
+    for (let index = 0; index < channel.length; index += 1) {
+      if (Math.random() < .00028) pop = (Math.random() * 2 - 1) * (.45 + Math.random() * .4);
+      channel[index] = (Math.random() * 2 - 1) * .13 + pop;
+      pop *= .955;
+    }
     const source = context.createBufferSource();
     const bandpass = context.createBiquadFilter();
     const gain = context.createGain();
     source.buffer = buffer;
     source.loop = true;
     bandpass.type = "bandpass";
-    bandpass.frequency.value = 1850;
-    bandpass.Q.value = .62;
-    gain.gain.value = .0065;
+    bandpass.frequency.value = 2200;
+    bandpass.Q.value = .48;
+    gain.gain.value = .013;
     source.connect(bandpass).connect(gain).connect(context.destination);
     source.start();
     messageCarrier = source;
@@ -999,6 +1107,7 @@
     updateMessageState();
   });
   messageAudio.addEventListener("timeupdate", updateMessageState);
+  messageAudio.addEventListener("loadedmetadata", updateMessageState);
   messageAudio.addEventListener("pause", () => {
     messageButton.classList.remove("playing");
     messageButton.setAttribute("aria-pressed", "false");
@@ -1032,6 +1141,7 @@
   });
   addEventListener("hashchange", route);
   addEventListener("beforeunload", () => { stopRoomTone(); stopAmbient(); });
+  document.addEventListener("visibilitychange", scheduleTransmissionGlitch);
 
   if (state.messageHeard) {
     messageButton.classList.add("heard");
@@ -1039,5 +1149,6 @@
     messageButton.setAttribute("aria-label", "Play message again");
   }
 
+  scheduleTransmissionGlitch();
   route();
 })();
