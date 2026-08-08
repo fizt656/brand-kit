@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="theme-color" content="#070a0c">
+  <meta name="description" content="The Other Map — an unreliable atlas of one signal.">
+  <title>The Other Map — Gus Halwani</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='23' fill='none' stroke='%23b98a4e' stroke-width='2'/%3E%3Cpath d='M13 36c10-14 19 13 38-9' fill='none' stroke='%235fafa3' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="labyrinth.css?v=20260807d">
+</head>
+<body>
+  <a class="skip-link" href="#room-title">Skip to the current room</a>
+  <canvas id="signal-field" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <header class="instrument-bar" aria-label="Receiver controls">
+    <a class="identity-mark" href="#threshold" aria-label="Return to the threshold">
+      <span>G.H.</span><i></i><span>OTHER MAP</span><small>01</small>
+    </a>
+    <div class="instrument-readout">
+      <span id="room-coordinate">42.3601° N / 71.0589° W</span>
+      <button id="message-button" class="text-button" type="button" aria-haspopup="dialog">
+        <span class="status-light"></span>1 SIGNAL WAITING
+      </button>
+    </div>
+    <div class="instrument-actions">
+      <button id="sound-toggle" class="text-button" type="button" aria-pressed="false">SOUND OFF</button>
+      <a href="/" class="text-button">EXIT</a>
+    </div>
+  </header>
+
+  <main>
+    <section id="threshold" class="threshold" aria-labelledby="threshold-title">
+      <div class="threshold-image" role="img" aria-label="A nocturnal shoreline merges with a garage full of strange instruments, a black E46 M3, and Gus standing at the boundary."></div>
+      <div class="threshold-vignette" aria-hidden="true"></div>
+      <div class="threshold-signal" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="threshold-copy">
+        <p class="eyebrow">UNREGISTERED INSTRUMENT / PRIVATE FREQUENCY</p>
+        <h1 id="threshold-title"><span>THE</span> OTHER MAP</h1>
+        <p class="threshold-deck">An unreliable atlas of one signal.</p>
+        <button id="enter-labyrinth" class="primary-action" type="button">
+          <span>CALIBRATE RECEIVER</span><i aria-hidden="true">↗</i>
+        </button>
+        <p class="threshold-note">Nothing here is arranged chronologically. This is probably deliberate.</p>
+      </div>
+      <div class="threshold-coordinates" aria-hidden="true">
+        <span>BEIRUT</span><i></i><span>BOSTON</span><i></i><span>ELSEWHERE</span>
+      </div>
+    </section>
+
+    <section id="labyrinth" class="labyrinth" hidden aria-live="polite">
+      <div class="room-shell">
+        <div id="room-visual" class="room-visual" aria-hidden="true"></div>
+        <article class="room-copy">
+          <div class="room-index">
+            <span id="room-number">00</span>
+            <span id="room-kicker">RECEIVER HALL</span>
+          </div>
+          <h2 id="room-title">The Receiver Hall</h2>
+          <p id="room-deck" class="room-deck"></p>
+          <blockquote id="room-fragment" class="room-fragment"></blockquote>
+          <div id="room-interaction" class="room-interaction"></div>
+        </article>
+      </div>
+      <nav id="doors" class="doors" aria-label="Paths from this room"></nav>
+    </section>
+  </main>
+
+  <aside id="compass" class="compass" hidden aria-label="Recovered map">
+    <button id="compass-toggle" class="compass-toggle" type="button" aria-label="Open recovered map" aria-expanded="false" aria-controls="compass-panel">
+      <span class="compass-rose" aria-hidden="true">✣</span>
+      <span>RECOVERED MAP</span>
+    </button>
+    <div id="compass-panel" class="compass-panel" hidden>
+      <p>The instrument remembers where you have been. It does not know where you are going.</p>
+      <div id="compass-rooms" class="compass-rooms"></div>
+      <button id="forget-route" class="minor-action" type="button">ERASE THIS ROUTE</button>
+    </div>
+  </aside>
+
+  <aside class="frequency-rack" aria-label="Collected frequencies">
+    <button id="frequency-toggle" type="button" aria-label="Open collected frequencies" aria-expanded="false" aria-controls="frequency-panel">
+      <span>FREQUENCIES</span><strong id="frequency-count">0 / 7</strong>
+    </button>
+    <div id="frequency-panel" hidden>
+      <ol id="frequency-list"></ol>
+    </div>
+  </aside>
+
+  <dialog id="transmission" class="transmission" aria-labelledby="transmission-title">
+    <button class="dialog-close" type="button" aria-label="Close transmission">×</button>
+    <p id="transmission-title" class="eyebrow">RECOVERED TRANSMISSION / SOURCE UNKNOWN</p>
+    <div class="waveform" aria-hidden="true"></div>
+    <p>I started with audio signals, followed them into neural signals, then data signals. Eventually the instruments began talking to one another.</p>
+    <p class="transmission-last">This is not the official map. It may be more accurate.</p>
+    <button id="play-transmission" class="minor-action" type="button">PLAY THE TONE</button>
+  </dialog>
+
+  <dialog id="resolution" class="resolution" aria-labelledby="resolution-title">
+    <button class="dialog-close" type="button" aria-label="Close">×</button>
+    <p class="eyebrow">FULL SPECTRUM / 7 OF 7</p>
+    <div class="resolution-orbit" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <h2 id="resolution-title">THE SIGNAL<br>WAS NEVER<br>ONE THING.</h2>
+    <p>It was the thread between them.</p>
+    <a class="primary-action" href="#strange-loop">FOLLOW IT BACK <i aria-hidden="true">↗</i></a>
+  </dialog>
+
+  <template id="door-template">
+    <a class="door" href="#">
+      <span class="door-mark" aria-hidden="true"></span>
+      <span class="door-copy"><small></small><strong></strong></span>
+      <span class="door-arrow" aria-hidden="true">↗</span>
+    </a>
+  </template>
+
+  <noscript><p class="noscript">This instrument needs JavaScript to remember the route. The official map is still available <a href="/">here</a>.</p></noscript>
+  <script src="labyrinth.js?v=20260807d"></script>
+</body>
+</html>
