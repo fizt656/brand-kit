@@ -275,6 +275,7 @@
   let interactionCleanup = null;
   let ambientAudio = null;
   let ambientFade = 0;
+  let ambientUnlockArmed = false;
   let messageSource = null;
   let messageCarrier = null;
   let responseTimer = 0;
@@ -1168,8 +1169,38 @@
     }, 40);
   }
 
+  function disarmAmbientUnlock() {
+    if (!ambientUnlockArmed) return;
+    ambientUnlockArmed = false;
+    document.removeEventListener("pointerdown", unlockAmbientFromGesture, true);
+    document.removeEventListener("touchstart", unlockAmbientFromGesture, true);
+    document.removeEventListener("keydown", unlockAmbientFromGesture, true);
+    document.removeEventListener("click", unlockAmbientFromGesture, true);
+  }
+
+  function unlockAmbientFromGesture(event) {
+    if (event.type === "keydown" && ["Shift", "Control", "Alt", "Meta", "Tab"].includes(event.key)) return;
+    if (!musicOn) {
+      disarmAmbientUnlock();
+      return;
+    }
+    disarmAmbientUnlock();
+    soundOn = true;
+    ensureAudio();
+    startAmbient();
+  }
+
+  function armAmbientUnlock() {
+    if (ambientUnlockArmed || !musicOn) return;
+    ambientUnlockArmed = true;
+    document.addEventListener("pointerdown", unlockAmbientFromGesture, { capture: true, passive: true });
+    document.addEventListener("touchstart", unlockAmbientFromGesture, { capture: true, passive: true });
+    document.addEventListener("keydown", unlockAmbientFromGesture, true);
+    document.addEventListener("click", unlockAmbientFromGesture, true);
+  }
+
   function startAmbient() {
-    if (!musicOn) return;
+    if (!musicOn) return Promise.resolve(false);
     if (!ambientAudio) {
       ambientAudio = new Audio(AUDIO.ambient);
       ambientAudio.loop = false;
@@ -1190,11 +1221,24 @@
       });
     }
     const targetVolume = messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME;
-    ambientAudio.play().then(() => fadeMedia(ambientAudio, targetVolume, 1100)).catch(() => {});
+    if (!ambientAudio.paused) {
+      disarmAmbientUnlock();
+      fadeMedia(ambientAudio, targetVolume, 1100);
+      return Promise.resolve(true);
+    }
+    return ambientAudio.play().then(() => {
+      disarmAmbientUnlock();
+      fadeMedia(ambientAudio, targetVolume, 1100);
+      return true;
+    }).catch(() => {
+      armAmbientUnlock();
+      return false;
+    });
   }
 
   function stopAmbient() {
     if (!ambientAudio) return;
+    if (!musicOn) disarmAmbientUnlock();
     fadeMedia(ambientAudio, 0, 220);
     window.setTimeout(() => {
       if (!musicOn && ambientAudio) ambientAudio.pause();
