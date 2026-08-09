@@ -3244,15 +3244,36 @@ body[data-theme="bone"] {
 }
 
 #begin-gate {
-  border-color: #d7832f;
-  background: #253031;
-  color: #ebe5da;
-  box-shadow: 8px 8px 0 rgba(215,131,47,.16);
+  justify-content: center;
+  min-width: min(100%, 27rem);
+  min-height: 4.5rem;
+  border: 2px solid #b8ffc1;
+  border-left-width: 8px;
+  padding: 1.25rem 1.65rem;
+  background: #9af2aa;
+  color: #111817;
+  box-shadow: 9px 10px 0 rgba(0,0,0,.34), 0 0 30px rgba(154,242,170,.12);
+  font-size: clamp(1.02rem, 1.35vw, 1.28rem);
+  font-weight: 800;
+  letter-spacing: .105em;
 }
-#begin-gate:hover {
-  border-color: #86c98a;
-  background: #2c3b38;
-  color: #9af2aa;
+#begin-gate:hover,
+#begin-gate:focus-visible {
+  border-color: #d7ffe0;
+  background: #b0ffbd;
+  color: #0b1110;
+  transform: translate(3px, 3px);
+  box-shadow: 5px 6px 0 rgba(0,0,0,.4), 0 0 36px rgba(154,242,170,.2);
+}
+#begin-gate:focus-visible {
+  outline: 3px solid #f0ebe1;
+  outline-offset: 5px;
+}
+#begin-gate .entry-signal {
+  width: .72rem;
+  height: .72rem;
+  flex-basis: .72rem;
+  box-shadow: 0 0 0 0 rgba(17,24,23,.42);
 }
 
 .perception-gate {
@@ -3313,6 +3334,13 @@ body[data-theme="bone"] {
 
 @media (max-width: 760px) {
   .perception-gate { background-size: 24px 24px; }
+  #begin-gate {
+    width: 100%;
+    min-width: 0;
+    min-height: 4.75rem;
+    padding: 1.2rem 1rem;
+    font-size: clamp(1rem, 4.6vw, 1.18rem);
+  }
   .puzzle-clue { top: -4.5rem; }
   .room.room-solved .story-terminal { order: 1; }
 }
