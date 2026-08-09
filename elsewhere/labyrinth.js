@@ -287,7 +287,7 @@
   let ambientLooping = false;
   let fragmentResolutionPending = false;
   const AMBIENT_VOLUME = .16;
-  const AMBIENT_DUCKED_VOLUME = .055;
+  const AMBIENT_DUCKED_VOLUME = .02;
   const MESSAGE_VOLUME = .25;
   const TAPE_CUE_VOLUME = .5;
   const switchAudio = new Map();
