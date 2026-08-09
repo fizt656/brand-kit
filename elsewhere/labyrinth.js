@@ -278,7 +278,6 @@
   let messageCarrier = null;
   let responseTimer = 0;
   let glitchRelease = 0;
-  let gateHintTimers = [];
   let celebrationTimer = 0;
   let messageStartTimer = 0;
   let identityTimer = 0;
@@ -495,10 +494,8 @@
   }
 
   function clearGateHints() {
-    gateHintTimers.forEach((timer) => clearTimeout(timer));
-    gateHintTimers = [];
     const frame = $(".gate-frame", perceptionGate);
-    if (frame) frame.classList.remove("gate-hint-one", "gate-hint-two", "gate-hint-three");
+    if (frame) frame.classList.remove("gate-hint-two", "gate-hint-three");
     perceptionGate.classList.remove("gate-fault");
   }
 
@@ -527,15 +524,15 @@
     const showGateHint = (level) => {
       const frame = $(".gate-frame", perceptionGate);
       const matrixElement = $("#gate-matrix");
-      frame.classList.remove("gate-hint-one", "gate-hint-two", "gate-hint-three");
-      frame.classList.add(`gate-hint-${level === 1 ? "one" : level === 2 ? "two" : "three"}`);
+      frame.classList.remove("gate-hint-two", "gate-hint-three");
+      if (level > 1) frame.classList.add(`gate-hint-${level === 2 ? "two" : "three"}`);
       matrixElement.dataset.hint = String(level);
       if (level === 1) {
-        $("#gate-readout").textContent = "START WITH THE TOP ROW // LEFT + CENTER BECOME RIGHT.";
-      } else if (level === 2) {
         $("#gate-readout").textContent = "LIT TWICE = OFF // LIT ONCE = ON.";
+      } else if (level === 2) {
+        $("#gate-readout").textContent = "READ THE FINAL COLUMN // TOP + MIDDLE BECOME THE MISSING TILE.";
       } else {
-        $("#gate-readout").textContent = "FINAL COLUMN // COMBINE ITS TOP AND MIDDLE TILES.";
+        $("#gate-readout").textContent = "FINAL COLUMN LOCKED // TWO OPTIONS DISCONNECTED.";
         [4, 5].forEach((index) => {
           const option = $(`.gate-option[data-option="${index}"]`, options);
           option.classList.add("assist-muted");
@@ -543,8 +540,6 @@
         });
       }
     };
-    gateHintTimers.push(window.setTimeout(() => showGateHint(1), 12000));
-    gateHintTimers.push(window.setTimeout(() => showGateHint(2), 24000));
     options.querySelectorAll(".gate-option").forEach((option) => option.addEventListener("click", () => {
       if (option.classList.contains("assist-muted")) return;
       options.querySelectorAll(".gate-option").forEach((candidate) => candidate.classList.remove("wrong"));

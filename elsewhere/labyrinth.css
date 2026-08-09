@@ -3057,18 +3057,12 @@ body[data-theme="rust"] .material { opacity: .08; }
 .gate-option.wrong { border-color: #bd4d37; }
 .gate-readout { color: rgba(21,25,25,.72); }
 .gate-fault .gate-answer-block { animation: bench-fault .35s steps(3, end); }
-.gate-hint-one [data-cell="0"],
-.gate-hint-one [data-cell="1"],
-.gate-hint-one [data-cell="2"],
-.gate-hint-two [data-cell="0"],
-.gate-hint-two [data-cell="1"],
 .gate-hint-two [data-cell="2"],
+.gate-hint-two [data-cell="5"],
+.gate-hint-two [data-cell="8"],
 .gate-hint-three [data-cell="2"],
 .gate-hint-three [data-cell="5"],
 .gate-hint-three [data-cell="8"] { border-color: #86c98a; box-shadow: inset 0 0 0 2px rgba(134,201,138,.2); }
-.gate-hint-two [data-cell="0"] .mini-grid,
-.gate-hint-two [data-cell="1"] .mini-grid,
-.gate-hint-two [data-cell="2"] .mini-grid { animation: hint-scan 1.15s steps(2, end) 2; }
 .gate-option.assist-muted { opacity: .18; filter: saturate(0); cursor: not-allowed; transform: none; box-shadow: none; }
 
 .neural-field { opacity: .26; }
@@ -3175,7 +3169,6 @@ body:not([data-room="threshold"]) .room-fragment {
 @keyframes signal-jack-in { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1); } }
 @keyframes signal-confirm { 0% { stroke-width: 1.7; filter: none; } 45% { stroke-width: 4; filter: drop-shadow(0 0 8px var(--gold)); } 100% { stroke-width: 1.7; filter: none; } }
 @keyframes bench-fault { 0%, 100% { transform: none; } 33% { transform: translateX(5px); } 66% { transform: translateX(-4px); } }
-@keyframes hint-scan { 0%, 100% { opacity: 1; } 50% { opacity: .38; } }
 
 @media (max-width: 760px) {
   .threshold {
