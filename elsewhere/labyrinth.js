@@ -287,6 +287,10 @@
   let phaseAttemptCount = 0;
   let ambientLooping = false;
   let fragmentResolutionPending = false;
+  const AMBIENT_VOLUME = .16;
+  const AMBIENT_DUCKED_VOLUME = .055;
+  const MESSAGE_VOLUME = .25;
+  const TAPE_CUE_VOLUME = .5;
   const switchAudio = new Map();
   const resolveAudio = new Map();
 
@@ -449,9 +453,9 @@
     renderNeuralField("threshold");
     scheduleTransmissionGlitch();
     window.setTimeout(() => triggerTransmissionGlitch("CARRIER SEARCH // NO LOCK", 620), reducedMotion.matches ? 0 : 360);
-    const beginButton = $("#begin-gate");
-    beginButton.lastChild.textContent = state.gateUnlocked ? " to return elsewhere" : " to attempt entry";
-    $(".pointer-action", beginButton).textContent = matchMedia("(pointer: coarse)").matches ? "tap" : "click";
+    const entryActionCopy = $("#entry-action-copy");
+    entryActionCopy.lastChild.textContent = state.gateUnlocked ? " to return elsewhere" : " to attempt entry";
+    $(".pointer-action", entryActionCopy).textContent = matchMedia("(pointer: coarse)").matches ? "tap" : "click";
     window.scrollTo({ top: 0, behavior: "auto" });
     if (shouldMoveFocus) focusHeading($("#threshold-title"));
   }
@@ -727,7 +731,7 @@
     if (ambientAudio && musicOn && !ambientAudio.paused) {
       fadeMedia(ambientAudio, .015, 80);
       window.setTimeout(() => {
-        if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, messageAudio.paused ? 420 : 180);
+        if (musicOn && ambientAudio) fadeMedia(ambientAudio, messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME, messageAudio.paused ? 420 : 180);
       }, 520);
     }
     powerFaultTimer = window.setTimeout(() => document.body.classList.remove("power-fault"), reducedMotion.matches ? 100 : 820);
@@ -1069,7 +1073,7 @@
     compressor.ratio.value = 4.5;
     compressor.attack.value = .004;
     compressor.release.value = .16;
-    output.gain.value = .34;
+    output.gain.value = MESSAGE_VOLUME;
     const wow = context.createOscillator();
     const wowDepth = context.createGain();
     const flutter = context.createOscillator();
@@ -1221,7 +1225,8 @@
         ambientAudio.play().catch(() => {});
       });
     }
-    ambientAudio.play().then(() => fadeMedia(ambientAudio, .26, 1100)).catch(() => {});
+    const targetVolume = messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME;
+    ambientAudio.play().then(() => fadeMedia(ambientAudio, targetVolume, 1100)).catch(() => {});
   }
 
   function stopAmbient() {
@@ -1305,12 +1310,12 @@
     clearTimeout(messageStartTimer);
     if (!messageAudio.paused) {
       messageAudio.pause();
-      playAsset("tapeStop", .9);
+      playAsset("tapeStop", TAPE_CUE_VOLUME);
       return;
     }
     if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
     activateAudio(true);
-    playAsset("tapeStart", .9);
+    playAsset("tapeStart", TAPE_CUE_VOLUME);
     messageState.textContent = "loading";
     messageStartTimer = window.setTimeout(() => {
       messageAudio.play().catch(() => {
@@ -1389,6 +1394,7 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
+    if (musicOn && ambientAudio) fadeMedia(ambientAudio, AMBIENT_DUCKED_VOLUME, 360);
     startMessageCarrier();
     updateMessageState();
   });
@@ -1402,7 +1408,7 @@
       : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
     neuralField.classList.remove("receiving");
     stopMessageCarrier();
-    if (musicOn && ambientAudio) fadeMedia(ambientAudio, .26, 480);
+    if (musicOn && ambientAudio) fadeMedia(ambientAudio, AMBIENT_VOLUME, 480);
     updateMessageState();
   });
   messageAudio.addEventListener("ended", () => {
@@ -1412,9 +1418,9 @@
     messageButton.setAttribute("aria-label", "Play message again");
     messageState.textContent = "heard";
     pulseNeuralField();
-    playAsset("tapeStop", .9);
+    playAsset("tapeStop", TAPE_CUE_VOLUME);
     stopMessageCarrier();
-    if (musicOn && ambientAudio) window.setTimeout(() => fadeMedia(ambientAudio, .26, 420), 300);
+    if (musicOn && ambientAudio) window.setTimeout(() => fadeMedia(ambientAudio, AMBIENT_VOLUME, 420), 300);
   });
   $(".skip-link").addEventListener("click", (event) => {
     event.preventDefault();

@@ -8,7 +8,7 @@
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260808o">
+  <link rel="stylesheet" href="labyrinth.css?v=20260809a">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
@@ -58,7 +58,11 @@
         <p class="threshold-kicker">You found the door. That was the easy pattern.</p>
         <h1 id="threshold-title">There is another map.</h1>
         <p class="threshold-taunt">It does not open for credentials, confidence, or unusually energetic networking.</p>
-        <button id="begin-gate" type="button"><span class="pointer-action">click</span> to attempt entry</button>
+        <button id="begin-gate" type="button">
+          <span class="entry-signal" aria-hidden="true"></span>
+          <span id="entry-action-copy"><span class="pointer-action">click</span> to attempt entry</span>
+        </button>
+        <p class="threshold-route-note">Pass one perception test. Follow thirteen carriers.<br>Reconstruct the person behind the signal.</p>
       </div>
       <button class="threshold-object" id="threshold-object" type="button" aria-label="Attempt the Elsewhere perception gate">
         <svg viewBox="0 0 520 560" role="img" aria-label="A damaged transmitting neuron">
@@ -91,6 +95,7 @@
       <section id="perception-gate" class="perception-gate" aria-labelledby="gate-title" hidden>
         <div class="gate-frame">
           <div class="gate-heading">
+            <p class="gate-orientation">ENTRY TEST · 1 OF 1 · CHOOSE ONE TILE</p>
             <p>PERCEPTION TEST 01 // NO TIMER // NO ACCOUNT</p>
             <h2 id="gate-title">Complete the field.</h2>
             <p>The same operation governs every row and every column. What overlaps does not survive.</p>
@@ -202,6 +207,6 @@
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
   <audio id="message-audio" preload="metadata" src="assets/audio/message-v3.mp3"></audio>
-  <script src="labyrinth.js?v=20260808o"></script>
+  <script src="labyrinth.js?v=20260809a"></script>
 </body>
 </html>

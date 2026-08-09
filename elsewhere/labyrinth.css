@@ -1402,18 +1402,46 @@ body:not([data-room="threshold"]) .room-response {
   font: 400 clamp(.95rem, 1.25vw, 1.12rem)/1.65 var(--serif);
 }
 #begin-gate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .72rem;
   margin-top: 2rem;
-  border: 0;
-  border-bottom: 1px solid var(--gold);
-  padding: .48rem .15rem;
-  background: transparent;
+  border: 1px solid color-mix(in srgb, var(--gold) 72%, transparent);
+  padding: .78rem 1rem;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
   color: var(--gold);
   cursor: pointer;
   font: 600 clamp(.72rem, .85vw, .82rem)/1 var(--mono);
   letter-spacing: .12em;
   text-transform: uppercase;
+  transition: color .25s, border-color .25s, background .25s, transform .25s;
 }
-#begin-gate:hover { color: var(--ink); border-color: var(--ink); }
+#begin-gate:hover {
+  border-color: var(--ink);
+  background: color-mix(in srgb, var(--gold) 7%, var(--paper));
+  color: var(--ink);
+  transform: translateY(-1px);
+}
+.entry-signal {
+  width: .46rem;
+  height: .46rem;
+  flex: 0 0 .46rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 42%, transparent);
+  animation: entry-signal-pulse 2.8s ease-out infinite;
+}
+.threshold-route-note {
+  margin: .9rem auto 0;
+  color: color-mix(in srgb, var(--ink) 52%, transparent);
+  font: 500 clamp(.6rem, .72vw, .7rem)/1.65 var(--mono);
+  letter-spacing: .06em;
+}
+@keyframes entry-signal-pulse {
+  0%, 35% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--gold) 42%, transparent); opacity: .9; }
+  72%, 100% { box-shadow: 0 0 0 .55rem transparent; opacity: .62; }
+}
 
 .perception-gate {
   position: absolute;
@@ -1436,13 +1464,19 @@ body:not([data-room="threshold"]) .room-response {
   margin: 0 auto;
   padding: clamp(3rem, 7vh, 6rem) clamp(1rem, 2vw, 2rem);
 }
-.gate-heading > p:first-child,
+.gate-orientation,
+.gate-heading > p:nth-child(2),
 .gate-prompt,
 .gate-readout {
   font: 600 clamp(.65rem, .75vw, .75rem)/1.5 var(--mono);
   letter-spacing: .11em;
 }
-.gate-heading > p:first-child { margin: 0 0 1rem; color: var(--gold); }
+.gate-orientation { margin: 0 0 .45rem; color: var(--gold); }
+.gate-heading > p:nth-child(2) {
+  margin: 0 0 1rem;
+  color: color-mix(in srgb, var(--ink) 48%, transparent);
+  font-size: clamp(.58rem, .65vw, .66rem);
+}
 .gate-heading h2 {
   margin: 0;
   font: 400 clamp(2.2rem, 4vw, 4.8rem)/.95 var(--serif);
@@ -1687,8 +1721,8 @@ body:not([data-room="threshold"]) .room-fragment {
   .threshold-kicker { font-size: .7rem; }
   .threshold-taunt { max-width: 30rem; font-size: 1.02rem; line-height: 1.55; }
   #begin-gate { font-size: .72rem; }
-  .perception-gate { inset: 56px 0 0; backdrop-filter: none; }
-  .gate-frame { display: block; min-height: calc(100svh - 56px); padding: 2.4rem 1rem 5rem; }
+  .perception-gate { inset: 106px 0 0; backdrop-filter: none; }
+  .gate-frame { display: block; min-height: calc(100svh - 106px); padding: 2.4rem 1rem 5rem; }
   .gate-heading { width: min(100%, 34rem); margin: 0 auto 2rem; }
   .gate-heading > p:first-child { font-size: .64rem; }
   .gate-heading h2 { font-size: clamp(2.4rem, 12vw, 4rem); }
