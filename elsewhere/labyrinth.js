@@ -231,6 +231,7 @@
   const room = $("#room");
   const roomArtifact = $("#room-artifact");
   const response = $("#room-response");
+  const roomTerminal = $("#room-terminal");
   const terminalLabel = $("#room-terminal-label");
   const terminalCopy = $("#room-terminal-copy");
   const terminalAscii = $("#room-terminal-ascii");
@@ -331,7 +332,7 @@
 
   function setTheme(theme) {
     document.body.dataset.theme = theme;
-    const colors = { paper: "#d9d3c6", bone: "#c9c1b2", ash: "#222b2c", black: "#111515", rust: "#71392f" };
+    const colors = { paper: "#263438", bone: "#33302d", ash: "#222b2c", black: "#111515", rust: "#71392f" };
     $("meta[name='theme-color']").setAttribute("content", colors[theme] || colors.paper);
   }
 
@@ -494,8 +495,6 @@
   }
 
   function clearGateHints() {
-    const frame = $(".gate-frame", perceptionGate);
-    if (frame) frame.classList.remove("gate-hint-two", "gate-hint-three");
     perceptionGate.classList.remove("gate-fault");
   }
 
@@ -522,17 +521,14 @@
     $("#gate-readout").textContent = "OBSERVE BEFORE OPERATING.";
     let wrongAttempts = 0;
     const showGateHint = (level) => {
-      const frame = $(".gate-frame", perceptionGate);
       const matrixElement = $("#gate-matrix");
-      frame.classList.remove("gate-hint-two", "gate-hint-three");
-      if (level > 1) frame.classList.add(`gate-hint-${level === 2 ? "two" : "three"}`);
       matrixElement.dataset.hint = String(level);
       if (level === 1) {
         $("#gate-readout").textContent = "LIT TWICE = OFF // LIT ONCE = ON.";
       } else if (level === 2) {
-        $("#gate-readout").textContent = "READ THE FINAL COLUMN // TOP + MIDDLE BECOME THE MISSING TILE.";
+        $("#gate-readout").textContent = "READ ACROSS A ROW OR DOWN A COLUMN // FIRST + SECOND BECOME THIRD.";
       } else {
-        $("#gate-readout").textContent = "FINAL COLUMN LOCKED // TWO OPTIONS DISCONNECTED.";
+        $("#gate-readout").textContent = "ROWS AND COLUMNS USE THE SAME RULE // TWO OPTIONS DISCONNECTED.";
         [4, 5].forEach((index) => {
           const option = $(`.gate-option[data-option="${index}"]`, options);
           option.classList.add("assist-muted");
@@ -856,6 +852,7 @@
 
   function renderStory(id, data) {
     const solved = state.solved.has(id);
+    roomTerminal.hidden = solved;
     storyTerminal.hidden = !solved;
     storyCopy.textContent = solved ? data.story : "";
     storyLinks.innerHTML = solved && Array.isArray(data.links)
