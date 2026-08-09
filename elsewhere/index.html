@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
-  <meta name="theme-color" content="#faf8f3">
+  <meta name="theme-color" content="#171b1b">
   <meta name="description" content="An unlisted room on the other side of Gus Halwani's map.">
   <title>Elsewhere — Gus Halwani</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M12 34c9-19 24 15 40-9' fill='none' stroke='%23a97d32' stroke-width='3'/%3E%3Ccircle cx='20' cy='30' r='3' fill='%23221f1a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="labyrinth.css?v=20260809b">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M5 34h9l4-12 7 25 7-34 7 28 5-13 5 6h10' fill='none' stroke='%23d7832f' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="labyrinth.css?v=20260809c">
 </head>
 <body data-room="threshold" data-theme="paper">
   <a class="skip-link" href="#threshold-title">Skip to the current room</a>
@@ -64,30 +64,31 @@
         </button>
         <p class="threshold-route-note">Pass one perception test. Follow thirteen carriers.<br>Reconstruct the person behind the signal.</p>
       </div>
-      <button class="threshold-object" id="threshold-object" type="button" aria-label="Attempt the Elsewhere perception gate">
-        <svg viewBox="0 0 520 560" role="img" aria-label="A damaged transmitting neuron">
-          <defs>
-            <filter id="threshold-warp">
-              <feTurbulence type="fractalNoise" baseFrequency=".018 .034" numOctaves="3" seed="17" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="10"/>
-            </filter>
-            <clipPath id="soma-clip"><path d="M216 205c42-28 104-18 126 24 24 47-1 105-47 132-44 26-112 16-133-31-20-45 13-98 54-125Z"/></clipPath>
-          </defs>
-          <g class="threshold-neuron" filter="url(#threshold-warp)">
-            <path class="threshold-object-line dendrite" d="M198 225C145 193 134 147 76 123M171 270C113 260 78 224 25 240M179 326C123 341 104 391 48 411M230 201C212 144 239 105 218 42M314 219C361 184 388 141 458 126M340 277C396 259 436 278 498 250M324 342C380 368 397 424 470 443"/>
-            <path class="threshold-object-line dendrite-minor" d="M118 170 89 146m45 31 5-39M93 335l-39-7m57-15-9-37M376 175l12-36m-2 53 40-10M398 366l40 3m-55 15 17 36"/>
-            <path class="threshold-object-fill soma" d="M216 205c42-28 104-18 126 24 24 47-1 105-47 132-44 26-112 16-133-31-20-45 13-98 54-125Z"/>
-            <path class="threshold-object-line soma-detail" d="M198 247c38-22 91-14 116 20M182 302c48 17 91 7 129-25M232 218c-2 54 20 96 62 128"/>
-            <path class="threshold-object-line threshold-axon" d="M299 352c16 34 32 44 68 53 52 13 72 51 126 77"/>
-            <path class="threshold-object-line axon-split" d="M413 434c29-5 49-22 69-47M443 455c15 18 24 32 28 55"/>
+      <button class="threshold-object" id="threshold-object" type="button" aria-label="Open the Elsewhere signal bench and attempt entry">
+        <svg viewBox="0 0 680 470" role="img" aria-label="A hand-built signal path moving through audio, cortex, classroom, and machine">
+          <g class="bench-plate">
+            <path d="M28 42h598l28 28v342H28Z"/>
+            <path class="bench-fold" d="M626 42v28h28M28 104h626M28 352h626"/>
+            <circle cx="48" cy="62" r="5"/><circle cx="634" cy="92" r="5"/><circle cx="48" cy="390" r="5"/><circle cx="634" cy="390" r="5"/>
           </g>
-          <g class="threshold-neuron-glitch" clip-path="url(#soma-clip)">
-            <rect x="136" y="251" width="232" height="9"/><rect x="157" y="304" width="205" height="4"/><rect x="189" y="335" width="138" height="7"/>
+          <g class="bench-calibration">
+            <path d="M62 324V146M198 324V146M334 324V146M470 324V146M606 324V146"/>
+            <path d="M62 324H606"/>
+            <path d="M62 319v10m34-7v7m34-7v7m34-7v7m34-10v10m34-7v7m34-7v7m34-7v7m34-10v10m34-7v7m34-7v7m34-7v7m34-10v10"/>
           </g>
-          <g class="threshold-synapses">
-            <circle cx="76" cy="123" r="6"/><circle cx="25" cy="240" r="4"/><circle cx="48" cy="411" r="6"/><circle cx="218" cy="42" r="5"/><circle cx="458" cy="126" r="7"/><circle cx="498" cy="250" r="4"/><circle cx="470" cy="443" r="6"/><circle cx="493" cy="482" r="8"/>
+          <g class="bench-labels">
+            <text x="62" y="88">SIGNAL THREAD // CH 13</text>
+            <text x="62" y="377">AUDIO</text><text x="198" y="377">CORTEX</text><text x="334" y="377">CLASSROOM</text><text x="458" y="377">MACHINE</text>
+            <text x="620" y="377" text-anchor="end">HUMAN OUT</text>
           </g>
-          <g class="threshold-target"><circle cx="258" cy="282" r="84"/><circle cx="258" cy="282" r="112"/><path d="M258 145v47M258 372v48M121 282h49M347 282h49"/></g>
+          <g class="bench-jacks">
+            <circle cx="62" cy="235" r="15"/><circle cx="198" cy="235" r="15"/><circle cx="334" cy="235" r="15"/><circle cx="470" cy="235" r="15"/><circle cx="606" cy="235" r="15"/>
+            <circle cx="62" cy="235" r="4"/><circle cx="198" cy="235" r="4"/><circle cx="334" cy="235" r="4"/><circle cx="470" cy="235" r="4"/><circle cx="606" cy="235" r="4"/>
+          </g>
+          <path class="bench-signal bench-signal-ghost" d="M62 235c34-94 68 94 102 0s68-94 102 0 68 94 102 0 68-94 102 0 68 94 136 0"/>
+          <path class="bench-signal" pathLength="1" d="M62 235c34-94 68 94 102 0s68-94 102 0 68 94 102 0 68-94 102 0 68 94 136 0"/>
+          <circle class="bench-pulse" cx="62" cy="235" r="7"/>
+          <text class="bench-open" x="606" y="130" text-anchor="end">PATCH TO ENTER →</text>
         </svg>
       </button>
       <p class="threshold-fault" aria-hidden="true">42.3601 / 33.8938 / —</p>
@@ -146,10 +147,10 @@
             <polygon points="510,192 664,280 664,456 510,544 356,456 356,280"/>
             <circle cx="510" cy="368" r="118"/><circle cx="510" cy="368" r="176"/>
           </g>
-          <g class="resolution-neuron">
-            <path d="M448 346c-52-40-96-54-157-36M430 390c-62 0-108 30-162 86M462 316c-15-61 7-103-14-163M566 336c58-38 94-79 166-79M579 395c68 9 118 48 167 105M494 450c-9 44-38 86-23 152"/>
-            <path class="resolution-soma" d="M464 309c40-24 96-10 120 30 26 44 7 100-36 126-42 25-103 13-126-30-24-44 3-100 42-126Z"/>
-            <circle cx="291" cy="310" r="7"/><circle cx="268" cy="476" r="7"/><circle cx="448" cy="153" r="7"/><circle cx="732" cy="257" r="7"/><circle cx="746" cy="500" r="7"/><circle cx="471" cy="602" r="7"/>
+          <g class="resolution-signal">
+            <path d="M54 412h116c31 0 33-126 64-126s33 252 65 252 34-252 67-252 34 252 68 252 34-252 68-252 35 252 70 252 35-126 70-126h324"/>
+            <path d="M54 432h178c26 0 28-88 56-88s30 176 59 176 30-176 60-176 31 176 62 176 32-176 64-176 33 88 66 88h387"/>
+            <circle cx="170" cy="412" r="7"/><circle cx="622" cy="412" r="7"/><circle cx="776" cy="412" r="7"/><circle cx="936" cy="412" r="7"/>
           </g>
         </svg>
       </div>
@@ -207,6 +208,6 @@
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
   <audio id="message-audio" preload="metadata" src="assets/audio/message-v3.mp3"></audio>
-  <script src="labyrinth.js?v=20260809a"></script>
+  <script src="labyrinth.js?v=20260809b"></script>
 </body>
 </html>

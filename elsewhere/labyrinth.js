@@ -277,9 +277,8 @@
   let messageSource = null;
   let messageCarrier = null;
   let responseTimer = 0;
-  let glitchTimer = 0;
   let glitchRelease = 0;
-  let powerFaultTimer = 0;
+  let gateHintTimers = [];
   let celebrationTimer = 0;
   let messageStartTimer = 0;
   let identityTimer = 0;
@@ -333,7 +332,7 @@
 
   function setTheme(theme) {
     document.body.dataset.theme = theme;
-    const colors = { paper: "#faf8f3", bone: "#e8e2d5", ash: "#292724", black: "#11100f", rust: "#6f3422" };
+    const colors = { paper: "#d9d3c6", bone: "#c9c1b2", ash: "#222b2c", black: "#111515", rust: "#71392f" };
     $("meta[name='theme-color']").setAttribute("content", colors[theme] || colors.paper);
   }
 
@@ -449,10 +448,10 @@
     resolution.hidden = true;
     $(".skip-link").href = "#threshold-title";
     cleanupInteraction();
+    clearGateHints();
     stopRoomTone();
     renderNeuralField("threshold");
-    scheduleTransmissionGlitch();
-    window.setTimeout(() => triggerTransmissionGlitch("CARRIER SEARCH // NO LOCK", 620), reducedMotion.matches ? 0 : 360);
+    window.setTimeout(() => triggerTransmissionGlitch("CARRIER SEARCH // NO LOCK", 360), reducedMotion.matches ? 0 : 360);
     const entryActionCopy = $("#entry-action-copy");
     entryActionCopy.lastChild.textContent = state.gateUnlocked ? " to return elsewhere" : " to attempt entry";
     $(".pointer-action", entryActionCopy).textContent = matchMedia("(pointer: coarse)").matches ? "tap" : "click";
@@ -495,6 +494,14 @@
     return `<span class="mini-grid" aria-hidden="true">${cells}</span><span class="sr-only">patterned four by four grid</span>`;
   }
 
+  function clearGateHints() {
+    gateHintTimers.forEach((timer) => clearTimeout(timer));
+    gateHintTimers = [];
+    const frame = $(".gate-frame", perceptionGate);
+    if (frame) frame.classList.remove("gate-hint-one", "gate-hint-two", "gate-hint-three");
+    perceptionGate.classList.remove("gate-fault");
+  }
+
   function renderGatePuzzle() {
     $("#carrier-outlines").innerHTML = STORY_PATH.map((_, index) => routeGlyph(index)).join("");
     const a = 0b1000010000100001;
@@ -503,7 +510,7 @@
     const d = 0b0001111001111000;
     const target = maskXor(a, b, c, d);
     const matrix = [a, b, maskXor(a, b), c, d, maskXor(c, d), maskXor(a, c), maskXor(b, d), null];
-    $("#gate-matrix").innerHTML = matrix.map((mask, index) => `<div class="matrix-tile${mask === null ? " missing" : ""}" aria-label="${mask === null ? "missing ninth pattern" : `pattern ${index + 1}`}">${maskMarkup(mask || 0, mask === null)}</div>`).join("");
+    $("#gate-matrix").innerHTML = matrix.map((mask, index) => `<div class="matrix-tile${mask === null ? " missing" : ""}" data-cell="${index}" aria-label="${mask === null ? "missing ninth pattern" : `pattern ${index + 1}`}">${maskMarkup(mask || 0, mask === null)}</div>`).join("");
 
     const candidates = [
       maskXor(a, d),
@@ -514,17 +521,44 @@
       target ^ (1 << 3) ^ (1 << 12)
     ];
     const options = $("#gate-options");
-    options.innerHTML = candidates.map((mask, index) => `<button type="button" class="gate-option" data-answer="${mask === target}" aria-label="Option ${String.fromCharCode(65 + index)}"><span>${String.fromCharCode(65 + index)}</span>${maskMarkup(mask)}</button>`).join("");
+    options.innerHTML = candidates.map((mask, index) => `<button type="button" class="gate-option" data-answer="${mask === target}" data-option="${index}" aria-label="Option ${String.fromCharCode(65 + index)}"><span>${String.fromCharCode(65 + index)}</span>${maskMarkup(mask)}</button>`).join("");
     $("#gate-readout").textContent = "OBSERVE BEFORE OPERATING.";
+    let wrongAttempts = 0;
+    const showGateHint = (level) => {
+      const frame = $(".gate-frame", perceptionGate);
+      const matrixElement = $("#gate-matrix");
+      frame.classList.remove("gate-hint-one", "gate-hint-two", "gate-hint-three");
+      frame.classList.add(`gate-hint-${level === 1 ? "one" : level === 2 ? "two" : "three"}`);
+      matrixElement.dataset.hint = String(level);
+      if (level === 1) {
+        $("#gate-readout").textContent = "START WITH THE TOP ROW // LEFT + CENTER BECOME RIGHT.";
+      } else if (level === 2) {
+        $("#gate-readout").textContent = "LIT TWICE = OFF // LIT ONCE = ON.";
+      } else {
+        $("#gate-readout").textContent = "FINAL COLUMN // COMBINE ITS TOP AND MIDDLE TILES.";
+        [4, 5].forEach((index) => {
+          const option = $(`.gate-option[data-option="${index}"]`, options);
+          option.classList.add("assist-muted");
+          option.disabled = true;
+        });
+      }
+    };
+    gateHintTimers.push(window.setTimeout(() => showGateHint(1), 12000));
+    gateHintTimers.push(window.setTimeout(() => showGateHint(2), 24000));
     options.querySelectorAll(".gate-option").forEach((option) => option.addEventListener("click", () => {
+      if (option.classList.contains("assist-muted")) return;
       options.querySelectorAll(".gate-option").forEach((candidate) => candidate.classList.remove("wrong"));
       if (option.dataset.answer !== "true") {
+        wrongAttempts += 1;
         option.classList.add("wrong");
-        $("#gate-readout").textContent = "NO. OVERLAP CANCELS; DIFFERENCE REMAINS.";
-        triggerPowerFault("PERCEPTION GATE REJECTED");
+        perceptionGate.classList.remove("gate-fault");
+        void perceptionGate.offsetWidth;
+        perceptionGate.classList.add("gate-fault");
+        showGateHint(Math.min(3, wrongAttempts));
         playClick(71, .035);
         return;
       }
+      clearGateHints();
       state.gateUnlocked = true;
       saveState();
       option.classList.add("correct");
@@ -550,18 +584,18 @@
     thresholdCopy.hidden = true;
     perceptionGate.hidden = false;
     perceptionGate.classList.remove("admitted");
+    clearGateHints();
     renderGatePuzzle();
-    scheduleTransmissionGlitch();
-    window.setTimeout(() => triggerTransmissionGlitch("PERCEPTION GATE // SIGNAL DAMAGED", 680), reducedMotion.matches ? 0 : 120);
+    window.setTimeout(() => triggerTransmissionGlitch("PERCEPTION GATE // SIGNAL DAMAGED", 360), reducedMotion.matches ? 0 : 120);
     focusHeading($("#gate-title"));
   }
 
   function leaveGate() {
+    clearGateHints();
     perceptionGate.hidden = true;
     thresholdCopy.hidden = false;
     messageButton.hidden = true;
-    scheduleTransmissionGlitch();
-    triggerTransmissionGlitch("RETURNING TO CARRIER SEARCH", 480);
+    triggerTransmissionGlitch("RETURNING TO CARRIER SEARCH", 300);
     focusHeading($("#threshold-title"));
   }
 
@@ -634,72 +668,42 @@
 
   function renderNeuralField(id) {
     const random = seeded(hashRoom(id));
-    const nodes = [{ x: 500 + (random() - .5) * 130, y: 350 + (random() - .5) * 90 }];
-    for (let index = 1; index < 19; index += 1) {
-      const angle = random() * Math.PI * 2;
-      const radius = 92 + random() * 430;
-      nodes.push({
-        x: Math.max(28, Math.min(972, nodes[0].x + Math.cos(angle) * radius * 1.24)),
-        y: Math.max(28, Math.min(672, nodes[0].y + Math.sin(angle) * radius * .82))
-      });
-    }
-
-    const connections = [];
-    nodes.slice(1).forEach((node, index) => {
-      let parent = 0;
-      let distance = Infinity;
-      nodes.slice(0, index + 1).forEach((candidate, candidateIndex) => {
-        const score = Math.hypot(node.x - candidate.x, node.y - candidate.y) * (.86 + random() * .28);
-        if (score < distance) { distance = score; parent = candidateIndex; }
-      });
-      connections.push([parent, index + 1]);
-    });
-    for (let index = 0; index < 4; index += 1) {
-      const from = 1 + Math.floor(random() * (nodes.length - 1));
-      let to = 1 + Math.floor(random() * (nodes.length - 1));
-      if (to === from) to = (to + 5) % (nodes.length - 1) + 1;
-      connections.push([from, to]);
-    }
-
-    const learned = Math.min(nodes.length, 2 + state.visited.size + state.solved.size * 2);
-    const paths = connections.map(([from, to], index) => {
-      const a = nodes[from];
-      const b = nodes[to];
-      const bend = (random() - .5) * 86;
-      const cx = (a.x + b.x) / 2 + bend;
-      const cy = (a.y + b.y) / 2 - bend * .55;
-      const active = from < learned && to < learned ? " learned" : "";
-      return `<path class="neural-edge${active}" pathLength="1" style="--delay:${(index * .047).toFixed(2)}s" d="M${a.x.toFixed(1)} ${a.y.toFixed(1)} Q${cx.toFixed(1)} ${cy.toFixed(1)} ${b.x.toFixed(1)} ${b.y.toFixed(1)}"/>`;
+    const baseline = 322 + (random() - .5) * 86;
+    const amplitude = 58 + random() * 72;
+    const points = Array.from({ length: 13 }, (_, index) => ({
+      x: -20 + index * 87,
+      y: baseline + Math.sin(index * (1.18 + random() * .12) + random() * .7) * amplitude * (.52 + random() * .48)
+    }));
+    const trace = points.map((point, index) => `${index ? "L" : "M"}${point.x.toFixed(1)} ${point.y.toFixed(1)}`).join(" ");
+    const ghost = points.map((point, index) => `${index ? "L" : "M"}${point.x.toFixed(1)} ${(point.y + 28 + Math.sin(index) * 19).toFixed(1)}`).join(" ");
+    const labelSource = ROOMS[id]?.nodes || ["AUDIO", "CORTEX", "CLASSROOM", "MACHINE", "HUMAN", "ENTER"];
+    const labelIndices = [1, 3, 5, 7, 9, 11];
+    const progress = Math.min(12, 1 + state.visited.size + state.solved.size);
+    const jacks = points.slice(1, 12).map((point, index) => {
+      const live = index < progress ? " live" : "";
+      return `<g class="signal-jack${live}" style="--delay:${(index * .07).toFixed(2)}s" transform="translate(${point.x.toFixed(1)} ${point.y.toFixed(1)})"><circle r="8"/><circle r="2.4"/></g>`;
     }).join("");
-    const points = nodes.map((node, index) => {
-      const active = index < learned ? " learned" : "";
-      const radius = index === 0 ? 7 : 2.4 + random() * 2.7;
-      return `<circle class="neural-node${active}" style="--delay:${(index * .061).toFixed(2)}s" cx="${node.x.toFixed(1)}" cy="${node.y.toFixed(1)}" r="${radius.toFixed(1)}"/>`;
-    }).join("");
-    const labelSource = ROOMS[id]?.nodes || ["UNLISTED", "SIGNAL", "MAP", "CARRIER", "MEMORY", "ENTER"];
-    const labelNodes = [2, 5, 8, 11, 14, 17];
     const labels = labelSource.map((label, index) => {
-      const node = nodes[labelNodes[index]];
-      const anchor = node.x > 760 ? "end" : node.x < 240 ? "start" : "middle";
-      const dx = anchor === "end" ? -12 : anchor === "start" ? 12 : 0;
-      const dy = node.y < 120 ? 18 : -12;
-      return `<text class="neural-label" style="--delay:${(.48 + index * .11).toFixed(2)}s" x="${(node.x + dx).toFixed(1)}" y="${(node.y + dy).toFixed(1)}" text-anchor="${anchor}">${label}</text>`;
+      const point = points[labelIndices[index]];
+      const above = index % 2 === 0;
+      const y = point.y + (above ? -22 : 32);
+      return `<text class="signal-label" style="--delay:${(.35 + index * .1).toFixed(2)}s" x="${point.x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="middle">${label}</text>`;
     }).join("");
-    const origin = nodes[0];
-    const cellTurn = (hashRoom(id) % 52) - 26;
-    const cellScale = .72 + (hashRoom(`${id}-cell`) % 28) / 100;
+    const ticks = Array.from({ length: 41 }, (_, index) => {
+      const x = index * 25;
+      const height = index % 5 === 0 ? 18 : 8;
+      return `<path d="M${x} 650v-${height}"/>`;
+    }).join("");
+    const origin = points[6 + (hashRoom(id) % 3)];
     room.style.setProperty("--origin-x", `${(origin.x / 10).toFixed(2)}%`);
     room.style.setProperty("--origin-y", `${(origin.y / 7).toFixed(2)}%`);
     neuralField.classList.remove("awake", "remembering");
-    neuralField.innerHTML = `<g class="neural-edges">${paths}</g><g class="neural-nodes">${points}</g><g class="neural-labels">${labels}</g>
-      <g class="neural-cell" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)}) rotate(${cellTurn}) scale(${cellScale.toFixed(2)})">
-        <path class="neural-cell-branches" d="M-18-11C-71-30-87-76-143-87M-27 8c-59 8-82 47-137 56M8-27C18-77 2-103 25-148M22-12c52-28 79-67 143-71M28 12c61 11 85 51 145 66M18 25c25 53 61 66 118 83"/>
-        <path class="neural-cell-soma" d="M-23-25C2-45 35-30 42-2 50 29 18 49-12 39-43 28-49-6-23-25Z"/>
-        <path class="neural-cell-glitch" d="M-38-5h82M-31 9h66M-19 23h42"/>
-      </g>
-      <g class="neural-signatures" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)})">
-        <circle r="23"/><circle r="38"/><path d="M-62 0h39M23 0h62M0-61v38M0 23v42"/>
-      </g>`;
+    neuralField.innerHTML = `<g class="signal-bench-grid"><path d="M0 116H1000M0 350H1000M0 584H1000"/><path d="M0 650H1000"/>${ticks}</g>
+      <path class="signal-trace-ghost" d="${ghost}"/>
+      <path class="signal-trace" pathLength="1" d="${trace}"/>
+      <g class="signal-jacks">${jacks}</g>
+      <g class="signal-labels">${labels}</g>
+      <g class="signal-origin" transform="translate(${origin.x.toFixed(1)} ${origin.y.toFixed(1)})"><circle r="21"/><path d="M-34 0h19M15 0h19M0-34v19M0 15v19"/></g>`;
     requestAnimationFrame(() => neuralField.classList.add("awake"));
   }
 
@@ -720,35 +724,6 @@
     const mode = GLITCH_MODES[Math.floor(Math.random() * GLITCH_MODES.length)];
     document.body.classList.add("signal-glitch", mode);
     glitchRelease = window.setTimeout(() => document.body.classList.remove("signal-glitch", ...GLITCH_MODES), duration);
-  }
-
-  function triggerPowerFault(label = "CHECKSUM MISMATCH") {
-    clearTimeout(powerFaultTimer);
-    document.body.classList.remove("power-fault");
-    void document.body.offsetWidth;
-    document.body.classList.add("power-fault");
-    triggerTransmissionGlitch(`VOLTAGE DROP // ${label}`, 760);
-    if (ambientAudio && musicOn && !ambientAudio.paused) {
-      fadeMedia(ambientAudio, .015, 80);
-      window.setTimeout(() => {
-        if (musicOn && ambientAudio) fadeMedia(ambientAudio, messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME, messageAudio.paused ? 420 : 180);
-      }, 520);
-    }
-    powerFaultTimer = window.setTimeout(() => document.body.classList.remove("power-fault"), reducedMotion.matches ? 100 : 820);
-  }
-
-  function scheduleTransmissionGlitch() {
-    clearTimeout(glitchTimer);
-    if (reducedMotion.matches || document.hidden || document.body.dataset.room === "resolution") return;
-    const atEntrance = document.body.dataset.room === "threshold";
-    const delay = atEntrance ? 1400 + Math.random() * 2600 : 3200 + Math.random() * 5000;
-    glitchTimer = window.setTimeout(() => {
-      triggerTransmissionGlitch("", 420 + Math.random() * 320);
-      if (Math.random() < .3) {
-        window.setTimeout(() => triggerTransmissionGlitch("PACKET ECHO // BAD COPY", 260), 150);
-      }
-      scheduleTransmissionGlitch();
-    }, delay);
   }
 
   function triggerHackCelebration(code, label, solvedCount) {
@@ -910,7 +885,6 @@
 
   function openResolution() {
     cleanupInteraction();
-    clearTimeout(glitchTimer);
     clearTimeout(glitchRelease);
     document.body.classList.remove("signal-glitch", ...GLITCH_MODES, "power-fault");
     labyrinth.hidden = true;
@@ -927,7 +901,6 @@
   function closeResolution() {
     resolution.hidden = true;
     renderRoom(currentRoom === "resolution" || !ROOMS[currentRoom] ? "strange-loop" : currentRoom);
-    scheduleTransmissionGlitch();
   }
 
   function setupInteraction(id, data) {
@@ -1010,7 +983,6 @@
       void consoleElement.offsetWidth;
       consoleElement.classList.add("fault");
       setResponse("CHECKSUM MISMATCH // ROUTE CLEARED");
-      triggerPowerFault("CIRCUIT REJECTED");
       playClick(67, .035);
       entered = [];
       faultTimer = window.setTimeout(() => {
@@ -1431,7 +1403,6 @@
   addEventListener("hashchange", route);
   addEventListener("beforeunload", () => { clearTimeout(identityTimer); clearTimeout(phaseTimer); stopRoomTone(); stopAmbient(); });
   document.addEventListener("visibilitychange", () => {
-    scheduleTransmissionGlitch();
     if (!ambientAudio || !musicOn) return;
     if (document.hidden) ambientAudio.pause();
     else startAmbient();
@@ -1450,5 +1421,4 @@
   startAmbient();
 
   route();
-  scheduleTransmissionGlitch();
 })();
