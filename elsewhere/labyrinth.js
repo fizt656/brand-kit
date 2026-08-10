@@ -279,6 +279,8 @@
   let ambientAudio = $("#ambient-audio");
   let ambientInitialized = false;
   let ambientBlocked = false;
+  let ambientPlayState = "idle";
+  let ambientPlayPromise = null;
   let ambientFade = 0;
   let ambientUnlockArmed = false;
   let messageSource = null;
@@ -1175,12 +1177,16 @@
 
   function updateMusicButton() {
     const button = $("#sound-toggle");
-    const waitingForGesture = musicOn && ambientBlocked && (!ambientAudio || ambientAudio.paused);
-    button.textContent = !musicOn ? "music: off" : waitingForGesture ? "tap for music" : "music: on";
+    const isPlaying = Boolean(ambientAudio && !ambientAudio.paused && !ambientAudio.ended);
+    const waitingForGesture = musicOn && ambientBlocked && !isPlaying;
+    const starting = musicOn && ambientPlayState === "starting" && !isPlaying;
+    button.textContent = !musicOn
+      ? "music: off"
+      : waitingForGesture ? "tap for music" : starting ? "starting music…" : isPlaying ? "music: on" : "tap for music";
     button.setAttribute("aria-pressed", String(musicOn));
     button.setAttribute("aria-label", !musicOn
       ? "Turn background music on"
-      : waitingForGesture ? "Start background music" : "Turn background music off");
+      : waitingForGesture || !isPlaying ? "Start background music" : "Turn background music off");
   }
 
   function fadeMedia(media, target, duration = 520) {
@@ -1233,12 +1239,19 @@
       ambientInitialized = true;
       ambientAudio.loop = false;
       ambientAudio.preload = "auto";
-      ambientAudio.volume = 0;
+      // Safari may allow a zero-volume autoplay and then silently refuse the
+      // audible fade. Begin at the real listening level so play() either
+      // produces sound or rejects cleanly and exposes the gesture fallback.
+      ambientAudio.volume = messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME;
       ambientAudio.addEventListener("playing", () => {
         ambientBlocked = false;
+        ambientPlayState = "playing";
         updateMusicButton();
       });
-      ambientAudio.addEventListener("pause", updateMusicButton);
+      ambientAudio.addEventListener("pause", () => {
+        if (ambientPlayState === "playing") ambientPlayState = "idle";
+        updateMusicButton();
+      });
       ambientAudio.addEventListener("timeupdate", () => {
         if (ambientLooping || !musicOn || !Number.isFinite(ambientAudio.duration)) return;
         if (ambientAudio.duration - ambientAudio.currentTime > .32) return;
@@ -1256,21 +1269,34 @@
     const targetVolume = messageAudio.paused ? AMBIENT_VOLUME : AMBIENT_DUCKED_VOLUME;
     if (!ambientAudio.paused) {
       disarmAmbientUnlock();
+      ambientPlayState = "playing";
+      ambientBlocked = false;
+      updateMusicButton();
       fadeMedia(ambientAudio, targetVolume, 1100);
       return Promise.resolve(true);
     }
-    return ambientAudio.play().then(() => {
+    if (ambientPlayPromise) return ambientPlayPromise;
+    ambientPlayState = "starting";
+    ambientBlocked = false;
+    ambientAudio.volume = targetVolume;
+    updateMusicButton();
+    ambientPlayPromise = ambientAudio.play().then(() => {
       ambientBlocked = false;
+      ambientPlayState = "playing";
       disarmAmbientUnlock();
       updateMusicButton();
-      fadeMedia(ambientAudio, targetVolume, 1100);
       return true;
     }).catch(() => {
       ambientBlocked = true;
+      ambientPlayState = "blocked";
       updateMusicButton();
       armAmbientUnlock();
       return false;
+    }).then((started) => {
+      ambientPlayPromise = null;
+      return started;
     });
+    return ambientPlayPromise;
   }
 
   function stopAmbient() {
