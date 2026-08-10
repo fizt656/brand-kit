@@ -25,6 +25,10 @@
     switches: "assets/audio/switches",
     resolves: "assets/audio/resolves"
   };
+  const MESSAGE_TRACKS = {
+    gate: { src: "assets/audio/message-entry-v1.mp3?v=1", duration: 28 },
+    map: { src: "assets/audio/message-map-v1.mp3?v=1", duration: 34 }
+  };
   const GLITCH_LINES = [
     "SYNC ERROR // CARRIER DRIFT",
     "0x13 :: SIGNAL PARTIAL",
@@ -269,7 +273,6 @@
   let currentRoom = "threshold";
   let soundOn = false;
   let musicOn = true;
-  let autoAudioStarted = false;
   let audioContext = null;
   let activeTone = [];
   let interactionCleanup = null;
@@ -284,6 +287,8 @@
   let glitchRelease = 0;
   let celebrationTimer = 0;
   let messageStartTimer = 0;
+  let currentMessageTrack = "gate";
+  let pendingMapMessage = false;
   let identityTimer = 0;
   let phaseTimer = 0;
   let phaseAttemptCount = 0;
@@ -303,7 +308,8 @@
     solved: new Set(Array.isArray(saved.solved) ? saved.solved : []),
     gateUnlocked: Boolean(saved.gateUnlocked),
     resolutionSeen: Boolean(saved.resolutionSeen),
-    messageHeard: Boolean(saved.messageHeard),
+    entryMessageHeard: Boolean(saved.entryMessageHeard),
+    mapMessageHeard: Boolean(saved.mapMessageHeard),
     musicOn: saved.musicOn !== false
   };
   musicOn = state.musicOn;
@@ -325,7 +331,8 @@
         solved: [...state.solved],
         gateUnlocked: state.gateUnlocked,
         resolutionSeen: state.resolutionSeen,
-        messageHeard: state.messageHeard,
+        entryMessageHeard: state.entryMessageHeard,
+        mapMessageHeard: state.mapMessageHeard,
         musicOn
       }));
     } catch (_) {
@@ -560,18 +567,17 @@
       $("#gate-readout").textContent = "PATTERN ACCEPTED // THE DOOR REMEMBERS YOU.";
       playAsset("threshold", .52);
       triggerHackCelebration("ACCESS", "PERCEPTION GATE PWNED", 0);
+      pendingMapMessage = true;
       window.setTimeout(enterLabyrinth, reducedMotion.matches ? 80 : 1750);
     }));
   }
 
   function openGate() {
     messageButton.hidden = false;
-    if (!autoAudioStarted) {
-      autoAudioStarted = true;
-      activateAudio(true);
-      if (!state.messageHeard && messageAudio.paused) toggleMessage();
-    }
+    activateAudio(true);
     if (state.gateUnlocked) {
+      selectMessageTrack("map");
+      pendingMapMessage = !isMessageHeard("map");
       enterLabyrinth();
       return;
     }
@@ -580,11 +586,14 @@
     perceptionGate.classList.remove("admitted");
     clearGateHints();
     renderGatePuzzle();
+    selectMessageTrack("gate");
+    startMessageIfUnheard("gate", reducedMotion.matches ? 80 : 260);
     window.setTimeout(() => triggerTransmissionGlitch("PERCEPTION GATE // SIGNAL DAMAGED", 360), reducedMotion.matches ? 0 : 120);
     focusHeading($("#gate-title"));
   }
 
   function leaveGate() {
+    if (!messageAudio.paused) toggleMessage();
     clearGateHints();
     perceptionGate.hidden = true;
     thresholdCopy.hidden = false;
@@ -603,6 +612,7 @@
     labyrinth.hidden = false;
     resolution.hidden = true;
     messageButton.hidden = false;
+    selectMessageTrack("map");
     $(".skip-link").href = "#room-title";
     state.visited.add(id);
     saveState();
@@ -637,6 +647,10 @@
     triggerTransmissionGlitch(`CARRIER ${String(pathIndex + 1).padStart(2, "0")}`, 260);
     window.scrollTo({ top: 0, behavior: "auto" });
     if (shouldMoveFocus) focusHeading($("#room-title"));
+    if (pendingMapMessage) {
+      pendingMapMessage = false;
+      startMessageIfUnheard("map", reducedMotion.matches ? 120 : 620);
+    }
   }
 
   function focusHeading(target) {
@@ -1332,9 +1346,55 @@
     return `${String(Math.floor(seconds / 60)).padStart(2, "0")}:${String(seconds % 60).padStart(2, "0")}`;
   }
 
+  function isMessageHeard(track = currentMessageTrack) {
+    return track === "gate" ? state.entryMessageHeard : state.mapMessageHeard;
+  }
+
+  function markMessageHeard(track = currentMessageTrack) {
+    if (track === "gate") state.entryMessageHeard = true;
+    else state.mapMessageHeard = true;
+  }
+
+  function syncMessageUi() {
+    const heard = isMessageHeard();
+    messageButton.classList.toggle("heard", heard);
+    messageButton.classList.toggle("playing", !messageAudio.paused);
+    messageButton.setAttribute("aria-pressed", String(!messageAudio.paused));
+    messageButton.setAttribute("aria-label", !messageAudio.paused
+      ? "Pause message"
+      : heard ? "Play message again" : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
+    if (messageAudio.paused) {
+      const fallback = MESSAGE_TRACKS[currentMessageTrack].duration;
+      messageState.textContent = heard ? "heard" : formatTime((messageAudio.duration || fallback) - messageAudio.currentTime);
+    }
+  }
+
+  function selectMessageTrack(track) {
+    if (!MESSAGE_TRACKS[track]) return;
+    clearTimeout(messageStartTimer);
+    if (currentMessageTrack !== track) {
+      if (!messageAudio.paused) messageAudio.pause();
+      stopMessageCarrier();
+      currentMessageTrack = track;
+      messageAudio.src = MESSAGE_TRACKS[track].src;
+      messageAudio.load();
+    }
+    syncMessageUi();
+  }
+
+  function startMessageIfUnheard(track, delay = 260) {
+    selectMessageTrack(track);
+    if (isMessageHeard(track) || !messageAudio.paused) return;
+    clearTimeout(messageStartTimer);
+    messageStartTimer = window.setTimeout(() => {
+      if (currentMessageTrack === track && !isMessageHeard(track) && messageAudio.paused) toggleMessage();
+    }, delay);
+  }
+
   function updateMessageState() {
-    const remaining = (messageAudio.duration || 24) - messageAudio.currentTime;
-    messageState.textContent = messageAudio.paused ? (state.messageHeard ? "heard" : formatTime(remaining)) : formatTime(remaining);
+    const fallback = MESSAGE_TRACKS[currentMessageTrack].duration;
+    const remaining = (messageAudio.duration || fallback) - messageAudio.currentTime;
+    messageState.textContent = messageAudio.paused ? (isMessageHeard() ? "heard" : formatTime(remaining)) : formatTime(remaining);
   }
 
   function toggleMessage() {
@@ -1344,7 +1404,8 @@
       playAsset("tapeStop", TAPE_CUE_VOLUME);
       return;
     }
-    if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || 24) - .15) messageAudio.currentTime = 0;
+    const fallback = MESSAGE_TRACKS[currentMessageTrack].duration;
+    if (messageAudio.ended || messageAudio.currentTime >= (messageAudio.duration || fallback) - .15) messageAudio.currentTime = 0;
     activateAudio(true);
     playAsset("tapeStart", TAPE_CUE_VOLUME);
     messageState.textContent = "loading";
@@ -1362,17 +1423,20 @@
     state.solved.clear();
     state.gateUnlocked = false;
     state.resolutionSeen = false;
-    state.messageHeard = false;
+    state.entryMessageHeard = false;
+    state.mapMessageHeard = false;
+    pendingMapMessage = false;
     phaseAttemptCount = 0;
     syncIdentitySignal();
     saveState();
     clearTimeout(messageStartTimer);
     messageAudio.pause();
+    selectMessageTrack("gate");
     messageAudio.currentTime = 0;
     messageButton.classList.remove("heard", "playing");
     messageButton.setAttribute("aria-pressed", "false");
     messageButton.setAttribute("aria-label", "Play unheard message");
-    messageState.textContent = formatTime(messageAudio.duration || 32);
+    messageState.textContent = formatTime(messageAudio.duration || MESSAGE_TRACKS.gate.duration);
     if (location.hash === "#threshold") showThreshold();
     else location.hash = "threshold";
   }
@@ -1434,7 +1498,7 @@
   messageAudio.addEventListener("pause", () => {
     messageButton.classList.remove("playing");
     messageButton.setAttribute("aria-pressed", "false");
-    messageButton.setAttribute("aria-label", state.messageHeard
+    messageButton.setAttribute("aria-label", isMessageHeard()
       ? "Play message again"
       : messageAudio.currentTime < .05 ? "Play unheard message" : "Resume message");
     neuralField.classList.remove("receiving");
@@ -1443,7 +1507,7 @@
     updateMessageState();
   });
   messageAudio.addEventListener("ended", () => {
-    state.messageHeard = true;
+    markMessageHeard();
     saveState();
     messageButton.classList.add("heard");
     messageButton.setAttribute("aria-label", "Play message again");
@@ -1460,6 +1524,9 @@
     target.scrollIntoView({ block: "start", behavior: reducedMotion.matches ? "auto" : "smooth" });
   });
   addEventListener("hashchange", route);
+  addEventListener("pageshow", () => {
+    if (musicOn) startAmbient();
+  });
   addEventListener("beforeunload", () => { clearTimeout(identityTimer); clearTimeout(phaseTimer); stopRoomTone(); stopAmbient(); });
   document.addEventListener("visibilitychange", () => {
     if (!ambientAudio || !musicOn) return;
@@ -1469,14 +1536,14 @@
 
   reducedMotion.addEventListener("change", syncIdentitySignal);
 
-  if (state.messageHeard) {
-    messageButton.classList.add("heard");
-    messageState.textContent = "heard";
-    messageButton.setAttribute("aria-label", "Play message again");
-  }
-
+  selectMessageTrack(state.gateUnlocked ? "map" : "gate");
   updateMusicButton();
   ambientAudio.autoplay = musicOn;
+  ambientAudio.muted = false;
+  ambientAudio.defaultMuted = false;
+  ambientAudio.addEventListener("canplay", () => {
+    if (musicOn && ambientAudio.paused) startAmbient();
+  });
   syncIdentitySignal();
   startAmbient();
 
