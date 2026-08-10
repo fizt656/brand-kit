@@ -297,7 +297,7 @@
   let ambientLooping = false;
   let fragmentResolutionPending = false;
   const AMBIENT_VOLUME = .16;
-  const AMBIENT_DUCKED_VOLUME = .035;
+  const AMBIENT_DUCKED_VOLUME = .05;
   const MESSAGE_VOLUME = .25;
   const TAPE_CUE_VOLUME = .5;
   const switchAudio = new Map();
@@ -1251,6 +1251,9 @@
       ambientAudio.addEventListener("pause", () => {
         if (ambientPlayState === "playing") ambientPlayState = "idle";
         updateMusicButton();
+        if (musicOn && !messageAudio.paused && !document.hidden) {
+          window.setTimeout(() => startAmbient(), 0);
+        }
       });
       ambientAudio.addEventListener("timeupdate", () => {
         if (ambientLooping || !musicOn || !Number.isFinite(ambientAudio.duration)) return;
@@ -1515,7 +1518,11 @@
     messageButton.setAttribute("aria-pressed", "true");
     messageButton.setAttribute("aria-label", "Pause message");
     neuralField.classList.add("receiving");
-    if (musicOn && ambientAudio) fadeMedia(ambientAudio, AMBIENT_DUCKED_VOLUME, 360);
+    if (musicOn && ambientAudio) {
+      startAmbient().then((started) => {
+        if (started && !messageAudio.paused) fadeMedia(ambientAudio, AMBIENT_DUCKED_VOLUME, 360);
+      });
+    }
     startMessageCarrier();
     updateMessageState();
   });
