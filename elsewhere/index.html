@@ -38,7 +38,7 @@
     <div class="edge-actions">
       <button id="sound-toggle" type="button" aria-pressed="true">music: on</button>
       <button id="contact-link" type="button" hidden>contact</button>
-      <button id="erase-route" type="button">erase</button>
+      <button id="erase-route" type="button">reset progress</button>
       <a href="/" aria-label="Exit elsewhere">exit</a>
     </div>
   </header>
@@ -207,7 +207,8 @@
   </section>
 
   <noscript><p class="noscript">This room needs JavaScript to lose the path. The front door is <a href="/">here</a>.</p></noscript>
-  <audio id="message-audio" preload="metadata" src="assets/audio/message-v3.mp3"></audio>
-  <script src="labyrinth.js?v=20260809e"></script>
+  <audio id="ambient-audio" preload="auto" playsinline src="assets/audio/carrier-thirteen.mp3?v=2"></audio>
+  <audio id="message-audio" preload="metadata" playsinline src="assets/audio/message-v3.mp3"></audio>
+  <script src="labyrinth.js?v=20260809f"></script>
 </body>
 </html>

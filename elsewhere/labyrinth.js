@@ -273,7 +273,9 @@
   let audioContext = null;
   let activeTone = [];
   let interactionCleanup = null;
-  let ambientAudio = null;
+  let ambientAudio = $("#ambient-audio");
+  let ambientInitialized = false;
+  let ambientBlocked = false;
   let ambientFade = 0;
   let ambientUnlockArmed = false;
   let messageSource = null;
@@ -1127,6 +1129,11 @@
   }
 
   function toggleSound() {
+    if (musicOn && (!ambientAudio || ambientAudio.paused)) {
+      activateAudio(true);
+      startAmbient();
+      return;
+    }
     setMusicState(!musicOn);
   }
 
@@ -1141,6 +1148,7 @@
   function setMusicState(enabled) {
     musicOn = enabled;
     state.musicOn = enabled;
+    ambientAudio.autoplay = enabled;
     saveState();
     updateMusicButton();
     activateAudio(true);
@@ -1153,9 +1161,12 @@
 
   function updateMusicButton() {
     const button = $("#sound-toggle");
-    button.textContent = musicOn ? "music: on" : "music: off";
+    const waitingForGesture = musicOn && ambientBlocked && (!ambientAudio || ambientAudio.paused);
+    button.textContent = !musicOn ? "music: off" : waitingForGesture ? "tap for music" : "music: on";
     button.setAttribute("aria-pressed", String(musicOn));
-    button.setAttribute("aria-label", musicOn ? "Turn background music off" : "Turn background music on");
+    button.setAttribute("aria-label", !musicOn
+      ? "Turn background music on"
+      : waitingForGesture ? "Start background music" : "Turn background music off");
   }
 
   function fadeMedia(media, target, duration = 520) {
@@ -1174,12 +1185,14 @@
     ambientUnlockArmed = false;
     document.removeEventListener("pointerdown", unlockAmbientFromGesture, true);
     document.removeEventListener("touchstart", unlockAmbientFromGesture, true);
+    document.removeEventListener("touchend", unlockAmbientFromGesture, true);
     document.removeEventListener("keydown", unlockAmbientFromGesture, true);
     document.removeEventListener("click", unlockAmbientFromGesture, true);
   }
 
   function unlockAmbientFromGesture(event) {
     if (event.type === "keydown" && ["Shift", "Control", "Alt", "Meta", "Tab"].includes(event.key)) return;
+    if (event.target instanceof Element && event.target.closest("#sound-toggle")) return;
     if (!musicOn) {
       disarmAmbientUnlock();
       return;
@@ -1195,17 +1208,23 @@
     ambientUnlockArmed = true;
     document.addEventListener("pointerdown", unlockAmbientFromGesture, { capture: true, passive: true });
     document.addEventListener("touchstart", unlockAmbientFromGesture, { capture: true, passive: true });
+    document.addEventListener("touchend", unlockAmbientFromGesture, { capture: true, passive: true });
     document.addEventListener("keydown", unlockAmbientFromGesture, true);
     document.addEventListener("click", unlockAmbientFromGesture, true);
   }
 
   function startAmbient() {
     if (!musicOn) return Promise.resolve(false);
-    if (!ambientAudio) {
-      ambientAudio = new Audio(AUDIO.ambient);
+    if (!ambientInitialized) {
+      ambientInitialized = true;
       ambientAudio.loop = false;
       ambientAudio.preload = "auto";
       ambientAudio.volume = 0;
+      ambientAudio.addEventListener("playing", () => {
+        ambientBlocked = false;
+        updateMusicButton();
+      });
+      ambientAudio.addEventListener("pause", updateMusicButton);
       ambientAudio.addEventListener("timeupdate", () => {
         if (ambientLooping || !musicOn || !Number.isFinite(ambientAudio.duration)) return;
         if (ambientAudio.duration - ambientAudio.currentTime > .32) return;
@@ -1227,10 +1246,14 @@
       return Promise.resolve(true);
     }
     return ambientAudio.play().then(() => {
+      ambientBlocked = false;
       disarmAmbientUnlock();
+      updateMusicButton();
       fadeMedia(ambientAudio, targetVolume, 1100);
       return true;
     }).catch(() => {
+      ambientBlocked = true;
+      updateMusicButton();
       armAmbientUnlock();
       return false;
     });
@@ -1333,7 +1356,7 @@
   }
 
   function eraseRoute(force = false) {
-    if (!force && !confirm("Erase all 13 solved carriers and replay from the locked door?")) return;
+    if (!force && !confirm("Reset all progress and replay from the locked door? This clears all 13 solved carriers on this browser.")) return;
     state.visited.clear();
     state.frequencies.clear();
     state.solved.clear();
@@ -1453,6 +1476,7 @@
   }
 
   updateMusicButton();
+  ambientAudio.autoplay = musicOn;
   syncIdentitySignal();
   startAmbient();
 
