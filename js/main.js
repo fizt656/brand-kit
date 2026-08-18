@@ -95,17 +95,22 @@ const App = {
     });
 
     const view = new URLSearchParams(window.location.search).get('view');
-    if (view === 'map') {
+    let signalState = {};
+    try { signalState = JSON.parse(localStorage.getItem('gus-signal-bench-v1') || '{}'); } catch (_) {}
+    if (view === 'map' && signalState.solved) {
       this.enterMap({ instant: true });
     }
-    if (view === 'articles') {
+    if (view === 'articles' && signalState.solved) {
       this.openArticles();
     }
   },
 
   enterMap({ instant = false } = {}) {
     this.landing.classList.add('hidden');
+    document.body.dataset.signalState = 'map';
     this.homeBtn.classList.remove('is-hidden');
+    this.articlesBtn.classList.remove('is-hidden');
+    if (window.SignalBench) window.SignalBench.activateAudio();
 
     const show = () => {
       this.graphContainer.classList.remove('graph-hidden');
@@ -174,6 +179,7 @@ const App = {
     document.querySelectorAll('.node').forEach(node => {
       node.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (window.SignalBench) window.SignalBench.sound('open');
         this.handleNodeClick(node.dataset.id);
       });
 
@@ -188,6 +194,7 @@ const App = {
       // Hover effects
       node.addEventListener('mouseenter', () => {
         if (!this.expandedNodeId) {
+          if (window.SignalBench) window.SignalBench.sound('switch');
           Graph.highlightConnections(node.dataset.id, true);
         }
       });
@@ -236,6 +243,7 @@ const App = {
     this.hemisphereLabels.classList.add('graph-hidden');
     this.homeBtn.classList.add('is-hidden');
     this.landing.classList.remove('hidden');
+    if (window.SignalBench) window.SignalBench.onReturnHome();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
@@ -366,6 +374,7 @@ const App = {
 
   // Navigate to a connected node (traversal)
   navigateToNode(nodeId) {
+    if (window.SignalBench) window.SignalBench.sound('switch');
     // Smooth transition: briefly fade content
     this.contentPanel.style.opacity = '0';
     this.contentPanel.style.transform = 'translateY(10px)';

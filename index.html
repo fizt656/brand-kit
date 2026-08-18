@@ -3,126 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Gus Halwani — computational neuroscientist, founder, and enthusiast of precision machines and analog craft">
-  <meta name="theme-color" content="#faf8f3">
-  <title>Gus Halwani</title>
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='9' fill='%23b8952e'/%3E%3Cpath d='M32 3v15M32 46v15M3 32h15M46 32h15' stroke='%232b261d' stroke-width='2'/%3E%3C/svg%3E">
-
-  <!-- Fonts -->
+  <meta name="description" content="Gus Halwani — audio, cortex, classroom, model, and the human signal connecting them.">
+  <meta name="theme-color" content="#070b08">
+  <title>Gus Halwani — Signal Bench</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M5 34h9l4-12 7 25 7-34 7 28 5-13 5 6h10' fill='none' stroke='%23d7832f' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="css/styles.css?v=20260808f">
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260818a">
+  <link rel="stylesheet" href="css/signal-bench.css?v=20260818a">
 </head>
-<body>
+<body data-signal-state="searching">
+  <a class="skip-link" href="#signal-bench">Skip to the signal bench</a>
+  <div class="material" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+  <div class="fault-layer" aria-hidden="true"><span></span><span></span></div>
 
-  <!-- Site Header -->
   <header id="site-header">
-    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
-    <nav class="site-nav" aria-label="Primary">
-      <button id="home-btn" class="nav-btn is-hidden" type="button">Main</button>
-      <!-- Placeholder pages hidden until content is ready:
-           work.html, creative.html, family.html, speaking.html, contact.html -->
-      <button id="articles-btn" class="nav-btn" type="button">Articles</button>
+    <button id="identity-block" class="identity-block identity-unstable" type="button" aria-label="Encrypted identity">
+      <span id="identity-name" data-clear="GUS HALWANI, PHD">6U5 H4LW4N1, ?H∆</span>
+      <span id="identity-email" data-clear="gushalwani[at]alum[dot]mit[dot]edu">6U5#4LW4N1[∆T]4LU?/D0T/M1T</span>
+    </button>
+    <button id="message-player" class="message-player" type="button" aria-pressed="false">
+      <span class="message-light" aria-hidden="true"></span>
+      <span><strong>NEW MESSAGE</strong><small id="message-state">PLAY</small></span>
+    </button>
+    <nav class="site-nav" aria-label="Site controls">
+      <button id="home-btn" class="nav-btn is-hidden" type="button">Strange Loop</button>
+      <button id="articles-btn" class="nav-btn is-hidden" type="button">Articles</button>
+      <button id="sound-toggle" class="nav-btn" type="button" aria-pressed="true">Music: on</button>
+      <button id="transcript-open" class="nav-btn" type="button">Transcript</button>
+      <button id="reset-puzzle" class="nav-btn" type="button">Reset site puzzle</button>
     </nav>
   </header>
 
-  <!-- Landing / Hero -->
-  <section id="landing">
-    <div class="landing-inner">
-      <p class="landing-statement">Hi, I'm Gus. I started in biological neural nets and ended up in artificial ones — though I still think carbon builds better networks.</p>
-      <p class="landing-invite">This is my brain map. Poke around, follow some nodes, and reach out if you wanna jam.</p>
-      <button id="enter-btn" class="enter-btn" type="button">Explore the map</button>
-    </div>
-  </section>
-
-  <!-- Main Graph Container -->
-  <div id="graph-container" class="graph-hidden">
-    <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <filter id="glow-left" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-        <filter id="glow-right" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-        <filter id="glow-center" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
-
-      <!-- Edges group (rendered behind nodes) -->
-      <g id="edges-group"></g>
-
-      <!-- Neural pulse layer (temporary hover signals) -->
-      <g id="pulse-group" aria-hidden="true"></g>
-
-      <!-- Nodes group -->
-      <g id="nodes-group"></g>
-    </svg>
-    <p class="graph-hint">hover a node to trace the signal. click to open the story.</p>
-  </div>
-
-  <!-- Expanded Content Overlay -->
-  <div id="content-overlay" class="hidden">
-    <div id="content-panel">
-      <button id="close-btn" type="button" aria-label="Close">&times;</button>
-      <h2 id="content-title">Selected node</h2>
-      <p id="content-body"></p>
-      <div id="content-connections">
-        <span class="connections-label">Explore:</span>
-        <div id="connections-list"></div>
+  <main>
+    <section id="signal-bench" class="signal-bench" aria-labelledby="bench-title">
+      <div class="bench-copy">
+        <p class="eyebrow">SIGNAL THREAD // PATCH BAY 04 // CARRIER UNSTABLE</p>
+        <h1 id="bench-title">Find the order.<br>Close the circuit.</h1>
+        <p>Four stages carried one signal from its source toward its purpose. Patch them in the order it traveled.</p>
+        <p class="bench-instruction"><span class="status-dot"></span><span id="bench-status" role="status">SELECT THE FIRST STAGE</span></p>
       </div>
-      <div id="content-links" class="hidden">
-        <span class="connections-label">Links:</span>
-        <div id="links-list"></div>
+
+      <div id="patch-panel" class="patch-panel" aria-label="Four-stage signal path puzzle">
+        <div class="panel-rail"><span>INPUT / 00</span><span>COHERENCE <b id="coherence-readout">00.0%</b></span><span>HUMAN / OUT</span></div>
+        <svg id="patch-cables" class="patch-cables" aria-hidden="true"></svg>
+        <div class="module-grid">
+          <button class="signal-module module-classroom" type="button" data-stage="classroom">
+            <span class="module-index">03</span><span class="module-wave">┄╱╲┄╱╲┄</span><strong>CLASSROOM</strong><small>MAKE IT TRANSFERABLE</small><i></i>
+          </button>
+          <button class="signal-module module-audio" type="button" data-stage="audio">
+            <span class="module-index">01</span><span class="module-wave">∿∿∿∿∿∿</span><strong>AUDIO</strong><small>FIND THE SIGNAL</small><i></i>
+          </button>
+          <button class="signal-module module-model" type="button" data-stage="model">
+            <span class="module-index">04</span><span class="module-wave">◇─◇─◇─◇</span><strong>MODEL</strong><small>BUILD THE INSTRUMENT</small><i></i>
+          </button>
+          <button class="signal-module module-cortex" type="button" data-stage="cortex">
+            <span class="module-index">02</span><span class="module-wave">○╴○╶○╴○</span><strong>CORTEX</strong><small>FOLLOW IT INWARD</small><i></i>
+          </button>
+        </div>
+        <div id="human-out" class="human-out"><span>05</span><strong>HUMAN OUT</strong><small>HELP SOMEONE</small><i></i></div>
+        <div class="calibration" aria-hidden="true">0&nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;8&nbsp;&nbsp;9&nbsp;&nbsp;10</div>
       </div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Articles Overlay -->
-  <div id="articles-overlay" class="hidden" aria-hidden="true">
-    <div id="articles-panel">
-      <div class="articles-head">
-        <h2>Articles</h2>
-        <button id="articles-close-btn" class="panel-close-btn" type="button" tabindex="-1" aria-label="Close articles">&times;</button>
+    <section id="phase-lock" class="phase-lock" hidden aria-live="assertive">
+      <div class="lock-instrument">
+        <p>PHASE // ACQUIRE</p><strong id="lock-status">ALIGNING CARRIERS</strong>
+        <svg viewBox="0 0 760 190" role="img" aria-label="Two waveforms converging into phase lock">
+          <path class="lock-grid" d="M0 38H760M0 76H760M0 114H760M0 152H760M95 0V190M190 0V190M285 0V190M380 0V190M475 0V190M570 0V190M665 0V190"/>
+          <path class="lock-trace trace-a" d="M0 98C32 26 63 26 95 98s63 72 95 0 63-72 95 0 63 72 95 0 63-72 95 0 63 72 95 0 63-72 95 0 63 72 95 0 63-72 95 0"/>
+          <path class="lock-trace trace-b" d="M0 126C35 62 63 45 95 98s63 53 95 0 63-53 95 0 63 53 95 0 63-53 95 0 63 53 95 0 63-53 95 0 63 53 95 0 63-53 95 0"/>
+        </svg>
+        <div class="lock-meter"><i></i></div>
+        <p id="lock-reading">Δφ 2.7841 RAD // COHERENCE 41.3%</p>
       </div>
-      <p class="articles-subhead">Long-form writing from The Signal Thread. Master copies live here.</p>
-      <div id="articles-grid"></div>
-    </div>
-  </div>
+    </section>
 
-  <!-- Footer -->
-  <footer id="footer" class="graph-hidden">
-    <div class="footer-content">
-      <div class="social-links">
-        <a href="mailto:gushalwani@alum.mit.edu" target="_blank" rel="noopener">Email</a>
-        <a href="https://linkedin.com/in/gushalwani" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://www.researchgate.net/profile/Gus-Halwani" target="_blank" rel="noopener">ResearchGate</a>
+    <section id="landing" class="solved-intro hidden" aria-labelledby="intro-title">
+      <div class="intro-instrument"><span>SIGNAL STABLE</span><b>STRANGE LOOP // CENTRAL NODE</b></div>
+      <div class="landing-inner">
+        <p class="eyebrow">PHASE LOCKED // IDENTITY DECRYPTED // YOU ARE IN</p>
+        <h1 id="intro-title">You solved it.<br>You are in.</h1>
+        <p class="landing-statement">Either you notice patterns unusually well, or you refuse to leave mysterious buttons alone. Both are qualities I appreciate more than is probably reasonable.</p>
+        <p class="landing-statement">Hi, I’m Gus. I started in biological neural nets and ended up in artificial ones—though I still think carbon builds better networks.</p>
+        <p class="landing-invite">This is my brain map. Now that you’ve found the signal, poke around. Follow the nodes. See where you end up.</p>
+        <p class="transmission-end">END OF TRANSMISSION.</p>
+        <button id="enter-btn" class="enter-btn" type="button">Explore the map <span>→</span></button>
       </div>
+    </section>
+
+    <div id="graph-container" class="graph-hidden">
+      <svg id="graph-svg" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <filter id="glow-left" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="glow-right" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="glow-center" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <g id="edges-group"></g><g id="pulse-group" aria-hidden="true"></g><g id="nodes-group"></g>
+      </svg>
+      <p class="graph-hint">hover a node to trace the signal. click to open the story.</p>
     </div>
-  </footer>
+  </main>
 
-  <!-- Hemisphere Labels -->
-  <div id="hemisphere-labels" class="graph-hidden">
-    <span class="hemisphere-label left">Digital</span>
-    <span class="hemisphere-label right">Analog</span>
-  </div>
+  <div id="content-overlay" class="hidden"><div id="content-panel"><button id="close-btn" type="button" aria-label="Close">&times;</button><p class="panel-index">PERSONA FRAGMENT // DECRYPTED</p><h2 id="content-title">Selected node</h2><p id="content-body"></p><div id="content-connections"><span class="connections-label">FOLLOW SIGNAL:</span><div id="connections-list"></div></div><div id="content-links" class="hidden"><span class="connections-label">LINKS:</span><div id="links-list"></div></div></div></div>
+  <div id="articles-overlay" class="hidden" aria-hidden="true"><div id="articles-panel"><div class="articles-head"><h2>Articles</h2><button id="articles-close-btn" class="panel-close-btn" type="button" tabindex="-1" aria-label="Close articles">&times;</button></div><p class="articles-subhead">Long-form writing from The Signal Thread.</p><div id="articles-grid"></div></div></div>
+  <aside id="transcript-panel" class="transcript-panel" hidden><button id="transcript-close" type="button">Close transcript</button><p id="transcript-copy"></p></aside>
+  <footer id="footer" class="graph-hidden"><div class="social-links"><button id="copy-email" type="button">gushalwani[at]alum[dot]mit[dot]edu</button><a href="https://linkedin.com/in/gushalwani" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.researchgate.net/profile/Gus-Halwani" target="_blank" rel="noopener">ResearchGate</a></div></footer>
+  <div id="hemisphere-labels" class="graph-hidden"><span class="hemisphere-label left">DIGITAL / SYSTEM</span><span class="hemisphere-label right">ANALOG / HUMAN</span></div>
 
-  <script src="js/graph.js"></script>
-  <script src="js/main.js?v=20260808f"></script>
+  <audio id="ambient-audio" preload="auto" playsinline src="elsewhere/assets/audio/carrier-thirteen.mp3?v=2"></audio>
+  <audio id="message-audio" preload="metadata" playsinline></audio>
+  <script src="js/graph.js?v=20260818a"></script>
+  <script src="js/main.js?v=20260818a"></script>
+  <script src="js/signal-bench.js?v=20260818a"></script>
 </body>
 </html>
