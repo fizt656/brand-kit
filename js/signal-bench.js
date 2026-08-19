@@ -7,11 +7,23 @@
   const CLEAR_EMAIL = 'gushalwani[at]alum[dot]mit[dot]edu';
   const GLYPHS = '0123456789ABCDEF∆◇#?/[]';
   const TRANSCRIPTS = {
-    entry: 'If you’re hearing this, that means you’re close to getting in.\n\nThere are four stages in the signal path, but they’re out of sequence.\n\nPut them back in the order the signal traveled. When the phases align, the rest will decrypt.\n\nI’ll see you on the other side.\n\nEnd of transmission.',
+    entry: 'If you’re hearing this, that means you’re close to getting in.\n\nYou don’t need to know me yet, but you need to know this:\n\nI started by listening. Then, that took me into the human brain. Then, I learned how to reach other people’s brains. And now, I connect the real brains to artificial ones.\n\nPut the four stages in that order. When the phases align, access will be granted.\n\nI’ll see you on the other side.\n\nEnd of transmission.',
     map: 'You solved it. You are in.\n\nEither you notice patterns unusually well, or you refuse to leave mysterious buttons alone. Both are qualities I appreciate more than is probably reasonable.\n\nHi, I’m Gus. I started in biological neural nets and ended up in artificial ones—though I still think carbon builds better networks.\n\nThis is my brain map. Now that you’ve found the signal, poke around. Follow the nodes. See where you end up.\n\nEnd of transmission.'
   };
+  const ENTRY_CAPTIONS = [
+    'If you’re hearing this, that means you’re close to getting in.',
+    'You don’t need to know me yet, but you need to know this:',
+    'I started by listening.',
+    'Then, that took me into the human brain.',
+    'Then, I learned how to reach other people’s brains.',
+    'And now, I connect the real brains to artificial ones.',
+    'Put the four stages in that order.',
+    'When the phases align, access will be granted.',
+    'I’ll see you on the other side.',
+    'End of transmission.'
+  ];
   const TRACKS = {
-    entry: 'assets/audio/message-entry.mp3?v=1',
+    entry: 'assets/audio/message-entry.mp3?v=2',
     map: 'assets/audio/message-map.mp3?v=1'
   };
   const FX = {
@@ -40,8 +52,7 @@
   const messageAudio = $('#message-audio');
   const ambient = $('#ambient-audio');
   const soundToggle = $('#sound-toggle');
-  const transcriptPanel = $('#transcript-panel');
-  const transcriptCopy = $('#transcript-copy');
+  const entryCaptions = $('#entry-captions');
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
 
   let saved = load();
@@ -52,6 +63,7 @@
   let cipherTimer = 0;
   let audioActivated = false;
   let lastMapFx = -1;
+  let pendingArrivalTrack = null;
 
   function load() {
     try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); }
@@ -138,7 +150,7 @@
     messageAudio.src = TRACKS[track];
     messageAudio.load();
     syncMessageUi();
-    transcriptCopy.textContent = TRANSCRIPTS[track];
+    hideCaptions();
   }
   function syncMessageUi() {
     const playing = !messageAudio.paused;
@@ -148,18 +160,57 @@
     messageButton.querySelector('strong').textContent = isHeard() ? 'MESSAGE' : 'NEW MESSAGE';
     messageState.textContent = playing ? 'PLAYING' : isHeard() ? 'REPLAY' : 'PLAY';
   }
-  function toggleMessage() {
+  function playMessage() {
     activateAudio();
+    if (messageAudio.ended) messageAudio.currentTime = 0;
+    messageAudio.volume = .54;
+    fadeAudio(ambient, .055, 300);
+    return messageAudio.play().then(() => {
+      pendingArrivalTrack = null;
+      playFx('tapeStart', .5);
+    }).catch(() => {
+      pendingArrivalTrack = isHeard() ? null : messageTrack;
+      messageState.textContent = 'TAP TO PLAY';
+    });
+  }
+  function toggleMessage() {
     if (!messageAudio.paused) {
       messageAudio.pause();
       playFx('tapeStop', .52);
       return;
     }
-    if (messageAudio.ended) messageAudio.currentTime = 0;
-    playFx('tapeStart', .5);
-    messageAudio.volume = .54;
-    fadeAudio(ambient, .055, 300);
-    messageAudio.play().catch(() => { messageState.textContent = 'TAP AGAIN'; });
+    playMessage();
+  }
+  function attemptArrivalPlayback(track = messageTrack) {
+    activateAudio();
+    if (track !== messageTrack || isHeard(track)) return;
+    pendingArrivalTrack = track;
+    playMessage();
+  }
+  function unlockAudioOnFirstInteraction() {
+    activateAudio();
+    if (pendingArrivalTrack === messageTrack && !isHeard()) playMessage();
+  }
+  function hideCaptions() {
+    entryCaptions.hidden = true;
+    entryCaptions.textContent = '';
+  }
+  function updateCaptions() {
+    if (messageTrack !== 'entry' || messageAudio.paused || !Number.isFinite(messageAudio.duration) || messageAudio.duration <= 0) {
+      hideCaptions();
+      return;
+    }
+    const weights = ENTRY_CAPTIONS.map(line => Math.max(3, line.split(/\s+/).length));
+    const total = weights.reduce((sum, weight) => sum + weight, 0);
+    const position = Math.min(.999, messageAudio.currentTime / messageAudio.duration) * total;
+    let cursor = 0;
+    let index = 0;
+    for (; index < weights.length - 1; index += 1) {
+      cursor += weights[index];
+      if (position < cursor) break;
+    }
+    entryCaptions.textContent = ENTRY_CAPTIONS[index];
+    entryCaptions.hidden = false;
   }
   function resetSelection() {
     selected = [];
@@ -231,6 +282,7 @@
       landing.classList.remove('hidden');
       $('#articles-btn').classList.remove('is-hidden');
       selectTrack('map');
+      attemptArrivalPlayback('map');
       messageButton.focus();
     }, reducedMotion.matches ? 120 : 2850);
   }
@@ -264,13 +316,15 @@
   $$('.signal-module').forEach(button => button.addEventListener('click', () => chooseStage(button)));
   addEventListener('resize', () => { if (selected.length) drawCables(); });
   messageButton.addEventListener('click', toggleMessage);
-  messageAudio.addEventListener('play', syncMessageUi);
-  messageAudio.addEventListener('pause', () => { syncMessageUi(); if (musicOn) fadeAudio(ambient, solved ? .12 : .16, 380); });
+  messageAudio.addEventListener('play', () => { syncMessageUi(); updateCaptions(); });
+  messageAudio.addEventListener('timeupdate', updateCaptions);
+  messageAudio.addEventListener('pause', () => { syncMessageUi(); hideCaptions(); if (musicOn) fadeAudio(ambient, solved ? .12 : .16, 380); });
   messageAudio.addEventListener('ended', () => {
     saved[`${messageTrack}Heard`] = true;
     save();
     syncMessageUi();
     playFx('tapeStop', .46);
+    hideCaptions();
     if (musicOn) fadeAudio(ambient, solved ? .12 : .16, 420);
   });
   soundToggle.addEventListener('click', () => {
@@ -288,14 +342,15 @@
     try { await navigator.clipboard.writeText('gushalwani@alum.mit.edu'); identityEmail.textContent = 'EMAIL COPIED'; setTimeout(() => identityEmail.textContent = CLEAR_EMAIL, 1200); } catch (_) {}
   });
   $('#copy-email').addEventListener('click', () => identity.click());
-  $('#transcript-open').addEventListener('click', () => { transcriptCopy.textContent = TRANSCRIPTS[messageTrack]; transcriptPanel.hidden = false; $('#transcript-close').focus(); });
-  $('#transcript-close').addEventListener('click', () => { transcriptPanel.hidden = true; $('#transcript-open').focus(); });
+  addEventListener('pointerdown', unlockAudioOnFirstInteraction, { once: true, passive: true });
+  addEventListener('keydown', unlockAudioOnFirstInteraction, { once: true });
 
   ambient.loop = true;
   ambient.volume = solved ? .12 : .16;
   updateMusicUi();
   if (solved) showPersistedSolvedState(); else startCipher();
   selectTrack(messageTrack);
+  attemptArrivalPlayback(messageTrack);
 
   window.SignalBench = { isSolved: () => solved, sound: playMapFx, onReturnHome, activateAudio };
 })();

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="description" content="Gus Halwani — audio, cortex, classroom, model, and the human signal connecting them.">
+  <meta name="description" content="Gus Halwani — sound, organic brains, teaching, synthetic brains, and the human signal connecting them.">
   <meta name="theme-color" content="#070b08">
   <title>Gus Halwani — Signal Bench</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M5 34h9l4-12 7 25 7-34 7 28 5-13 5 6h10' fill='none' stroke='%23d7832f' stroke-width='3'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=20260818a">
-  <link rel="stylesheet" href="css/signal-bench.css?v=20260818a">
+  <link rel="stylesheet" href="css/styles.css?v=20260818b">
+  <link rel="stylesheet" href="css/signal-bench.css?v=20260818b">
 </head>
 <body data-signal-state="searching">
   <a class="skip-link" href="#signal-bench">Skip to the signal bench</a>
@@ -32,7 +32,6 @@
       <button id="home-btn" class="nav-btn is-hidden" type="button">Strange Loop</button>
       <button id="articles-btn" class="nav-btn is-hidden" type="button">Articles</button>
       <button id="sound-toggle" class="nav-btn" type="button" aria-pressed="true">Music: on</button>
-      <button id="transcript-open" class="nav-btn" type="button">Transcript</button>
       <button id="reset-puzzle" class="nav-btn" type="button">Reset site puzzle</button>
     </nav>
   </header>
@@ -51,19 +50,19 @@
         <svg id="patch-cables" class="patch-cables" aria-hidden="true"></svg>
         <div class="module-grid">
           <button class="signal-module module-classroom" type="button" data-stage="classroom">
-            <span class="module-index">03</span><span class="module-wave">┄╱╲┄╱╲┄</span><strong>CLASSROOM</strong><small>MAKE IT TRANSFERABLE</small><i></i>
+            <span class="module-wave">┄╱╲┄╱╲┄</span><strong>LEARNING TO TEACH</strong><small>REACH OTHER PEOPLE’S BRAINS</small><i></i>
           </button>
           <button class="signal-module module-audio" type="button" data-stage="audio">
-            <span class="module-index">01</span><span class="module-wave">∿∿∿∿∿∿</span><strong>AUDIO</strong><small>FIND THE SIGNAL</small><i></i>
+            <span class="module-wave">∿∿∿∿∿∿</span><strong>SOUND &amp; MUSIC</strong><small>START BY LISTENING</small><i></i>
           </button>
           <button class="signal-module module-model" type="button" data-stage="model">
-            <span class="module-index">04</span><span class="module-wave">◇─◇─◇─◇</span><strong>MODEL</strong><small>BUILD THE INSTRUMENT</small><i></i>
+            <span class="module-wave">◇─◇─◇─◇</span><strong>SYNTHETIC BRAINS</strong><small>CONNECT REAL TO ARTIFICIAL</small><i></i>
           </button>
           <button class="signal-module module-cortex" type="button" data-stage="cortex">
-            <span class="module-index">02</span><span class="module-wave">○╴○╶○╴○</span><strong>CORTEX</strong><small>FOLLOW IT INWARD</small><i></i>
+            <span class="module-wave">○╴○╶○╴○</span><strong>ORGANIC BRAINS</strong><small>ENTER THE HUMAN BRAIN</small><i></i>
           </button>
         </div>
-        <div id="human-out" class="human-out"><span>05</span><strong>HUMAN OUT</strong><small>HELP SOMEONE</small><i></i></div>
+        <div id="human-out" class="human-out"><strong>HUMAN OUT</strong><small>ACCESS GRANTED</small><i></i></div>
         <div class="calibration" aria-hidden="true">0&nbsp;&nbsp;1&nbsp;&nbsp;2&nbsp;&nbsp;3&nbsp;&nbsp;4&nbsp;&nbsp;5&nbsp;&nbsp;6&nbsp;&nbsp;7&nbsp;&nbsp;8&nbsp;&nbsp;9&nbsp;&nbsp;10</div>
       </div>
     </section>
@@ -109,14 +108,14 @@
 
   <div id="content-overlay" class="hidden"><div id="content-panel"><button id="close-btn" type="button" aria-label="Close">&times;</button><p class="panel-index">PERSONA FRAGMENT // DECRYPTED</p><h2 id="content-title">Selected node</h2><p id="content-body"></p><div id="content-connections"><span class="connections-label">FOLLOW SIGNAL:</span><div id="connections-list"></div></div><div id="content-links" class="hidden"><span class="connections-label">LINKS:</span><div id="links-list"></div></div></div></div>
   <div id="articles-overlay" class="hidden" aria-hidden="true"><div id="articles-panel"><div class="articles-head"><h2>Articles</h2><button id="articles-close-btn" class="panel-close-btn" type="button" tabindex="-1" aria-label="Close articles">&times;</button></div><p class="articles-subhead">Long-form writing from The Signal Thread.</p><div id="articles-grid"></div></div></div>
-  <aside id="transcript-panel" class="transcript-panel" hidden><button id="transcript-close" type="button">Close transcript</button><p id="transcript-copy"></p></aside>
+  <div id="entry-captions" class="entry-captions" role="status" aria-live="polite" aria-atomic="true" hidden></div>
   <footer id="footer" class="graph-hidden"><div class="social-links"><button id="copy-email" type="button">gushalwani[at]alum[dot]mit[dot]edu</button><a href="https://linkedin.com/in/gushalwani" target="_blank" rel="noopener">LinkedIn</a><a href="https://www.researchgate.net/profile/Gus-Halwani" target="_blank" rel="noopener">ResearchGate</a></div></footer>
   <div id="hemisphere-labels" class="graph-hidden"><span class="hemisphere-label left">DIGITAL / SYSTEM</span><span class="hemisphere-label right">ANALOG / HUMAN</span></div>
 
   <audio id="ambient-audio" preload="auto" playsinline src="elsewhere/assets/audio/carrier-thirteen.mp3?v=2"></audio>
   <audio id="message-audio" preload="metadata" playsinline></audio>
-  <script src="js/graph.js?v=20260818a"></script>
-  <script src="js/main.js?v=20260818a"></script>
-  <script src="js/signal-bench.js?v=20260818a"></script>
+  <script src="js/graph.js?v=20260818b"></script>
+  <script src="js/main.js?v=20260818b"></script>
+  <script src="js/signal-bench.js?v=20260818b"></script>
 </body>
 </html>
