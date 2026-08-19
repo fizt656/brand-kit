@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="HALWANI — independent creative production and AI systems consulting by Gus Halwani.">
+  <meta name="theme-color" content="#070b08">
+  <link rel="canonical" href="https://gushalwani.com/studio/">
+  <title>HALWANI — Creative Production &amp; AI Systems</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23070b08'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23d7832f' stroke-width='2'/%3E%3Cpath d='M8 16h5l2-3 3 6 2-3h4' fill='none' stroke='%23d7832f' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;family=Barlow+Condensed:wght@600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/signal-studio.css?v=20260819b">
+</head>
+<body>
+  <main class="landing-shell">
+    <header class="site-header">
+      <nav class="site-nav" aria-label="Studio information">
+        <button class="nav-tab is-active" type="button" data-panel="about" aria-controls="about" aria-selected="true"><span class="tab-prompt" aria-hidden="true">./</span>about</button>
+        <button class="nav-tab" type="button" data-panel="inquire" aria-controls="inquire" aria-selected="false"><span class="tab-prompt" aria-hidden="true">./</span>inquire</button>
+        <a class="brain-map-link" href="../" aria-label="Explore Gus Halwani's brain map">
+          <svg class="network-mark" viewBox="0 0 44 28" aria-hidden="true">
+            <path d="M9 7 21 14 34 6M21 14l9 9M21 14 8 8" />
+            <circle cx="9" cy="7" r="2.5" />
+            <circle cx="34" cy="6" r="2.5" />
+            <circle class="network-core" cx="21" cy="14" r="3.5" />
+            <circle cx="13" cy="22" r="2.5" />
+            <circle cx="30" cy="23" r="2.5" />
+          </svg>
+          <span>Explore my brain map</span>
+        </a>
+      </nav>
+
+      <div class="panel-stack" aria-live="polite">
+        <section class="info-panel is-active" id="about" aria-labelledby="about-label">
+          <h1 id="about-label" class="sr-only">About</h1>
+          <p class="panel-intro">An independent studio in two lanes.</p>
+          <ul class="lane-list">
+            <li><span class="lane-key" aria-hidden="true">01</span>Creative direction &amp; production — worlds, images, film, and sound.</li>
+            <li><span class="lane-key" aria-hidden="true">02</span>AI systems consulting — practical workflows, built with you, yours to own.</li>
+          </ul>
+          <p class="panel-note">AI-led, hybrid, or physical. How the work is made is always clear.</p>
+        </section>
+
+        <section class="info-panel" id="inquire" aria-labelledby="inquire-label" hidden>
+          <h1 id="inquire-label" class="sr-only">Inquire</h1>
+          <a class="email" id="email-link" href="#" rel="nofollow">gushalwani [at] alum [dot] mit [dot] edu</a>
+          <p>Currently taking on a small number of projects with brands, artists, and good people making interesting things.</p>
+        </section>
+      </div>
+    </header>
+
+    <div class="wordmark" aria-label="Halwani">
+      <span class="wordmark-text">Halwani</span><span class="wordmark-cursor" aria-hidden="true"></span>
+    </div>
+  </main>
+
+  <script>
+    const tabs = document.querySelectorAll('.nav-tab');
+    const panels = document.querySelectorAll('.info-panel');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const selected = tab.dataset.panel;
+
+        tabs.forEach((item) => {
+          const active = item === tab;
+          item.classList.toggle('is-active', active);
+          item.setAttribute('aria-selected', String(active));
+        });
+
+        panels.forEach((panel) => {
+          const active = panel.id === selected;
+          panel.hidden = !active;
+          panel.classList.toggle('is-active', active);
+        });
+      });
+    });
+
+    const emailLink = document.getElementById('email-link');
+    emailLink.addEventListener('click', (event) => {
+      event.preventDefault();
+      const user = ['gus', 'halwani'].join('');
+      const host = ['alum', 'mit', 'edu'].join('.');
+      window.location.href = 'mailto:' + user + '@' + host + '?subject=' + encodeURIComponent('Project inquiry');
+    });
+  </script>
+</body>
+</html>

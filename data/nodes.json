@@ -19,12 +19,37 @@
         "squiggy",
         "ai-roleplay",
         "gym",
-        "watch"
+        "watch",
+        "studio"
       ],
       "content": {
         "title": "Gus Halwani, PhD",
         "body": "You solved it. You are in.\n\nEither you notice patterns unusually well, or you refuse to leave mysterious buttons alone. Both are qualities I appreciate more than is probably reasonable.\n\nHi, I’m Gus. I started in biological neural nets and ended up in artificial ones—though I still think carbon builds better networks.\n\nThis is my brain map. Now that you’ve found the signal, poke around. Follow the nodes. See where you end up.\n\ngushalwani[at]alum[dot]mit[dot]edu\n\nEND OF TRANSMISSION.",
         "image": null
+      }
+    },
+    {
+      "id": "studio",
+      "label": "HALWANI / STUDIO",
+      "hemisphere": "center",
+      "x": 50,
+      "y": 17,
+      "connections": [
+        "center",
+        "making",
+        "ai-education"
+      ],
+      "content": {
+        "title": "HALWANI",
+        "body": "An independent studio in two lanes: creative direction and production for worlds, images, film, and sound; and practical AI systems consulting built with the people who will own the work.\n\nThe commercial front door. The same signal, made useful.",
+        "image": null,
+        "links": [
+          {
+            "label": "Enter the studio →",
+            "url": "studio/",
+            "sameTab": true
+          }
+        ]
       }
     },
     {
@@ -34,6 +59,7 @@
       "x": 30,
       "y": 35,
       "connections": [
+        "studio",
         "neurace",
         "mit",
         "neuroscience",
@@ -238,6 +264,7 @@
       "x": 20,
       "y": 72,
       "connections": [
+        "studio",
         "flow-state",
         "kitchen",
         "djing",

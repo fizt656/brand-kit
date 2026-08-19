@@ -59,59 +59,53 @@ button {
 .site-nav {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: clamp(20px, 2.6vw, 36px);
   align-self: start;
 }
 
-.signal-mark {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 18px;
-  height: 18px;
-  margin-right: 5px;
-  border: 1px solid var(--signal-amber);
-  border-radius: 50%;
+.brain-map-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(231, 226, 215, .66);
+  font: 400 .68rem/1 var(--mono);
+  letter-spacing: .025em;
   text-decoration: none;
+  transition: color .18s ease;
 }
 
-.signal-mark::before,
-.signal-mark::after,
-.signal-mark span {
-  content: "";
-  position: absolute;
-  height: 1px;
-  background: var(--signal-amber);
+.network-mark {
+  width: 32px;
+  height: 21px;
+  overflow: visible;
 }
 
-.signal-mark::before {
-  left: 3px;
-  width: 3px;
+.network-mark path {
+  fill: none;
+  stroke: rgba(231, 226, 215, .26);
+  stroke-width: 1;
 }
 
-.signal-mark span {
-  left: 7px;
-  width: 4px;
-  transform: rotate(-50deg);
+.network-mark circle {
+  fill: var(--signal-black);
+  stroke: var(--signal-amber);
+  stroke-width: 1.25;
+  transition: fill .18s ease;
 }
 
-.signal-mark::after {
-  right: 3px;
-  width: 3px;
+.network-mark .network-core {
+  fill: var(--signal-amber);
 }
 
-.signal-mark:hover,
-.signal-mark:focus-visible {
-  background: var(--signal-amber);
+.brain-map-link:hover,
+.brain-map-link:focus-visible {
+  color: var(--signal-chalk);
 }
 
-.signal-mark:hover::before,
-.signal-mark:hover::after,
-.signal-mark:hover span,
-.signal-mark:focus-visible::before,
-.signal-mark:focus-visible::after,
-.signal-mark:focus-visible span {
-  background: var(--signal-black);
+.brain-map-link:hover .network-mark circle,
+.brain-map-link:focus-visible .network-mark circle {
+  fill: var(--signal-amber);
 }
 
 .nav-tab {
@@ -144,7 +138,7 @@ button {
 }
 
 .nav-tab:focus-visible,
-.signal-mark:focus-visible,
+.brain-map-link:focus-visible,
 .email:focus-visible {
   outline: 1px solid var(--signal-amber);
   outline-offset: 5px;
@@ -285,6 +279,15 @@ button {
   .site-header {
     grid-template-columns: 1fr;
     gap: 42px;
+  }
+
+  .site-nav {
+    column-gap: 28px;
+    row-gap: 18px;
+  }
+
+  .brain-map-link {
+    flex-basis: 100%;
   }
 
   .panel-stack {

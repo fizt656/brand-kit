@@ -47,6 +47,7 @@ const App = {
   closeBtn: null,
   homeBtn: null,
   articlesBtn: null,
+  studioBtn: null,
   articlesOverlay: null,
   articlesCloseBtn: null,
   articlesGrid: null,
@@ -72,6 +73,7 @@ const App = {
     this.closeBtn = document.getElementById('close-btn');
     this.homeBtn = document.getElementById('home-btn');
     this.articlesBtn = document.getElementById('articles-btn');
+    this.studioBtn = document.getElementById('studio-btn');
     this.articlesOverlay = document.getElementById('articles-overlay');
     this.articlesCloseBtn = document.getElementById('articles-close-btn');
     this.articlesGrid = document.getElementById('articles-grid');
@@ -110,6 +112,7 @@ const App = {
     document.body.dataset.signalState = 'map';
     this.homeBtn.classList.remove('is-hidden');
     this.articlesBtn.classList.remove('is-hidden');
+    this.studioBtn.classList.remove('is-hidden');
     if (window.SignalBench) window.SignalBench.activateAudio();
 
     const show = () => {
@@ -242,6 +245,7 @@ const App = {
     this.footer.classList.add('graph-hidden');
     this.hemisphereLabels.classList.add('graph-hidden');
     this.homeBtn.classList.add('is-hidden');
+    this.studioBtn.classList.add('is-hidden');
     this.landing.classList.remove('hidden');
     if (window.SignalBench) window.SignalBench.onReturnHome();
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -363,8 +367,10 @@ const App = {
       const anchor = document.createElement('a');
       anchor.className = 'external-link';
       anchor.href = link.url;
-      anchor.target = '_blank';
-      anchor.rel = 'noopener';
+      if (!link.sameTab) {
+        anchor.target = '_blank';
+        anchor.rel = 'noopener';
+      }
       anchor.textContent = link.label;
       this.linksList.appendChild(anchor);
     });

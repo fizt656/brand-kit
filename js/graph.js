@@ -116,6 +116,8 @@ const Graph = {
       let radius;
       if (node.id === 'center') {
         radius = 16;
+      } else if (node.id === 'studio') {
+        radius = 13;
       } else {
         // Base 5, +0.8 per connection, capped at 14
         radius = Math.min(5 + connCount * 0.8, 14);
@@ -128,6 +130,15 @@ const Graph = {
         halo.setAttribute('cx', node.x);
         halo.setAttribute('cy', node.y);
         halo.setAttribute('r', 22);
+        group.appendChild(halo);
+      }
+
+      if (node.id === 'studio') {
+        const halo = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        halo.setAttribute('class', 'studio-halo');
+        halo.setAttribute('cx', node.x);
+        halo.setAttribute('cy', node.y);
+        halo.setAttribute('r', 21);
         group.appendChild(halo);
       }
 
