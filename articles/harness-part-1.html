@@ -1,83 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260808f" />
-  <link rel="stylesheet" href="../css/article.css?v=20260808f" />
-  <title>The Harness Is the Strategy — Part I</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Why the model is only one part of an AI system, and the harness around it is where strategy becomes real.">
+  <title>The Harness Is the Strategy, Part I — Gus Halwani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260818b"><link rel="stylesheet" href="../css/article.css?v=20260819a">
 </head>
 <body class="article-page">
-  <header id="site-header" class="cv-header">
-    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="../index.html" class="nav-btn nav-link">Main</a>
-      <!-- Placeholder pages hidden until content is ready:
-           work.html, creative.html, family.html, speaking.html, contact.html -->
-      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
-    </nav>
-  </header>
+  <header id="site-header"><div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div><nav class="site-nav" aria-label="Primary"><a href="../index.html" class="nav-btn">Main</a><a href="../index.html?view=articles" class="nav-btn">Articles</a></nav></header>
+  <main class="article-wrap"><article class="article-card">
+    <div class="article-top"><div class="article-kicker">AI Harness / 01</div><h1 class="article-title">The Harness Is the Strategy</h1><p class="article-subtitle">Part I: The model is an ingredient. Stop confusing it with the meal.</p><div class="article-meta">Field note / Gus Halwani</div></div>
+    <div class="article-body">
+      <p>People keep asking, “What is the best model?”</p>
+      <p>Reasonable question. Increasingly, not the most useful one.</p>
+      <p>Most frontier models are already capable enough to do a surprising amount of real work. The harder problem is everything around them: the tools they can use, the context they receive, the permissions they inherit, the human decisions they interrupt, and whether anybody bothered to define what “better” means.</p>
+      <p>That whole arrangement is the <strong>harness</strong>.</p>
 
-  <main class="article-wrap">
-    <article class="article-card">
-      <div class="article-top">
-        <div class="article-kicker">AI Harness</div>
-        <h1 class="article-title">The Harness Is the Strategy — Part I</h1>
-        <p class="article-subtitle">Part I · The strategic unit is the harness</p>
-        <div class="article-meta"><a href="../index.html?view=articles">gushalwani.com</a></div>
-      </div>
-      <div class="article-body">
-<p>A question we get a lot is: <strong>“What’s the best model?”</strong></p>
-    <p>At this point, most SOTA models are already more than capable for a wide range of real-world work. So the harder question is no longer raw model capability. It’s whether we’re measuring value in context, with clear task-level outcomes, instead of broad usage metrics that feel good but don’t say much.</p>
-    <p>That’s where we think the conversation needs to shift, from the model itself to the <strong>harness</strong> around it.</p>
-    <p>By harness, we mean the practical system around a model, tools, environment, workflows, guardrails, human checkpoints, and feedback loops, that determines whether AI produces repeatable value in the setting it actually operates in.</p>
-    <p>In recent conversations with peers, we kept seeing the same pattern. Under pressure, everyone naturally compares model benchmarks: latency, evals, context windows, price per token. All useful, but not enough on their own.</p>
-    <p>Then someone asked a better question:</p>
-    <p><strong>“If we swapped the model tomorrow, what in your workflow would still create the same value? What might improve, and what might drop?”</strong></p>
-    <p>That question shifted the conversation fast. Not dramatic, just honest. We are all learning this in real time.</p>
-    <p>The takeaway was pretty consistent: many teams still treat model selection as strategy, when it is really one component choice inside a much larger system. The teams seeing durable value are usually not the ones that “picked a winner.” They are the ones building a harness that fits their environment, tasks, and constraints.</p>
-    <p>So yes, model quality matters.</p>
-    <p>But strategy starts one layer up.</p>
-    <h2>What We Mean by “Harness”</h2>
-    <p>We use <strong>harness</strong> in a specific way.</p>
-    <p>A harness is not just a safety wrapper or a policy document. It is the operational architecture around a model that determines whether capability turns into outcomes.</p>
-    <p>At minimum, that includes:</p>
-    <ul>
-    <li><strong>Tooling layer:</strong> retrieval, APIs, internal systems, execution boundaries</li>
-    <li><strong>Environment layer:</strong> permissions, sandboxing, observability, rollback paths</li>
-    <li><strong>Human positioning layer:</strong> where people review, intervene, escalate, or delegate</li>
-    <li><strong>Measurement layer:</strong> what “good” looks like by task category, and how we track it over time</li>
-    </ul>
-    <p>When people say “human in the loop,” the conversation often stops at governance language. The more useful question is more precise:</p>
-    <p><strong>Where is the human in the loop, for which tasks, at which risk thresholds, with what decision rights?</strong></p>
-    <p>That is not semantics. It is performance engineering.</p>
-    <h2>Why “Human in the Loop” and “Guardrails” Are Necessary, and Still Incomplete</h2>
-    <p>To be fair, this framing emerged for good reasons. Teams needed practical language for safety, compliance, accountability, and risk controls. “Human in the loop” and “guardrails” gave us a starting point.</p>
-    <p>But when that framing becomes the whole operating model, we usually see two predictable failure modes:</p>
-    <p>1. <strong>Control-heavy stagnation</strong></p>
-    <p>   Everything routes through bottlenecks, pilots drag, and teams conclude “AI is overhyped” when the underlying issue is architecture.</p>
-    <p>2. <strong>Capability-heavy chaos</strong></p>
-    <p>   Teams skip structure, ship brittle systems, then overcorrect with blanket restrictions after the first incident.</p>
-    <p>A good harness has to do both jobs at once:</p>
-    <ul>
-    <li>reduce downside</li>
-    <li>preserve and amplify upside</li>
-    </ul>
-    <p>Too much inhibition, no learning.</p>
-    <p>Too much improvisation, no coherence.</p>
-    <p>If we’ve ever played in a jazz combo, we know this instinctively: we need a chart, a key center, and shared timing, but we also need room for emergence. Enterprise AI is not that different. Constraints and creativity are co-requirements.</p>
-    <p>In neuro terms, we should think less in terms of a single reflex loop and more in terms of a coordinated network: inhibitory control when stakes are high, fast pathways when opportunity is time-sensitive, and plasticity so the system improves from feedback instead of repeating mistakes with better branding.</p>
-    <hr class="article-hr">
-    <p><strong>Next in Part 2:</strong> If harness is the strategic unit, how do we evaluate whether a harness is actually good under uncertainty?</p>
-      </div>
-      <div class="article-cta">
-        <a href="../index.html?view=articles">← Back to Articles</a>
-        <a href="../index.html?view=map">Back to Map</a>
-      </div>
-    </article>
-  </main>
+      <h2>Swap the model</h2>
+      <p>Here is the question I find more revealing:</p>
+      <p><strong>If you swapped the model tomorrow, what part of your system would still create value?</strong></p>
+      <p>If the answer is “not much,” then you do not have an AI strategy. You have a vendor preference.</p>
+      <p>A good harness carries the durable parts: retrieval, tools, workflow, permissions, measurement, human judgment, feedback, and a way to recover when the model does something weird. Which it will. They all do. So do people.</p>
+
+      <h2>Put the human somewhere specific</h2>
+      <p>“Human in the loop” sounds responsible. It is also so vague that it can mean almost anything.</p>
+      <p>Which human? In which loop? Reviewing what? At what risk threshold? With the authority to change what happens next?</p>
+      <p>Those are design questions, not compliance garnish.</p>
+      <p>For one task, the human should initiate and approve. For another, review only exceptions. Somewhere else, the human may be the bottleneck we are pretending is a safeguard. You have to look at the work.</p>
+
+      <h2>Control and emergence</h2>
+      <p>The two common failures are almost opposites.</p>
+      <ul>
+        <li>Control everything, route every output through three committees, and kill the value before it appears.</li>
+        <li>Wire up every tool, call it innovation, then discover governance after the first crater.</li>
+      </ul>
+      <p>A useful harness has to reduce downside without flattening upside.</p>
+      <p>Musicians understand this. You need a key, a tempo, and enough shared structure to stay together. You also need room for something to happen that nobody wrote down.</p>
+      <p>AI systems need the same tension: constraints strong enough to create coherence, freedom large enough to create value, and feedback fast enough to tell the difference.</p>
+
+      <h2>Strategy starts one layer up</h2>
+      <p>Model quality matters. Of course it does.</p>
+      <p>But the model is not where your organization’s judgment lives. It is not where accountability lives. It is not where the workflow learns.</p>
+      <p>The strategic unit is the system that turns capability into a repeatable human outcome.</p>
+      <p>That is the harness. And that is where the real work starts.</p>
+      <hr class="article-hr"><p><strong>Next:</strong> How to test whether a harness actually holds up when reality stops cooperating.</p>
+    </div>
+    <div class="article-cta"><a href="../index.html?view=articles">← Back to articles</a><a href="./harness-part-2.html">Read part II →</a></div>
+  </article></main>
 </body>
 </html>

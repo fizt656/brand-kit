@@ -6,31 +6,31 @@ const ARTICLES = [
   {
     title: 'Why I Think in First Principles',
     kicker: 'The Signal Thread',
-    summary: 'A grounding piece on compasses over maps, judgment under uncertainty, and building learning systems that hold up in the real world.',
+    summary: 'Maps are useful. Until the territory changes. A note on signals, judgment, and why the human part is not decoration.',
     href: 'articles/first-principles.html'
   },
   {
     title: 'The Harness Is the Strategy — Part I',
     kicker: 'AI Harness',
-    summary: 'Why the differentiator is not raw model horsepower, but the social and technical harness around it.',
+    summary: 'The model is an ingredient. Stop confusing it with the meal.',
     href: 'articles/harness-part-1.html'
   },
   {
     title: 'The Harness Is the Strategy — Part II',
     kicker: 'AI Harness',
-    summary: 'How orchestration, trust, and adoption patterns decide outcomes faster than model upgrades do.',
+    summary: 'Three tests for the moment reality stops behaving.',
     href: 'articles/harness-part-2.html'
   },
   {
     title: 'The Harness Is the Strategy — Part III',
     kicker: 'AI Harness',
-    summary: 'Execution playbook: practical design choices for teams that want durable leverage, not demo theater.',
+    summary: 'Stop measuring access. Start measuring whether the work got better.',
     href: 'articles/harness-part-3.html'
   },
   {
     title: 'Agents Are the New Attack Surface',
     kicker: 'AI Security',
-    summary: 'Why the real risk is usually not the model itself, but the permissions, tools, habits, and setup around it.',
+    summary: 'The interface feels like a chat window. The runtime may be holding your keys.',
     href: 'articles/agents-attack-surface.html'
   }
 ];

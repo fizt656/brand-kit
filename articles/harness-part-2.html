@@ -1,108 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260808f" />
-  <link rel="stylesheet" href="../css/article.css?v=20260808f" />
-  <title>The Harness Is the Strategy — Part II</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Three practical tests for whether an AI harness holds up under uncertainty.">
+  <title>The Harness Is the Strategy, Part II — Gus Halwani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260818b"><link rel="stylesheet" href="../css/article.css?v=20260819a">
 </head>
 <body class="article-page">
-  <header id="site-header" class="cv-header">
-    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="../index.html" class="nav-btn nav-link">Main</a>
-      <!-- Placeholder pages hidden until content is ready:
-           work.html, creative.html, family.html, speaking.html, contact.html -->
-      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
-    </nav>
-  </header>
+  <header id="site-header"><div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div><nav class="site-nav" aria-label="Primary"><a href="../index.html" class="nav-btn">Main</a><a href="../index.html?view=articles" class="nav-btn">Articles</a></nav></header>
+  <main class="article-wrap"><article class="article-card">
+    <div class="article-top"><div class="article-kicker">AI Harness / 02</div><h1 class="article-title">Does the Harness Hold?</h1><p class="article-subtitle">Part II: Three tests for the moment reality stops behaving.</p><div class="article-meta">Field note / Gus Halwani</div></div>
+    <div class="article-body">
+      <p>Part I made the argument: the model is not the strategy. The harness around it is.</p>
+      <p>Fine. Now how do we know if the harness is any good?</p>
+      <p>I keep coming back to three tests. They borrow from Nassim Taleb, but this is not a book report. I am using the ideas as a wrench.</p>
 
-  <main class="article-wrap">
-    <article class="article-card">
-      <div class="article-top">
-        <div class="article-kicker">AI Harness</div>
-        <h1 class="article-title">The Harness Is the Strategy — Part II</h1>
-        <p class="article-subtitle">Part II · A Taleb lens for testing whether your AI system holds up</p>
-        <div class="article-meta"><a href="../index.html?view=articles">gushalwani.com</a></div>
-      </div>
-      <div class="article-body">
-<p>In Part 1, we argued that model selection is not the strategy.</p>
-    <p>The strategy is the harness: the operational system that turns model capability into outcomes in your real environment.</p>
-    <p>So the obvious follow-up is: <strong>how do we evaluate a harness without fooling ourselves?</strong></p>
-    <p>One useful lens comes from Nassim Taleb’s work. Not as doctrine, and definitely not as intellectual cosplay, just as a practical stress test for real systems under uncertainty.</p>
-    <p>The three lenses we keep coming back to are:</p>
-    <p><strong>Black Swan awareness</strong></p>
-    <p><strong>Antifragility</strong></p>
-    <p><strong>Skin in the game</strong></p>
-    <p>If a harness is weak on any one of these, performance and trust erode fast in production.</p>
-    <h2>1) Black Swan awareness</h2>
-    <p><strong>Can we reduce catastrophic downside without killing beneficial surprise?</strong></p>
-    <p>Most AI governance conversations over-index on one side:</p>
-    <ul>
-    <li>either “lock it all down,”</li>
-    <li>or “move fast and let the team experiment.”</li>
-    </ul>
-    <p>Both instincts are understandable. Neither is enough.</p>
-    <p>If we optimize only for predictability, we often suppress exactly the rare upside events that make AI worth deploying in the first place: unexpected synthesis, non-obvious retrieval paths, better-than-baseline first drafts, earlier signal detection.</p>
-    <p>If we optimize only for novelty, we invite preventable failures, especially where decision stakes are high.</p>
-    <p>A strong harness separates <strong>good surprise</strong> from <strong>bad surprise</strong> in practice.</p>
-    <p>That means:</p>
-    <ul>
-    <li>setting clear boundaries for where exploration is allowed</li>
-    <li>tightening controls where failure costs are asymmetric</li>
-    <li>instrumenting edge cases instead of treating them as embarrassing exceptions</li>
-    <li>creating escalation paths that are fast, not bureaucratic</li>
-    </ul>
-    <p>The test is simple: when something unusual happens, do we learn and route it, or panic and freeze?</p>
-    <h2>2) Antifragility</h2>
-    <p><strong>Does the system improve under stress, or just survive it?</strong></p>
-    <p>Many systems are robust at best. They tolerate some turbulence.</p>
-    <p>That is fine for static environments, but AI workflows are not static.</p>
-    <p>Prompts drift. Data shifts. Teams change. Vendors update silently. New failure modes appear in combinations nobody predicted in planning docs.</p>
-    <p>So the question is not “Can this harness avoid failure forever?”</p>
-    <p>It is “When failure happens, does the harness get better?”</p>
-    <p>Antifragile patterns look like this:</p>
-    <ul>
-    <li>incidents are logged with enough context to diagnose root causes</li>
-    <li>fixes are encoded into system behavior, not just tribal memory</li>
-    <li>approval thresholds evolve based on observed risk, not meeting-room anxiety</li>
-    <li>human review effort gets redistributed to high-risk zones over time</li>
-    <li>prompts, tool routing, and exception handling are versioned and auditable</li>
-    </ul>
-    <p>In other words: volatility becomes learning fuel.</p>
-    <p>If every incident leads to blanket restrictions, your harness is getting more fragile, not safer.</p>
-    <h2>3) Skin in the game</h2>
-    <p><strong>Are authority and accountability aligned across the people building and running this?</strong></p>
-    <p>This one is less technical, more structural, and usually where things break first.</p>
-    <p>When one team ships, another team absorbs operational risk, and a third team reports success metrics, even strong technical architecture becomes politically unstable.</p>
-    <p>Signs of weak skin in the game:</p>
-    <ul>
-    <li>adoption KPIs disconnected from quality outcomes</li>
-    <li>“pilot success” claims with no downstream ownership</li>
-    <li>risk teams brought in late and blamed early</li>
-    <li>frontline operators carrying exception burden without design authority</li>
-    <li>executive visibility focused on activity volume, not value quality</li>
-    </ul>
-    <p>Strong harnesses align incentives and decision rights:</p>
-    <ul>
-    <li>the people closest to operational failure modes influence design decisions</li>
-    <li>success metrics include error costs, rework, and escalation burden</li>
-    <li>governance owns tradeoffs, not just approvals</li>
-    <li>leaders are accountable for both speed and safety, not one each</li>
-    </ul>
-    <p>If accountability floats upward while consequences flow downward, the system will look good on slides and crack in production.</p>
-    <hr class="article-hr">
-    <p><strong>Next in Part 3:</strong> How to operationalize this without launching a giant transformation program, what to measure, what to change first, and how to iterate week by week.</p>
-      </div>
-      <div class="article-cta">
-        <a href="../index.html?view=articles">← Back to Articles</a>
-        <a href="../index.html?view=map">Back to Map</a>
-      </div>
-    </article>
-  </main>
+      <h2>1. What happens when the weird thing happens?</h2>
+      <p>Every AI demo lives in the happy path. Production does not.</p>
+      <p>The useful question is not whether you predicted every failure. You did not. It is whether the system can tell a beneficial surprise from a dangerous one.</p>
+      <p>Maybe the model finds a connection nobody expected. Great. Maybe it acts on an instruction hidden in a document. Less great.</p>
+      <p>The harness needs different terrain for different stakes: freedom to explore where mistakes are cheap, tighter boundaries where they are not, and an escalation path that does not require a pilgrimage through governance.</p>
+      <p>When something strange happens, does the system learn and route it? Or does everyone panic and ban the entire category?</p>
+
+      <h2>2. Does failure make it smarter?</h2>
+      <p>A robust system survives stress. A learning system uses stress.</p>
+      <p>Models change. Prompts drift. Data shifts. People invent uses nobody approved because nobody imagined them. This is not an edge case. This is the operating environment.</p>
+      <p>After an incident, I want to know:</p>
+      <ul>
+        <li>Did we capture enough context to understand what happened?</li>
+        <li>Did the repair become part of the system, or stay in someone’s memory?</li>
+        <li>Did we change the right boundary, or just add friction everywhere?</li>
+        <li>Did human attention move toward the places where it is actually valuable?</li>
+      </ul>
+      <p>If every mistake produces a blanket restriction, the harness may be getting “safer” while the organization gets more fragile.</p>
+
+      <h2>3. Who feels the consequence?</h2>
+      <p>This is the least technical test and usually the one that matters most.</p>
+      <p>One team builds. Another team operates. A third team reports the success metric. The person doing the cleanup has no authority over the design.</p>
+      <p>That arrangement can make almost anything look good for a quarter.</p>
+      <p>Authority and consequence need to touch. The people closest to failure should influence the system. Metrics should include rework, escalation burden, and error cost—not just licenses, prompts, and hours allegedly saved.</p>
+      <p>If accountability floats upward while consequences flow downward, the harness will look excellent on slides and crack exactly where people live.</p>
+
+      <h2>The point</h2>
+      <p>A good AI system does not eliminate uncertainty. It gives uncertainty somewhere intelligent to go.</p>
+      <p>It preserves useful surprise, gets better from pressure, and makes the people with authority feel enough of the outcome to care.</p>
+      <p>That is a much harder standard than “the demo worked.” It is also the only one that matters once the demo ends.</p>
+      <hr class="article-hr"><p><strong>Next:</strong> What to do on Monday morning without launching a seventeen-workstream transformation initiative.</p>
+    </div>
+    <div class="article-cta"><a href="./harness-part-1.html">← Part I</a><a href="./harness-part-3.html">Read part III →</a></div>
+  </article></main>
 </body>
 </html>

@@ -1,97 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=20260808f" />
-  <link rel="stylesheet" href="../css/article.css?v=20260808f" />
-  <title>The Harness Is the Strategy — Part III</title>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="A practical way to move from AI adoption theater to a system that learns and creates measurable value.">
+  <title>The Harness Is the Strategy, Part III — Gus Halwani</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=20260818b"><link rel="stylesheet" href="../css/article.css?v=20260819a">
 </head>
 <body class="article-page">
-  <header id="site-header" class="cv-header">
-    <div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div>
-    <nav class="site-nav" aria-label="Primary">
-      <a href="../index.html" class="nav-btn nav-link">Main</a>
-      <!-- Placeholder pages hidden until content is ready:
-           work.html, creative.html, family.html, speaking.html, contact.html -->
-      <a href="../index.html?view=articles" class="nav-btn nav-link">Articles</a>
-    </nav>
-  </header>
+  <header id="site-header"><div class="site-title">Gus Halwani<span class="site-title-accent">, PhD</span></div><nav class="site-nav" aria-label="Primary"><a href="../index.html" class="nav-btn">Main</a><a href="../index.html?view=articles" class="nav-btn">Articles</a></nav></header>
+  <main class="article-wrap"><article class="article-card">
+    <div class="article-top"><div class="article-kicker">AI Harness / 03</div><h1 class="article-title">Monday Morning</h1><p class="article-subtitle">Part III: Stop measuring access. Start measuring whether the work got better.</p><div class="article-meta">Field note / Gus Halwani</div></div>
+    <div class="article-body">
+      <p>We have the idea. We have the stress test. Now comes the dangerous part: making a program out of it.</p>
+      <p>Please do not start with a giant transformation program.</p>
 
-  <main class="article-wrap">
-    <article class="article-card">
-      <div class="article-top">
-        <div class="article-kicker">AI Harness</div>
-        <h1 class="article-title">The Harness Is the Strategy — Part III</h1>
-        <p class="article-subtitle">Part III · From adoption theater to value engineering</p>
-        <div class="article-meta"><a href="../index.html?view=articles">gushalwani.com</a></div>
-      </div>
-      <div class="article-body">
-<p>Part 1 reframed the question: the strategic unit is the harness, not the model.</p>
-    <p>Part 2 gave us an evaluation lens: Black Swan awareness, antifragility, and skin in the game.</p>
-    <p>Now the practical question: <strong>what do we do with that on Monday morning?</strong></p>
-    <h2>From adoption theater to value engineering</h2>
-    <p>A lot of teams still celebrate the wrong numbers:</p>
-    <ul>
-    <li>“X% of employees have AI access”</li>
-    <li>“Y prompts per week”</li>
-    <li>“Z licenses activated”</li>
-    </ul>
-    <p>Those metrics are not useless, they’re just incomplete.</p>
-    <p>The better shift is from <strong>usage volume</strong> to <strong>value density</strong>:</p>
-    <ul>
-    <li>In which task categories does AI reliably improve cycle time, quality, or decision confidence?</li>
-    <li>Where does human review add value, and where is it just friction?</li>
-    <li>Which loops are compounding because the harness is learning?</li>
-    <li>Which loops are quietly accumulating hidden risk?</li>
-    </ul>
-    <p>If the dashboard cannot answer those questions, we don’t have a performance harness yet, we have a tooling footprint.</p>
-    <h2>A practical starting sequence</h2>
-    <p>If we lead technical teams, product, operations, or strategy, here is a practical path that does not require a giant transformation program:</p>
-    <p><strong>Pick three high-value task categories</strong></p>
-    <p>   Not broad functions. Specific repeatable tasks: claims triage, protocol drafting, incident summarization, vendor risk memos.</p>
-    <p><strong>Define value and risk per task</strong></p>
-    <p>   What does better mean here: speed, quality, variance reduction, escalation accuracy? What can fail, and how bad is bad?</p>
-    <p><strong>Place humans intentionally</strong></p>
-    <p>   Decide where humans initiate, review, approve, or audit only. Do this by risk tier, not by habit.</p>
-    <p><strong>Build a sandboxed pilot harness</strong></p>
-    <p>   Give models tools, context boundaries, and observation hooks. Keep rollback easy. Instrument what actually matters.</p>
-    <p><strong>Iterate quickly, with evidence</strong></p>
-    <p>   Weekly cadence, small scope changes, explicit hypotheses. Don’t wait for perfect certainty from outside. Learn in your own environment.</p>
-    <p><strong>Recruit harness builders, not just model enthusiasts</strong></p>
-    <p>   We need people who can connect model behavior to workflow design, controls, and measurement. That blend is still rare, and it is where leverage is.</p>
-    <h2>A quick litmus test</h2>
-    <p>Ask this once per workflow:</p>
-    <ul>
-    <li>Are we measuring net value, or just activity?</li>
-    <li>Did this loop get safer and faster over the last month?</li>
-    <li>Are accountability and authority aligned when things go wrong?</li>
-    </ul>
-    <p>If the answer is mostly “not yet,” that is not failure, it is a clear starting point.</p>
-    <h2>Closing</h2>
-    <p>The next gap won’t just be between organizations that use AI and organizations that don’t.</p>
-    <p>It’ll be between organizations that adopted tools, and organizations that built learning systems.</p>
-    <p>One bought capability.</p>
-    <p>The other engineered compounding value.</p>
-    <p>The model race will keep accelerating. Good.</p>
-    <p>But weak harnesses turn model upgrades into diminishing returns. Strong harnesses turn them into multipliers.</p>
-    <p>Curious what you’re seeing in the wild:</p>
-    <ul>
-    <li>How much are you investing in harness design versus model selection?</li>
-    <li>Where are humans positioned in your loops, and why?</li>
-    <li>What failure modes taught you the most?</li>
-    <li>What resources or collaborators have actually helped?</li>
-    </ul>
-    <p>Drop notes in the comments. Compare scars, compare wins, and trade practical resources.</p>
-      </div>
-      <div class="article-cta">
-        <a href="../index.html?view=articles">← Back to Articles</a>
-        <a href="../index.html?view=map">Back to Map</a>
-      </div>
-    </article>
-  </main>
+      <h2>Access is not value</h2>
+      <p>Licenses activated. Weekly prompts. Percentage of staff with access.</p>
+      <p>Those numbers tell you that something was distributed. They do not tell you whether the work improved.</p>
+      <p>I care more about value density:</p>
+      <ul>
+        <li>Which specific tasks became faster, better, or more consistent?</li>
+        <li>Where did human review catch something important?</li>
+        <li>Where was human review just ceremonial friction?</li>
+        <li>Which workflow learned from last month’s mistakes?</li>
+        <li>Where is risk quietly accumulating because the dashboard cannot see it?</li>
+      </ul>
+      <p>If you cannot answer those questions, you do not have an AI performance system yet. You have a tooling footprint.</p>
+
+      <h2>Start with three tasks</h2>
+      <p>Not three departments. Three tasks.</p>
+      <p>Pick work that happens often enough to learn from, matters enough to justify attention, and is bounded enough that you can tell what changed.</p>
+      <p>For each one, write down:</p>
+      <ol>
+        <li><strong>What better means.</strong> Speed? Quality? Fewer missed signals? Less variance?</li>
+        <li><strong>How bad bad can be.</strong> Annoying rework and a clinical decision are not the same failure.</li>
+        <li><strong>Where the human belongs.</strong> Initiate, review, approve, audit, or stay out of the way.</li>
+        <li><strong>What the model can touch.</strong> Tools, data, permissions, and hard boundaries.</li>
+        <li><strong>What you will learn this week.</strong> One hypothesis. One observable result.</li>
+      </ol>
+
+      <h2>Build the smallest honest loop</h2>
+      <p>Give the pilot enough reality to teach you something, but keep rollback easy.</p>
+      <p>Instrument what matters. Save examples. Look at the misses, not only the attractive outputs somebody remembered to screenshot. Change one part of the harness at a time when you can.</p>
+      <p>Weekly is usually a better rhythm than quarterly. The system is moving too fast for ceremonial learning.</p>
+
+      <h2>Look for harness builders</h2>
+      <p>The scarce person is not necessarily the one who knows the most model names.</p>
+      <p>It is the person who can connect model behavior to workflow design, human judgment, controls, and evidence. Someone who can see the machine and the room around the machine.</p>
+      <p>That blend is still rare. It is also where the leverage is.</p>
+
+      <h2>The split that matters</h2>
+      <p>The next divide will not be between organizations that use AI and organizations that do not. Almost everybody will use it.</p>
+      <p>The divide will be between organizations that bought capability and organizations that built a way to learn.</p>
+      <p>One has tools.</p>
+      <p>The other compounds.</p>
+      <p>That is the strategy.</p>
+    </div>
+    <div class="article-cta"><a href="./harness-part-2.html">← Part II</a><a href="../index.html?view=articles">Back to articles</a></div>
+  </article></main>
 </body>
 </html>
