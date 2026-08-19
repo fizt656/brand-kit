@@ -120,11 +120,21 @@ button {
   border: 0;
   color: var(--signal-muted);
   background: transparent;
-  font-size: .95rem;
-  font-weight: 600;
-  line-height: 1;
+  font: 500 .82rem/1 var(--mono);
+  letter-spacing: .02em;
   cursor: pointer;
   transition: color .18s ease;
+}
+
+.tab-prompt {
+  color: var(--signal-faint);
+  transition: color .18s ease;
+}
+
+.nav-tab:hover .tab-prompt,
+.nav-tab:focus-visible .tab-prompt,
+.nav-tab.is-active .tab-prompt {
+  color: var(--signal-amber);
 }
 
 .nav-tab:hover,
@@ -145,13 +155,43 @@ button {
 }
 
 .info-panel {
-  max-width: 330px;
+  max-width: 360px;
   color: rgba(231, 226, 215, .7);
   font-size: .96rem;
   font-weight: 500;
   line-height: 1.42;
   opacity: 0;
   transform: translateY(4px);
+}
+
+.panel-intro {
+  margin-bottom: 18px;
+  color: var(--signal-chalk);
+}
+
+.lane-list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 18px;
+  font: 400 .8rem/1.55 var(--mono);
+}
+
+.lane-list li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  align-items: baseline;
+}
+
+.lane-key {
+  color: var(--signal-amber);
+  font-size: .72rem;
+}
+
+.panel-note {
+  color: var(--signal-muted);
+  font-size: .82rem;
 }
 
 .info-panel.is-active {
@@ -166,9 +206,17 @@ button {
   display: inline-block;
   margin-bottom: 26px;
   color: var(--signal-chalk);
-  font: 500 .78rem/1.2 var(--mono);
+  font: 500 .78rem/1.4 var(--mono);
+  overflow-wrap: anywhere;
   text-decoration-color: var(--signal-faint);
   text-underline-offset: 5px;
+  cursor: pointer;
+}
+
+.email:hover,
+.email:focus-visible {
+  color: var(--signal-amber);
+  text-decoration-color: var(--signal-amber);
 }
 
 .wordmark {
@@ -177,20 +225,36 @@ button {
   display: flex;
   align-items: flex-end;
   align-self: end;
-  justify-content: space-between;
   width: 100%;
   color: var(--signal-chalk);
   font-family: var(--display);
-  font-size: clamp(5.5rem, 15.2vw, 15.8rem);
+  font-size: clamp(4.6rem, 26vw, 24rem);
   font-weight: 700;
   line-height: .69;
-  letter-spacing: -.055em;
+  letter-spacing: -.035em;
   text-transform: uppercase;
   white-space: nowrap;
 }
 
-.wordmark span:last-child {
-  color: var(--signal-amber);
+.wordmark-cursor {
+  display: inline-block;
+  align-self: flex-end;
+  width: .34em;
+  height: .62em;
+  margin-left: .07em;
+  background: var(--signal-amber);
+  animation: cursor-blink 1.15s steps(1) infinite;
+}
+
+@keyframes cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+::selection {
+  color: var(--signal-black);
+  background: var(--signal-amber);
 }
 
 .sr-only {
@@ -229,14 +293,8 @@ button {
   }
 
   .wordmark {
-    display: block;
-    font-size: clamp(5.2rem, 29vw, 9rem);
+    font-size: clamp(2.9rem, 25vw, 7rem);
     line-height: .7;
-    white-space: normal;
-  }
-
-  .wordmark span {
-    display: block;
   }
 }
 
@@ -261,5 +319,10 @@ button {
   *::after {
     animation-duration: .01ms !important;
     transition-duration: .01ms !important;
+  }
+
+  .wordmark-cursor {
+    animation: none;
+    opacity: 1;
   }
 }
