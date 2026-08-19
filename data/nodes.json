@@ -47,7 +47,8 @@
           {
             "label": "Enter the studio →",
             "url": "studio/",
-            "sameTab": true
+            "sameTab": true,
+            "accent": true
           }
         ]
       }

@@ -366,6 +366,7 @@ const App = {
     links.forEach(link => {
       const anchor = document.createElement('a');
       anchor.className = 'external-link';
+      if (link.accent) anchor.classList.add('accent-link');
       anchor.href = link.url;
       if (!link.sameTab) {
         anchor.target = '_blank';

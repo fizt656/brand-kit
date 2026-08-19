@@ -35,7 +35,7 @@ const Graph = {
   // Load nodes from JSON file
   async loadNodes() {
     try {
-      const response = await fetch('data/nodes.json');
+      const response = await fetch('data/nodes.json?v=20260819b');
       const data = await response.json();
       this.nodes = data.nodes;
 
