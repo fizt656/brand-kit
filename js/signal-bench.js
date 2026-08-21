@@ -157,8 +157,9 @@
     messageButton.classList.toggle('playing', playing);
     messageButton.classList.toggle('heard', isHeard());
     messageButton.setAttribute('aria-pressed', String(playing));
-    messageButton.querySelector('strong').textContent = isHeard() ? 'MESSAGE' : 'NEW MESSAGE';
-    messageState.textContent = playing ? 'PLAYING' : isHeard() ? 'REPLAY' : 'PLAY';
+    messageButton.setAttribute('aria-label', isHeard() ? 'Replay voice message' : 'New voice message. Tap to play.');
+    messageButton.querySelector('strong').textContent = isHeard() ? 'VOICE MESSAGE' : 'NEW VOICE MESSAGE';
+    messageState.textContent = playing ? 'PLAYING' : isHeard() ? 'REPLAY' : 'TAP TO PLAY';
   }
   function playMessage() {
     activateAudio();
@@ -350,7 +351,7 @@
   updateMusicUi();
   if (solved) showPersistedSolvedState(); else startCipher();
   selectTrack(messageTrack);
-  attemptArrivalPlayback(messageTrack);
+  activateAudio();
 
   window.SignalBench = { isSolved: () => solved, sound: playMapFx, onReturnHome, activateAudio };
 })();
