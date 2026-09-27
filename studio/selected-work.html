@@ -11,12 +11,13 @@
   <meta name="description" content="Selected work by Gus Halwani.">
   <meta name="theme-color" content="#070b08">
   <title>Selected work — HALWANI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;family=Barlow+Condensed:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/signal-studio.css?v=20260925b">
-  <link rel="stylesheet" href="../css/field-notes.css?v=20260927a">
-  <script src="../js/field-notes.js?v=20260927a" defer></script>
+  <link rel="preload" href="../assets/fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/signal-studio.css?v=20260927r2">
+  <link rel="stylesheet" href="../css/field-notes.css?v=20260927r2">
+  <script src="../js/field-notes.js?v=20260927r2" defer></script>
+  <script src="../js/studio.js?v=20260927r2" defer></script>
 </head>
 <body class="studio-detail-page">
   <header class="detail-header">
@@ -24,7 +25,7 @@
     <nav aria-label="Studio navigation">
       <a href="what-i-do.html">what I do</a>
       <a class="is-current" href="selected-work.html">selected work</a>
-      <a href="../#inquire">inquire</a>
+      <a class="nav-cta" href="#work-with-me">Inquire <span class="cta-arrow" aria-hidden="true">→</span></a>
     </nav>
   </header>
 
@@ -34,16 +35,19 @@
     <p class="history-intro">Keynotes, conference talks, and executive briefings on AI, learning, healthcare, and human performance. Available for speaking, panels, and workshops.</p>
 
     <figure class="fn-player fn-player--section" data-fn-video="../assets/video/field-notes/speaking" data-fn-no="02" data-fn-title="Speaking">
-      <a class="fn-frame" href="../assets/video/field-notes/speaking-1440.mp4" aria-label="Play 1:09 · Field notes No. 02, Speaking, with sound and captions">
-        <picture>
-          <source type="image/webp" srcset="../assets/video/field-notes/speaking-poster-960.webp 960w, ../assets/video/field-notes/speaking-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
-          <img src="../assets/video/field-notes/speaking-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-        </picture>
-        <video class="fn-preview" data-src="../assets/video/field-notes/speaking-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-        <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:09</span></span>
-      </a>
+      <div class="fn-mount">
+        <a class="fn-frame" href="../assets/video/field-notes/speaking-1440.mp4" aria-label="Play 1:09 · Field notes No. 02, Speaking, with sound and captions">
+          <picture>
+            <source type="image/webp" srcset="../assets/video/field-notes/speaking-poster-960.webp 960w, ../assets/video/field-notes/speaking-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
+            <img src="../assets/video/field-notes/speaking-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+          </picture>
+          <video class="fn-preview" data-src="../assets/video/field-notes/speaking-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:09</span></span>
+        </a>
+        <span class="fn-stamp" aria-hidden="true">Field Notes<b>No.&nbsp;02</b></span>
+      </div>
       <figcaption class="fn-note">
-        <p class="fn-kicker">Field notes · No.&nbsp;02</p>
+        <p class="fn-kicker">Field Notes No.&nbsp;02 · Speaking</p>
         <p class="fn-summary">The talks in order, from Barcelona in 2010 to Porto Alegre this&nbsp;year.</p>
         <p class="fn-meta">1:09 · sound · captions</p>
       </figcaption>
@@ -91,22 +95,27 @@
           <div><h3>Human Brain Mapping</h3><p><em>White Matters: Musical Training &amp; the Brain in Adults.</em> I presented research comparing white-matter pathways in adult singers, instrumentalists, and non-musicians.</p></div>
         </article>
     </div>
+    <p class="inline-cta">Planning an event? <a href="#work-with-me" data-mail="Speaking inquiry" rel="nofollow">Ask me about speaking <span aria-hidden="true">→</span></a></p>
 
     <section class="work-history built-chapter" aria-labelledby="built-title">
+      <div class="fn-rule" aria-hidden="true"></div>
       <p class="detail-index">02 / BUILT &amp; LED</p>
       <h2 id="built-title">Systems, products &amp; organizations.</h2>
 
       <figure class="fn-player fn-player--section" data-fn-video="../assets/video/field-notes/built" data-fn-no="03" data-fn-title="Built &amp; led">
-        <a class="fn-frame" href="../assets/video/field-notes/built-1440.mp4" aria-label="Play 1:10 · Field notes No. 03, Built &amp; led, with sound and captions">
-          <picture>
-            <source type="image/webp" srcset="../assets/video/field-notes/built-poster-960.webp 960w, ../assets/video/field-notes/built-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
-            <img src="../assets/video/field-notes/built-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-          </picture>
-          <video class="fn-preview" data-src="../assets/video/field-notes/built-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-          <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:10</span></span>
-        </a>
+        <div class="fn-mount">
+          <a class="fn-frame" href="../assets/video/field-notes/built-1440.mp4" aria-label="Play 1:10 · Field notes No. 03, Built &amp; led, with sound and captions">
+            <picture>
+              <source type="image/webp" srcset="../assets/video/field-notes/built-poster-960.webp 960w, ../assets/video/field-notes/built-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
+              <img src="../assets/video/field-notes/built-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+            </picture>
+            <video class="fn-preview" data-src="../assets/video/field-notes/built-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+            <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:10</span></span>
+          </a>
+          <span class="fn-stamp" aria-hidden="true">Field Notes<b>No.&nbsp;03</b></span>
+        </div>
         <figcaption class="fn-note">
-          <p class="fn-kicker">Field notes · No.&nbsp;03</p>
+          <p class="fn-kicker">Field Notes No.&nbsp;03 · Built &amp; led</p>
           <p class="fn-summary">What I’ve built and led, one project at a&nbsp;time.</p>
           <p class="fn-meta">1:10 · sound · captions</p>
         </figcaption>
@@ -135,20 +144,24 @@
     </section>
 
     <section class="work-history research-chapter" aria-labelledby="research-title">
+      <div class="fn-rule" aria-hidden="true"></div>
       <p class="detail-index">03 / RESEARCH</p>
       <h2 id="research-title">Neuroscience &amp; translational research.</h2>
 
       <figure class="fn-player fn-player--section" data-fn-video="../assets/video/field-notes/research" data-fn-no="04" data-fn-title="Research">
-        <a class="fn-frame" href="../assets/video/field-notes/research-1440.mp4" aria-label="Play 1:09 · Field notes No. 04, Research, with sound and captions">
-          <picture>
-            <source type="image/webp" srcset="../assets/video/field-notes/research-poster-960.webp 960w, ../assets/video/field-notes/research-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
-            <img src="../assets/video/field-notes/research-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
-          </picture>
-          <video class="fn-preview" data-src="../assets/video/field-notes/research-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-          <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:09</span></span>
-        </a>
+        <div class="fn-mount">
+          <a class="fn-frame" href="../assets/video/field-notes/research-1440.mp4" aria-label="Play 1:09 · Field notes No. 04, Research, with sound and captions">
+            <picture>
+              <source type="image/webp" srcset="../assets/video/field-notes/research-poster-960.webp 960w, ../assets/video/field-notes/research-poster-1600.webp 1600w" sizes="(min-width: 1320px) 760px, (min-width: 721px) 62vw, 92vw">
+              <img src="../assets/video/field-notes/research-poster-1600.jpg" alt="" width="1600" height="900" loading="lazy" decoding="async">
+            </picture>
+            <video class="fn-preview" data-src="../assets/video/field-notes/research-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+            <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:09</span></span>
+          </a>
+          <span class="fn-stamp" aria-hidden="true">Field Notes<b>No.&nbsp;04</b></span>
+        </div>
         <figcaption class="fn-note">
-          <p class="fn-kicker">Field notes · No.&nbsp;04</p>
+          <p class="fn-kicker">Field Notes No.&nbsp;04 · Research</p>
           <p class="fn-summary">The research, and the question underneath&nbsp;it.</p>
           <p class="fn-meta">1:09 · sound · captions</p>
         </figcaption>
@@ -179,6 +192,21 @@
         </article>
       </div>
     </section>
+
+    <section class="work-with-me" id="work-with-me" aria-labelledby="wwm-title">
+      <div class="fn-rule" aria-hidden="true"></div>
+      <p class="wwm-kicker">Field Notes · Inquire</p>
+      <h2 class="wwm-title" id="wwm-title">Work <em>with me.</em></h2>
+      <div class="wwm-body">
+        <p class="wwm-copy">I take on select speaking engagements, workshops, and project work. If something here is close to what you need, write to me and tell me a little about it.</p>
+        <div class="wwm-actions">
+          <a class="cta-button" href="#work-with-me" data-mail="Speaking or project inquiry" rel="nofollow">Inquire <span class="cta-arrow" aria-hidden="true">→</span></a>
+          <p class="wwm-email">gushalwani [at] alum [dot] mit [dot] edu</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <a class="cta-button float-cta" href="#work-with-me">Inquire</a>
 </body>
 </html>

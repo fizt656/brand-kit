@@ -1,9 +1,57 @@
 /* Field Notes video players: poster + muted in-view preview, full video with sound in a dialog. */
 .fn-player {
-  --fn-accent: var(--amber);
+  --fn-accent: var(--ink-pink);
   margin-top: clamp(44px, 6vw, 88px);
 }
-.research-chapter .fn-player { --fn-accent: #86c98a; }
+.built-chapter .fn-player { --fn-accent: var(--ink-sun); }
+.research-chapter .fn-player { --fn-accent: var(--ink-teal); }
+
+/* Mount: the frame is pasted onto torn stock with a strip of tape, like the collage cards in the videos. */
+.fn-mount { position: relative; isolation: isolate; }
+.fn-mount::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12px -11px -17px -10px;
+  background: url(../assets/img/torn-paper.svg) center / 100% 100% no-repeat;
+  transform: rotate(-.6deg);
+  pointer-events: none;
+}
+.fn-mount::after {
+  content: "";
+  position: absolute;
+  z-index: 2;
+  top: -13px;
+  left: clamp(14px, 3vw, 34px);
+  width: clamp(70px, 9vw, 112px);
+  height: 25px;
+  background: rgba(176, 158, 118, .5);
+  box-shadow: inset 0 0 0 1px rgba(220, 200, 150, .14);
+  clip-path: polygon(0 8%, 6% 0, 12% 10%, 18% 2%, 82% 0, 88% 9%, 94% 1%, 100% 6%, 97% 50%, 100% 94%, 92% 100%, 86% 91%, 80% 100%, 14% 98%, 8% 90%, 3% 100%, 0 92%, 3% 50%);
+  transform: rotate(-4deg);
+  pointer-events: none;
+}
+.fn-stamp {
+  position: absolute;
+  z-index: 2;
+  top: -15px;
+  right: clamp(12px, 2.4vw, 30px);
+  display: grid;
+  gap: 3px;
+  padding: 6px 10px 5px;
+  color: var(--fn-accent);
+  background: rgba(19, 21, 29, .92);
+  border: 2px solid currentColor;
+  outline: 1px solid currentColor;
+  outline-offset: 2px;
+  font: 400 .56rem/1 var(--mono);
+  letter-spacing: .16em;
+  text-align: center;
+  text-transform: uppercase;
+  transform: rotate(2.5deg);
+  pointer-events: none;
+}
+.fn-stamp b { font-weight: 700; font-size: 1.5em; letter-spacing: .08em; }
 
 .fn-frame {
   position: relative;
@@ -11,8 +59,8 @@
   aspect-ratio: 16 / 9;
   overflow: hidden;
   color: var(--chalk);
-  background: var(--black-raised);
-  border: 1px solid var(--hairline);
+  background: var(--stock);
+  border: 1px solid rgba(239, 226, 194, .12);
   text-decoration: none;
   cursor: pointer;
 }
@@ -67,10 +115,11 @@
 .fn-frame:focus-visible .fn-play { color: var(--fn-accent); border-color: var(--fn-accent); }
 
 .fn-note { font: 500 .65rem/1.45 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.fn-note { font-family: var(--mono); font-weight: 400; letter-spacing: .12em; }
 .fn-kicker { color: var(--fn-accent); }
 .fn-summary {
-  color: var(--chalk);
-  font: 400 1rem/1.5 var(--body);
+  color: var(--ink-cream);
+  font: italic 400 clamp(1.2rem, 1.6vw, 1.45rem)/1.3 var(--lyric);
   letter-spacing: 0;
   text-transform: none;
 }
@@ -84,7 +133,7 @@
   gap: 8px 28px;
   padding-top: 16px;
 }
-.fn-player--feature .fn-summary { color: var(--muted); }
+.fn-player--feature .fn-note { padding-top: 26px; }
 
 /* Section players: compact frame beside a short note. */
 .fn-player--section {
@@ -111,7 +160,7 @@
   margin: auto;
   padding: 0;
   color: var(--chalk);
-  background: var(--black);
+  background: var(--stock);
   border: 1px solid var(--hairline);
 }
 .fn-dialog::backdrop { background: rgba(4, 6, 5, .9); }
@@ -127,7 +176,7 @@
   text-transform: uppercase;
 }
 .fn-dialog-title { color: var(--muted); }
-.fn-dialog-title b { color: var(--amber); font-weight: 500; }
+.fn-dialog-title b { color: var(--ink-pink); font-weight: 400; }
 .fn-close {
   padding: 8px 10px;
   color: var(--chalk);
@@ -139,7 +188,8 @@
   cursor: pointer;
 }
 .fn-close:hover,
-.fn-close:focus-visible { color: var(--amber); border-color: var(--amber); outline: none; }
+.fn-close:focus-visible { color: var(--ink-sun); border-color: var(--ink-sun); outline: none; }
+.fn-close { min-height: 40px; }
 .fn-dialog video {
   display: block;
   width: 100%;
@@ -158,10 +208,10 @@
   .fn-play { gap: 9px; padding: 5px 10px 5px 5px; font-size: .58rem; }
   .fn-play-icon { width: 22px; height: 22px; }
   .fn-play-icon svg { width: 8px; height: 9px; }
-  .fn-player--feature .fn-note { grid-template-columns: 1fr auto; }
-  .fn-player--feature .fn-summary { grid-column: 1 / -1; grid-row: 2; }
+  .fn-player--feature .fn-note { grid-template-columns: 1fr; gap: 8px; padding-top: 22px; }
   .fn-player--section { grid-template-columns: 1fr; gap: 16px; }
-  .fn-player--section .fn-note { gap: 10px; padding: 0; border-left: 0; }
+  .fn-player--section .fn-note { gap: 10px; padding: 12px 0 0; border-left: 0; }
+  .fn-stamp { top: -13px; font-size: .5rem; }
   .fn-player--section .fn-summary { max-width: none; }
   .fn-dialog { width: 100vw; max-height: 100vh; border-width: 1px 0; }
   .fn-dialog video { max-height: calc(100vh - 50px); }

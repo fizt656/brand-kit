@@ -13,10 +13,9 @@
   <link rel="canonical" href="https://gushalwani.com/studio/">
   <title>HALWANI</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;family=Barlow+Condensed:wght@600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/signal-studio.css?v=20260924a">
+  <link rel="preload" href="../assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/signal-studio.css?v=20260927r2">
 </head>
 <body class="studio-landing">
   <main class="landing-shell">
@@ -24,7 +23,7 @@
       <nav class="landing-nav" aria-label="Studio navigation">
         <a class="nav-tab" href="what-i-do.html"><span class="tab-prompt" aria-hidden="true">./</span>what I do</a>
         <a class="nav-tab" href="selected-work.html"><span class="tab-prompt" aria-hidden="true">./</span>selected work</a>
-        <button class="nav-tab" type="button" data-panel="inquire" aria-controls="inquire" aria-expanded="false"><span class="tab-prompt" aria-hidden="true">./</span>inquire</button>
+        <button class="nav-cta" type="button" data-panel="inquire" aria-controls="inquire" aria-expanded="false">Inquire</button>
         <a class="brain-map-link" href="../brainmap/" aria-label="Explore Gus Halwani's brain map">
           <svg class="network-mark" viewBox="0 0 44 28" aria-hidden="true">
             <path d="M9 7 21 14 34 6M21 14l9 9M21 14 8 8" />
@@ -40,8 +39,9 @@
 
       <section class="landing-inquire" id="inquire" aria-labelledby="inquire-label" hidden>
         <h1 id="inquire-label" class="sr-only">Inquire</h1>
-        <a class="landing-email" id="email-link" href="#" rel="nofollow">gushalwani [at] alum [dot] mit [dot] edu</a>
+        <a class="landing-email" href="#inquire" data-mail="Project inquiry" rel="nofollow">gushalwani [at] alum [dot] mit [dot] edu</a>
         <p>I take on select speaking engagements, workshops, and project work.</p>
+        <a class="cta-button" href="#inquire" data-mail="Project inquiry" rel="nofollow">Write to me <span class="cta-arrow" aria-hidden="true">→</span></a>
       </section>
     </header>
 
@@ -65,13 +65,7 @@
 
     if (window.location.hash === '#inquire') setInquireOpen(true);
 
-    const emailLink = document.getElementById('email-link');
-    emailLink.addEventListener('click', (event) => {
-      event.preventDefault();
-      const user = ['gus', 'halwani'].join('');
-      const host = ['alum', 'mit', 'edu'].join('.');
-      window.location.href = 'mailto:' + user + '@' + host + '?subject=' + encodeURIComponent('Project inquiry');
-    });
   </script>
+  <script src="../js/studio.js?v=20260927r2" defer></script>
 </body>
 </html>

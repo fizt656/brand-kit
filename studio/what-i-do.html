@@ -11,12 +11,13 @@
   <meta name="description" content="What Gus Halwani does through HALWANI.">
   <meta name="theme-color" content="#070b08">
   <title>What I do — HALWANI</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;500;600&amp;family=Barlow+Condensed:wght@500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/signal-studio.css?v=20260924a">
-  <link rel="stylesheet" href="../css/field-notes.css?v=20260927a">
-  <script src="../js/field-notes.js?v=20260927a" defer></script>
+  <link rel="preload" href="../assets/fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/atkinson-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../css/signal-studio.css?v=20260927r2">
+  <link rel="stylesheet" href="../css/field-notes.css?v=20260927r2">
+  <script src="../js/field-notes.js?v=20260927r2" defer></script>
+  <script src="../js/studio.js?v=20260927r2" defer></script>
 </head>
 <body class="studio-detail-page">
   <header class="detail-header">
@@ -24,7 +25,7 @@
     <nav aria-label="Studio navigation">
       <a class="is-current" href="what-i-do.html">what I do</a>
       <a href="selected-work.html">selected work</a>
-      <a href="../#inquire">inquire</a>
+      <a class="nav-cta" href="#work-with-me">Inquire <span class="cta-arrow" aria-hidden="true">→</span></a>
     </nav>
   </header>
 
@@ -33,16 +34,19 @@
     <h1>Creative work, organizational design, and new technology.</h1>
 
     <figure class="fn-player fn-player--feature" data-fn-video="../assets/video/field-notes/overview" data-fn-no="01" data-fn-title="Overview">
-      <a class="fn-frame" href="../assets/video/field-notes/overview-1440.mp4" aria-label="Play 1:18 · Field notes No. 01, Overview, with sound and captions">
-        <picture>
-          <source type="image/webp" srcset="../assets/video/field-notes/overview-poster-960.webp 960w, ../assets/video/field-notes/overview-poster-1600.webp 1600w" sizes="(min-width: 1320px) 1160px, 92vw">
-          <img src="../assets/video/field-notes/overview-poster-1600.jpg" alt="" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
-        </picture>
-        <video class="fn-preview" data-src="../assets/video/field-notes/overview-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-        <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:18</span></span>
-      </a>
+      <div class="fn-mount">
+        <a class="fn-frame" href="../assets/video/field-notes/overview-1440.mp4" aria-label="Play 1:18 · Field notes No. 01, Overview, with sound and captions">
+          <picture>
+            <source type="image/webp" srcset="../assets/video/field-notes/overview-poster-960.webp 960w, ../assets/video/field-notes/overview-poster-1600.webp 1600w" sizes="(min-width: 1320px) 1160px, 92vw">
+            <img src="../assets/video/field-notes/overview-poster-1600.jpg" alt="" width="1600" height="900" loading="eager" fetchpriority="high" decoding="async">
+          </picture>
+          <video class="fn-preview" data-src="../assets/video/field-notes/overview-preview.mp4" muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
+          <span class="fn-play"><span class="fn-play-icon"><svg viewBox="0 0 9 10" aria-hidden="true"><path d="M0 0 9 5 0 10z"/></svg></span>Play <span class="fn-play-time">1:18</span></span>
+        </a>
+        <span class="fn-stamp" aria-hidden="true">Field Notes<b>No.&nbsp;01</b></span>
+      </div>
       <figcaption class="fn-note">
-        <p class="fn-kicker">Field notes · No.&nbsp;01</p>
+        <p class="fn-kicker">Field Notes No.&nbsp;01 · Overview</p>
         <p class="fn-summary">How I got here, and what I do&nbsp;now.</p>
         <p class="fn-meta">1:18 · sound · captions</p>
       </figcaption>
@@ -71,6 +75,21 @@
         </ul>
       </section>
     </div>
+
+    <section class="work-with-me" id="work-with-me" aria-labelledby="wwm-title">
+      <div class="fn-rule" aria-hidden="true"></div>
+      <p class="wwm-kicker">Field Notes · Inquire</p>
+      <h2 class="wwm-title" id="wwm-title">Work <em>with me.</em></h2>
+      <div class="wwm-body">
+        <p class="wwm-copy">If you’re weighing a creative project, a new technology, or a change in how your team works, I’d be glad to hear about it. I take on select project work, workshops, and training.</p>
+        <div class="wwm-actions">
+          <a class="cta-button" href="#work-with-me" data-mail="Project inquiry" rel="nofollow">Inquire <span class="cta-arrow" aria-hidden="true">→</span></a>
+          <p class="wwm-email">gushalwani [at] alum [dot] mit [dot] edu</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <a class="cta-button float-cta" href="#work-with-me">Inquire</a>
 </body>
 </html>
