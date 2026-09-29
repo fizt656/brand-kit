@@ -119,7 +119,7 @@
 .fn-kicker { color: var(--fn-accent); }
 .fn-summary {
   color: var(--ink-cream);
-  font: italic 400 clamp(1.2rem, 1.6vw, 1.45rem)/1.3 var(--lyric);
+  font: 400 clamp(1.15rem, 1.5vw, 1.35rem)/1.4 var(--body);
   letter-spacing: 0;
   text-transform: none;
 }
