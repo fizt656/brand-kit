@@ -14,7 +14,7 @@
 
   <link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/signal-studio.css?v=20260928h2">
+  <link rel="stylesheet" href="css/signal-studio.css?v=20260928h4">
 
 </head>
 <body class="studio-landing home-intro">
@@ -37,18 +37,7 @@
     <section class="landing-intro" aria-label="About">
       <p class="intro-name">Gus Halwani</p>
       <p class="intro-line">Chronically curious. Studied brains, started companies, built the tech. Mostly I like figuring out how things work, then making them work better for people, starting where they are.</p>
-      <p class="intro-jam">Got something in the works? Let’s jam.</p>
-      <a class="brain-map-link" href="brainmap/" aria-label="Explore Gus Halwani's brain map">
-          <svg class="network-mark" viewBox="0 0 44 28" aria-hidden="true">
-            <path d="M9 7 21 14 34 6M21 14l9 9M21 14 8 8" />
-            <circle cx="9" cy="7" r="2.5" />
-            <circle cx="34" cy="6" r="2.5" />
-            <circle class="network-core" cx="21" cy="14" r="3.5" />
-            <circle cx="13" cy="22" r="2.5" />
-            <circle cx="30" cy="23" r="2.5" />
-          </svg>
-          <span>Explore my brain map →</span>
-      </a>
+      <p class="intro-jam">Got something in the works? <a class="intro-jam-link" href="#inquire">Let’s jam.</a></p>
     </section>
 
     <div class="landing-wordmark">
@@ -58,6 +47,17 @@
         <p class="def-head"><b>Halwani</b> <small class="def-ipa">/ħal·ˈwaː·ni/</small></p>
         <p class="def-say">hal-WAH-nee</p>
         <p class="def-body"><em>noun, Arabic.</em> A confectioner; one who makes sweets. From <em>ḥalwa</em>, “sweetness.”</p>
+        <a class="def-link" href="brainmap/">
+          <svg class="network-mark" viewBox="0 0 44 28" aria-hidden="true">
+            <path d="M9 7 21 14 34 6M21 14l9 9M21 14 8 8" />
+            <circle cx="9" cy="7" r="2.5" />
+            <circle cx="34" cy="6" r="2.5" />
+            <circle class="network-core" cx="21" cy="14" r="3.5" />
+            <circle cx="13" cy="22" r="2.5" />
+            <circle cx="30" cy="23" r="2.5" />
+          </svg>
+          <span>Explore my brain map →</span>
+        </a>
       </aside>
     </div>
   </main>
@@ -76,6 +76,12 @@
     });
 
     if (window.location.hash === '#inquire') setInquireOpen(true);
+
+    document.querySelector('.intro-jam-link').addEventListener('click', (event) => {
+      event.preventDefault();
+      setInquireOpen(true);
+      inquireButton.focus();
+    });
 
     const cursorButton = document.querySelector('.wordmark-cursor');
     const definition = document.getElementById('halwani-def');

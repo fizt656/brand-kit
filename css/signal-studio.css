@@ -906,10 +906,10 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .home-intro .landing-nav { justify-content: flex-start; }
 .home-intro .landing-nav .nav-cta { margin-left: auto; }
 .home-intro .landing-inquire { justify-self: end; }
-.home-intro .landing-intro { align-self: end; max-width: 34rem; margin: 0 0 clamp(18px, 2.4vw, 34px); color: var(--muted); }
-.home-intro .intro-name { margin: 0 0 10px; color: var(--amber); font: 500 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
-.home-intro .intro-line { margin: 0 0 8px; color: var(--chalk); font-size: clamp(1.05rem, 1.6vw, 1.35rem); line-height: 1.35; }
-.home-intro .intro-jam { margin: 0 0 18px; font: 400 .8rem/1.4 var(--mono); }
+.home-intro .landing-intro { align-self: end; max-width: 33rem; margin: 0 0 clamp(30px, 3.6vw, 52px); color: var(--muted); }
+.home-intro .intro-name { margin: 0 0 14px; color: var(--amber); font: 500 .78rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.home-intro .intro-line { margin: 0 0 14px; color: var(--chalk); font-size: clamp(1.05rem, 1.55vw, 1.3rem); line-height: 1.42; text-wrap: pretty; }
+.home-intro .intro-jam { margin: 0; font: 400 .78rem/1.4 var(--mono); letter-spacing: .01em; }
 .home-intro .landing-wordmark { grid-row: 4; }
 @media (max-width: 720px) {
   .home-intro .landing-nav { flex-wrap: nowrap; gap: 16px; }
@@ -932,6 +932,11 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .home-intro .def-head { color: var(--chalk); font-size: .95rem; }
 .home-intro .def-head b { font-weight: 700; }
 .home-intro .def-ipa { margin-left: 6px; color: var(--muted); font: 400 .9rem/1 var(--body); }
-.home-intro .def-say { margin-bottom: 12px !important; color: var(--faint); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+.home-intro .def-say { margin-bottom: 12px !important; color: var(--muted); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
 .home-intro .def-body { color: var(--chalk); font-family: var(--body); font-size: .88rem; line-height: 1.5; }
 @media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i { animation: none; } }
+.home-intro .def-link { display: flex; align-items: center; gap: 10px; margin-top: 18px; padding-top: 14px; border-top: 1px solid rgba(231, 226, 215, .12); color: var(--muted); font: 400 .7rem/1 var(--mono); letter-spacing: .03em; text-decoration: none; }
+.home-intro .def-link:hover, .home-intro .def-link:focus-visible { color: var(--chalk); }
+.home-intro .def-link .network-mark { width: 28px; height: 18px; }
+.home-intro .intro-jam-link { color: var(--chalk); text-decoration: underline; text-decoration-color: rgba(215, 131, 47, .6); text-underline-offset: 4px; }
+.home-intro .intro-jam-link:hover, .home-intro .intro-jam-link:focus-visible { color: var(--amber); }
