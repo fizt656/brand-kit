@@ -942,14 +942,41 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .home-intro .intro-jam-link:hover, .home-intro .intro-jam-link:focus-visible { color: var(--amber); }
 /* Occasional glitch on the homepage cursor block: a hint that it does something */
 @keyframes halwani-glitch {
-  0%, 90.9%, 100% { transform: none; box-shadow: none; clip-path: none; }
-  91.5% { transform: translate(-3px, 1px) skewX(-8deg); box-shadow: -5px 0 0 rgba(26, 163, 160, .75), 5px 0 0 rgba(255, 72, 176, .7); }
-  92.3% { transform: translate(4px, -1px); clip-path: inset(18% 0 46% 0); box-shadow: -6px 0 0 rgba(26, 163, 160, .8); }
-  93.1% { transform: translate(-1px, 0) scaleY(1.04); clip-path: inset(60% 0 6% 0); box-shadow: 6px 0 0 rgba(255, 72, 176, .75); }
-  93.9% { transform: translate(2px, 0); clip-path: none; box-shadow: -3px 0 0 rgba(26, 163, 160, .6), 3px 0 0 rgba(255, 72, 176, .6); }
-  94.6% { transform: none; box-shadow: none; }
+  0%, 78%, 100% { transform: none; filter: none; }
+  79% { transform: translate(-6px, 2px) skewX(-14deg); }
+  80.5% { transform: translate(8px, -2px); filter: brightness(1.3); }
+  82% { transform: translate(-3px, 0) scaleY(1.06); }
+  83.5% { transform: translate(5px, 1px) skewX(10deg); filter: none; }
+  85% { transform: none; }
+  87% { transform: translate(-4px, 0); }
+  88.5% { transform: translate(5px, -1px) skewX(-6deg); }
+  90% { transform: none; }
 }
-.home-intro .wordmark-cursor i { animation: cursor 1.15s steps(1) infinite, halwani-glitch 7.4s steps(1, end) infinite 2.5s; }
-.home-intro .wordmark-cursor:hover i { animation: halwani-glitch .9s steps(1, end) 1 both; animation-delay: 0s; opacity: 1; }
-.home-intro .wordmark-cursor[aria-expanded="true"] i { animation: none; opacity: 1; }
-@media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i, .home-intro .wordmark-cursor:hover i { animation: none; } }
+@keyframes halwani-glitch-cyan {
+  0%, 78%, 85%, 86.9%, 90%, 100% { opacity: 0; transform: none; clip-path: none; }
+  79% { opacity: .9; transform: translateX(-14px); clip-path: inset(8% 0 55% 0); }
+  80.5% { opacity: .95; transform: translateX(-20px); clip-path: inset(40% 0 30% 0); }
+  82% { opacity: .85; transform: translateX(-9px); clip-path: inset(70% 0 4% 0); }
+  83.5% { opacity: .9; transform: translateX(-16px); clip-path: inset(0 0 80% 0); }
+  87% { opacity: .9; transform: translateX(-12px); clip-path: inset(25% 0 45% 0); }
+  88.5% { opacity: .8; transform: translateX(-7px); clip-path: inset(60% 0 15% 0); }
+}
+@keyframes halwani-glitch-pink {
+  0%, 78%, 85%, 86.9%, 90%, 100% { opacity: 0; transform: none; clip-path: none; }
+  79% { opacity: .85; transform: translateX(12px); clip-path: inset(50% 0 20% 0); }
+  80.5% { opacity: .9; transform: translateX(18px); clip-path: inset(10% 0 65% 0); }
+  82% { opacity: .9; transform: translateX(22px); clip-path: inset(35% 0 38% 0); }
+  83.5% { opacity: .8; transform: translateX(10px); clip-path: inset(75% 0 0 0); }
+  87% { opacity: .85; transform: translateX(15px); clip-path: inset(5% 0 70% 0); }
+  88.5% { opacity: .9; transform: translateX(9px); clip-path: inset(45% 0 25% 0); }
+}
+.home-intro .wordmark-cursor i { position: relative; animation: cursor 1.15s steps(1) infinite, halwani-glitch 3.6s steps(1, end) infinite 1.2s; }
+.home-intro .wordmark-cursor i::before, .home-intro .wordmark-cursor i::after { content: ""; position: absolute; inset: 0; opacity: 0; pointer-events: none; }
+.home-intro .wordmark-cursor i::before { background: rgb(26, 163, 160); animation: halwani-glitch-cyan 3.6s steps(1, end) infinite 1.2s; }
+.home-intro .wordmark-cursor i::after { background: rgb(255, 72, 176); animation: halwani-glitch-pink 3.6s steps(1, end) infinite 1.2s; }
+.home-intro .wordmark-cursor:hover i { animation: halwani-glitch 1.6s steps(1, end) infinite; opacity: 1; }
+.home-intro .wordmark-cursor:hover i::before { animation: halwani-glitch-cyan 1.6s steps(1, end) infinite; }
+.home-intro .wordmark-cursor:hover i::after { animation: halwani-glitch-pink 1.6s steps(1, end) infinite; }
+.home-intro .wordmark-cursor[aria-expanded="true"] i, .home-intro .wordmark-cursor[aria-expanded="true"] i::before, .home-intro .wordmark-cursor[aria-expanded="true"] i::after { animation: none; }
+.home-intro .wordmark-cursor[aria-expanded="true"] i { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i, .home-intro .wordmark-cursor i::before, .home-intro .wordmark-cursor i::after { animation: none !important; } }
