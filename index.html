@@ -14,7 +14,7 @@
 
   <link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/signal-studio.css?v=20260928h1">
+  <link rel="stylesheet" href="css/signal-studio.css?v=20260928h2">
 
 </head>
 <body class="studio-landing home-intro">
@@ -51,8 +51,14 @@
       </a>
     </section>
 
-    <div class="landing-wordmark" aria-label="Halwani">
-      <span>Halwani</span><i aria-hidden="true"></i>
+    <div class="landing-wordmark">
+      <span>Halwani</span><button class="wordmark-cursor" type="button" aria-expanded="false" aria-controls="halwani-def" aria-label="What does Halwani mean?"><i aria-hidden="true"></i></button>
+      <aside class="halwani-def" id="halwani-def" aria-label="Halwani, defined" hidden>
+        <p class="def-arabic" lang="ar" dir="rtl">حلواني</p>
+        <p class="def-head"><b>Halwani</b> <small class="def-ipa">/ħal·ˈwaː·ni/</small></p>
+        <p class="def-say">hal-WAH-nee</p>
+        <p class="def-body"><em>noun, Arabic.</em> A confectioner; one who makes sweets. From <em>ḥalwa</em>, “sweetness.”</p>
+      </aside>
     </div>
   </main>
 
@@ -70,6 +76,23 @@
     });
 
     if (window.location.hash === '#inquire') setInquireOpen(true);
+
+    const cursorButton = document.querySelector('.wordmark-cursor');
+    const definition = document.getElementById('halwani-def');
+    const setDefinitionOpen = (opening) => {
+      definition.hidden = !opening;
+      cursorButton.setAttribute('aria-expanded', String(opening));
+    };
+    cursorButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      setDefinitionOpen(definition.hidden);
+    });
+    document.addEventListener('click', (event) => {
+      if (!definition.hidden && !definition.contains(event.target)) setDefinitionOpen(false);
+    });
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !definition.hidden) { setDefinitionOpen(false); cursorButton.focus(); }
+    });
 
   </script>
   <script src="js/studio.js?v=20260927r2" defer></script>

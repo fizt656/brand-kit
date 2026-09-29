@@ -916,3 +916,22 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
   .home-intro .landing-nav .nav-tab { font-size: .74rem; }
   .home-intro .brain-map-link { flex-basis: auto; }
 }
+
+/* Halwani definition card (homepage cursor) */
+@font-face { font-family: "Reem Kufi"; src: url(../assets/fonts/reem-kufi-700-halwani.woff2) format("woff2"); font-weight: 700; font-display: swap; }
+.home-intro .landing-wordmark { position: relative; }
+.home-intro .wordmark-cursor { font: inherit; color: inherit; line-height: inherit; display: inline-flex; align-items: flex-end; align-self: stretch; margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.home-intro .wordmark-cursor:focus-visible { outline: 2px solid var(--ink-cream); outline-offset: 6px; }
+.home-intro .wordmark-cursor:hover i, .home-intro .wordmark-cursor[aria-expanded="true"] i { animation: none; opacity: 1; }
+.home-intro .halwani-def { position: absolute; right: 0; bottom: calc(100% + 18px); z-index: 3; width: min(320px, 86vw); padding: 22px 24px 20px; border: 1px solid rgba(217, 132, 51, .55); background: rgba(10, 13, 10, .96); box-shadow: 6px 6px 0 rgba(255, 72, 176, .35); color: var(--muted); font: 400 .8rem/1.5 var(--mono); letter-spacing: 0; text-transform: none; white-space: normal; }
+.home-intro .halwani-def[hidden] { display: none; }
+.home-intro .halwani-def p { margin: 0; }
+.home-intro .halwani-def, .home-intro .halwani-def * { text-shadow: none; }
+.home-intro .def-body em { font-style: italic; color: var(--muted); }
+.home-intro .def-arabic { margin-bottom: 12px !important; color: var(--amber); font: 700 3.4rem/1.1 "Reem Kufi", var(--display); letter-spacing: 0; }
+.home-intro .def-head { color: var(--chalk); font-size: .95rem; }
+.home-intro .def-head b { font-weight: 700; }
+.home-intro .def-ipa { margin-left: 6px; color: var(--muted); font: 400 .9rem/1 var(--body); }
+.home-intro .def-say { margin-bottom: 12px !important; color: var(--faint); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase; }
+.home-intro .def-body { color: var(--chalk); font-family: var(--body); font-size: .88rem; line-height: 1.5; }
+@media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i { animation: none; } }
