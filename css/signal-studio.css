@@ -940,3 +940,16 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .home-intro .def-link .network-mark { width: 28px; height: 18px; }
 .home-intro .intro-jam-link { color: var(--chalk); text-decoration: underline; text-decoration-color: rgba(215, 131, 47, .6); text-underline-offset: 4px; }
 .home-intro .intro-jam-link:hover, .home-intro .intro-jam-link:focus-visible { color: var(--amber); }
+/* Occasional glitch on the homepage cursor block: a hint that it does something */
+@keyframes halwani-glitch {
+  0%, 90.9%, 100% { transform: none; box-shadow: none; clip-path: none; }
+  91.5% { transform: translate(-3px, 1px) skewX(-8deg); box-shadow: -5px 0 0 rgba(26, 163, 160, .75), 5px 0 0 rgba(255, 72, 176, .7); }
+  92.3% { transform: translate(4px, -1px); clip-path: inset(18% 0 46% 0); box-shadow: -6px 0 0 rgba(26, 163, 160, .8); }
+  93.1% { transform: translate(-1px, 0) scaleY(1.04); clip-path: inset(60% 0 6% 0); box-shadow: 6px 0 0 rgba(255, 72, 176, .75); }
+  93.9% { transform: translate(2px, 0); clip-path: none; box-shadow: -3px 0 0 rgba(26, 163, 160, .6), 3px 0 0 rgba(255, 72, 176, .6); }
+  94.6% { transform: none; box-shadow: none; }
+}
+.home-intro .wordmark-cursor i { animation: cursor 1.15s steps(1) infinite, halwani-glitch 7.4s steps(1, end) infinite 2.5s; }
+.home-intro .wordmark-cursor:hover i { animation: halwani-glitch .9s steps(1, end) 1 both; animation-delay: 0s; opacity: 1; }
+.home-intro .wordmark-cursor[aria-expanded="true"] i { animation: none; opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i, .home-intro .wordmark-cursor:hover i { animation: none; } }
