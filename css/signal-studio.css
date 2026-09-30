@@ -1006,8 +1006,7 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .js-collapse article:not(.is-open) .collapse-body { display: none; }
 .js-collapse .collapse-toggle:hover { color: var(--amber); }
 
-/* Orange block becomes the dot on the final I (Nassib, 2026-09-30). */
-.home-intro .wm-i { position: relative; display: inline-block; }
-.home-intro .wm-i .wordmark-cursor { position: absolute; left: 50%; bottom: calc(100% + .07em); transform: translateX(-50%); align-self: auto; display: block; width: auto; height: auto; line-height: 0; }
-.home-intro .wm-i .wordmark-cursor i { display: block; width: .17em; height: .17em; margin: 0; }
+/* Terminal cursor as a square, top-aligned with the cap height of the wordmark (Nassib, 2026-09-30). */
+.home-intro .wordmark-cursor { align-items: flex-start; }
+.home-intro .landing-wordmark i { width: .3em; height: .3em; margin-top: .035em; }
 @media (max-width: 720px) { .home-intro .landing-intro { margin-bottom: 40px; } }
