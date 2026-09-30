@@ -14,7 +14,7 @@
 
   <link rel="preload" href="assets/fonts/barlow-condensed-700.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/space-mono-400.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/signal-studio.css?v=20260929g2">
+  <link rel="stylesheet" href="css/signal-studio.css?v=20260930n1">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Gus Halwani">
@@ -30,8 +30,6 @@
   <main class="landing-shell">
     <header class="landing-header">
       <nav class="landing-nav" aria-label="Studio navigation">
-        <a class="nav-tab" href="studio/what-i-do.html"><span class="tab-prompt" aria-hidden="true">./</span>what I do</a>
-        <a class="nav-tab" href="studio/selected-work.html"><span class="tab-prompt" aria-hidden="true">./</span>selected work</a>
         <button class="nav-cta" type="button" data-panel="inquire" aria-controls="inquire" aria-expanded="false">Inquire</button>
       </nav>
 
@@ -43,10 +41,15 @@
       </section>
     </header>
 
+    <nav class="landing-paths" aria-label="Studio pages">
+      <a class="path-link" href="studio/what-i-do.html"><span class="path-prompt" aria-hidden="true">./</span>what I do</a>
+      <a class="path-link" href="studio/selected-work.html"><span class="path-prompt" aria-hidden="true">./</span>selected work</a>
+    </nav>
+
     <section class="landing-intro" aria-label="About">
       <p class="intro-name">Gus Halwani, PhD</p>
       <p class="intro-line">Chronically curious. Studied brains, started companies, built the tech. Mostly I like figuring out how things work, then making them work better for people, starting where they are.</p>
-      <p class="intro-jam">Got something in the works? <a class="intro-jam-link" href="#inquire">Let’s jam.</a></p>
+      <p class="intro-jam">Got something in the works? <a class="intro-jam-link" href="#inquire" data-mail="Project inquiry" rel="nofollow">Let’s jam.</a></p>
     </section>
 
     <div class="landing-wordmark">
@@ -86,12 +89,6 @@
 
     if (window.location.hash === '#inquire') setInquireOpen(true);
 
-    document.querySelector('.intro-jam-link').addEventListener('click', (event) => {
-      event.preventDefault();
-      setInquireOpen(true);
-      inquireButton.focus();
-    });
-
     const cursorButton = document.querySelector('.wordmark-cursor');
     const definition = document.getElementById('halwani-def');
     const setDefinitionOpen = (opening) => {
@@ -110,6 +107,6 @@
     });
 
   </script>
-  <script src="js/studio.js?v=20260927r2" defer></script>
+  <script src="js/studio.js?v=20260930n1" defer></script>
 </body>
 </html>

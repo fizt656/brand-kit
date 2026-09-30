@@ -9,6 +9,26 @@
     });
   });
 
+  // Selected work: show each entry as its headline; click the headline to read the detail.
+  document.querySelectorAll('.work-history article').forEach((article) => {
+    const heading = article.querySelector('h2, h3');
+    if (!heading) return;
+    const body = [...heading.parentElement.children].filter((el) => el.tagName === 'P' && heading.compareDocumentPosition(el) & Node.DOCUMENT_POSITION_FOLLOWING);
+    if (!body.length) return;
+    body.forEach((p) => p.classList.add('collapse-body'));
+    const toggle = document.createElement('button');
+    toggle.type = 'button';
+    toggle.className = 'collapse-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    while (heading.firstChild) toggle.appendChild(heading.firstChild);
+    heading.appendChild(toggle);
+    toggle.addEventListener('click', () => {
+      const open = article.classList.toggle('is-open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    document.body.classList.add('js-collapse');
+  });
+
   const floater = document.querySelector('.float-cta');
   const header = document.querySelector('.detail-header');
   const closing = document.getElementById('work-with-me');

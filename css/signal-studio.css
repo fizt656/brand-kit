@@ -978,3 +978,30 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 .home-intro .wordmark-cursor[aria-expanded="true"] i, .home-intro .wordmark-cursor[aria-expanded="true"] i::before, .home-intro .wordmark-cursor[aria-expanded="true"] i::after { animation: none; }
 .home-intro .wordmark-cursor[aria-expanded="true"] i { opacity: 1; }
 @media (prefers-reduced-motion: reduce) { .home-intro .wordmark-cursor i, .home-intro .wordmark-cursor i::before, .home-intro .wordmark-cursor i::after { animation: none !important; } }
+
+/* Homepage hierarchy pass (2026-09-30): page links move to the middle right, larger, quiet frame, glitch on hover. Smaller cursor block. */
+.home-intro .landing-paths { grid-row: 2; align-self: center; justify-self: end; display: flex; flex-direction: column; align-items: flex-end; gap: 14px; margin-right: clamp(0px, 4vw, 70px); position: relative; z-index: 2; }
+.home-intro .path-link { position: relative; display: inline-flex; align-items: baseline; gap: .12em; padding: .28em .55em .22em; border: 1px solid rgba(231, 226, 215, .16); color: var(--chalk); font: 700 clamp(1.7rem, 2.9vw, 2.9rem)/1 var(--display); letter-spacing: -.01em; text-decoration: none; transition: border-color .2s ease, color .2s ease; }
+.home-intro .path-prompt { color: var(--amber); font: 500 .5em/1 var(--mono); letter-spacing: 0; transform: translateY(-.35em); }
+.home-intro .path-link:hover, .home-intro .path-link:focus-visible { border-color: var(--amber); color: var(--ink-cream, var(--chalk)); animation: path-glitch .9s steps(1, end) 1; text-shadow: -2px 1px 0 rgba(26, 163, 160, .75), 2px -1px 0 rgba(255, 72, 176, .7); }
+.home-intro .path-link:focus-visible { outline: 2px solid var(--ink-cream); outline-offset: 5px; }
+@keyframes path-glitch {
+  0% { transform: translate(-3px, 1px) skewX(-8deg); }
+  12% { transform: translate(4px, -1px); }
+  24% { transform: translate(-2px, 0) skewX(5deg); }
+  36%, 100% { transform: none; }
+}
+.home-intro .landing-wordmark i { width: .2em; height: .38em; }
+@media (max-width: 720px) {
+  .home-intro .landing-paths { justify-self: start; align-items: flex-start; align-self: end; margin: 0 0 28px; gap: 10px; }
+  .home-intro .path-link { font-size: 1.55rem; }
+}
+@media (prefers-reduced-motion: reduce) { .home-intro .path-link:hover, .home-intro .path-link:focus-visible { animation: none; } }
+
+/* Selected work: entries start as headlines; the detail opens on click (studio.js adds .js-collapse). */
+.js-collapse .collapse-toggle { all: unset; cursor: pointer; display: inline; }
+.js-collapse .collapse-toggle:focus-visible { outline: 2px solid var(--ink-cream); outline-offset: 4px; }
+.js-collapse .collapse-toggle::after { content: "+"; display: inline-block; margin-left: .35em; color: var(--amber); font: 400 .45em/1 var(--mono); vertical-align: .55em; transition: transform .2s ease; }
+.js-collapse .is-open .collapse-toggle::after { content: "–"; }
+.js-collapse article:not(.is-open) .collapse-body { display: none; }
+.js-collapse .collapse-toggle:hover { color: var(--amber); }
