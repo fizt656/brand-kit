@@ -1,0 +1,2614 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dale Mabry &amp; Eggrish</title>
+<meta name="robots" content="noindex, nofollow, noarchive" />
+<style>
+/* Safar engine styles. Shared verbatim by builder preview and export.
+   Themed via --sf-accent / --sf-bg / --sf-font / --sf-ratio set by runtime.js
+   from the game's StyleConfig — no hardcoded brand aesthetics. */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { height: 100%; }
+
+body {
+  background: var(--sf-bg, #0f172a);
+  font-family: var(--sf-font, system-ui, sans-serif);
+  color: #f4f4f5;
+  overflow: hidden;
+}
+
+/* Optional project atmosphere. These fixed, pointer-free layers create the
+   CRT impression without distorting or filtering readable text. */
+html.sf-atmosphere-subtle body::before,
+html.sf-atmosphere-full body::before,
+html.sf-atmosphere-subtle body::after,
+html.sf-atmosphere-full body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+}
+html.sf-atmosphere-subtle body::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.035), rgba(0,0,0,.035) 1px, transparent 1px, transparent 3px),
+    radial-gradient(ellipse 108% 96% at center, transparent 58%, rgba(0,0,0,.2) 91%, rgba(0,0,0,.32));
+}
+html.sf-atmosphere-full body::before {
+  background:
+    repeating-linear-gradient(0deg, rgba(0,0,0,.075), rgba(0,0,0,.075) 1px, transparent 1px, transparent 3px),
+    radial-gradient(ellipse 108% 96% at center, transparent 52%, rgba(0,0,0,.28) 88%, rgba(0,0,0,.48));
+  box-shadow: inset 0 0 38px rgba(0,0,0,.32), inset 0 0 3px color-mix(in srgb, var(--sf-accent) 14%, transparent);
+}
+html.sf-atmosphere-subtle body::after,
+html.sf-atmosphere-full body::after {
+  height: 10px;
+  bottom: auto;
+  opacity: .42;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--sf-accent) 7%, transparent), transparent);
+  transform: translateY(-12px);
+  animation: sf-raster-drift 13s cubic-bezier(.45,0,.55,1) infinite;
+}
+html.sf-atmosphere-full body::after { opacity: .7; animation-duration: 9s; }
+
+.sf-root { width: 100%; height: 100%; }
+
+.sf-busy { cursor: progress; }
+.sf-using-item .sf-hotspot { cursor: crosshair; }
+
+.sf-hidden { display: none !important; }
+
+/* ── Screens: image-proportioned frames, with controls below artwork. ── */
+.sf-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem clamp(.5rem, 2vw, 1.5rem);
+  overflow: hidden;
+}
+.sf-screen-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(20px) brightness(.3) saturate(.8);
+  transform: scale(1.12);
+}
+.sf-screen-frame {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: var(--sf-image-ratio, var(--sf-ratio, 16 / 9));
+  max-height: calc(100vh - 9.5rem);
+  border-radius: 14px;
+  overflow: hidden;
+  /* contain, not cover: screen art must never be cropped, even when its
+     aspect ratio doesn't match the project's (e.g. imported v1 images) */
+  background: #000 center / contain no-repeat;
+  box-shadow: 0 12px 48px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+html.sf-atmosphere-subtle .sf-screen-frame,
+html.sf-atmosphere-subtle .sf-scene,
+html.sf-atmosphere-full .sf-screen-frame,
+html.sf-atmosphere-full .sf-scene {
+  border-radius: 18px / 14px;
+  box-shadow:
+    0 12px 48px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.08),
+    inset 0 0 28px rgba(0,0,0,.22),
+    inset 0 0 2px color-mix(in srgb, var(--sf-accent) 18%, transparent);
+}
+.sf-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.82), rgba(0,0,0,.15) 55%, rgba(0,0,0,.35));
+}
+.sf-title-panel, .sf-intro-panel {
+  position: relative;
+  text-align: center;
+  padding: 0 2rem 2.5rem;
+  max-width: 720px;
+  max-height: 100%;
+  overflow-y: auto;
+  animation: sf-rise .8s ease-out both;
+}
+.sf-title-heading {
+  font-size: clamp(2rem, 6vw, 3.75rem);
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-shadow: 0 2px 24px rgba(0,0,0,.8);
+}
+.sf-title-sub {
+  margin-top: .75rem;
+  font-size: clamp(.95rem, 2vw, 1.2rem);
+  opacity: .85;
+  text-shadow: 0 1px 12px rgba(0,0,0,.9);
+}
+.sf-title-audio {
+  display: block;
+  margin: 1rem auto -1rem;
+  padding: .42rem .7rem;
+  border: 1px solid color-mix(in srgb, var(--sf-accent) 45%, transparent);
+  border-radius: 4px;
+  background: rgba(0,0,0,.38);
+  color: color-mix(in srgb, var(--sf-accent) 82%, white);
+  font-family: inherit;
+  font-size: .68rem;
+  letter-spacing: .16em;
+  cursor: pointer;
+  text-shadow: 0 0 9px color-mix(in srgb, var(--sf-accent) 35%, transparent);
+  transition: transform .18s cubic-bezier(.16,1,.3,1), background .18s cubic-bezier(.16,1,.3,1);
+}
+.sf-title-audio:hover { transform: translateY(-1px); background: rgba(0,0,0,.56); }
+.sf-title-buttons { margin-top: 2rem; display: flex; gap: .75rem; justify-content: center; }
+.sf-intro-text {
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  text-shadow: 0 1px 12px rgba(0,0,0,.9);
+  white-space: pre-wrap;
+}
+
+.sf-btn {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: .8rem 2.2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: transform .15s, background .15s, box-shadow .15s;
+}
+.sf-btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.16); }
+.sf-btn-primary {
+  background: var(--sf-accent);
+  border-color: transparent;
+  color: #111;
+  box-shadow: 0 4px 24px color-mix(in srgb, var(--sf-accent) 45%, transparent);
+}
+.sf-btn-primary:hover { background: var(--sf-accent); filter: brightness(1.1); }
+
+/* ── Frame layout ── */
+.sf-frame {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: .5rem clamp(.5rem, 2vw, 1.5rem);
+  gap: .5rem;
+}
+.sf-frame { overflow-y: auto; }
+.sf-frame > :not(.sf-scene-space) { flex-shrink: 0; }
+/* Reserve space for text and controls, then fit art without changing the
+   hotspot coordinate system. Container height follows the remaining space. */
+.sf-scene-space {
+  flex: 1;
+  min-height: 4rem;
+  width: 100%;
+  container-type: size;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sf-topbar {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .25rem .25rem 0;
+}
+.sf-topbar-title { font-weight: 600; font-size: .9rem; opacity: .7; letter-spacing: .04em; }
+.sf-topbar-right { display: flex; gap: .4rem; }
+.sf-iconbtn {
+  font-size: .95rem;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  color: #fff;
+  border-radius: 8px;
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  transition: background .15s;
+}
+.sf-iconbtn:hover { background: rgba(255,255,255,.15); }
+
+/* ── Scene ── */
+.sf-scene {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: var(--sf-image-ratio, var(--sf-ratio, 16 / 9));
+  max-height: calc(100vh - 9.5rem);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.08);
+  background: #000;
+  flex-shrink: 1;
+}
+.sf-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 25;
+  background: linear-gradient(180deg, transparent 0 45%, color-mix(in srgb, var(--sf-accent) 18%, white) 49%, transparent 53% 100%);
+}
+.sf-scene-sync::after { animation: sf-sync-slip 260ms cubic-bezier(.2,.8,.2,1) both; }
+.sf-scene-enter .sf-scene-image { animation: sf-fadein .6s ease-out both; }
+.sf-scene-image {
+  position: absolute;
+  inset: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.sf-scene-missing {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-linear-gradient(45deg, #14141c, #14141c 12px, #191924 12px, #191924 24px);
+}
+.sf-scene-missing-text { opacity: .5; font-size: .95rem; }
+.sf-room-label {
+  position: absolute;
+  top: .75rem;
+  left: .75rem;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: .3rem .7rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,.55);
+  border: 1px solid rgba(255,255,255,.14);
+  backdrop-filter: blur(6px);
+  pointer-events: none;
+}
+
+/* ── Hotspots ── */
+.sf-hotspot {
+  position: absolute;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color .15s, background .15s;
+}
+.sf-hotspot:hover,
+.sf-hotspot:focus-visible {
+  border-color: color-mix(in srgb, var(--sf-accent) 85%, white);
+  background: color-mix(in srgb, var(--sf-accent) 14%, transparent);
+  box-shadow: inset 0 0 24px color-mix(in srgb, var(--sf-accent) 18%, transparent);
+}
+html:not(.sf-atmosphere-clean) .sf-hotspot:active {
+  animation: sf-phosphor-hit 320ms cubic-bezier(.16,1,.3,1) both;
+}
+.sf-hotspot-tag {
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .2rem .55rem;
+  border-radius: 6px;
+  background: rgba(0,0,0,.78);
+  border: 1px solid color-mix(in srgb, var(--sf-accent) 60%, transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .15s;
+}
+.sf-hotspot:hover .sf-hotspot-tag,
+.sf-hotspot:focus-visible .sf-hotspot-tag { opacity: 1; }
+
+/* ── Verb wheel ── */
+.sf-wheel {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 30;
+}
+.sf-wheel-name {
+  position: absolute;
+  top: -96px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: .78rem;
+  font-weight: 700;
+  white-space: nowrap;
+  padding: .25rem .7rem;
+  border-radius: 999px;
+  background: rgba(0,0,0,.85);
+  border: 1px solid var(--sf-accent);
+  animation: sf-pop .18s ease-out both;
+}
+.sf-wheel-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(10,10,16,.88);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  backdrop-filter: blur(6px);
+  /* opacity-only: an animated transform would clobber the inline radial translate */
+  animation: sf-fadein .18s ease-out both;
+  transition: background .12s, border-color .12s;
+}
+.sf-wheel-btn:hover {
+  background: color-mix(in srgb, var(--sf-accent) 30%, rgba(10,10,16,.9));
+  border-color: var(--sf-accent);
+}
+.sf-wheel-icon { font-size: 1.1rem; line-height: 1; }
+.sf-wheel-label { font-size: .58rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; opacity: .85; }
+
+/* ── Narration ── */
+.sf-narration {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  padding: .8rem 1.1rem;
+  border-radius: 12px;
+  background: rgba(0,0,0,.62);
+  border: 1px solid rgba(255,255,255,.1);
+  backdrop-filter: blur(10px);
+  animation: sf-rise .25s ease-out both;
+  cursor: pointer;
+}
+.sf-narration-text {
+  flex: 1;
+  min-width: 0;
+  max-height: min(28dvh, 16rem);
+  overflow-y: auto;
+  overflow-wrap: anywhere;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  font-size: clamp(.95rem, 1.8vw, 1.15rem);
+  line-height: 1.6;
+  text-align: center;
+}
+.sf-narration-speaker {
+  color: var(--sf-accent);
+  font-weight: 700;
+  margin-right: .5rem;
+}
+.sf-narration-speaker::after { content: ':'; }
+.sf-narration-dismiss {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.45);
+  cursor: pointer;
+  font-size: .85rem;
+  padding: .1rem .3rem;
+}
+.sf-narration-dismiss:hover { color: #fff; }
+
+/* ── History ── */
+.sf-history {
+  position: fixed;
+  inset: 8% 12%;
+  z-index: 50;
+  background: rgba(8,8,14,.94);
+  border: 1px solid rgba(255,255,255,.14);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: sf-pop .2s ease-out both;
+}
+.sf-history-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .9rem 1.2rem;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  font-weight: 700;
+}
+.sf-history-list { flex: 1; overflow-y: auto; padding: 1rem 1.2rem; }
+.sf-history-line { margin-bottom: .7rem; line-height: 1.55; font-size: .92rem; opacity: .92; }
+.sf-history-line strong { color: var(--sf-accent); }
+.sf-history-empty { opacity: .5; }
+
+/* ── Command bar ── */
+.sf-command { width: 100%; max-width: 900px; }
+.sf-command-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: .95rem;
+  padding: .7rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--sf-accent) 50%, transparent);
+  background: rgba(0,0,0,.7);
+  color: #fff;
+  outline: none;
+}
+.sf-command-input::placeholder { color: rgba(255,255,255,.35); }
+
+/* ── Inventory ── */
+.sf-inventory {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  flex-wrap: wrap;
+  padding: .15rem .25rem .4rem;
+  min-height: 2.6rem;
+}
+.sf-inventory-label {
+  font-size: .68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  opacity: .45;
+}
+.sf-inventory-empty { font-size: .8rem; opacity: .35; font-style: italic; }
+.sf-inventory-hint { font-size: .75rem; color: var(--sf-accent); }
+.sf-item {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  font-family: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  color: #fff;
+  padding: .4rem .8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(255,255,255,.06);
+  cursor: pointer;
+  transition: background .15s, border-color .15s, transform .15s;
+}
+.sf-item:hover { background: rgba(255,255,255,.13); transform: translateY(-1px); }
+.sf-item-selected {
+  border-color: var(--sf-accent);
+  background: color-mix(in srgb, var(--sf-accent) 22%, transparent);
+  box-shadow: 0 0 14px color-mix(in srgb, var(--sf-accent) 35%, transparent);
+}
+.sf-item-icon { font-size: 1rem; }
+
+/* ── Animations ── */
+@keyframes sf-fadein { from { opacity: 0; } to { opacity: 1; } }
+@keyframes sf-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes sf-pop { from { opacity: 0; transform: scale(.85); } to { opacity: 1; transform: scale(1); } }
+@keyframes sf-raster-drift { to { transform: translateY(100vh); } }
+@keyframes sf-sync-slip {
+  0% { opacity: 0; transform: translateY(-48%) scaleY(.18); }
+  32% { opacity: .7; }
+  100% { opacity: 0; transform: translateY(48%) scaleY(.55); }
+}
+@keyframes sf-phosphor-hit {
+  0% { filter: brightness(1.5); }
+  100% { filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.sf-atmosphere-subtle body::after,
+  html.sf-atmosphere-full body::after,
+  .sf-scene-sync::after,
+  .sf-scene-enter .sf-scene-image,
+  .sf-title-panel,
+  .sf-intro-panel,
+  .sf-wheel-name,
+  .sf-wheel-btn,
+  .sf-narration,
+  .sf-history,
+  html:not(.sf-atmosphere-clean) .sf-hotspot:active {
+    animation: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .sf-item-name { display: none; }
+  .sf-history { inset: 4%; }
+}
+
+/* Artwork determines the canvas, so percentage hotspots share the editor's coordinates. */
+.sf-scene, .sf-screen-frame {
+  width: min(100%, calc((100dvh - 9.5rem) * var(--sf-image-ratio, 1.777778)));
+  flex-shrink: 0;
+}
+.sf-scene-space .sf-scene {
+  width: min(100%, calc(100cqh * var(--sf-image-ratio, 1.777778)));
+  max-height: 100%;
+}
+
+/* Opening art is presented unfiltered; controls sit below, never over its lettering. */
+html.sf-title-active body::before, html.sf-title-active body::after,
+html.sf-intro-active body::before, html.sf-intro-active body::after { display: none; }
+.sf-title, .sf-intro { flex-direction: column; justify-content: safe center; gap: 1rem; background: #111; overflow-y: auto; }
+html.sf-title-active .sf-title .sf-screen-frame,
+html.sf-intro-active .sf-intro .sf-screen-frame {
+  width: min(100%, calc((100dvh - 12rem) * var(--sf-image-ratio, 1.777778)));
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+.sf-title-panel, .sf-intro-panel { padding: 0 .5rem .5rem; flex-shrink: 0; max-height: none; animation: none; }
+.sf-intro-text { text-shadow: none; }
+.sf-title-buttons { margin-top: 0; flex-wrap: wrap; }
+.sf-title-heading, .sf-title-sub { margin-bottom: 1rem; }
+.sf-title-audio { margin: 0 auto .75rem; color: #ddd; border-color: #777; text-shadow: none; }
+.sf-btn-pixel {
+  font-family: ui-monospace, 'Courier New', monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  border-radius: 0;
+  border: 3px solid #ddd;
+  background: #333;
+  color: #fff;
+  padding: .65rem 1.5rem;
+  box-shadow: inset 3px 3px #666, inset -3px -3px #171717, 4px 4px #000;
+  backdrop-filter: none;
+  transition: none;
+}
+.sf-btn-pixel:hover { background: #444; transform: none; }
+.sf-btn-pixel:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+.sf-btn-pixel:active { transform: translate(2px, 2px); box-shadow: inset 3px 3px #171717, inset -3px -3px #666, 2px 2px #000; }
+
+/* ── Cut scenes and ending: full-window sequences in the opening-screen style. ── */
+html.sf-cutscene-active body::before, html.sf-cutscene-active body::after,
+html.sf-ending-active body::before, html.sf-ending-active body::after { display: none; }
+.sf-cutscene-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background: #111;
+  animation: sf-fadein .35s ease-out both;
+}
+.sf-cutscene, .sf-ending { flex-direction: column; justify-content: safe center; gap: 1rem; background: #111; overflow-y: auto; }
+.sf-cutscene .sf-screen-frame,
+.sf-ending .sf-screen-frame {
+  width: min(100%, calc((100dvh - 13rem) * var(--sf-image-ratio, 1.777778)));
+  max-height: none;
+  border-radius: 0;
+  box-shadow: none;
+  background: #000;
+}
+.sf-cutscene-shot {
+  position: absolute;
+  inset: 0;
+  background: center / contain no-repeat;
+  opacity: 0;
+  transition: opacity .7s ease;
+}
+.sf-cutscene-shot.sf-shown { opacity: 1; }
+.sf-cutscene-shot.sf-drift { animation: sf-cutscene-drift var(--sf-frame-ms, 4000ms) linear both; }
+.sf-ending .sf-screen-frame { width: min(100%, calc((100dvh - 19rem) * var(--sf-image-ratio, 1.777778))); }
+.sf-cutscene-panel { flex-shrink: 0; width: min(100%, 60rem); text-align: center; padding: 0 .5rem .5rem; }
+.sf-cutscene-text {
+  min-height: 3.4em;
+  font-size: clamp(.95rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: #eee;
+  white-space: pre-wrap;
+  animation: sf-fadein .6s ease-out both;
+}
+.sf-cutscene-controls { margin-top: .75rem; display: flex; gap: .75rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+.sf-cutscene-dots { display: flex; gap: .4rem; margin-right: .5rem; }
+.sf-cutscene-dot { width: .55rem; height: .55rem; background: #444; border: 1px solid #777; }
+.sf-cutscene-dot.sf-on { background: var(--sf-accent); border-color: var(--sf-accent); }
+.sf-cutscene-controls .sf-btn-pixel { font-size: .8rem; padding: .5rem 1.1rem; }
+.sf-ending-heading {
+  font-family: ui-monospace, 'Courier New', monospace;
+  font-size: clamp(1.6rem, 5vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--sf-accent);
+  margin-bottom: .75rem;
+}
+@keyframes sf-cutscene-drift { from { transform: scale(1.02) translateX(-.6%); } to { transform: scale(1.08) translateX(.6%); } }
+@media (prefers-reduced-motion: reduce) {
+  .sf-cutscene-shot.sf-drift, .sf-cutscene-layer, .sf-cutscene-text { animation: none !important; }
+  .sf-cutscene-shot { transition: none; }
+}
+
+/* ── Phone dial pad ── */
+.sf-dialer {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,.55);
+  animation: sf-fadein .2s ease-out both;
+}
+.sf-dialer-box {
+  width: min(92%, 17rem);
+  padding: 1rem;
+  background: #1b1b1b;
+  border: 3px solid #ddd;
+  box-shadow: inset 3px 3px #555, inset -3px -3px #0c0c0c, 6px 6px #000;
+  font-family: ui-monospace, 'Courier New', monospace;
+  color: #eee;
+}
+.sf-dialer-title { font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--sf-accent); margin-bottom: .6rem; }
+.sf-dialer-display {
+  background: #9fb38a;
+  color: #13200f;
+  border: 2px solid #0c0c0c;
+  padding: .45rem .6rem;
+  font-size: 1.25rem;
+  letter-spacing: .12em;
+  min-height: 2.2rem;
+  text-align: right;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.sf-dialer-display.sf-dialer-empty { font-size: .8rem; letter-spacing: .06em; opacity: .7; }
+.sf-dialer-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; margin: .75rem 0; }
+.sf-dialer-key {
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: .5rem 0;
+  background: #333;
+  color: #fff;
+  border: 2px solid #999;
+  box-shadow: inset 2px 2px #555, inset -2px -2px #111;
+  cursor: pointer;
+}
+.sf-dialer-key:hover { background: #444; }
+.sf-dialer-key:active { box-shadow: inset 2px 2px #111, inset -2px -2px #555; }
+.sf-dialer-actions { display: flex; gap: .4rem; justify-content: space-between; }
+.sf-dialer-actions .sf-btn-pixel { font-size: .7rem; padding: .45rem .6rem; }
+.sf-dialer-call { background: #1f5f2a; }
+.sf-dialer-call:hover { background: #267535; }
+
+</style>
+</head>
+<body>
+<div id="safar-root"></div>
+<script src="game-data.js"></script>
+<script>
+/**
+ * Safar adventure-score engine.
+ *
+ * Original compositions are rendered live with Web Audio. The engine keeps
+ * Preview and exported games offline and bit-for-bit identical while adding
+ * the things the first tracker pass lacked: shaped instruments, real musical
+ * phrases, long-form arrangement, convolution reverb, delay, EQ, and gentle
+ * bus compression. No samples, network requests, or third-party runtime.
+ */
+(function () {
+  'use strict';
+
+  var SCALES = {
+    major: [0, 2, 4, 5, 7, 9, 11],
+    minor: [0, 2, 3, 5, 7, 8, 10],
+    dorian: [0, 2, 3, 5, 7, 9, 10],
+    mixolydian: [0, 2, 4, 5, 7, 9, 10],
+    'harmonic-minor': [0, 2, 3, 5, 7, 8, 11],
+  };
+
+  // IDs stay stable so projects made with the first score engine migrate
+  // cleanly. The music itself is completely rewritten and newly composed.
+  var PRESETS = {
+    'midnight-drive': {
+      name: 'Clockwork Harbor', root: 50, bpm: 84, scale: 'dorian', palette: 'clockwork',
+      family: 'forest-clockwork', pulse: 'straight', seed: 0,
+      chords: [0, 3, 6, 0, 4, 3, 6, 0],
+      motif: [0, null, 2, 3, null, 4, 2, null, 1, null, 3, 2, null, 0, null, null],
+      swing: .08, reverb: .42,
+    },
+    'terminal-dream': {
+      name: "The Cartographer's Lamp", root: 45, bpm: 72, scale: 'minor', palette: 'storybook',
+      family: 'deep-water', pulse: 'straight', seed: 0,
+      chords: [0, 5, 2, 6, 3, 5, 4, 0],
+      motif: [4, null, 3, 2, null, 1, 0, null, 2, null, 4, 3, 1, null, 0, null],
+      swing: .04, reverb: .58,
+    },
+    'arcade-noir': {
+      name: 'Rain on Rue Morgue', root: 49, bpm: 92, scale: 'harmonic-minor', palette: 'noir',
+      family: 'kinetic-green', pulse: 'straight', seed: 0,
+      chords: [0, 5, 3, 4, 0, 2, 1, 4],
+      motif: [0, 1, null, 3, 2, null, 1, 0, null, 4, 3, null, 2, 1, null, 0],
+      swing: .14, reverb: .35,
+    },
+    'after-hours': {
+      name: 'Ghost in the Modem', root: 52, bpm: 68, scale: 'minor', palette: 'dream',
+      family: 'deep-water', pulse: 'straight', seed: 0,
+      chords: [0, 2, 5, 3, 0, 6, 5, 4],
+      motif: [7, null, null, 5, null, 4, 2, null, 3, null, 1, null, 2, null, 0, null],
+      swing: .02, reverb: .72,
+    },
+    'blue-memory': {
+      name: 'Blue Memory', root: 48, bpm: 80, scale: 'minor', palette: 'dream',
+      family: 'deep-water', pulse: 'straight', seed: 23031994,
+      chords: [2, 0, 5, 2, 4, 5, 6, 3],
+      motif: [4, null, null, 2, null, 1, null, null, 3, null, 4, null, 2, null, 0, null],
+      // A brief, recognizable Aquatic-derived statement. After this four-bar
+      // phrase the arranger begins omitting, answering, and redirecting notes.
+      phrase: [
+        8, null, 7, 4, null, null, null, null, null, null, null, null, null, null, 8, 7,
+        8, null, 9, 10, null, null, 9, 8, null, null, 6, null, null, null, null, null,
+        7, null, null, 2, null, null, null, null, null, null, null, null, null, null, null, null,
+        7, null, null, 2, null, null, null, null, null, null, null, null, null, null, null, null,
+      ],
+      evolve: true, swing: .01, reverb: .78,
+    },
+    'emerald-circuit': {
+      name: 'Emerald Circuit', root: 48, bpm: 128, scale: 'mixolydian', palette: 'clockwork',
+      family: 'kinetic-green', pulse: 'straight', seed: 19910623,
+      chords: [0, 3, 0, 4, 5, 3, 4, 0],
+      motif: [7, null, 5, 7, 6, null, 4, null, 5, 4, null, 2, 4, 3, null, 0],
+      swing: .06, reverb: .28,
+    },
+    'tideglass-current': {
+      name: 'Tideglass Current', root: 41, bpm: 84, scale: 'major', palette: 'storybook',
+      family: 'buoyant-current', pulse: 'triplet', seed: 19901121,
+      chords: [0, 5, 3, 4, 0, 1, 4, 0],
+      motif: [4, null, 5, 6, null, 4, 2, null, 3, 4, null, 0],
+      swing: 0, reverb: .56,
+    },
+    'lantern-leaves': {
+      name: 'Lanterns in the Leaves', root: 48, bpm: 104, scale: 'major', palette: 'clockwork',
+      family: 'forest-clockwork', pulse: 'straight', seed: 19981121,
+      chords: [0, 3, 4, 0, 5, 3, 1, 4],
+      motif: [4, null, 7, 4, null, 2, 1, null, 2, 3, 4, null, 3, 2, null, 0],
+      swing: .04, reverb: .44,
+    },
+  };
+
+  var PALETTES = {
+    storybook: {
+      lead: 'triangle', leadLayer: 'sine', bass: 'triangle', pad: 'sine',
+      cutoff: 5200, leadCutoff: 3900, delay: .16, pulse: .18, percussion: .24,
+    },
+    clockwork: {
+      lead: 'square', leadLayer: 'triangle', bass: 'square', pad: 'triangle',
+      cutoff: 6100, leadCutoff: 4700, delay: .21, pulse: .34, percussion: .52,
+    },
+    noir: {
+      lead: 'triangle', leadLayer: 'square', bass: 'triangle', pad: 'sine',
+      cutoff: 4200, leadCutoff: 3100, delay: .13, pulse: .24, percussion: .48,
+    },
+    dream: {
+      lead: 'sine', leadLayer: 'triangle', bass: 'sine', pad: 'triangle',
+      cutoff: 6800, leadCutoff: 5600, delay: .29, pulse: .12, percussion: .12,
+    },
+  };
+
+  function clamp(value, min, max) { return Math.min(max, Math.max(min, value)); }
+  function hz(note) { return 440 * Math.pow(2, (note - 69) / 12); }
+  function finite(value, fallback) {
+    value = Number(value);
+    return isFinite(value) ? value : fallback;
+  }
+  function scaleNote(base, degree, scale) {
+    degree = Math.round(degree || 0);
+    var octave = Math.floor(degree / 7);
+    var wrapped = ((degree % 7) + 7) % 7;
+    return base + scale[wrapped] + octave * 12;
+  }
+
+  function normalizeScore(raw) {
+    raw = raw || {};
+    var scaleName = SCALES[raw.scale] ? raw.scale : 'minor';
+    var paletteName = PALETTES[raw.palette] ? raw.palette : 'storybook';
+    var familyName = raw.family === 'deep-water' || raw.family === 'kinetic-green' ||
+      raw.family === 'buoyant-current' || raw.family === 'forest-clockwork'
+      ? raw.family : (paletteName === 'clockwork' ? 'forest-clockwork' : 'deep-water');
+    var pulseName = raw.pulse === 'triplet' ? 'triplet' : 'straight';
+    var motifLength = pulseName === 'triplet' ? 12 : 16;
+    var chords = Array.isArray(raw.chords) ? raw.chords.slice(0, 8) : [];
+    var motif = Array.isArray(raw.motif) ? raw.motif.slice(0, motifLength) : [];
+    var phrase = Array.isArray(raw.phrase) ? raw.phrase.slice(0, 128) : [];
+    while (chords.length < 8) chords.push(0);
+    while (motif.length < motifLength) motif.push(null);
+    return {
+      name: String(raw.name || 'Untitled score'),
+      root: Math.round(clamp(finite(raw.root, 48), 36, 59)),
+      bpm: Math.round(clamp(finite(raw.bpm, 78), 54, 138)),
+      scale: scaleName,
+      palette: paletteName,
+      family: familyName,
+      pulse: pulseName,
+      seed: Math.round(clamp(finite(raw.seed, 0), 0, 4294967295)),
+      chords: chords.map(function (degree) { return Math.round(clamp(finite(degree, 0), 0, 6)); }),
+      motif: motif.map(function (degree) {
+        return degree == null ? null : Math.round(clamp(finite(degree, 0), 0, 7));
+      }),
+      phrase: phrase.map(function (degree) {
+        return degree == null ? null : Math.round(clamp(finite(degree, 0), -7, 14));
+      }),
+      evolve: raw.evolve === true,
+      swing: clamp(finite(raw.swing, .06), 0, .24),
+      reverb: clamp(finite(raw.reverb, .48), .08, .82),
+    };
+  }
+
+  function create(config, getContext) {
+    config = config || {};
+    var selected = config.customScore || PRESETS[config.preset] || PRESETS['midnight-drive'];
+    var score = normalizeScore(selected);
+    var scale = SCALES[score.scale];
+    var palette = PALETTES[score.palette];
+    var context = null;
+    var musicBus = null;
+    var master = null;
+    var timer = null;
+    var noiseBuffer = null;
+    var nextTime = 0;
+    var step = 0;
+    var started = false;
+    var muted = false;
+
+    function level() { return clamp(finite(config.volume, .28), .035, .6); }
+    function beatSeconds() { return 60 / score.bpm; }
+    function stepsPerBeat() { return score.pulse === 'triplet' ? 3 : 4; }
+    function stepsPerBar() { return stepsPerBeat() * 4; }
+    function stepSeconds() { return beatSeconds() / stepsPerBeat(); }
+
+    function makeNoise(seconds) {
+      var length = Math.ceil(context.sampleRate * seconds);
+      if (noiseBuffer && noiseBuffer.length >= length) return noiseBuffer;
+      noiseBuffer = context.createBuffer(1, Math.max(length, Math.ceil(context.sampleRate * .24)), context.sampleRate);
+      var data = noiseBuffer.getChannelData(0);
+      var previous = 0;
+      for (var i = 0; i < data.length; i++) {
+        previous = previous * .32 + (Math.random() * 2 - 1) * .68;
+        data[i] = previous;
+      }
+      return noiseBuffer;
+    }
+
+    function makeImpulse(seconds, decay) {
+      var length = Math.floor(context.sampleRate * seconds);
+      var impulse = context.createBuffer(2, length, context.sampleRate);
+      for (var channel = 0; channel < 2; channel++) {
+        var data = impulse.getChannelData(channel);
+        var smooth = 0;
+        for (var i = 0; i < length; i++) {
+          var envelope = Math.pow(1 - i / length, decay);
+          smooth = smooth * .22 + (Math.random() * 2 - 1) * .78;
+          data[i] = smooth * envelope * (channel ? .91 : 1);
+        }
+      }
+      return impulse;
+    }
+
+    function shapedVoice(note, at, duration, options) {
+      var oscillator = context.createOscillator();
+      var layer = context.createOscillator();
+      var layerGain = context.createGain();
+      var filter = context.createBiquadFilter();
+      var envelope = context.createGain();
+      var vibrato = context.createOscillator();
+      var vibratoDepth = context.createGain();
+      var attack = options.attack || .012;
+      var release = options.release || .15;
+      var end = at + Math.max(duration, attack + .03);
+      var peak = Math.max(.0002, options.volume || .02);
+
+      oscillator.type = options.type || 'triangle';
+      layer.type = options.layer || 'sine';
+      oscillator.frequency.setValueAtTime(hz(note), at);
+      layer.frequency.setValueAtTime(hz(note), at);
+      oscillator.detune.value = options.detune || -3;
+      layer.detune.value = options.layerDetune || 5;
+      layerGain.gain.value = options.layerMix == null ? .28 : options.layerMix;
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(options.cutoff || 4800, at);
+      filter.Q.value = options.q || .7;
+      envelope.gain.setValueAtTime(.0001, at);
+      envelope.gain.exponentialRampToValueAtTime(peak, at + attack);
+      envelope.gain.exponentialRampToValueAtTime(Math.max(.0002, peak * (options.sustain || .72)), at + attack + .06);
+      envelope.gain.setValueAtTime(Math.max(.0002, peak * (options.sustain || .72)), end);
+      envelope.gain.exponentialRampToValueAtTime(.0001, end + release);
+
+      vibrato.frequency.value = options.vibratoRate || 5.1;
+      vibratoDepth.gain.value = options.vibrato || 0;
+      vibrato.connect(vibratoDepth);
+      vibratoDepth.connect(oscillator.detune);
+      vibratoDepth.connect(layer.detune);
+      oscillator.connect(filter);
+      layer.connect(layerGain).connect(filter);
+      filter.connect(envelope).connect(musicBus);
+      oscillator.start(at);
+      layer.start(at);
+      vibrato.start(at);
+      oscillator.stop(end + release + .04);
+      layer.stop(end + release + .04);
+      vibrato.stop(end + release + .04);
+    }
+
+    function lead(note, at, duration, softer) {
+      shapedVoice(note, at, duration, {
+        type: palette.lead,
+        layer: palette.leadLayer,
+        volume: softer ? .019 : .028,
+        cutoff: palette.leadCutoff,
+        q: score.palette === 'noir' ? 1.4 : .8,
+        attack: score.palette === 'storybook' ? .025 : .012,
+        release: score.palette === 'dream' ? .34 : .17,
+        sustain: .68,
+        layerMix: score.palette === 'clockwork' ? .16 : .32,
+        detune: -4,
+        layerDetune: 4,
+        vibrato: score.palette === 'storybook' ? 4.2 : 2.1,
+      });
+    }
+
+    function bass(note, at, duration, ghost) {
+      shapedVoice(note, at, duration, {
+        type: palette.bass,
+        layer: 'sine',
+        volume: ghost ? .022 : .043,
+        cutoff: score.palette === 'noir' ? 820 : 1150,
+        q: .9,
+        attack: .008,
+        release: .12,
+        sustain: .58,
+        layerMix: .42,
+        detune: -2,
+        layerDetune: 2,
+      });
+    }
+
+    function padChord(degree, at, duration, quiet) {
+      var base = score.root + 12;
+      var notes = [
+        scaleNote(base, degree, scale),
+        scaleNote(base, degree + 2, scale),
+        scaleNote(base, degree + 4, scale),
+      ];
+      // Gentle inversions keep consecutive chords from lurching around.
+      if (degree >= 4) notes[0] += 12;
+      for (var i = 0; i < notes.length; i++) {
+        shapedVoice(notes[i], at + i * .009, duration, {
+          type: palette.pad,
+          layer: i === 1 ? 'triangle' : 'sine',
+          volume: quiet ? .009 : .013,
+          cutoff: palette.cutoff,
+          q: .45,
+          attack: score.palette === 'dream' ? .24 : .12,
+          release: score.palette === 'dream' ? .75 : .46,
+          sustain: .82,
+          layerMix: .2,
+          detune: -6 + i * 2,
+          layerDetune: 5 - i,
+        });
+      }
+    }
+
+    function mallet(note, at, volume) {
+      var carrier = context.createOscillator();
+      var modulator = context.createOscillator();
+      var modDepth = context.createGain();
+      var filter = context.createBiquadFilter();
+      var envelope = context.createGain();
+      var frequency = hz(note);
+      var duration = score.palette === 'dream' ? .92 : .42;
+      carrier.type = 'sine';
+      modulator.type = 'sine';
+      carrier.frequency.setValueAtTime(frequency, at);
+      modulator.frequency.setValueAtTime(frequency * (score.palette === 'clockwork' ? 3 : 2), at);
+      modDepth.gain.setValueAtTime(frequency * .72, at);
+      modDepth.gain.exponentialRampToValueAtTime(.01, at + duration * .62);
+      modulator.connect(modDepth).connect(carrier.frequency);
+      filter.type = 'lowpass';
+      filter.frequency.value = palette.cutoff;
+      envelope.gain.setValueAtTime(.0001, at);
+      envelope.gain.exponentialRampToValueAtTime(volume, at + .006);
+      envelope.gain.exponentialRampToValueAtTime(.0001, at + duration);
+      carrier.connect(filter).connect(envelope).connect(musicBus);
+      carrier.start(at);
+      modulator.start(at);
+      carrier.stop(at + duration + .03);
+      modulator.stop(at + duration + .03);
+    }
+
+    function kick(at, volume) {
+      var oscillator = context.createOscillator();
+      var envelope = context.createGain();
+      oscillator.type = 'sine';
+      oscillator.frequency.setValueAtTime(92, at);
+      oscillator.frequency.exponentialRampToValueAtTime(43, at + .11);
+      envelope.gain.setValueAtTime(volume, at);
+      envelope.gain.exponentialRampToValueAtTime(.0001, at + .15);
+      oscillator.connect(envelope).connect(musicBus);
+      oscillator.start(at);
+      oscillator.stop(at + .17);
+    }
+
+    function brush(at, volume, bright) {
+      var source = context.createBufferSource();
+      var filter = context.createBiquadFilter();
+      var envelope = context.createGain();
+      source.buffer = makeNoise(.22);
+      filter.type = bright ? 'highpass' : 'bandpass';
+      filter.frequency.value = bright ? 4800 : 1700;
+      filter.Q.value = bright ? .35 : .8;
+      envelope.gain.setValueAtTime(volume, at);
+      envelope.gain.exponentialRampToValueAtTime(.0001, at + (bright ? .045 : .12));
+      source.connect(filter).connect(envelope).connect(musicBus);
+      source.start(at);
+      source.stop(at + .15);
+    }
+
+    function phraseDuration(source, index) {
+      var count = 1;
+      var maximum = source === score.phrase ? stepsPerBeat() * 3 : stepsPerBeat();
+      while (count < maximum && source[(index + count) % source.length] == null) count++;
+      return stepSeconds() * count * .82;
+    }
+
+    function sectionFor(bar) {
+      var cycle = bar % 32;
+      if (cycle < 2) return 'intro';
+      if (cycle < 10) return 'a';
+      if (cycle < 18) return 'b';
+      if (cycle < 22) return 'break';
+      return 'reprise';
+    }
+
+    function schedule(rawAt, index) {
+      var perBeat = stepsPerBeat();
+      var perBar = stepsPerBar();
+      var beat = index % perBar;
+      var bar = Math.floor(index / perBar);
+      var section = sectionFor(bar);
+      var degree = score.chords[bar % score.chords.length];
+      var nextDegree = score.chords[(bar + 1) % score.chords.length];
+      var at = rawAt + (score.pulse === 'straight' && beat % 2 ? stepSeconds() * score.swing : 0);
+      var rootBass = scaleNote(score.root - 12, degree, scale);
+      var firstPickup = Math.round(perBeat * 1.5);
+      var middle = perBeat * 2;
+      var late = perBeat * 3;
+      var secondPickup = Math.round(perBeat * 3.5);
+
+      if (beat === 0) {
+        padChord(degree, at, beatSeconds() * 3.55, section === 'intro' || section === 'break');
+        bass(rootBass, at, beatSeconds() * (section === 'break' ? 1.4 : .82), false);
+        if (section !== 'intro' && score.palette !== 'dream') kick(at, .018 * palette.percussion);
+      }
+
+      if (section !== 'intro' && section !== 'break') {
+        if (beat === firstPickup) bass(scaleNote(score.root - 12, degree + 4, scale), at, beatSeconds() * .38, true);
+        if (beat === middle) bass(rootBass + (bar % 2 ? 0 : 12), at, beatSeconds() * .62, false);
+        if (beat === late && section !== 'a') {
+          bass(scaleNote(score.root - 12, nextDegree - 1, scale), at, beatSeconds() * .3, true);
+        }
+        if (score.family === 'kinetic-green' && beat === perBeat - 1) {
+          bass(scaleNote(score.root - 12, degree + 2, scale), at, beatSeconds() * .22, true);
+        }
+      }
+
+      if (palette.percussion > .15 && section !== 'intro') {
+        if (beat === firstPickup || beat === secondPickup) brush(at, .013 * palette.percussion, false);
+        if ((score.palette === 'clockwork' || score.palette === 'noir') && beat % perBeat === Math.floor(perBeat / 2)) {
+          brush(at, .007 * palette.percussion, true);
+        }
+      }
+
+      var hasLongPhrase = score.phrase.length > 0;
+      var phraseSource = hasLongPhrase ? score.phrase : score.motif;
+      var absolutePhraseStep = bar * perBar + beat;
+      var motifIndex = hasLongPhrase ? absolutePhraseStep % phraseSource.length : beat % phraseSource.length;
+      var motifDegree = phraseSource[motifIndex];
+      if (!hasLongPhrase && bar % 2 === 1) {
+        motifIndex = (beat + perBeat) % phraseSource.length;
+        motifDegree = phraseSource[motifIndex];
+        if (motifDegree != null && beat >= middle) motifDegree = Math.max(0, motifDegree - 1);
+      }
+      if (hasLongPhrase && score.evolve) {
+        var phraseCycle = Math.floor(absolutePhraseStep / phraseSource.length);
+        if (phraseCycle > 0 && motifDegree != null) {
+          if ((motifIndex + phraseCycle * 5) % 19 === 0) motifDegree = null;
+          else if ((motifIndex + phraseCycle * 7) % 23 === 0) {
+            motifDegree = clamp(motifDegree + (phraseCycle % 2 ? -1 : 1), -7, 14);
+          }
+        }
+      }
+      var allowLead = hasLongPhrase || section !== 'intro' || (bar % 32 === 1 && beat >= middle);
+      if (!hasLongPhrase && section === 'break') allowLead = beat === 0 || beat === middle;
+      if (motifDegree != null && allowLead) {
+        var lift = !hasLongPhrase && section === 'b' && (bar % 4 >= 2) ? 2 : 0;
+        var leadNote = scaleNote(score.root + 12, motifDegree + lift, scale);
+        lead(leadNote, at, phraseDuration(phraseSource, motifIndex), section === 'intro' || section === 'break');
+      }
+
+      // A small answer voice makes the loop feel arranged instead of merely
+      // repeated. It stays out of the opening and breakdown so the score breathes.
+      if ((section === 'b' || section === 'reprise') && (beat === perBeat - 1 || beat === late - 1)) {
+        var answerDegree = degree + (beat === perBeat - 1 ? 4 : 2);
+        mallet(scaleNote(score.root + 12, answerDegree, scale), at, score.palette === 'dream' ? .018 : .012);
+      } else if (section === 'a' && score.family === 'forest-clockwork' &&
+        (beat === Math.floor(perBeat / 2) || beat === middle + Math.floor(perBeat / 2))) {
+        mallet(scaleNote(score.root + 12, degree + 2, scale), at, .009);
+      }
+
+      if (score.family === 'buoyant-current' && section !== 'intro' && beat % perBeat === 1) {
+        mallet(scaleNote(score.root + 12, degree + (Math.floor(beat / perBeat) % 2 ? 4 : 2), scale), at, .008);
+      } else if (score.family === 'deep-water' && beat === secondPickup && bar % 4 === 3) {
+        mallet(scaleNote(score.root + 24, degree + 4, scale), at, .008);
+      }
+    }
+
+    function tick() {
+      if (!context) return;
+      var seconds = stepSeconds();
+      while (nextTime < context.currentTime + .16) {
+        schedule(nextTime, step++);
+        nextTime += seconds;
+      }
+    }
+
+    function ensureGraph() {
+      if (master) return;
+      context = getContext();
+      musicBus = context.createGain();
+      var dry = context.createGain();
+      var reverb = context.createConvolver();
+      var reverbGain = context.createGain();
+      var delay = context.createDelay(1.2);
+      var feedback = context.createGain();
+      var delayGain = context.createGain();
+      var highpass = context.createBiquadFilter();
+      var lowShelf = context.createBiquadFilter();
+      var presence = context.createBiquadFilter();
+      var highShelf = context.createBiquadFilter();
+      var compressor = context.createDynamicsCompressor();
+      master = context.createGain();
+
+      dry.gain.value = .92;
+      reverb.buffer = makeImpulse(score.palette === 'dream' ? 2.8 : 2.15, score.palette === 'dream' ? 3.1 : 3.8);
+      reverbGain.gain.value = score.reverb * .34;
+      delay.delayTime.value = beatSeconds() * .75;
+      feedback.gain.value = .13 + palette.delay * .18;
+      delayGain.gain.value = palette.delay;
+
+      highpass.type = 'highpass';
+      highpass.frequency.value = 32;
+      highpass.Q.value = .55;
+      lowShelf.type = 'lowshelf';
+      lowShelf.frequency.value = 180;
+      lowShelf.gain.value = -1.2;
+      presence.type = 'peaking';
+      presence.frequency.value = 1850;
+      presence.Q.value = .72;
+      presence.gain.value = -1.5;
+      highShelf.type = 'highshelf';
+      highShelf.frequency.value = 6200;
+      highShelf.gain.value = score.palette === 'dream' ? -1.2 : -3.1;
+      compressor.threshold.value = -19;
+      compressor.knee.value = 16;
+      compressor.ratio.value = 3.2;
+      compressor.attack.value = .012;
+      compressor.release.value = .24;
+
+      musicBus.connect(dry).connect(highpass);
+      musicBus.connect(reverb).connect(reverbGain).connect(highpass);
+      musicBus.connect(delay);
+      delay.connect(feedback).connect(delay);
+      delay.connect(delayGain).connect(highpass);
+      highpass.connect(lowShelf).connect(presence).connect(highShelf).connect(compressor).connect(master);
+      master.connect(context.destination);
+      master.gain.value = muted ? 0 : level();
+    }
+
+    return {
+      start: function (isMuted) {
+        muted = !!isMuted;
+        if (started) {
+          if (!muted && context && context.state === 'suspended') context.resume().catch(function () {});
+          return;
+        }
+        started = true;
+        ensureGraph();
+        context.resume().catch(function () {});
+        nextTime = context.currentTime + .045;
+        step = 0;
+        tick();
+        timer = window.setInterval(tick, 45);
+      },
+      setMuted: function (isMuted) {
+        muted = !!isMuted;
+        if (!started && !muted) this.start(false);
+        if (context && !muted && context.state === 'suspended') context.resume().catch(function () {});
+        if (master) master.gain.setTargetAtTime(muted ? 0 : level(), context.currentTime, .035);
+      },
+      setVolume: function (volume) {
+        config.volume = volume;
+        if (master && !muted) master.gain.setTargetAtTime(level(), context.currentTime, .035);
+      },
+      stop: function () {
+        if (timer != null) window.clearInterval(timer);
+        timer = null;
+        if (master && context) {
+          master.gain.cancelScheduledValues(context.currentTime);
+          master.gain.setTargetAtTime(0, context.currentTime, .025);
+          var oldMaster = master;
+          window.setTimeout(function () { try { oldMaster.disconnect(); } catch (error) {} }, 180);
+        }
+        started = false;
+      },
+    };
+  }
+
+  window.SafarSynth = { create: create };
+})();
+
+</script>
+<script>
+/**
+ * Safar game engine. One file, no dependencies, no build step.
+ *
+ * This exact script is BOTH the builder preview and the exported player, so
+ * the two can never drift apart. It reads `window.SAFAR_GAME` (see GameData
+ * in types.ts) and renders the full game: title → intro → scenes with
+ * hotspots, verb wheel, inventory, combos, trades, story flags, a phone
+ * dial pad, cut scenes, an ending, command bar, narration, music, and saves.
+ *
+ * Response resolution order for any interaction:
+ *   1. Baked responses in the game data (exports rely on these)
+ *   2. Live AI bridge via postMessage (builder preview only)
+ *   3. Deterministic fallback lines (never a dead click)
+ */
+(function safarMain() {
+  'use strict';
+
+  var G = window.SAFAR_GAME;
+  if (!G) {
+    document.body.innerHTML = '<p style="color:#fff;font-family:sans-serif;padding:2rem">Missing game data.</p>';
+    return;
+  }
+
+  // Preview hands large images and music over as Blobs instead of inlining
+  // them into the document, then the game starts with local object URLs.
+  if (G.assetHandoff && !G.assetsReady) {
+    window.addEventListener('message', function receiveAssets(ev) {
+      if (ev.source !== window.parent || !ev.data || ev.data.type !== 'safar:assets') return;
+      window.removeEventListener('message', receiveAssets);
+      var assets = ev.data.assets || {};
+      var urls = {};
+      Object.keys(assets).forEach(function (id) {
+        try { urls[id] = URL.createObjectURL(assets[id]); } catch (e) { /* missing art shows its placeholder */ }
+      });
+      (function swap(node) {
+        Object.keys(node).forEach(function (key) {
+          var value = node[key];
+          if (typeof value === 'string' && value.indexOf('safar-asset:') === 0) node[key] = urls[value.slice(12)];
+          else if (value && typeof value === 'object') swap(value);
+        });
+      })(G);
+      G.assetsReady = true;
+      safarMain();
+    });
+    window.parent.postMessage({ type: 'safar:need-assets' }, '*');
+    return;
+  }
+
+  // ── Utilities ─────────────────────────────────────────────────────────────
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  // Sandboxed previews receive a parent-provided snapshot and bridge writes
+  // back through postMessage. Standalone exports use localStorage directly.
+  var memoryStore = Object.assign({}, G.previewStorage || {});
+  function bridgeStorage(operation, key, value) {
+    if (!G.previewBridge || !window.parent || window.parent === window) return;
+    window.parent.postMessage({
+      type: 'safar:storage',
+      payload: { operation: operation, key: key, value: value },
+    }, '*');
+  }
+  var storage = {
+    get: function (k) {
+      if (G.previewBridge) return memoryStore[k] || null;
+      try { return localStorage.getItem(k); } catch (e) { return memoryStore[k] || null; }
+    },
+    set: function (k, v) {
+      if (G.previewBridge) {
+        memoryStore[k] = v;
+        bridgeStorage('set', k, v);
+        return;
+      }
+      try { localStorage.setItem(k, v); } catch (e) { memoryStore[k] = v; }
+    },
+    remove: function (k) {
+      if (G.previewBridge) {
+        delete memoryStore[k];
+        bridgeStorage('remove', k);
+        return;
+      }
+      try { localStorage.removeItem(k); } catch (e) { delete memoryStore[k]; }
+    },
+  };
+
+  var roomsById = {};
+  G.rooms.forEach(function (r) { roomsById[r.id] = r; });
+  var itemsById = {};
+  G.items.forEach(function (it) { itemsById[it.id] = it; });
+  var cutscenesById = {};
+  (G.cutscenes || []).forEach(function (c) { cutscenesById[c.id] = c; });
+
+  var LEGACY_SAVE_KEY = 'safar.save.' + (G.meta.name || 'game');
+  var SAVE_KEY = 'safar.save.v2.' + (G.meta.id || G.meta.name || 'game');
+  // Preserve Continue data created by early v2 builds, then use the stable
+  // project ID so renaming does not orphan a save.
+  if (SAVE_KEY !== LEGACY_SAVE_KEY && !storage.get(SAVE_KEY) && storage.get(LEGACY_SAVE_KEY)) {
+    storage.set(SAVE_KEY, storage.get(LEGACY_SAVE_KEY));
+    storage.remove(LEGACY_SAVE_KEY);
+  }
+  if (!storage.get(SAVE_KEY + '.muted') && storage.get(LEGACY_SAVE_KEY + '.muted')) {
+    storage.set(SAVE_KEY + '.muted', storage.get(LEGACY_SAVE_KEY + '.muted'));
+    storage.remove(LEGACY_SAVE_KEY + '.muted');
+  }
+
+  // ── Game state ────────────────────────────────────────────────────────────
+
+  var state = {
+    roomId: G.startRoomId,
+    inventory: (G.initialInventory || []).filter(function (id) { return itemsById[id]; }),
+    taken: {},            // hotspotId -> true (picked-up items disappear)
+    unlocked: {},         // hotspotId -> true (requiredItem satisfied)
+    visited: {},          // roomId -> true
+    flags: {},            // story flag -> true
+    muted: storage.get(SAVE_KEY + '.muted') === '1',
+  };
+
+  function saveGame() {
+    storage.set(SAVE_KEY, JSON.stringify({
+      version: 2,
+      roomId: state.roomId,
+      inventory: state.inventory,
+      taken: state.taken,
+      unlocked: state.unlocked,
+      visited: state.visited,
+      flags: state.flags,
+    }));
+  }
+
+  function loadGame() {
+    var raw = storage.get(SAVE_KEY);
+    if (!raw) return false;
+    try {
+      var s = JSON.parse(raw);
+      if (!roomsById[s.roomId]) return false;
+      state.roomId = s.roomId;
+      state.inventory = (s.inventory || []).filter(function (id) { return itemsById[id]; });
+      state.taken = s.taken || {};
+      state.unlocked = s.unlocked || {};
+      state.visited = s.visited || {};
+      state.flags = s.flags || {};
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function hasSave() { return !!storage.get(SAVE_KEY); }
+
+  function clearSave() { storage.remove(SAVE_KEY); }
+
+  // ── Live AI bridge (builder preview only) ─────────────────────────────────
+
+  var bridgeSeq = 0;
+  var bridgeWaiters = {};
+
+  if (G.liveBridge) {
+    window.addEventListener('message', function (ev) {
+      if (ev.source !== window.parent) return;
+      var msg = ev.data;
+      if (!msg || msg.type !== 'safar:result') return;
+      var waiter = bridgeWaiters[msg.requestId];
+      if (waiter) {
+        delete bridgeWaiters[msg.requestId];
+        waiter(typeof msg.text === 'string' && msg.text ? msg.text : null);
+      }
+    });
+  }
+
+  /** Ask the parent frame to generate text live. Resolves null on timeout/failure.
+   *  The window allows for a hosted model's slower first reply and one retry. */
+  function bridgeGenerate(payload) {
+    return new Promise(function (resolve) {
+      if (!G.liveBridge || !window.parent || window.parent === window) return resolve(null);
+      var id = 'req' + (++bridgeSeq);
+      bridgeWaiters[id] = resolve;
+      var timer = setTimeout(function () {
+        if (bridgeWaiters[id]) { delete bridgeWaiters[id]; resolve(null); }
+      }, 60000);
+      bridgeWaiters[id] = function (text) { clearTimeout(timer); resolve(text); };
+      window.parent.postMessage({ type: 'safar:generate', requestId: id, payload: payload }, '*');
+    });
+  }
+
+  var FALLBACK = {
+    look: 'You take a closer look, but nothing more reveals itself.',
+    use: 'You fiddle with it. Nothing happens.',
+    talk: "No response. Perhaps it's shy.",
+    kick: 'You give it a solid kick. Ow. Nothing happens.',
+    combo: "That doesn't seem to work.",
+    entry: '',
+  };
+
+  function resolveVerbText(hotspot, verb) {
+    var baked = G.responses.verbs[state.roomId + '/' + hotspot.id + '/' + verb];
+    if (baked) return Promise.resolve(baked);
+    return bridgeGenerate({ kind: 'verb', roomId: state.roomId, hotspotId: hotspot.id, verb: verb })
+      .then(function (text) { return text || FALLBACK[verb]; });
+  }
+
+  function resolveComboText(hotspot, itemId, unlocks) {
+    var baked = G.responses.combos[state.roomId + '/' + hotspot.id + '/' + itemId];
+    if (baked) return Promise.resolve(baked);
+    return bridgeGenerate({ kind: 'combo', roomId: state.roomId, hotspotId: hotspot.id, itemId: itemId, unlocks: unlocks })
+      .then(function (text) {
+        if (text) return text;
+        return unlocks ? 'It works! The ' + hotspot.name.toLowerCase() + ' yields.' : FALLBACK.combo;
+      });
+  }
+
+  function resolveEntryText(room) {
+    if (room.entryMode === 'none') return Promise.resolve('');
+    if (room.entryMode === 'custom') return Promise.resolve(room.entryText || '');
+    var baked = G.responses.entry[room.id];
+    if (baked) return Promise.resolve(baked);
+    return bridgeGenerate({ kind: 'entry', roomId: room.id }).then(function (t) { return t || ''; });
+  }
+
+  // ── DOM scaffold ──────────────────────────────────────────────────────────
+
+  var root = document.getElementById('safar-root') || document.body;
+  root.classList.add('sf-root');
+  document.documentElement.style.setProperty('--sf-accent', G.meta.accent || '#fbbf24');
+  document.documentElement.style.setProperty('--sf-bg', G.meta.background || '#0f172a');
+  document.documentElement.style.setProperty(
+    '--sf-font',
+    G.meta.font === 'serif' ? "Georgia, 'Times New Roman', serif"
+      : G.meta.font === 'mono' ? "'Courier New', monospace"
+      : "system-ui, -apple-system, 'Segoe UI', sans-serif"
+  );
+  var ratio = (G.meta.aspectRatio || '16:9').split(':');
+  document.documentElement.style.setProperty('--sf-ratio', (ratio[0] || 16) + ' / ' + (ratio[1] || 9));
+  var atmosphere = G.meta.atmosphere === 'full' || G.meta.atmosphere === 'clean'
+    ? G.meta.atmosphere
+    : 'subtle';
+  document.documentElement.classList.add('sf-atmosphere-' + atmosphere);
+
+  var audioContext = null;
+  function getAudioContext() {
+    audioContext = audioContext || new (window.AudioContext || window.webkitAudioContext)();
+    return audioContext;
+  }
+
+  var music = null;
+  if (G.music) {
+    music = new Audio(G.music);
+    music.loop = true;
+    music.volume = 0.5;
+  }
+  var synthMusic = null;
+  if (!music && G.synthScore && G.synthScore.preset && G.synthScore.preset !== 'off' && window.SafarSynth) {
+    synthMusic = window.SafarSynth.create(G.synthScore, getAudioContext);
+  }
+  var muteBtn = null;
+  var titleAudioBtn = null;
+  var audioUnlocked = false;
+  var audioUnlockArmed = false;
+
+  function updateAudioButtons() {
+    if (muteBtn) muteBtn.textContent = state.muted ? '🔇' : '🔊';
+    if (titleAudioBtn) {
+      titleAudioBtn.textContent = state.muted
+        ? '♫ SOUND OFF'
+        : audioUnlocked ? '♫ SOUND ON' : '♫ ENABLE SCORE';
+    }
+  }
+
+  function markAudioUnlocked() {
+    audioUnlocked = true;
+    updateAudioButtons();
+  }
+
+  function playUploadedMusic() {
+    if (!music || state.muted) return;
+    var attempt = music.play();
+    if (attempt && attempt.then) attempt.then(markAudioUnlocked).catch(function () {});
+  }
+
+  function startUploadedMusic() {
+    playUploadedMusic();
+  }
+
+  function unlockMusic() {
+    playUploadedMusic();
+    if (synthMusic) synthMusic.start(state.muted);
+    if (audioContext && !state.muted) {
+      audioContext.resume().then(markAudioUnlocked).catch(function () {});
+    }
+  }
+
+  function armAudioUnlock() {
+    if (audioUnlockArmed || state.muted || (!music && !synthMusic)) return;
+    audioUnlockArmed = true;
+    var unlock = function (event) {
+      var target = event.target;
+      if (target && target.closest && target.closest('.sf-title-audio')) return;
+      window.removeEventListener('pointerdown', unlock, true);
+      window.removeEventListener('keydown', unlock, true);
+      audioUnlockArmed = false;
+      unlockMusic();
+    };
+    window.addEventListener('pointerdown', unlock, true);
+    window.addEventListener('keydown', unlock, true);
+  }
+
+  function setMuted(m) {
+    state.muted = m;
+    storage.set(SAVE_KEY + '.muted', m ? '1' : '0');
+    if (music) { if (m) music.pause(); else playUploadedMusic(); }
+    if (synthMusic) synthMusic.setMuted(m);
+    if (!m && audioContext) audioContext.resume().then(markAudioUnlocked).catch(function () {});
+    updateAudioButtons();
+  }
+
+  function playUiTone(kind) {
+    if (!G.meta.uiSound || state.muted) return;
+    try {
+      audioContext = getAudioContext();
+      var now = audioContext.currentTime;
+      var oscillator = audioContext.createOscillator();
+      var gain = audioContext.createGain();
+      oscillator.type = kind === 'shift' ? 'sine' : 'square';
+      oscillator.frequency.setValueAtTime(kind === 'confirm' ? 520 : kind === 'shift' ? 145 : 310, now);
+      if (kind === 'confirm') oscillator.frequency.exponentialRampToValueAtTime(760, now + .05);
+      if (kind === 'shift') oscillator.frequency.exponentialRampToValueAtTime(210, now + .08);
+      gain.gain.setValueAtTime(.0001, now);
+      gain.gain.exponentialRampToValueAtTime(kind === 'shift' ? .014 : .009, now + .004);
+      gain.gain.exponentialRampToValueAtTime(.0001, now + (kind === 'shift' ? .11 : .055));
+      oscillator.connect(gain).connect(audioContext.destination);
+      oscillator.start(now);
+      oscillator.stop(now + .13);
+    } catch (e) {
+      // Interface sound is optional; browser policy must never block play.
+    }
+  }
+
+  root.addEventListener('pointerdown', function (ev) {
+    var target = ev.target && ev.target.closest ? ev.target.closest('button') : null;
+    if (target && !target.disabled) playUiTone('click');
+  });
+
+  // ── Screens: title → intro → game ─────────────────────────────────────────
+
+  // Fit each artwork to its own proportions. Ignore late loads from a previous room.
+  function sizeArtwork(frame, imageUrl) {
+    frame._artworkUrl = imageUrl;
+    frame.style.setProperty('--sf-image-ratio', (Number(ratio[0]) || 16) / (Number(ratio[1]) || 9));
+    if (!imageUrl) return;
+    var image = new Image();
+    image.onload = function () {
+      if (frame._artworkUrl === imageUrl && image.naturalWidth && image.naturalHeight) {
+        frame.style.setProperty('--sf-image-ratio', image.naturalWidth / image.naturalHeight);
+      }
+    };
+    image.src = imageUrl;
+  }
+
+  function buildScreen(className, imageUrl) {
+    var screen = el('div', 'sf-screen ' + className);
+    var frame = el('div', 'sf-screen-frame');
+    if (imageUrl) frame.style.backgroundImage = 'url("' + imageUrl + '")';
+    sizeArtwork(frame, imageUrl);
+    screen.appendChild(frame);
+    return { screen: screen, frame: frame };
+  }
+
+  function showTitle() {
+    document.documentElement.classList.add('sf-title-active');
+    root.innerHTML = '';
+    var built = buildScreen('sf-title', G.title.image);
+    var panel = el('div', 'sf-title-panel');
+    if (!G.title.image) {
+      panel.appendChild(el('h1', 'sf-title-heading', G.title.heading || G.meta.name));
+      if (G.title.subheading) panel.appendChild(el('p', 'sf-title-sub', G.title.subheading));
+    }
+    if (music || synthMusic) {
+      titleAudioBtn = el('button', 'sf-title-audio');
+      titleAudioBtn.title = 'Enable or mute the title-screen score';
+      titleAudioBtn.onclick = function () {
+        if (state.muted) setMuted(false);
+        else if (!audioUnlocked) unlockMusic();
+        else setMuted(true);
+      };
+      panel.appendChild(titleAudioBtn);
+      updateAudioButtons();
+    }
+    var buttons = el('div', 'sf-title-buttons');
+    if (hasSave()) {
+      var cont = el('button', 'sf-btn sf-btn-pixel', 'Continue');
+      cont.onclick = function () { loadGame(); enterGame(true); };
+      buttons.appendChild(cont);
+      var fresh = el('button', 'sf-btn sf-btn-pixel', 'New Game');
+      fresh.onclick = function () { clearSave(); afterTitle(); };
+      buttons.appendChild(fresh);
+    } else {
+      var start = el('button', 'sf-btn sf-btn-pixel', 'Start Game');
+      start.onclick = function () { afterTitle(); };
+      buttons.appendChild(start);
+    }
+    panel.appendChild(buttons);
+    built.screen.appendChild(panel);
+    root.appendChild(built.screen);
+    startUploadedMusic();
+    armAudioUnlock();
+  }
+
+  function afterTitle() {
+    document.documentElement.classList.remove('sf-title-active');
+    if (G.intro.enabled && (G.intro.image || G.intro.text)) showIntro();
+    else enterGame(false);
+  }
+
+  function showIntro() {
+    document.documentElement.classList.add('sf-intro-active');
+    root.innerHTML = '';
+    var built = buildScreen('sf-intro', G.intro.image);
+    var panel = el('div', 'sf-intro-panel');
+    if (G.intro.text) {
+      var p = el('p', 'sf-intro-text');
+      p.textContent = G.intro.text;
+      panel.appendChild(p);
+    }
+    var btn = el('button', 'sf-btn sf-btn-pixel', 'Begin');
+    btn.onclick = function () { enterGame(false); };
+    panel.appendChild(btn);
+    built.screen.appendChild(panel);
+    root.appendChild(built.screen);
+  }
+
+  // ── Game UI ───────────────────────────────────────────────────────────────
+
+  var sceneEl, narrationEl, narrationText, inventoryEl, commandWrap, commandInput, historyEl;
+  var dialogLog = [];
+  var typeTimer = null;
+  var selectedItemId = null;
+  var busy = false;
+
+  function enterGame(fromSave) {
+    document.documentElement.classList.remove('sf-title-active', 'sf-intro-active');
+    root.innerHTML = '';
+    var frame = el('div', 'sf-frame');
+
+    // Top bar
+    var bar = el('div', 'sf-topbar');
+    bar.appendChild(el('span', 'sf-topbar-title', G.meta.name));
+    var barRight = el('div', 'sf-topbar-right');
+    if (music || synthMusic || G.meta.uiSound) {
+      muteBtn = el('button', 'sf-iconbtn', state.muted ? '🔇' : '🔊');
+      muteBtn.title = 'Toggle audio';
+      muteBtn.onclick = function () { setMuted(!state.muted); };
+      barRight.appendChild(muteBtn);
+    }
+    var logBtn = el('button', 'sf-iconbtn', '📜');
+    logBtn.title = 'Story log';
+    logBtn.onclick = toggleHistory;
+    barRight.appendChild(logBtn);
+    var cmdBtn = el('button', 'sf-iconbtn', '⌨');
+    cmdBtn.title = 'Command bar ( / )';
+    cmdBtn.onclick = toggleCommand;
+    barRight.appendChild(cmdBtn);
+    bar.appendChild(barRight);
+    frame.appendChild(bar);
+
+    // Scene
+    var sceneSpace = el('div', 'sf-scene-space');
+    sceneEl = el('div', 'sf-scene');
+    sceneSpace.appendChild(sceneEl);
+    frame.appendChild(sceneSpace);
+
+    // Narration
+    narrationEl = el('div', 'sf-narration sf-hidden');
+    narrationText = el('p', 'sf-narration-text');
+    narrationText.tabIndex = 0;
+    narrationText.setAttribute('role', 'region');
+    narrationText.setAttribute('aria-label', 'Narration (scroll to read more)');
+    narrationEl.appendChild(narrationText);
+    var dismiss = el('button', 'sf-narration-dismiss', '✕');
+    dismiss.title = 'Dismiss (Esc)';
+    dismiss.onclick = hideNarration;
+    narrationEl.appendChild(dismiss);
+    frame.appendChild(narrationEl);
+
+    // History overlay
+    historyEl = el('div', 'sf-history sf-hidden');
+    frame.appendChild(historyEl);
+
+    // Command bar
+    commandWrap = el('div', 'sf-command sf-hidden');
+    commandInput = el('input', 'sf-command-input');
+    commandInput.placeholder = 'Try: "look at the desk", "use key on door", "go north"…';
+    commandInput.onkeydown = function (ev) {
+      if (ev.key === 'Enter' && commandInput.value.trim()) {
+        var text = commandInput.value.trim();
+        commandInput.value = '';
+        toggleCommand();
+        runCommand(text);
+      } else if (ev.key === 'Escape') {
+        toggleCommand();
+      }
+      ev.stopPropagation();
+    };
+    commandWrap.appendChild(commandInput);
+    frame.appendChild(commandWrap);
+
+    // Inventory
+    inventoryEl = el('div', 'sf-inventory');
+    frame.appendChild(inventoryEl);
+
+    root.appendChild(frame);
+
+    document.addEventListener('keydown', onGlobalKey);
+
+    renderInventory();
+    renderRoom(fromSave);
+  }
+
+  function onGlobalKey(ev) {
+    var target = ev.target;
+    if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA')) return;
+    if (ev.key === 'Escape') {
+      hideNarration();
+      closeWheel();
+      if (selectedItemId) selectItem(null);
+    } else if (ev.key === '/') {
+      ev.preventDefault();
+      toggleCommand(true);
+    }
+  }
+
+  // ── Rooms & hotspots ──────────────────────────────────────────────────────
+
+  function currentRoom() { return roomsById[state.roomId]; }
+
+  function renderRoom(skipEntry) {
+    var room = currentRoom();
+    closeWheel();
+    sceneEl.innerHTML = '';
+    sceneEl.classList.remove('sf-scene-enter');
+    sceneEl.classList.remove('sf-scene-sync');
+    // Force reflow so the fade-in animation restarts on every room change.
+    void sceneEl.offsetWidth;
+    sceneEl.classList.add('sf-scene-enter');
+    if (atmosphere !== 'clean') sceneEl.classList.add('sf-scene-sync');
+    playUiTone('shift');
+
+    var takenIds = (room.imageChangingHotspotIds || []).filter(function (id) { return state.taken[id]; }).sort();
+    var variant = (room.pickupImages || []).find(function (v) { return JSON.stringify(v.takenHotspotIds.slice().sort()) === JSON.stringify(takenIds); });
+    var flagImage = activeFlagImage(room);
+    var roomImage = flagImage ? flagImage.image : variant && variant.image ? variant.image : room.image;
+    sizeArtwork(sceneEl, roomImage);
+    var img = el('div', 'sf-scene-image');
+    if (roomImage) {
+      img.style.backgroundImage = 'url("' + roomImage + '")';
+    } else {
+      img.classList.add('sf-scene-missing');
+      img.appendChild(el('p', 'sf-scene-missing-text', room.name + ' — no scene image yet'));
+    }
+    sceneEl.appendChild(img);
+
+    var label = el('div', 'sf-room-label', room.name);
+    sceneEl.appendChild(label);
+
+    room.hotspots.forEach(function (h) {
+      if (!isVisible(h)) return;
+      var hot = el('button', 'sf-hotspot sf-hotspot-' + h.kind);
+      hot.type = 'button';
+      hot.setAttribute('aria-label', h.name);
+      hot.style.left = h.rect.x + '%';
+      hot.style.top = h.rect.y + '%';
+      hot.style.width = h.rect.w + '%';
+      hot.style.height = h.rect.h + '%';
+      var tag = el('span', 'sf-hotspot-tag', h.name);
+      hot.appendChild(tag);
+      hot.onclick = function (ev) {
+        ev.stopPropagation();
+        onHotspotClick(h, ev);
+      };
+      sceneEl.appendChild(hot);
+    });
+
+    sceneEl.onclick = function () {
+      closeWheel();
+      if (selectedItemId) selectItem(null);
+    };
+
+    if (!state.visited[room.id]) {
+      state.visited[room.id] = true;
+      saveGame();
+      if (!skipEntry) {
+        resolveEntryText(room).then(function (text) {
+          if (text && state.roomId === room.id) showNarration('Narrator', text);
+        });
+      }
+    }
+  }
+
+  // ── Story flags ───────────────────────────────────────────────────────────
+
+  function isVisible(h) {
+    if (h.kind === 'item' && state.taken[h.id]) return false;
+    if (h.requiresFlag && !state.flags[h.requiresFlag]) return false;
+    if (h.hiddenByFlag && state.flags[h.hiddenByFlag]) return false;
+    return true;
+  }
+
+  /** The first story-flag image whose flags hold; it replaces the room image. */
+  function activeFlagImage(room) {
+    var list = room.flagImages || [];
+    for (var i = 0; i < list.length; i++) {
+      var v = list[i];
+      if (!v.image) continue;
+      if (v.requiresFlag && !state.flags[v.requiresFlag]) continue;
+      if (v.hiddenByFlag && state.flags[v.hiddenByFlag]) continue;
+      return v;
+    }
+    return null;
+  }
+
+  function visibleSignature() {
+    var room = currentRoom();
+    var flagImage = activeFlagImage(room);
+    return room.hotspots.filter(isVisible).map(function (h) { return h.id; }).join('|') + '#' + (flagImage ? flagImage.image : '');
+  }
+
+  /** Apply a list of flag changes; redraw the room if its hotspots changed. */
+  function changeFlags(sets, clears, redraw) {
+    if (!(sets && sets.length) && !(clears && clears.length)) return;
+    var before = visibleSignature();
+    (sets || []).forEach(function (f) { state.flags[f] = true; });
+    (clears || []).forEach(function (f) { delete state.flags[f]; });
+    saveGame();
+    if (redraw && visibleSignature() !== before) renderRoom(true);
+  }
+
+  function applyHotspotFlags(hotspot, redraw) {
+    changeFlags(hotspot.setsFlags, hotspot.clearsFlags, redraw);
+  }
+
+  function goToRoom(roomId) {
+    if (!roomsById[roomId]) {
+      showNarration('Narrator', "That path doesn't lead anywhere yet.");
+      return;
+    }
+    state.roomId = roomId;
+    saveGame();
+    renderRoom(false);
+  }
+
+  // ── Interactions ──────────────────────────────────────────────────────────
+
+  function onHotspotClick(hotspot, ev) {
+    hideNarration();
+    if (selectedItemId) {
+      var itemId = selectedItemId;
+      selectItem(null);
+      useItemOn(hotspot, itemId);
+      return;
+    }
+    openWheel(hotspot, ev);
+  }
+
+  function performVerb(hotspot, verb) {
+    if (busy) return;
+    closeWheel();
+
+    if (verb === 'use' && hotspot.kind === 'exit') return tryExit(hotspot);
+    if (verb === 'use' && hotspot.kind === 'item') return tryPickup(hotspot);
+    if (verb === 'use' && hotspot.requiredItemId && !state.unlocked[hotspot.id]) {
+      var itemName = itemsById[hotspot.requiredItemId] ? itemsById[hotspot.requiredItemId].name : 'something';
+      showNarration('Narrator', hotspot.lockedText || 'It won’t budge. You probably need ' + article(itemName) + '.');
+      return;
+    }
+
+    setBusy(true);
+    resolveVerbText(hotspot, verb).then(function (text) {
+      setBusy(false);
+      showNarration(verb === 'talk' && hotspot.kind === 'npc' ? hotspot.name : 'Narrator', text);
+      if (verb === 'use' && !hotspot.requiredItemId) applyHotspotFlags(hotspot, true);
+      if (verb === 'use' && (hotspot.cutsceneId || hotspot.cutsceneVariants) && !hotspot.requiredItemId) playHotspotCutsceneAfter(hotspot, text);
+    });
+  }
+
+  function tryExit(hotspot) {
+    if (hotspot.requiredItemId && !state.unlocked[hotspot.id]) {
+      if (state.inventory.indexOf(hotspot.requiredItemId) !== -1) {
+        // Holding the key: unlock implicitly.
+        state.unlocked[hotspot.id] = true;
+        saveGame();
+        var item = itemsById[hotspot.requiredItemId];
+        consumeRequiredItem(hotspot);
+        applyHotspotFlags(hotspot, false);
+        showNarration('Narrator', 'You use ' + (item ? 'the ' + item.name.toLowerCase() : 'it') + '. The way is open.');
+        setTimeout(function () { travel(hotspot); }, 900);
+        return;
+      }
+      var needed = itemsById[hotspot.requiredItemId];
+      showNarration('Narrator', hotspot.lockedText || ('Locked. You need ' + article(needed ? needed.name : 'something') + '.'));
+      return;
+    }
+    applyHotspotFlags(hotspot, false);
+    travel(hotspot);
+  }
+
+  /** The hotspot's cut scene: the first variant whose conditions hold, else the default. */
+  function cutsceneFor(hotspot) {
+    var variants = hotspot.cutsceneVariants || [];
+    for (var i = 0; i < variants.length; i++) {
+      var v = variants[i];
+      if (v.requiresItemId && state.inventory.indexOf(v.requiresItemId) === -1) continue;
+      if (v.requiresFlag && !state.flags[v.requiresFlag]) continue;
+      if (cutscenesById[v.cutsceneId]) return cutscenesById[v.cutsceneId];
+    }
+    return cutscenesById[hotspot.cutsceneId];
+  }
+
+  /** Follow an exit, playing its cut scene on the way when it has one. */
+  function travel(hotspot) {
+    var cutscene = cutsceneFor(hotspot);
+    if (!cutscene || !roomsById[hotspot.targetRoomId]) {
+      goToRoom(hotspot.targetRoomId);
+      return;
+    }
+    // Save at the destination first, so a reload mid-scene resumes there.
+    state.roomId = hotspot.targetRoomId;
+    saveGame();
+    hideNarration();
+    playCutscene(cutscene, function () { renderRoom(false); });
+  }
+
+  /** Trades: a character or object hands over its item once its lock opens. */
+  function grantTradeItem(hotspot) {
+    if (hotspot.kind === 'item' || !hotspot.grantsItemId || !itemsById[hotspot.grantsItemId]) return null;
+    if (state.inventory.indexOf(hotspot.grantsItemId) === -1) state.inventory.push(hotspot.grantsItemId);
+    return itemsById[hotspot.grantsItemId];
+  }
+
+  function consumeRequiredItem(hotspot) {
+    if (!hotspot.consumesRequiredItem || !hotspot.requiredItemId) return;
+    state.inventory = state.inventory.filter(function (id) { return id !== hotspot.requiredItemId; });
+    if (selectedItemId === hotspot.requiredItemId) selectItem(null);
+    renderInventory();
+  }
+
+  /** Non-exit hotspots play their cut scene after the player has read the result. */
+  function playHotspotCutsceneAfter(hotspot, text) {
+    var cutscene = cutsceneFor(hotspot);
+    if (!cutscene) return;
+    var roomId = state.roomId;
+    busy = true;
+    setTimeout(function () {
+      busy = false;
+      if (state.roomId !== roomId) return;
+      hideNarration();
+      playCutscene(cutscene, function () { renderRoom(true); });
+    }, Math.min(5200, 1400 + (text || '').length * 22));
+  }
+
+  function tryPickup(hotspot) {
+    var itemId = hotspot.grantsItemId;
+    if (!itemId || !itemsById[itemId]) {
+      performVerbFallbackPickup(hotspot);
+      return;
+    }
+    if (state.inventory.indexOf(itemId) === -1) state.inventory.push(itemId);
+    state.taken[hotspot.id] = true;
+    applyHotspotFlags(hotspot, false);
+    saveGame();
+    renderInventory();
+    renderRoom(true);
+    showNarration('Narrator', 'You take the ' + itemsById[itemId].name.toLowerCase() + '.');
+  }
+
+  function performVerbFallbackPickup(hotspot) {
+    setBusy(true);
+    resolveVerbText(hotspot, 'use').then(function (text) {
+      setBusy(false);
+      showNarration('Narrator', text);
+    });
+  }
+
+  function useItemOn(hotspot, itemId) {
+    var item = itemsById[itemId];
+    if (!item) return;
+    var unlocks = hotspot.requiredItemId === itemId && !state.unlocked[hotspot.id];
+    setBusy(true);
+    resolveComboText(hotspot, itemId, unlocks).then(function (text) {
+      setBusy(false);
+      var received = null;
+      if (unlocks) {
+        state.unlocked[hotspot.id] = true;
+        received = hotspot.kind === 'exit' ? null : grantTradeItem(hotspot);
+        consumeRequiredItem(hotspot);
+        saveGame();
+        renderInventory();
+        if (hotspot.kind !== 'exit') applyHotspotFlags(hotspot, true);
+        else applyHotspotFlags(hotspot, false);
+      }
+      if (received) text += '\n\n(Received: ' + received.icon + ' ' + received.name + ')';
+      showNarration('Narrator', text);
+      if (unlocks && hotspot.kind === 'exit' && hotspot.targetRoomId) {
+        setTimeout(function () { travel(hotspot); }, 1200);
+      } else if (unlocks) {
+        playHotspotCutsceneAfter(hotspot, text);
+      }
+    });
+  }
+
+  function article(name) {
+    return (/^[aeiou]/i.test(name) ? 'an ' : 'a ') + name.toLowerCase();
+  }
+
+  // ── Verb wheel ────────────────────────────────────────────────────────────
+
+  var wheelEl = null;
+
+  var WHEEL_VERBS = [
+    { verb: 'look', icon: '👁', label: 'Look' },
+    { verb: 'use', icon: '✋', label: 'Use' },
+    { verb: 'talk', icon: '💬', label: 'Talk' },
+    { verb: 'kick', icon: '🦵', label: 'Kick' },
+  ];
+
+  function openWheel(hotspot, ev) {
+    closeWheel();
+    var rect = sceneEl.getBoundingClientRect();
+    var cx = ev.clientX - rect.left;
+    var cy = ev.clientY - rect.top;
+    // Keep the wheel inside the scene.
+    cx = Math.max(70, Math.min(rect.width - 70, cx));
+    cy = Math.max(70, Math.min(rect.height - 70, cy));
+
+    wheelEl = el('div', 'sf-wheel');
+    wheelEl.style.left = cx + 'px';
+    wheelEl.style.top = cy + 'px';
+    wheelEl.appendChild(el('div', 'sf-wheel-name', hotspot.name));
+
+    var verbs = WHEEL_VERBS;
+    if (hotspot.kind === 'exit') {
+      verbs = [
+        { verb: 'look', icon: '👁', label: 'Look' },
+        { verb: 'use', icon: '🚪', label: 'Go' },
+      ];
+    } else if (hotspot.kind === 'item') {
+      verbs = [
+        { verb: 'look', icon: '👁', label: 'Look' },
+        { verb: 'use', icon: '✋', label: 'Take' },
+        { verb: 'kick', icon: '🦵', label: 'Kick' },
+      ];
+    }
+
+    verbs.forEach(function (v, i) {
+      var angle = -Math.PI / 2 + (i * 2 * Math.PI) / verbs.length;
+      var btn = el('button', 'sf-wheel-btn');
+      btn.innerHTML = '<span class="sf-wheel-icon">' + v.icon + '</span><span class="sf-wheel-label">' + v.label + '</span>';
+      btn.style.transform =
+        'translate(calc(-50% + ' + Math.round(Math.cos(angle) * 56) + 'px), calc(-50% + ' + Math.round(Math.sin(angle) * 56) + 'px))';
+      btn.onclick = function (e) {
+        e.stopPropagation();
+        performVerb(hotspot, v.verb);
+      };
+      wheelEl.appendChild(btn);
+    });
+
+    sceneEl.appendChild(wheelEl);
+  }
+
+  function closeWheel() {
+    if (wheelEl && wheelEl.parentNode) wheelEl.parentNode.removeChild(wheelEl);
+    wheelEl = null;
+  }
+
+  // ── Inventory ─────────────────────────────────────────────────────────────
+
+  function renderInventory() {
+    inventoryEl.innerHTML = '';
+    var label = el('span', 'sf-inventory-label', 'Inventory');
+    inventoryEl.appendChild(label);
+    if (state.inventory.length === 0) {
+      inventoryEl.appendChild(el('span', 'sf-inventory-empty', 'empty'));
+      return;
+    }
+    state.inventory.forEach(function (itemId) {
+      var item = itemsById[itemId];
+      if (!item) return;
+      var slot = el('button', 'sf-item' + (selectedItemId === itemId ? ' sf-item-selected' : ''));
+      slot.appendChild(el('span', 'sf-item-icon', item.icon));
+      slot.appendChild(el('span', 'sf-item-name', item.name));
+      slot.title = item.description;
+      slot.onclick = function (ev) {
+        ev.stopPropagation();
+        if (item.phone) { selectItem(null); openDialer(item); return; }
+        selectItem(selectedItemId === itemId ? null : itemId);
+      };
+      if (item.phone) slot.title = (item.description ? item.description + ' — ' : '') + 'Click to dial';
+      inventoryEl.appendChild(slot);
+    });
+    if (selectedItemId) {
+      var hint = el('span', 'sf-inventory-hint', 'Click something to use it on — Esc to cancel');
+      inventoryEl.appendChild(hint);
+    }
+  }
+
+  function selectItem(itemId) {
+    selectedItemId = itemId;
+    document.body.classList.toggle('sf-using-item', !!itemId);
+    renderInventory();
+  }
+
+  // ── Narration, history, busy state ───────────────────────────────────────
+
+  function showNarration(speaker, text) {
+    if (!text) return;
+    dialogLog.push({ speaker: speaker, text: text });
+    if (dialogLog.length > 100) dialogLog.shift();
+    narrationEl.classList.remove('sf-hidden');
+    narrationText.innerHTML = '';
+    narrationText.scrollTop = 0;
+    if (speaker && speaker !== 'Narrator') {
+      var who = el('span', 'sf-narration-speaker', speaker);
+      narrationText.appendChild(who);
+    }
+    var body = el('span');
+    narrationText.appendChild(body);
+    // Typewriter, skippable by clicking the narration bar.
+    if (typeTimer) clearInterval(typeTimer);
+    var i = 0;
+    typeTimer = setInterval(function () {
+      i += 2;
+      body.textContent = text.slice(0, i);
+      if (i >= text.length) { clearInterval(typeTimer); typeTimer = null; }
+    }, 16);
+    narrationEl.onclick = function () {
+      if (typeTimer) {
+        clearInterval(typeTimer);
+        typeTimer = null;
+        body.textContent = text;
+      }
+    };
+  }
+
+  function hideNarration() {
+    narrationEl.classList.add('sf-hidden');
+    if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+  }
+
+  function toggleHistory() {
+    if (historyEl.classList.contains('sf-hidden')) {
+      historyEl.innerHTML = '';
+      var head = el('div', 'sf-history-head');
+      head.appendChild(el('span', null, 'Story log'));
+      var close = el('button', 'sf-iconbtn', '✕');
+      close.onclick = toggleHistory;
+      head.appendChild(close);
+      historyEl.appendChild(head);
+      var list = el('div', 'sf-history-list');
+      if (dialogLog.length === 0) list.appendChild(el('p', 'sf-history-empty', 'Nothing yet.'));
+      dialogLog.forEach(function (entry) {
+        var line = el('p', 'sf-history-line');
+        line.innerHTML = '<strong>' + escapeHtml(entry.speaker) + ':</strong> ' + escapeHtml(entry.text);
+        list.appendChild(line);
+      });
+      historyEl.appendChild(list);
+      historyEl.classList.remove('sf-hidden');
+      list.scrollTop = list.scrollHeight;
+    } else {
+      historyEl.classList.add('sf-hidden');
+    }
+  }
+
+  function toggleCommand(forceOpen) {
+    var isHidden = commandWrap.classList.contains('sf-hidden');
+    if (forceOpen && !isHidden) { commandInput.focus(); return; }
+    commandWrap.classList.toggle('sf-hidden');
+    if (isHidden) commandInput.focus();
+  }
+
+  function setBusy(b) {
+    busy = b;
+    document.body.classList.toggle('sf-busy', b);
+    if (b) showWorkingIndicator();
+  }
+
+  // Activity feedback belongs on screen, not in the permanent story log.
+  function showWorkingIndicator() {
+    if (typeTimer) { clearInterval(typeTimer); typeTimer = null; }
+    narrationEl.classList.remove('sf-hidden');
+    narrationText.textContent = '…';
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // ── Phone dial pad ────────────────────────────────────────────────────────
+
+  var dialerEl = null;
+
+  function digitsOf(number) { return String(number || '').replace(/[^0-9*#]/g, ''); }
+
+  function closeDialer() {
+    if (dialerEl) dialerEl.remove();
+    dialerEl = null;
+    window.removeEventListener('keydown', onDialerKey, true);
+  }
+
+  var dialerInput = null;
+  function onDialerKey(ev) {
+    if (!dialerEl) return;
+    if (/^[0-9*#]$/.test(ev.key)) dialerInput.press(ev.key);
+    else if (ev.key === 'Backspace') dialerInput.back();
+    else if (ev.key === 'Enter') dialerInput.call();
+    else if (ev.key === 'Escape') closeDialer();
+    else return;
+    ev.preventDefault();
+    ev.stopPropagation();
+  }
+
+  /** Keypad overlay for phone items; matching is on digits only. */
+  function openDialer(item) {
+    closeDialer();
+    closeWheel();
+    hideNarration();
+    var typed = '';
+    dialerEl = el('div', 'sf-dialer');
+    dialerEl.setAttribute('role', 'dialog');
+    dialerEl.setAttribute('aria-label', 'Dial ' + item.name);
+    var box = el('div', 'sf-dialer-box');
+    box.appendChild(el('div', 'sf-dialer-title', item.icon + ' ' + item.name));
+    var display = el('div', 'sf-dialer-display', '');
+    display.setAttribute('aria-live', 'polite');
+    box.appendChild(display);
+    var pad = el('div', 'sf-dialer-pad');
+    function render() { display.textContent = typed || 'Enter a number'; display.classList.toggle('sf-dialer-empty', !typed); }
+    dialerInput = {
+      press: function (d) { if (typed.length < 20) { typed += d; playUiTone('click'); render(); } },
+      back: function () { typed = typed.slice(0, -1); render(); },
+      call: function () {
+        var digits = digitsOf(typed);
+        if (!digits) return;
+        closeDialer();
+        placeCall(item, digits);
+      },
+    };
+    '123456789*0#'.split('').forEach(function (d) {
+      var key = el('button', 'sf-dialer-key', d);
+      key.type = 'button';
+      key.onclick = function (ev) { ev.stopPropagation(); dialerInput.press(d); };
+      pad.appendChild(key);
+    });
+    box.appendChild(pad);
+    var actions = el('div', 'sf-dialer-actions');
+    var back = el('button', 'sf-btn sf-btn-pixel', '⌫');
+    back.title = 'Delete (Backspace)';
+    back.onclick = function (ev) { ev.stopPropagation(); dialerInput.back(); };
+    var call = el('button', 'sf-btn sf-btn-pixel sf-dialer-call', 'Call');
+    call.onclick = function (ev) { ev.stopPropagation(); dialerInput.call(); };
+    var hang = el('button', 'sf-btn sf-btn-pixel', 'Hang up');
+    hang.title = 'Close (Esc)';
+    hang.onclick = function (ev) { ev.stopPropagation(); closeDialer(); };
+    actions.appendChild(back);
+    actions.appendChild(call);
+    actions.appendChild(hang);
+    box.appendChild(actions);
+    dialerEl.appendChild(box);
+    dialerEl.onclick = function (ev) { if (ev.target === dialerEl) closeDialer(); };
+    render();
+    sceneEl.appendChild(dialerEl);
+    window.addEventListener('keydown', onDialerKey, true);
+  }
+
+  function placeCall(item, digits) {
+    var phone = item.phone || {};
+    var contact = (phone.contacts || []).filter(function (c) { return digitsOf(c.number) === digits; })[0];
+    if (!contact) {
+      showNarration('Narrator', phone.wrongNumberText || 'It rings and rings. Nobody you know.');
+      return;
+    }
+    if (contact.requiresFlag && !state.flags[contact.requiresFlag]) {
+      showNarration(contact.speaker || 'Narrator', contact.notReadyText || 'No answer.');
+      return;
+    }
+    showNarration(contact.speaker || 'Narrator', contact.text);
+    changeFlags(contact.setsFlags, null, true);
+  }
+
+  // ── Cut scenes & ending ───────────────────────────────────────────────────
+
+  var cutsceneLayer = null;
+
+  /** Play frames full-window; click/Enter/Space advances, Esc skips. */
+  function playCutscene(cutscene, onDone) {
+    closeWheel();
+    if (selectedItemId) selectItem(null);
+    var frames = (cutscene.frames || []).filter(function (f) { return f.image || f.text; });
+    if (frames.length === 0) return finishCutscene(cutscene, onDone);
+    if (cutsceneLayer) cutsceneLayer.remove();
+    document.documentElement.classList.add('sf-cutscene-active');
+    cutsceneLayer = el('div', 'sf-cutscene-layer');
+    cutsceneLayer.setAttribute('role', 'dialog');
+    cutsceneLayer.setAttribute('aria-label', cutscene.name || 'Cut scene');
+    var built = buildScreen('sf-cutscene', frames[0].image);
+    built.frame.style.backgroundImage = '';
+    var panel = el('div', 'sf-cutscene-panel');
+    var caption = el('p', 'sf-cutscene-text');
+    caption.setAttribute('aria-live', 'polite');
+    panel.appendChild(caption);
+    var controls = el('div', 'sf-cutscene-controls');
+    var dots = el('div', 'sf-cutscene-dots');
+    frames.forEach(function () { dots.appendChild(el('span', 'sf-cutscene-dot')); });
+    if (frames.length > 1) controls.appendChild(dots);
+    var next = el('button', 'sf-btn sf-btn-pixel', 'Next ▸');
+    var skip = el('button', 'sf-btn sf-btn-pixel', 'Skip ▸▸');
+    skip.title = 'Skip (Esc)';
+    controls.appendChild(next);
+    controls.appendChild(skip);
+    panel.appendChild(controls);
+    built.screen.appendChild(panel);
+    cutsceneLayer.appendChild(built.screen);
+    document.body.appendChild(cutsceneLayer);
+
+    var index = -1;
+    var timer = null;
+    var done = false;
+    var shot = null;
+    // The key or click that started the scene must not also skip its frames.
+    var inputReadyAt = 0;
+
+    function show(i) {
+      index = i;
+      var frame = frames[i];
+      clearTimeout(timer);
+      sizeArtwork(built.frame, frame.image);
+      var old = shot;
+      shot = el('div', 'sf-cutscene-shot');
+      shot.style.setProperty('--sf-frame-ms', (frame.durationMs || 4000) + 700 + 'ms');
+      if (frame.image) shot.style.backgroundImage = 'url("' + frame.image + '")';
+      built.frame.appendChild(shot);
+      void shot.offsetWidth;
+      shot.classList.add('sf-shown', 'sf-drift');
+      if (old) setTimeout(function () { if (old.parentNode) old.parentNode.removeChild(old); }, 800);
+      caption.textContent = frame.text || '';
+      caption.style.animation = 'none';
+      void caption.offsetWidth;
+      caption.style.animation = '';
+      if (frame.text) dialogLog.push({ speaker: 'Narrator', text: frame.text });
+      Array.prototype.forEach.call(dots.children, function (d, n) { d.classList.toggle('sf-on', n <= i); });
+      next.textContent = i === frames.length - 1 ? (cutscene.endsGame ? 'Finish ▸' : 'Continue ▸') : 'Next ▸';
+      inputReadyAt = Date.now() + (i === 0 ? 500 : 250);
+      timer = setTimeout(function () { step(); }, frame.durationMs || 4000);
+    }
+    function advance() {
+      if (Date.now() < inputReadyAt) return;
+      step();
+    }
+    function step() {
+      if (done) return;
+      if (index < frames.length - 1) show(index + 1);
+      else end();
+    }
+    function end() {
+      if (done) return;
+      done = true;
+      clearTimeout(timer);
+      window.removeEventListener('keydown', onKey, true);
+      document.documentElement.classList.remove('sf-cutscene-active');
+      if (cutsceneLayer) { cutsceneLayer.remove(); cutsceneLayer = null; }
+      finishCutscene(cutscene, onDone);
+    }
+    function onKey(ev) {
+      if (ev.repeat) { ev.preventDefault(); ev.stopPropagation(); return; }
+      if (ev.key === 'Escape') { if (Date.now() >= inputReadyAt) end(); }
+      else if (ev.key === 'Enter' || ev.key === ' ' || ev.key === 'ArrowRight') advance();
+      else return;
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+    next.onclick = function (ev) { ev.stopPropagation(); advance(); };
+    skip.onclick = function (ev) { ev.stopPropagation(); if (Date.now() >= inputReadyAt) end(); };
+    built.frame.onclick = advance;
+    window.addEventListener('keydown', onKey, true);
+    show(0);
+    next.focus({ preventScroll: true });
+  }
+
+  function finishCutscene(cutscene, onDone) {
+    if (cutscene.endsGame) showEnding(cutscene);
+    else onDone();
+  }
+
+  function showEnding(cutscene) {
+    // A finished story starts fresh next time instead of resuming mid-credits.
+    clearSave();
+    document.removeEventListener('keydown', onGlobalKey);
+    document.documentElement.classList.add('sf-ending-active');
+    var frames = (cutscene.frames || []).filter(function (f) { return f.image; });
+    root.innerHTML = '';
+    var built = buildScreen('sf-ending', frames.length ? frames[frames.length - 1].image : G.title.image);
+    var panel = el('div', 'sf-intro-panel');
+    panel.appendChild(el('h2', 'sf-ending-heading', cutscene.endingHeading || 'The End'));
+    if (cutscene.endingText) panel.appendChild(el('p', 'sf-intro-text', cutscene.endingText));
+    var again = el('button', 'sf-btn sf-btn-pixel', 'Play Again');
+    again.onclick = function () {
+      document.documentElement.classList.remove('sf-ending-active');
+      state.roomId = G.startRoomId;
+      state.inventory = (G.initialInventory || []).filter(function (id) { return itemsById[id]; });
+      state.taken = {};
+      state.unlocked = {};
+      state.visited = {};
+      state.flags = {};
+      dialogLog = [];
+      selectedItemId = null;
+      showTitle();
+    };
+    panel.appendChild(again);
+    built.screen.appendChild(panel);
+    root.appendChild(built.screen);
+    again.focus({ preventScroll: true });
+  }
+
+  // ── Command parser (local, no AI — works in exports) ──────────────────────
+
+  var VERB_WORDS = {
+    look: ['look', 'examine', 'inspect', 'read', 'check', 'study'],
+    use: ['use', 'open', 'take', 'grab', 'pick', 'push', 'pull', 'press', 'operate', 'get'],
+    talk: ['talk', 'speak', 'ask', 'say', 'greet', 'chat'],
+    kick: ['kick', 'hit', 'punch', 'smash', 'break'],
+  };
+  var GO_WORDS = ['go', 'walk', 'enter', 'exit', 'leave', 'move', 'head'];
+
+  function runCommand(text) {
+    var lower = text.toLowerCase();
+    var words = lower.split(/\s+/);
+    var room = currentRoom();
+
+    // "use X on Y" — item combo
+    var comboMatch = lower.match(/(?:use|put|give)\s+(.+?)\s+(?:on|with|to)\s+(.+)/);
+    if (comboMatch) {
+      var item = bestMatch(comboMatch[1], state.inventory.map(function (id) { return { key: id, name: itemsById[id] ? itemsById[id].name : id }; }));
+      var target = bestMatch(comboMatch[2], visibleHotspots().map(function (h) { return { key: h.id, name: h.name }; }));
+      if (item && target) {
+        var hs = findHotspot(target.key);
+        useItemOn(hs, item.key);
+        return;
+      }
+      showNarration('Narrator', item ? "You don't see that here." : "You aren't carrying that.");
+      return;
+    }
+
+    // movement
+    if (GO_WORDS.indexOf(words[0]) !== -1) {
+      var rest = words.slice(1).join(' ').replace(/^(to|the|through|into)\s+/g, '');
+      var exits = visibleHotspots().filter(function (h) { return h.kind === 'exit'; });
+      var exact = bestMatch(rest, exits.map(function (h) { return { key: h.id, name: h.name }; }));
+      // Also allow matching the destination room's name ("go to the library").
+      if (!exact) {
+        exact = bestMatch(
+          rest,
+          exits
+            .filter(function (h) { return h.targetRoomId && roomsById[h.targetRoomId]; })
+            .map(function (h) { return { key: h.id, name: roomsById[h.targetRoomId].name }; })
+        );
+      }
+      if (exact) { tryExit(findHotspot(exact.key)); return; }
+      if (exits.length === 1) { tryExit(exits[0]); return; }
+      showNarration('Narrator', exits.length ? 'Which way? Try naming the exit.' : "There's no obvious way out of here.");
+      return;
+    }
+
+    // verb + target
+    for (var verb in VERB_WORDS) {
+      if (VERB_WORDS[verb].indexOf(words[0]) !== -1) {
+        var targetText = words.slice(1).join(' ').replace(/^(at|the|on|to|with)\s+/g, '').replace(/\b(at|the)\b/g, '').trim();
+        if (!targetText) {
+          showNarration('Narrator', capitalize(words[0]) + ' at what?');
+          return;
+        }
+        var found = bestMatch(targetText, visibleHotspots().map(function (h) { return { key: h.id, name: h.name }; }));
+        if (found) {
+          performVerb(findHotspot(found.key), verb);
+          return;
+        }
+        // Maybe they're referring to an inventory item.
+        var invMatch = bestMatch(targetText, state.inventory.map(function (id) { return { key: id, name: itemsById[id] ? itemsById[id].name : id }; }));
+        if (invMatch && verb === 'look') {
+          var invItem = itemsById[invMatch.key];
+          showNarration('Narrator', invItem.description || 'Your ' + invItem.name.toLowerCase() + '.');
+          return;
+        }
+        showNarration('Narrator', "You don't see that here.");
+        return;
+      }
+    }
+
+    // bare hotspot name → look
+    var bare = bestMatch(lower, visibleHotspots().map(function (h) { return { key: h.id, name: h.name }; }));
+    if (bare) { performVerb(findHotspot(bare.key), 'look'); return; }
+
+    showNarration('Narrator', "You're not sure how to do that. Try: look, use, talk, kick, or go.");
+
+    function findHotspot(id) {
+      return room.hotspots.filter(function (h) { return h.id === id; })[0];
+    }
+  }
+
+  function visibleHotspots() {
+    return currentRoom().hotspots.filter(isVisible);
+  }
+
+  /** Fuzzy match: exact name > name contains query > query contains a name word. */
+  function bestMatch(query, candidates) {
+    query = query.trim().toLowerCase();
+    if (!query) return null;
+    var exact = null, partial = null;
+    candidates.forEach(function (c) {
+      var name = c.name.toLowerCase();
+      if (name === query) exact = exact || c;
+      else if (name.indexOf(query) !== -1 || query.indexOf(name) !== -1) partial = partial || c;
+      else {
+        var wordsIn = name.split(/\s+/);
+        for (var i = 0; i < wordsIn.length; i++) {
+          if (wordsIn[i].length > 2 && query.indexOf(wordsIn[i]) !== -1) { partial = partial || c; break; }
+        }
+      }
+    });
+    return exact || partial;
+  }
+
+  function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+  // ── Boot ──────────────────────────────────────────────────────────────────
+
+  if (window.parent !== window) {
+    window.parent.postMessage({ type: 'safar:ready' }, '*');
+  }
+  showTitle();
+})();
+
+</script>
+</body>
+</html>
