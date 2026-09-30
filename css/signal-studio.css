@@ -1008,6 +1008,8 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 
 /* Terminal cursor as a square, top-aligned with the cap height of the wordmark (Nassib, 2026-09-30). */
 .home-intro .wordmark-cursor { align-items: flex-start; }
-.home-intro .landing-wordmark i { width: .15em; height: .15em; margin-top: .035em; border-radius: .022em; }
+.home-intro .landing-wordmark i { width: .15em; height: .15em; margin-top: .035em; border-radius: .012em; }
 .home-intro .wordmark-cursor i::before, .home-intro .wordmark-cursor i::after { border-radius: inherit; }
 @media (max-width: 720px) { .home-intro .landing-intro { margin-bottom: 40px; } }
+/* The wordmark's tall line box overlapped the intro on desktop and swallowed clicks on "Let's jam". Keep the intro above it. */
+.home-intro .landing-intro { position: relative; z-index: 3; }
