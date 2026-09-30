@@ -1008,5 +1008,6 @@ a:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
 
 /* Terminal cursor as a square, top-aligned with the cap height of the wordmark (Nassib, 2026-09-30). */
 .home-intro .wordmark-cursor { align-items: flex-start; }
-.home-intro .landing-wordmark i { width: .3em; height: .3em; margin-top: .035em; }
+.home-intro .landing-wordmark i { width: .15em; height: .15em; margin-top: .035em; border-radius: .022em; }
+.home-intro .wordmark-cursor i::before, .home-intro .wordmark-cursor i::after { border-radius: inherit; }
 @media (max-width: 720px) { .home-intro .landing-intro { margin-bottom: 40px; } }
